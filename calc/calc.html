@@ -1,0 +1,109 @@
+<html>
+<head>
+	<base href="https://ksgwxfan.github.io/calc">
+	<link id="class_name" rel="stylesheet" href="defaultstyle.css">
+	<title>ksgwxfan - Basic Calculator</title>
+<style>
+.BGBUTTON {
+font-size: 12px;
+font-weight: bold;
+width: 22%;
+padding-top: 15px;
+padding-bottom: 15px;
+background: linear-gradient(rgba(255,255,255,0.5) 5%,transparent 30%);
+outline: none;
+}
+
+.BGBUTTON:active {
+background: linear-gradient(transparent 45%, rgba(255,255,255,0.5) 95%);
+}
+
+.THEMEBUTTON {
+font-size: 12px;
+font-weight: bold;
+width: 16%;
+background: linear-gradient(rgba(255,255,255,0.5) 5%,transparent 30%);
+border: 4px solid;
+padding-top: 15px;
+padding-bottom: 15px;
+outline: none;
+}
+
+.THEMEBUTTON:active {
+background: linear-gradient(transparent 45%, rgba(255,255,255,0.5) 95%);
+}
+</style>
+</head>
+<!-- Bottom-of-page content was being hid by footer, but W3SCHOOLS helped me out, as always! -->
+<body id="bod" style="background-color:#141414;margin-bottom: 7%;color:white;" link="lightBlue" vlink="lightBlue">
+<center><div class="calcCASING">
+	<div class="calcDISPLAY">
+		<div style="position:relative;text-align:right;font-size:14px;width:96%;" id="smalloutput"></div>
+		<div class="calcDISPLAYFONT" style="position:absolute;right:2%;bottom:1%;" id="largeoutput">0.</div>
+	</div>
+	<button id="b1" class="calcNUMBERBUTTON" style="top:31%;left:14%;" onclick=numpress("1")>1</button>
+	<button id="b2" class="calcNUMBERBUTTON" style="top:31%;left:38%;" onclick=numpress("2")>2</button>
+	<button id="b3" class="calcNUMBERBUTTON" style="top:31%;left:62%;" onclick=numpress("3")>3</button>
+	<button id="b4" class="calcNUMBERBUTTON" style="top:48%;left:14%;" onclick=numpress("4")>4</button>
+	<button id="b5" class="calcNUMBERBUTTON" style="top:48%;left:38%;" onclick=numpress("5")>5</button>
+	<button id="b6" class="calcNUMBERBUTTON" style="top:48%;left:62%;" onclick=numpress("6")>6</button>
+	<button id="b7" class="calcNUMBERBUTTON" style="top:65%;left:14%;" onclick=numpress("7")>7</button>
+	<button id="b8" class="calcNUMBERBUTTON" style="top:65%;left:38%;" onclick=numpress("8")>8</button>
+	<button id="b9" class="calcNUMBERBUTTON" style="top:65%;left:62%;" onclick=numpress("9")>9</button>
+	<button id="b0" class="calcNUMBERBUTTON" style="top:82%;left:14%;" onclick=numpress("0")>0</button>
+	<button id="bdot" class="calcNUMBERBUTTON" style="top:80%;left:38%;height:10%;" onclick=numpress(".")>.</button>
+	<button id="equals" class="calcEQLBUTTON" style="top:86%;left:62%;" onclick=equals_press("=")>=</button>
+	<button id="plusminus" class="calcSPECBUTTON" style="top:92%;left:38%;" onclick=numpress("+/-")>+/-</button>
+	<button id="clear" class="calcCLRBUTTON" style="top:29.5%;left:86%;" onclick=clear_press("C")>C</button>
+	<button id="clearentry" class="calcCLRBUTTON" style="top:42%;left:86%;" onclick=clear_press("CE")>CE</button>
+	<button id="plus" class="calcOPBUTTON" style="top:54.5%;left:86%;" onclick=operator_press("+")>+</button>
+	<button id="subtr" class="calcOPBUTTON" style="top:67%;left:86%" onclick=operator_press("-")>-</button>
+	<button id="mult" class="calcOPBUTTON" style="top:79.5%;left:86%" onclick=operator_press("*")>x</button>
+	<button id="divide"  class="calcOPBUTTON" style="top:92%;left:86%" onclick=operator_press("/")>/</button>
+	<div id="signature" class="calcSIG" style="top:89.5%;left:3%;">Basic Calculator Created by K. Gentry</div>
+</div><p>
+</center>
+<div id="bar" style="border-top:1px solid black;position:fixed;left:0%;bottom:0;width:100%;height:12%;text-align:center;display:block;background:linear-gradient(#ffff80,white);">
+	<div id="chgbg" style="position:absolute;width:40%;left:-1%;color:black;">
+		<b>Background Color:</b><br>
+		<button class="BGBUTTON" style="background-color:rgba(0,0,0,.75);color:white;" id="chgbg_dark" onclick=chgbg("#141414")>Dark (Default)</button>
+		<button class="BGBUTTON" style="background-color:rgb(200,200,200);" id="chgbg_white" onclick=chgbg("white")>White</button>
+		<button class="BGBUTTON" style="background-color:SandyBrown;" id="chgbg_warm" onclick=chgbg("#f5ae70")>Warm</button>
+		<button class="BGBUTTON" style="background-color:LightBlue" id="chgbg_ltblu" onclick=chgbg("PowderBlue")>Cool</button>
+	</div>
+	<div id="chgstyle" style="position:absolute;width:60%;right:1%;color:black;">
+		<b>Change Theme:</b><br>
+		<button class="THEMEBUTTON" style="background-color: black; border-color:rgb(60, 60, 120);color:white;" id="style0" onclick=chglook("defaultstyle")>Standard</button>
+		<button class="THEMEBUTTON" style="background-color: black; border-color:#FF00CC;color:#00ff00;" id="style1" onclick=chglook("style1")>Neon Glow</button>
+		<button class="THEMEBUTTON" style="background-color: #FAFA37;border-color:blue" id="style2" onclick=chglook("style2")>Springtime</button>
+		<button class="THEMEBUTTON" style="background-color:Navy;border-color:green;color:white;"id="style3" onclick=chglook("style3")>Terrestrial Fringe</button>
+		<button class="THEMEBUTTON" style="background-color:orange;" id="style4" onclick=chglook("style4")>Sunfall</button>
+		<button class="THEMEBUTTON" style="background-color:darkred;border-color:blue;color:white;" id="style5" onclick=chglook("style5")>Patriots' Dream</button>
+	</div>
+</div>
+Almost all you see here is HTML/CSS/Javascript; no SVG's were used. I used Python to
+create code for the star-field in my space theme. I hope you bookmark this calculator, come back often, and that it is of use 
+to you. If you discover something that isn't working right, GOOD! Let me know in the <a href="http://astormyhaze.blogspot.com/p/downloads.html">
+comments section of my blog's download page</a> and I'll tackle it as soon as I can. This has been a great exercise in trying to account 
+for every kind of problem that can arise. So if it's broken, it means it can be improved! I have found an appreciation for the creation of 
+the most basic calculators. Some items I had to account for include:<p>
+<ul>
+	<li>Preventing 'division by zero' attempts</li>
+	<li>Preventing successive zero entries at the start of a number</li>
+	<li>Display-limit of characters so numbers couldn't extend beyond the virtual display</li>
+	<ul><li>This included defining situations where I wanted scientific notation or wanted to limit the output</li></ul>
+	<li>Ignoring successive operator entries (sorry if you accidentally hit the wrong button)</li>
+</ul>
+<iframe src="footer.html" style="border:none;width:100%;"></iframe>
+<script src="calc_logic.js"></script>
+
+</body>
+</html>
+<!--document.getElementById("tempval").innerHTML = tempval; -->
+<!--document.getElementById("res").innerHTML = resultant; -->
+<!--document.getElementById("op").innerHTML = op; -->
+<!--document.getElementById("smallout").innerHTML = smallprob; -->
+<!--document.getElementById("numba").innerHTML = num; -->
+<!--document.getElementById("dotpress").innerHTML = decimalpressed; -->
+<!--document.getElementById("op_press").innerHTML = op_pressed; -->
+<!--document.getElementById("op_div").innerHTML = op_divide; -->

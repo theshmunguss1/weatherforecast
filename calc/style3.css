@@ -1,0 +1,191 @@
+.calcCASING {
+position: relative;
+background: radial-gradient(200% 60% at bottom -25% left 50%,rgba(0, 30, 95,1) 45%,rgba(102, 153, 255,1) 60%,rgba(255,255,255,0) 70%), /*Earth*/
+radial-gradient(circle at 85% 56%, rgba(206,206,255,0.5) 0.07%, rgba(255,255,255,0) 1.22%), /*Star*/
+radial-gradient(circle at 56% 56%, rgba(204,204,255,0.56) 0.11%, rgba(255,255,255,0) 0.99%), /*Star*/
+radial-gradient(circle at 45% 4%, rgba(239,239,255,0.43) 0.23%, rgba(255,255,255,0) 0.76%), /*Star*/
+radial-gradient(circle at 90% 31%, rgba(228,228,255,0.58) 0.11%, rgba(255,255,255,0) 0.57%), /*Star*/
+radial-gradient(circle at 58% 77%, rgba(253,253,255,0.51) 0.1%, rgba(255,255,255,0) 0.8%), /*Star*/
+radial-gradient(circle at 3% 64%, rgba(201,201,255,0.49) 0.15%, rgba(255,255,255,0) 1.02%), /*Star*/
+radial-gradient(circle at 77% 5%, rgba(222,222,255,0.42) 0.1%, rgba(255,255,255,0) 0.65%), /*Star*/
+radial-gradient(circle at 67% 44%, rgba(241,241,255,0.37) 0.07%, rgba(255,255,255,0) 0.64%), /*Star*/
+radial-gradient(circle at 16% 21%, rgba(204,204,255,0.51) 0.22%, rgba(255,255,255,0) 1.33%), /*Star*/
+radial-gradient(circle at 72% 30%, rgba(206,206,255,0.51) 0.1%, rgba(255,255,255,0) 0.72%), /*Star*/
+radial-gradient(circle at 3% 47%, rgba(253,253,255,0.55) 0.11%, rgba(255,255,255,0) 1.09%), /*Star*/
+radial-gradient(circle at 39% 60%, rgba(256,256,255,0.58) 0.06%, rgba(255,255,255,0) 1.01%), /*Star*/
+radial-gradient(circle at 38% 5%, rgba(232,232,255,0.44) 0.03%, rgba(255,255,255,0) 1.01%), /*Star*/
+radial-gradient(circle at 10% 17%, rgba(201,201,255,0.57) 0.1%, rgba(255,255,255,0) 0.75%), /*Star*/
+radial-gradient(circle at 43% 15%, rgba(227,227,255,0.49) 0.11%, rgba(255,255,255,0) 0.85%), /*Star*/
+radial-gradient(circle at 92% 44%, rgba(207,207,255,0.58) 0.09%, rgba(255,255,255,0) 0.62%), /*Star*/
+radial-gradient(circle at 18% 16%, rgba(240,240,255,0.48) 0.19%, rgba(255,255,255,0) 0.74%), /*Star*/
+radial-gradient(circle at 12% 83%, rgba(253,253,255,0.61) 0.05%, rgba(255,255,255,0) 1.27%), /*Star*/
+radial-gradient(circle at 15% 55%, rgba(222,222,255,0.59) 0.1%, rgba(255,255,255,0) 1.15%), /*Star*/
+radial-gradient(circle at 19% 74%, rgba(203,203,255,0.6) 0.07%, rgba(255,255,255,0) 0.84%), /*Star*/
+radial-gradient(circle at 58% 58%, rgba(234,234,255,0.58) 0.18%, rgba(255,255,255,0) 1.26%), /*Star*/
+radial-gradient(circle at 26% 38%, rgba(233,233,255,0.63) 0.15%, rgba(255,255,255,0) 0.95%), /*Star*/
+radial-gradient(circle at 7% 64%, rgba(214,214,255,0.54) 0.1%, rgba(255,255,255,0) 0.67%), /*Star*/
+radial-gradient(circle at 37% 23%, rgba(247,247,255,0.59) 0.07%, rgba(255,255,255,0) 1.13%), /*Star*/
+radial-gradient(circle at 82% 46%, rgba(231,231,255,0.47) 0.13%, rgba(255,255,255,0) 0.79%), /*Star*/
+radial-gradient(circle at 30% 34%, rgba(249,249,255,0.43) 0.13%, rgba(255,255,255,0) 0.89%), /*Star*/
+radial-gradient(circle at 86% 2%, rgba(227,227,255,0.53) 0.11%, rgba(255,255,255,0) 1.05%), /*Star*/
+radial-gradient(circle at 51% 45%, rgba(243,243,255,0.62) 0.12%, rgba(255,255,255,0) 0.78%), /*Star*/
+radial-gradient(circle at 59% 6%, rgba(224,224,255,0.46) 0.19%, rgba(255,255,255,0) 0.34%), /*Star*/
+radial-gradient(circle at 71% 31%, rgba(222,222,255,0.51) 0.09%, rgba(255,255,255,0) 0.82%), /*Star*/
+radial-gradient(circle at 82% 14%, rgba(230,230,255,0.51) 0.17%, rgba(255,255,255,0) 0.8%), /*Star*/
+radial-gradient(circle at 37% 30%, rgba(208,208,255,0.55) 0.09%, rgba(255,255,255,0) 0.76%), /*Star*/
+radial-gradient(circle at 101% 41%, rgba(236,236,255,0.45) 0.14%, rgba(255,255,255,0) 1.03%), /*Star*/
+radial-gradient(circle at 82% 3%, rgba(256,256,255,0.49) 0.08%, rgba(255,255,255,0) 1.22%), /*Star*/
+radial-gradient(circle at 64% 68%, rgba(208,208,255,0.61) 0.08%, rgba(255,255,255,0) 0.92%), /*Star*/
+radial-gradient(circle at 9% 86%, rgba(240,240,255,0.47) 0.09%, rgba(255,255,255,0) 0.44%), /*Star*/
+radial-gradient(circle at 89% 74%, rgba(226,226,255,0.47) 0.06%, rgba(255,255,255,0) 1.31%), /*Star*/
+radial-gradient(circle at 38% 49%, rgba(239,239,255,0.56) 0.15%, rgba(255,255,255,0) 1.17%), /*Star*/
+radial-gradient(circle at 19% 35%, rgba(256,256,255,0.45) 0.08%, rgba(255,255,255,0) 0.74%), /*Star*/
+radial-gradient(circle at 7% 36%, rgba(224,224,255,0.58) 0.08%, rgba(255,255,255,0) 1.41%), /*Star*/
+radial-gradient(circle at 44% 52%, rgba(200,200,255,0.51) 0.13%, rgba(255,255,255,0) 0.55%), /*Star*/
+radial-gradient(circle at 84% 3%, rgba(202,202,255,0.45) 0.08%, rgba(255,255,255,0) 0.55%), /*Star*/
+radial-gradient(circle at 33% 82%, rgba(239,239,255,0.41) 0.14%, rgba(255,255,255,0) 1.11%), /*Star*/
+radial-gradient(circle at 98% 26%, rgba(228,228,255,0.6) 0.14%, rgba(255,255,255,0) 0.86%), /*Star*/
+radial-gradient(circle at 76% 22%, rgba(244,244,255,0.43) 0.08%, rgba(255,255,255,0) 0.55%), /*Star*/
+radial-gradient(circle at 74% 80%, rgba(219,219,255,0.53) 0.09%, rgba(255,255,255,0) 0.82%), /*Star*/
+radial-gradient(circle at 17% 69%, rgba(247,247,255,0.6) 0.16%, rgba(255,255,255,0) 0.78%), /*Star*/
+radial-gradient(circle at 13% 8%, rgba(238,238,255,0.53) 0.11%, rgba(255,255,255,0) 0.54%), /*Star*/
+radial-gradient(circle at 42% 75%, rgba(221,221,255,0.52) 0.19%, rgba(255,255,255,0) 0.61%), /*Star*/
+radial-gradient(circle at 40% 14%, rgba(235,235,255,0.52) 0.19%, rgba(255,255,255,0) 1.02%), /*Star*/
+radial-gradient(circle at 28% 64%, rgba(240,240,255,0.55) 0.16%, rgba(255,255,255,0) 0.96%), /*Star*/
+radial-gradient(circle at 70% 62%, rgba(216,216,255,0.53) 0.18%, rgba(255,255,255,0) 0.93%), /*Star*/
+radial-gradient(circle at 32% 66%, rgba(212,212,255,0.58) 0.12%, rgba(255,255,255,0) 0.89%), /*Star*/
+radial-gradient(circle at 92% 61%, rgba(223,223,255,0.57) 0.13%, rgba(255,255,255,0) 0.89%), /*Star*/
+radial-gradient(circle at 62% 50%, rgba(250,250,255,0.47) 0.12%, rgba(255,255,255,0) 0.67%), /*Star*/
+radial-gradient(circle at 52% 21%, rgba(242,242,255,0.46) 0.16%, rgba(255,255,255,0) 0.67%), /*Star*/
+radial-gradient(circle at 2% 23%, rgba(211,211,255,0.59) 0.16%, rgba(255,255,255,0) 0.79%), /*Star*/
+radial-gradient(circle at 74% 12%, rgba(226,226,255,0.52) 0.12%, rgba(255,255,255,0) 0.28%), /*Star*/
+radial-gradient(circle at 66% 20%, rgba(232,232,255,0.65) 0.22%, rgba(255,255,255,0) 0.83%), /*Star*/
+radial-gradient(circle at 41% 55%, rgba(250,250,255,0.41) 0.05%, rgba(255,255,255,0) 0.98%), /*Star*/
+radial-gradient(circle at 43% 17%, rgba(247,247,255,0.42) 0.16%, rgba(255,255,255,0) 1.03%), /*Star*/
+radial-gradient(circle at 87% 13%, rgba(205,205,255,0.43) 0.08%, rgba(255,255,255,0) 0.6%), /*Star*/
+radial-gradient(circle at 63% 35%, rgba(222,222,255,0.55) 0.12%, rgba(255,255,255,0) 0.73%), /*Star*/
+radial-gradient(circle at 72% 62%, rgba(209,209,255,0.6) 0.06%, rgba(255,255,255,0) 0.71%), /*Star*/
+radial-gradient(circle at 97% 9%, rgba(240,240,255,0.46) 0.08%, rgba(255,255,255,0) 0.87%), /*Star*/
+radial-gradient(circle at 95% 68%, rgba(242,242,255,0.44) 0.06%, rgba(255,255,255,0) 0.94%), /*Star*/
+radial-gradient(circle at 14% 42%, rgba(240,240,255,0.41) 0.17%, rgba(255,255,255,0) 1.22%), /*Star*/
+radial-gradient(circle at 86% 70%, rgba(233,233,255,0.56) 0.14%, rgba(255,255,255,0) 0.83%), /*Star*/
+radial-gradient(circle at 26% 51%, rgba(229,229,255,0.38) 0.13%, rgba(255,255,255,0) 1.29%), /*Star*/
+radial-gradient(circle at 1% 51%, rgba(237,237,255,0.43) 0.1%, rgba(255,255,255,0) 1.21%), /*Star*/
+radial-gradient(circle at 59% 22%, rgba(242,242,255,0.52) 0.17%, rgba(255,255,255,0) 0.69%), /*Star*/
+		
+		linear-gradient(Black,Black); /*SPACE*/
+height: 500px;
+width: 400px;
+/*border: 2px solid white;*/
+border-radius: 8%;
+box-shadow: 0px 0px 30px black;
+font-family:arial;
+display: inline-block;
+}
+
+.calcDISPLAY {
+position: absolute;
+transform: translate(-50%,-50%);
+left: 50%;
+top: 12%;
+height: 15%;
+width: 90%;
+color: rgba(240, 240, 255, 1);
+margin-left: auto;
+margin-right: auto;
+background-color: rgba(255,255,255,0.15);
+border: 6px inset white;
+border-radius:10%;
+display: inline-block;
+}
+
+.calcDISPLAYFONT {
+font-size: 46px;
+font-weight: bold;
+display: inline-block;
+}
+
+.calcNUMBERBUTTON {
+position: absolute;
+color: rgba(245, 245, 255, .95);
+border-radius:10%;
+height:13%;
+width:20%;
+text-align: center;
+font-weight: bold;
+font-size: 45px;
+background: linear-gradient(rgba(255,255,255,0) 50%,rgba(0, 102, 255,.4));
+display: inline-block;
+transform:translate(-50%,-50%);
+outline: none;
+}
+
+.calcOPBUTTON {
+position: absolute;
+height: 10%;
+width: 20%;
+border-radius:10%;
+background: linear-gradient(rgba(0,0,0,.2) 50%,rgba(255, 153, 0,.4));
+color: rgba(245, 245, 255, .95);
+text-align: center;
+font-weight: bold;
+font-size: 45px;
+transform: translate(-50%,-50%);
+display: inline-block;
+outline: none;
+}
+
+.calcCLRBUTTON {
+position: absolute;
+height: 10%;
+width: 20%;
+border-radius:10%;
+background: linear-gradient(rgba(0,0,0,.2) 50%,rgba(255, 0, 0,.4));
+color: rgba(245, 245, 255, .95);
+font-size:32px;
+font-weight: bold;
+transform: translate(-50%,-50%);
+display: inline-block;
+outline: none;
+}
+
+.calcEQLBUTTON {
+position: absolute;
+height:22%;
+width:20%;
+border-radius:10%;
+background: linear-gradient(rgba(0,0,0,.2) 78%,rgba(0, 255, 0,.6));
+color: rgba(245, 245, 255, .95);
+text-align: center;
+font-weight: bold;
+font-size: 45px;
+display: inline-block;
+transform:translate(-50%,-50%);
+outline: none;
+}
+
+.calcSPECBUTTON {
+position: absolute;
+background: linear-gradient(rgba(0,0,0,.5) 50%,rgba(255, 255, 255,.4));
+color: rgba(245, 245, 255, .95);
+height: 10%;
+width: 20%;
+border-radius:10%;
+text-align: center;
+font-weight: bold;
+font-size: 32px;
+display: inline-block;
+transform:translate(-50%,-50%);
+outline: none;
+}
+
+.calcSIG {
+position: absolute;
+color: rgba(0,0,0,0.65);
+font-size: 12;
+font-style: italic;
+text-align: center;
+height: 12%;
+width: 22%;
+display: inline-block;
+}
