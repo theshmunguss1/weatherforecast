@@ -1,0 +1,86 @@
+<html>
+<head>
+<base href="ksgwxfan.github.io/4peat/">
+<title>ksgwxfan - 4-Peat: A Pocket-Repeat Clone</title>
+<style>
+
+.GAMEEDGE {
+	position:relative;
+	width:35%;
+	padding-top:35%;
+	border-radius:20%;
+	background-color:white;
+	box-shadow: 0px 0px 30px black;
+	}
+.GAME {
+	position:absolute;
+	top:5%;
+	left:5%;
+	height:90%;
+	width:90%;
+	background-color:black;
+	border-radius:20%;
+	display:inline-block;
+	}
+.TITLE {
+	position:absolute;
+	top:50%;
+	left:50%;
+	font-size:100%;
+	transform:translate(-50%,-50%);
+	font-weight:bold;
+	color:white;
+	display:inline-block;
+	}
+.BUTTON {
+	position: absolute;
+	border: 2px solid black;
+	height: 38%;
+	width: 38%;
+	box-shadow: 0px 0px 30px black;
+	border-radius: 50%;
+	font-size: 36px;
+	font-weight: bold;
+	outline:0;
+	display: inline-block;
+	}
+
+</style>
+</head>
+<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue">
+<center>
+<div id="gameborder" class="GAMEEDGE">
+<div id="gamebox" class="GAME">
+<div id="title" class="TITLE">4-Peat: A Pocket-Repeat<br>clone By K. Gentry</div>
+<button id="UL_Button" class="BUTTON" style="top:6%;left:6%;background-color:Yellow;" onclick=buttonclick(1,"UL_Button")>1</button>
+<button id="UR_Button" class="BUTTON" style="top:6%;right:6%;background-color:Crimson;" onclick=buttonclick(2,"UR_Button")>2</button>
+<button id="LL_Button" class="BUTTON" style="bottom:6%;left:6%;background-color:CornflowerBlue;" onclick=buttonclick(3,"LL_Button")>3</button>
+<button id="LR_Button" class="BUTTON" style="bottom:6%;right:6%;background-color:#FFCC99;" onclick=buttonclick(4,"LR_Button")>4</button>
+</div>
+</div>
+<div id="STATS" style="width:100%;">
+<p>
+<!-- Used https://www.elated.com/articles/html5-audio/ as a guide to get my sound working for the buttons -->
+<audio id="snd" autoplay>
+	<source src="">
+</audio>
+<button id="start">New Game</button><br>
+ROUNDS WON: <span id="rounds_won"></span><br>
+RECORD: <span id="NEW_RECORD"></span><br>
+<span id="indicator" style="font-weight:bold;font-size:30px;"></span><br>
+</div>
+<div id="description" style="color:white;width:70%;border-top: 1px solid gray;">
+THIS GAME DOES HAVE SOUND! My dad used to work extensively at Radio Shack, so we'd always have bunches of radio-shack products and toys. This is a program that is similar to the 
+Pocket-Repeat. I almost scrapped this project due to difficulty navigating javascript timing issues. Persistence paid off! The best way I can describe my method is a pseudo-loop 
+controller, which allowed me to use the timing functions I wanted. I was stoked after that. The project was fairly smooth sailing. Sound was a last minute add-in. I found a youtube 
+review of the pocket-repeat and used GoldWave to mimic the sounds of the button-presses. Sound was something I had not messed with in HTML5/CSS/Javascript, so I quickly became 
+confused. Luckily, I calmed down a little bit and <a href="https://www.elated.com/articles/html5-audio/" target="_blank">found a site</a> that went step-by-step on how to use it. In 
+hind-sight, I could've used W3schools, but sometimes I get confused and feel some explanations are vague (but it's mostly impatience on my part). I won't allow the use of this 
+creation elsewhere, but please contact me if you want to use some of the code or some clarification/how-to to help you on your project (commercial or not) I'll try to accommodate you.<p>
+</div>
+<iframe src="https://ksgwxfan.github.io/footer.html" style="border:none;width:100%;height:40px;"></iframe>
+</center>
+<script src="repeat.js"></script>
+<p>
+</body>
+</html>
