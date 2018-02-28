@@ -1,0 +1,68 @@
+<html>
+<head>
+	base href="https://ksgwxfan.github.io/fortuneball/">
+	<title>ksgwxfan - Fortune-Pool Ball</title>
+	<style>
+		.ASK_AWAY {
+			position: relative;
+			width: 100%;
+			height: 85%;
+			font-family: arial;
+			background-color: transparent;
+			display: inline-block;
+			}
+
+		.QUES_REPEAT {
+			text-align: center;
+			font-weight: bold;
+			font-size: 25px;
+			text-decoration: underline;
+			display: inline-block;
+			}
+	
+		.BALL {
+			position: absolute;
+			top:50%;
+			left:50%;
+			transform: translate(-50%,-50%);
+			text-align: center;
+			display: inline-block;
+			}
+
+		.RESP {
+			position: absolute;
+			top:68%;
+			left:50%;
+			text-shadow: 0px 0px 12px white;
+			transform: translate(-50%,-50%);
+			height: 100px;
+			width: 100px;
+			text-align: center;
+			font-size: 21;
+			color: white;
+			display: inline-block;
+			}
+	</style>
+</head>
+<body style="background: linear-gradient(white -25%,#141414 78%)" link="lightBlue" vlink="lightBlue">
+<center>
+Submit a fortune-based question to the inanimate, virtual, and randomized-response object below:<p>
+<input style="width:450px;" type="text" id="question" maxlength="42"></input>
+<button id="submit" onclick=ask(document.getElementById("question").value)>SHAKE!</button><br>
+<div id="ask_away" class="ASK_AWAY">
+	<div id="ques_repeat" class="QUES_REPEAT"> ? </div>
+	<div id="ball" class="BALL"><img src="8ball.png">
+	<div id="resp" class="RESP"></div>
+	</div>
+</div>
+<div id="description" style="color:white;width:70%;">
+This was my first Javascript/CSS project. It was a rude awakening to find that timing functions worked completely different in javascript than Python. 
+That said, I was able to figure a workaround out. The ball is a sprite image I created. Contact me if you want to use a portion of the code somehow and 
+I'll get you the easier-to-read javascript source. No copyright infringement of the owners of the Magic 8-ball is intended.<p>
+</div>
+<iframe src="https://ksgwxfan.github.io/footer.html" style="border:none;width:100%;height:40px;"></iframe>
+</center>
+<script src="ball.js"></script>
+<p>
+</body>
+</html>
