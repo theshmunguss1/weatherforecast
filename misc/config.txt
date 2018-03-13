@@ -1,0 +1,19 @@
+controls=zoom, annotate, autorefresh
+controls_style=padding:5px;background-color:black;
+controls_tooltip = Zoom/Pan, Mark, Auto-Refresh
+auto_refresh = 3
+buttons_style=font-weight:bold;margin-left:8px;
+
+background_static=y
+filenames=https://radar.weather.gov/ridge/Overlays/County/Short/FCX_County_Short.gif
+
+overlay_labels=Base Reflectivity (Z)/on, Base Velocity (V), Storm-Relative Velocity (SRV), /1-Hr Total Precip (1HP), Storm-Total Precip (STP), Warnings/on, Cities, /Z/hidden, V/hidden, SRV/hidden, 1HP/hidden, STP/hidden
+
+bottom_controls=overlay
+
+overlay_filenames=https://radar.weather.gov/ridge/RadarImg/N0R/FCX_N0R_0.gif, https://radar.weather.gov/ridge/RadarImg/N0V/FCX_N0V_0.gif, https://radar.weather.gov/ridge/RadarImg/N0S/FCX_N0S_0.gif, https://radar.weather.gov/ridge/RadarImg/N1P/FCX_N1P_0.gif, https://radar.weather.gov/ridge/RadarImg/NTP/FCX_NTP_0.gif, https://radar.weather.gov/ridge/Warnings/Short/FCX_Warnings_0.gif, https://radar.weather.gov/ridge/Overlays/Cities/Short/FCX_City_Short.gif, https://radar.weather.gov/ridge/Legend/N0R/FCX_N0R_Legend_0.gif, https://radar.weather.gov/ridge/Legend/N0V/FCX_N0V_Legend_0.gif, https://radar.weather.gov/ridge/Legend/N0S/FCX_N0S_Legend_0.gif, https://radar.weather.gov/ridge/Legend/N1P/FCX_N1P_Legend_0.gif, https://radar.weather.gov/ridge/Legend/NTP/FCX_NTP_Legend_0.gif
+
+overlay_links=1,2,3,4,5,0,0,-1,-2,-3,-4,-5
+overlay_zoom=y,y,y,y,y,y,y,n,n,n,n,n
+overlay_static=n,n,n,n,n,n,y,n,n,n,n,n
+overlay_labels_style=font-family:arial;color:white;font-size:14px;padding:2px;background-color:black

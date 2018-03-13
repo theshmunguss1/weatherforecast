@@ -1,0 +1,171 @@
+<html>
+	<head>
+		<base href="../">
+		<title>ksgwxfan - Miscellaneous</title>
+		<style>
+			.HEADER {
+				width: 100%;
+				font-weight: bold;
+				font-size: 30px;
+				display: inline-block;
+				}
+			.HEADERPHOTO {
+				width: 3%;
+				border: 2px solid white;
+				box-shadow: 0px 0px 5px white;
+				border-radius: 35%;
+				display: inline-block;
+				}
+			.BTN {
+				width: 100%;
+				text-align:left;
+				font-family: serif;
+				color: lightblue;
+				padding: 5px;
+				font-size: 24px;
+				font-weight: bold;
+				background-color: #17202a;
+				border: 2px outset lightblue;
+				outline: none;
+				}
+			.BTN:active {
+				border-style: inset;
+				color: LightBlue;
+				}
+			.CAPTION {
+				text-align:center;
+				font-size:14px;
+				font-style: italic;
+				}
+			.BOX {
+				background-color: black;
+				color: #b8ff4d;
+				width: 98.5%;
+				height: auto;
+				border: 2px inset rgba(255,255,255,0.75);
+				padding: 5px;
+				overflow: auto;
+				font-size: 16px;
+				}
+		</style>
+	<script type="text/javascript" src="./hanis_min.js"> </script>
+	</head>
+	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue">
+		<div class="HEADER">
+			<img class="HEADERPHOTO" src="profile.png"> <u>Miscellaneous Scripts - Embeddable Radar via HAniS</u>
+		</div><p>
+		<div id="pretext" style="width:85%;margin: 0 auto;">
+		As you've probably seen referenced, <a href="http://www.ssec.wisc.edu/hanis/" target="_blank">HAniS</a> is a great tool for those 
+		in the geo-sciences who wish to show maps, overlays, and/or their respective time-series. This can be implemented for showing an 
+		individual case but is frequently used on popular meteorological websites to display near-real-time data. HAniS is written in 
+		javascript and is incredibly in-depth.<br><br>The creators include a large number of tool options and customization. This includes 
+		styling, which conveniently is all CSS-based. So if you're familiar with CSS, you have an advantage there. That said, its 
+		formatting is pretty specific, so if you miss one little thing, something won't display correctly. For example, one of the many 
+		features is to have overlay descriptions. If you want that, you MUST include a description for each overlay type for them all to 
+		display right.<br><br>Luckily, the creators also include many in-depth tutorials on the site listed above to show the versatility 
+		of their program. It can be used offline or online. Below I display two different examples which show the power of HAniS via 
+		radar imagery available from the NWS. Both of these examples utilize their imagery due to the naming convention of their files 
+		don't change. They are simply updated.<p>
+		Your HTML file is really simple. Most of this was grabbed from the HAniS website. The essential needs are the "onload" call and
+		then the &lt;div&gt; placement where you want it in the body of the HTML. Expand the following elements to see this script at work.
+<pre class="box">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;
+  &lt;meta http-equiv="X-UA-Compatible" content="IE=Edge"/&gt;
+  &lt;script type="text/javascript" src="./hanis_min.js"&gt; &lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body style="background-color:transparent;" link="lightBlue" vlink="lightBlue" onload="HAniS.setup('config.txt','handiv')"&gt;
+
+&lt;div id="handiv" style="width:600px;background-color:black;margin:auto;"&gt;&lt;/div&gt;
+&lt;center&gt;&lt;span style="color:white;font-size:10px;"&gt;* DISCLAIMER: This display is presented as a courtesy and data therein should not be used in any critical decision-making, especially in possible life-or-death situations.&lt;br&gt;&lt;a href="http://www.ssec.wisc.edu/hanis/"&gt;HAniS Script&lt;/a&gt; - Copyright© 2014-2017 by StormQuest Technologies and Tom Whittaker&lt;/span&gt;&lt;/center&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+		</div>
+		<div id="scripts" style="width:85%;margin: auto;">
+
+	<button class="BTN" onclick=showhide("scriptRADAR1","expRADAR1")><span id="expRADAR1">+</span><i>&nbsp;&nbsp;&nbsp;</i>
+	HAniS - Embedded Radar (Non-Looping; Overlay Example)</button>
+	<div id="scriptRADAR1" style="display:none;"><br>
+		This imagery and more about its naming convention are available <a href="https://www.weather.gov/jetstream/ridge_download" target="_blank">Here</a>. 
+		Go ahead and play around with the overlays.
+<br><iframe src="misc/radar1.html" style="width:100%;height:110%;border:none;"></iframe>
+	<div id="info1" style="width:100%;">
+	The display you see relies on the hanis_min.js file being present in your directory (which it is; it's why you see the display above). 
+	Though it can be done inline in your html, it is much easier to use a config file because of the organization.
+	</div>
+<pre class="box">controls=zoom, annotate, autorefresh
+controls_style=padding:5px;background-color:black;
+controls_tooltip = Zoom/Pan, Mark, Auto-Refresh
+auto_refresh = 3
+buttons_style=font-weight:bold;margin-left:8px;
+
+background_static=y
+filenames=https://radar.weather.gov/ridge/Overlays/County/Short/FCX_County_Short.gif
+
+overlay_labels=Base Reflectivity (Z)/on, Base Velocity (V), Storm-Relative Velocity (SRV), /1-Hr Total Precip (1HP), Storm-Total Precip (STP), Warnings/on, Cities, /Z/hidden, V/hidden, SRV/hidden, 1HP/hidden, STP/hidden
+
+bottom_controls=overlay
+
+overlay_filenames=https://radar.weather.gov/ridge/RadarImg/N0R/FCX_N0R_0.gif, https://radar.weather.gov/ridge/RadarImg/N0V/FCX_N0V_0.gif, https://radar.weather.gov/ridge/RadarImg/N0S/FCX_N0S_0.gif, https://radar.weather.gov/ridge/RadarImg/N1P/FCX_N1P_0.gif, https://radar.weather.gov/ridge/RadarImg/NTP/FCX_NTP_0.gif, https://radar.weather.gov/ridge/Warnings/Short/FCX_Warnings_0.gif, https://radar.weather.gov/ridge/Overlays/Cities/Short/FCX_City_Short.gif, https://radar.weather.gov/ridge/Legend/N0R/FCX_N0R_Legend_0.gif, https://radar.weather.gov/ridge/Legend/N0V/FCX_N0V_Legend_0.gif, https://radar.weather.gov/ridge/Legend/N0S/FCX_N0S_Legend_0.gif, https://radar.weather.gov/ridge/Legend/N1P/FCX_N1P_Legend_0.gif, https://radar.weather.gov/ridge/Legend/NTP/FCX_NTP_Legend_0.gif
+
+overlay_links=1,2,3,4,5,0,0,-1,-2,-3,-4,-5
+overlay_zoom=y,y,y,y,y,y,y,n,n,n,n,n
+overlay_static=n,n,n,n,n,n,y,n,n,n,n,n
+overlay_labels_style=font-family:arial;color:white;font-size:14px;padding:2px;background-color:black
+</pre>
+	<div class="CAPTION">A peak at the 'config.txt' controls</div>
+	<div id="info1" style="width:100%;"><br>
+	With controls, you can place keywords for the tools you want to appear. There are numerous ones to choose from. If you zoom in, you'll 
+	notice that the overlays are static. In reality they're not. But the powerful controls which are made available allow us to link the 
+	overlay with its product. Furthermore, the 'overlay_zoom' control lets us make the legends static. Also notice the referenced css 
+	language which makes it easy to give it the right aesthetics.
+	</div>
+
+	</div>
+	<p><button class="BTN" onclick=showhide("scriptRADAR2","expRADAR2")><span id="expRADAR2">+</span><i>&nbsp;&nbsp;&nbsp;</i>
+	HAniS - Embedded Radar (Looping Example)</button>
+	<div id="scriptRADAR2" style="display:none;">
+		This one is similar to the above one, but the 8 most recent uploads are made available. In other words, they are loop-friendly 
+		due to their anticipatory, non-changing naming convention. The downside is that the images are not overlay-friendly. This is 
+		mainly an issue during periods where warnings have been issued, as I believe they would be included in the base imagery.<br>
+<br><iframe src="misc/radar2.html" style="width:100%;height:110%;border:none;"></iframe>
+	<div id="info1" style="width:100%;">
+	The primary difference with this script than that of above is here I employed radio buttons which work great since no true overlays are 
+	reasonably being used here.
+	</div>
+<pre class="box">controls=startstop, first, step, last, zoom, annotate, autorefresh
+controls_style=padding:5px;background-color:gray;
+controls_tooltip = Start/Stop, Oldest Frame, Previous/Next, Newest Frame, Zoom/Pan, Draw, Auto-Refresh(3-min)
+auto_refresh = 2
+buttons_style=font-weight:bold;margin-left:5px;
+start_looping = false,8
+filenames=https://radar.weather.gov/ridge/Overlays/County/Short/FCX_County_Short.gif,https://radar.weather.gov/ridge/Overlays/County/Short/FCX_County_Short.gif,https://radar.weather.gov/ridge/Overlays/County/Short/FCX_County_Short.gif,https://radar.weather.gov/ridge/Overlays/County/Short/FCX_County_Short.gif,https://radar.weather.gov/ridge/Overlays/County/Short/FCX_County_Short.gif,https://radar.weather.gov/ridge/Overlays/County/Short/FCX_County_Short.gif,https://radar.weather.gov/ridge/Overlays/County/Short/FCX_County_Short.gif,https://radar.weather.gov/ridge/Overlays/County/Short/FCX_County_Short.gif
+bottom_controls=overlay
+overlay_filenames=https://radar.weather.gov/lite/N0R/FCX_7.png & https://radar.weather.gov/lite/N0R/FCX_6.png & https://radar.weather.gov/lite/N0R/FCX_5.png & https://radar.weather.gov/lite/N0R/FCX_4.png & https://radar.weather.gov/lite/N0R/FCX_3.png & https://radar.weather.gov/lite/N0R/FCX_2.png & https://radar.weather.gov/lite/N0R/FCX_1.png & https://radar.weather.gov/lite/N0R/FCX_0.png,https://radar.weather.gov/lite/N0V/FCX_7.png & https://radar.weather.gov/lite/N0V/FCX_6.png & https://radar.weather.gov/lite/N0V/FCX_5.png & https://radar.weather.gov/lite/N0V/FCX_4.png & https://radar.weather.gov/lite/N0V/FCX_3.png & https://radar.weather.gov/lite/N0V/FCX_2.png & https://radar.weather.gov/lite/N0V/FCX_1.png & https://radar.weather.gov/lite/N0V/FCX_0.png,https://radar.weather.gov/lite/N0S/FCX_7.png & https://radar.weather.gov/lite/N0S/FCX_6.png & https://radar.weather.gov/lite/N0S/FCX_5.png & https://radar.weather.gov/lite/N0S/FCX_4.png & https://radar.weather.gov/lite/N0S/FCX_3.png & https://radar.weather.gov/lite/N0S/FCX_2.png & https://radar.weather.gov/lite/N0S/FCX_1.png & https://radar.weather.gov/lite/N0S/FCX_0.png,https://radar.weather.gov/lite/N1P/FCX_7.png & https://radar.weather.gov/lite/N1P/FCX_6.png & https://radar.weather.gov/lite/N1P/FCX_5.png & https://radar.weather.gov/lite/N1P/FCX_4.png & https://radar.weather.gov/lite/N1P/FCX_3.png & https://radar.weather.gov/lite/N1P/FCX_2.png & https://radar.weather.gov/lite/N1P/FCX_1.png & https://radar.weather.gov/lite/N1P/FCX_0.png,https://radar.weather.gov/lite/NTP/FCX_7.png & https://radar.weather.gov/lite/NTP/FCX_6.png & https://radar.weather.gov/lite/NTP/FCX_5.png & https://radar.weather.gov/lite/NTP/FCX_4.png & https://radar.weather.gov/lite/NTP/FCX_3.png & https://radar.weather.gov/lite/N1P/FCX_2.png & https://radar.weather.gov/lite/NTP/FCX_1.png & https://radar.weather.gov/lite/NTP/FCX_0.png
+overlay_labels=Base Reflectivity/on, Base (Radial) Velocity, Storm-Relative Veocity, /1-HR Precip, Storm-Total Precip
+overlay_labels_style=font-family:arial;color:black;font-size:14px;font-weight:bold;padding:2px;background-color:gray;
+overlay_radio = true,true,true,true,true
+</pre>
+<div class="CAPTION">A peak at the 'config2.txt' controls. Included is the start/stop and step forward/backward buttons</div>
+	</div>
+
+	
+	
+		<center><iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe></center>
+		<script>
+		// Script Idea from W3 Schools https://www.w3schools.com/howto/howto_js_toggle_hide_show.asp
+		function showhide(sname,exp) {
+			if (document.getElementById(sname).style.display == "none") {
+				document.getElementById(sname).style.display = "block";
+				document.getElementById(exp).innerHTML = "- ";
+				}
+			else {document.getElementById(sname).style.display = "none";
+				document.getElementById(exp).innerHTML = "+";
+				}
+			}
+		</script>
+	</body>
+</html>
