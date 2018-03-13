@@ -1,0 +1,750 @@
+<html>
+	<head>
+		<base href="../">
+		<title>ksgwxfan - Miscellaneous</title>
+		<style>
+			.HEADER {
+				width: 100%;
+				font-weight: bold;
+				font-size: 30px;
+				display: inline-block;
+				}
+			.HEADERPHOTO {
+				width: 3%;
+				border: 2px solid white;
+				box-shadow: 0px 0px 5px white;
+				border-radius: 35%;
+				display: inline-block;
+				}
+			.BTN {
+				width: 100%;
+				text-align:left;
+				font-family: serif;
+				color: lightblue;
+				padding: 5px;
+				font-size: 24px;
+				font-weight: bold;
+				background-color: #17202a;
+				border: 2px outset lightblue;
+				outline: none;
+				}
+			.BTN:active {
+				border-style: inset;
+				color: LightBlue;
+				}
+			.CAPTION {
+				text-align:center;
+				font-size:14px;
+				font-style: italic;
+				}
+			.BOX {
+				background-color: black;
+				color: #b8ff4d;
+				width: 98.5%;
+				height: auto;
+				border: 2px inset rgba(255,255,255,0.75);
+				padding: 5px;
+				overflow: auto;
+				font-size: 16px;
+				}
+		</style>
+	</head>
+	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue">
+		<div class="HEADER">
+			<img class="HEADERPHOTO" src="profile.png"> <u>Miscellaneous Scripts</u>
+		</div><p>
+		<div id="pretext" style="width:85%;margin: 0 auto;">Welcome to miscellaneous scripts. Click the respective button to see the 
+		proper code; click again to retract. Most of these simply require copy/pasting, saving, then running. Just make sure you have the 
+		prior required language installed on your PC first. You may modify or implement this code as desired without attribution unless 
+		specified in the code.<p></div>
+		<div id="scripts" style="width:85%;margin: auto;"><center><span style="font-size:26;font-weight:bold;">PYTHON</span></center>
+
+	<button class="BTN" onclick=showhide("scriptALPHA","expALPHA")><span id="expALPHA">+</span><i>&nbsp;&nbsp;&nbsp;</i>
+	Alphabet Numerics</button>
+	<div id="scriptALPHA" style="display:none;"><br>
+		An exercise in utilizing string indices. This was one of the first scripts I practiced with in Python: the concept that a declared 
+		string can be treated just like an array can. Each character in the string is assigned an array index (starting at index 0). So I 
+		simply created a single string of the alphabet. It asks for a number, then reports the letter that corresponds to the entry.
+<br><pre class="box"># The alphabet string; The _ takes up index 0, so 1 corresponds to 'a,' while 26 corresponds to 'z'
+abc = "_abcdefghijklmnopqrstuvwxyz"
+
+# Ask the user to input a number...
+entry = int(input("ENTER A NUMBER BETWEEN 1 and 26, AND WE'LL SHOW YOU WHICH LETTER IT CORRESPONDS WITH: "))
+
+# Outputs the correct number
+print("The Letter in position #", entry, " is '", abc[entry].upper(), "'")
+</pre></div><br><br>
+
+	<button class="BTN" onclick=showhide("scriptGUESS","expGUESS")><span id="expGUESS">+</span><i>&nbsp;&nbsp;&nbsp;</i>
+	Random Number Guesser</button>
+	<div id="scriptGUESS" style="display:none;"><br>
+		I made this little console game. The basics are very simple. I 
+		added some more custom functions to it, adding more features including an on-screen game-end notification, sounds, difficulties, 
+		and menus. I'm considering using this as a base for a javascript/css project.
+<br><pre class="box" style="height:45%;"># THE NUMBER GUESSER GAME v2 -- random.randint(a,b)
+import random       # imports 'random' function into program
+from winsound import Beep
+
+def soundwin():     # Used to play a sound if the user wins
+    Beep(400,150)
+    Beep(400,150)
+    Beep(540,500)
+
+def soundlose():    # Used to play a sound if the user loses
+    Beep(300,400)
+    Beep(290,400)
+    Beep(265,400)    
+    Beep(250,1000)
+
+# THIS FUNCTION WILl BE USED TO DISPLAY A PROXIMITY MESSAGE TO THE USER
+def how_close(diff):
+    d_close = " BUT YOU'RE VERY WARM!"
+    d_mid = " BUT YOU'RE SOMEWHAT WARM!"
+    d_far = " YOU ARE COLD!"
+    d_vfar = " YOU ARE VERY COLD!"
+
+    if diff &lt;= 3:
+        return d_close
+    elif diff &lt;= 6:
+        return d_mid
+    elif diff &lt;= 10:
+        return d_far
+    else:
+        return d_vfar
+
+def endgame(g,r):  # Displays proper message according to if someone won the game or not
+
+    WIN = ["¦¦    ¦¦   ¦¦¦¦   ¦¦  ¦¦    ¦¦         ¦¦  ¦¦   ¦¦¦    ¦¦ ",
+           " ¦¦  ¦¦   ¦¦  ¦¦  ¦¦  ¦¦    ¦¦         ¦¦  ¦¦  ¦¦ ¦¦   ¦¦ ",
+           "   ¦¦     ¦¦  ¦¦  ¦¦  ¦¦    ¦¦   ¦¦    ¦¦  ¦¦  ¦¦  ¦¦  ¦¦ ",
+           "   ¦¦     ¦¦  ¦¦  ¦¦  ¦¦     ¦¦ ¦¦ ¦¦ ¦¦   ¦¦  ¦¦   ¦¦ ¦¦ ",
+           "   ¦¦      ¦¦¦¦   ¦¦¦¦¦¦      ¦¦    ¦¦     ¦¦  ¦¦    ¦¦¦  "]
+
+    LOSE = ["¦¦    ¦¦   ¦¦¦¦   ¦¦  ¦¦    ¦¦       ¦¦¦¦   ¦¦¦¦¦  ¦¦¦¦¦¦ ",
+            " ¦¦  ¦¦   ¦¦  ¦¦  ¦¦  ¦¦    ¦¦      ¦¦  ¦¦  ¦¦     ¦¦     ",
+            "   ¦¦     ¦¦  ¦¦  ¦¦  ¦¦    ¦¦      ¦¦  ¦¦  ¦¦¦¦¦  ¦¦¦¦   ",
+            "   ¦¦     ¦¦  ¦¦  ¦¦  ¦¦    ¦¦      ¦¦  ¦¦     ¦¦  ¦¦     ",
+            "   ¦¦      ¦¦¦¦   ¦¦¦¦¦¦    ¦¦¦¦¦¦   ¦¦¦¦   ¦¦¦¦¦  ¦¦¦¦¦¦ "]
+
+    if g == r:      # If the guess is correct, display the winning message and play the winning sound
+        for each in WIN:
+            print(each)
+        soundwin()
+        return 1
+    else:           # If the user loses the game, displays the losing message and appropriate sound
+        for each in LOSE:
+            print(each)
+        soundlose()
+        return 0
+
+def menu():
+    Loop = True
+    rules = "\n" + "WELCOME TO THE NUMBER GUESSER GAME !" + "\n" \
+            + "------------------------------------" + "\n"
+    start = [0,0,0]     # Difficulty-based min random number
+    end = [30,50,100]   # Difficulty-based max random number
+    g_num = [4,3,4]     # Difficulty-based number of tries
+    m = ["WELCOME TO THE NUMBER GUESSER GAME !",
+         "------------------------------------",
+         "* Please select a difficulty *",
+         "------------------------------",
+         "A. E A S Y      - ",
+         "B. Intermediate - ",
+         "C. H A R D      - ",
+         "D. QUIT GAME"]
+    for each in m:
+        if m.index(each) == 4 or m.index(each) == 5 or m.index(each) == 6:
+            print(each + "Random # between {} and {}; {} guesses".format(start[m.index(each)-4],end[m.index(each)-4],g_num[m.index(each)-4]))
+        else:
+            print(each)
+
+    while Loop == True:
+        try:
+            select = input("-- Make Your Selection now: ")
+            if select.upper() == 'A':
+                Loop = False
+                return start[0],end[0],g_num[0] 
+            elif select.upper() == 'B':
+                Loop = False
+                return start[1],end[1],g_num[1] 
+            elif select.upper() == 'C':
+                Loop = False
+                return start[2],end[2],g_num[2]
+            else:
+                print("INVALID ENTRY! Try again!")
+        except ValueError:
+            print("INVALID ENTRY! Try again!")
+            pass
+
+r_start, r_end, guesses = menu()    # Gets the difficulty based numbers from the menu
+
+rules = "\n" + "* OBJECT: Using no more than " + str(guesses) + " guesses, correctly " \
+      + "select the randomly-picked integer between " + str(r_start) + " and " + str(r_end)
+
+low = "TOO LOW!"
+high = "TOO HIGH!"
+choice = 'Y'        # allows the while-loop to initiate
+gamesplayed = 0     # game counter
+gameswon = 0        # win counter
+gtotal = 0     # average guesses assistance counter...Keeps stats while playing!
+
+while choice.upper() == 'Y':
+    gamesplayed += 1    # Tally for number of games played ... Keeps stats while playing!
+    guess = -1          # used merely to initialize inner while-loop
+    print(rules)
+    r_int = random.randint(r_start,r_end)   # represents the number that the user has to guess to win
+
+    for each in range(0,guesses):
+        while guess &lt; r_start or guess &gt; r_end:     # Takes the guess, and checks if it's valid
+            try:
+                guess = int(input("Enter Guess #" + str(each+1) + ": ")) # Guess
+                if guess &lt; r_start or guess &gt; r_end:        # Is it valid?
+                    print("INVALID SELECTION! TRY AGAIN!")
+            except ValueError or TypeError:
+                print("INVALID SELECTION! TRY AGAIN!")
+                pass
+        print("You guessed " + str(guess) + ". ")
+        if each == guesses-1:
+            gameswon = gameswon + endgame(guess, r_int)   # IF ON FINAL GUESS
+            gtotal += 1
+            print("The Correct Number was: " + str(r_int) + "\n")                
+        elif guess &lt; r_int:
+            print(low,how_close(abs(r_int - guess)))
+            gtotal += 1
+        elif guess &gt; r_int:
+            print(high,how_close(abs(r_int - guess)))
+            gtotal += 1
+        else:
+            gameswon = gameswon + endgame(guess, r_int)    # YOU WIN!
+            gtotal += 1
+            break
+        guess = -1      # Used to reset guess for the while loop to run
+    choice = input("Would you like to play again? (Y/N):")
+print("You won " + str(gameswon) + " game(s) out of " + str(gamesplayed) \
+      + " games played; " + str(round(gameswon/gamesplayed*100,2)) + "% of games won.\n")
+print("Average number of guesses (" + str(guesses) + " Guesses Max): " + str(round(gtotal/gamesplayed,2)))
+
+#r_start, r_end, guesses = menu()    # Gets the difficulty based numbers from the menu
+print("THANKS FOR PLAYING !!!")
+
+</pre></div><br><br>
+
+	<button class="BTN" onclick=showhide("scriptFLIGHT","expFLIGHT")><span id="expFLIGHT">+</span><i>&nbsp;&nbsp;&nbsp;</i>
+	Flight Reservation</button>
+	<div id="scriptFLIGHT" style="display:none;"><br>
+		This little project was originally given to us as a challenge at a Python workshop.
+<br><pre class="box" style="height:45%;"># Feel free to use this script to help you learn concepts and various usages
+
+def mainmenu():
+    print("What would you like to do?")
+    print("--------------------------")
+    menu_select = ["1. Add Seat Reservation",
+                   "2. Remove Seat Reservation",
+                   "3. Check Fuel Capacity",
+                   "4. Quit"]
+    for z in range(len(menu_select)):
+        print(menu_select[z])
+    option = int(input("*** Make your selection now, and press Enter: "))
+    return option
+
+def check(guests,sc):    # 'sc' is the seating chart
+    plane_top = [   "   CURRENT SEATING RESERVATIONS",
+                    "----------------------------------",
+                    "     1 = BOOKED     0 = OPEN\n",
+                    "                 /------/",
+                    "                /      /",
+                    "               /      /",
+                    "     FRONT    /      /         REAR",
+                    "    /==============================="]
+
+    plane_bottom = ["    \\===============================",
+                    "              \\      \\",
+                    "        1  2  3  4  5  6  7  8  9",
+                    "                \\      \\",
+                    "                 \\------\\"]
+
+    A = "A  /    {}  {}  {}  {}  {}  {}  {}  {}  {}  |".format(sc[0][0],sc[0][1],sc[0][2],sc[0][3],sc[0][4] \
+                                                               ,sc[0][5],sc[0][6],sc[0][7],sc[0][8])
+    B = "B |                             {}  |".format(sc[1][8])
+    C = "C  \    {}  {}  {}  {}  {}  {}  {}  {}  {}  |".format(sc[2][0],sc[2][1],sc[2][2],sc[2][3],sc[2][4] \
+                                                               ,sc[2][5],sc[2][6],sc[2][7],sc[2][8])
+
+    for x in range(len(plane_top)):
+        print(plane_top[x])
+    print(A)
+    print(B)
+    print(C)
+    for y in range(len(plane_bottom)):
+        print(plane_bottom[y])
+    
+    print("    THERE ARE A TOTAL OF ",str(19-guests)," SEATS AVAILABLE FOR RESERVATION.","\n\n")
+
+def countpassengers(chart):
+    num = 0    # tally-variable representing total number of passengers
+    
+    # Adding the num of passengers on sides A and C
+    for each in chart[0]:
+        num = num + each
+    for each in chart[1]:
+        num = num + each
+    for each in chart[2]:
+        num = num + each
+
+    return num
+
+def addReservation(guests,chart):    # CHECKS FOR GENERAL AVAILABILITY AND ASKS FOR REQUESTED SEAT
+    aisle=0
+    row=0
+    if guests &lt; 19:
+        print("From above, select any available seat you would like to reserve...")
+        # REQUEST DESIRED SEAT NUMBER
+        while aisle &lt; 1 or aisle &gt; 3:
+            aisle = input("Input desired Aisle: ")
+            # Convert to string
+            if aisle == 'A' or aisle == 'a' or aisle == 'B' or aisle == 'b' or aisle == 'C' or aisle == 'c':
+                if aisle == 'A' or aisle == 'a':
+                    aisle = 1
+                if aisle == 'B' or aisle == 'b':
+                    aisle = 2
+                if aisle == 'C' or aisle == 'c':
+                    aisle = 3        
+            else:
+                print("INVALID AISLE SELECTION. TRY AGAIN!")
+                aisle=0
+                row=0
+        while row &lt; 1 or row &gt; 9:
+            row = int(input("And which seat would you like to reserve?: "))
+            if row &lt; 1 or row &gt; 9:
+                print("SORRY! Invalid selection. Try again!")
+            if aisle == 2 and row != 9:
+                print("SORRY! That seat does not exist! Try again")
+                row = 0    # so the while-block will run again
+        if chart[aisle-1][row-1] == 1:    # If seat is booked, then this block will run
+            print("SORRY! That seat is currently taken!")
+        elif chart[aisle-1][row-1] == 0:    # If seat is free
+            chart[aisle-1][row-1] = 1    # Then it will be changed to booked
+            if aisle == 1:
+                print("\n","RESERVATION FOR SEAT A",row," HAS SUCCESSFULLY BEEN CREATED!","\n")
+            elif aisle == 2:
+                print("\n","RESERVATION FOR SEAT B",row," HAS SUCCESSFULLY BEEN CREATED!","\n")
+            elif aisle == 3:
+                print("\n","RESERVATION FOR SEAT C",row," HAS SUCCESSFULLY BEEN CREATED!","\n")
+    else:
+        print("SORRY! NO MORE ROOM ON FLIGHT FOR PASSENGERS AT THIS TIME" + "\n\n")
+    return guests,chart
+
+def remReservation(guests,chart):    # PROCESSES CANCEL REQUESTS
+    aisle = 0
+    row = 0
+    if guests &lt; 19:
+        print("From above, which seat would you like to cancel?")
+        # REQUEST DESIRED SEAT NUMBER
+        while aisle &lt; 1 or aisle &gt; 3:
+            aisle = input("Input desired Aisle: ")
+            # Convert to string
+            if aisle == 'A' or aisle == 'a' or aisle == 'B' or aisle == 'b' or aisle == 'C' or aisle == 'c':
+                if aisle == 'A' or aisle == 'a':
+                    aisle = 1
+                if aisle == 'B' or aisle == 'b':
+                    aisle = 2
+                if aisle == 'C' or aisle == 'c':
+                    aisle = 3        
+            if aisle &lt; 1 and aisle &gt; 3:
+                print("INVALID AISLE SELECTION. TRY AGAIN!")
+        while row &lt; 1 or row &gt; 9:
+            row = int(input("And which seat would you like to reserve?: "))
+            if row &lt; 1 or row &gt; 9:
+                print("SORRY! Invalid selection. Try again!")
+            if aisle == 2 and row &lt; 9:
+                print("SORRY! That seat does not exist! Try again")
+                row = 0    # So this while-block will run again
+        if chart[aisle-1][row-1] == 0:    # If seat is booked, then this block will run
+            print("OOPS! That seat is currently free!")
+        elif chart[aisle-1][row-1] == 1:    # If seat is free
+            chart[aisle-1][row-1] = 0    # Then it will be changed to booked
+            if aisle == 1:
+                print("\n","RESERVATION FOR SEAT A",row," HAS BEEN CANCELLED AND IS NOW AVAILABLE","\n")
+            elif aisle == 2:
+                print("\n","RESERVATION FOR SEAT B",row," HAS BEEN CANCELLED AND IS NOW AVAILABLE","\n")
+            elif aisle == 3:
+                print("\n","RESERVATION FOR SEAT C",row," HAS BEEN CANCELLED AND IS NOW AVAILABLE","\n")
+    else:
+        print("SORRY! NO MORE ROOM ON FLIGHT FOR PASSENGERS AT THIS TIME" + "\n\n")
+    return guests,chart
+
+def fuelcapacity(passengers):
+
+    # CALCULATE APPROXIMATE MAX AMOUNT OF FUEL THAT CAN BE SAFE FOR THE FLIGHT
+    plane_wt_limit = 6356    # max safe carrying weight of plane in lbs
+    fuel_cap = 4484    # max tank capacity of fuel in lbs
+    avg_guest_wt = 240    # Average weight of passengers and their luggage on flight
+    # The total number of crew-members on flight including pilot(s)    
+    num_crew = int(input("How many crew-members will be on the flight?: "))
+    
+    total_people_wt = (passengers + num_crew) * avg_guest_wt    # approximate total weight of humans and luggage on board
+    fuel_limit = plane_wt_limit - total_people_wt   # Calculates the amount of fuel that can be safely stored, in lbs
+    if fuel_limit &gt; 4484:        # If the fuel_limit is above plane's fuel capacity,
+        fuel_limit = fuel_cap    # then the fuel limit is the fuel capacity
+    print("\n"+"ASSUMING THERE ARE NO SNAKES ON THE PLANE, " \
+          + "THE AIRCRAFT WILL BE ABLE TO SAFELY CARRY APPROXIMATELY ",fuel_limit," LBS OF FUEL","\n\n")
+
+# INITIAL AISLE/ROW DEFINITIONS...INITALLY, THE FLIGHT IS EMPTY
+# 1=booked, 0= free
+aisleA = [0,0,0,0,0,0,0,0,0,0]
+aisleB = [0,0,0,0,0,0,0,0,0,0]
+aisleC = [0,0,0,0,0,0,0,0,0,0]
+
+layout = [aisleA,aisleB,aisleC]    # This carries our entire flight seat-chart
+
+print("WELCOME TO CAROLINA-CONNECT BOOKING SYSTEM")
+print("------------------------------------------")
+choice = 0   # This will allow our while-loop to initialize
+while choice &lt; 5:
+    TOTAL = countpassengers(layout)    # tabs the number of guests on the flight
+    check(TOTAL,layout)     # Displays the seating chart then the menu
+    choice = mainmenu()    # As long as the program is running, it will ask the user what it wants to do
+    if choice == 1: # ADD RESERVATION
+        TOTAL,layout = addReservation(TOTAL,layout)
+    elif choice == 2:   # REMOVE RESERVATION
+        TOTAL,layout = remReservation(TOTAL,layout)
+    elif choice == 3:   # CHECK FUEL
+        fuelcapacity(TOTAL)    # Calculates max amount of fuel that the plane can safely carry
+    else:
+        print("THANKS FOR USING THE PROGRAM!")
+</pre></div><br><br>
+
+	<button class="BTN" onclick=showhide("scriptOVERUNDER","expOVERUNDER")><span id="expOVERUNDER">+</span><i>&nbsp;&nbsp;&nbsp;</i>
+	Sports Score Projections via Vegas Lines</button>
+	<div id="scriptOVERUNDER" style="display:none;"><br>
+		Experts release sports-betting lines for games and give 
+		1) a projected accumulated total of points between the teams (the "over/under"), and 2) a projected margin of victory relative to 
+		a team (+ means they are projected to lose; minus indicates projected victory). So this basic script takes 
+		in entry of the home and away teams, the over/under, and the victory margin (w/respect to the home team). It then 
+		calculates/outputs the approximate final score and indicates the projected winner. It is normal to get x.5s for answers. This is 
+		exactly due to it cannot be the final score, which would preventstie situations.
+<br><pre class="box"># "What's the Over and Under?"
+
+away = str(input("Enter the Away Team's name: "))   # Asks for Away Team Name
+home = str(input("Enter the Home Team's name: "))   # Asks for the Home Team Name
+
+line = float(input("What is the current over/under 'Vegas' line?: "))   # Input the total points number
+margin = float(input("What is the margin (w/respect to the home team)?: "))     # This is the +/- number
+
+win = line / 2 + abs(margin) / 2
+lose = line / 2 - abs(margin) / 2
+
+if margin &gt; 0:  #  Using the home team as reference.
+    team_win = away # If the home team is NOT favored, they should have a + number beside them
+else:
+    team_win = home # If they are favored, they'll have a minus number beside them
+
+print("The final score is projected to be {} - {}, in favor of {}".format(win,lose,team_win))
+</pre></div><br><br>
+
+	<button class="BTN" onclick=showhide("scriptQUIZ","expQUIZ")><span id="expQUIZ">+</span><i>&nbsp;&nbsp;&nbsp;</i>
+	Rudimentary Math Quiz</button>
+	<div id="scriptQUIZ" style="display:none;"><br>
+		This programming gives you a math quiz. I included choices for the quantity of questions you want on your quiz. It then gives you 
+		random +/-/*/div problems. At the end, it gives a grade. I programmed it so you shouldn't need a calculator.
+<br><pre class="box" style="height:45%;"># MATH QUIZ
+# The program selects random integers and quizzes the user
+import random   # Imports random function
+
+def howmany():
+    qty = int(input("How many questions would you like on the quiz?: "))
+    return qty
+
+def addition(p_num):
+    r1, r2 = float(random.randint(1, 1000)) / 10.0, float(random.randint(1, 1000)) / 10.0
+    ans = round(r1 + r2,1)
+    user_ans = float(input("{}. What is {} + {} ?: ".format(p_num,r1,r2)))
+    if user_ans == ans:
+        print("CORRECT! \n")
+        return True
+    else:
+        print("WRONG! The right answer was: ", round(r1 + r2,1), ".\n")
+        return False
+
+def subtraction(p_num):
+    r1, r2 = random.randint(0, 1000), random.randint(0, 1000)
+    ans = r1 - r2
+    user_ans = int(input("{}. What is {} - {} ?: ".format(p_num,r1,r2)))
+    if user_ans == ans:
+        print("CORRECT! \n")
+        return True
+    else:
+        print("WRONG! The right answer was: ", r1 - r2, ".\n")
+        return False
+
+def multiplication(p_num):
+    r1, r2 = random.randint(2, 30),random.randint(2, 30)
+    ans = r1 * r2
+    user_ans = int(input("{}. What is {} * {} ?: ".format(p_num,r1,r2)))
+    if user_ans == ans:
+        print("CORRECT! \n")
+        return True
+    else:
+        print("WRONG! The right answer was: ", r1 * r2, ".\n")
+        return False
+
+def division(p_num):
+    r1, r2 = 3,2  # Just for initialization
+    while r1 % r2 != 0:     # This will loop until two numbers are selected with a remainder of zero
+        r1 = random.randint(1, 100)
+        r2 = random.randint(2, 100)
+        if r1 == r2:    # This statement basically resets the loop if r1 is equal to r2
+            r1 = 3
+            r2 = 2            
+    ans = r1 / r2
+    user_ans = float(input("{}. What is {} / {} ?: ".format(p_num,r1,r2)))
+    if user_ans == ans:
+        print("CORRECT! \n")
+        return True
+    else:
+        print("WRONG! The right answer was: ", r1 / r2, ".\n")
+        return False
+
+# Problem Types: 1 - Addition // 2 - Subtraction // 3 - Multiplication // 4 - Division
+p_qty = howmany()   # Will ask and store how many questions will be on the quiz
+right = 0           # Represents the counter variable for the questions the user got correct
+choice = 'Y'        # Initial value that allows while loop to run
+
+while choice == 'y' or choice == 'Y':
+    for new_problem in range(0,p_qty):
+        p_type = random.randint(1,4)    # SELECTS RANDOM NUMBER WHICH WILL DICTATE WHAT KIND OF PROBLEM IS PRESENTED
+        p = new_problem + 1
+        if p_type == 1:
+            correct = addition(p)
+            if correct == True:
+                right += 1
+        elif p_type == 2:
+            correct = subtraction(p)
+            if correct == True:
+                right += 1
+        elif p_type == 3:
+            correct = multiplication(p)
+            if correct == True:
+                right += 1
+        else:
+            correct = division(p)
+            if correct == True:
+                right += 1
+    final_score = right / p_qty
+    print("Your Final Score was: ",round(final_score * 100,1)," !")
+    choice = input("Do you want to take another quiz? (Y/N):")
+    if choice == 'y' or choice == 'Y':
+        p_num = 1
+        right = 0
+
+print("\nTHANK YOU FOR TAKING THE MATH QUIZ !!!")
+</pre></div><br><br>
+
+	<button class="BTN" onclick=showhide("scriptCONV","expCONV")><span id="expCONV">+</span><i>&nbsp;&nbsp;&nbsp;</i>
+	Mass Integer List Conversion</button>
+	<div id="scriptCONV" style="display:none;"><br>
+	This script illustrates how you can quickly create a large array of numbers then convert them each to string. Not sure how useful it 
+	could be to you, as there are ways that you can simply avoid needing this, but at the time I needed it.
+<br><pre class="box"># This shows a quick way to define a list of a range of numbers (years, in this case),
+#     then creates it in string format
+
+def int_to_str(integer):    # Takes an integer, returns it in string format
+    return str(integer)
+
+yr_setup = list(range(1980,2011))   # The initial list - Integer format
+yr_str = []    # A blank, preparatory list - String Format
+
+for each in yr_setup:   # It will go according to the number of indexes in the list
+    yr_str.append(int_to_str(each))    # Converts to string, appends it to the new list
+
+print(yr_list)
+</pre></div><br><br>
+
+	<button class="BTN" onclick=showhide("scriptSTAR","expSTAR")><span id="expSTAR">+</span><i>&nbsp;&nbsp;&nbsp;</i>
+	CSS Star-Field Generator</button>
+	<div id="scriptSTAR" style="display:none;"><br>
+	I wrote this in Python for use in an HTML/CSS/Javascript project I was working on. It produces a random star field. You can modify 
+	their quantities, sizes and spatial limits. I hope it helps you out. Read the instructions and look over/adjust the predefined 
+	variables.
+<br><pre class="box" style="height:45%;"># CSS STAR-FIELD GENERATOR
+# Code by Kyle Gentry (online handle: ksgwxfan)
+# Feel free to implement in a project, modify, and/or improve as needed
+# I'd appreciate credit (in your code or source) if it is some use to you in your project
+
+# WHAT IT DOES: Outputs code for a star-field for use in CSS projects by generating x-number of
+# radial gradients (the stars)
+# INSTRUCTIONS: Tweak the predefined variables for your liking; Copy/paste the code into your style sheet
+
+# CONSTANTS FOR THE FIELD
+line_start = "radial-gradient(circle at "   # START each line with this
+line_end = "), /*Star*/"                   # END each line with this
+
+# PRE-DEFINED VARIABLES
+celestials = 70        # Total number of stars in the starfield
+min_opa = .35           # Minimum Opacity (0 &lt;= value &lt;= 1)
+max_opa = .65           # Maximum Opacity (0 &lt;= value &lt;= 1)
+minrg = 200             # Will determine the minimum red and green values for each star
+max_star_size = 0.25     # Largest Star Size (in percent)
+max_star_glow = 1.5       # Widest Glow Expanse (in percent)
+max_x = 100             # Maximum X Position (in percent)
+max_y = 86              # Maximum Y Position (in percent)
+
+for every_star in range(0,celestials+1):
+    # Generate random variables for each star
+    opacity = str(round(random.triangular(min_opa,max_opa),2))                       # Determine Star Brightness
+    size = str(round(random.triangular(0.01,max_star_size),2))                 # SIZE
+    glow = str(round(random.triangular(max_star_size,max_star_glow),2))     # GLOW
+    rgcolor = str(round(random.randint(minrg,255+1),2))                     # Red-Green Brightness
+    xpos = str(round(random.randint(0,max_x+1),2))                          # X Position
+    ypos = str(round(random.randint(0,max_y+1),2))                          # Y Position
+    
+    print(line_start + xpos + "% " + ypos + "%, rgba(" + rgcolor + "," + rgcolor + ",255," + opacity + ") " + size + "%, " \
+          + "rgba(255,255,255,0) " + glow + "%" + line_end)
+</pre></div><br><br>
+
+	<button class="BTN" onclick=showhide("scriptPENNRAP","expPENNRAP")><span id="expPENNRAP">+</span><i>&nbsp;&nbsp;&nbsp;</i>
+	PSU e-Wall RAP Downloader</button>
+	<div id="scriptPENNRAP" style="display:none;"><br>
+	Similarly to the SPC, Penn St. archives basic hourly RAP data. The advantage is that the output is delivered in their fabled 4-Panel 
+	layout. There aren't countless variables it gives to look at, but it is excellent to analyze the synoptic situation of the atmosphere. 
+	It also eliminates the need of overlays. So instead of creating a viewer, when the files are saved, they have their own unique filename.
+	Viewing is simply done in your favorite slideshow viewer (Windows has a great one; cycling through the images with just arrow keys). 
+	The idea with this is that it enables you to quickly assess the synoptic situation of a past event or pre-cursor to one. *NOTE: Be sure 
+	to put this script in its own folder
+<br><pre class="box" style="height:45%;"># This script downloads from the PSU e-Wall 4-Panel RAP archive - Retrieves the f00 data
+import datetime
+import http.server
+import socketserver
+import urllib.request
+import urllib.error
+
+def download(http,file):    # Attempts to download requested file...SOURCE/help: https://goo.gl/OdivQl
+    # http -&gt; url link .... file -&gt; folder/file name/download location
+    try:        
+        urllib.request.urlretrieve(http,file)   # Initiates the Download
+        print("Download of: " + file + " is complete.")
+    except urllib.error.HTTPError:      # If the file is not found or hasn't been generated yet
+        print("File \"" + file + "\" not found on server!")
+
+print("INPUT DATE MUST BE AT LEAST JAN 1, 2004 (2004,1,1)...")
+INPUT_ST = input("Input, separated by commas, the beginning date that you want to download (YYYY,M,D): ").split(",")   # What date are you looking to analyze
+INPUT_EN = input("End date (YYYY,M,D): ").split(",")
+
+DATE_ST = datetime.datetime(int(INPUT_ST[0]),int(INPUT_ST[1]),int(INPUT_ST[2]))
+iterate = DATE_ST
+DATE_EN = datetime.datetime(int(INPUT_EN[0]),int(INPUT_EN[1]),int(INPUT_EN[2]))
+
+cycle = ["00","06","12","18"]
+
+while iterate &lt;= DATE_EN:
+    #print(TIME)
+    for each in cycle:
+        TIME = str(iterate.strftime("%Y")) + str(iterate.strftime("%m")) + str(iterate.strftime("%d")) + each
+        directory = "http://mp1.met.psu.edu/~fxg1/RUCANL/" + TIME + ".gif"
+        #print("DOWNLOAD: " + directory)
+        filename = "RAP_" + TIME[0:4] + "-" + TIME[4:6] + "-" + TIME[6:8] + "_" + TIME[8:10] + ".gif"
+        download(directory,filename)
+    iterate = iterate + datetime.timedelta(days=1)
+    print(iterate)
+</pre></div><br><br>
+<!--			
+<span class="SCRIPTNAME">Enter Name Here</span> -
+<br><pre class="box">testing
+</pre><p>
+-->
+		</div>
+
+<!--
+<b><span style="color: #6aa84f; font-size: large;"><u>Radar Embed in Website - Non-Looping</u></span></b>&nbsp;- This uses the latest imagery from NWS. It does not loop. This is not Python Code. This uses the <b>HAniS</b> module. For it to work properly, you first need to&nbsp;<a href="http://www.ssec.wisc.edu/hanis/" target="_blank">go here</a> to download the HAniS code (search the page for download), then you need to upload the '<b>hanis_min.js</b>' file onto your server, and make sure the path to it jives with where you uploaded it. Then open the html file. To customize the radar site, find your radar site ID, then search for '<b>FCX</b>' and <a href="http://www.weather.gov/jetstream/ridge_download" target="_blank">replace that with your site of choice</a>.
+
+<b><span style="color: #e69138;">*** To run it locally (from your hard-drive), most likely you'll need to: 1)Put the html code and hanis_min.js file in a directory of your choice; 2)In your browser, go to the directory that it mentions in the code (it will tell you); 3)Click on your html file! If it doesn't work, you may need to run a <a href="https://www.ssec.wisc.edu/hanis/local.html" target="_blank">temporary local HTTP server</a> first (makes your browser think that your hard-drive is the internet) ***</span></b>
+<pre style="background-color: #17202a; border: 1px dashed #999999; color: black; font-family: &quot;andale mono&quot; , &quot;lucida console&quot; , &quot;monaco&quot; , &quot;fixed&quot; , monospace; font-size: 12px; height: 200px; line-height: 14px; overflow: auto; padding: 5px; width: 100%;"><code style="color: #aed6f1; font-weight: bold; word-wrap: normal;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;
+  &lt;meta http-equiv="X-UA-Compatible" content="IE=Edge"/&gt;
+  &lt;title&gt;RADAR TEST&lt;/title&gt;
+  &lt;script type="text/javascript" src="./hanis_min.js"&gt; &lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body style="width:800px;" onload="HAniS.setup('controls=zoom, annotate, autorefresh \n controls_style=padding:5px;background-color:black; \n controls_tooltip = Zoom/Pan, Mark, Auto-Refresh \n auto_refresh = 3 \n buttons_style=font-weight:bold;margin-left:8px; \n background_static=y \n filenames=https://radar.weather.gov/ridge/Overlays/County/Short/FCX_County_Short.gif \n overlay_labels=Base Reflectivity (Z)/on, Base Velocity (V), Storm-Relative Velocity (SRV), /1-Hr Total Precip (1HP), Storm-Total Precip (STP), Warnings/on, Cities, /Z/hidden, V/hidden, SRV/hidden, 1HP/hidden, STP/hidden \n bottom_controls=overlay \n overlay_filenames=https://radar.weather.gov/ridge/RadarImg/N0R/FCX_N0R_0.gif, https://radar.weather.gov/ridge/RadarImg/N0V/FCX_N0V_0.gif, https://radar.weather.gov/ridge/RadarImg/N0S/FCX_N0S_0.gif, https://radar.weather.gov/ridge/RadarImg/N1P/FCX_N1P_0.gif, https://radar.weather.gov/ridge/RadarImg/NTP/FCX_NTP_0.gif, https://radar.weather.gov/ridge/Warnings/Short/FCX_Warnings_0.gif, https://radar.weather.gov/ridge/Overlays/Cities/Short/FCX_City_Short.gif, https://radar.weather.gov/ridge/Legend/N0R/FCX_N0R_Legend_0.gif, https://radar.weather.gov/ridge/Legend/N0V/FCX_N0V_Legend_0.gif, https://radar.weather.gov/ridge/Legend/N0S/FCX_N0S_Legend_0.gif, https://radar.weather.gov/ridge/Legend/N1P/FCX_N1P_Legend_0.gif, https://radar.weather.gov/ridge/Legend/NTP/FCX_NTP_Legend_0.gif \n overlay_links=1,2,3,4,5,0,0,-1,-2,-3,-4,-5 \n overlay_zoom=y,y,y,y,y,y,y,n,n,n,n,n \n overlay_static=n,n,n,n,n,n,y,n,n,n,n,n \n overlay_labels_style=font-family:arial;color:white;font-size:14px;padding:2px;background-color:black;','handiv')"&gt;
+
+  &lt;div id="handiv" style="width:600px;background-color:black;"&gt;&lt;/div&gt;
+&lt;font size=-2&gt;* DISCLAIMER: This display is presented as a courtesy and data therein should not be used in any critical decision-making, especially in possible life-or-death situations.&lt;br&gt;&lt;a href="http://www.ssec.wisc.edu/hanis/"&gt;HAniS Script&lt;/a&gt; - Copyright© 2014-2017 by StormQuest Technologies and Tom Whittaker&lt;/font&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://3.bp.blogspot.com/-lKOQZ15AXS4/Wm8SVA4Qx7I/AAAAAAAABfw/Qszw-xrQavsyg8XPjLoMh5JEPO52GfT2QCLcBGAs/s1600/radar_sample.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="321" data-original-width="300" height="200" src="https://3.bp.blogspot.com/-lKOQZ15AXS4/Wm8SVA4Qx7I/AAAAAAAABfw/Qszw-xrQavsyg8XPjLoMh5JEPO52GfT2QCLcBGAs/s200/radar_sample.png" width="186" /></a></div>
+
+<hr />
+<b><u><span style="color: #6aa84f; font-size: large;">Radar Embed in Website - Looping</span></u></b> - Just like the above code, it uses the latest imagery from NWS, but the overlays aren't true overlays like above (as such, the background is white). The advantage though is they provide these in loop-friendly format. Same instructions above to run locally (if you wish) applies.
+<pre style="background-color: #17202a; border: 1px dashed #999999; color: black; font-family: &quot;andale mono&quot; , &quot;lucida console&quot; , &quot;monaco&quot; , &quot;fixed&quot; , monospace; font-size: 12px; height: 200px; line-height: 14px; overflow: auto; padding: 5px; width: 100%;"><code style="color: #aed6f1; font-weight: bold; word-wrap: normal;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;
+  &lt;meta http-equiv="X-UA-Compatible" content="IE=Edge"/&gt;
+  &lt;title&gt;RADAR TEST 4&lt;/title&gt;
+  &lt;script type="text/javascript" src="./hanis_min.js"&gt; &lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body style="width:800px;" onload="HAniS.setup('controls=startstop, first, step, last, zoom, annotate, autorefresh \n controls_style=padding:5px;background-color:black; \n controls_tooltip = Start/Stop, Oldest Frame, Previous/Next, Newest Frame, Zoom/Pan, Draw, Auto-Refresh(3-min) \n auto_refresh = 3 \n buttons_style=font-weight:bold;margin-left:5px; \n start_looping = false,8 \n filenames=https://radar.weather.gov/ridge/Overlays/County/Short/FCX_County_Short.gif,https://radar.weather.gov/ridge/Overlays/County/Short/FCX_County_Short.gif,https://radar.weather.gov/ridge/Overlays/County/Short/FCX_County_Short.gif,https://radar.weather.gov/ridge/Overlays/County/Short/FCX_County_Short.gif,https://radar.weather.gov/ridge/Overlays/County/Short/FCX_County_Short.gif,https://radar.weather.gov/ridge/Overlays/County/Short/FCX_County_Short.gif,https://radar.weather.gov/ridge/Overlays/County/Short/FCX_County_Short.gif,https://radar.weather.gov/ridge/Overlays/County/Short/FCX_County_Short.gif \n bottom_controls=overlay \n overlay_filenames=https://radar.weather.gov/lite/N0R/FCX_7.png &amp; https://radar.weather.gov/lite/N0R/FCX_6.png &amp; https://radar.weather.gov/lite/N0R/FCX_5.png &amp; https://radar.weather.gov/lite/N0R/FCX_4.png &amp; https://radar.weather.gov/lite/N0R/FCX_3.png &amp; https://radar.weather.gov/lite/N0R/FCX_2.png &amp; https://radar.weather.gov/lite/N0R/FCX_1.png &amp; https://radar.weather.gov/lite/N0R/FCX_0.png,https://radar.weather.gov/lite/N0V/FCX_7.png &amp; https://radar.weather.gov/lite/N0V/FCX_6.png &amp; https://radar.weather.gov/lite/N0V/FCX_5.png &amp; https://radar.weather.gov/lite/N0V/FCX_4.png &amp; https://radar.weather.gov/lite/N0V/FCX_3.png &amp; https://radar.weather.gov/lite/N0V/FCX_2.png &amp; https://radar.weather.gov/lite/N0V/FCX_1.png &amp; https://radar.weather.gov/lite/N0V/FCX_0.png,https://radar.weather.gov/lite/N0S/FCX_7.png &amp; https://radar.weather.gov/lite/N0S/FCX_6.png &amp; https://radar.weather.gov/lite/N0S/FCX_5.png &amp; https://radar.weather.gov/lite/N0S/FCX_4.png &amp; https://radar.weather.gov/lite/N0S/FCX_3.png &amp; https://radar.weather.gov/lite/N0S/FCX_2.png &amp; https://radar.weather.gov/lite/N0S/FCX_1.png &amp; https://radar.weather.gov/lite/N0S/FCX_0.png,https://radar.weather.gov/lite/N1P/FCX_7.png &amp; https://radar.weather.gov/lite/N1P/FCX_6.png &amp; https://radar.weather.gov/lite/N1P/FCX_5.png &amp; https://radar.weather.gov/lite/N1P/FCX_4.png &amp; https://radar.weather.gov/lite/N1P/FCX_3.png &amp; https://radar.weather.gov/lite/N1P/FCX_2.png &amp; https://radar.weather.gov/lite/N1P/FCX_1.png &amp; https://radar.weather.gov/lite/N1P/FCX_0.png,https://radar.weather.gov/lite/NTP/FCX_7.png &amp; https://radar.weather.gov/lite/NTP/FCX_6.png &amp; https://radar.weather.gov/lite/NTP/FCX_5.png &amp; https://radar.weather.gov/lite/NTP/FCX_4.png &amp; https://radar.weather.gov/lite/NTP/FCX_3.png &amp; https://radar.weather.gov/lite/N1P/FCX_2.png &amp; https://radar.weather.gov/lite/NTP/FCX_1.png &amp; https://radar.weather.gov/lite/NTP/FCX_0.png \n overlay_labels=Base Reflectivity/on, Base (Radial) Velocity, Storm-Relative Veocity, /1-HR Precip, Storm-Total Precip \n overlay_labels_style=font-family:arial;color:white;font-size:14px;padding:2px;background-color:black; \n overlay_radio = true,true,true,true,true','handiv')"&gt;
+
+  &lt;div id="handiv" style="width:600px;background-color:black;"&gt;&lt;/div&gt;
+&lt;font size=-2&gt;* DISCLAIMER: This display is presented as a courtesy and data therein should not be used in any critical decision-making, especially in possible life-or-death situations.&lt;br&gt;&lt;a href="http://www.ssec.wisc.edu/hanis/"&gt;HAniS Script&lt;/a&gt; - Copyright© 2014-2017 by StormQuest Technologies and Tom Whittaker&lt;/font&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<hr />
+<span style="color: #6aa84f; font-size: large;"><b><u>CSS Star Field Generator</u></b></span> - I wrote this in Python for use in an HTML/CSS/Javascript project I was working on. It produces a random star field. You can modify their quantities sizes and spatial limits. I hope it helps you out. Read the instructions and look over/adjust the predefined variables.
+<pre style="background-color: #17202a; border: 1px dashed #999999; color: black; font-family: &quot;andale mono&quot; , &quot;lucida console&quot; , &quot;monaco&quot; , &quot;fixed&quot; , monospace; font-size: 12px; height: 200px; line-height: 14px; overflow: auto; padding: 5px; width: 100%;"><code style="color: #aed6f1; font-weight: bold; word-wrap: normal;">import random
+
+# CSS STAR-FIELD GENERATOR
+# Code by Kyle Gentry (online handle: ksgwxfan)
+# Feel free to implement in a project, modify, and/or improve as needed
+# I'd appreciate credit (in your code or source) if it is some use to you in your project
+
+# WHAT IT DOES: Outputs code for a star-field for use in CSS projects by generating x-number of
+# radial gradients (the stars)
+# INSTRUCTIONS: Tweak the predefined variables for your liking; Copy/paste the code into your style sheet
+
+# CONSTANTS FOR THE FIELD
+line_start = "radial-gradient(circle at "   # START each line with this
+line_end = "), /*Star*/"                   # END each line with this
+
+# PRE-DEFINED VARIABLES
+celestials = 70        # Total number of stars in the starfield
+min_opa = .35           # Minimum Opacity (0 &lt;= value &lt;= 1)
+max_opa = .65           # Maximum Opacity (0 &lt;= value &lt;= 1)
+minrg = 200             # Will determine the minimum red and green values for each star
+max_star_size = 0.25     # Largest Star Size (in percent)
+max_star_glow = 1.5       # Widest Glow Expanse (in percent)
+max_x = 100             # Maximum X Position (in percent)
+max_y = 86              # Maximum Y Position (in percent)
+
+for every_star in range(0,celestials+1):
+    # Generate random variables for each star
+    opacity = str(round(random.triangular(min_opa,max_opa),2))                       # Determine Star Brightness
+    size = str(round(random.triangular(0.01,max_star_size),2))                 # SIZE
+    glow = str(round(random.triangular(max_star_size,max_star_glow),2))     # GLOW
+    rgcolor = str(round(random.randint(minrg,255+1),2))                     # Red-Green Brightness
+    xpos = str(round(random.randint(0,max_x+1),2))                          # X Position
+    ypos = str(round(random.randint(0,max_y+1),2))                          # Y Position
+    
+    print(line_start + xpos + "% " + ypos + "%, rgba(" + rgcolor + "," + rgcolor + ",255," + opacity + ") " + size + "%, " \
+          + "rgba(255,255,255,0) " + glow + "%" + line_end)</code></pre>
+<hr />
+		
+-->
+		<center><iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe></center>
+		<script>
+		// Script Idea from W3 Schools https://www.w3schools.com/howto/howto_js_toggle_hide_show.asp
+		function showhide(sname,exp) {
+			if (document.getElementById(sname).style.display == "none") {
+				document.getElementById(sname).style.display = "block";
+				document.getElementById(exp).innerHTML = "- ";
+				}
+			else {document.getElementById(sname).style.display = "none";
+				document.getElementById(exp).innerHTML = "+";
+				}
+			}
+		</script>
+	</body>
+</html>
