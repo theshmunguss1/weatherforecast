@@ -1,0 +1,117 @@
+http://www.weather.gov/placeholder.grib2.gz	- - - - MRMS Products - Most Items Updated Every 2 Minutes - - - - - - - - - -
+http://www.weather.gov/placeholder.grib2.gz	- - - - Data Warning: Some Files are Very Large - - - - - - - - - - - - - - - 
+http://www.weather.gov/placeholder.grib2.gz	- - - - MISCELLANEOUS PRODUCTS - - - - - - - - - - - - - - - - - - - - - - - -
+http://mrms.ncep.noaa.gov/data/2D/BrightBandBottomHeight/MRMS_BrightBandBottomHeight.latest.grib2.gz	Bright Band Bottom Height
+http://mrms.ncep.noaa.gov/data/2D/BrightBandTopHeight/MRMS_BrightBandTopHeight.latest.grib2.gz	Bright Band Top Height
+http://mrms.ncep.noaa.gov/data/2D/LVL3_HREET/MRMS_LVL3_HREET.latest.grib2.gz	Echo Tops - Level III High-Resolution
+http://mrms.ncep.noaa.gov/data/2D/EchoTop_18/MRMS_EchoTop_18.latest.grib2.gz	Echo Tops - 18dBZ
+http://mrms.ncep.noaa.gov/data/2D/EchoTop_30/MRMS_EchoTop_30.latest.grib2.gz	Echo Tops - 30dBZ
+http://mrms.ncep.noaa.gov/data/2D/EchoTop_50/MRMS_EchoTop_50.latest.grib2.gz	Echo Tops - 50dBZ
+http://mrms.ncep.noaa.gov/data/2D/EchoTop_60/MRMS_EchoTop_60.latest.grib2.gz	Echo Tops - 60dBZ
+http://mrms.ncep.noaa.gov/data/2D/LVL3_HighResVIL/MRMS_LVL3_HighResVIL.latest.grib2.gz	Level III High Resouion VIL
+http://mrms.ncep.noaa.gov/data/2D/VII/MRMS_VII.latest.grib2.gz	VII - Vertically Integrated Ice
+http://mrms.ncep.noaa.gov/data/2D/VIL/MRMS_VIL.latest.grib2.gz	VIL - Vertically Integrated Liquid
+http://mrms.ncep.noaa.gov/data/2D/VIL_Density/MRMS_VIL_Density.latest.grib2.gz	VIL Density
+http://mrms.ncep.noaa.gov/data/2D/H50_Above_-20C/MRMS_H50_Above_-20C.latest.grib2.gz	Thickness - 50dBZ Top to -20C
+http://mrms.ncep.noaa.gov/data/2D/H50_Above_0C/MRMS_H50_Above_0C.latest.grib2.gz	Thickness - 50dBZ Top to FRZLVL
+http://mrms.ncep.noaa.gov/data/2D/H60_Above_-20C/MRMS_H60_Above_-20C.latest.grib2.gz	Thickness - 60dBZ Top to -20C
+http://mrms.ncep.noaa.gov/data/2D/H60_Above_0C/MRMS_H60_Above_0C.latest.grib2.gz	Thickness - 60dBZ Top to FRZLVL
+http://www.weather.gov/placeholder.grib2.gz	- - - - RADAR PRODUCTS - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+http://mrms.ncep.noaa.gov/data/2D/RadarQualityIndex/MRMS_RadarQualityIndex.latest.grib2.gz	Radar Quality Index
+http://mrms.ncep.noaa.gov/data/2D/MergedBaseReflectivity/MRMS_MergedBaseReflectivity.latest.grib2.gz	Base Reflectivity - RAW
+http://mrms.ncep.noaa.gov/data/2D/MergedBaseReflectivityQC/MRMS_MergedBaseReflectivityQC.latest.grib2.gz	Base Reflectivity - QC
+http://mrms.ncep.noaa.gov/data/2D/MergedReflectivityQC/MRMS_MergedReflectivityQC.latest.grib2.gz	Base Reflectivity - Highest Angled Scan
+http://mrms.ncep.noaa.gov/data/2D/SeamlessHSR/MRMS_SeamlessHSR.latest.grib2.gz	Seamless Hybrid-Scan Reflectivity with Vertical Profile Reflectivity - VPR
+http://mrms.ncep.noaa.gov/data/2D/SeamlessHSRHeight/MRMS_SeamlessHSRHeight.latest.grib2.gz	Seamless Hybrid-Scan Reflectivity - Height
+http://mrms.ncep.noaa.gov/data/2D/Reflectivity_0C/MRMS_Reflectivity_0C.latest.grib2.gz	Isothermal dBZ - Freezing Level
+http://mrms.ncep.noaa.gov/data/2D/Reflectivity_-5C/MRMS_Reflectivity_-5C.latest.grib2.gz	Isothermal dBZ - 268K
+http://mrms.ncep.noaa.gov/data/2D/Reflectivity_-10C/MRMS_Reflectivity_-10C.latest.grib2.gz	Isothermal dBZ - 263K
+http://mrms.ncep.noaa.gov/data/2D/Reflectivity_-15C/MRMS_Reflectivity_-15C.latest.grib2.gz	Isothermal dBZ - 258K
+http://mrms.ncep.noaa.gov/data/2D/Reflectivity_-20C/MRMS_Reflectivity_-20C.latest.grib2.gz	Isothermal dBZ - 253K
+http://mrms.ncep.noaa.gov/data/2D/MergedReflectivityAtLowestAltitude/MRMS_MergedReflectivityAtLowestAltitude.latest.grib2.gz	RALA - dBZ At Lowest Altitude - NON QC
+http://mrms.ncep.noaa.gov/data/2D/ReflectivityAtLowestAltitude/MRMS_ReflectivityAtLowestAltitude.latest.grib2.gz	RALA - dBZ at Lowest Altitude
+http://www.weather.gov/placeholder.grib2.gz	- - - - COMPOSITE RADAR PRODUCTS - - - - - - - - - - - - - - - - - - - - - - -
+http://mrms.ncep.noaa.gov/data/2D/CREF_1HR_MAX/MRMS_CREF_1HR_MAX.latest.grib2.gz	Composite dBZ - 1HR Max (Updated Hourly)
+http://mrms.ncep.noaa.gov/data/2D/MergedReflectivityComposite/MRMS_MergedReflectivityComposite.latest.grib2.gz	Composite dBZ - RAW
+http://mrms.ncep.noaa.gov/data/2D/MergedReflectivityQCComposite/MRMS_MergedReflectivityQCComposite.latest.grib2.gz	Composite dBZ - QC
+http://mrms.ncep.noaa.gov/data/2D/HeightCompositeReflectivity/MRMS_HeightCompositeReflectivity.latest.grib2.gz	Composite dBZ - Height
+http://mrms.ncep.noaa.gov/data/2D/LowLevelCompositeReflectivity/MRMS_LowLevelCompositeReflectivity.latest.grib2.gz	Composite dBZ - LL - 0-4km
+http://mrms.ncep.noaa.gov/data/2D/HeightLowLevelCompositeReflectivity/MRMS_HeightLowLevelCompositeReflectivity.latest.grib2.gz	Composite dBZ - LL - Height
+http://mrms.ncep.noaa.gov/data/2D/LayerCompositeReflectivity_High/MRMS_LayerCompositeReflectivity_High.latest.grib2.gz	Composite dBZ - Low - 0-24Kft
+http://mrms.ncep.noaa.gov/data/2D/LayerCompositeReflectivity_Low/MRMS_LayerCompositeReflectivity_Low.latest.grib2.gz	Composite dBZ - High - 24-60Kft
+http://mrms.ncep.noaa.gov/data/2D/LayerCompositeReflectivity_Super/MRMS_LayerCompositeReflectivity_Super.latest.grib2.gz	Composite dBZ - Super - 33-60Kft
+http://mrms.ncep.noaa.gov/data/2D/MergedReflectivityQComposite/MRMS_MergedReflectivityQComposite.latest.grib2.gz	Composite dBZ - Max Reflectivity
+http://www.weather.gov/placeholder.grib2.gz	- - - - VELOCITY PRODUCTS - - - - - - - - - - - - - - - - - - - - - - - - - - 
+http://mrms.ncep.noaa.gov/data/2D/MergedAzShear_0-2kmAGL/MRMS_MergedAzShear_0-2kmAGL.latest.grib2.gz	Azimuthal Shear - Vorticity - 0-2km
+http://mrms.ncep.noaa.gov/data/2D/MergedAzShear_3-6kmAGL/MRMS_MergedAzShear_3-6kmAGL.latest.grib2.gz	Azimuthal Shear - Vorticity - 3-6km
+http://mrms.ncep.noaa.gov/data/2D/RotationTrack30min/MRMS_RotationTrack30min.latest.grib2.gz	Rotation Tracks - 30 min MAX
+http://mrms.ncep.noaa.gov/data/2D/RotationTrack60min/MRMS_RotationTrack60min.latest.grib2.gz	Rotation Tracks - 60 min MAX
+http://mrms.ncep.noaa.gov/data/2D/RotationTrack120min/MRMS_RotationTrack120min.latest.grib2.gz	Rotation Tracks - 2HR MAX
+http://mrms.ncep.noaa.gov/data/2D/RotationTrack240min/MRMS_RotationTrack240min.latest.grib2.gz	Rotation Tracks - 4HR MAX
+http://mrms.ncep.noaa.gov/data/2D/RotationTrack360min/MRMS_RotationTrack360min.latest.grib2.gz	Rotation Tracks - 6HR MAX
+http://mrms.ncep.noaa.gov/data/2D/RotationTrack1440min/MRMS_RotationTrack1440min.latest.grib2.gz	Rotation Tracks - 24HR MAX
+http://mrms.ncep.noaa.gov/data/2D/RotationTrackML30min/MRMS_RotationTrackML30min.latest.grib2.gz	Mid-Level Rotation Tracks - 30 min MAX
+http://mrms.ncep.noaa.gov/data/2D/RotationTrackML60min/MRMS_RotationTrackML60min.latest.grib2.gz	Mid-Level Rotation Tracks - 60 min MAX
+http://mrms.ncep.noaa.gov/data/2D/RotationTrackML120min/MRMS_RotationTrackML120min.latest.grib2.gz	Mid-Level Rotation Tracks - 2HR MAX
+http://mrms.ncep.noaa.gov/data/2D/RotationTrackML240min/MRMS_RotationTrackML240min.latest.grib2.gz	Mid-Level Rotation Tracks - 4HR MAX
+http://mrms.ncep.noaa.gov/data/2D/RotationTrackML360min/MRMS_RotationTrackML360min.latest.grib2.gz	Mid-Level Rotation Tracks - 6HR MAX
+http://mrms.ncep.noaa.gov/data/2D/RotationTrackML1440min/MRMS_RotationTrackML1440min.latest.grib2.gz	Mid-Level Rotation Tracks - 24HR MAX
+http://www.weather.gov/placeholder.grib2.gz	- - - - HAIL PRODUCTS - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+http://mrms.ncep.noaa.gov/data/2D/MESH/MRMS_MESH.latest.grib2.gz	MESH - Max Estimated Size of Hail
+http://mrms.ncep.noaa.gov/data/2D/MESH_Max_30min/MRMS_MESH_Max_30min.latest.grib2.gz	MESH Swath - 30 min
+http://mrms.ncep.noaa.gov/data/2D/MESH_Max_60min/MRMS_MESH_Max_60min.latest.grib2.gz	MESH Swath - 60 min
+http://mrms.ncep.noaa.gov/data/2D/MESH_Max_120min/MRMS_MESH_Max_120min.latest.grib2.gz	MESH Swath - 2HR
+http://mrms.ncep.noaa.gov/data/2D/MESH_Max_240min/MRMS_MESH_Max_240min.latest.grib2.gz	MESH Swath - 4HR
+http://mrms.ncep.noaa.gov/data/2D/MESH_Max_360min/MRMS_MESH_Max_360min.latest.grib2.gz	MESH Swath - 6HR
+http://mrms.ncep.noaa.gov/data/2D/MESH_Max_1440min/MRMS_MESH_Max_1440min.latest.grib2.gz	MESH Swath - 24 HR
+http://mrms.ncep.noaa.gov/data/2D/SHI/MRMS_SHI.latest.grib2.gz	SHI - Severe Hail Index
+http://mrms.ncep.noaa.gov/data/2D/POSH/MRMS_POSH.latest.grib2.gz	POSH - Probability of Severe Hail
+http://www.weather.gov/placeholder.grib2.gz	- - - - LIGHTNING PRODUCTS (Updated Every Minute) - - - - - - - - - - - - - - 
+http://mrms.ncep.noaa.gov/data/2D/NLDN_CG_001min/MRMS_NLDN_CG_001min.latest.grib2.gz	CG Lightning Density - 1 minute
+http://mrms.ncep.noaa.gov/data/2D/NLDN_CG_005min/MRMS_NLDN_CG_005min.latest.grib2.gz	CG Lightning Density - 5 minutes
+http://mrms.ncep.noaa.gov/data/2D/NLDN_CG_015min/MRMS_NLDN_CG_015min.latest.grib2.gz	CG Lightning Density - 15 minutes
+http://mrms.ncep.noaa.gov/data/2D/NLDN_CG_030min/MRMS_NLDN_CG_030min.latest.grib2.gz	CG Lightning Density - 30 minutes
+http://mrms.ncep.noaa.gov/data/2D/LightningProbabilityNext30min/MRMS_LightningProbabilityNext30min.latest.grib2.gz	Lightning Probability - Next 30 min (Updated Every 15 Minutes)
+http://www.weather.gov/placeholder.grib2.gz	- - - - PRECIPITATION PRODUCTS (Updated Hourly Unless Noted Otherwise) - - - -
+http://mrms.ncep.noaa.gov/data/2D/PrecipRate/MRMS_PrecipRate.latest.grib2.gz	Radar-Derived Precipitation Rate (Updated Every 2 Minutes)
+http://mrms.ncep.noaa.gov/data/2D/PrecipFlag/MRMS_PrecipFlag.latest.grib2.gz	Surface Precipitation Type (Updated Every 2 Minutes)
+http://mrms.ncep.noaa.gov/data/2D/WarmRainProbability/MRMS_WarmRainProbability.latest.grib2.gz	Warm Rain Probability
+http://mrms.ncep.noaa.gov/data/2D/RadarOnly_QPE_01H/MRMS_RadarOnly_QPE_01H.latest.grib2.gz	QPE - Radar Derived - 1HR
+http://mrms.ncep.noaa.gov/data/2D/RadarOnly_QPE_03H/MRMS_RadarOnly_QPE_03H.latest.grib2.gz	QPE - Radar Derived - 3HR
+http://mrms.ncep.noaa.gov/data/2D/RadarOnly_QPE_06H/MRMS_RadarOnly_QPE_06H.latest.grib2.gz	QPE - Radar Derived - 6HR
+http://mrms.ncep.noaa.gov/data/2D/RadarOnly_QPE_12H/MRMS_RadarOnly_QPE_12H.latest.grib2.gz	QPE - Radar Derived - 12HR
+http://mrms.ncep.noaa.gov/data/2D/RadarOnly_QPE_24H/MRMS_RadarOnly_QPE_24H.latest.grib2.gz	QPE - Radar Derived - 24HR
+http://mrms.ncep.noaa.gov/data/2D/RadarOnly_QPE_48H/MRMS_RadarOnly_QPE_48H.latest.grib2.gz	QPE - Radar Derived - 48HR
+http://mrms.ncep.noaa.gov/data/2D/RadarOnly_QPE_72H/MRMS_RadarOnly_QPE_72H.latest.grib2.gz	QPE - Radar Derived - 72HR
+http://mrms.ncep.noaa.gov/data/2D/GaugeCorr_QPE_01H/MRMS_GaugeCorr_QPE_01H.latest.grib2.gz	QPE -- 1HR - Gauge Corrected Bias
+http://mrms.ncep.noaa.gov/data/2D/GaugeCorr_QPE_03H/MRMS_GaugeCorr_QPE_03H.latest.grib2.gz	QPE -- 3HR - Gauge Corrected Bias
+http://mrms.ncep.noaa.gov/data/2D/GaugeCorr_QPE_06H/MRMS_GaugeCorr_QPE_06H.latest.grib2.gz	QPE -- 6HR - Gauge Corrected Bias
+http://mrms.ncep.noaa.gov/data/2D/GaugeCorr_QPE_12H/MRMS_GaugeCorr_QPE_12H.latest.grib2.gz	QPE - 12HR - Gauge Corrected Bias
+http://mrms.ncep.noaa.gov/data/2D/GaugeCorr_QPE_24H/MRMS_GaugeCorr_QPE_24H.latest.grib2.gz	QPE - 24HR - Gauge Corrected Bias
+http://mrms.ncep.noaa.gov/data/2D/GaugeCorr_QPE_48H/MRMS_GaugeCorr_QPE_48H.latest.grib2.gz	QPE - 48HR - Gauge Corrected Bias
+http://mrms.ncep.noaa.gov/data/2D/GaugeCorr_QPE_72H/MRMS_GaugeCorr_QPE_72H.latest.grib2.gz	QPE - 72HR - Gauge Corrected Bias
+http://mrms.ncep.noaa.gov/data/2D/GaugeOnly_QPE_01H/MRMS_GaugeOnly_QPE_01H.latest.grib2.gz	Gauge Only Precip Acc - 1HR
+http://mrms.ncep.noaa.gov/data/2D/GaugeOnly_QPE_03H/MRMS_GaugeOnly_QPE_03H.latest.grib2.gz	Gauge Only Precip Acc - 3HR
+http://mrms.ncep.noaa.gov/data/2D/GaugeOnly_QPE_06H/MRMS_GaugeOnly_QPE_06H.latest.grib2.gz	Gauge Only Precip Acc - 6HR
+http://mrms.ncep.noaa.gov/data/2D/GaugeOnly_QPE_12H/MRMS_GaugeOnly_QPE_12H.latest.grib2.gz	Gauge Only Precip Acc - 12HR
+http://mrms.ncep.noaa.gov/data/2D/GaugeOnly_QPE_24H/MRMS_GaugeOnly_QPE_24H.latest.grib2.gz	Gauge Only Precip Acc - 24HR
+http://mrms.ncep.noaa.gov/data/2D/GaugeOnly_QPE_48H/MRMS_GaugeOnly_QPE_48H.latest.grib2.gz	Gauge Only Precip Acc - 48HR
+http://mrms.ncep.noaa.gov/data/2D/GaugeOnly_QPE_72H/MRMS_GaugeOnly_QPE_72H.latest.grib2.gz	Gauge Only Precip Acc - 72HR
+http://mrms.ncep.noaa.gov/data/2D/GaugeInflIndex_01H/MRMS_GaugeInflIndex_01H.latest.grib2.gz	Gauge Influence Index - QPE 1HR
+http://mrms.ncep.noaa.gov/data/2D/GaugeInflIndex_03H/MRMS_GaugeInflIndex_03H.latest.grib2.gz	Gauge Influence Index - QPE 3HR
+http://mrms.ncep.noaa.gov/data/2D/GaugeInflIndex_06H/MRMS_GaugeInflIndex_06H.latest.grib2.gz	Gauge Influence Index - QPE 6HR
+http://mrms.ncep.noaa.gov/data/2D/GaugeInflIndex_12H/MRMS_GaugeInflIndex_12H.latest.grib2.gz	Gauge Influence Index - QPE 12HR
+http://mrms.ncep.noaa.gov/data/2D/GaugeInflIndex_24H/MRMS_GaugeInflIndex_24H.latest.grib2.gz	Gauge Influence Index - QPE 24HR
+http://mrms.ncep.noaa.gov/data/2D/GaugeInflIndex_48H/MRMS_GaugeInflIndex_48H.latest.grib2.gz	Gauge Influence Index - QPE 48HR
+http://mrms.ncep.noaa.gov/data/2D/GaugeInflIndex_72H/MRMS_GaugeInflIndex_72H.latest.grib2.gz	Gauge Influence Index - QPE 72HR
+http://mrms.ncep.noaa.gov/data/2D/MountainMapper_QPE_01H/MRMS_MountainMapper_QPE_01H.latest.grib2.gz	Mtn Mapper Precip Acc - 1HR
+http://mrms.ncep.noaa.gov/data/2D/MountainMapper_QPE_03H/MRMS_MountainMapper_QPE_03H.latest.grib2.gz	Mtn Mapper Precip Acc - 3HR
+http://mrms.ncep.noaa.gov/data/2D/MountainMapper_QPE_06H/MRMS_MountainMapper_QPE_06H.latest.grib2.gz	Mtn Mapper Precip Acc - 6HR
+http://mrms.ncep.noaa.gov/data/2D/MountainMapper_QPE_12H/MRMS_MountainMapper_QPE_12H.latest.grib2.gz	Mtn Mapper Precip Acc - 12HR
+http://mrms.ncep.noaa.gov/data/2D/MountainMapper_QPE_24H/MRMS_MountainMapper_QPE_24H.latest.grib2.gz	Mtn Mapper Precip Acc - 24HR
+http://mrms.ncep.noaa.gov/data/2D/MountainMapper_QPE_48H/MRMS_MountainMapper_QPE_48H.latest.grib2.gz	Mtn Mapper Precip Acc - 48HR
+http://mrms.ncep.noaa.gov/data/2D/MountainMapper_QPE_72H/MRMS_MountainMapper_QPE_72H.latest.grib2.gz	Mtn Mapper Precip Acc - 72HR
+http://www.weather.gov/placeholder.grib2.gz	- - - - MODEL PRODUCTS (Large Files; 10+ MB Each; Updated Hourly) - - - - - - 
+http://mrms.ncep.noaa.gov/data/2D/Model_0degC_Height/MRMS_Model_0degC_Height.latest.grib2.gz	RAP - Freezing Level Height (~8MB each!)
+http://mrms.ncep.noaa.gov/data/2D/Model_SurfaceTemp/MRMS_Model_SurfaceTemp.latest.grib2.gz	RAP - Surface Temperatures (~15MB each!)
+http://mrms.ncep.noaa.gov/data/2D/Model_WetBulbTemp/MRMS_Model_WetBulbTemp.latest.grib2.gz	RAP - Wet Bulb Temperatures (~15MB each!)
