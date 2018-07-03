@@ -16,10 +16,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="hurricane.svg"
-   inkscape:export-filename="C:\Users\Kyle\Documents\GitHub\ksgwxfan.github.io\5day\hurricane1.png"
-   inkscape:export-xdpi="96"
-   inkscape:export-ydpi="96">
+   sodipodi:docname="hurricane.svg">
   <defs
      id="defs2">
     <linearGradient
@@ -57,9 +54,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.89161746"
-     inkscape:cx="129.0683"
-     inkscape:cy="175.66196"
+     inkscape:zoom="0.6"
+     inkscape:cx="218.34389"
+     inkscape:cy="352.84028"
      inkscape:document-units="px"
      inkscape:current-layer="layer3"
      showgrid="false"
@@ -74,7 +71,7 @@
      inkscape:lockguides="true"
      inkscape:snap-intersection-paths="true"
      inkscape:snap-center="true"
-     inkscape:snap-global="true"
+     inkscape:snap-global="false"
      inkscape:object-nodes="true">
     <sodipodi:guide
        position="52.916668,52.916668"
