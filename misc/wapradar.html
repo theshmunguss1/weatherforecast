@@ -26,7 +26,7 @@
 				<div id="key" CLASS="LOWER"><img id="legend" src="http://radar.weather.gov/ridge/Legend/N0R/FCX_N0R_Legend_0.gif"></div>
 			</div>
 		</div>
-		<div id="SITE"><p>Select the Radar Site:<br> 
+		<div id="SITE"><br>Select the Radar Site:<br> 
 			<select id="siteselect" onChange=chgsrc(document.getElementById("siteselect").value)>
 				<option value="AHG">AK - PAHG - Anchorage-Kenai</option>
 				<option value="ABC">AK - PABC - Bethel</option>
@@ -187,7 +187,7 @@
 				<option value="RIW">WY - KRIW - Riverton</option>
 			</select>
 		</div>
-		<div id="IMGSELECT"><p> Select Radar Img Type:<br>
+		<div id="IMGSELECT"><br> Select Radar Img Type:<br>
 			<button CLASS="BUTTON" onclick=chgprod("N0R",document.getElementById("siteselect").value)>N0R</button> * 
 			<button CLASS="BUTTON" onclick=chgprod("NCR",document.getElementById("siteselect").value)>NCR</button> *
 			<button CLASS="BUTTON" onclick=chgprod("N0V",document.getElementById("siteselect").value)>N0V</button> *		
@@ -196,12 +196,17 @@
 			<button CLASS="BUTTON" onclick=chgprod("NTP",document.getElementById("siteselect").value)>NTP</button> * 
 			<button CLASS="BUTTON" onclick=chgprod("NET",document.getElementById("siteselect").value)>NET</button> * 
 			<button CLASS="BUTTON" onclick=chgprod("NVL",document.getElementById("siteselect").value)>NVL</button>
-		</div>
-
-<!-- http://radar.weather.gov/ridge/Overlays/County/Short/xxx_County_Short.gif COUNTIES -->
-<!-- http://radar.weather.gov/ridge/Overlays/County/Short/xxx_County_Short.gif COUNTIES -->
-<!-- http://radar.weather.gov/ridge/Legend/N0R/FCX_N0R_Legend_0.gif -->
-
+		</div><hr>
+		<div id="explainer" style="width:85%;margin:auto;text-align:justify;">
+			I created this trying to make a simple radar site that I could quickly access on my phone, without the use of HAniS. Turns out my phone can't 
+			display my site at all, but i'll keep it here none the less. Feel free to right-click and "inspect the element" or view the page source if 
+			you want to study the code. I did have to look up how to overlay images (link in source code in js section). It's pretty simple. I probably 
+			didn't even need to look it up.<br><br>
+			
+			This code simply employs NWS' publicly available radar data. Only shows the most recent image. I included options to change what radar site 
+			is displayed and buttons to control the product displayed. I may work on a loop/adding extra frames later.
+		</div><br>
+		<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
 	</body>
 		<script>
 			// Thanks to this link for assistance: https://stackoverflow.com/questions/48474/how-do-i-position-one-image-on-top-of-another-in-html

@@ -52,20 +52,21 @@
 	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue">
 		<div class="HEADER">
 			<img class="HEADERPHOTO" src="profile.png"> <u>Miscellaneous Scripts</u>
-		</div><p>
+		</div><br><br>
 		<div id="pretext" style="width:85%;margin: 0 auto;">Welcome to miscellaneous scripts. Click the respective button to see the 
-		proper code; click again to retract. Most of these simply require copy/pasting, saving, then running. Just make sure you have the 
-		prior required language installed on your PC first. You may modify or implement this code as desired without attribution unless 
-		specified in the code.<p></div>
-		<div id="scripts" style="width:85%;margin: auto;"><center><span style="font-size:26;font-weight:bold;">PYTHON</span></center>
+			proper code; click again to retract. Most of these simply require copy/pasting, saving, then running. Just make sure you have the 
+			prior required language installed on your PC first. You may modify or implement this code as desired without attribution unless 
+			specified in the code.<br><br>
+		</div>
+		<div id="scripts" style="width:85%;margin: auto;text-align:center;"><span style="font-size:26;font-weight:bold;">PYTHON</span>
 
-	<button class="BTN" onclick=showhide("scriptALPHA","expALPHA")><span id="expALPHA">+</span><i>&nbsp;&nbsp;&nbsp;</i>
-	Alphabet Numerics</button>
-	<div id="scriptALPHA" style="display:none;"><br>
-		An exercise in utilizing string indices. This was one of the first scripts I practiced with in Python: the concept that a declared 
-		string can be treated just like an array can. Each character in the string is assigned an array index (starting at index 0). So I 
-		simply created a single string of the alphabet. It asks for a number, then reports the letter that corresponds to the entry.
-<br><pre class="box"># The alphabet string; The _ takes up index 0, so 1 corresponds to 'a,' while 26 corresponds to 'z'
+			<button class="BTN" onclick=showhide("scriptALPHA","expALPHA")><span id="expALPHA">+</span><i>&nbsp;&nbsp;&nbsp;</i>
+			Alphabet Numerics</button>
+			<div id="scriptALPHA" style="display:none;text-align:justify;"><br>
+				An exercise in utilizing string indices. This was one of the first scripts I practiced with in Python: the concept that a declared 
+				string can be treated just like an array can. Each character in the string is assigned an array index (starting at index 0). So I 
+				simply created a single string of the alphabet. It asks for a number, then reports the letter that corresponds to the entry.
+				<br><pre class="box"># The alphabet string; The _ takes up index 0, so 1 corresponds to 'a,' while 26 corresponds to 'z'
 abc = "_abcdefghijklmnopqrstuvwxyz"
 
 # Ask the user to input a number...
@@ -73,15 +74,16 @@ entry = int(input("ENTER A NUMBER BETWEEN 1 and 26, AND WE'LL SHOW YOU WHICH LET
 
 # Outputs the correct number
 print("The Letter in position #", entry, " is '", abc[entry].upper(), "'")
-</pre></div><br><br>
+					</pre>
+			</div><br><br>
 
-	<button class="BTN" onclick=showhide("scriptGUESS","expGUESS")><span id="expGUESS">+</span><i>&nbsp;&nbsp;&nbsp;</i>
-	Random Number Guesser</button>
-	<div id="scriptGUESS" style="display:none;"><br>
-		I made this little console game. The basics are very simple. I 
-		added some more custom functions to it, adding more features including an on-screen game-end notification, sounds, difficulties, 
-		and menus. I'm considering using this as a base for a javascript/css project.
-<br><pre class="box" style="height:45%;"># THE NUMBER GUESSER GAME v2 -- random.randint(a,b)
+			<button class="BTN" onclick=showhide("scriptGUESS","expGUESS")><span id="expGUESS">+</span><i>&nbsp;&nbsp;&nbsp;</i>
+			Random Number Guesser</button>
+			<div id="scriptGUESS" style="display:none;text-align:justify;"><br>
+				I made this little console game. The basics are very simple. I 
+				added some more custom functions to it, adding more features including an on-screen game-end notification, sounds, difficulties, 
+				and menus. I'm considering using this as a base for a javascript/css project.
+				<br><pre class="box" style="height:45%;"># THE NUMBER GUESSER GAME v2 -- random.randint(a,b)
 import random       # imports 'random' function into program
 from winsound import Beep
 
@@ -226,14 +228,14 @@ print("Average number of guesses (" + str(guesses) + " Guesses Max): " + str(rou
 
 #r_start, r_end, guesses = menu()    # Gets the difficulty based numbers from the menu
 print("THANKS FOR PLAYING !!!")
+				</pre>
+			</div><br><br>
 
-</pre></div><br><br>
-
-	<button class="BTN" onclick=showhide("scriptFLIGHT","expFLIGHT")><span id="expFLIGHT">+</span><i>&nbsp;&nbsp;&nbsp;</i>
-	Flight Reservation</button>
-	<div id="scriptFLIGHT" style="display:none;"><br>
-		This little project was originally given to us as a challenge at a Python workshop.
-<br><pre class="box" style="height:45%;"># Feel free to use this script to help you learn concepts and various usages
+			<button class="BTN" onclick=showhide("scriptFLIGHT","expFLIGHT")><span id="expFLIGHT">+</span><i>&nbsp;&nbsp;&nbsp;</i>
+			Flight Reservation</button>
+			<div id="scriptFLIGHT" style="display:none;text-align:justify;"><br>
+				This little project was originally given to us as a challenge at a Python workshop.
+				<br><pre class="box" style="height:45%;"># Feel free to use this script to help you learn concepts and various usages
 
 def mainmenu():
     print("What would you like to do?")
@@ -411,18 +413,19 @@ while choice &lt; 5:
         fuelcapacity(TOTAL)    # Calculates max amount of fuel that the plane can safely carry
     else:
         print("THANKS FOR USING THE PROGRAM!")
-</pre></div><br><br>
+				</pre>
+			</div><br><br>
 
-	<button class="BTN" onclick=showhide("scriptOVERUNDER","expOVERUNDER")><span id="expOVERUNDER">+</span><i>&nbsp;&nbsp;&nbsp;</i>
-	Sports Score Projections via Vegas Lines</button>
-	<div id="scriptOVERUNDER" style="display:none;"><br>
-		Experts release sports-betting lines for games and give 
-		1) a projected accumulated total of points between the teams (the "over/under"), and 2) a projected margin of victory relative to 
-		a team (+ means they are projected to lose; minus indicates projected victory). So this basic script takes 
-		in entry of the home and away teams, the over/under, and the victory margin (w/respect to the home team). It then 
-		calculates/outputs the approximate final score and indicates the projected winner. It is normal to get x.5s for answers. This is 
-		exactly due to it cannot be the final score, which would preventstie situations.
-<br><pre class="box"># "What's the Over and Under?"
+			<button class="BTN" onclick=showhide("scriptOVERUNDER","expOVERUNDER")><span id="expOVERUNDER">+</span><i>&nbsp;&nbsp;&nbsp;</i>
+			Sports Score Projections via Vegas Lines</button>
+			<div id="scriptOVERUNDER" style="display:none;text-align:justify;"><br>
+				Experts release sports-betting lines for games and give 
+				1) a projected accumulated total of points between the teams (the "over/under"), and 2) a projected margin of victory relative to 
+				a team (+ means they are projected to lose; minus indicates projected victory). So this basic script takes 
+				in entry of the home and away teams, the over/under, and the victory margin (w/respect to the home team). It then 
+				calculates/outputs the approximate final score and indicates the projected winner. It is normal to get x.5s for answers. This is 
+				exactly due to it cannot be the final score, which would preventstie situations.
+				<br><pre class="box"># "What's the Over and Under?"
 
 away = str(input("Enter the Away Team's name: "))   # Asks for Away Team Name
 home = str(input("Enter the Home Team's name: "))   # Asks for the Home Team Name
@@ -439,14 +442,15 @@ else:
     team_win = home # If they are favored, they'll have a minus number beside them
 
 print("The final score is projected to be {} - {}, in favor of {}".format(win,lose,team_win))
-</pre></div><br><br>
+				</pre>
+			</div><br><br>
 
-	<button class="BTN" onclick=showhide("scriptQUIZ","expQUIZ")><span id="expQUIZ">+</span><i>&nbsp;&nbsp;&nbsp;</i>
-	Rudimentary Math Quiz</button>
-	<div id="scriptQUIZ" style="display:none;"><br>
-		This programming gives you a math quiz. I included choices for the quantity of questions you want on your quiz. It then gives you 
-		random +/-/*/div problems. At the end, it gives a grade. I programmed it so you shouldn't need a calculator.
-<br><pre class="box" style="height:45%;"># MATH QUIZ
+			<button class="BTN" onclick=showhide("scriptQUIZ","expQUIZ")><span id="expQUIZ">+</span><i>&nbsp;&nbsp;&nbsp;</i>
+			Rudimentary Math Quiz</button>
+			<div id="scriptQUIZ" style="display:none;text-align:justify;"><br>
+				This programming gives you a math quiz. I included choices for the quantity of questions you want on your quiz. It then gives you 
+				random +/-/*/div problems. At the end, it gives a grade. I programmed it so you shouldn't need a calculator.
+				<br><pre class="box" style="height:45%;"># MATH QUIZ
 # The program selects random integers and quizzes the user
 import random   # Imports random function
 
@@ -537,14 +541,15 @@ while choice == 'y' or choice == 'Y':
         right = 0
 
 print("\nTHANK YOU FOR TAKING THE MATH QUIZ !!!")
-</pre></div><br><br>
+				</pre>
+			</div><br><br>
 
-	<button class="BTN" onclick=showhide("scriptCONV","expCONV")><span id="expCONV">+</span><i>&nbsp;&nbsp;&nbsp;</i>
-	Integer List Conversion</button>
-	<div id="scriptCONV" style="display:none;"><br>
-	This script illustrates how you can quickly create a large array of numbers then convert them each to string. Not sure how useful it 
-	could be to you, as there are ways that you can simply avoid needing this, but at the time I needed it.
-<br><pre class="box"># This shows a quick way to define a list of a range of numbers (years, in this case),
+			<button class="BTN" onclick=showhide("scriptCONV","expCONV")><span id="expCONV">+</span><i>&nbsp;&nbsp;&nbsp;</i>
+			Integer List Conversion</button>
+			<div id="scriptCONV" style="display:none;text-align:justify;"><br>
+			This script illustrates how you can quickly create a large array of numbers then convert them each to string. Not sure how useful it 
+			could be to you, as there are ways that you can simply avoid needing this, but at the time I needed it.
+				<br><pre class="box"># This shows a quick way to define a list of a range of numbers (years, in this case),
 #     then creates it in string format
 
 def int_to_str(integer):    # Takes an integer, returns it in string format
@@ -557,15 +562,16 @@ for each in yr_setup:   # It will go according to the number of indexes in the l
     yr_str.append(int_to_str(each))    # Converts to string, appends it to the new list
 
 print(yr_list)
-</pre></div><br><br>
+				</pre>
+			</div><br><br>
 
-	<button class="BTN" onclick=showhide("scriptSTAR","expSTAR")><span id="expSTAR">+</span><i>&nbsp;&nbsp;&nbsp;</i>
-	CSS Star-Field Generator</button>
-	<div id="scriptSTAR" style="display:none;"><br>
-	I wrote this in Python for use in an HTML/CSS/Javascript project I was working on. It produces a random star field. You can modify 
-	their quantities, sizes and spatial limits. I hope it helps you out. Read the instructions and look over/adjust the predefined 
-	variables.
-<br><pre class="box" style="height:45%;"># CSS STAR-FIELD GENERATOR
+			<button class="BTN" onclick=showhide("scriptSTAR","expSTAR")><span id="expSTAR">+</span><i>&nbsp;&nbsp;&nbsp;</i>
+			CSS Star-Field Generator</button>
+			<div id="scriptSTAR" style="display:none;text-align:justify;"><br>
+				I wrote this in Python for use in an HTML/CSS/Javascript project I was working on. It produces a random star field. You can modify 
+				their quantities, sizes and spatial limits. I hope it helps you out. Read the instructions and look over/adjust the predefined 
+				variables.
+				<br><pre class="box" style="height:45%;"># CSS STAR-FIELD GENERATOR
 # Code by Kyle Gentry (online handle: ksgwxfan)
 # Feel free to implement in a project, modify, and/or improve as needed
 # I'd appreciate credit (in your code or source) if it is some use to you in your project
@@ -599,18 +605,19 @@ for every_star in range(0,celestials+1):
     
     print(line_start + xpos + "% " + ypos + "%, rgba(" + rgcolor + "," + rgcolor + ",255," + opacity + ") " + size + "%, " \
           + "rgba(255,255,255,0) " + glow + "%" + line_end)
-</pre></div><br><br>
+				</pre>
+			</div><br><br>
 
-	<button class="BTN" onclick=showhide("scriptPENNRAP","expPENNRAP")><span id="expPENNRAP">+</span><i>&nbsp;&nbsp;&nbsp;</i>
-	PSU e-Wall RAP Downloader</button>
-	<div id="scriptPENNRAP" style="display:none;"><br>
-	Similarly to the SPC, Penn St. archives basic hourly RAP data. The advantage is that the output is delivered in their fabled 4-Panel 
-	layout. There aren't countless variables it gives to look at, but it is excellent to analyze the synoptic situation of the atmosphere. 
-	It also eliminates the need of overlays. So instead of creating a viewer, when the files are saved, they have their own unique filename.
-	Viewing is simply done in your favorite slideshow viewer (Windows has a great one; cycling through the images with just arrow keys). 
-	The idea with this is that it enables you to quickly assess the synoptic situation of a past event or pre-cursor to one. *NOTE: Be sure 
-	to put this script in its own folder
-<br><pre class="box" style="height:45%;"># This script downloads from the PSU e-Wall 4-Panel RAP archive - Retrieves the f00 data
+			<button class="BTN" onclick=showhide("scriptPENNRAP","expPENNRAP")><span id="expPENNRAP">+</span><i>&nbsp;&nbsp;&nbsp;</i>
+			PSU e-Wall RAP Downloader</button>
+			<div id="scriptPENNRAP" style="display:none;text-align:justify;"><br>
+				Similarly to the SPC, Penn St. archives basic hourly RAP data. The advantage is that the output is delivered in their fabled 4-Panel 
+				layout. There aren't countless variables it gives to look at, but it is excellent to analyze the synoptic situation of the atmosphere. 
+				It also eliminates the need of overlays. So instead of creating a viewer, when the files are saved, they have their own unique filename.
+				Viewing is simply done in your favorite slideshow viewer (Windows has a great one; cycling through the images with just arrow keys). 
+				The idea with this is that it enables you to quickly assess the synoptic situation of a past event or pre-cursor to one. *NOTE: Be sure 
+				to put this script in its own folder
+				<br><pre class="box" style="height:45%;"># This script downloads from the PSU e-Wall 4-Panel RAP archive - Retrieves the f00 data
 import datetime
 import http.server
 import socketserver
@@ -645,95 +652,11 @@ while iterate &lt;= DATE_EN:
         download(directory,filename)
     iterate = iterate + datetime.timedelta(days=1)
     print(iterate)
-</pre></div><br><br>
-<!--			
-<span class="SCRIPTNAME">Enter Name Here</span> -
-<br><pre class="box">testing
-</pre><p>
--->
+				</pre>
+			</div><br><br>
 		</div>
 
-<!--
-<b><span style="color: #6aa84f; font-size: large;"><u>Radar Embed in Website - Non-Looping</u></span></b>&nbsp;- This uses the latest imagery from NWS. It does not loop. This is not Python Code. This uses the <b>HAniS</b> module. For it to work properly, you first need to&nbsp;<a href="http://www.ssec.wisc.edu/hanis/" target="_blank">go here</a> to download the HAniS code (search the page for download), then you need to upload the '<b>hanis_min.js</b>' file onto your server, and make sure the path to it jives with where you uploaded it. Then open the html file. To customize the radar site, find your radar site ID, then search for '<b>FCX</b>' and <a href="http://www.weather.gov/jetstream/ridge_download" target="_blank">replace that with your site of choice</a>.
-
-<b><span style="color: #e69138;">*** To run it locally (from your hard-drive), most likely you'll need to: 1)Put the html code and hanis_min.js file in a directory of your choice; 2)In your browser, go to the directory that it mentions in the code (it will tell you); 3)Click on your html file! If it doesn't work, you may need to run a <a href="https://www.ssec.wisc.edu/hanis/local.html" target="_blank">temporary local HTTP server</a> first (makes your browser think that your hard-drive is the internet) ***</span></b>
-<pre style="background-color: #17202a; border: 1px dashed #999999; color: black; font-family: &quot;andale mono&quot; , &quot;lucida console&quot; , &quot;monaco&quot; , &quot;fixed&quot; , monospace; font-size: 12px; height: 200px; line-height: 14px; overflow: auto; padding: 5px; width: 100%;"><code style="color: #aed6f1; font-weight: bold; word-wrap: normal;">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-  &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;
-  &lt;meta http-equiv="X-UA-Compatible" content="IE=Edge"/&gt;
-  &lt;title&gt;RADAR TEST&lt;/title&gt;
-  &lt;script type="text/javascript" src="./hanis_min.js"&gt; &lt;/script&gt;
-&lt;/head&gt;
-
-&lt;body style="width:800px;" onload="HAniS.setup('controls=zoom, annotate, autorefresh \n controls_style=padding:5px;background-color:black; \n controls_tooltip = Zoom/Pan, Mark, Auto-Refresh \n auto_refresh = 3 \n buttons_style=font-weight:bold;margin-left:8px; \n background_static=y \n filenames=https://radar.weather.gov/ridge/Overlays/County/Short/FCX_County_Short.gif \n overlay_labels=Base Reflectivity (Z)/on, Base Velocity (V), Storm-Relative Velocity (SRV), /1-Hr Total Precip (1HP), Storm-Total Precip (STP), Warnings/on, Cities, /Z/hidden, V/hidden, SRV/hidden, 1HP/hidden, STP/hidden \n bottom_controls=overlay \n overlay_filenames=https://radar.weather.gov/ridge/RadarImg/N0R/FCX_N0R_0.gif, https://radar.weather.gov/ridge/RadarImg/N0V/FCX_N0V_0.gif, https://radar.weather.gov/ridge/RadarImg/N0S/FCX_N0S_0.gif, https://radar.weather.gov/ridge/RadarImg/N1P/FCX_N1P_0.gif, https://radar.weather.gov/ridge/RadarImg/NTP/FCX_NTP_0.gif, https://radar.weather.gov/ridge/Warnings/Short/FCX_Warnings_0.gif, https://radar.weather.gov/ridge/Overlays/Cities/Short/FCX_City_Short.gif, https://radar.weather.gov/ridge/Legend/N0R/FCX_N0R_Legend_0.gif, https://radar.weather.gov/ridge/Legend/N0V/FCX_N0V_Legend_0.gif, https://radar.weather.gov/ridge/Legend/N0S/FCX_N0S_Legend_0.gif, https://radar.weather.gov/ridge/Legend/N1P/FCX_N1P_Legend_0.gif, https://radar.weather.gov/ridge/Legend/NTP/FCX_NTP_Legend_0.gif \n overlay_links=1,2,3,4,5,0,0,-1,-2,-3,-4,-5 \n overlay_zoom=y,y,y,y,y,y,y,n,n,n,n,n \n overlay_static=n,n,n,n,n,n,y,n,n,n,n,n \n overlay_labels_style=font-family:arial;color:white;font-size:14px;padding:2px;background-color:black;','handiv')"&gt;
-
-  &lt;div id="handiv" style="width:600px;background-color:black;"&gt;&lt;/div&gt;
-&lt;font size=-2&gt;* DISCLAIMER: This display is presented as a courtesy and data therein should not be used in any critical decision-making, especially in possible life-or-death situations.&lt;br&gt;&lt;a href="http://www.ssec.wisc.edu/hanis/"&gt;HAniS Script&lt;/a&gt; - Copyright© 2014-2017 by StormQuest Technologies and Tom Whittaker&lt;/font&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-<div class="separator" style="clear: both; text-align: center;">
-<a href="https://3.bp.blogspot.com/-lKOQZ15AXS4/Wm8SVA4Qx7I/AAAAAAAABfw/Qszw-xrQavsyg8XPjLoMh5JEPO52GfT2QCLcBGAs/s1600/radar_sample.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="321" data-original-width="300" height="200" src="https://3.bp.blogspot.com/-lKOQZ15AXS4/Wm8SVA4Qx7I/AAAAAAAABfw/Qszw-xrQavsyg8XPjLoMh5JEPO52GfT2QCLcBGAs/s200/radar_sample.png" width="186" /></a></div>
-
-<hr />
-<b><u><span style="color: #6aa84f; font-size: large;">Radar Embed in Website - Looping</span></u></b> - Just like the above code, it uses the latest imagery from NWS, but the overlays aren't true overlays like above (as such, the background is white). The advantage though is they provide these in loop-friendly format. Same instructions above to run locally (if you wish) applies.
-<pre style="background-color: #17202a; border: 1px dashed #999999; color: black; font-family: &quot;andale mono&quot; , &quot;lucida console&quot; , &quot;monaco&quot; , &quot;fixed&quot; , monospace; font-size: 12px; height: 200px; line-height: 14px; overflow: auto; padding: 5px; width: 100%;"><code style="color: #aed6f1; font-weight: bold; word-wrap: normal;">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-  &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;
-  &lt;meta http-equiv="X-UA-Compatible" content="IE=Edge"/&gt;
-  &lt;title&gt;RADAR TEST 4&lt;/title&gt;
-  &lt;script type="text/javascript" src="./hanis_min.js"&gt; &lt;/script&gt;
-&lt;/head&gt;
-
-&lt;body style="width:800px;" onload="HAniS.setup('controls=startstop, first, step, last, zoom, annotate, autorefresh \n controls_style=padding:5px;background-color:black; \n controls_tooltip = Start/Stop, Oldest Frame, Previous/Next, Newest Frame, Zoom/Pan, Draw, Auto-Refresh(3-min) \n auto_refresh = 3 \n buttons_style=font-weight:bold;margin-left:5px; \n start_looping = false,8 \n filenames=https://radar.weather.gov/ridge/Overlays/County/Short/FCX_County_Short.gif,https://radar.weather.gov/ridge/Overlays/County/Short/FCX_County_Short.gif,https://radar.weather.gov/ridge/Overlays/County/Short/FCX_County_Short.gif,https://radar.weather.gov/ridge/Overlays/County/Short/FCX_County_Short.gif,https://radar.weather.gov/ridge/Overlays/County/Short/FCX_County_Short.gif,https://radar.weather.gov/ridge/Overlays/County/Short/FCX_County_Short.gif,https://radar.weather.gov/ridge/Overlays/County/Short/FCX_County_Short.gif,https://radar.weather.gov/ridge/Overlays/County/Short/FCX_County_Short.gif \n bottom_controls=overlay \n overlay_filenames=https://radar.weather.gov/lite/N0R/FCX_7.png &amp; https://radar.weather.gov/lite/N0R/FCX_6.png &amp; https://radar.weather.gov/lite/N0R/FCX_5.png &amp; https://radar.weather.gov/lite/N0R/FCX_4.png &amp; https://radar.weather.gov/lite/N0R/FCX_3.png &amp; https://radar.weather.gov/lite/N0R/FCX_2.png &amp; https://radar.weather.gov/lite/N0R/FCX_1.png &amp; https://radar.weather.gov/lite/N0R/FCX_0.png,https://radar.weather.gov/lite/N0V/FCX_7.png &amp; https://radar.weather.gov/lite/N0V/FCX_6.png &amp; https://radar.weather.gov/lite/N0V/FCX_5.png &amp; https://radar.weather.gov/lite/N0V/FCX_4.png &amp; https://radar.weather.gov/lite/N0V/FCX_3.png &amp; https://radar.weather.gov/lite/N0V/FCX_2.png &amp; https://radar.weather.gov/lite/N0V/FCX_1.png &amp; https://radar.weather.gov/lite/N0V/FCX_0.png,https://radar.weather.gov/lite/N0S/FCX_7.png &amp; https://radar.weather.gov/lite/N0S/FCX_6.png &amp; https://radar.weather.gov/lite/N0S/FCX_5.png &amp; https://radar.weather.gov/lite/N0S/FCX_4.png &amp; https://radar.weather.gov/lite/N0S/FCX_3.png &amp; https://radar.weather.gov/lite/N0S/FCX_2.png &amp; https://radar.weather.gov/lite/N0S/FCX_1.png &amp; https://radar.weather.gov/lite/N0S/FCX_0.png,https://radar.weather.gov/lite/N1P/FCX_7.png &amp; https://radar.weather.gov/lite/N1P/FCX_6.png &amp; https://radar.weather.gov/lite/N1P/FCX_5.png &amp; https://radar.weather.gov/lite/N1P/FCX_4.png &amp; https://radar.weather.gov/lite/N1P/FCX_3.png &amp; https://radar.weather.gov/lite/N1P/FCX_2.png &amp; https://radar.weather.gov/lite/N1P/FCX_1.png &amp; https://radar.weather.gov/lite/N1P/FCX_0.png,https://radar.weather.gov/lite/NTP/FCX_7.png &amp; https://radar.weather.gov/lite/NTP/FCX_6.png &amp; https://radar.weather.gov/lite/NTP/FCX_5.png &amp; https://radar.weather.gov/lite/NTP/FCX_4.png &amp; https://radar.weather.gov/lite/NTP/FCX_3.png &amp; https://radar.weather.gov/lite/N1P/FCX_2.png &amp; https://radar.weather.gov/lite/NTP/FCX_1.png &amp; https://radar.weather.gov/lite/NTP/FCX_0.png \n overlay_labels=Base Reflectivity/on, Base (Radial) Velocity, Storm-Relative Veocity, /1-HR Precip, Storm-Total Precip \n overlay_labels_style=font-family:arial;color:white;font-size:14px;padding:2px;background-color:black; \n overlay_radio = true,true,true,true,true','handiv')"&gt;
-
-  &lt;div id="handiv" style="width:600px;background-color:black;"&gt;&lt;/div&gt;
-&lt;font size=-2&gt;* DISCLAIMER: This display is presented as a courtesy and data therein should not be used in any critical decision-making, especially in possible life-or-death situations.&lt;br&gt;&lt;a href="http://www.ssec.wisc.edu/hanis/"&gt;HAniS Script&lt;/a&gt; - Copyright© 2014-2017 by StormQuest Technologies and Tom Whittaker&lt;/font&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-<hr />
-<span style="color: #6aa84f; font-size: large;"><b><u>CSS Star Field Generator</u></b></span> - I wrote this in Python for use in an HTML/CSS/Javascript project I was working on. It produces a random star field. You can modify their quantities sizes and spatial limits. I hope it helps you out. Read the instructions and look over/adjust the predefined variables.
-<pre style="background-color: #17202a; border: 1px dashed #999999; color: black; font-family: &quot;andale mono&quot; , &quot;lucida console&quot; , &quot;monaco&quot; , &quot;fixed&quot; , monospace; font-size: 12px; height: 200px; line-height: 14px; overflow: auto; padding: 5px; width: 100%;"><code style="color: #aed6f1; font-weight: bold; word-wrap: normal;">import random
-
-# CSS STAR-FIELD GENERATOR
-# Code by Kyle Gentry (online handle: ksgwxfan)
-# Feel free to implement in a project, modify, and/or improve as needed
-# I'd appreciate credit (in your code or source) if it is some use to you in your project
-
-# WHAT IT DOES: Outputs code for a star-field for use in CSS projects by generating x-number of
-# radial gradients (the stars)
-# INSTRUCTIONS: Tweak the predefined variables for your liking; Copy/paste the code into your style sheet
-
-# CONSTANTS FOR THE FIELD
-line_start = "radial-gradient(circle at "   # START each line with this
-line_end = "), /*Star*/"                   # END each line with this
-
-# PRE-DEFINED VARIABLES
-celestials = 70        # Total number of stars in the starfield
-min_opa = .35           # Minimum Opacity (0 &lt;= value &lt;= 1)
-max_opa = .65           # Maximum Opacity (0 &lt;= value &lt;= 1)
-minrg = 200             # Will determine the minimum red and green values for each star
-max_star_size = 0.25     # Largest Star Size (in percent)
-max_star_glow = 1.5       # Widest Glow Expanse (in percent)
-max_x = 100             # Maximum X Position (in percent)
-max_y = 86              # Maximum Y Position (in percent)
-
-for every_star in range(0,celestials+1):
-    # Generate random variables for each star
-    opacity = str(round(random.triangular(min_opa,max_opa),2))                       # Determine Star Brightness
-    size = str(round(random.triangular(0.01,max_star_size),2))                 # SIZE
-    glow = str(round(random.triangular(max_star_size,max_star_glow),2))     # GLOW
-    rgcolor = str(round(random.randint(minrg,255+1),2))                     # Red-Green Brightness
-    xpos = str(round(random.randint(0,max_x+1),2))                          # X Position
-    ypos = str(round(random.randint(0,max_y+1),2))                          # Y Position
-    
-    print(line_start + xpos + "% " + ypos + "%, rgba(" + rgcolor + "," + rgcolor + ",255," + opacity + ") " + size + "%, " \
-          + "rgba(255,255,255,0) " + glow + "%" + line_end)</code></pre>
-<hr />
-		
--->
-		<center><iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe></center>
+		<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
 		<script>
 		// Script Idea from W3 Schools https://www.w3schools.com/howto/howto_js_toggle_hide_show.asp
 		function showhide(sname,exp) {
