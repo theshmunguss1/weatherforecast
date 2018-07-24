@@ -3,13 +3,16 @@
 	<base href="../">
 	<title>ksgwxfan - Fortune-Pool Ball</title>
 	<style>
+		.QUES {
+			margin:auto;
+			text-align: center;
+			}
 		.ASK_AWAY {
 			position: relative;
 			width: 100%;
 			height: 85%;
 			font-family: arial;
 			background-color: transparent;
-			display: inline-block;
 			}
 
 		.QUES_REPEAT {
@@ -17,7 +20,6 @@
 			font-weight: bold;
 			font-size: 32px;
 			text-decoration: underline;
-			display: inline-block;
 			}
 	
 		.BALL {
@@ -26,7 +28,6 @@
 			left:50%;
 			transform: translate(-50%,-50%);
 			text-align: center;
-			display: inline-block;
 			}
 
 		.RESP {
@@ -40,25 +41,30 @@
 			text-align: center;
 			font-size: 21;
 			color: white;
-			display: inline-block;
+			}
+		.DESC {
+			margin: auto;
+			color: white;
+			width: 85%;
 			}
 	</style>
 </head>
 <body style="background: linear-gradient(white -25%,#141414 78%)" link="lightBlue" vlink="lightBlue">
-<center>
-Submit a fortune-based question to the inanimate, virtual, and randomized-response object below:<p>
-<input style="width:450px;" type="text" id="question" maxlength="70"></input>
-<button id="submit" onclick=ask(document.getElementById("question").value)>SHAKE!</button><br>
+<div class="QUES">
+	<b>Submit a fortune-based question to the inanimate, virtual, and randomized-response object below:</b><p>
+	<input style="width:450px;" type="text" id="question" maxlength="70"></input>
+	<button id="submit" onclick=ask(document.getElementById("question").value)>SHAKE!</button><br>
+</div>
 <div id="ask_away" class="ASK_AWAY">
 	<div id="ques_repeat" class="QUES_REPEAT"> ? </div>
 	<div id="ball" class="BALL"><img src="fortuneball/8ball.png">
 	<div id="resp" class="RESP"></div>
 	</div>
 </div>
-<div id="description" style="color:white;width:70%;">
+<div id="description" class="DESC">
 This was my first Javascript/CSS project. It was a rude awakening to find that timing functions worked completely different in javascript than Python. 
-That said, I was able to figure a workaround out. The ball is a sprite image I created. Contact me if you want to use a portion of the code somehow and 
-I'll get you the easier-to-read javascript source. No copyright infringement of the owners of the Magic 8-ball is intended.<p>
+That said, I was able to figure a workaround out. The ball is a sprite image I created. <br><br>
+* Disclaimer of Use: Feel free to use as you wish (attribution is appreciated but not required)! No copyright infringement of the owners of the Magic 8-ball is intended.<p>
 </div>
 <iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
 </center>
