@@ -19,7 +19,7 @@
 			.MAIN {
 				position: relative;
 				width: 1000px;
-				height: 550px;
+				height: 650px;
 				margin: auto;
 				font-family: arial;
 				border: 4px solid black;
@@ -39,7 +39,6 @@
 			.DAYNAME {
 				position: absolute;
 				width: 100%;
-				height: 13%;
 				background: linear-gradient(to right, white, rgba(255,255,255,.3));
 				border-top-left-radius: 8px;
 				color: black;
@@ -52,7 +51,7 @@
 				transform: translate(-50%,-50%);
 				top: 36%;
 				left: 50%;
-				width: 98%;
+				width: 100%;
 				}
 			.DESC {
 				position: absolute;
@@ -96,7 +95,7 @@
 				background-size: 100% 10%, 100%;
 				bottom: 3%;
 				left: 1%;
-				border-radius: 3px;
+				border-radius: 3px;				
 				}
 			.TITLE {
 				position: absolute;
@@ -138,12 +137,12 @@
 	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue">
 		<div class="HEADER">
 			<img class="HEADERPHOTO" src="profile.png"> <u>5-Day Forecast Generator</u>
-		</div><p>
+		</div><br><br>
 
 		<div class="MAIN" id="canvas">
 			<div class="DAYBLOCK" style="left:0.5%;">
 				<div class="DAYNAME" id="name1">MON</div>
-				<img class="SKYCON" id="sky1" src="5day/sun_clr.svg">
+				<img class="SKYCON" id="sky1" src="5day/sky_sun_clr.svg">
 				<img class="DESC" id="desc1" src="5day/desc_windy.svg">
 				<div class="PERC" id="perc1"></div>
 				<div class="HI" id="hi1">66</div>
@@ -151,7 +150,7 @@
 			</div>
 			<div class="DAYBLOCK" style="left:20.5%;">
 				<div class="DAYNAME" id="name2">TUE</div>
-				<img class="SKYCON" id="sky2" src="5day/sun_clr.svg">
+				<img class="SKYCON" id="sky2" src="5day/sky_sun_clr.svg">
 				<img class="DESC" id="desc2" src="5day/desc_windy.svg">
 				<div class="PERC" id="perc2"></div>
 				<div class="HI" id="hi2">74</div>
@@ -159,7 +158,7 @@
 			</div>
 			<div class="DAYBLOCK" style="left:40.5%;">
 				<div class="DAYNAME" id="name3">WED</div>
-				<img class="SKYCON" id="sky3" src="5day/sun_clr.svg">
+				<img class="SKYCON" id="sky3" src="5day/sky_sun_clr.svg">
 				<img class="DESC" id="desc3" src="5day/desc_windy.svg">
 				<div class="PERC" id="perc3"></div>
 				<div class="HI" id="hi3">68</div>
@@ -167,7 +166,7 @@
 			</div>
 			<div class="DAYBLOCK" style="left:60.5%;">
 				<div class="DAYNAME" id="name4">THU</div>
-				<img class="SKYCON" id="sky4" src="5day/sun_clr.svg">
+				<img class="SKYCON" id="sky4" src="5day/sky_sun_clr.svg">
 				<img class="DESC" id="desc4" src="5day/desc_windy.svg">
 				<div class="PERC" id="perc4"></div>
 				<div class="HI" id="hi4">61</div>
@@ -175,19 +174,19 @@
 			</div>
 			<div class="DAYBLOCK" style="left:80.5%;">
 				<div class="DAYNAME" id="name5">FRI</div>
-				<img class="SKYCON" id="sky5" src="5day/sun_clr.svg">
+				<img class="SKYCON" id="sky5" src="5day/sky_sun_clr.svg">
 				<img class="DESC" id="desc5" src="5day/desc_windy.svg">
 				<div class="PERC" id="perc5"></div>
 				<div class="HI" id="hi5">58</div>
 				<div class="LO" id="lo5">48</div>
 			</div>
-			<div class="TITLEBOX"><img style="position:absolute;top:-3%;left:.5%;width:9%;" src="5day/astormyhaze_logo.svg">
+			<div class="TITLEBOX"><img style="position:absolute;width:9%;top:45%;left:0.5%;transform:translate(0%,-50%);" src="5day/astormyhaze_logo.svg">
 				<div class="TITLE">5-Day Forecast for <span id="cityn">CITY NAME</span></div>
 			</div>
 		</div>
 		<!-- MODIFIERS -->
 		<div id="Modify" style="width:90%;margin:auto;position:relative;text-align:center;">
-			<p><b><u>Modify Your 5-Day Below:</u></b>
+			<br><br><b><u>Modify Your 5-Day Below:</u></b>
 			<div id="univopts" style="border-bottom: 2px solid white;padding-bottom:10px;">
 				Insert City Name:
 				<input style="width:160px;" maxlength="23" placeholder=" *** 23 max characters " id="citybox"> 
@@ -218,22 +217,22 @@
 			</div>
 			<div id="dayopts" style="padding-top:5px;height:55%;">
 				<div class="DAYMOD" id="day1" style="left:0%;">
-					<b><u>DAY 1</b></u><p>
+					<b><u>DAY 1</b></u><br><br>
 					Sky Condition:<br>
 					<select class="SKYBOX" id="skyselect1" onChange=sky_select("sky1",document.getElementById("skyselect1").value)>
-						<option value="5day/sun_clr.svg" selected>Sunny</option>
-						<option value="5day/sun_mostly.svg">Mostly Sunny</option>
-						<option value="5day/sun_partly.svg">Partly Sunny / Partly Cloudy</option>
-						<option value="5day/cloudy_mostly.svg">Mostly Cloudy</option>
-						<option value="5day/cloudy_overcast.svg">Cloudy / Overcast</option>
-						<option value="5day/cloudy_rain.svg">Rain</option>
-						<option value="5day/cloudy_rain_catsdogs.svg">Rain - Cats and Dogs</option>
-						<option value="5day/cloudy_tstorm.svg">Thunderstorms</option>
-						<option value="5day/hurricane.svg">Hurricane Conditions</option>
-						<option value="5day/cloudy_snow.svg">Snow</option>
-						<option value="5day/cloudy_snra.svg">Snow / Rain</option>
-						<option value="5day/cloudy_wintrymix.svg">Wintry Mix</option>
-					</select><p>
+						<option value="5day/sky_sun_clr.svg" selected>Sunny</option>
+						<option value="5day/sky_sun_mostly.svg">Mostly Sunny</option>
+						<option value="5day/sky_sun_partly.svg">Partly Sunny / Partly Cloudy</option>
+						<option value="5day/sky_cloudy_mostly.svg">Mostly Cloudy</option>
+						<option value="5day/sky_cloudy_overcast.svg">Cloudy / Overcast</option>
+						<option value="5day/sky_cloudy_rain.svg">Rain</option>
+						<option value="5day/sky_cloudy_rain_catsdogs.svg">Rain - Cats and Dogs</option>
+						<option value="5day/sky_cloudy_tstorm.svg">Thunderstorms</option>
+						<option value="5day/sky_hurricane.svg">Hurricane Conditions</option>
+						<option value="5day/sky_cloudy_snow.svg">Snow</option>
+						<option value="5day/sky_cloudy_snra.svg">Snow / Rain</option>
+						<option value="5day/sky_cloudy_wintrymix.svg">Wintry Mix</option>
+					</select><br><br>
 					Forecast Descriptor:<br>
 					<select class="DESCBOX" id="descselect1" onChange=desc_select("desc1",document.getElementById("descselect1").value)>
 						<option value="NONE" selected>Blank / None</option>
@@ -253,7 +252,7 @@
 						<option value="5day/desc_AM.svg">AM (%)</option>
 						<option value="5day/desc_PM.svg">PM (%)</option>
 						<option value="5day/desc_NIGHT.svg">Overnight (%)</option>
-					</select><p>
+					</select><br><br>
 					<div id="percentcontainer1">
 					Percent Box (Optional):
 					<select id="percentbox1" onChange=perc("perc1",document.getElementById("percentbox1").value)>
@@ -267,31 +266,31 @@
 						<option value="80%">80%</option>
 						<option value="90%">90%</option>
 						<option value="100%">100%</option>
-					</select></div><p>
+					</select></div><br><br>
 					High Temperature:<br>
 					<input class="TEMPINSERT" maxlength="3" value="66" id="tmax1"></input>
-					<button onclick=change_temp("hi1",document.getElementById("tmax1").value)>Change TMAX</button><p>
+					<button onclick=change_temp("hi1",document.getElementById("tmax1").value)>Change TMAX</button><br><br>
 					Low (Morning) Temperature:<br>
 					<input class="TEMPINSERT" maxlength="3" value="55" id="tmin1"></input>
-					<button onclick=change_temp("lo1",document.getElementById("tmin1").value)>Change TMIN</button><p>
+					<button onclick=change_temp("lo1",document.getElementById("tmin1").value)>Change TMIN</button><br><br>
 				</div>
 				<div class="DAYMOD" id="day2" style="left:20%;">
-					<b><u>DAY 2</b></u><p>
+					<b><u>DAY 2</b></u><br><br>
 					Sky Condition:<br>
 					<select class="SKYBOX" id="skyselect2" onChange=sky_select("sky2",document.getElementById("skyselect2").value)>
-						<option value="5day/sun_clr.svg" selected>Sunny</option>
-						<option value="5day/sun_mostly.svg">Mostly Sunny</option>
-						<option value="5day/sun_partly.svg">Partly Sunny / Partly Cloudy</option>
-						<option value="5day/cloudy_mostly.svg">Mostly Cloudy</option>
-						<option value="5day/cloudy_overcast.svg">Cloudy / Overcast</option>
-						<option value="5day/cloudy_rain.svg">Rain</option>
-						<option value="5day/cloudy_rain_catsdogs.svg">Rain - Cats and Dogs</option>
-						<option value="5day/cloudy_tstorm.svg">Thunderstorms</option>
-						<option value="5day/hurricane.svg">Hurricane Conditions</option>
-						<option value="5day/cloudy_snow.svg">Snow</option>
-						<option value="5day/cloudy_snra.svg">Snow / Rain</option>
-						<option value="5day/cloudy_wintrymix.svg">Wintry Mix</option>
-					</select><p>
+						<option value="5day/sky_sun_clr.svg" selected>Sunny</option>
+						<option value="5day/sky_sun_mostly.svg">Mostly Sunny</option>
+						<option value="5day/sky_sun_partly.svg">Partly Sunny / Partly Cloudy</option>
+						<option value="5day/sky_cloudy_mostly.svg">Mostly Cloudy</option>
+						<option value="5day/sky_cloudy_overcast.svg">Cloudy / Overcast</option>
+						<option value="5day/sky_cloudy_rain.svg">Rain</option>
+						<option value="5day/sky_cloudy_rain_catsdogs.svg">Rain - Cats and Dogs</option>
+						<option value="5day/sky_cloudy_tstorm.svg">Thunderstorms</option>
+						<option value="5day/sky_hurricane.svg">Hurricane Conditions</option>
+						<option value="5day/sky_cloudy_snow.svg">Snow</option>
+						<option value="5day/sky_cloudy_snra.svg">Snow / Rain</option>
+						<option value="5day/sky_cloudy_wintrymix.svg">Wintry Mix</option>
+					</select><br><br>
 					Forecast Descriptor:<br>
 					<select class="DESCBOX" id="descselect2" onChange=desc_select("desc2",document.getElementById("descselect2").value)>
 						<option value="NONE" selected>Blank / None</option>
@@ -311,7 +310,7 @@
 						<option value="5day/desc_AM.svg">AM (%)</option>
 						<option value="5day/desc_PM.svg">PM (%)</option>
 						<option value="5day/desc_NIGHT.svg">Overnight (%)</option>
-					</select><p>
+					</select><br><br>
 					<div id="percentcontainer2">
 					Percent Box (Optional):
 					<select id="percentbox2" onChange=perc("perc2",document.getElementById("percentbox2").value)>
@@ -325,31 +324,31 @@
 						<option value="80%">80%</option>
 						<option value="90%">90%</option>
 						<option value="100%">100%</option>
-					</select></div><p>
+					</select></div><br><br>
 					High Temperature:<br>
 					<input class="TEMPINSERT" maxlength="3" value="74" id="tmax2"></input>
-					<button onclick=change_temp("hi2",document.getElementById("tmax2").value)>Change TMAX</button><p>
+					<button onclick=change_temp("hi2",document.getElementById("tmax2").value)>Change TMAX</button><br><br>
 					Low (Morning) Temperature:<br>
 					<input class="TEMPINSERT" maxlength="3" value="55" id="tmin2"></input>
-					<button onclick=change_temp("lo2",document.getElementById("tmin2").value)>Change TMIN</button><p>
+					<button onclick=change_temp("lo2",document.getElementById("tmin2").value)>Change TMIN</button><br><br>
 				</div>
 				<div class="DAYMOD" id="day3" style="left:40%;">
-					<b><u>DAY 3</b></u><p>
+					<b><u>DAY 3</b></u><br><br>
 					Sky Condition:<br>
 					<select class="SKYBOX" id="skyselect3" onChange=sky_select("sky3",document.getElementById("skyselect3").value)>
-						<option value="5day/sun_clr.svg" selected>Sunny</option>
-						<option value="5day/sun_mostly.svg">Mostly Sunny</option>
-						<option value="5day/sun_partly.svg">Partly Sunny / Partly Cloudy</option>
-						<option value="5day/cloudy_mostly.svg">Mostly Cloudy</option>
-						<option value="5day/cloudy_overcast.svg">Cloudy / Overcast</option>
-						<option value="5day/cloudy_rain.svg">Rain</option>
-						<option value="5day/cloudy_rain_catsdogs.svg">Rain - Cats and Dogs</option>
-						<option value="5day/cloudy_tstorm.svg">Thunderstorms</option>
-						<option value="5day/hurricane.svg">Hurricane Conditions</option>
-						<option value="5day/cloudy_snow.svg">Snow</option>
-						<option value="5day/cloudy_snra.svg">Snow / Rain</option>
-						<option value="5day/cloudy_wintrymix.svg">Wintry Mix</option>
-					</select><p>
+						<option value="5day/sky_sun_clr.svg" selected>Sunny</option>
+						<option value="5day/sky_sun_mostly.svg">Mostly Sunny</option>
+						<option value="5day/sky_sun_partly.svg">Partly Sunny / Partly Cloudy</option>
+						<option value="5day/sky_cloudy_mostly.svg">Mostly Cloudy</option>
+						<option value="5day/sky_cloudy_overcast.svg">Cloudy / Overcast</option>
+						<option value="5day/sky_cloudy_rain.svg">Rain</option>
+						<option value="5day/sky_cloudy_rain_catsdogs.svg">Rain - Cats and Dogs</option>
+						<option value="5day/sky_cloudy_tstorm.svg">Thunderstorms</option>
+						<option value="5day/sky_hurricane.svg">Hurricane Conditions</option>
+						<option value="5day/sky_cloudy_snow.svg">Snow</option>
+						<option value="5day/sky_cloudy_snra.svg">Snow / Rain</option>
+						<option value="5day/sky_cloudy_wintrymix.svg">Wintry Mix</option>
+					</select><br><br>
 					Forecast Descriptor:<br>
 					<select class="DESCBOX" id="descselect3" onChange=desc_select("desc3",document.getElementById("descselect3").value)>
 						<option value="NONE" selected>Blank / None</option>
@@ -369,7 +368,7 @@
 						<option value="5day/desc_AM.svg">AM (%)</option>
 						<option value="5day/desc_PM.svg">PM (%)</option>
 						<option value="5day/desc_NIGHT.svg">Overnight (%)</option>
-					</select><p>
+					</select><br><br>
 					<div id="percentcontainer3">
 					Percent Box (Optional):
 					<select id="percentbox3" onChange=perc("perc3",document.getElementById("percentbox3").value)>
@@ -383,31 +382,31 @@
 						<option value="80%">80%</option>
 						<option value="90%">90%</option>
 						<option value="100%">100%</option>
-					</select></div><p>
+					</select></div><br><br>
 					High Temperature:<br>
 					<input class="TEMPINSERT" maxlength="3" value="68" id="tmax3"></input>
-					<button onclick=change_temp("hi3",document.getElementById("tmax3").value)>Change TMAX</button><p>
+					<button onclick=change_temp("hi3",document.getElementById("tmax3").value)>Change TMAX</button><br><br>
 					Low (Morning) Temperature:<br>
 					<input class="TEMPINSERT" maxlength="3" value="51" id="tmin3"></input>
-					<button onclick=change_temp("lo3",document.getElementById("tmin3").value)>Change TMIN</button><p>
+					<button onclick=change_temp("lo3",document.getElementById("tmin3").value)>Change TMIN</button><br><br>
 				</div>
 				<div class="DAYMOD" id="day4" style="left:60%;">
-					<b><u>DAY 4</b></u><p>
+					<b><u>DAY 4</b></u><br><br>
 					Sky Condition:<br>
 					<select class="SKYBOX" id="skyselect4" onChange=sky_select("sky4",document.getElementById("skyselect4").value)>
-						<option value="5day/sun_clr.svg" selected>Sunny</option>
-						<option value="5day/sun_mostly.svg">Mostly Sunny</option>
-						<option value="5day/sun_partly.svg">Partly Sunny / Partly Cloudy</option>
-						<option value="5day/cloudy_mostly.svg">Mostly Cloudy</option>
-						<option value="5day/cloudy_overcast.svg">Cloudy / Overcast</option>
-						<option value="5day/cloudy_rain.svg">Rain</option>
-						<option value="5day/cloudy_rain_catsdogs.svg">Rain - Cats and Dogs</option>
-						<option value="5day/cloudy_tstorm.svg">Thunderstorms</option>
-						<option value="5day/hurricane.svg">Hurricane Conditions</option>
-						<option value="5day/cloudy_snow.svg">Snow</option>
-						<option value="5day/cloudy_snra.svg">Snow / Rain</option>
-						<option value="5day/cloudy_wintrymix.svg">Wintry Mix</option>
-					</select><p>
+						<option value="5day/sky_sun_clr.svg" selected>Sunny</option>
+						<option value="5day/sky_sun_mostly.svg">Mostly Sunny</option>
+						<option value="5day/sky_sun_partly.svg">Partly Sunny / Partly Cloudy</option>
+						<option value="5day/sky_cloudy_mostly.svg">Mostly Cloudy</option>
+						<option value="5day/sky_cloudy_overcast.svg">Cloudy / Overcast</option>
+						<option value="5day/sky_cloudy_rain.svg">Rain</option>
+						<option value="5day/sky_cloudy_rain_catsdogs.svg">Rain - Cats and Dogs</option>
+						<option value="5day/sky_cloudy_tstorm.svg">Thunderstorms</option>
+						<option value="5day/sky_hurricane.svg">Hurricane Conditions</option>
+						<option value="5day/sky_cloudy_snow.svg">Snow</option>
+						<option value="5day/sky_cloudy_snra.svg">Snow / Rain</option>
+						<option value="5day/sky_cloudy_wintrymix.svg">Wintry Mix</option>
+					</select><br><br>
 					Forecast Descriptor:<br>
 					<select class="DESCBOX" id="descselect4" onChange=desc_select("desc4",document.getElementById("descselect4").value)>
 						<option value="NONE" selected>Blank / None</option>
@@ -427,7 +426,7 @@
 						<option value="5day/desc_AM.svg">AM (%)</option>
 						<option value="5day/desc_PM.svg">PM (%)</option>
 						<option value="5day/desc_NIGHT.svg">Overnight (%)</option>
-					</select><p>
+					</select><br><br>
 					<div id="percentcontainer4">
 					Percent Box (Optional):
 					<select id="percentbox4" onChange=perc("perc4",document.getElementById("percentbox4").value)>
@@ -441,31 +440,31 @@
 						<option value="80%">80%</option>
 						<option value="90%">90%</option>
 						<option value="100%">100%</option>
-					</select></div><p>
+					</select></div><br><br>
 					High Temperature:<br>
 					<input class="TEMPINSERT" maxlength="3" value="61" id="tmax4"></input>
-					<button onclick=change_temp("hi4",document.getElementById("tmax4").value)>Change TMAX</button><p>
+					<button onclick=change_temp("hi4",document.getElementById("tmax4").value)>Change TMAX</button><br><br>
 					Low (Morning) Temperature:<br>
 					<input class="TEMPINSERT" maxlength="3" value="43" id="tmin4"></input>
-					<button onclick=change_temp("lo4",document.getElementById("tmin4").value)>Change TMIN</button><p>
+					<button onclick=change_temp("lo4",document.getElementById("tmin4").value)>Change TMIN</button><br><br>
 				</div>
 				<div class="DAYMOD" id="day5" style="left:80%;border-right:none;">
-					<b><u>DAY 5</b></u><p>
+					<b><u>DAY 5</b></u><br><br>
 					Sky Condition:<br>
 					<select class="SKYBOX" id="skyselect5" onChange=sky_select("sky5",document.getElementById("skyselect5").value)>
-						<option value="5day/sun_clr.svg" selected>Sunny</option>
-						<option value="5day/sun_mostly.svg">Mostly Sunny</option>
-						<option value="5day/sun_partly.svg">Partly Sunny / Partly Cloudy</option>
-						<option value="5day/cloudy_mostly.svg">Mostly Cloudy</option>
-						<option value="5day/cloudy_overcast.svg">Cloudy / Overcast</option>
-						<option value="5day/cloudy_rain.svg">Rain</option>
-						<option value="5day/cloudy_rain_catsdogs.svg">Rain - Cats and Dogs</option>
-						<option value="5day/cloudy_tstorm.svg">Thunderstorms</option>
-						<option value="5day/hurricane.svg">Hurricane Conditions</option>
-						<option value="5day/cloudy_snow.svg">Snow</option>
-						<option value="5day/cloudy_snra.svg">Snow / Rain</option>
-						<option value="5day/cloudy_wintrymix.svg">Wintry Mix</option>
-					</select><p>
+						<option value="5day/sky_sun_clr.svg" selected>Sunny</option>
+						<option value="5day/sky_sun_mostly.svg">Mostly Sunny</option>
+						<option value="5day/sky_sun_partly.svg">Partly Sunny / Partly Cloudy</option>
+						<option value="5day/sky_cloudy_mostly.svg">Mostly Cloudy</option>
+						<option value="5day/sky_cloudy_overcast.svg">Cloudy / Overcast</option>
+						<option value="5day/sky_cloudy_rain.svg">Rain</option>
+						<option value="5day/sky_cloudy_rain_catsdogs.svg">Rain - Cats and Dogs</option>
+						<option value="5day/sky_cloudy_tstorm.svg">Thunderstorms</option>
+						<option value="5day/sky_hurricane.svg">Hurricane Conditions</option>
+						<option value="5day/sky_cloudy_snow.svg">Snow</option>
+						<option value="5day/sky_cloudy_snra.svg">Snow / Rain</option>
+						<option value="5day/sky_cloudy_wintrymix.svg">Wintry Mix</option>
+					</select><br><br>
 					Forecast Descriptor:<br>
 					<select class="DESCBOX" id="descselect5" onChange=desc_select("desc5",document.getElementById("descselect5").value)>
 						<option value="NONE" selected>Blank / None</option>
@@ -485,7 +484,7 @@
 						<option value="5day/desc_AM.svg">AM (%)</option>
 						<option value="5day/desc_PM.svg">PM (%)</option>
 						<option value="5day/desc_NIGHT.svg">Overnight (%)</option>
-					</select><p>
+					</select><br><br>
 					<div id="percentcontainer5">
 					Percent Box (Optional):
 					<select id="percentbox5" onChange=perc("perc5",document.getElementById("percentbox5").value)>
@@ -499,13 +498,13 @@
 						<option value="80%">80%</option>
 						<option value="90%">90%</option>
 						<option value="100%">100%</option>
-					</select></div><p>
+					</select></div><br><br>
 					High Temperature:<br>
 					<input class="TEMPINSERT" maxlength="3" value="58" id="tmax5"></input>
-					<button onclick=change_temp("hi5",document.getElementById("tmax5").value)>Change TMAX</button><p>
+					<button onclick=change_temp("hi5",document.getElementById("tmax5").value)>Change TMAX</button><br><br>
 					Low (Morning) Temperature:<br>
 					<input class="TEMPINSERT" maxlength="3" value="48" id="tmin5"></input>
-					<button onclick=change_temp("lo5",document.getElementById("tmin5").value)>Change TMIN</button><p>
+					<button onclick=change_temp("lo5",document.getElementById("tmin5").value)>Change TMIN</button><br><br>
 				</div>
 			</div>
 		</div>
@@ -513,7 +512,7 @@
 			the City Name, Days, Background, Sky Conditions, Descriptors, and Temperature Modification. Currently, I don't know of a way to save a 
 			particular screen-shot of the forecast, but it is something I will look into in the future. For the mean time, simply use your "print screen" 
 			button to copy a total screen-shot to the virtual clipboard, then paste inside of a paint program to crop. Other options include a snipping 
-			tool or my favorite: <a href="http://getgreenshot.org/" target="_blank">Greenshot</a>.<p>
+			tool or my favorite: <a href="http://getgreenshot.org/" target="_blank">Greenshot</a>.<br><br>
 			
 			This took me a little while to make it work, but a lot of the time I was learning SVG's, creating the artwork, and fixing simple mental errors. 
 			Feel free to use this tool to make custom forecasts that you can share, silly or not. Great tool that parents can assist kids with to introduce 
@@ -521,7 +520,62 @@
 			Thanks for checking this project out!</div>
 		<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
 		<script>
-function change_city(e){document.getElementById("cityn").innerHTML=e}function day_select(e){document.getElementById("name1").innerHTML=e.substring(0,3),document.getElementById("name2").innerHTML=e.substring(3,6),document.getElementById("name3").innerHTML=e.substring(6,9),document.getElementById("name4").innerHTML=e.substring(9,12),document.getElementById("name5").innerHTML=e.substring(12,15)}function theme(e){document.getElementById("canvas").style.backgroundColor=e}function sky_select(e,t){document.getElementById(e).src=t}function desc_select(e,t){"NONE"==t?(document.getElementById(e).style.visibility="hidden",document.getElementById("perc"+e.substring(4)).style.transform="translate(-50%,-50%)",document.getElementById("perc"+e.substring(4)).style.left="55%",document.getElementById("perc"+e.substring(4)).style.top="62%",document.getElementById("perc"+e.substring(4)).style.right="auto"):(document.getElementById(e).src=t,document.getElementById(e).style.visibility="visible",document.getElementById("perc"+e.substring(4)).style.transform="none",document.getElementById("perc"+e.substring(4)).style.left="auto",document.getElementById("perc"+e.substring(4)).style.top="58%",document.getElementById("perc"+e.substring(4)).style.right="15%"),"NONE"==t||"5day/desc_AM.svg"==t||"5day/desc_PM.svg"==t||"5day/desc_NIGHT.svg"==t?document.getElementById("percentcontainer"+e.substring(4)).style.visibility="visible":(document.getElementById("percentcontainer"+e.substring(4)).style.visibility="hidden",document.getElementById("perc"+e.substring(4)).innerHTML="")}function perc(e,t){document.getElementById(e).innerHTML=t}function change_temp(e,t){"hi"==e.substring(0,2)&&parseInt(t)<0?document.getElementById(e).innerHTML=t.substr(1)+"-":document.getElementById(e).innerHTML=t}
+
+			function change_city(n) {document.getElementById("cityn").innerHTML = n;}
+
+			function day_select(dyofwk) {
+				// Prints the 3 characters corresponding to the proper day
+				document.getElementById("name1").innerHTML = dyofwk.substring(0,3);
+				document.getElementById("name2").innerHTML = dyofwk.substring(3,6);
+				document.getElementById("name3").innerHTML = dyofwk.substring(6,9);
+				document.getElementById("name4").innerHTML = dyofwk.substring(9,12);
+				document.getElementById("name5").innerHTML = dyofwk.substring(12,15);
+			}
+			
+			function theme(newbgcolor) {
+				// Changes the theme / background color of the canvas
+				document.getElementById("canvas").style.backgroundColor = newbgcolor;
+			}
+
+			function sky_select(dayskyid, newsrc) {document.getElementById(dayskyid).src = newsrc;}
+				// Controls the condition visual
+
+			function desc_select(descid, newdescsrc) {
+				// Changes the descriptor id or hides the element
+				if (newdescsrc == "NONE") {
+					document.getElementById(descid).style.visibility = "hidden";
+					// Change percentage of percent position to approximate middle
+					document.getElementById("perc" + descid.substring(4)).style.transform = "translate(-50%,-50%)";
+					document.getElementById("perc" + descid.substring(4)).style.left = "55%";
+					document.getElementById("perc" + descid.substring(4)).style.top = "62%";
+					document.getElementById("perc" + descid.substring(4)).style.right = "auto";
+					}
+				else {
+					document.getElementById(descid).src = newdescsrc;
+					document.getElementById(descid).style.visibility = "visible";
+					// Change percentage of percent position to approximate middle
+					document.getElementById("perc" + descid.substring(4)).style.transform = "none";
+					document.getElementById("perc" + descid.substring(4)).style.left = "auto";
+					document.getElementById("perc" + descid.substring(4)).style.top = "58%";
+					document.getElementById("perc" + descid.substring(4)).style.right = "15%";
+					}
+				// This controls the visibility of the percentage selector
+				if (newdescsrc == "NONE" || newdescsrc == "5day/desc_AM.svg" || newdescsrc == "5day/desc_PM.svg") {
+					document.getElementById("percentcontainer" + descid.substring(4)).style.visibility = "visible";
+					}
+				else {document.getElementById("percentcontainer" + descid.substring(4)).style.visibility = "hidden";
+					document.getElementById("perc" + descid.substring(4)).innerHTML = "";
+					}
+			}
+			
+			function perc(perc_descrip, val) {		
+				document.getElementById(perc_descrip).innerHTML = val;
+				}
+			
+			function change_temp(dy,temp) {
+				if (dy.substring(0,2) == "hi" && parseInt(temp) < 0) {document.getElementById(dy).innerHTML = temp.substr(1) + "-";}
+				else {document.getElementById(dy).innerHTML = temp;}
+			}
 		</script>
 	</body>
 </html>
