@@ -67,7 +67,7 @@
 				font-weight: bold;
 				text-shadow: 3px 2px 4px black;
 				transform: translate(-50%,-50%);
-				left: 55%;
+				left: 80%;
 				top: 62%;
 				}
 			.HI {
@@ -83,8 +83,9 @@
 				position: absolute;
 				bottom: .5%;
 				left:3%;
-				color: midnightblue;
+				color: rgb(0,0,59);
 				font-size: 36px;
+				font-weight: bold;
 				}
 			.TITLEBOX {
 				position: absolute;
@@ -180,7 +181,7 @@
 				<div class="HI" id="hi5">58</div>
 				<div class="LO" id="lo5">48</div>
 			</div>
-			<div class="TITLEBOX"><img style="position:absolute;width:9%;top:45%;left:0.5%;transform:translate(0%,-50%);" src="5day/astormyhaze_logo.svg">
+			<div class="TITLEBOX"><img style="position:absolute;width:9%;top:45%;left:0.5%;transform:translate(0%,-50%);" src="5day/logo_astormyhaze.svg">
 				<div class="TITLE">5-Day Forecast for <span id="cityn">CITY NAME</span></div>
 			</div>
 		</div>
@@ -507,17 +508,16 @@
 					<button onclick=change_temp("lo5",document.getElementById("tmin5").value)>Change TMIN</button><br><br>
 				</div>
 			</div>
-		</div>
-		<div id="about" style="width:80%;margin:auto;">Here's a little forecast generator for you. I've included all sorts of controls for you. This includes 
-			the City Name, Days, Background, Sky Conditions, Descriptors, and Temperature Modification. Currently, I don't know of a way to save a 
-			particular screen-shot of the forecast, but it is something I will look into in the future. For the mean time, simply use your "print screen" 
-			button to copy a total screen-shot to the virtual clipboard, then paste inside of a paint program to crop. Other options include a snipping 
-			tool or my favorite: <a href="http://getgreenshot.org/" target="_blank">Greenshot</a>.<br><br>
+		</div><br>
+		<div id="about" style="width:85%;margin:auto;">Here's a little forecast generator for you. I've included all sorts of controls. This includes the City Name, Days, 
+			Background, Sky Conditions, Descriptors, and Temperature modification. Currently, I don't know of a way to save a particular screen-shot of the forecast, 
+			but it is something I will look into in the future. For the mean time, simply use your "print screen" button to copy a total screen-shot to the virtual 
+			clipboard, then paste inside of a paint program to crop. Other options include a snipping tool or my personal go-to favorite: 
+			<a href="http://getgreenshot.org/" target="_blank">Greenshot</a>.<br><br>
 			
-			This took me a little while to make it work, but a lot of the time I was learning SVG's, creating the artwork, and fixing simple mental errors. 
-			Feel free to use this tool to make custom forecasts that you can share, silly or not. Great tool that parents can assist kids with to introduce 
-			them to making a forecast. I do not initially okay the use of the code outside of my website, but contact me if you wish, and I'll consider it. 
-			Thanks for checking this project out!</div>
+			This took me a little while to make it work, but a lot of the time I was learning SVG's, creating the artwork, and fixing simple mental errors. Feel free to 
+			use this tool to make custom forecasts that you can share, silly or not. It's a great tool that parents and/or teachers can use to assist kids with making a 
+			forecast. Feel free to use/modify in any way you like. All I ask is that you include credit in your code.</div>
 		<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
 		<script>
 
@@ -560,7 +560,7 @@
 					document.getElementById("perc" + descid.substring(4)).style.right = "15%";
 					}
 				// This controls the visibility of the percentage selector
-				if (newdescsrc == "NONE" || newdescsrc == "5day/desc_AM.svg" || newdescsrc == "5day/desc_PM.svg") {
+				if (newdescsrc == "NONE" || newdescsrc == "5day/desc_AM.svg" || newdescsrc == "5day/desc_PM.svg" || newdescsrc == "5day/desc_NIGHT.svg") {
 					document.getElementById("percentcontainer" + descid.substring(4)).style.visibility = "visible";
 					}
 				else {document.getElementById("percentcontainer" + descid.substring(4)).style.visibility = "hidden";

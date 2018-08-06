@@ -1,0 +1,323 @@
+<html>
+	<head>
+		<base href="../">
+		<title>ksgwxfan - Media Gallery</title>
+		<style>
+			.HEADER {
+				width: 100%;
+				font-weight: bold;
+				font-size: 30px;
+				display: inline-block;
+				}
+			.HEADERPHOTO {
+				width: 3%;
+				border: 2px solid white;
+				box-shadow: 0px 0px 5px white;
+				border-radius: 35%;
+				display: inline-block;
+				}
+			.YRS {
+				margin: auto;
+				text-align: center;
+				}
+			.BTNyr {
+				background-color: rgba(0,0,0,0);
+				outline: 0;
+				width: 100px;
+				color: white;
+				}
+			.VIEWCONT {
+				position: relative;
+				background-color: black;
+				width: 100%;
+				height: auto;
+				border: 1px solid gray;
+				margin: auto;
+				width:45%;
+				height:auto;
+				}
+			.BTNL {
+				position: absolute;
+				width: 60px;
+				height: 100%;
+				top: 0%;
+				left: -60px;
+				background-color: rgb(0,0,55);
+				border-radius: 30px 0px 0px 30px;
+				font-size:30px;
+				color: white;
+				outline: 0;
+				}
+			.BTNR {
+				position: absolute;
+				width: 60px;
+				height: 100%;
+				top: 0%;
+				right: -60px;
+				background-color: rgb(0,0,55);
+				border-radius: 0px 30px 30px 0px;
+				font-size:30px;
+				color: white;
+				outline: 0;
+				}
+			.DESC {
+				border: 1px solid gray;
+				margin: auto;
+				width: 75%;
+				padding: 10px;
+				text-align: center;
+				}
+			.PAGEDESC {
+				width: 85%;
+				margin: auto;
+				text-align: justify;
+				}
+		</style>
+	</head>
+	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue" onLoad=loading()>
+		<div class="HEADER">
+			<img class="HEADERPHOTO" src="profile.png"> <u>Media Galler</u>y
+		</div><br><br>
+		<div id="yrlist" class="YRS">
+			<button class= "BTNyr" id="p2010" value="2010" onClick=buttonpress(document.getElementById("p2010").value)>Past - 2010</button>
+			<button class= "BTNyr" id="p2011" value="2011" onClick=buttonpress(document.getElementById("p2011").value)>2011</button>
+			<button class= "BTNyr" id="p2012" value="2012" onClick=buttonpress(document.getElementById("p2012").value)>2012</button>
+			<button class= "BTNyr" id="p2013" value="2013" onClick=buttonpress(document.getElementById("p2013").value)>2013</button>
+			<button class= "BTNyr" id="p2014" value="2014" onClick=buttonpress(document.getElementById("p2014").value)>2014</button>
+			<button class= "BTNyr" id="p2015" value="2015" onClick=buttonpress(document.getElementById("p2015").value)>2015</button>
+			<button class= "BTNyr" id="p2016" value="2016" onClick=buttonpress(document.getElementById("p2016").value)>2016</button>
+			<button class= "BTNyr" id="p2017" value="2017" onClick=buttonpress(document.getElementById("p2017").value)>2017</button>
+			<button class= "BTNyr" id="p2018" value="2018" onClick=buttonpress(document.getElementById("p2018").value)>2018</button>
+		</div><br>
+
+		<div class="VIEWCONT">
+			<button class="BTNL" id="prev" value="-1" onClick=display(document.getElementById("yr_indx").innerHTML,"-1")>&lt;</button>
+			<img id="disp" src="" style="width:100%;">
+			<button class="BTNR" id="next" value="1" onClick=display(document.getElementById("yr_indx").innerHTML,"1")>&gt;</button>
+			<div id="p_index" style="display:none;"></div>
+			<div id="yr_indx" style="display:none;"></div>
+		</div><br>
+		
+		<div class="DESC" id="desc"></div>
+
+		<br>
+		<div class="PAGEDESC">
+			Thanks for visiting my media gallery. It is a work in progress. I'm trying to decide how to present some much older weather/nature pictures I have but still 
+			need to figure that out. The reason I created this was two-fold: One, I'm trying to use social media much less; Two, I'm self-concious about whether something 
+			would 'fit-in' on social-media. So here, I don't really have to worry about that.
+		</div><br>
+		<span style="font-style:italic;font-size:10pt;">* Origin of idea for a 'picture gallery' came from W3Schools</span><br>
+		<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
+		<script>
+			function loading() {
+				document.getElementById("disp").src = img_2018[img_2018.length-1];
+				document.getElementById("desc").innerHTML = desc_2018[desc_2018.length-1];
+				document.getElementById("p2018").style = "font-weight:bold;background-color:rgba(255,255,255,.2);color:yellow;"
+				document.getElementById("yr_indx").innerHTML = 2018;
+				document.getElementById("p_index").innerHTML = img_2018.length - 1;
+			}
+			function display(yr,vcr) {
+				for (i = 0; i <= allimgyrs.length; i++) {
+					if (eval(yr) != 2015 && eval(yr) >= 2013) {
+						if (yr == ANNUAL[i]) {
+							ind = eval(document.getElementById("p_index").innerHTML);	// Current index of current image
+							if (ind + eval(vcr) == allimgyrs[i].length) {
+								document.getElementById("disp").src = allimgyrs[i][0];	// If we've exceeded index entries, display index 0
+								document.getElementById("p_index").innerHTML = 0;
+								document.getElementById("desc").innerHTML = alldscyrs[i][0];
+							}
+							else if (ind + eval(vcr) < 0) {
+								document.getElementById("disp").src = allimgyrs[i][allimgyrs[i].length-1];	// If gone below zero, display max index
+								document.getElementById("desc").innerHTML = alldscyrs[i][alldscyrs[i].length-1];
+								document.getElementById("p_index").innerHTML = allimgyrs[i].length-1;
+							}
+							else {
+								document.getElementById("disp").src = allimgyrs[i][ind + eval(vcr)];
+								document.getElementById("desc").innerHTML = alldscyrs[i][ind + eval(vcr)];
+								document.getElementById("p_index").innerHTML = ind + eval(vcr);
+								}
+						}
+					}
+				}
+			}
+		
+			function buttonpress(YEAR) {
+				document.getElementById("p" + document.getElementById("yr_indx").innerHTML).style="font-weight:normal;background-color:none;color:white;";
+				document.getElementById("yr_indx").innerHTML = YEAR;
+				document.getElementById("p" + YEAR).style = "font-weight:bold;background-color:rgba(255,255,255,.2);color:yellow;";
+				if (YEAR == "2013") {
+					document.getElementById("disp").src = img_2013[0];
+					document.getElementById("desc").innerHTML = desc_2013[0];
+				}
+				else if (YEAR == "2014") {
+					document.getElementById("disp").src = img_2014[0];
+					document.getElementById("desc").innerHTML = desc_2014[0];
+				}
+				else if (YEAR == "2016") {
+					document.getElementById("disp").src = img_2016[0];
+					document.getElementById("desc").innerHTML = desc_2016[0];
+				}
+				else if (YEAR == "2017") {
+					document.getElementById("disp").src = img_2017[0];
+					document.getElementById("desc").innerHTML = desc_2017[0];
+				}
+				else if (YEAR == "2018") {
+					document.getElementById("disp").src = img_2018[0];
+					document.getElementById("desc").innerHTML = desc_2018[0];
+				}
+				else {
+					document.getElementById("disp").src = "photos/empty.png";
+					document.getElementById("desc").innerHTML = "*** Nothing to show at this time ***";
+				}
+				document.getElementById("p_index").innerHTML = 0;
+			}
+			var img_2013 = 	["photos/2013/0313_sunset.jpg",
+						"photos/2013/0628_shelf1.JPG",
+						"photos/2013/0628_shelf2.JPG",
+						"photos/2013/0901_rainbow.jpg",
+						"photos/2013/1104_kh.jpg",
+						"photos/2013/1105_cirrocumulus.JPG",
+						"photos/2013/1108_autumn.JPG",
+						"photos/2013/1119_cirrus.jpg"];
+			var desc_2013 = 	["03/13/2013 - Sunset. Viewing from UNC-Charlotte campus.",
+						"06/28/2013 - Ominous Shelf Cloud. After watching a movie at the school I was going to go out to the car deck. I hadn't even got out the door when I saw that the sky was very dark! I walked outside and saw this epic shelf cloud from a storm to the northwest (taken from campus). As a weather nut, I was very appreciative of the scene. The storm wasn't as menacing as it looked though.",
+						"06/28/2013 - Shelf cloud. This is looking at it as it was starting to pass over head prior to the arrival to the rain.",
+						"09/01/2013 - Rainbow at sunset.",
+						"11/04/2013 - Kelvin-Helmholtz Waves. Caused by wind-shear. These are the first of this type that I had ever seen knowing what I was looking at.",
+						"11/05/2013 - Cirro-cumulus.",
+						"11/08/2013 - I remember this just being a classically beautiful autumn day.",
+						"11/19/2013 - Cirrus as the sun was about to set."];
+			
+			var img_2014 = 	["photos/2014/0123_clouds.jpg",
+						"photos/2014/0211_campussnow.jpg",
+						"photos/2014/0213_snow1.JPG",
+						"photos/2014/0213_snow2.JPG",
+						"photos/2014/0526_storm.JPG",
+						"photos/2014/0613_cb.JPG",
+						"photos/2014/0709_shelf.JPG",
+						"photos/2014/0724_cb.JPG"];
+			var desc_2014 = 	["01/23/2014 - Glaciation makes winter clouds amazing.",
+						"02/11/2014 - Snow on the UNC-Charlotte Campus. Taken from the Student Union.",
+						"02/13/2014 - Heavy snow; big flakes were falling this day.",
+						"02/13/2014 - Heavy snow. Not only did it look pretty, but it delayed a test or two at school.",
+						"05/26/2014 - Storm to the east. Taken from NW Charlotte, NC.",
+						"06/13/2014 - Cumulonimbus approaching maturity.",
+						"07/09/2014 - Shelf cloud. Taken from the UNC-Charlotte campus looking eastward. I believe this is taking place around the airport (KCLT).",
+						"07/24/2014 - Mature cumulonimbus. Taken from the UNC-Charlotte campus. Storm is taking place southwest of campus across the stateline I believe."];
+			var img_2015 = [];
+			var desc_2015 = [];
+			var img_2016 =	["photos/2016/0208_shelf1.JPG",
+						"photos/2016/0208_snowshaft.JPG",
+						"photos/2016/0407_sunset.JPG",
+						"photos/2016/0521_shelf1.jpg",
+						"photos/2016/0521_shelf2.JPG",
+						"photos/2016/0702_distantanvil.JPG",
+						"photos/2016/0702_orphananvil.JPG",
+						"photos/2016/0715_storm.JPG",
+						"photos/2016/0719_stormrainbow.jpg",
+						"photos/2016/0801_thunderhead.jpg",
+						"photos/2016/0801_shelf.jpg",
+						"photos/2016/0815_thunderhead.jpg",
+						"photos/2016/1208_aaundu.jpg",
+						"photos/2016/1208_arc.jpg"];
+			var desc_2016 = 	["02/08/2016 - Shelf Cloud. As a cold front was passing through, this shelf cloud was formed. It was definitely cold enough for the precip to initally fall below cloud-base as snow. Taken at UNC-Charlotte.",
+						"02/08/2016 - Snow Shaft. As this precip reached the ground, it was probably rain, but in this state in the air, I'm pretty sure it was snow. Taken at UNC-Charlotte.",
+						"04/07/2016 - Beautiful sunset. From a parking lot in the Charlotte, NC area.",
+						"05/21/2016 - Large Shelf Cloud. Strong storms moved into the Concord, NC area. I had gone to a local park for an activity that, unbeknownst to me, got cancelled. I decided to stick around as some storms started to move in. That decision paid off! But it was foolish as lightning was kind of frequent and I was standing very close to a radio/comm tower.",
+						"05/21/2016 - Shelf Cloud extent. This shows the shelf cloud's northern (I believe) extent. Just like pouring water out into the sink, air is forced outward by falling precipitation in a thunderstorm. The less dense air in front of the storm is forced upward and condenses, giving the shelf cloud its ominous shape.",
+						"07/02/2016 - Thunderstorm in the distance. Taken from a Florida Beach.",
+						"07/02/2016 - Orphaned Anvil. As a thunderstorm decays, the anvil usually stays visible as the air at the top of the troposphere often exhibit neutral lapse rates. The anvil originates from moisture which was ingested by the storm's updraft being exhausted, spreading outward at the top of the troposphere. ",
+						"07/15/2016 - A storm. Rain shaft on the left; Some possible shelving.",
+						"07/19/2016 - A storm and a rainbow. A prominent rain shaft and strong updrafts, and even a rainbow showed up on this day.",
+						"08/01/2016 - Morning Thunderstorm; Florida panhandle. An oddly noisy thunderstorm to the east formed on this particular morning.",
+						"08/01/2016 - Shelf. The thunderstorm led to these shelf clouds to occur.",
+						"08/15/2016 - Thunderhead. Nice anvil on this storm.",
+						"12/08/2016 - Undulatus. That wavy feature appearing along the clould-base are referred to as Undulatus Asperatus.",
+						"12/08/2016 - Circumhorizontal Arc. After the clouds cleared, this formed in the midst of abundant cirrus."];
+			
+			var img_2017 = 	["photos/2017/0201_sunset.gif",
+						"photos/2017/0517_birds.jpg",
+						"photos/2017/0517_birds2.jpg",
+						"photos/2017/0519_tower.JPG",
+						"photos/2017/0520_lightning.gif",
+						"photos/2017/0613_turbulence.jpg",
+						"photos/2017/0615_cb.JPG",
+						"photos/2017/0615_cb_stokes.JPG",
+						"photos/2017/0624_stormrainbow.jpg",
+						"photos/2017/0701_cb.JPG",
+						"photos/2017/0705_cb.JPG",
+						"photos/2017/0706_cumulus.JPG",
+						"photos/2017/0706_cumulus2.JPG",
+						"photos/2017/0706_storm.jpg",
+						"photos/2017/0714_mammatus.jpg",
+						"photos/2017/0817_anvil.jpg",
+						"photos/2017/0930_moon.jpg",
+						"photos/2017/1021_sundog1.jpg",
+						"photos/2017/1021_sundog2.jpg",
+						"photos/2017/1023_rainbow.jpg",
+						"photos/2017/1111_peak.jpg",
+						"photos/2017/1111_sundog.jpg",
+						"photos/2017/1118_sunrise1.JPG",
+						"photos/2017/1118_sunrise2.JPG",
+						"photos/2017/1202_gwaves1.jpg",
+						"photos/2017/1202_gwaves2.jpg",
+						"photos/2017/1208_snow.jpg",
+						"photos/2017/1218_gwaves.JPG"];
+			var desc_2017 =	["02/01/2017 - Amazing Sunset! Very windy on this evening (hence the smoothing) but the dynamic colors were undeniable.",
+						"May 2017 - Brown Thrashers. Surprisingly fast (to me) ground speed.",
+						"May 2017 - Grackles. I thought they were crows but the colored metallic-like sheen on their heads signal otherwise. Very pesky though. If a bird could be rude, I'd imagine that they'd get the nod for that distinction. They liked dog food.",
+						"05/19/2017 - Developing cell. This young cell was forming in the midst of already-matured (and decaying) cells.",
+						"05/20/2017 - Lightning Video Capture. A fast moving complex of storms rolled through. Anvil crawling! This is looking toward the southeast after its passage.",
+						"06/13/2017 - Turbulence in the clouds.",
+						"06/15/2017 - Storm over SW Patrick County, VA.",
+						"06/15/2017 - Cumulonimbus over Stokes County, NC.",
+						"06/24/2017 - Rainbow amongst cumulus congestus. Captured this scene while watching some convection to the west.",
+						"07/01/2017 - Captured this storm's top at sunset during a trip; somehwere in SC or GA I believe.",
+						"07/05/2017 - Cumulus Congestus. Florida Panhandle.",
+						"07/06/2017 - Florida convection is so amazing.",
+						"07/06/2017 - Close up of the healthy updraft of the convection.",
+						"07/06/2017 - Cumulonimbus. You get all stages of the storm here. Anvil spreading out; new cells and updrafts to the north (right).",
+						"07/14/2017 - Mammatus! Some mammatus formation appeared on the underside of a large anvil from a thunderstorm over Patrick County, VA.",
+						"08/17/2017 - Thunderstorm to the northeast.",
+						"09/30/2017 - The moon. This is a combination of my camera being high megapixel with decent zoom capability.",
+						"10/21/2017 - Sundogs! Sun plus icy cirrus = sundogs!",
+						"10/21/2017 - Close up of the left sundog.",
+						"10/23/2017 - Vivid rainbow at sunset. There was a strong cold front that passed through and we were treated to a near full semi-circle rainbow as clearing started to occur after its passage. This is the north end of the rainbow.",
+						"11/11/2017 - Fisher's Peak (the central peak). This is probably my favorite mountain. It's the tallest point in Surry County and sits on the NC/VA line. The blue ridge mountains are so peaceful to me. Taken from Round Peak, Surry County, NC.",
+						"11/11/2017 - Skull Camp Sundog. This occurred around sunset. This is looking south toward the Skull Camp Mountain area. The sundog, apparent due to those wispy, icy cirrus, had extra character as the cirrus was chaotic and unorganized.",
+						"11/18/2017 - Sunrise. Clouds make sunrises extra special.",
+						"11/18/2017 - Sunrise. The colors were very vibrant.",
+						"12/02/2017 - Gravity waves at night.",
+						"12/02/2017 - More gravity waves.",
+						"12/08/2017 - Snow! We were treated to a healthy dose of snow shortly after December started.",
+						"12/18/2017 - Gravity Waves. Check out that glaciation!"];
+
+			var img_2018 = 	["photos/2018/0119_icecicles.jpg",
+						"photos/2018/0618_cell.jpg",
+						"photos/2018/0625_shelf1.jpg",
+						"photos/2018/0625_shelf2.jpg",
+						"photos/2018/0715_convection.jpg",
+						"photos/2018/0725_toad.jpg",
+						"photos/2018/0803_insect.jpg",
+						"photos/2018/0803_ladybug.jpg",
+						"photos/2018/0803_gravitywaves.jpg"];
+			var desc_2018 = 	["01/19/2018 - Some icecicles hanging down into the frigid air against the backdrop of a wonderful sunrise.",
+						"06/18/2018 - Evening storm cell. Over NW Surry County, NC.",
+						"06/25/2018 - Nice shelf-cloud induced by outflow from a thunderstorm to our west over the Blue Ridge. I was alerted to it as I thought I heard rain drops on the tin roof, but when I went to go look at the radar, the storm was approaching. It had a distinct bowing signature. I immediately got up and looked out the door specifically to see if a shelf was evident, and it was! I grabbed my camera and ran outside and got some (blurry) pictures of it.",
+						"06/25/2018 - Nice shelf-cloud. This is a little later after the shelf had passed over. That rippled chaos you see is typically referred to as a 'whale's mouth.'",
+						"July 2018 - Convection in the distance as sunset approached; the cell's shadow cast on clouds behind it. This is looking southeast. The storms were moving northwest thanks to an outflow from storms originating near the NC coast. It continually triggered new cells as it gently glided across the state.",
+						"07/25/2018 - A young Mr. Toad. I found this little guy hopping around prior to the arrival of some rain.",
+						"08/03/2018 - Insect (I don't know what it is; it was really small) on a cucumber bloom.",
+						"08/03/2018 - A ladybug feasting on a squash leaf (I'm not sure of the species).",
+						"08/03/2018 - High Frequency Gravity Waves. Looking northeast. These appeared following the passage of a line of storms (I believe a weak frontal boundary). Based on mesoanalysis data, I'd guess that these are occurring in the mid-levels."];
+
+			var ANNUAL = ["2010","2011","2012","2013","2014","2015","2016","2017","2018"];
+			var img_2010,img_2011,img_2012;
+			var desc_2010,desc_2011,desc_2012;
+			var allimgyrs = [img_2010,img_2011,img_2012,img_2013,img_2014,img_2015,img_2016,img_2017,img_2018];
+			var alldscyrs = [desc_2010,desc_2011,desc_2012,desc_2013,desc_2014,desc_2015,desc_2016,desc_2017,desc_2018];
+			var ind;
+		
+		</script>
+	</body>
+</html>
