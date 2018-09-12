@@ -101,10 +101,10 @@
 			.TITLE {
 				position: absolute;
 				transform: translate(0%, -50%);
-				left: 11%;
+				left: 12%;
 				top: 50%;
 				color: black;
-				font-size: 40px;
+				font-size: 34px;
 				font-weight: bold;
 				}
 			.DAYMOD {
@@ -181,17 +181,26 @@
 				<div class="HI" id="hi5">58</div>
 				<div class="LO" id="lo5">48</div>
 			</div>
-			<div class="TITLEBOX"><img style="position:absolute;width:9%;top:45%;left:0.5%;transform:translate(0%,-50%);" src="5day/logo_astormyhaze.svg">
-				<div class="TITLE">5-Day Forecast for <span id="cityn">CITY NAME</span></div>
+			<div class="TITLEBOX"><img id="logobox" style="position:absolute;width:10%;top:45%;left:0.3%;transform:translate(0%,-50%);" src="5day/logo_astormyhaze.svg">
+				<div class="TITLE"><span id="person">NAME</span>'s 5-Day Forecast for <span id="cityn">CITYNAME</span></div>
 			</div>
 		</div>
 		<!-- MODIFIERS -->
 		<div id="Modify" style="width:90%;margin:auto;position:relative;text-align:center;">
-			<br><br><b><u>Modify Your 5-Day Below:</u></b>
+			<br><br><b><u>Modify Your 5-Day Below:</u></b><br>
 			<div id="univopts" style="border-bottom: 2px solid white;padding-bottom:10px;">
+				Logo:
+				<select id="logoselect" onChange=logo_select(document.getElementById("logoselect").value)>
+					<option value="5day/logo_astormyhaze.svg" selected>AStormyHaze</option>
+					<option value="5day/logo_channel99.svg">Channel99</option>
+					<option value="5day/logo_wxbonanza.svg">Weather Bonanza</option>
+				</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				Insert Forecaster's Name:
+				<input style="width:140px;" maxlength="10" placeholder=" *** 10 max characters ***" id="namebox"></input>
+				<button onclick=change_name(document.getElementById("namebox").value)>Change Name</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				Insert City Name:
-				<input style="width:160px;" maxlength="23" placeholder=" *** 23 max characters " id="citybox"> 
-				<button onclick=change_city(document.getElementById("citybox").value)>Submit City Name</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input style="width:160px;" maxlength="14" placeholder=" *** 14 max characters " id="citybox"></input>
+				<button onclick=change_city(document.getElementById("citybox").value)>Change City Name</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
 				Starting Day: 
 				<select id="dayselect" onChange=day_select(document.getElementById("dayselect").value)>
 					<option value="MONTUEWEDTHUFRI" selected >MON</option>
@@ -521,7 +530,11 @@
 		<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
 		<script>
 
+			function change_name(n) {document.getElementById("person").innerHTML = n;}
+			
 			function change_city(n) {document.getElementById("cityn").innerHTML = n;}
+			
+			function logo_select(logo) {document.getElementById("logobox").src = logo;}
 
 			function day_select(dyofwk) {
 				// Prints the 3 characters corresponding to the proper day
