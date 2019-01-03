@@ -1,0 +1,203 @@
+AK - PAHG - Anchorage-Kenai
+AK - PABC - Bethel
+AK - PACG - Biorka Island-Sitka
+AK - PAPD - Fairbanks-Pedro Dome
+AK - PAKC - King Salmon
+AK - PAIH - Middleton Island
+AK - PAEC - Nome
+AL - KBMX - Birmingham
+AL - KEOX - Ft Rucker
+AL - KHTX - Huntsville-Hytop
+AL - KMXX - Maxwell AFB
+AL - KMOB - Mobile
+AR - KSRX - Fort Smith
+AR - KLZK - Little Rock
+AZ - KFSX - Flagstaff
+AZ - KIWA - Phoenix
+AZ - KEMX - Tucson
+AZ - KYUX - Yuma
+AZ - TPHX - Phoenix
+CA - KBBX - Beale AFB
+CA - KEYX - Edwards AFB
+CA - KBHX - Eureka
+CA - KVTX - Los Angeles
+CA - KDAX - Sacramento
+CA - KNKX - San Diego
+CA - KMUX - San Francisco
+CA - KHNX - San Joaquin Valley
+CA - KSOX - Santa Ana Mountains
+CA - KVBX - Vandenberg AFB
+CO - KFTG - Denver
+CO - KGJX - Grand Junction
+CO - KPUX - Pueblo
+CO - TDEN - Denver
+DE - KDOX - Dover AFB
+FL - KJAX - Jacksonville
+FL - KBYX - Key West
+FL - KMLB - Melbourne
+FL - KAMX - Miami
+FL - KEVX - Northwest Florida-Eglin AFB
+FL - KTLH - Tallahassee
+FL - KTBW - Tampa Bay
+FL - TFLL - Fort Lauderdale
+FL - TMIA - Miami
+FL - TMCO - Orlando International
+FL - TTPA - Tampa Bay
+FL - TPBI - West Palm Beach
+GA - KFFC - Atlanta
+GA - KVAX - Moody AFB
+GA - KJGX - Robins AFB
+GA - TATL - Atlanta
+HI - PHKM - Kamuela-Kohala
+HI - PHMO - Molokai
+HI - PHKI - South Kauai
+HI - PHWA - South Shore
+IA - KDMX - Des Moines
+IA - KDVN - Quad Cities-Davenport
+ID - KCBX - Boise
+ID - KSFX - Pocatello
+IL - KLOT - Chicago
+IL - KILX - Lincoln
+IL - TMDW - Chicago Midway
+IL - TORD - Chicago O'Hare
+IN - KVWX - Evansville
+IN - KIND - Indianapolis
+IN - KIWX - Northern Indiana-North Webster
+IN - TIDS - Indianapolis
+JP - RODN - Kadena
+KO - RKSG - Camp Humphreys
+KO - RKJK - Kunsan
+KS - KDDC - Dodge City
+KS - KGLD - Goodland
+KS - KTWX - Topeka
+KS - KICT - Wichita
+KS - TICH - Wichita
+KY - KHPX - Ft Campbell
+KY - KJKL - Jackson
+KY - KLVX - Louisville
+KY - KPAH - Paducah
+KY - TSDF - Louisville
+LA - KPOE - Ft Polk
+LA - KLCH - Lake Charles
+LA - KLIX - New Orleans
+LA - KSHV - Shreveport
+LA - TMSY - New Orleans
+MA - KBOX - Boston
+MA - TBOS - Boston
+MD - TADW - Andrews Air Force Base
+MD - TBWI - Baltimore-Wash
+MD - TDCA - Washington National
+ME - KCBW - Caribou
+ME - KGYX - Portland
+MI - KDTX - Detroit
+MI - KAPX - Gaylord
+MI - KGRR - Grand Rapids
+MI - KMQT - Marquette
+MI - TDTW - Detroit
+MN - KDLH - Duluth
+MN - KMPX - Minneapolis
+MN - TMSP - Minneapolis
+MO - KEAX - Kansas City
+MO - KSGF - Springfield
+MO - KLSX - St Louis
+MO - TMCI - Kansas City
+MO - TSTL - St Louis
+MS - KGWX - Columbus AFB
+MS - KDGX - Jackson
+MT - KBLX - Billings
+MT - KGGW - Glasgow
+MT - KTFX - Great Falls
+MT - KMSX - Missoula
+NC - KMHX - Morehead City
+NC - KRAX - Raleigh-Durham
+NC - KLTX - Wilmington
+NC - TCLT - Charlotte
+NC - TRDU - Raleigh Durham
+ND - KBIS - Bismarck
+ND - KMVX - Grand Forks
+ND - KMBX - Minot AFB
+NE - KUEX - Hastings
+NE - KLNX - North Platte
+NE - KOAX - Omaha
+NJ - TEWR - Newark
+NM - KABX - Albuquerque
+NM - KFDX - Cannon AFB
+NM - KHDX - Holloman AFB
+NV - KLRX - Elko
+NV - KESX - Las Vegas
+NV - KRGX - Reno
+NV - TLAS - Las Vegas
+NY - KENX - Albany
+NY - KBGM - Binghamton
+NY - KBUF - Buffalo
+NY - KTYX - Montague-Ft Drum
+NY - KOKX - New York City-Upton
+NY - TJFK - New York City
+OH - KILN - Cincinnati-Wilmington
+OH - KCLE - Cleveland
+OH - TLVE - Cleveland
+OH - TCMH - Columbus
+OH - TCVG - Covington
+OH - TDAY - Dayton
+OK - KFDR - Frederick-Altus AFB
+OK - KTLX - Oklahoma City
+OK - KINX - Tulsa
+OK - KVNX - Vance AFB
+OK - TOKC - Oklahoma City
+OK - TTUL - Tulsa
+OR - KMAX - Medford
+OR - KPDT - Pendleton
+OR - KRTX - Portland
+PA - KDIX - Philadelphia
+PA - KPBZ - Pittsburgh
+PA - KCCX - State College
+PA - TPHL - Philadelphia
+PA - TPIT - Pittsburgh
+PR - TJUA - San Juan
+PR - TSJU - San Juan
+SC - KCLX - Charleston
+SC - KCAE - Columbia
+SC - KGSP - Greer
+SD - KABR - Aberdeen
+SD - KUDX - Rapid City
+SD - KFSD - Sioux Falls
+TN - KMRX - Knoxville-Morristown
+TN - KNQA - Memphis
+TN - KOHX - Nashville
+TN - TMEM - Memphis
+TN - TBNA - Nashville
+TX - KAMA - Amarillo
+TX - KBRO - Brownsville
+TX - KGRK - Central Texas-Ft Hood
+TX - KCRP - Corpus Christi
+TX - KDYX - Dyess AFB
+TX - KEPZ - El Paso
+TX - KFWS - Ft Worth
+TX - KHGX - Houston
+TX - KDFX - Laughlin AFB
+TX - KLBB - Lubbock
+TX - KMAF - Midland-Odessa
+TX - KSJT - San Angelo
+TX - KEWX - San Antonio
+TX - TDAL - Dallas Love Field
+TX - TDFW - Dallas-Ft. Worth
+TX - THOU - Houston Hobby
+TX - TIAH - Houston International
+UT - KICX - Cedar City
+UT - KMTX - Salt Lake City
+UT - TSLC - Salt Lake City
+VA - KFCX - Blacksburg
+VA - KLWX - Sterling
+VA - KAKQ - Wakefield
+VA - TIAD - Dulles
+VT - KCXX - Burlington
+WA - KLGX - Langley Hill
+WA - KATX - Seattle
+WA - KOTX - Spokane
+WI - KGRB - Green Bay
+WI - KARX - La Crosse
+WI - KMKX - Milwaukee
+WI - TMKE - Milwaukee
+WV - KRLX - Charleston
+WY - KCYS - Cheyenne
+WY - KRIW - Riverton
