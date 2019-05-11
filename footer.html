@@ -4,6 +4,26 @@
 <body id="footer" style="background-color:rgba(255,255,255,0);color:white;" link="lightBlue" vlink="lightBlue"><center>
 <a href="https://ksgwxfan.github.io/">HOME</a> &bull; 
 <a href="https://ksgwxfan.github.io/iresume/iresume.html">R&#233;sume</a> &bull; 
-<a target="_blank" href="https://github.com/ksgwxfan/ksgwxfan.github.io/issues">Contact (GitHub Login Required)</a> &bull; 
+<a target="_blank" href="https://github.com/ksgwxfan/ksgwxfan.github.io/issues">Contact (GitHub Login Required)</a> &bull;
+<span id="c_email" style="color:lightblue;user-select:none;" onClick="toggle_email()"><u>Contact (email)</u></span> &bull;
 <a target="_blank" href="http://echotops.blogspot.com/">Echo Tops Weather Blog</a>
-</center></body></html>
+</center></body>
+<script>
+	var pre1 = "Kyle";
+	var pre3 = "Gentry";
+	var pre2 = "S";
+	var pre5 = ".com";
+	var pre4 = "@outlook";
+	
+	function toggle_email() {
+		if (document.getElementById("c_email").innerHTML == "<u>Contact (email)</u>") {	// DISPLAYS EMAIL
+			document.getElementById("c_email").innerHTML = pre1 + pre2 + pre3 + pre4 + pre5;
+			document.getElementById("c_email").style = "color:white;font-weight:bold;";
+		}
+		else {		// DISPLAYS THE NORMAL SETTING
+			document.getElementById("c_email").innerHTML = "<u>Contact (email)</u>";
+			document.getElementById("c_email").style = "color:lightblue;user-select:none;";
+		}
+	}
+</script>
+</html>
