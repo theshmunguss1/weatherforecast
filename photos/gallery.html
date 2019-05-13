@@ -79,9 +79,7 @@
 			<img class="HEADERPHOTO" src="profile.png"> <u>Media Galler</u>y
 		</div><br><br>
 		<div id="yrlist" class="YRS">
-			<button class= "BTNyr" id="p2010" onClick="buttonpress('2010')">Past - 2010</button>
-			<button class= "BTNyr" id="p2011" onClick="buttonpress('2011')">2011</button>
-			<button class= "BTNyr" id="p2012" onClick="buttonpress('2012')">2012</button>
+			<button class= "BTNyr" id="p2012" onClick="buttonpress('2012')">Past-2012</button>
 			<button class= "BTNyr" id="p2013" onClick="buttonpress('2013')">2013</button>
 			<button class= "BTNyr" id="p2014" onClick="buttonpress('2014')">2014</button>
 			<button class= "BTNyr" id="p2015" onClick="buttonpress('2015')">2015</button>
@@ -93,10 +91,12 @@
 
 		<div class="VIEWCONT">
 			<button class="BTNL" id="prev" onClick="display('-1')">&lt;</button>
-			<img id="disp" src="" style="width:100%;">
-			<video id="disp_vid" width="100%" height="auto" style="display:none;">
-				<source src="" type="video/mp4">
-			</video>
+			<div style="position:relative;width:100%;">
+				<img id="disp" src="" style="width:100%;">
+				<video id="disp_vid" width="100%" height="auto" style="position:absolute;top:0;left:0;display:none;">
+					<source src="" type="video/mp4">
+				</video>
+			</div>
 			<button class="BTNR" id="next" onClick="display('1')">&gt;</button>
 			<div id="p_index" style="display:none;"></div>
 			<div id="yr_indx" style="display:none;"></div>
@@ -114,7 +114,7 @@
 		<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
 		<script>
 			function loading() {
-				ind = 0;
+				ind = img_2019.length - 1;
 				document.getElementById("disp").src = img_2019[ind];
 				document.getElementById("desc").innerHTML = desc_2019[ind];
 				document.getElementById("p2019").style = "font-weight:bold;background-color:rgba(255,255,255,.2);color:yellow;"
@@ -137,13 +137,10 @@
 					document.getElementById("disp").src = imgsrc;
 					document.getElementById("desc").innerHTML = alldscyrs[ANNUAL.indexOf(curr_yr)][ind];
 					if (imgsrc.substr(imgsrc.length-4) == ".mp4") {		// VIDEO
-						document.getElementById("disp").style.display = "none";
+						document.getElementById("disp").src = "photos/wait.svg";
 						document.getElementById("disp_vid").style.display = "block";
 					}
-					else {		// IMG
-						document.getElementById("disp").style.display = "block";
-						document.getElementById("disp_vid").style.display = "none";
-					}
+					else {document.getElementById("disp_vid").style.display = "none";}	// IMG
 				}
 			}
 			
@@ -158,20 +155,17 @@
 				
 				if (eval(YEAR) > 2012 && eval(YEAR) != 2015) {
 					imgsrc = allimgyrs[ANNUAL.indexOf(YEAR)][ind];
-					if (imgsrc.substr(imgsrc.length-4) == ".mp4") {		// MOVIE
-						document.getElementById("disp").style.display = "none";
-						document.getElementById("disp_vid").style.display = "block";
-					}
-					else {		// IMAGE
-						document.getElementById("disp").style.display = "block";
-						document.getElementById("disp_vid").style.display = "none";
-					}
 					document.getElementById("disp_vid").src = imgsrc;
 					document.getElementById("disp").src = imgsrc;
 					document.getElementById("desc").innerHTML = alldscyrs[ANNUAL.indexOf(YEAR)][ind];
+					if (imgsrc.substr(imgsrc.length-4) == ".mp4") {		// MOVIE
+						document.getElementById("disp").src = "photos/wait.svg";
+						document.getElementById("disp_vid").style.display = "block";
+					}
+					else {document.getElementById("disp_vid").style.display = "none";}	// IMG
 				}
 				else {
-					document.getElementById("disp").src = "photos/empty.png";
+					document.getElementById("disp").src = "photos/empty.svg";
 					document.getElementById("desc").innerHTML = "*** Nothing to show at this time ***";
 				}
 			}
@@ -235,7 +229,7 @@
 						"05/21/2016 - Large Shelf Cloud. Strong storms moved into the Concord, NC area. I had gone to a local park for an activity that, unbeknownst to me, got cancelled. I decided to stick around as some storms started to move in. That decision paid off! But it was foolish as lightning was kind of frequent and I was standing very close to a radio/comm tower.",
 						"05/21/2016 - Shelf Cloud extent. This shows the shelf cloud's northern (I believe) extent. Just like pouring water out into the sink, air is forced outward by falling precipitation in a thunderstorm. The less dense air in front of the storm is forced upward and condenses, giving the shelf cloud its ominous shape.",
 						"07/02/2016 - Thunderstorm in the distance. Taken from a Florida Beach.",
-						"07/02/2016 - Orphaned Anvil. As a thunderstorm decays, the anvil usually stays visible as the air at the top of the troposphere often exhibit neutral lapse rates. The anvil originates from moisture which was ingested by the storm's updraft being exhausted, spreading outward at the top of the troposphere. ",
+						"07/02/2016 - Orphaned Anvil. As a thunderstorm decays, the anvil usually stays visible after the thunderstorm decays. The anvil originates from moisture which was ingested by the storm's updraft being exhausted, spreading outward at the top of the troposphere. ",
 						"07/15/2016 - A storm. Rain shaft on the left; Some possible shelving.",
 						"07/19/2016 - A storm and a rainbow. A prominent rain shaft and strong updrafts, and even a rainbow showed up on this day.",
 						"08/01/2016 - My Grandmother's Thunderstorm; about 9am. Florida panhandle. An oddly noisy thunderstorm to the east formed on this particular morning.",
@@ -244,7 +238,7 @@
 						"12/08/2016 - Asperitas. That wavy feature appearing along the clould-base are referred to as Asperitas.",
 						"12/08/2016 - Circumhorizontal Arc. After the clouds cleared, this formed in the midst of abundant cirrus."];
 			
-			var img_2017 = 	["photos/2017/0201_sunset.gif",
+			var img_2017 = 	["photos/2017/0201_sunset.mp4",
 						"photos/2017/0517_birds.jpg",
 						"photos/2017/0517_birds2.jpg",
 						"photos/2017/0519_tower_new.jpg",
@@ -260,6 +254,7 @@
 						"photos/2017/0706_storm.jpg",
 						"photos/2017/0714_mammatus.jpg",
 						"photos/2017/0817_anvil.jpg",
+						"photos/2017/0920_decay.mp4",
 						"photos/2017/0930_moon.jpg",
 						"photos/2017/1021_sundog1.jpg",
 						"photos/2017/1021_sundog2.jpg",
@@ -272,7 +267,7 @@
 						"photos/2017/1202_gwaves2.jpg",
 						"photos/2017/1208_snow.jpg",
 						"photos/2017/1218_gwaves_new.jpg"];
-			var desc_2017 =	["02/01/2017 - Amazing Sunset! Very windy on this evening (hence the smoothing) but the dynamic colors were undeniable. Taken from UNCC, on the Union Deck.",
+			var desc_2017 =	["02/01/2017 - Amazing Sunset! Very windy on this evening and I didn't have a tripod on-hand (hence the needed smoothing) but the dynamic colors were undeniable. Taken from UNCC, on the Union Deck.",
 						"May 2017 - Brown Thrashers. Surprisingly fast (to me) ground speed.",
 						"May 2017 - Grackles. I thought they were crows but the colored metallic-like sheen on their heads signal otherwise. Very pesky though. If a bird could be rude, I'd imagine that they'd get the nod for that distinction. They liked dog food.",
 						"05/19/2017 - Developing cell. This young cell was forming in the midst of already-matured (and decaying) cells.",
@@ -288,6 +283,7 @@
 						"07/06/2017 - Cumulonimbus. You get all stages of the storm here. Anvil spreading out; new cells and updrafts to the north (right).",
 						"07/14/2017 - Mammatus! Some mammatus formation appeared on the underside of a large anvil from a thunderstorm over Patrick County, VA.",
 						"08/17/2017 - Thunderstorm to the northeast.",
+						"09/20/2017 - Quickly-dying cell. Poof. Gone!",
 						"09/30/2017 - The moon. This is a combination of my camera being high megapixel with decent zoom capability.",
 						"10/21/2017 - Sundogs! Sun plus icy cirrus = sundogs!",
 						"10/21/2017 - Close up of the left sundog.",
@@ -326,15 +322,17 @@
 						"08/05/2018 - Vortical updraft. On this day, one of the most pleasant evening storms occurred. Very little rain; no lightning; wonderful breeze. According to the Mesoanalysis, for that evening, CAPE was around 3000 J/kg, but it was a skinny-CAPE profile, highlighted by low LI's. But DCAPE's were well over 1000 J/kg. While weak vertical accelerations probably prevented this nice cell from producing thunder, portions of sinking parcels with the rain likely generated the exceptional cool breeze (the DCAPE). The rain stayed to our South while streams of sunlight stayed mostly visible here. I was trying to capture some general time-lapse imagery, hoping to get some rain-shafts in-shot when I noticed a small updraft becoming striated, which made me think, rotation! I quickly turned all my focus on this updraft. This is the result. Really cool. Of note, this is about a 10-minute time-lapse, so the overall vorticity shown by this updraft is likely pretty low. But you can clearly see that this updraft was a prominent low-pressure perturbation, being the focus of the inflow. Then you can tell that the bouyant updraft twisted that inflow into the vertical. I wished I had noticed that updraft sooner, but oh well.",
 						"08/08/2018 - Turbulent Shelving. A thunderstorm rolled down the Blue Ridge, carrying with it an evident shelf-cloud, albeit, I believe, weak on this afternoon. You can see the shelf(underlying cold-pool) forcing upward moisture ahead of it. This environment was marked by Strong CAPE but low shear though."];
 			var img_2019 = ["photos/2019/0206_sunrise.jpg",
-							"photos/2019/0429_asperitas.mp4"];
+							"photos/2019/0429_asperitas.mp4",
+							"photos/2019/0512_rainbow.jpg"];
 			var desc_2019 = ["02/06/2019 - Cloudbreaks plus sunrise equals goodness.",
-							"04/29/2019 - Asperitas Time-Lapse (1hr). I've been hoping to get a good Asperitas time-lapse for a while. This one was a blessing."];
+							"04/29/2019 - Asperitas Time-Lapse (1hr); increased the contrast/decreased brightness to allow the waves to show better. I've been hoping to get a good Asperitas time-lapse for a while. This one was a blessing.",
+							"05/12/2019 - Post-Frontal Rainbow"];
 
-			var ANNUAL = ["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019"];
-			var img_2010,img_2011,img_2012;
-			var desc_2010,desc_2011,desc_2012;
-			var allimgyrs = [img_2010,img_2011,img_2012,img_2013,img_2014,img_2015,img_2016,img_2017,img_2018,img_2019];
-			var alldscyrs = [desc_2010,desc_2011,desc_2012,desc_2013,desc_2014,desc_2015,desc_2016,desc_2017,desc_2018,desc_2019];
+			var ANNUAL = ["2012","2013","2014","2015","2016","2017","2018","2019"];
+			var img_2012;
+			var desc_2012;
+			var allimgyrs = [img_2012,img_2013,img_2014,img_2015,img_2016,img_2017,img_2018,img_2019];
+			var alldscyrs = [desc_2012,desc_2013,desc_2014,desc_2015,desc_2016,desc_2017,desc_2018,desc_2019];
 			var ind = 0;				// stores the current index of the max index in 2018
 			var prev_yr = "2019";	// will be used as a trigger for changing of style
 			var curr_yr = "2019";	// Holds the current year
