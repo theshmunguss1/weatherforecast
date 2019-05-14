@@ -1,0 +1,125 @@
+<html>
+	<head>
+		<base href="../">
+		<title>ksgwxfan - Dice Sim</title>
+		<style>
+			.HEADER {
+				width: 100%;
+				font-weight: bold;
+				font-size: 30px;
+				display: inline-block;
+				}
+			.HEADERPHOTO {
+				width: 3%;
+				border: 2px solid white;
+				box-shadow: 0px 0px 5px white;
+				border-radius: 35%;
+				display: inline-block;
+				}
+			.DICE {
+				position: relative;
+				width: 300px;
+				height: 300px;
+				background-color: white;
+				color: black;
+				font-size: 400px;
+				border-radius: 10%;
+				display: block;
+				margin: auto;
+			}
+			.CIRCLE {
+				position: absolute;
+				background-color: black;
+				transform: translate(-50%,-50%);
+				width: 20%;
+				height: 20%;
+				border-radius: 50%;
+			}
+
+		</style>
+	</head>
+	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue" onKeyDown="keyroll()">
+		<div class="HEADER">
+			<img class="HEADERPHOTO" src="profile.png"> <u>Dice Sim</u>
+		</div>
+		<div class="DICE" id="dice1">
+			<div class="CIRCLE" style="top:22.5%;left:77.5%;"></div>
+			<div class="CIRCLE" style="top:22.5%;left:22.5%;"></div>
+			<div class="CIRCLE" style="top:77.5%;left:22.5%;"></div>
+			<div class="CIRCLE" style="top:77.5%;left:77.5%;"></div>
+			<div class="CIRCLE" style="top:50%;left:22.5%;"></div>
+			<div class="CIRCLE" style="top:50%;left:77.5%;"></div>
+		</div>
+		<div style="display:block;width:80%;margin:auto;text-align:center;">YOU ROLLED A <span id="rollcount" style="color:yellow;font-size:36px;font-weight:bold;">___</span><br /><button id="clicker" onClick="timeroll()">ROLL</button><br />
+		*** Keyboard Controls: Press <span style="color:lightgreen;font-weight:bold;">'R'</span> to roll (in addition to clicking the button).</div>
+		<hr color="gray" style="width:85%;"><br />
+		<div id="desc" style="width:90%;display:block;margin:auto;text-align:justify;">
+			Roll the Dice(or 'die,' whatever)! Just click roll. No SVG's involved. Just CSS. I Gave the die rounded corners, then I defined 6 variables containing circular divs with absolute placements(defining the look of the rolled number), so then the 'innerHTML' of the div would be that of the number that was rolled. Enjoy! Feel free to inspect the code and use however you like with no attribution. 
+		</div>
+		
+		<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
+		<script>
+		var r1 = '<div class="CIRCLE" style="top:50%;left:50%;"></div>';
+		var r2 = '<div class="CIRCLE" style="top:22.5%;left:22.5%;"></div>'
+			   + '<div class="CIRCLE" style="top:77.5%;left:77.5%;"></div>';
+		var r3 = '<div class="CIRCLE" style="top:50%;left:50%;"></div>'
+			   + '<div class="CIRCLE" style="top:22.5%;left:22.5%;"></div>'
+			   + '<div class="CIRCLE" style="top:77.5%;left:77.5%;"></div>';
+		var r4 = '<div class="CIRCLE" style="top:22.5%;left:77.5%;"></div>'
+			   + '<div class="CIRCLE" style="top:22.5%;left:22.5%;"></div>'
+			   + '<div class="CIRCLE" style="top:77.5%;left:22.5%;"></div>'
+			   + '<div class="CIRCLE" style="top:77.5%;left:77.5%;"></div>';
+		var r5 = '<div class="CIRCLE" style="top:50%;left:50%;"></div>'
+			   + '<div class="CIRCLE" style="top:22.5%;left:77.5%;"></div>'
+			   + '<div class="CIRCLE" style="top:22.5%;left:22.5%;"></div>'
+			   + '<div class="CIRCLE" style="top:77.5%;left:22.5%;"></div>'
+			   + '<div class="CIRCLE" style="top:77.5%;left:77.5%;"></div>';
+		var r6 = '<div class="CIRCLE" style="top:22.5%;left:77.5%;"></div>'
+			   + '<div class="CIRCLE" style="top:22.5%;left:22.5%;"></div>'
+			   + '<div class="CIRCLE" style="top:50%;left:22.5%;"></div>'
+			   + '<div class="CIRCLE" style="top:50%;left:77.5%;"></div>'
+			   + '<div class="CIRCLE" style="top:77.5%;left:22.5%;"></div>'
+			   + '<div class="CIRCLE" style="top:77.5%;left:77.5%;"></div>';
+		var allrolls = ["ZERO",r1,r2,r3,r4,r5,r6];
+		
+		// TIMING
+		var timer;				// Will initiate the rolling
+		var interval = 90;		// The frequency of the bounce
+		var bounces;			// Will help determine how long the dice rolls
+		var bounce_count = 0; 	// Will keep track of the counts
+		var keypressed = false;	// Will help prevent multiple keypresses causing inf loops
+		
+		function keyroll() {
+			//console.log(event.keyCode);
+			if (keypressed == false) {
+				if (event.keyCode == 82) {timeroll();}		// Press 'R' to roll
+			}
+
+		}
+		
+		function roll() {
+			var r = Math.floor(Math.random() * 6 + 1);	// We want a number >= 1 and <= 6
+			//console.log(r);
+			document.getElementById("dice1").innerHTML = allrolls[r];
+			bounce_count += 1;
+			if (bounce_count == bounces) {
+				clearInterval(timer);
+				bounce_count = 0;
+				document.getElementById("rollcount").innerHTML = r;
+				keypressed = false;
+				document.getElementById("clicker").style.display = "initial";
+			}
+		}
+		
+		function timeroll() {
+			bounces = Math.floor(Math.random() * 7 + 9);	// We want a number >= 1 and <= 6
+			timer = setInterval(roll,interval);
+			// Inf loop prevention
+			keypressed = true;
+			document.getElementById("clicker").style.display = "none";
+			document.getElementById("rollcount").innerHTML = "___";
+		}
+
+		</script>
+	</body>
+</html>
