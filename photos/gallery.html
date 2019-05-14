@@ -123,7 +123,7 @@
 			}
 			
 			function display(vcr) {
-				if (eval(curr_yr) != 2015 && eval(curr_yr) >= 2013) {
+				if (eval(curr_yr) != 2015) {
 					if (eval(vcr) < 0) {	// GOING BACK IN TIME
 						if (eval(vcr) + ind < 0) {ind = allimgyrs[ANNUAL.indexOf(curr_yr)].length-1;}	// Handles if we get negative indices
 						else {ind -= 1;}
@@ -152,8 +152,7 @@
 				document.getElementById("p" + YEAR).style = "font-weight:bold;background-color:rgba(255,255,255,.2);color:yellow;";
 				curr_yr = YEAR;
 				ind = 0;
-				
-				if (eval(YEAR) > 2012 && eval(YEAR) != 2015) {
+				if (eval(YEAR) != 2015) {
 					imgsrc = allimgyrs[ANNUAL.indexOf(YEAR)][ind];
 					document.getElementById("disp_vid").src = imgsrc;
 					document.getElementById("disp").src = imgsrc;
@@ -165,11 +164,37 @@
 					else {document.getElementById("disp_vid").style.display = "none";}	// IMG
 				}
 				else {
+					document.getElementById("disp_vid").style.display = "none";
 					document.getElementById("disp").src = "photos/empty.svg";
-					document.getElementById("desc").innerHTML = "*** Nothing to show at this time ***";
 				}
+
 			}
-			
+
+			var img_2012 = ["photos/2012/2003_0701_shelf.jpg",
+							"photos/2012/2003_sunset1.jpg",
+							"photos/2012/2005_thunderhead.jpg",
+							"photos/2012/2006_afternoon_moon.jpg",
+							"photos/2012/2006_winter_sunset.jpg",
+							"photos/2012/2008_1024_pileus.jpg",
+							"photos/2012/2008_pilot_knob.jpg",
+							"photos/2012/2010_0615_whalesmouth.jpg",
+							"photos/2012/2011_0503_whalesmouth.jpg",
+							"photos/2012/2012_0622_beachsunrise1.jpg",
+							"photos/2012/2012_0622_beachsunrise2.jpg",
+							"photos/2012/2012_0708_tstorm.jpg"];
+			var desc_2012 = ["07/01/2003 - Ominous Shelf Cloud. This was my first shelfie. It was a beautiful day, and we were on our way back from a trip from Hanging Rock. We were met by this storm and mean-looking shelf. I was so novice at the time I thought it was a wall cloud (associated with a tornadic storm; I always thought the worst), but no, just a shelf-cloud. Impressive gusty winds and heavy rain underneath.",
+							"~ 2003 - Sunset",
+							"Summer 2005 - Thunderhead. I had just upgraded my camera and was tinkering with it when I was told to look outside. This storm wasn't very strong, but looked cool. It was occurring over Yadkinville, NC.",
+							"~ 2006 - Waxing Gibbous in the Evening. I took this while testing out a zoom lens that I got that somewhat worked with my Camera.",
+							"Unknown - Sunset in the Winter (I believe).",
+							"10/2008 - Amazing Cap Cloud. At the time I didn't know what I was looking at other than it was a &quot;cool cloud.&quot; Taken from a plane, not sure where we were during the time. And it could be a wildfire underneath, but I'm pretty sure it was a thunderstorm.",
+							"~ 2008 - Pilot Knob of Pilot Mountain, NC. In the back are Sauratown Mountain and Hanging Rock, respectively.",
+							"06/15/2010 - Being devoured by the whale's mouth.",
+							"05/03/2011 - Another whales mouth/shelf-cloud passage (taken from the same place as the 2010 one, ironically), but not nearly as definite of a whale's mouth.",
+							"06/22/2012 - Myrtle Beach Sunrise",
+							"06/22/2012 - Myrtle Beach Sunrise",
+							"07/08/2012 - Thunderstorm over SW Va."];
+
 			var img_2013 = 	["photos/2013/0313_sunset.jpg",
 						"photos/2013/0628_shelf1_new.jpg",
 						"photos/2013/0628_shelf2_new.jpg",
@@ -201,8 +226,8 @@
 						"02/13/2014 - Heavy snow; big flakes were falling this day.",
 						"02/13/2014 - Heavy snow. Not only did it look pretty, but it delayed a test or two at school.",
 						"05/26/2014 - Storm to the east. Taken from NW Charlotte, NC.",
-						"07/03/2014 - Striations evident on this shelf-like cloud, signalling the approach of some storms west of Charlotte.",
 						"06/13/2014 - Cumulonimbus approaching maturity.",
+						"07/03/2014 - Striations evident on this shelf-like cloud, signalling the approach of some storms west of Charlotte.",
 						"07/09/2014 - Shelf cloud. Taken from the UNC-Charlotte campus looking eastward. I believe this is taking place around the airport (KCLT).",
 						"07/24/2014 - Mature cumulonimbus. Taken from the UNC-Charlotte campus. Storm is taking place southwest of campus across the stateline I believe."];
 			var img_2015 = [];
@@ -329,8 +354,6 @@
 							"05/12/2019 - Post-Frontal Rainbow"];
 
 			var ANNUAL = ["2012","2013","2014","2015","2016","2017","2018","2019"];
-			var img_2012;
-			var desc_2012;
 			var allimgyrs = [img_2012,img_2013,img_2014,img_2015,img_2016,img_2017,img_2018,img_2019];
 			var alldscyrs = [desc_2012,desc_2013,desc_2014,desc_2015,desc_2016,desc_2017,desc_2018,desc_2019];
 			var ind = 0;				// stores the current index of the max index in 2018
