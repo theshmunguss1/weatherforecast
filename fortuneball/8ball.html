@@ -37,7 +37,7 @@
 			text-shadow: 0px 0px 12px white;
 			transform: translate(-50%,-50%);
 			height: 100px;
-			width: 100px;
+			width: 110px;
 			text-align: center;
 			font-size: 21;
 			color: white;
@@ -57,18 +57,74 @@
 </div>
 <div id="ask_away" class="ASK_AWAY">
 	<div id="ques_repeat" class="QUES_REPEAT"> ? </div>
-	<div id="ball" class="BALL"><img src="fortuneball/8ball.png">
+	<div id="ball" class="BALL"><img src="fortuneball/8ball.svg">
 	<div id="resp" class="RESP"></div>
 	</div>
 </div>
 <div id="description" class="DESC">
 This was my first Javascript/CSS project. It was a rude awakening to find that timing functions worked completely different in javascript than Python. 
-That said, I was able to figure a workaround out. The ball is a sprite image I created. <br><br>
+That said, I was able to figure a workaround out. The ball is a svg image I made. <br><br>
 * Disclaimer of Use: Feel free to use as you wish (attribution is appreciated but not required)! No copyright infringement of the owners of the Magic 8-ball is intended.<p>
 </div>
 <iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
 </center>
-<script src="fortuneball/ball.js"></script>
+<script>
+	var responses = ["Absolutely!",
+	"Very<br />Doubtful",
+	"Sorry...<br />Shake<br />again",
+	"Do cows moo?",
+	"50% Chance of Yes",
+	"Not Looking Good",
+	"Maybe; Maybe<br />not.",
+	"No<br />Doubt!",
+	"Positive<br />Vibes.",
+	"Sources say no.",
+	"User Error.<br />Try Again.",
+	"Definitely Maybe",
+	"Prospect's<br />Great.",
+	"My reply is No",
+	"Possibly",
+	"Affirmative.",
+	"YEP!",
+	"Better<br />Odds In<br />Vegas.",
+	"Can't<br />predict<br />now",
+	"Seems<br />Probable"];
+
+	var repeat = document.getElementById("ques_repeat");
+	var answer = document.getElementById("resp");
+	var b = document.getElementById("ball");
+
+	function ask(text) {
+		document.getElementById("resp").innerHTML = "";
+		var time = 100;
+		repeat.innerHTML = text;	<!-- Gives the question to the box -->
+		setTimeout(shakeleft,time);
+		setTimeout(shakeright,time*2);
+		setTimeout(shakeleft,time*3);
+		setTimeout(shakeright,time*4);
+		setTimeout(shakeleft,time*5);
+		setTimeout(shakeright,time*6);
+		setTimeout(shakeleft,time*7);
+		setTimeout(shakeright,time*8);
+		setTimeout(shakeleft,time*9);
+		setTimeout(shakeright,time*10);
+		setTimeout(display,time*10);
+		}
+	function shakeleft() {
+		b.style.left = "45%";
+		return 0;
+		}
+
+	function shakeright() {
+		b.style.left = "55%";
+		return 0;
+		}
+	function display() {
+		var x = Math.floor(Math.random() * responses.length);
+		b.style.left = "50%";
+		answer.innerHTML = responses[x];	<!-- Displays random response -->
+		}
+</script>
 <p>
 </body>
 </html>

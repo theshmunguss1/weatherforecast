@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="420"
+   height="420"
+   viewBox="0 0 111.125 111.125"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="8ball.svg">
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient1178">
+      <stop
+         style="stop-color:#b3b3b3;stop-opacity:1"
+         offset="0"
+         id="stop1174" />
+      <stop
+         style="stop-color:#cccccc;stop-opacity:0"
+         offset="1"
+         id="stop1176" />
+    </linearGradient>
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Feather"
+       id="filter1146">
+      <feGaussianBlur
+         stdDeviation="3"
+         result="blur"
+         id="feGaussianBlur1138" />
+      <feComposite
+         in="SourceGraphic"
+         in2="blur"
+         operator="atop"
+         result="composite1"
+         id="feComposite1140" />
+      <feComposite
+         in2="composite1"
+         operator="in"
+         result="composite2"
+         id="feComposite1142" />
+      <feComposite
+         in2="composite2"
+         operator="in"
+         result="composite3"
+         id="feComposite1144" />
+    </filter>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1178"
+       id="radialGradient1180"
+       cx="101.51255"
+       cy="250.27124"
+       fx="101.51255"
+       fy="250.27124"
+       r="55.5625"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-0.40845248,5.353329e-8,0,-0.42792484,114.96217,318.30374)" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="138.89003"
+     inkscape:cy="202.10771"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     inkscape:lockguides="true"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:snap-page="true"
+     inkscape:snap-global="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="715"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1">
+    <sodipodi:guide
+       position="0,0"
+       orientation="0,420"
+       id="guide815"
+       inkscape:locked="true" />
+    <sodipodi:guide
+       position="111.125,0"
+       orientation="-420,0"
+       id="guide817"
+       inkscape:locked="true" />
+    <sodipodi:guide
+       position="111.125,111.125"
+       orientation="0,-420"
+       id="guide819"
+       inkscape:locked="true" />
+    <sodipodi:guide
+       position="0,111.125"
+       orientation="420,0"
+       id="guide821"
+       inkscape:locked="true" />
+    <sodipodi:guide
+       position="55.5625,55.5625"
+       orientation="1,0"
+       id="guide823"
+       inkscape:locked="true"
+       inkscape:label=""
+       inkscape:color="rgb(0,0,255)" />
+    <sodipodi:guide
+       position="55.5625,55.5625"
+       orientation="0,1"
+       id="guide825"
+       inkscape:locked="true"
+       inkscape:label=""
+       inkscape:color="rgb(0,0,255)" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="MAIN"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-185.87499)"
+     style="display:inline">
+    <circle
+       style="display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.3812499;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="path829"
+       cx="55.5625"
+       cy="241.43748"
+       r="55.5625"
+       inkscape:label="circle_main" />
+    <circle
+       r="55.5625"
+       cy="241.43748"
+       cx="55.5625"
+       id="circle1172"
+       style="display:inline;opacity:0.62025314;fill:url(#radialGradient1180);fill-opacity:1;stroke:none;stroke-width:2.3812499;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       inkscape:label="circle_gradient" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="BEVELED CIRCLE EDGE"
+     sodipodi:insensitive="true">
+    <ellipse
+       style="display:inline;opacity:1;fill:none;fill-opacity:1;stroke:#333333;stroke-width:1.05833328;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="path836"
+       cx="55.5625"
+       cy="72.731293"
+       rx="28.848675"
+       ry="28.848867" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="TRIANGLE"
+     sodipodi:insensitive="true">
+    <path
+       sodipodi:type="star"
+       style="opacity:1;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.97063881;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;filter:url(#filter1146)"
+       id="path841"
+       sodipodi:sides="3"
+       sodipodi:cx="55.562504"
+       sodipodi:cy="74.083328"
+       sodipodi:r1="29.140423"
+       sodipodi:r2="14.570211"
+       sodipodi:arg1="1.5707963"
+       sodipodi:arg2="2.6179939"
+       inkscape:flatsided="true"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m 55.562505,103.22375 -25.236348,-43.710632 50.472693,-2e-6 z"
+       inkscape:transform-center-y="7.9433246"
+       inkscape:transform-center-x="-5.4632642e-06"
+       transform="matrix(1.0903436,0,0,1.0903509,-5.0197153,-8.0455261)" />
+  </g>
+</svg>
