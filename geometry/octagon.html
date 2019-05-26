@@ -62,16 +62,16 @@
 				<img CLASS="IMGSHAPE" id="area-img" src="geometry/oct-area.png">
 			</div>
 			<div class="CALCPANEL">
-				&bull; Enter side (s) length: <input class="SPANEL" id="side-entry" value="0" maxlength="3"></input> <button id="bcalc" onclick=CALCULATE(document.getElementById("side-entry").value)>Calculate</button><br><br>
+				&bull; Enter side (s) length: <input class="SPANEL" id="side-entry" maxlength="5"></input> <button id="bcalc" onclick="CALCULATE(document.getElementById('side-entry').value)">Calculate</button><br><br>
 				&bull; Side (s): <span class="RESULTS" id="s"></span> units<br><br>
 				&bull; Triange Base/Height (k): <span class="RESULTS" id="k"></span> units<br><br>
 				&bull; Perimeter (P): <span class="RESULTS" id="P"></span> units<br><br>
 				&bull; Length (L): <span class="RESULTS" id="L"></span> units<br><br>
 				&bull; Diameter (D): <span class="RESULTS" id="D"></span> units<br><br>
-				<div id="Area" onmouseover=mouse_in(document.getElementById("area-img")) onmouseout=mouse_out(document.getElementById("area-img"))>&bull; Area (A): <span class="RESULTS" id="A"></span> units<sup>2</sup></div><br><br>
-				<div id="Art"  onmouseover=mouse_in(document.getElementById("tri-img")) onmouseout=mouse_out(document.getElementById("tri-img"))>&bull; Inner Right-Triangle Area (A<sub>Triangle</sub>): <span class="RESULTS" id="Art-text"></span> units<sup>2</sup></div><br><br>
-				<div id="Ar"  onmouseover=mouse_in(document.getElementById("rct-img")) onmouseout=mouse_out(document.getElementById("rct-img"))>&bull; Inner Rectangle Area (A<sub>Rectangle</sub>): <span class="RESULTS" id="Ar-text"></span> units<sup>2</sup></div><br><br>
-				<div id="As"  onmouseover=mouse_in(document.getElementById("squ-img")) onmouseout=mouse_out(document.getElementById("squ-img"))>&bull; Inner Square Area (A<sub>Square</sub>): <span class="RESULTS" id="As-text"></span> units<sup>2</sup></div><br><br>
+				<div id="Area" onmouseover="mouse_in(document.getElementById('area-img'))" onmouseout="mouse_out(document.getElementById('area-img'))">&bull; Area (A): <span class="RESULTS" id="A"></span> units<sup>2</sup></div><br><br>
+				<div id="Art"  onmouseover="mouse_in(document.getElementById('tri-img'))" onmouseout="mouse_out(document.getElementById('tri-img'))">&bull; Inner Right-Triangle Area (A<sub>Triangle</sub>): <span class="RESULTS" id="Art-text"></span> units<sup>2</sup></div><br><br>
+				<div id="Ar"  onmouseover="mouse_in(document.getElementById('rct-img'))" onmouseout="mouse_out(document.getElementById('rct-img'))">&bull; Inner Rectangle Area (A<sub>Rectangle</sub>): <span class="RESULTS" id="Ar-text"></span> units<sup>2</sup></div><br><br>
+				<div id="As"  onmouseover="mouse_in(document.getElementById('squ-img'))" onmouseout="mouse_out(document.getElementById('squ-img'))">&bull; Inner Square Area (A<sub>Square</sub>): <span class="RESULTS" id="As-text"></span> units<sup>2</sup></div><br><br>
 				
 			</div>
 		</div>
@@ -83,10 +83,9 @@ Geometry Corner :: Octagon Measurements</a>, and I post how I arrived at the for
 		<script>
 			function mouse_in(n) {n.style.display = "block";}
 			function mouse_out(n) {n.style.display = "none";}
-			
+					
 			function CALCULATE(v) {
 				v = eval(v);
-				// Side and Perimeter
 				document.getElementById("s").innerHTML = v.toFixed(3);
 				document.getElementById("k").innerHTML = (v / Math.sqrt(2)).toFixed(3);
 				document.getElementById("P").innerHTML = (8 * v).toFixed(3);
