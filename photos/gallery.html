@@ -108,7 +108,7 @@
 		<div class="PAGEDESC">
 			Thanks for visiting my media gallery. It is a work in progress. I'm trying to decide how to present some much older weather/nature pictures I have but still 
 			need to figure that out. The reason I created this was two-fold: One, I'm trying to use social media much less; Two, I'm self-concious about whether something 
-			would 'fit-in' on social-media. So here, I don't really have to worry about that.
+			would 'fit-in' on social-media. So here, I don't really have to worry about that. DISCLAIMER OF USE: Contents in my media gallery must not be used commerically or in social media (outside of linking to my content) in any way without my permission.
 		</div><br>
 		<span style="font-style:italic;font-size:10pt;">* Origin of idea for a 'picture gallery' came from W3Schools</span><br>
 		<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
@@ -118,8 +118,13 @@
 				document.getElementById("disp").src = img_2019[ind];
 				document.getElementById("desc").innerHTML = desc_2019[ind];
 				document.getElementById("p2019").style = "font-weight:bold;background-color:rgba(255,255,255,.2);color:yellow;"
+				document.getElementById("disp_vid").src = img_2019[ind];
 				document.getElementById("disp_vid").autoplay = true;
 				document.getElementById("disp_vid").loop = true;
+				if (img_2019[ind].substr(img_2019[ind].length-4) == ".mp4") {
+					document.getElementById("disp_vid").style.display = "block";
+					document.getElementById("disp").src = "photos/wait.svg";
+				}
 			}
 			
 			function display(vcr) {
@@ -350,12 +355,14 @@
 							"photos/2019/0429_asperitas.mp4",
 							"photos/2019/0512_rainbow.jpg",
 							"photos/2019/0525_deepconv.mp4",
-							"photos/2019/0525_svacell.jpg"];
+							"photos/2019/0525_svacell.jpg",
+							"photos/2019/0529_buoyancy.mp4"];
 			var desc_2019 = ["02/06/2019 - Cloudbreaks plus sunrise equals goodness.",
 							"04/29/2019 - Asperitas Time-Lapse (1hr); increased the contrast/decreased brightness to allow the wavy blanket motion to show better. I've been hoping to get a good Asperitas time-lapse for a while. This one was a blessing.",
 							"05/12/2019 - Post-Frontal Rainbow",
 							"05/25/2019 - Developing Convection. Saw this as it started as a robust updraft cumuliform base. As it tracked ENE over Stokes County, more and more parcels started to explode, leading to a pleasantly surprising convection time-lapse. The storm fizzled after it passed over the Hanging Rock area.",
-							"05/25/2019 - Mature Thunderstorm over SW VA."];
+							"05/25/2019 - Mature Thunderstorm over SW VA.",
+							"05/29/2019 - Great buoyancy displayed here. Time-lapse of around 50 minutes of clips"];
 
 			var ANNUAL = ["2012","2013","2014","2015","2016","2017","2018","2019"];
 			var allimgyrs = [img_2012,img_2013,img_2014,img_2015,img_2016,img_2017,img_2018,img_2019];
