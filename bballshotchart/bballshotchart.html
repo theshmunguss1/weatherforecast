@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="../">
+		<title>ksgwxfan - Basketball Shot Chart</title>
+		<style>
+			.HEADER {
+				width: 100%;
+				font-weight: bold;
+				font-size: 30px;
+				display: inline-block;
+				}
+			.HEADERPHOTO {
+				width: 3%;
+				border: 2px solid white;
+				box-shadow: 0px 0px 5px white;
+				border-radius: 35%;
+				display: inline-block;
+				}
+			.tableframe {
+				display:table;
+				border-collapse: collapse;
+				width:560px;
+				height:30px;
+				margin:auto;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+			.statstable {
+				display: table;
+				width: 800px;
+				height: 72px;
+				margin: auto;
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 0.9em;
+				border-collapse: collapse;
+				text-align: center;
+				border: 1px solid gray;
+			}
+			.statsdata {
+				font-size: 0.75em;
+			}
+			.statsshade1 {
+				background: rgba(255,255,255,0.2);
+			}
+			.statsshade2 {
+				background: rgba(255,255,255,0.125);
+			}
+			.statmode {
+				position: absolute;
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 3em;
+				font-weight: bold;
+				text-shadow: 2px 2px 1px black, -2px -2px 1px black, 2px -2px 1px black, -2px 2px 1px black;
+				width: 120px;
+				height: 5px;
+				text-align: center;
+				opacity: 0.5;
+				display: none;
+			}
+			.statmode_miss {
+				text-shadow: 2px 2px 1px white, -2px -2px 1px white, 2px -2px 1px white, -2px 2px 1px white;
+			}
+			.col {
+				border: 1px solid gray;
+				display: table-cell;
+				text-align: center;
+				vertical-align: middle;
+				user-select: none;
+			}
+			.row {
+				display: table-row;
+			}
+			.no_border_top {
+				border-top: none;
+			}
+			.colorblock {
+				display: inline-block;
+				margin: auto;
+				width: 15px;
+				height: 15px;
+				border: 1px solid gray;
+				background-color: white;
+			}
+			.pieceA1, .pieceA2, .pieceB1, .pieceB2 {
+				position:absolute;
+				transform: translate(-50%,-50%);
+				font-family: Arial, Helvetica, sans-serif;
+				font-weight: bold;
+				text-align: center;
+				width:20px;
+				height:20px;
+				border-radius:50%;
+				border:1px solid white;
+				user-select: none;
+			}
+			.make {
+				position: absolute;
+				width: 20px;
+				height: 20px;
+				transform: translate(-50%,-50%);
+				background-color: black;
+				border-radius: 50%;
+				border: 1px solid white;
+			}
+		</style>
+	</head>
+	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue" onLoad="loading()" onKeyDown="mode_change()">
+		<div class="HEADER">
+			<img class="HEADERPHOTO" src="profile.png"> <u>Basketball - Shot Chart</u>
+		</div><br><br>
+		<div id="statsheader" class="statstable" style="height:30px;border:none;"><!-- Half HEADERS -->
+			<div class="row">
+				<div class="col" style="width:100px;border:none;">&nbsp;</div>
+				<div class="col statsshade1" style="width:calc(684px/3)">1st Half</div>
+				<div class="col statsshade2" style="width:calc(684px/3)">2nd Half</div>
+				<div class="col statsshade1" style="width:calc(684px/3)">GAME</div>
+			</div>
+		</div>
+		<div class="statstable">
+			<div class="row" style="font-weight:bold;">
+				<div class="col" style="width:100px;">Team</div><!-- HEADERS -->
+				<div class="col statsshade1">FGM</div>				<!-- HALF 1 -->
+				<div class="col statsshade1">FGA</div>				<!-- HALF 1 -->
+				<div class="col statsshade1">FG&percnt;</div>		<!-- HALF 1 -->
+				<div class="col statsshade1">3FGM</div>				<!-- HALF 1 -->
+				<div class="col statsshade1">3FGA</div>				<!-- HALF 1 -->
+				<div class="col statsshade1">3FG&percnt;</div>		<!-- HALF 1 -->
+				<div class="col statsshade2">FGM</div>				<!-- HALF 2 -->
+				<div class="col statsshade2">FGA</div>				<!-- HALF 2 -->
+				<div class="col statsshade2">FG&percnt;</div>		<!-- HALF 2 -->
+				<div class="col statsshade2">3FGM</div>				<!-- HALF 2 -->
+				<div class="col statsshade2">3FGA</div>				<!-- HALF 2 -->
+				<div class="col statsshade2">3FG&percnt;</div>		<!-- HALF 2 -->
+				<div class="col statsshade1">FGM</div>				<!-- GAME -->
+				<div class="col statsshade1">FGA</div>				<!-- GAME -->
+				<div class="col statsshade1">FG&percnt;</div>		<!-- GAME -->
+				<div class="col statsshade1">3FGM</div>				<!-- GAME -->
+				<div class="col statsshade1">3FGA</div>				<!-- GAME -->
+				<div class="col statsshade1">3FG&percnt;</div>		<!-- GAME -->
+			</div>
+			<div class="row">
+				<div class="col statsdata"><span id="statheadA">---</span></div><!-- TEAM NAME -->
+				<div id="Afgm_1stat" class="col statsdata statsshade1">0</div><!-- A, fgm, 1 -->
+				<div id="Afga_1stat" class="col statsdata statsshade1">0</div><!-- A, fgma, 1 -->
+				<div id="Afg_1PERC" class="col statsdata statsshade1">--</div><!-- A, fgmperc, 1 -->
+				<div id="Afg3m_1stat" class="col statsdata statsshade1">0</div><!-- A, fgm3, 1 -->
+				<div id="Afg3a_1stat" class="col statsdata statsshade1">0</div><!-- A, fgm3a, 1 -->
+				<div id="Afg3_1PERC" class="col statsdata statsshade1">--</div><!-- A, fgm3perc, 1 -->
+				<div id="Afgm_2stat" class="col statsdata statsshade2">0</div><!-- A, fgm, 2 -->
+				<div id="Afga_2stat" class="col statsdata statsshade2">0</div><!-- A, fgma, 2 -->
+				<div id="Afg_2PERC" class="col statsdata statsshade2">--</div><!-- A, fgmperc, 2 -->
+				<div id="Afg3m_2stat" class="col statsdata statsshade2">0</div><!-- A, fgm3, 2 -->
+				<div id="Afg3a_2stat" class="col statsdata statsshade2">0</div><!-- A, fgm3a, 2 -->
+				<div id="Afg3_2PERC" class="col statsdata statsshade2">--</div><!-- A, fgm3perc, 2 -->
+				<div id="Afgm_3stat" class="col statsdata statsshade1">0</div><!-- A, fgm, 3 -->
+				<div id="Afga_3stat" class="col statsdata statsshade1">0</div><!-- A, fgma, 3 -->
+				<div id="Afg_3PERC" class="col statsdata statsshade1">--</div><!-- A, fgmperc, 3 -->
+				<div id="Afg3m_3stat" class="col statsdata statsshade1">0</div><!-- A, fgm3, 3 -->
+				<div id="Afg3a_3stat" class="col statsdata statsshade1">0</div><!-- A, fgm3a, 3 -->
+				<div id="Afg3_3PERC" class="col statsdata statsshade1">--</div><!-- A, fgm3perc, 3 -->
+			</div>
+			<div class="row">
+				<div class="col statsdata"><span id="statheadB">---</span></div><!-- TEAM NAME -->
+				<div id="Bfgm_1stat" class="col statsdata statsshade1">0</div><!-- B, fgm, 1 -->
+				<div id="Bfga_1stat" class="col statsdata statsshade1">0</div><!-- B, fgma, 1 -->
+				<div id="Bfg_1PERC" class="col statsdata statsshade1">--</div><!-- B, fgmperc, 1 -->
+				<div id="Bfg3m_1stat" class="col statsdata statsshade1">0</div><!-- B, fgm3, 1 -->
+				<div id="Bfg3a_1stat" class="col statsdata statsshade1">0</div><!-- B, fgm3a, 1 -->
+				<div id="Bfg3_1PERC" class="col statsdata statsshade1">--</div><!-- B, fgm3perc, 1 -->
+				<div id="Bfgm_2stat" class="col statsdata statsshade2">0</div><!-- B, fgm, 2 -->
+				<div id="Bfga_2stat" class="col statsdata statsshade2">0</div><!-- B, fgma, 2 -->
+				<div id="Bfg_2PERC" class="col statsdata statsshade2">--</div><!-- B, fgmperc, 2 -->
+				<div id="Bfg3m_2stat" class="col statsdata statsshade2">0</div><!-- B, fgm3, 2 -->
+				<div id="Bfg3a_2stat" class="col statsdata statsshade2">0</div><!-- B, fgm3a, 2 -->
+				<div id="Bfg3_2PERC" class="col statsdata statsshade2">--</div><!-- B, fgm3perc, 2 -->
+				<div id="Bfgm_3stat" class="col statsdata statsshade1">0</div><!-- B, fgm, 3 -->
+				<div id="Bfga_3stat" class="col statsdata statsshade1">0</div><!-- B, fgma, 3 -->
+				<div id="Bfg_3PERC" class="col statsdata statsshade1">--</div><!-- B, fgmperc, 3 -->
+				<div id="Bfg3m_3stat" class="col statsdata statsshade1">0</div><!-- B, fgm3, 3 -->
+				<div id="Bfg3a_3stat" class="col statsdata statsshade1">0</div><!-- B, fgm3a, 3 -->
+				<div id="Bfg3_3PERC" class="col statsdata statsshade1">--</div><!-- B, fgm3perc, 3 -->
+			</div>
+		</div>
+		<div id="courtframe" style="text-align:center;width:560px;height:500px;margin:auto;position:relative;">
+			<div id="courtfill" style="position:absolute;left:0px;top:0px;width:100%;height:100%;background-color:#7bafd4;"></div>
+			<img src="bballshotchart/courttemplate.png" style="position:absolute;left:0px;top:0px;border: 0.5px solid gray;">
+			<div id="mode_score" class="statmode" style="color:darkGreen;bottom:20%;left:7.5%;">Score<br />Mode</div>
+			<div id="mode_miss" class="statmode statmode_miss" style="color:black;bottom:20%;right:7.5%;">Miss<br />Mode</div>
+			<div id="mode_erase" class="statmode" style="color:pink;bottom:35%;right:40%;">Erase<br />Mode</div>
+			<div id="fgcontainer" style="position:absolute;left:0px;top:0px;width:100%;height:100%;"></div>
+			<div id="glass-pane" style="position:absolute;left:0px;top:0px;width:100%;height:100%;background-color:rgba(255,255,255,0.03);" onClick="addfg()"></div>
+		</div>
+		<div id="teamframe" class="tableframe">
+			<div class="row">
+				<div id="teamA" class="col" style="width:calc(100%/2);" onClick="teamtoggle('A')"></div>
+				<div id="teamB" class="col" style="width:calc(100%/2);" onClick="teamtoggle('B')"></div>
+			</div>
+		</div>
+		<div id="timeframe" class="tableframe">
+			<div class="row">
+				<div id="half1" class="col no_border_top" style="width:calc(100%/3);" onClick="halfselect('1')">1st</div>
+				<div id="half2" class="col no_border_top" style="width:calc(100%/3);" onClick="halfselect('2')">2nd</div>
+				<div id="half3" class="col no_border_top" style="width:calc(100%/3);" onClick="halfselect('3')">Game</div>
+			</div>
+		</div>
+		<div id="teamchange" style="display:block;margin:auto;margin-top:10px;text-align:center;">
+			<span style="margin-right:20px;">Team A Name: <input id="teamAname" maxlength="12" size="12"></input></span>
+			<span style="margin-right:20px;">Team B Name: <input id="teamBname" maxlength="12" size="12"></input></span><button onClick="changeteamnames(document.getElementById('teamAname').value,document.getElementById('teamBname').value)" style="margin-right:20px;">Change Team Names</button>
+			<!-- M = 77; S = 83; E = 69 -->
+			<button onClick="mode_change(77)">Miss (M)</button> 
+			<button onClick="mode_change(83)">Score (S)</button> 
+			<button onClick="mode_change(69)">Erase (E)</button>
+		</div>
+		<div id="teamcolor" class="tableframe" style="margin-top:10px;width:800px;">
+			<div class="row">
+				<div id="teamcolorA" class="col" style="width:200px;"><div id="teamcolorA_sm" class="colorblock" style="background-color:#7BAFD4;"></div> Team A Color:</div>
+				<div id="teamcolorA01" class="col" style="background-color:#FFFFFF;" onClick="chg_teamcolor('A','#FFFFFF')" title="White"></div>
+				<div id="teamcolorA02" class="col" style="background-color:#7BAFD4;" onClick="chg_teamcolor('A','#7BAFD4')" title="Carolina Blue"></div>
+				<div id="teamcolorA03" class="col" style="background-color:#13294B;" onClick="chg_teamcolor('A','#13294B')" title="Navy Blue"></div>
+				<div id="teamcolorA04" class="col" style="background-color:#00004d;" onClick="chg_teamcolor('A','#00004d')" title="Midnight Blue"></div>
+				<div id="teamcolorA05" class="col" style="background-color:#000099;" onClick="chg_teamcolor('A','#000099')" title="Blue"></div>
+				<div id="teamcolorA06" class="col" style="background-color:#000000;" onClick="chg_teamcolor('A','#000000')" title="Black"></div>
+				<div id="teamcolorA07" class="col" style="background-color:#e60000;" onClick="chg_teamcolor('A','#e60000')" title="Red"></div>
+				<div id="teamcolorA08" class="col" style="background-color:#990000;" onClick="chg_teamcolor('A','#990000')" title="Dark Red"></div>
+				<div id="teamcolorA09" class="col" style="background-color:#DAA520;" onClick="chg_teamcolor('A','#DAA520')" title="Gold"></div>
+				<div id="teamcolorA10" class="col" style="background-color:#006600;" onClick="chg_teamcolor('A','#006600')" title="Green"></div>
+				<div id="teamcolorA11" class="col" style="background-color:#003300;" onClick="chg_teamcolor('A','#003300')" title="Dark Green"></div>
+				<div id="teamcolorA11" class="col" style="background-color:#ffff00;" onClick="chg_teamcolor('A','#ffff00')" title="Yellow"></div>
+				<div id="teamcolorA12" class="col" style="background-color:#ff6600;" onClick="chg_teamcolor('A','#ff6600')" title="Orange"></div>
+				<div id="teamcolorA13" class="col" style="background-color:#660066;" onClick="chg_teamcolor('A','#660066')" title="Purple"></div>
+				<div id="teamcolorB" class="col" style="width:200px;"><div id="teamcolorB_sm" class="colorblock" style="background-color:#000099;"></div> Team B Color:</div>
+				<div id="teamcolorB01" class="col" style="background-color:#FFFFFF;" onClick="chg_teamcolor('B','#FFFFFF')" title="White"></div>
+				<div id="teamcolorB02" class="col" style="background-color:#7BAFD4;" onClick="chg_teamcolor('B','#7BAFD4')" title="Carolina Blue"></div>
+				<div id="teamcolorB03" class="col" style="background-color:#13294B;" onClick="chg_teamcolor('B','#13294B')" title="Navy Blue"></div>
+				<div id="teamcolorB04" class="col" style="background-color:#00004d;" onClick="chg_teamcolor('B','#00004d')" title="Midnight Blue"></div>
+				<div id="teamcolorB05" class="col" style="background-color:#000099;" onClick="chg_teamcolor('B','#000099')" title="Blue"></div>
+				<div id="teamcolorB06" class="col" style="background-color:#000000;" onClick="chg_teamcolor('B','#000000')" title="Black"></div>
+				<div id="teamcolorB07" class="col" style="background-color:#e60000;" onClick="chg_teamcolor('B','#e60000')" title="Red"></div>
+				<div id="teamcolorB08" class="col" style="background-color:#990000;" onClick="chg_teamcolor('B','#990000')" title="Dark Red"></div>
+				<div id="teamcolorB09" class="col" style="background-color:#DAA520;" onClick="chg_teamcolor('B','#DAA520')" title="Gold"></div>
+				<div id="teamcolorB10" class="col" style="background-color:#006600;" onClick="chg_teamcolor('B','#006600')" title="Green"></div>
+				<div id="teamcolorB11" class="col" style="background-color:#003300;" onClick="chg_teamcolor('B','#003300')" title="Dark Green"></div>
+				<div id="teamcolorA11" class="col" style="background-color:#ffff00;" onClick="chg_teamcolor('A','#ffff00')" title="Yellow"></div>
+				<div id="teamcolorB12" class="col" style="background-color:#ff6600;" onClick="chg_teamcolor('B','#ff6600')" title="Orange"></div>
+				<div id="teamcolorB13" class="col" style="background-color:#660066;" onClick="chg_teamcolor('B','#660066')" title="Purple"></div>
+				
+			</div>
+		</div>
+		<div id="courtcolor" class="tableframe" style="margin-top:10px;width:800px;">
+			<div class="row">
+				<div class="col" style="width:120px;">Court Color:</div>
+				<div class="col" style="background-color:#7BAFD4;" onClick="changecourt('#7BAFD4')" title="Carolina Blue"></div>
+				<div class="col" style="background-color:#13294B;" onClick="changecourt('#13294B')" title="Navy Blue"></div>
+				<div class="col" style="background-color:#00004d;" onClick="changecourt('#00004d')" title="Midnight Blue"></div>
+				<div class="col" style="background-color:#000099;" onClick="changecourt('#000099')" title="Blue"></div>
+				<div class="col" style="background-color:#000000;" onClick="changecourt('#000000')" title="Black"></div>
+				<div class="col" style="background-color:#e60000;" onClick="changecourt('#e60000')" title="Red"></div>
+				<div class="col" style="background-color:#990000;" onClick="changecourt('#990000')" title="Dark Red"></div>
+				<div class="col" style="background-color:#ccae00;" onClick="changecourt('#DAA520')" title="Gold"></div>
+				<div class="col" style="background-color:#006600;" onClick="changecourt('#006600')" title="Green"></div>
+				<div class="col" style="background-color:#003300;" onClick="changecourt('#003300')" title="Dark Green"></div>
+				<div class="col" style="background-color:#ffff00;" onClick="changecourt('#ffff00')" title="Yellow"></div>
+				<div class="col" style="background-color:#ff6600;" onClick="changecourt('#ff6600')" title="Orange"></div>
+				<div class="col" style="background-color:#660066;" onClick="changecourt('#660066')" title="Purple"></div>
+			</div>
+		</div>
+		
+		<div id="description" style="width:80%;margin:auto;margin-top:20px;margin-bottom:10px;">
+			*** DISCLAIMER OF USE: You do NOT have permission to put this code on your site *** ... Basketball Shot Chart. This is my first project that I utilized (and truly needed) JS Objects. I'm speechless on how well this turned out. Use on gameday or watching replays.<br /><br />
+			
+			Keyboard Controls:
+			<ul>
+				<li><span style="color:yellow">'M'</span>: Toggles Miss Mode; add missed shots</li>
+				<li><span style="color:yellow">'S'</span>: Toggles Score Mode; add made shots</li>
+				<li><span style="color:yellow">'E'</span>: Toggles Erase Mode; click scored FG's or misses to delete. Will NOT work while looking at the full game shot chart</li>
+			</ul>
+				
+			I worked on this project for quite a while (relatively small amount, in terms of days, but a lot of hours). The project idea was sparked when I was trying to learn some more about HTML5 canvas. I did spend a lot of time tweaking the court design. Originally I was just making individual courts to upload but then decided to make transparent parts on the court so background colors could show the paint colors I wanted and meant I only had to upload 1 image file (and no image name arrays). Nearly 100 lines of code (and over 8,000 characters) were devoted to simply updating the statbox, which I never anticipated. For 3-ptrs, I designed a function that determined the distance from the basket. I knew the x,y point of the center of the hoop. Then I used the pythagorean theorem to get the distance. If &gt;&equal; 220 (22ft&plus;), it's a 3ptr. The conversion factor I used when making the image was 10px &equal; 1ft. Future updates could include average shot distance or even player entries. Thanks for checking it out.<br /><br />
+				
+			On-Court Font Used: <a href="http://www.squaregear.net/fonts/" target="_blank">"College" by Matthew Welch</a>. To make the court image, <a href="https://inkscape.org/" target="_blank">Inkscape</a> was used.
+		</div>
+		
+		<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
+		
+		<script>
+			var courtobj = {teamA: "", teamB: "", colorA: "#7BAFD4", colorB: "#000099", current_team: "A", current_half: "1", current_class: "pieceA1", mode: "NA", erase: "N"};
+			// Huge help with understanding how to change classes: (https://www.w3schools.com/jsref/met_element_getelementsbyclassname.asp)
+			var teamstats = {Afgm_1: 0, Afga_1: 0, Afg3m_1: 0, Afg3a_1: 0, Aptspaint_1: 0, Afgm_2: 0, Afga_2: 0, Afg3m_2: 0, Afg3a_2: 0, Aptspaint_2: 0,
+							 Bfgm_1: 0, Bfga_1: 0, Bfg3m_1: 0, Bfg3a_1: 0, Bptspaint_1: 0, Bfgm_2: 0, Bfga_2: 0, Bfg3m_2: 0, Bfg3a_2: 0, Bptspaint_2: 0,
+							 Afgm_3: 0, Afga_3: 0, Afg3m_3: 0, Afg3a_3: 0, Bfgm_3: 0, Bfga_3: 0, Bfg3m_3: 0, Bfg3a_3: 0};
+			var cell_highlight = "#4d4d4d";
+			var allplayers;		// Will be object to hold all of the player objects
+			var idcount = 0;	// Will be used to give ID's to each shot
+			
+			function loading() {
+				changeteamnames("Team A","Team B");
+				teamtoggle("A");
+				halfselect("1");
+			}
+			
+			function mode_change(v) {
+				// M = 77; S = 83; E = 69
+				if (v != undefined) {
+					event["keyCode"] = v;
+				}
+				if (event.keyCode == 83) {		// Score Mode Toggle
+					if (courtobj.mode == "miss" || courtobj.mode == "NA") {
+						courtobj.mode = "score";
+						document.getElementById("mode_score").style.display = "block";
+						document.getElementById("mode_miss").style.display = "none";
+					}
+					else {
+						courtobj.mode = "NA";
+						document.getElementById("mode_score").style.display = "none";
+					}
+				}
+				if (event.keyCode == 77) {		// Miss Mode Toggle
+					if (courtobj.mode == "score" || courtobj.mode == "NA") {
+						courtobj.mode = "miss";
+						document.getElementById("mode_miss").style.display = "block";
+						document.getElementById("mode_score").style.display = "none";
+					}
+					else {
+						courtobj.mode = "NA";
+						document.getElementById("mode_miss").style.display = "none";
+					}
+				}
+				if (event.keyCode == 69) {		// Erase Mode Toggle
+					if (courtobj.current_half != "3") {
+						if (courtobj.erase == "N") {	// TURN ON ERASE MODE
+							courtobj.erase = "Y";
+							document.getElementById("mode_erase").style.display = "block";
+							document.getElementById ("glass-pane").style.display = "none";
+						}
+						else {		// TURN OFF ERASE MODE
+							courtobj.erase = "N";
+							document.getElementById("mode_erase").style.display = "none";
+							document.getElementById ("glass-pane").style.display = "block";
+						}
+					}
+				}
+			}
+			
+			function teamtoggle(t) {	// Change team focus
+				//console.log(t);
+				if (t != courtobj.current_team) {
+					document.getElementById("team" + courtobj.current_team).style.backgroundColor = "transparent";
+					// Change display of previous teams shots
+					for (x=0;x<document.getElementsByClassName("piece" + courtobj.current_team + "1").length;x++) {
+						document.getElementsByClassName("piece" + courtobj.current_team + "1")[x].style.display = "none";
+					}
+					for (x=0;x<document.getElementsByClassName("piece" + courtobj.current_team + "2").length;x++) {
+						document.getElementsByClassName("piece" + courtobj.current_team + "2")[x].style.display = "none";
+					}
+					courtobj.current_team = t;
+					if (courtobj.current_half != "3") {chgshotdisp(t);}
+					else {
+						for (x=0;x<document.getElementsByClassName("piece" + courtobj.current_team + "1").length;x++) {
+							document.getElementsByClassName("piece" + courtobj.current_team + "1")[x].style.display = "block";
+						}
+						for (x=0;x<document.getElementsByClassName("piece" + courtobj.current_team + "2").length;x++) {
+							document.getElementsByClassName("piece" + courtobj.current_team + "2")[x].style.display = "block";
+						}
+					}
+				}
+				document.getElementById("team" + t).style.backgroundColor = cell_highlight;
+			}
+			
+			function halfselect(halfnum) {
+				if (halfnum != courtobj.current_half) {		// If we have a half change
+					if (courtobj.current_half == "3") {			// If we are changing from the full game shot chart, RESET everything (will show later in function)
+						for (x=0;x<document.getElementsByClassName("piece" + courtobj.current_team + "1").length;x++) {
+							document.getElementsByClassName("piece" + courtobj.current_team + "1")[x].style.display = "none";
+						}
+						for (x=0;x<document.getElementsByClassName("piece" + courtobj.current_team + "2").length;x++) {
+							document.getElementsByClassName("piece" + courtobj.current_team + "2")[x].style.display = "none";
+						}
+					}
+					document.getElementById("half" + courtobj.current_half).style.backgroundColor = "transparent";		// Cell bg change to deselect
+					courtobj.current_half = halfnum;	// Change half number in game obj
+					if (halfnum == "3") {		// if full game is selected
+						if (courtobj.erase == "Y") {
+							document.getElementById("glass-pane").style.display = "block";
+						}
+						for (x=0;x<document.getElementsByClassName("piece" + courtobj.current_team + "1").length;x++) {
+							document.getElementsByClassName("piece" + courtobj.current_team + "1")[x].style.display = "block";	// Display new chart
+						}
+						for (x=0;x<document.getElementsByClassName("piece" + courtobj.current_team + "2").length;x++) {
+							document.getElementsByClassName("piece" + courtobj.current_team + "2")[x].style.display = "block";	// Display new chart
+						}
+					}
+					else {		// Controls display if Half 1 or Half 2 are displayed
+						if (courtobj.erase == "Y") {
+							document.getElementById("glass-pane").style.display = "none";
+						}
+						chgshotdisp(halfnum);
+					}
+				}
+				document.getElementById("half" + halfnum).style.backgroundColor = cell_highlight;
+			}
+			
+			function chgshotdisp(strchg) {
+				// typechg: "half" or "team" ... strchg: "A","B","1","2"
+				for (x=0;x<document.getElementsByClassName(courtobj.current_class).length;x++) {
+					document.getElementsByClassName(courtobj.current_class)[x].style.display = "none";	// Hide old chart
+				}
+				if (strchg == "1" || strchg == "2") {		// Half Change indicated
+					courtobj.current_class = "piece" + courtobj.current_team + strchg;
+				}
+				else if (strchg == "A" || strchg == "B") {										// Team Change indicated
+					courtobj.current_class = "piece" + strchg + courtobj.current_half;
+				}
+				for (x=0;x<document.getElementsByClassName(courtobj.current_class).length;x++) {
+					document.getElementsByClassName(courtobj.current_class)[x].style.display = "block";	// Display new chart
+				}
+			}
+			
+			function changeteamnames(a,b) { 		// Change team names
+				document.getElementById("teamA").innerHTML = a;
+				document.getElementById("statheadA").innerHTML = a;
+				courtobj.teamA = a;
+				document.getElementById("teamB").innerHTML = b;
+				document.getElementById("statheadB").innerHTML = b;
+				courtobj.teamB = b;
+			}
+			
+			function chg_teamcolor(tmref,tmcolor) {
+				var standardbgimg = "repeating-linear-gradient(45deg,transparent 0%,transparent 44.9%,white 45%, white 55%),repeating-linear-gradient(135deg,transparent 0%,transparent 44.9%,white 45%, white 55%)";
+				courtobj["color" + tmref] = tmcolor;	// internal update of team color
+				document.getElementById("teamcolor" + tmref + "_sm").style.backgroundColor = tmcolor;	// Page update of team color
+				for (x=0;x<document.getElementsByClassName("piece" + courtobj.current_team + "1").length;x++) {
+					//console.log(document.getElementsByClassName(courtobj.current_class)[x].innerHTML);
+					if (document.getElementsByClassName("piece" + courtobj.current_team + "1")[x].innerHTML != "X") {
+						document.getElementsByClassName("piece" + courtobj.current_team + "1")[x].style.backgroundColor = tmcolor;	// Change color of shots
+					}
+				}
+				for (x=0;x<document.getElementsByClassName("piece" + courtobj.current_team + "2").length;x++) {
+					//console.log(document.getElementsByClassName(courtobj.current_class)[x].innerHTML);
+					if (document.getElementsByClassName("piece" + courtobj.current_team + "2")[x].innerHTML != "X") {
+						document.getElementsByClassName("piece" + courtobj.current_team + "2")[x].style.backgroundColor = tmcolor;	// Change color of shots
+					}
+				}
+			}
+			
+			function changecourt(newcolor) {
+				document.getElementById("courtfill").style.backgroundColor = newcolor;
+			}
+			
+			function defplayers() {
+				var a01 = {playername: "Player Name", playernumber: 99, fgm: 0, fga: 0, fg3m: 0, fg3a: 0, ftm: 0, fta: 0, pts: 0};
+				var a12 = a11 = a10 = a09 = a08 = a07 = a06 = a05 = a04 = a03 = a02 = b12 = b11 = b10 = b09 = b08 = b07 = b06 = b05 = b04 = b03 = b02 = b01 = a01;
+				allplayers = {a12, a11, a10, a09, a08, a07, a06, a05, a04, a03, a02, a01, b12, b11, b10, b09, b08, b07, b06, b05, b04, b03, b02, b01};
+				
+				//console.log(allplayers["a02"].playername);
+			}
+			
+			function addfg() {
+				var offx = event.target.getBoundingClientRect().left;
+				var offy = event.target.getBoundingClientRect().top;
+				var x = event.clientX - offx;
+				var y = event.clientY - offy;
+
+				//courtobj.current_class = "piece" + courtobj.current_team + courtobj.current_half;	// pieceA1
+				if (courtobj.current_half != "3") {
+					if (courtobj.mode != "NA") {
+						// SCORE MODE
+						if (courtobj.mode == "score") {
+							var styleend = 'background-color:' + courtobj["color" + courtobj.current_team];
+							document.getElementById("fgcontainer").innerHTML = document.getElementById("fgcontainer").innerHTML + '<div id="shot' + idcount + '" class="' + courtobj.current_class + '" style="left:' + x + 'px;top:' + y + 'px;' + styleend + ';" onClick="delshot()"></div>';
+						}
+						else {		// MISS MODE
+							var styleend = 'background-color:rgba(255,255,255, 0.45)';
+							document.getElementById("fgcontainer").innerHTML = document.getElementById("fgcontainer").innerHTML + '<div id="shot' + idcount + '" class="' + courtobj.current_class + '" style="left:' + x + 'px;top:' + y + 'px;color:#4B4B4B;' + styleend + ';" onClick="delshot()">X</div>';
+						}
+						idcount += 1;
+						addstats(x,y);
+					}
+				}
+			}
+			
+			function addstats(xcoord,ycoord) {		// DOES NOT HANDLE DELETION OF Field Goals
+				// Afgm_1: 0, Afga_1: 0, Afg3m_1: 0
+				// courtobj.current_team ... courtobj.current_half
+				//console.log(courtobj.current_team + "fgm_" + courtobj.current_half);
+				var threeptr = determinedist(xcoord,ycoord);	// Determine if a 3pt FG was shot or not; defines a boolean
+				//console.log(threeptr);
+				if (courtobj.mode == "score") {		// Adding Field Goals
+					teamstats[courtobj.current_team + "fgm_" + courtobj.current_half] += 1;		// Half Stat update
+					teamstats[courtobj.current_team + "fgm_3"] += 1;							// Game Stat update
+					// page updates
+					document.getElementById(courtobj.current_team + "fgm_" + courtobj.current_half + "stat").innerHTML = teamstats[courtobj.current_team + "fgm_" + courtobj.current_half];		// Upload Half Stat
+					document.getElementById(courtobj.current_team + "fgm_3stat").innerHTML = teamstats[courtobj.current_team + "fgm_1"] + teamstats[courtobj.current_team + "fgm_2"];	// Upload Game Stat
+					if (threeptr == true) {
+						teamstats[courtobj.current_team + "fg3m_" + courtobj.current_half] += 1;		// 3pt Half Stat update
+						teamstats[courtobj.current_team + "fg3m_3"] += 1;		// 3pt Game Stat update
+						document.getElementById(courtobj.current_team + "fg3m_" + courtobj.current_half + "stat").innerHTML = teamstats[courtobj.current_team + "fg3m_" + courtobj.current_half];	// Upload 3pt Half Stat
+						document.getElementById(courtobj.current_team + "fg3m_3stat").innerHTML = teamstats[courtobj.current_team + "fg3m_3"];	// Upload 3pt Game Stat
+					}
+				}
+				if (threeptr == true) {		// Update 3pt ATTEMPTS Stats
+					teamstats[courtobj.current_team + "fg3a_" + courtobj.current_half] += 1;	// 3pt Half Stat Update
+					teamstats[courtobj.current_team + "fg3a_3"] += 1;	// 3pt Game Stat Update
+					document.getElementById(courtobj.current_team + "fg3a_" + courtobj.current_half + "stat").innerHTML = teamstats[courtobj.current_team + "fg3a_" + courtobj.current_half];	// Upload 3pt Attempt Half Stat
+					document.getElementById(courtobj.current_team + "fg3a_3stat").innerHTML = teamstats[courtobj.current_team + "fg3a_3"];	// Upload 3pt Attempt Game Stat
+					document.getElementById(courtobj.current_team + "fg3_" + courtobj.current_half + "PERC").innerHTML = (teamstats[courtobj.current_team + "fg3m_" + courtobj.current_half] / teamstats[courtobj.current_team + "fg3a_" + courtobj.current_half] * 100).toFixed(1).toString() + " &percnt;";	// Upload 3pt PERC Half Stat
+					document.getElementById(courtobj.current_team + "fg3_3PERC").innerHTML = (teamstats[courtobj.current_team + "fg3m_3"] / teamstats[courtobj.current_team + "fg3a_3"] * 100).toFixed(1).toString() + " &percnt;";		// Upload 3pt PERC Game Stat
+				}
+				teamstats[courtobj.current_team + "fga_" + courtobj.current_half] += 1;		// Attempt Half Stat update
+				teamstats[courtobj.current_team + "fga_3"] += 1;		// Attempt Game Stat update
+				document.getElementById(courtobj.current_team + "fga_" + courtobj.current_half +"stat").innerHTML = teamstats[courtobj.current_team + "fga_" + courtobj.current_half];	// Upload Attempt Half stat
+				document.getElementById(courtobj.current_team + "fga_3stat").innerHTML = teamstats[courtobj.current_team + "fga_3"];	// Upload Attempt Game Stat
+				document.getElementById(courtobj.current_team + "fg_" + courtobj.current_half + "PERC").innerHTML = ((teamstats[courtobj.current_team + "fgm_" + courtobj.current_half] / teamstats[courtobj.current_team + "fga_" + courtobj.current_half]) * 100).toFixed(1).toString() + " &percnt;";	// Upload PERC Attempt Half Stat
+				document.getElementById(courtobj.current_team + "fg_3PERC").innerHTML = (teamstats[courtobj.current_team + "fgm_3"] / teamstats[courtobj.current_team + "fga_3"] * 100).toFixed(1).toString() + " &percnt;";	// Upload PERC Attempt Game Stat
+			}
+			
+			function determinedist(xdist,ydist) {
+				xabs = Math.abs(280 - xdist);
+				yabs = Math.abs(82.5 - ydist);
+				
+				tot_dist = Math.sqrt(xabs**2 + yabs**2);
+				//console.log("Distance: " + tot_dist + " ... 3ptr?: " + (tot_dist >= 220));
+				return (tot_dist >= 220);
+			}
+			
+			function delshot() {
+				// Taught me how to remove elements: https://www.w3schools.com/js/js_htmldom_nodes.asp
+				//console.log(event.target.id);
+				var xpx = document.getElementById(event.target.id).style.left;
+				var ypx = document.getElementById(event.target.id).style.top;
+				var xnum = xpx.replace("px","").trim();
+				var ynum = ypx.replace("px","").trim();
+				var is3 = determinedist(xnum,ynum);
+				var missed = (document.getElementById(event.target.id).innerHTML == "X");
+				console.log(missed);
+				document.getElementById("fgcontainer").removeChild(document.getElementById(event.target.id));
+				// STAT UPDATE
+				// Afgm_1: 0, Afga_1: 0, Afg3m_1: 0, Afg3a_1: 0
+				// Afgm_2: 0, Afga_2: 0, Afg3m_2: 0, Afg3a_2: 0
+				// Afgm_3: 0, Afga_3: 0, Afg3m_3: 0, Afg3a_3: 0
+				if (is3 == true) {		// If the FG was a 3ptr
+					if (missed == false) {		// SCORED 3PTR
+						teamstats[courtobj.current_team + "fg3m_" + courtobj.current_half] -= 1;
+						teamstats[courtobj.current_team + "fg3m_3"] -= 1;
+						document.getElementById(courtobj.current_team + "fg3m_" + courtobj.current_half + "stat").innerHTML = teamstats[courtobj.current_team + "fg3m_" + courtobj.current_half];
+						document.getElementById(courtobj.current_team + "fg3m_3" + "stat").innerHTML = teamstats[courtobj.current_team + "fg3m_3"];
+					}
+					teamstats[courtobj.current_team + "fg3a_" + courtobj.current_half] -= 1;
+					teamstats[courtobj.current_team + "fg3a_3"] -= 1;
+					document.getElementById(courtobj.current_team + "fg3a_" + courtobj.current_half + "stat").innerHTML = teamstats[courtobj.current_team + "fg3a_" + courtobj.current_half];
+					document.getElementById(courtobj.current_team + "fg3a_3" + "stat").innerHTML = teamstats[courtobj.current_team + "fg3a_3"];
+					if (teamstats[courtobj.current_team + "fg3a_" + courtobj.current_half] == 0) {
+						document.getElementById(courtobj.current_team + "fg3_" + courtobj.current_half + "PERC").innerHTML = "--";
+					}
+					else {
+						document.getElementById(courtobj.current_team + "fg3_" + courtobj.current_half + "PERC").innerHTML = (teamstats[courtobj.current_team + "fg3m_" + courtobj.current_half] / teamstats[courtobj.current_team + "fg3a_" + courtobj.current_half] * 100).toFixed(1).toString() + " &percnt;";
+					}
+					if (teamstats[courtobj.current_team + "fg3a_3"] == 0) {
+						document.getElementById(courtobj.current_team + "fg3_3" + "PERC").innerHTML = "--";
+					}
+					else {
+						document.getElementById(courtobj.current_team + "fg3_3" + "PERC").innerHTML = (teamstats[courtobj.current_team + "fg3m_3"] / teamstats[courtobj.current_team + "fg3a_3"] * 100).toFixed(1).toString() + " &percnt;";
+					}
+				}
+				if (missed == false) {			// SCORED FG
+					teamstats[courtobj.current_team + "fgm_" + courtobj.current_half] -= 1;
+					teamstats[courtobj.current_team + "fgm_3"] -= 1;
+					document.getElementById(courtobj.current_team + "fgm_" + courtobj.current_half + "stat").innerHTML = teamstats[courtobj.current_team + "fgm_" + courtobj.current_half];
+					document.getElementById(courtobj.current_team + "fgm_3" + "stat").innerHTML = teamstats[courtobj.current_team + "fgm_3"];
+				}
+				teamstats[courtobj.current_team + "fga_" + courtobj.current_half] -= 1;
+				teamstats[courtobj.current_team + "fga_3"] -= 1;
+				document.getElementById(courtobj.current_team + "fga_" + courtobj.current_half + "stat").innerHTML = teamstats[courtobj.current_team + "fga_" + courtobj.current_half];
+				document.getElementById(courtobj.current_team + "fga_3" + "stat").innerHTML = teamstats[courtobj.current_team + "fga_3"];
+				if (teamstats[courtobj.current_team + "fga_" + courtobj.current_half] == 0) {
+					document.getElementById(courtobj.current_team + "fg_" + courtobj.current_half + "PERC").innerHTML = "--";
+				}
+				else {
+					document.getElementById(courtobj.current_team + "fg_" + courtobj.current_half + "PERC").innerHTML = ((teamstats[courtobj.current_team + "fgm_" + courtobj.current_half] / teamstats[courtobj.current_team + "fga_" + courtobj.current_half]) * 100).toFixed(1).toString() + " &percnt;";
+				}
+				if (teamstats[courtobj.current_team + "fga_3"] == 0) {
+					document.getElementById(courtobj.current_team + "fg_3PERC").innerHTML = "--";
+				}
+				else {
+					document.getElementById(courtobj.current_team + "fg_3PERC").innerHTML = (teamstats[courtobj.current_team + "fgm_3"] / teamstats[courtobj.current_team + "fga_3"] * 100).toFixed(1).toString() + " &percnt;";
+				}
+			}
+		</script>
+	</body>
+</html>
