@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<base href="../">
+	<title>Gentry - Digital Portfolio</title>
+	<style>
+		.HEADER {
+			width: 100%;
+			font-weight: bold;
+			font-size: 30px;
+			display: inline-block;
+			}
+		.HEADERPHOTO {
+			width: 3%;
+			border: 2px solid white;
+			box-shadow: 0px 0px 5px white;
+			border-radius: 35%;
+			display: inline-block;
+			}
+		.title {
+			font-weight: bold;
+			text-decoration: underline;
+			text-align: center;
+			margin-bottom: 5px;
+		}
+		.tab {
+			display: table;
+			margin: auto;
+			margin-bottom: 30px;
+		}
+		.row {
+			display: row;
+		}
+		.col {
+			display: table-cell;
+			border-collapse: collapse;
+			padding-left: 2px;
+			padding-right: 2px;
+			width: 200px;
+			text-align: center;
+		}
+		.photodisp {
+			position: fixed;
+			transform: translate(-50%,-50%);
+			top: 50%;
+			left: 50%;
+			width: 100%;
+			background-color: rgba(0,0,0,0.5);
+			text-align: center;
+			display: none;
+		}
+
+
+	</style>
+</head>
+
+<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue">
+	<div class="HEADER">
+		<img class="HEADERPHOTO" src="profile.png"> <u>iResume - Digital Portfolio</u>
+	</div><br />
+	<div id="desc" style="width:85%;margin:auto;margin-top:20px;text-align:center;">
+		Welcome to my digital portfolio. The contents on this page are simply meant to display various categories of media creation that I've dabbled in. Click on the image of interest to see a larger version. Click again to close. Several examples have been utilized here on my github page. Check out my blogposts on my other page(link at bottom) to see other examples of how I've used media mixed with information and display. Programs I used most were Paint.NET, Inkscape, LibreOffice, and Blender.
+	</div>
+	<div class="title" style="margin-top:20px;">GRAPHICS</div>
+	<div id="graphics" class="tab">
+		<div class="row">
+			<div class="col"><img src="iresume/thumbs/tn_graphics-bball-halfcourt.jpg" onClick="showfull('iresume/full/graphics-bball-halfcourt.jpg')"></div>
+			<div class="col"><img src="iresume/thumbs/tn_graphics-bookstore.png" onClick="showfull('iresume/full/graphics-bookstore.png')"></div>
+			<div class="col"><img src="iresume/thumbs/tn_graphics-brickstore.png" onClick="showfull('iresume/full/graphics-brickstore.png')"></div>
+			<div class="col"><img src="iresume/thumbs/tn_graphics-hansbrough_proj.jpg" onClick="showfull('iresume/full/graphics-hansbrough_proj.jpg')"><br /><span style="font-size:0.75em">* Photos of player not owned/taken by me</span></div>
+			<br />
+			<div class="col"><img src="iresume/thumbs/tn_graphics-logo_channel99.jpg" onClick="showfull('iresume/full/graphics-logo_channel99.jpg')"></div>
+			<div class="col"><img src="iresume/thumbs/tn_graphics-music-sign.png" onClick="showfull('iresume/full/graphics-music-sign.png')"></div>
+			<div class="col"><img src="iresume/thumbs/tn_graphics-ncmid.jpg" onClick="showfull('iresume/full/graphics-ncmid.jpg')"></div>
+			<div class="col"><img src="iresume/thumbs/tn_graphics-new_rameses_2018.jpg" onClick="showfull('iresume/full/graphics-new_rameses_2018.jpg')"><br /><span style="font-size:0.75em">* Logo is copyrighted by UNC; Guitar was clipart.</span></div>
+			<br />
+			<div class="col"><img src="iresume/thumbs/tn_graphics-sky_cloudy_wintrymix.jpg" onClick="showfull('iresume/full/graphics-sky_cloudy_wintrymix.jpg')"></div>
+			<div class="col"><img src="iresume/thumbs/tn_graphics-snowman.jpg" onClick="showfull('iresume/full/graphics-snowman.jpg')"></div>
+		</div>	
+	</div>
+	<div class="title">DOCUMENTS / FLYERS</div>
+	<div id="docs" class="tab">
+		<div class="row">
+			<div class="col"><img src="iresume/thumbs/tn_doc-flyer01.jpg" onClick="showfull('iresume/full/doc-flyer01.jpg')"></div>
+			<div class="col"><img src="iresume/thumbs/tn_doc-flyer02.jpg" onClick="showfull('iresume/full/doc-flyer02.jpg')"></div>
+			<div class="col"><img src="iresume/thumbs/tn_doc-roll.jpg" onClick="showfull('iresume/full/doc-roll.jpg')"><br /><span style="font-size:0.75em">* Used Excel to create</span></div>
+			<div class="col"><img src="iresume/thumbs/tn_doc-scripturecandy.jpg" onClick="showfull('iresume/full/doc-scripturecandy.jpg')"><br /><span style="font-size:0.75em">* Made to attach hershey-miniatures to the quotes.</span></div>
+		</div>	
+	</div>
+	<div class="title">ART (* the starry skys below in some edits were made using a random shape generator)</div>
+	<div id="art" class="tab">
+		<div class="row">
+			<div class="col"><img src="iresume/thumbs/tn_art-beach01.jpg" onClick="showfull('iresume/full/art-beach01.jpg')"></div>
+			<div class="col"><img src="iresume/thumbs/tn_art-guitar.jpg" onClick="showfull('iresume/full/art-guitar.jpg')"><br /><span style="font-size:0.75em">* I used photo editing to plan out a guitar paint project I worked on for my brother.</span></div>
+			<div class="col"><img src="iresume/thumbs/tn_art-hemart1.jpg" onClick="showfull('iresume/full/art-hemart1.jpg')"><br /><span style="font-size:0.75em">* Used a photo from one of my favorite bands: HEM, and made this tribute to them and one of their songs</span></div>
+			<div class="col"><img src="iresume/thumbs/tn_art-hemart2.jpg" onClick="showfull('iresume/full/art-hemart2.jpg')"></div>
+			<br />
+			<div class="col"><img src="iresume/thumbs/tn_art-landscape-final.jpg" onClick="showfull('iresume/full/art-landscape-final.jpg')"></div>
+			<div class="col"><img src="iresume/thumbs/tn_art-mountain_landscape.jpg" onClick="showfull('iresume/full/art-mountain_landscape.jpg')"></div>
+			<div class="col"><img src="iresume/thumbs/tn_art-quarter.jpg" onClick="showfull('iresume/full/art-quarter.jpg')"></div>
+		</div>	
+	</div>
+	<div class="title">BLENDER</div>
+	<div id="blender" class="tab">
+		<div class="row">
+			<div class="col"><img src="iresume/thumbs/tn_blender-books.png" onClick="showfull('iresume/full/blender-books.png')"></div>
+			<div class="col"><img src="iresume/thumbs/tn_blender-chicken.png" onClick="showfull('iresume/full/blender-chicken.png')"></div>
+			<div class="col"><img src="iresume/thumbs/tn_blender-fruit.png" onClick="showfull('iresume/full/blender-fruit.png')"></div>
+		</div>	
+	</div>
+	<div id="imgdisp" class="photodisp" onClick="hide()">
+	
+	</div>
+
+<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
+
+</body>
+<script>
+	function showfull(fname) {
+		document.getElementById("imgdisp").style.display = "block";
+		document.getElementById("imgdisp").innerHTML = '<img src="' + fname + '" style="max-width:60%;">';
+	}
+	
+	function hide() {
+		document.getElementById("imgdisp").style.display = "none";
+	}
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
