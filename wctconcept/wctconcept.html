@@ -1,0 +1,420 @@
+<html>
+	<head>
+		<base href="../">
+		<title>ksgwxfan - WCT Level III Radar File-Loading Concept</title>
+		<style>
+			.HEADER {
+				width: 100%;
+				font-weight: bold;
+				font-size: 30px;
+				display: inline-block;
+				}
+			.HEADERPHOTO {
+				width: 3%;
+				border: 2px solid white;
+				box-shadow: 0px 0px 5px white;
+				border-radius: 35%;
+				display: inline-block;
+				}
+			.selbox {
+				transform: translate(0%,-50%);
+				border-radius: 6px;
+				background-image: linear-gradient(rgb(212,208,200) 60%, rgb(178,175,168));
+				height: 26px;
+				border:2px solid #727272;
+				outline: none;
+			}
+			option {
+				background-color: rgb(212,208,200);
+				border: 1px solid #A5A5A5;
+			}
+			.prodopt {width: 350px;}
+			button:active {background-image: linear-gradient(rgb(178,175,168) 30%, rgb(212,208,200));}
+		</style>
+	</head>
+	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue">
+		<div class="HEADER">
+			<img class="HEADERPHOTO" src="profile.png"> <u>WCT Level III Radar File-Loading Concept</u>
+		</div>
+		
+		<div id="container" style="position:relative;margin:auto;margin-top:20px;margin-bottom:20px;width:814px;height:200px;">
+			<img src="wctconcept/wctconcept.png" style="position:absolute;top:0px;left:0px;" />
+			<select class="selbox" id="siteselect" style="position:absolute;top:65%;left:17%;" onChange="prodselquery(document.getElementById('siteselect').value)">
+				<option value="pahg">AK - PAHG - Anchorage-Kenai</option>
+				<option value="pabc">AK - PABC - Bethel</option>
+				<option value="pacg">AK - PACG - Biorka Island-Sitka</option>
+				<option value="papd">AK - PAPD - Fairbanks-Pedro Dome</option>
+				<option value="pakc">AK - PAKC - King Salmon</option>
+				<option value="paih">AK - PAIH - Middleton Island</option>
+				<option value="paec">AK - PAEC - Nome</option>
+				<option value="kbmx">AL - KBMX - Birmingham</option>
+				<option value="keox">AL - KEOX - Ft Rucker</option>
+				<option value="khtx">AL - KHTX - Huntsville-Hytop</option>
+				<option value="kmxx">AL - KMXX - Maxwell AFB</option>
+				<option value="kmob">AL - KMOB - Mobile</option>
+				<option value="ksrx">AR - KSRX - Fort Smith</option>
+				<option value="klzk">AR - KLZK - Little Rock</option>
+				<option value="kfsx">AZ - KFSX - Flagstaff</option>
+				<option value="kiwa">AZ - KIWA - Phoenix</option>
+				<option value="kemx">AZ - KEMX - Tucson</option>
+				<option value="kyux">AZ - KYUX - Yuma</option>
+				<option value="tphx">AZ - TPHX - Phoenix</option>
+				<option value="kbbx">CA - KBBX - Beale AFB</option>
+				<option value="keyx">CA - KEYX - Edwards AFB</option>
+				<option value="kbhx">CA - KBHX - Eureka</option>
+				<option value="kvtx">CA - KVTX - Los Angeles</option>
+				<option value="kdax">CA - KDAX - Sacramento</option>
+				<option value="knkx">CA - KNKX - San Diego</option>
+				<option value="kmux">CA - KMUX - San Francisco</option>
+				<option value="khnx">CA - KHNX - San Joaquin Valley</option>
+				<option value="ksox">CA - KSOX - Santa Ana Mountains</option>
+				<option value="kvbx">CA - KVBX - Vandenberg AFB</option>
+				<option value="kftg">CO - KFTG - Denver</option>
+				<option value="kgjx">CO - KGJX - Grand Junction</option>
+				<option value="kpux">CO - KPUX - Pueblo</option>
+				<option value="tden">CO - TDEN - Denver</option>
+				<option value="kdox">DE - KDOX - Dover AFB</option>
+				<option value="kjax">FL - KJAX - Jacksonville</option>
+				<option value="kbyx">FL - KBYX - Key West</option>
+				<option value="kmlb">FL - KMLB - Melbourne</option>
+				<option value="kamx">FL - KAMX - Miami</option>
+				<option value="kevx">FL - KEVX - Northwest Florida-Eglin AFB</option>
+				<option value="ktlh">FL - KTLH - Tallahassee</option>
+				<option value="ktbw">FL - KTBW - Tampa Bay</option>
+				<option value="tfll">FL - TFLL - Fort Lauderdale</option>
+				<option value="tmia">FL - TMIA - Miami</option>
+				<option value="tmco">FL - TMCO - Orlando International</option>
+				<option value="ttpa">FL - TTPA - Tampa Bay</option>
+				<option value="tpbi">FL - TPBI - West Palm Beach</option>
+				<option value="kffc">GA - KFFC - Atlanta</option>
+				<option value="kvax">GA - KVAX - Moody AFB</option>
+				<option value="kjgx">GA - KJGX - Robins AFB</option>
+				<option value="tatl">GA - TATL - Atlanta</option>
+				<option value="pgua">Guam - PGUA - Andersen AFB</option>
+				<option value="phkm">HI - PHKM - Kamuela-Kohala</option>
+				<option value="phmo">HI - PHMO - Molokai</option>
+				<option value="phki">HI - PHKI - South Kauai</option>
+				<option value="phwa">HI - PHWA - South Shore</option>
+				<option value="kdmx">IA - KDMX - Des Moines</option>
+				<option value="kdvn">IA - KDVN - Quad Cities-Davenport</option>
+				<option value="kcbx">ID - KCBX - Boise</option>
+				<option value="ksfx">ID - KSFX - Pocatello</option>
+				<option value="klot">IL - KLOT - Chicago</option>
+				<option value="kilx">IL - KILX - Lincoln</option>
+				<option value="tmdw">IL - TMDW - Chicago Midway</option>
+				<option value="tord">IL - TORD - Chicago O'Hare</option>
+				<option value="kvwx">IN - KVWX - Evansville</option>
+				<option value="kind">IN - KIND - Indianapolis</option>
+				<option value="kiwx">IN - KIWX - Northern Indiana-North Webster</option>
+				<option value="tids">IN - TIDS - Indianapolis</option>
+				<option value="rodn">JP - RODN - Kadena</option>
+				<option value="rksg">KO - RKSG - Camp Humphreys</option>
+				<option value="rkjk">KO - RKJK - Kunsan</option>
+				<option value="kddc">KS - KDDC - Dodge City</option>
+				<option value="kgld">KS - KGLD - Goodland</option>
+				<option value="ktwx">KS - KTWX - Topeka</option>
+				<option value="kict">KS - KICT - Wichita</option>
+				<option value="tich">KS - TICH - Wichita</option>
+				<option value="khpx">KY - KHPX - Ft Campbell</option>
+				<option value="kjkl">KY - KJKL - Jackson</option>
+				<option value="klvx">KY - KLVX - Louisville</option>
+				<option value="kpah">KY - KPAH - Paducah</option>
+				<option value="tsdf">KY - TSDF - Louisville</option>
+				<option value="kpoe">LA - KPOE - Ft Polk</option>
+				<option value="klch">LA - KLCH - Lake Charles</option>
+				<option value="klix">LA - KLIX - New Orleans</option>
+				<option value="kshv">LA - KSHV - Shreveport</option>
+				<option value="tmsy">LA - TMSY - New Orleans</option>
+				<option value="kbox">MA - KBOX - Boston</option>
+				<option value="tbos">MA - TBOS - Boston</option>
+				<option value="tadw">MD - TADW - Andrews Air Force Base</option>
+				<option value="tbwi">MD - TBWI - Baltimore-Wash</option>
+				<option value="tdca">MD - TDCA - Washington National</option>
+				<option value="kcbw">ME - KCBW - Caribou</option>
+				<option value="kgyx">ME - KGYX - Portland</option>
+				<option value="kdtx">MI - KDTX - Detroit</option>
+				<option value="kapx">MI - KAPX - Gaylord</option>
+				<option value="kgrr">MI - KGRR - Grand Rapids</option>
+				<option value="kmqt">MI - KMQT - Marquette</option>
+				<option value="tdtw">MI - TDTW - Detroit</option>
+				<option value="kdlh">MN - KDLH - Duluth</option>
+				<option value="kmpx">MN - KMPX - Minneapolis</option>
+				<option value="tmsp">MN - TMSP - Minneapolis</option>
+				<option value="keax">MO - KEAX - Kansas City</option>
+				<option value="ksgf">MO - KSGF - Springfield</option>
+				<option value="klsx">MO - KLSX - St Louis</option>
+				<option value="tmci">MO - TMCI - Kansas City</option>
+				<option value="tstl">MO - TSTL - St Louis</option>
+				<option value="kgwx">MS - KGWX - Columbus AFB</option>
+				<option value="kdgx">MS - KDGX - Jackson</option>
+				<option value="kblx">MT - KBLX - Billings</option>
+				<option value="kggw">MT - KGGW - Glasgow</option>
+				<option value="ktfx">MT - KTFX - Great Falls</option>
+				<option value="kmsx">MT - KMSX - Missoula</option>
+				<option value="kmhx">NC - KMHX - Morehead City</option>
+				<option value="krax">NC - KRAX - Raleigh-Durham</option>
+				<option value="kltx">NC - KLTX - Wilmington</option>
+				<option value="tclt">NC - TCLT - Charlotte</option>
+				<option value="trdu">NC - TRDU - Raleigh Durham</option>
+				<option value="kbis">ND - KBIS - Bismarck</option>
+				<option value="kmvx">ND - KMVX - Grand Forks</option>
+				<option value="kmbx">ND - KMBX - Minot AFB</option>
+				<option value="kuex">NE - KUEX - Hastings</option>
+				<option value="klnx">NE - KLNX - North Platte</option>
+				<option value="koax">NE - KOAX - Omaha</option>
+				<option value="tewr">NJ - TEWR - Newark</option>
+				<option value="kabx">NM - KABX - Albuquerque</option>
+				<option value="kfdx">NM - KFDX - Cannon AFB</option>
+				<option value="khdx">NM - KHDX - Holloman AFB</option>
+				<option value="klrx">NV - KLRX - Elko</option>
+				<option value="kesx">NV - KESX - Las Vegas</option>
+				<option value="krgx">NV - KRGX - Reno</option>
+				<option value="tlas">NV - TLAS - Las Vegas</option>
+				<option value="kenx">NY - KENX - Albany</option>
+				<option value="kbgm">NY - KBGM - Binghamton</option>
+				<option value="kbuf">NY - KBUF - Buffalo</option>
+				<option value="ktyx">NY - KTYX - Montague-Ft Drum</option>
+				<option value="kokx">NY - KOKX - New York City-Upton</option>
+				<option value="tjfk">NY - TJFK - New York City</option>
+				<option value="kiln">OH - KILN - Cincinnati-Wilmington</option>
+				<option value="kcle">OH - KCLE - Cleveland</option>
+				<option value="tlve">OH - TLVE - Cleveland</option>
+				<option value="tcmh">OH - TCMH - Columbus</option>
+				<option value="tcvg">OH - TCVG - Covington</option>
+				<option value="tday">OH - TDAY - Dayton</option>
+				<option value="kfdr">OK - KFDR - Frederick-Altus AFB</option>
+				<option value="ktlx">OK - KTLX - Oklahoma City</option>
+				<option value="kinx">OK - KINX - Tulsa</option>
+				<option value="kvnx">OK - KVNX - Vance AFB</option>
+				<option value="tokc">OK - TOKC - Oklahoma City</option>
+				<option value="ttul">OK - TTUL - Tulsa</option>
+				<option value="kmax">OR - KMAX - Medford</option>
+				<option value="kpdt">OR - KPDT - Pendleton</option>
+				<option value="krtx">OR - KRTX - Portland</option>
+				<option value="kdix">PA - KDIX - Philadelphia</option>
+				<option value="kpbz">PA - KPBZ - Pittsburgh</option>
+				<option value="kccx">PA - KCCX - State College</option>
+				<option value="tphl">PA - TPHL - Philadelphia</option>
+				<option value="tpit">PA - TPIT - Pittsburgh</option>
+				<option value="tjua">PR - TJUA - San Juan</option>
+				<option value="tsju">PR - TSJU - San Juan</option>
+				<option value="kclx">SC - KCLX - Charleston</option>
+				<option value="kcae">SC - KCAE - Columbia</option>
+				<option value="kgsp">SC - KGSP - Greer</option>
+				<option value="kabr">SD - KABR - Aberdeen</option>
+				<option value="kudx">SD - KUDX - Rapid City</option>
+				<option value="kfsd">SD - KFSD - Sioux Falls</option>
+				<option value="kmrx">TN - KMRX - Knoxville-Morristown</option>
+				<option value="knqa">TN - KNQA - Memphis</option>
+				<option value="kohx">TN - KOHX - Nashville</option>
+				<option value="tmem">TN - TMEM - Memphis</option>
+				<option value="tbna">TN - TBNA - Nashville</option>
+				<option value="kama">TX - KAMA - Amarillo</option>
+				<option value="kbro">TX - KBRO - Brownsville</option>
+				<option value="kgrk">TX - KGRK - Central Texas-Ft Hood</option>
+				<option value="kcrp">TX - KCRP - Corpus Christi</option>
+				<option value="kdyx">TX - KDYX - Dyess AFB</option>
+				<option value="kepz">TX - KEPZ - El Paso</option>
+				<option value="kfws">TX - KFWS - Ft Worth</option>
+				<option value="khgx">TX - KHGX - Houston</option>
+				<option value="kdfx">TX - KDFX - Laughlin AFB</option>
+				<option value="klbb">TX - KLBB - Lubbock</option>
+				<option value="kmaf">TX - KMAF - Midland-Odessa</option>
+				<option value="ksjt">TX - KSJT - San Angelo</option>
+				<option value="kewx">TX - KEWX - San Antonio</option>
+				<option value="tdal">TX - TDAL - Dallas Love Field</option>
+				<option value="tdfw">TX - TDFW - Dallas-Ft. Worth</option>
+				<option value="thou">TX - THOU - Houston Hobby</option>
+				<option value="tiah">TX - TIAH - Houston International</option>
+				<option value="kicx">UT - KICX - Cedar City</option>
+				<option value="kmtx">UT - KMTX - Salt Lake City</option>
+				<option value="tslc">UT - TSLC - Salt Lake City</option>
+				<option value="kfcx" selected>VA - KFCX - Blacksburg</option>
+				<option value="klwx">VA - KLWX - Sterling</option>
+				<option value="kakq">VA - KAKQ - Wakefield</option>
+				<option value="tiad">VA - TIAD - Dulles</option>
+				<option value="kcxx">VT - KCXX - Burlington</option>
+				<option value="klgx">WA - KLGX - Langley Hill</option>
+				<option value="katx">WA - KATX - Seattle</option>
+				<option value="kotx">WA - KOTX - Spokane</option>
+				<option value="kgrb">WI - KGRB - Green Bay</option>
+				<option value="karx">WI - KARX - La Crosse</option>
+				<option value="kmkx">WI - KMKX - Milwaukee</option>
+				<option value="tmke">WI - TMKE - Milwaukee</option>
+				<option value="krlx">WV - KRLX - Charleston</option>
+				<option value="kcys">WY - KCYS - Cheyenne</option>
+				<option value="kriw">WY - KRIW - Riverton</option>
+				<option value="tjua">PR - TJUA - East Puerto Rico</option>
+				<option value="tsju">PR - TSJU - San Juan</option>
+			</select>
+			<div id="tdwrselect" style="position:absolute;top:65%;left:55%;display:none;">
+				<select class="selbox prodopt" id="prodselectt">
+					<option value="181r0">TR0 - Base reflectivity - 48 nmi Range - 0.1-0.8deg</option>
+					<option value="181r1">TR1 - Base reflectivity - 48 nmi Range - 1.0deg</option>
+					<option value="181r2">TR2 - Base reflectivity - 48 nmi Range - 1.6-3.7deg</option>
+					<option value="182v0">TV0 - Base Radial Velocity - 48 nmi Range - 0.1-0.8deg</option>
+					<option value="182v1">TV1 - Base Radial Velocity - 48 nmi Range - 1.0deg</option>
+					<option value="182v2">TV2 - Base Radial Velocity - 48 nmi Range - 1.6-3.7deg</option>
+					<option value="186zl">TZL - Long Range Reflectivity - 225 nmi Range - 0.6deg</option>
+				</select>
+			</div>
+			<div id="wsr88dselect" style="position:absolute;top:65%;left:55%;">
+				<select class="selbox prodopt" id="prodselectw">
+					<option value="135et">------ WSR88D SPECIALTY PRODUCTS ---------------------------------</option>
+					<option value="57vil">NVL - Vertical Integrated Liquid</option>
+					<option value="134il">DVL - Digital Vertical Integrated Liquid</option>
+					<option value="p41et">NET - Echo Tops</option>
+					<option value="135et">EET - Enhanced Echo Tops</option>
+					<option value="48vwp">NVW - Velocity Azimuth Dispaly VAD Wind Profile</option>
+					<option value="135et">------ WSR88D - 0.5 DEG ------------------------------------------</option>
+					<option value="p94r0" selected>N0Q - Base reflectivity - 248 nmi Range - 0.5deg</option>
+					<option value="p99v0">N0U - Base Radial Velocity - 162 nmi Range - 0.5deg</option>
+					<option value="56rm0">N0S - Storm Relative Mean Velocity - 0.5deg</option>
+					<option value="159x0">N0X - Digital Differential Reflectivity - 0.5deg</option>
+					<option value="161c0">N0C - Digital Correlation Coefficient - 0.5deg</option>
+					<option value="163k0">N0K - Digital Specific Differential Phase - 0.5deg</option>
+					<option value="165h0">N0H - Digital Hydrometeor Classification - 0.5deg</option>
+					<option value="p30sw">NSW - Base Spectrum Width - 124km</option>
+					<option value="32dhr">DHR - Digital Hybrid Scan Reflectivity</option>
+					<option value="177hh">HHC - Hybrid Scan Hydrometeor Classification</option>
+					<option value="135et">------ WSR88D - 0.9 DEG ------------------------------------------</option>
+					<option value="p94ra">NAQ - Base reflectivity - 248 nmi Range - 0.9deg</option>
+					<option value="p99va">NAU - Base Radial Velocity - 162 nmi Range - 0.9deg</option>
+					<option value="159xa">NAX - Digital Differential Reflectivity - 0.9deg</option>
+					<option value="161ca">NAC - Digital Correlation Coefficient - 0.9deg</option>
+					<option value="163ka">NAK - Digital Specific Differential Phase - 0.9deg</option>
+					<option value="165ha">NAH - Digital Hydrometeor Classification - 0.9deg</option>
+					<option value="135et">------ WSR88D - 1.3 DEG ------------------------------------------</option>
+					<option value="p94r1">N1Q - Base reflectivity - 248 nmi Range - 1.3-1.5deg</option>
+					<option value="p99v1">N1U - Base Radial Velocity - 162 nmi Range - 1.3-1.5deg</option>
+					<option value="56rm1">N1S - Storm Rel. Mean radial velocity map - 1.3-1.5deg</option>
+					<option value="159x1">N1X - Digital Differential Reflectivity - 1.3-1.5deg</option>
+					<option value="161c1">N1C - Digital Correlation Coefficient - 1.3-1.5deg</option>
+					<option value="163k1">N1K - Digital Specific Differential Phase - 1.3-1.5deg</option>
+					<option value="165h1">N1H - Digital Hydrometeor Classification - 1.3-1.5deg</option>
+					<option value="135et">------ WSR88D - 1.8 DEG ------------------------------------------</option>
+					<option value="p94rb">NBQ - Base reflectivity - 248 nmi Range - 1.8deg</option>
+					<option value="p99vb">NBU - Base Radial Velocity - 162 nmi Range - 1.8deg</option>
+					<option value="159xb">NBX - Digital Differential Reflectivity - 1.8deg</option>
+					<option value="161cb">NBC - Digital Correlation Coefficient - 1.8deg</option>
+					<option value="163kb">NBK - Digital Specific Differential Phase - 1.8deg</option>
+					<option value="165hb">NBH - Digital Hydrometeor Classification - 1.8deg</option>
+					<option value="135et">------ WSR88D - 2.4 DEG ------------------------------------------</option>
+					<option value="p94r2">N2Q - Base reflectivity - 248 nmi Range - 2.4-2.5deg</option>
+					<option value="p99v2">N2U - Base Radial Velocity - 162 nmi Range - 2.4-2.5deg</option>
+					<option value="56rm2">N2S - Storm Rel. Mean radial velocity map - 2.4-2.5deg</option>
+					<option value="159x2">N2X - Digital Differential Reflectivity - 2.4-2.5deg</option>
+					<option value="161c2">N2C - Digital Correlation Coefficient - 2.4-2.5deg</option>
+					<option value="163k2">N2K - Digital Specific Differential Phase - 2.4-2.5deg</option>
+					<option value="165h2">N2H - Digital Hydrometeor Classification - 2.4-2.5deg</option>
+					<option value="135et">------ WSR88D - 3.1 DEG ------------------------------------------</option>
+					<option value="p94r3">N3Q - Base reflectivity - 248 nmi Range - 3.1-3.4-3.5deg</option>
+					<option value="p99v3">N3U - Base Radial Velocity - 162 nmi Range - 3.1-3.4-3.5deg</option>
+					<option value="56rm3">N3S - Storm Rel. Mean radial velocity map - 3.1-3.4-3.5deg</option>
+					<option value="159x3">N3X - Digital Differential Reflectivity - 3.1-3.4-3.5deg</option>
+					<option value="161c3">N3C - Digital Correlation Coefficient - 3.1-3.4-3.5deg</option>
+					<option value="163k3">N3K - Digital Specific Differential Phase - 3.1-3.4-3.5deg</option>
+					<option value="165h3">N3H - Digital Hydrometeor Classification - 3.1-3.4-3.5deg</option>
+					<option value="135et">------ PRECIPITATION ---------------------------------------------</option>
+					<option value="78ohp">N1P - Surface Rainfall Accumulation - 1HR Total</option>
+					<option value="81dpr">DPA - Hourly Digital Precipitation Array - UNBIASED</option>
+					<option value="169oh">OHA - One Hour Accumulation - D.P.</option>
+					<option value="170aa">DAA - Digital Accumulation Array - 1HR - D.P. - UNBIASED</option>
+					<option value="174od">DOD - Digital One Hour Difference Accumulation</option>
+					<option value="176pr">DPR - Digital Inst. Precip. Rate</option>
+					<option value="79thp">N3P - Surface Rainfall Accumulation - 3HR Total</option>
+					<option value="173u1">DU3 - Digital User-Selectable Accumulation: 3HR-hrly</option>
+					<option value="173u3">DU6 - Digital User-Selectable Accumulation: 24HR-12Z</option>
+					<option value="80stp">NTP - Surface Rainfall Accumulation - Storm Total</option>
+					<option value="171st">PTA - Storm Total Accumulation - D.P.</option>
+					<option value="138dp">DSP - Digital Storm Total Accumulation - PPS</option>
+					<option value="172dt">DTA - Digital Storm Total Accumulation - D.P.</option>
+					<option value="175sd">DSD - Digital Storm Total Difference Accumulation</option>
+					<option value="135et">------ OTHER RADAR -----------------------------------------------</option>
+					<option value="p19r0">N0R - Base reflectivity - 124 nmi Range - 0.5deg</option>
+					<option value="p27v0">N0V - Base Radial Velocity - 124 nmi Range - 0.5deg</option>
+					<option value="p20-r">N0Z - Base reflectivity - 248 nmi Range - 0.5deg</option>
+					<option value="p37cr">NCR - Composite Reflectivity - 16 levels – 124nmi</option>
+					<option value="p38cr">NCZ - Composite Reflectivity - 16 levels – 248nmi</option>
+					<option value="90lrm">NHL - Layer composite reflectivity max - Upper Level</option>
+					<option value="67apr">NLA - Layer Composite Reflectivity with AP removed</option>
+					<option value="66lrm">NML - Layer Composite Reflectivity Maximum Mid-Level</option>
+					<option value="135et">------ DATA PRODUCTS ---------------------------------------------</option>
+					<option value="p62ss">NSS - Storm Structure</option>
+					<option value="58sti">NST - Storm Tracking Information</option>
+					<option value="141md">NMD - Mesocyclone</option>
+					<option value="61tvs">NTV - Tornadic Vortex Signature</option>
+					<option value="p59hi">NHI - Hail Index</option>
+					<option value="82spd">SPD - Supplemental precip data</option>
+					<option value="135et">------ TEXT PRODUCTS ---------------------------------------------</option>
+					<option value="p2gsm">GSM - General Status Message</option>
+					<option value="75ftm">FTM - Free Text message</option>
+					<option value="152rs">ASP - Archive III Status Product</option>
+					<option value="74rcm">RCM - Radar Coded message</option>
+					<option value="135et">------ MELTING LAYER ---------------------------------------------</option>
+					<option value="166m0">N0M - Melting Layer – 0.5deg</option>
+					<option value="166ma">N1M - Melting Layer – 0.9deg</option>
+					<option value="166m1">N2M - Melting Layer – 1.3-1.5deg</option>
+					<option value="166mb">N3M - Melting Layer – 1.8deg</option>
+					<option value="166m2">NAM - Melting Layer – 2.4-2.5deg</option>
+					<option value="166m3">NBM - Melting Layer – 3.1-3.5deg</option>
+					<option value="135et">------ CLUTTER FILTER --------------------------------------------</option>
+					<option value="34cf1">NC1 - Clutter Filter Control - Segment 1</option>
+					<option value="34cf2">NC2 - Clutter Filter Control - Segment 2</option>
+					<option value="34cf3">NC3 - Clutter Filter Control - Segment 3</option>
+					<option value="34cf4">NC4 - Clutter Filter Control - Segment 4</option>
+					<option value="34cf5">NC5 - Clutter Filter Control - Segment 5</option>
+				</select>
+			</div>
+
+			<button class="selbox" id="formlatest" style="position:absolute;top:55%;left:3%;width:12%;height:15%;" onClick="load_file('latest',document.getElementById('siteselect').value)">Load Latest</button>
+			<button class="selbox" id="formurl" style="position:absolute;top:75%;left:3%;width:12%;height:15%;" onClick="load_file('url',document.getElementById('siteselect').value)">List URL Dir</button>
+		</div>
+
+		<div id="filedesc" style="width:90%;display:block;margin:auto;margin-bottom:20px;text-align:center;">
+			File or URL Directory to be sent to the display:<br />
+			<span id="urltext" style="color:yellow;font-size:1.5em;font-weight:bold;">
+				- - - -
+			</span>
+		</div>
+
+		<div id="desc" style="width:90%;display:block;margin:auto;margin-bottom:20px;text-align:justify;">
+			I like the <a href="https://www.ncdc.noaa.gov/wct/" target="_blank">Weather Climate Toolkit</a> from NOAA. The above is a proposed and interactive vision of mine to remedy a weakness in it, namely: Conveniently viewing recent Level-III Radar data. The <a href="https://www.weather.gov/tg/" target="_blank">NWS Telecommunications Gateway</a> is home to approximately ~200+ recent images &times; 150+ radar sites. So I'm hoping an extra tab like this could bridge the gap between current, frustrating usage for viewing L3 data and a much quicker way to visualize L3 data. Meanwhile, the generated URLs can be copy/pasted for use in WCT in either the 'Single File' tab or 'URL Directory' tab.<br /><br />
+			<u>PROS:</u> Much quicker/easier use of near-real-time L3 data.<br />
+			<u>CONS:</u> Files are not in a standarized format (i.e., they are named sn.####, instead of "KMHX_SDUS52_N0RMHX_200309182020"), so WCT's "Product Overlay Viewer," which time-matches downloaded legacy products with downloaded supplementary files (like Storm-tracking, TVS, etc...), will not work unless you change the file names. WCT grants access to UCAR's THREDD's server which houses around a month of past radar data, but it's kind of clunky to maneuver with and their files are not the standardized file-naming either.
+		</div>
+		
+		<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
+		<script>
+			var sitetype = "w";
+			function prodselquery(site) {
+				if (site != "tjua" && site[0] == "t" || site[0] == "i") {
+					document.getElementById("tdwrselect").style.display = "block";
+					document.getElementById("wsr88dselect").style.display = "none";
+					sitetype = "t";
+				}
+				else {
+					document.getElementById("wsr88dselect").style.display = "block";
+					document.getElementById("tdwrselect").style.display = "none";
+					sitetype = "w";
+				}
+			}
+			
+			function load_file(reqtype,site) {
+				// ftp://tgftp.nws.noaa.gov/SL.us008001/DF.of/DC.radar/DS.p94r0/SI.kfcx/sn.last
+				var curr_prod = document.getElementById("prodselect" + sitetype).value;
+				// NEWEST FILE (sn.last)
+				if (reqtype == "latest") {
+					var link = "ftp://tgftp.nws.noaa.gov/SL.us008001/DF.of/DC.radar/DS.<span style='color:lightblue;'>" + curr_prod + "</span>/SI.<span style='color:lightblue;'>" + site + "</span>/sn.last";
+				}
+				// URL DIRECTORY
+				else {
+					var link = "ftp://tgftp.nws.noaa.gov/SL.us008001/DF.of/DC.radar/DS.<span style='color:lightblue;'>" + curr_prod + "</span>/SI.<span style='color:lightblue;'>" + site + "</span>/";
+				}
+				document.getElementById("urltext").innerHTML = link;
+				//console.log(link);
+			}
+
+		</script>
+	</body>
+</html>
