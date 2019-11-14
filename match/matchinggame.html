@@ -25,7 +25,7 @@
 				font-size: 2em;
 				padding-left: 5%;
 				padding-right: 5%;
-				background-color: rgba(255,255,255,80%);
+				background-color: rgba(255,255,255,90%);
 				text-align: center;"
 				-webkit-user-select: none; /* Safari 3.1+ */
 				-moz-user-select: none; /* Firefox 2+ */
@@ -223,7 +223,9 @@
 		indicesassigned: [],
 		totalmatches: 0
 	};
+	var firstclick = true;
 	var timestart = new Date();
+
 	//var timestartS;
 	
 	var imgarray = ["&#9728;",
@@ -236,13 +238,13 @@
 					"&#9992;"];
 					
 	function gamenew() {
-		timestart = Date.now();
 		document.getElementById("optcontainer").style.display = "none";
 		gamevars.selected = 0;
 		gamevars.totalguesses = 0;
 		gamevars.matchquery = [];
 		gamevars.indicesassigned = [];
 		gamevars.totalmatches = 0;
+		firstclick = true;
 		
 		for (i=0;i<imgarray.length;i++) {
 			for (j=0;j<2;j++) {
@@ -266,6 +268,10 @@
 	}
 	
 	function guess(pick) {
+		if (firstclick == true) {
+			timestart = Date.now();
+			firstclick = false;
+		}
 		gamevars.selected += 1;
 		gamevars.matchquery.push(pick);
 		document.getElementById("c" + pick).style.display = "none";
