@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="../">
+		<title>Mesoanalysis Archive Explorer (unofficial)</title>
+		<style>
+			body {
+				background-color: #e6d5a0
+			}
+			div.container {
+				display: block;
+				position: relative;
+				float: left;
+				background-color: white;
+				border: 1px solid black;
+				width: 800px;
+				height: 600px;
+				margin-left: 2px;
+			}
+			img {
+				width:100%;
+				height:100%;
+				position: absolute;
+				top: 0%;
+				left: 0%;
+			}
+			div.panel {
+				display: block;
+				position: absolute;
+				text-align: center;
+				border: 1px solid gray;
+				background-color: rgb(245,225,225);
+				left: 815px;
+				width: 500px;
+				float: right;
+				margin-left: 1px;
+				
+			}
+			div.prodlist {
+				position: relative;
+			}
+			button {
+				
+			}
+			div.pcol {
+				width:98px;
+				float:left;
+			}
+			div.pbutton {
+				font-size: 12px;
+				border: 1px solid black;
+				background-color: yellow;
+				min-width: 98px;
+				user-select: none;
+			}
+			div.datedisplay {
+				font-size: 20px;
+				width: 800px;
+				margin-left: 2px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	
+	
+	<body onLoad="selectdate(); document.getElementById('pr_dy1torn').style = 'background-color:DarkRed;color:white';" onKeyDown="chg_hr_key(event)">
+		<div class="container">
+			<img id="bgimage" src="https://www.spc.noaa.gov/exper/mesoanalysis/s19/cnty/cnty.gif">
+			<img id="mainimg" src="">
+		</div>
+		<div class="panel" id="buttons">
+			<!-- TOP LINE OF BUTTONS -->Time Control<br />
+			<button id="b_yr_minus" onClick="chg_yr(-1)">-1 YR</button> 
+			<button id="b_mo_minus" onClick="chg_mo(-1)">-1 MO</button> 
+			<button id="b_dy_minus" onClick="chg_dy(-1)">-1 DY</button> 
+			<button id="b_hr_minus" onClick="chg_hr(-1)" title="Key: <">&lt; 1 hr</button> 
+			<button id="b_hr_plus" onClick="chg_hr(1)" title="Key: >">&gt; 1 hr</button>			
+			<button id="b_dy_plus" onClick="chg_dy(1)">+1 DY</button>
+			<button id="b_mo_plus" onClick="chg_mo(1)">+1 MO</button>
+			<button id="b_yr_plus" onClick="chg_yr(1)">+1 YR</button><br />
+			
+			<select id="s_yr"><!-- YEAR -->
+				<option value="2005">2005</option>
+				<option value="2006">2006</option>
+				<option value="2007">2007</option>
+				<option value="2008">2008</option>
+				<option value="2009">2009</option>
+				<option value="2010">2010</option>
+				<option value="2011" selected>2011</option>
+				<option value="2012">2012</option>
+				<option value="2013">2013</option>
+				<option value="2014">2014</option>
+				<option value="2015">2015</option>
+				<option value="2016">2016</option>
+				<option value="2017">2017</option>
+				<option value="2018">2018</option>
+				<option value="2019">2019</option>
+				<option value="2020">2020</option>
+				<option value="2021">2021</option>
+				<option value="2022">2022</option>
+				<option value="2023">2023</option>
+				<option value="2024">2024</option>
+				<option value="2025">2025</option>
+				<option value="2026">2026</option>
+				<option value="2027">2027</option>
+				<option value="2028">2028</option>
+				<option value="2029">2029</option>
+				<option value="2030">2030</option>
+				<option value="2031">2031</option>
+				<option value="2032">2032</option>
+				<option value="2033">2033</option>
+				<option value="2034">2034</option>
+				<option value="2035">2035</option>
+				<option value="2036">2036</option>
+				<option value="2037">2037</option>
+				<option value="2038">2038</option>
+				<option value="2039">2039</option>
+				<option value="2040">2040</option>
+				<option value="2041">2041</option>
+				<option value="2042">2042</option>
+				<option value="2043">2043</option>
+				<option value="2044">2044</option>
+				<option value="2045">2045</option>
+				<option value="2046">2046</option>
+				<option value="2047">2047</option>
+				<option value="2048">2048</option>
+				<option value="2049">2049</option>
+				<option value="2050">2050</option>
+			</select> 
+			<select id="s_mo"><!-- MONTH -->
+				<option value="01">Jan</option>
+				<option value="02">Feb</option>
+				<option value="03">Mar</option>
+				<option value="04" selected>Apr</option>
+				<option value="05">May</option>
+				<option value="06">Jun</option>
+				<option value="07">Jul</option>
+				<option value="08">Aug</option>
+				<option value="09">Sep</option>
+				<option value="10">Oct</option>
+				<option value="11">Nov</option>
+				<option value="12">Dec</option>
+			</select> 
+			<select id="s_dy"><!-- DAY -->
+				<option value="01">1</option>
+				<option value="02">2</option>
+				<option value="03">3</option>
+				<option value="04">4</option>
+				<option value="05">5</option>
+				<option value="06">6</option>
+				<option value="07">7</option>
+				<option value="08">8</option>
+				<option value="09">9</option>
+				<option value="10">10</option>
+				<option value="11">11</option>
+				<option value="12">12</option>
+				<option value="13">13</option>
+				<option value="14">14</option>
+				<option value="15">15</option>
+				<option value="16">16</option>
+				<option value="17">17</option>
+				<option value="18">18</option>
+				<option value="19">19</option>
+				<option value="20">20</option>
+				<option value="21">21</option>
+				<option value="22">22</option>
+				<option value="23">23</option>
+				<option value="24">24</option>
+				<option value="25">25</option>
+				<option value="26">26</option>
+				<option value="27" selected>27</option>
+				<option value="28">28</option>
+				<option value="29">29</option>
+				<option value="30">30</option>
+				<option value="31">31</option>
+			</select> 
+			<select id="s_hr"><!-- HOUR -->
+				<option value="00">0 Z</option>
+				<option value="01">1 Z</option>
+				<option value="02">2 Z</option>
+				<option value="03">3 Z</option>
+				<option value="04">4 Z</option>
+				<option value="05">5 Z</option>
+				<option value="06">6 Z</option>
+				<option value="07">7 Z</option>
+				<option value="08">8 Z</option>
+				<option value="09">9 Z</option>
+				<option value="10">10 Z</option>
+				<option value="11">11 Z</option>
+				<option value="12">12 Z</option>
+				<option value="13">13 Z</option>
+				<option value="14">14 Z</option>
+				<option value="15">15 Z</option>
+				<option value="16">16 Z</option>
+				<option value="17">17 Z</option>
+				<option value="18">18 Z</option>
+				<option value="19">19 Z</option>
+				<option value="20">20 Z</option>
+				<option value="21" selected>21 Z</option>
+				<option value="22">22 Z</option>
+				<option value="23">23 Z</option>			
+			</select> 
+			<button id="s_date" onClick="selectdate()">Go</button>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<button id="b_today" onClick="gotonow()">*GoTo Recent Time</button><br /><br />
+			Products (Hover for description; Click to change):
+			<!-- cape_cin_eshear DOESN'T WORK RIGHT -->
+			<!-- lcl_shr DOESN'T WORK RIGHT -->
+			<!-- lr_3cape DOESN'T WORK RIGHT -->
+			<!-- minus DOESN'T SEEM LIKE A REAL PRODUCT -->
+			<!-- plus DOESN'T SEEM LIKE A REAL PRODUCT -->
+			<!-- pmsl_small IS UNREALISTIC SIZE -->
+			<!-- rgnlrad_small IS SMALLER THAN PRIMARY PRODUCT -->
+			<div id="pcontainer">
+				<div id="col_01" class="pcol">
+					<div class="pbutton" style="background-color:MidnightBlue;color:white;">Observations</div>
+					<div class="pbutton" onClick="chg_prod('bigsfc')" title="Surface Observations" id="pr_bigsfc">bigsfc</div>
+					<div class="pbutton" onClick="chg_prod('1kmv')" title="Sat - Visible" id="pr_1kmv">1kmv</div>
+					<div class="pbutton" onClick="chg_prod('ir')" title="Sat - Infrared" id="pr_ir">ir</div>
+					<div class="pbutton" onClick="chg_prod('wv')" title="Sat - Water Vapor" id="pr_wv">wv</div>
+					<div class="pbutton" onClick="chg_prod('rgnlrad')" title="Radar Mosaic" id="pr_rgnlrad">rgnlrad</div>
+					<div class="pbutton" onClick="chg_prod('dy1otlk')" title="Day 1 Severe Weather Outlook" id="pr_dy1otlk">dy1otlk</div>
+					<div class="pbutton" onClick="chg_prod('dy1torn')" title="Day 1 Tornado Outlook" id="pr_dy1torn">dy1torn</div>
+					<div class="pbutton" onClick="chg_prod('dy1hail')" title="Day 1 Hail Outlook" id="pr_dy1hail">dy1hail</div>
+					<div class="pbutton" onClick="chg_prod('dy1wind')" title="Day 1 Wind Outlook" id="pr_dy1wind">dy1wind</div>
+					<div class="pbutton" onClick="chg_prod('dy1fire')" title="Day 1 Fire Wx Outlook" id="pr_dy1fire">dy1fire</div>
+					<div class="pbutton" onClick="chg_prod('spcww')" title="Watches in Effect (transparent)" id="pr_spcww">spcww</div>
+					<div class="pbutton" onClick="chg_prod('mcdsum')" title="Mesoscale Discussion Summary (transparent)" id="pr_mcdsum">mcdsum</div>
+					<div class="pbutton" onClick="chg_prod('rgnlwarn')" title="Radar-SPC Outlook-Warnings Summary" id="pr_rgnlwarn">rgnlwarn</div>
+					<div class="pbutton" onClick="chg_prod('activity_loop')" title="Radar-SPC Outlook-Warnings Loop" id="pr_activity_loop">activity_loop</div>
+					<div class="pbutton" style="background-color:MidnightBlue;color:white;">Surface</div>
+					<div class="pbutton" onClick="chg_prod('pmsl')" title="Sea-Level Pressure" id="pr_pmsl">pmsl</div>
+					<div class="pbutton" onClick="chg_prod('ttd')" title="Temp-Dewpoint-SLP" id="pr_ttd">ttd</div>
+					<div class="pbutton" onClick="chg_prod('mcon')" title="Moisture Convergence and Mixing-Ratio" id="pr_mcon">mcon</div>
+					<div class="pbutton" onClick="chg_prod('thea')" title="Theta-E Advection" id="pr_thea">thea</div>
+					<div class="pbutton" onClick="chg_prod('mxth')" title="Mixing Ratio and Theta" id="pr_mxth">mxth</div>
+					<div class="pbutton" onClick="chg_prod('icon')" title="Instantaneous Contraction Rate and Theta" id="pr_icon">icon</div>
+					<div class="pbutton" onClick="chg_prod('trap')" title="Fluid Trapping Diagnostic" id="pr_trap">trap</div>
+					<div class="pbutton" onClick="chg_prod('vtm')" title="Horizontal Velocity Gradient Tensor Magnitude" id="pr_vtm">vtm</div>
+					<div class="pbutton" onClick="chg_prod('dvvr')" title="SFC Vorticity and Divergence" id="pr_dvvr">dvvr</div>
+					<div class="pbutton" onClick="chg_prod('def')" title="SFC Total Deformation" id="pr_def">def</div>
+					<div class="pbutton" onClick="chg_prod('pchg')" title="2-Hr Pressure Change" id="pr_pchg">pchg</div>
+					<div class="pbutton" onClick="chg_prod('temp_chg')" title="3-Hr Temperature Change" id="pr_temp_chg">temp_chg</div>
+					<div class="pbutton" onClick="chg_prod('dwpt_chg')" title="3-Hr Dew-Point Change" id="pr_dwpt_chg">dwpt_chg</div>
+					<div class="pbutton" onClick="chg_prod('mixr_chg')" title="3-Hr Mixing Ratio Change" id="pr_mixr_chg">mixr_chg</div>
+					<div class="pbutton" onClick="chg_prod('thte_chg')" title="3-Hr Theta-E Change" id="pr_thte_chg">thte_chg</div>
+				</div>
+				<div id="col_02" class="pcol">
+					<div class="pbutton" style="background-color:MidnightBlue;color:white;">Upper Air</div>
+					<div class="pbutton" onClick="chg_prod('925mb')" title="925mb Analysis" id="pr_925mb">925mb</div>
+					<div class="pbutton" onClick="chg_prod('850mb')" title="850mb Analysis" id="pr_850mb">850mb</div>
+					<div class="pbutton" onClick="chg_prod('700mb')" title="700mb Analysis" id="pr_700mb">700mb</div>
+					<div class="pbutton" onClick="chg_prod('500mb')" title="500mb Analysis" id="pr_500mb">500mb</div>
+					<div class="pbutton" onClick="chg_prod('300mb')" title="300mb Analysis" id="pr_300mb">300mb</div>
+					<div class="pbutton" onClick="chg_prod('dlcp')" title="Deep-Layer Moisture-Flux Convergence and Mean Mixing Ratio" id="pr_dlcp">dlcp</div>
+					<div class="pbutton" onClick="chg_prod('sfnt')" title="Surface Frontogenesis" id="pr_sfnt">sfnt</div>
+					<div class="pbutton" onClick="chg_prod('tadv')" title="850mb Temperature Advection" id="pr_tadv">tadv</div>
+					<div class="pbutton" onClick="chg_prod('8fnt')" title="850 Frontogenesis" id="pr_8fnt">8fnt</div>
+					<div class="pbutton" onClick="chg_prod('7fnt')" title="700 Frontogenesis" id="pr_7fnt">7fnt</div>
+					<div class="pbutton" onClick="chg_prod('857f')" title="850-700 Frontogenesis" id="pr_857f">857f</div>
+					<div class="pbutton" onClick="chg_prod('75ft')" title="700-500 Frontogenesis" id="pr_75ft">75ft</div>
+					<div class="pbutton" onClick="chg_prod('vadv')" title="500mb Vorticity Advection" id="pr_vadv">vadv</div>
+					<div class="pbutton" onClick="chg_prod('padv')" title="400-250mb Potential Vorticity Advection" id="pr_padv">padv</div>
+					<div class="pbutton" onClick="chg_prod('ddiv')" title="250-850mb Differential Divergence" id="pr_ddiv">ddiv</div>
+					<div class="pbutton" onClick="chg_prod('ageo')" title="300mb Jet Circulation" id="pr_ageo">ageo</div>
+					<div class="pbutton" onClick="chg_prod('500mb_chg')" title="12-Hr 500mb Height Change" id="pr_500mb_chg">500mb_chg</div>
+					<div class="pbutton" onClick="chg_prod('trap_500')" title="500mb Fluid Trapping" id="pr_trap_500">trap_500</div>
+					<div class="pbutton" onClick="chg_prod('trap_250')" title="250mb Fluid Trapping" id="pr_trap_250">trap_250</div>
+				</div>
+				<div id="col_03" class="pcol">
+					<div class="pbutton" style="background-color:MidnightBlue;color:white;">Thermodynamics</div>
+					<div class="pbutton" onClick="chg_prod('sbcp')" title="SFC CAPE" id="pr_sbcp">sbcp</div>
+					<div class="pbutton" onClick="chg_prod('mlcp')" title="ML CAPE" id="pr_mlcp">mlcp</div>
+					<div class="pbutton" onClick="chg_prod('mucp')" title="MU CAPE" id="pr_mucp">mucp</div>
+					<div class="pbutton" onClick="chg_prod('ncap')" title="Normalized CAPE" id="pr_ncap">ncap</div>
+					<div class="pbutton" onClick="chg_prod('dcape')" title="Downdraft CAPE" id="pr_dcape">dcape</div>
+					<div class="pbutton" onClick="chg_prod('muli')" title="SFC-based Lifted Index and SFC-based CIN" id="pr_muli">muli</div>
+					<div class="pbutton" onClick="chg_prod('laps')" title="Mid-Level Lapse Rates" id="pr_laps">laps</div>
+					<div class="pbutton" onClick="chg_prod('lllr')" title="Low-Level Lapse Rates" id="pr_lllr">lllr</div>
+					<div class="pbutton" onClick="chg_prod('lclh')" title="LCL Heights" id="pr_lclh">lclh</div>
+					<div class="pbutton" onClick="chg_prod('lfch')" title="LFC Heights" id="pr_lfch">lfch</div>
+					<div class="pbutton" onClick="chg_prod('lfrh')" title="LFC-LCL RH" id="pr_lfrh">lfrh</div>
+					<div class="pbutton" onClick="chg_prod('sbcp_chg')" title="3-Hr SBCAPE Change" id="pr_sbcp_chg">sbcp_chg</div>
+					<div class="pbutton" onClick="chg_prod('mlcp_chg')" title="3-Hr MLCAPE Change" id="pr_mlcp_chg">mlcp_chg</div>
+					<div class="pbutton" onClick="chg_prod('mucp_chg')" title="3-Hr MUCAPE Change" id="pr_mucp_chg">mucp_chg</div>
+					<div class="pbutton" onClick="chg_prod('lllr_chg')" title="3-Hr Low-Level Lapse Rate Change" id="pr_lllr_chg">lllr_chg</div>
+					<div class="pbutton" onClick="chg_prod('laps_chg')" title="6-Hr Mid-Level Lapse Rate Change" id="pr_laps_chg">laps_chg</div>
+					<div class="pbutton" style="background-color:MidnightBlue;color:white;">Composites</div>
+					<div class="pbutton" onClick="chg_prod('scp')" title="Supercell Composite" id="pr_scp">scp</div>
+					<div class="pbutton" onClick="chg_prod('lscp')" title="Left-Moving Supercell Composite" id="pr_lscp">lscp</div>
+					<div class="pbutton" onClick="chg_prod('stor')" title="Significant Tornado Parameter (fixed)" id="pr_stor">stor</div>
+					<div class="pbutton" onClick="chg_prod('stpc')" title="Significant Tornado Parameter (effective)" id="pr_stpc">stpc</div>
+					<div class="pbutton" onClick="chg_prod('nstp')" title="Non-Supercell Tornado Parameter" id="pr_nstp">nstp</div>
+					<div class="pbutton" onClick="chg_prod('sigh')" title="Significant Hail Parameter" id="pr_sigh">sigh</div>
+					<div class="pbutton" onClick="chg_prod('dcp')" title="Derecho Composite Parameter" id="pr_dcp">dcp</div>
+					<div class="pbutton" onClick="chg_prod('cbsig')" title="Craven SigSvr Parameter" id="pr_cbsig">cbsig</div>
+					<div class="pbutton" onClick="chg_prod('brn')" title="Bulk Richardson Number" id="pr_brn">brn</div>
+					<div class="pbutton" onClick="chg_prod('mcsm')" title="MCS Maintenance" id="pr_mcsm">mcsm</div>
+					<div class="pbutton" onClick="chg_prod('ehi1')" title="Energy Helicity Index 0-1km" id="pr_ehi1">ehi1</div>
+					<div class="pbutton" onClick="chg_prod('ehi3')" title="Energy Helicity Index 0-3km" id="pr_ehi3">ehi3</div>
+					<div class="pbutton" onClick="chg_prod('vgp3')" title="3km Vorticity Generation Parameter" id="pr_vgp3">vgp3</div>
+				</div>
+				<div id="col_04" class="pcol">
+					<div class="pbutton" style="background-color:MidnightBlue;color:white;">Wind Shear</div>
+					<div class="pbutton" onClick="chg_prod('eshr')" title="Bulk Shear-Effective" id="pr_eshr">eshr</div>
+					<div class="pbutton" onClick="chg_prod('shr6')" title="Bulk Shear-0-6km" id="pr_shr6">shr6</div>
+					<div class="pbutton" onClick="chg_prod('shr8')" title="Bulk Shear-0-8km" id="pr_shr8">shr8</div>
+					<div class="pbutton" onClick="chg_prod('shr1')" title="Bulk Shear-0-1km" id="pr_shr1">shr1</div>
+					<div class="pbutton" onClick="chg_prod('brns')" title="BRN Shear" id="pr_brns">brns</div>
+					<div class="pbutton" onClick="chg_prod('effh')" title="SR Helicity-Effective" id="pr_effh">effh</div>
+					<div class="pbutton" onClick="chg_prod('srh3')" title="SR Helicity-0-3km" id="pr_srh3">srh3</div>
+					<div class="pbutton" onClick="chg_prod('srh1')" title="SR Helicity-0-1km" id="pr_srh1">srh1</div>
+					<div class="pbutton" onClick="chg_prod('clsh')" title="Effective Inflow Base-Eff. SRH-Storm Motion" id="pr_clsh">clsh</div>
+					<div class="pbutton" onClick="chg_prod('llsr')" title="SR Winds-0-2km" id="pr_llsr">llsr</div>
+					<div class="pbutton" onClick="chg_prod('mlsr')" title="SR Winds-4-6km" id="pr_mlsr">mlsr</div>
+					<div class="pbutton" onClick="chg_prod('ulsr')" title="SR Winds-9-11km" id="pr_ulsr">ulsr</div>
+					<div class="pbutton" onClick="chg_prod('alsr')" title="SR Winds-Anvil Level" id="pr_alsr">alsr</div>
+					<div class="pbutton" onClick="chg_prod('mnwd')" title="850-300mb Mean Wind" id="pr_mnwd">mnwd</div>
+					<div class="pbutton" onClick="chg_prod('xover')" title="850 and 500 Wind Crossover" id="pr_xover">xover</div>
+					<div class="pbutton" onClick="chg_prod('srh3_chg')" title="3-Hr SRH Change-0-3km" id="pr_srh3_chg">srh3_chg</div>
+					<div class="pbutton" onClick="chg_prod('shr1_chg')" title="3-Hr 0-1km Bulk Shear Change" id="pr_shr1_chg">shr1_chg</div>
+					<div class="pbutton" onClick="chg_prod('shr6_chg')" title="3-Hr 0-6km Bulk Shear Change" id="pr_shr6_chg">shr6_chg</div>
+					<div class="pbutton" style="background-color:MidnightBlue;color:white;">Multi-P Fields</div>
+					<div class="pbutton" onClick="chg_prod('cpsh')" title="MUCAPE and MUCIN and Effective Bulk Shear" id="pr_cpsh">cpsh</div>
+					<div class="pbutton" onClick="chg_prod('comp')" title="850 to 500 Crossover and MULI" id="pr_comp">comp</div>
+					<div class="pbutton" onClick="chg_prod('lcls')" title="Mean LCL and SRH" id="pr_lcls">lcls</div>
+					<div class="pbutton" onClick="chg_prod('lr3c')" title="Low-Level Lapse-Rates and LL MLCAPE" id="pr_lr3c">lr3c</div>
+					<div class="pbutton" onClick="chg_prod('3cvr')" title="SFC Vorticity and 0-3km MLCAPE" id="pr_3cvr">3cvr</div>
+					<div class="pbutton" onClick="chg_prod('tdlr')" title="SFC DewPoint and Mid-Level LR" id="pr_tdlr">tdlr</div>
+					<div class="pbutton" onClick="chg_prod('hail')" title="Hail Parameters" id="pr_hail">hail</div>
+				</div>
+				<div id="col_05" class="pcol">
+					<div class="pbutton" style="background-color:MidnightBlue;color:white;">Heavy Rain</div>
+					<div class="pbutton" onClick="chg_prod('pwtr')" title="Precipitable Water" id="pr_pwtr">pwtr</div>
+					<div class="pbutton" onClick="chg_prod('tran')" title="850 Moisture Transport" id="pr_tran">tran</div>
+					<div class="pbutton" onClick="chg_prod('prop')" title="Upwind Propagation Vector" id="pr_prop">prop</div>
+					<div class="pbutton" onClick="chg_prod('peff')" title="Precipitation Potential Placement" id="pr_peff">peff</div>
+					<div class="pbutton" style="background-color:MidnightBlue;color:white;">Winter Wx</div>
+					<div class="pbutton" onClick="chg_prod('fztp')" title="Near-Freezing SFC Temps-Wind-Pres" id="pr_fztp">fztp</div>
+					<div class="pbutton" onClick="chg_prod('swbt')" title="SFC Wet-Bulb Temps" id="pr_swbt">swbt</div>
+					<div class="pbutton" onClick="chg_prod('fzlv')" title="Freezing Level" id="pr_fzlv">fzlv</div>
+					<div class="pbutton" onClick="chg_prod('thck')" title="Critical Thicknesses" id="pr_thck">thck</div>
+					<div class="pbutton" onClick="chg_prod('epvl')" title="Equivalent Potential Vorticity-Low-Level" id="pr_epvl">epvl</div>
+					<div class="pbutton" onClick="chg_prod('epvm')" title="Equivalent Potential Vorticity-Mid-Level" id="pr_epvm">epvm</div>
+					<div class="pbutton" onClick="chg_prod('les1')" title="Lake-Effect Snow-1" id="pr_les1">les1</div>
+					<div class="pbutton" onClick="chg_prod('les2')" title="Lake-Effect Snow-2" id="pr_les2">les2</div>
+					<div class="pbutton" style="background-color:MidnightBlue;color:white;">Fire Wx</div>
+					<div class="pbutton" onClick="chg_prod('sfir')" title="SLP-Temp-Wind-RH" id="pr_sfir">sfir</div>
+					<div class="pbutton" onClick="chg_prod('fosb')" title="Forsberg Index" id="pr_fosb">fosb</div>
+					<div class="pbutton" onClick="chg_prod('lhan')" title="Haines Index-Low-Altitude" id="pr_lhan">lhan</div>
+					<div class="pbutton" onClick="chg_prod('mhan')" title="Haines Index-Mid-Altitude" id="pr_mhan">mhan</div>
+					<div class="pbutton" onClick="chg_prod('hhan')" title="Haines Index-High-Altitude" id="pr_hhan">hhan</div>
+					<div class="pbutton" onClick="chg_prod('lasi')" title="SPC Lower Atmospheric Severity Index" id="pr_lasi">lasi</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="datedisplay" id="date">
+			ENTER DATE HERE
+		</div>
+		<hr />
+		<div id="description" style="display:block;margin:auto;width:90%;max-width:1200px;">
+			<h3 style="text-align:center;"><u>The Mesoanalysis Archive Explorer</u></h3>
+			Hey, welcome to the MAE. This page uses imagery stored in the <a href="https://www.spc.noaa.gov/exper/ma_archive/" target="_blank">SPC Mesoanalysis Archive</a>, but <u><i>this page is not sponsored/affiliated by/with the SPC/NOAA</i></u>. <br /><br />
+			
+			You should see a map on the left. On the right, you should see a variety of temporal controls above a big board of products. Hovering the cursor over each of these products reveals a short description of that product. Hourly movement is supported via the <b>&lt;</b> and <b>&gt;</b> keys. A blank map generally means that a selected product for a certain time doesn't exist or, if you're using it to view recent imagery, that it likely hasn't been produced yet.<br /><br />
+			
+			I hope it can provide a more user-friendly experience than has been previously available using this great archive. In addition, it would be cool if the SPC could implement something like this in conjunction with their current archive. I'm not suggesting a conglomeration as this and the current layout have their strengths. The following are similar/different features on these respective pages:<br /><br />
+			
+			Similar:<br />
+			<ul><li>Access to essentially all of the same imagery</li></ul>
+			Differences:<br />
+			<ul>
+				<li>The SPC's page employs the <a href="https://www.ssec.wisc.edu/hanis/" target="_blank">HAniS</a> module; enabling animation (where mine doesn't). It also allows a robust variety of length options for the animation.</li>
+				<li>The SPC's page only allows the user to select/view one product at a time, which makes retrieval and subsequent research slow.</li>
+				<li>Although my page doesn't have any loop options, I think the ease of temporal movement, especially in conjunction with quick product switching overcomes this.</li>
+			</ul>
+			
+			Seasoned familiarity with the SPC mesoanalysis will reveal that the SPC generates quite a few more products than available in the archive. This is true. Currently, they simply don't archive all of them. There is also a handful of products that aren't represented here that may be seen on the official archive page. This is because some of the products are deprecated or of an non-useful size.<br /><br />
+			
+			USE: Please don't upload this code to any other place. I am okay with you downloading a local copy of the html file.
+	
+			<hr />
+					
+			<a href="https://ksgwxfan.github.io/">HOME</a> &bull; 
+			<a href="https://ksgwxfan.github.io/iresume/iresume.html">iR&#233;sume</a> &bull; 
+			<a href="https://ksgwxfan.github.io/iresume/digiport.html">Digital Portfolio</a> &bull; 
+			<a target="_blank" href="https://github.com/ksgwxfan/ksgwxfan.github.io/issues">Contact (GitHub Login Required)</a> &bull;
+			<span id="c_email" style="color:blue;user-select:none;" onClick="toggle_email()" title="Click to reveal email"><u>Contact (email)</u></span> &bull;
+			<a target="_blank" href="http://echotops.blogspot.com/">Echo Tops Weather Blog</a>
+			</center></body>
+			<script>
+				var pre1 = "Kyle";
+				var pre3 = "Gentry";
+				var pre2 = "S";
+				var pre5 = ".com";
+				var pre4 = "@outlook";
+				var vis = "hidden";
+				var clks = 0
+				
+				function toggle_email() {
+					clks += 1;
+					if (vis == "hidden") {	// DISPLAYS EMAIL
+						vis = "show";
+						document.getElementById("c_email").innerHTML = pre1 + pre2 + pre3 + pre4 + pre5;
+						document.getElementById("c_email").style = "color:black;font-weight:bold;";
+						document.getElementById("c_email").title = "Highlight and Copy (CTRL+C)";
+					}
+					else {		// DISPLAYS THE NORMAL SETTING
+						if (clks == 3) {
+							vis = "hidden";
+							document.getElementById("c_email").innerHTML = "<u>Contact (email)</u>";
+							document.getElementById("c_email").style = "color:blue;user-select:none;";
+							document.getElementById("c_email").title = "Click to reveal email";
+							clks = 0;
+						}
+					}
+				}
+			</script>
+
+		</div>
+		
+	</body>
+	<script>
+		var time = new Date(document.getElementById("s_yr").value,document.getElementById("s_mo").value,document.getElementById("s_dy").value,document.getElementById("s_hr").value);
+		var ptype = "dy1torn";
+		var old_pr = ptype;
+		var tmo;
+		
+		// * Both selectdate() and chgdate() issue a command to change the file (picture) displayed. But are used in different places
+		
+		// Used upon page-load AND 'Select'ing a date.
+		// What it Does: changes the javascript time based on date-selection (which values are already in proper filename format)
+		function selectdate() {
+			yr = document.getElementById("s_yr").value;
+			mo = document.getElementById("s_mo").value;
+			dy = document.getElementById("s_dy").value;
+			hr = document.getElementById("s_hr").value;
+			
+			// Here, tmo is used to account for the javascript month indices being 0-11 rather than 1-12
+			tmo = eval(mo) - 1;
+			
+			time = new Date(document.getElementById("s_yr").value,tmo,document.getElementById("s_dy").value,document.getElementById("s_hr").value);
+			
+			document.getElementById("mainimg").src = "https://www.spc.noaa.gov/exper/ma_archive/images_s4/" + yr + mo + dy +
+													 "/" + hr + "_" + ptype + ".gif";
+			chg_date_display();
+		}
+		
+		// Used when a Time Control button is pressed or when new product is selected
+		// What it Does: changes the file-structure time (for filename purposes); doesn't change the javascript time bc it's handled elsew.
+		function chgdate() {
+
+			yr = time.getFullYear();
+			mo = time.getMonth();
+			dy = time.getDate();
+			hr = time.getHours();
+			
+			// Here, tmo is used to account for the archive filename month structure being normal (01-12), rather than JS (0-11)
+			tmo = mo + 1;
+
+			document.getElementById("s_yr").value = yr;
+			
+			// These 'if' statements handle all instances (the majority thereof) where single-digits need to be zero-padded two digit nums
+			if (tmo < 10) {tmo = "0" + tmo;}	// MONTH
+			document.getElementById("s_mo").value = tmo;
+			if (dy < 10) {dy = "0" + dy;}	// DAY
+			document.getElementById("s_dy").value = dy;			
+			if (hr < 10) {hr = "0" + hr;}	// HOUR
+			document.getElementById("s_hr").value = hr;
+			
+			document.getElementById("mainimg").src = "https://www.spc.noaa.gov/exper/ma_archive/images_s4/" + yr + tmo + dy +
+													 "/" + hr + "_" + ptype + ".gif";
+			chg_date_display();
+		}
+		
+		function gotonow() {
+			var temp = new Date();
+			var now = new Date(temp.getUTCFullYear(),temp.getUTCMonth(),temp.getUTCDate(),temp.getUTCHours());
+			// Offset due to time it takes to run model/upload to server
+			now.setHours(now.getHours() - 1);
+			time = now;
+			chgdate();
+		}
+		
+		// Time-Control Button Press Functions
+		function chg_yr(sign) {
+			time.setFullYear(time.getFullYear() + sign);
+			chgdate();
+		}
+
+		function chg_mo(sign) {
+			time.setMonth(time.getMonth() + sign);
+			chgdate();
+		}
+
+		function chg_dy(sign) {
+			time.setDate(time.getDate() + sign);
+			chgdate();
+		}
+
+		// helped me understand referencing keypress events: http://help.dottoro.com/ljlkwans.php
+		function chg_hr_key(event) {
+			// Advances one hour by pressing the > key (period)
+			if (event.keyCode == 190) {chg_hr(1);}
+			// Goes back one hour by pressing the < key (comma)
+			if (event.keyCode == 188) {chg_hr(-1);}
+		}
+
+		function chg_hr(sign) {
+			time.setHours(time.getHours() + sign);
+			chgdate();
+		}
+
+		// Product-Select Function
+		function chg_prod(abbr) {
+			// Change old product back to normal
+			document.getElementById("pr_" + ptype).style.backgroundColor = "yellow";
+			document.getElementById("pr_" + ptype).style.color = "black";
+			ptype = abbr;
+			// Change new product to new style
+			document.getElementById("pr_" + ptype).style.backgroundColor = "DarkRed";
+			document.getElementById("pr_" + ptype).style.color = "white";			
+			chgdate();
+		}
+		
+		function chg_date_display() {
+			document.getElementById("date").innerHTML = document.getElementById("s_mo").value + "-" + document.getElementById("s_dy").value + "-" +  document.getElementById("s_yr").value + " " + document.getElementById("s_hr").value + "Z ::: " + "<b>" + document.getElementById("pr_" + ptype).title + "</b> (" + ptype + ")";
+		}
+	</script>
+
+
+</html>
