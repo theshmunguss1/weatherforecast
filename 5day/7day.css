@@ -1,0 +1,235 @@
+.TABLE {
+	display:table;
+	border-collapse: collapse;
+	width:90%;
+	margin:auto;
+}
+hr {
+	width:90%;
+}
+.ROW {
+	display: table-row;
+	margin-bottom:10px;
+}
+.CELL {
+	border-right: 1px solid gray;
+	border-left: 1px solid gray;
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+#bgpreview {
+	 display:inline-block;
+	 margin:auto;
+	 width:20px;
+	 height:20px;
+	 background-color:hsl(240,100%,50%);
+}
+
+.OPTS {
+	padding-bottom:10px;
+}
+.CTITLE {
+	width: 10%;
+	min-width:10%;
+}
+
+.DAYTOGGLE {
+	font-family: arial;
+	font-weight: bold;
+	color: black;
+	background-color: lightgray;
+	outline: none;
+}
+
+
+.MAIN {
+	table-layout: fixed;
+	width: 1300px;
+	height: 650px;
+	margin: auto;
+	margin-bottom: 10px;
+	border-collapse: separate;
+	border-spacing: 5px 10px;
+	border: 4px solid black;
+	background-color: blue;
+	font-family: arial;
+	user-select: none;
+}
+
+.DAY {
+	display: table-cell;
+	vertical-align: top;
+	position:relative;
+	height: 80%;
+	width: 20%;
+	background: linear-gradient(0deg, rgba(255,255,255,.5), rgba(255,255,255,.1) 30%),
+				linear-gradient(180deg, rgba(255,255,255,.5), rgba(255,255,255,.1) 30%),
+				linear-gradient(90deg, rgba(255,255,255,.15), rgba(255,255,255,.1) 20%),
+				linear-gradient(-90deg, rgba(255,255,255,.15), rgba(255,255,255,.1) 20%);
+	border-radius: 8px;
+	text-align: center;
+}
+.TITLEBOX {
+	background: linear-gradient(to right, rgba(255,255,255,.8) 25%, rgba(255,255,255,.25) 90%, transparent);
+	background-size: 100% 10%, 100%;
+	position:relative;
+	border-radius: 8px;
+	}
+.TITLE {
+	display: inline-block;
+	padding-left: 11%;
+	color: black;
+	font-size: 2.8em;
+	font-weight: bold;
+	}
+#titleunderscore {
+	position: absolute;
+	border-bottom-left-radius: 8px;
+	bottom:0%;
+	left:-0.1px;
+	width:100%;
+	height:10px;
+	background: linear-gradient(to right, #000033 40%, transparent);
+}
+#imgcontainer {
+	position: absolute;
+	transform: translate(-50%,-50%);
+	top: 45%;
+	left: 5%;
+	display: inline-block;
+	width: 9%;
+}
+#logobox {
+	width:100%;
+	vertical-align: middle;
+	margin-right: 2%;
+}
+.DAYNAME {
+	display: inline-block;
+	background: linear-gradient(to right, white, rgba(255,255,255,.3));
+	width:100%;
+	color: black;
+	text-align: center;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	font-size: 50px;
+	font-weight: bold;
+	}
+.SKYCON {
+	text-align: center;
+	width:100%;
+	}
+.SKYcycle {
+	position: absolute;
+	color: transparent;
+	width: 100%;
+	height: 50%;
+}
+.SKYcycle:hover {
+	color: rgba(0,0,0,20%);
+	background-color: rgba(255,255,255,35%);
+}
+.SKYcycle.up {top:0%;}
+.SKYcycle.dn {top:50%;}
+.desctext {
+	position:absolute;
+	transform: translate(-50%,-50%);
+	top: 40%;
+	left: 50%;
+	font-size: 2em;
+}
+.DESC {
+	text-align: center;
+	width: 100%;
+	}
+.DESCcycle {
+	position: absolute;
+	color: transparent;
+	top: 0%;
+	width: 50%;
+	height: 100%;
+}
+.DESCcycle:hover {
+	color: rgba(0,0,0,20%);
+	background-color: rgba(255,255,255,35%);
+}
+.DESCcycle.left {left:0%;}
+.DESCcycle.right {left:50%;}
+.PERC {
+	display: none;
+	position: absolute;
+	transform:translate(-50%,-50%);
+	top:50%;
+	left:50%;
+	font-size: 2em;
+	font-weight: bold;
+	text-shadow: 3px 2px 4px black;
+}
+.UVI {
+	display: none;
+	margin: 0 auto;
+	margin-top:5px;
+	width: 90%;
+	height: 30px;
+	border-collapse: collapse;
+}
+.UVIcell {
+	text-align:center;
+	color: black;
+	font-size: 0.5em;
+	height: 50%;
+	width:1%;
+	border:1px solid black;
+}
+.UVIcell.marker {
+	font-size: 1em;
+	border:none;
+	color: white;
+}
+.UVIcell.marker:hover {border:1px solid red;}
+.UVIcell.low {background-color: green;}
+.UVIcell.mod {background-color: yellow;}
+.UVIcell.high {background-color: orange;}
+.UVIcell.veryhigh {background-color: red;}
+.UVIcell.extreme {background-color: magenta;}
+.UVIcell.footer {
+	border: none;
+	font-size: 1.1em;
+	font-style: oblique;
+	color: white;
+	text-shadow: 2px 2px 5px black;
+}
+.HI {
+	position: absolute;
+	bottom: 5%;
+	right:3%;
+	width:100%;
+	text-align: right;
+	font-size: 6.5em;
+	font-weight: bold;
+	text-shadow: 2px 2px 5px black;
+}
+.LO {
+	position: absolute;
+	bottom: 1%;
+	padding-left: 8px;
+	text-align: left;
+	color: rgb(0,0,59);
+	font-size: 2em;
+	font-weight: bold;
+}
+
+.TEMPINSERT {
+	width: 50%;
+	text-align: center;
+	color: black;
+	font-size: 2em;
+}
+.PERCINSERT {
+	background-color: rgb(170,230,170);
+	width: 50%;
+	text-align: center;
+	color: black;
+	font-size: 1.5em;
+}

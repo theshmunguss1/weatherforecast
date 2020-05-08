@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<base href="../">
+		<title>ksgwxfan - Math Flash Card Game</title>
+		<style>
+			canvas {
+				margin: auto;
+				display: block;
+				border: 1px solid white;
+			}
+		</style>
+	</head>
+	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue">
+		<canvas id="gamecanvas" width="800" height="550"></canvas>
+
+
+
+		<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
+		<script>
+			var c = document.getElementById("gamecanvas");
+			var ctx = c.getContext("2d");
+			var bgi = new Image();
+
+			bgi.onload = function () {ctx.drawImage(bgi, 0, 0);}
+			bgi.src = 'html5cardgame/testbg.svg';
+
+
+
+		</script>
+	</body>
+</html>

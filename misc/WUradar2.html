@@ -1,0 +1,644 @@
+<html>
+	<head>
+		<base href="../">
+		<title>ksgwxfan - WU Radar Project</title>
+		<style>
+			.IFRAMING {
+				width: 680px;
+				height: 480px;
+				}
+			.FRAMESELECT {
+				position: absolute;
+				height: 15px;
+				width: 15px;
+				top:85%;
+				}
+			.BZOOM {
+				height: 50px;
+				width: 50px;
+				font-size:30px;
+				font-weight:bold;
+				}
+			.BTRNS {
+				width: 40px;
+				height: 50px;
+				font-size: 30px;
+				font-weight: bold;
+				}
+			.BOPTS {
+				width: 80px;
+				height: 35px;
+				font-size: 15px;
+				font-weight: bold;
+			}
+			.PRODL {
+				position:absolute;
+				bottom:-7%;
+				}
+			.PRODR {
+				position:absolute;
+				bottom:-7%;
+				}
+			.IMGFRAME {
+				position: absolute;
+				text-align: center;
+			}
+			.framepanel {
+				color: yellow;
+				font-size: 11px;
+			}
+		</style>
+	</head>
+	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue" onLoad="refresh()" onKeyDown="keycontrol()">
+		<div id="PFRAME" style="postion:relative;height:500px;">
+			<div id="LFRAME" class="IMGFRAME" style="left:0px;px;border-right:1px solid gray;width:645px;">
+				<img id="LIMG" style="" src="https://radblast.wunderground.com/cgi-bin/radar/WUNIDS_map?brand=wui&station=FCX&type=N0R&frame=0&noclutter=0&showstorms=0&showlabels=1&smooth=0&severe=0&scale=1.000&transx=000&transy=000"><br />
+				PRODUCT: 
+				<select id="LTYP" onChange="chgprod('LEFT',document.getElementById('LTYP').value)">
+					<option value="N0R" selected>N0R - Base Reflectivity</option>
+					<option value="N0Q">N0Q - Base Reflectivity (Higher Resolution)</option>
+					<option value="L20">L20 - Level II Base Reflectivity</option>
+					<option value="NCR">NCR - Composite Reflectivity</option>
+					<option value="N0Z">N0Z - Long-Range Base Reflectivity</option>
+					<option value="N0V">N0V - Base Velocity</option>
+					<option value="N0U">N0U - Base Velocity (Higher Resolution)</option>
+					<option value="N1V">N1V - Elevated (1.5deg) Base Velocity</option>
+					<option value="N0S">N0S - Storm-Relative Velocity</option>
+					<option value="N1S">N1S - Elevated (1.5deg) Storm-Relative Velocity</option>
+					<option value="NVL">NVL - Vertically Integrated Liquid</option>
+					<option value="NET">NET - Echo Tops</option>
+					<option value="N1P">N1P - 1-HR Precipitation</option>
+					<option value="NTP">NTP - Storm Total Precipitation</option>
+					<option value="NVW">NVW - VWAD - Vertical Wind Azimuth Display</option>
+				</select>
+				<select id="LTYPtdwr" onChange="chgprod('LEFT',document.getElementById('LTYPtdwr').value)"  style="display:none;">
+					<option value="TR0" selected>TR0 - Base Reflectivity (0.2deg)</option>
+					<option value="TR1">TR1 - Base Reflectivity (1.0deg)</option>
+					<option value="TR2">TR2 - Base Reflectivity (2.1deg)</option>
+					<option value="NCR">NCR - Composite Reflectivity</option>
+					<option value="TZL">TZL - Long-Range Base Reflectivity (0.6deg)</option>
+					<option value="TV0">TV0 - Base Velocity (0.2deg)</option>
+					<option value="TV1">TV1 - Base Velocity (1.0deg)</option>
+					<option value="TV2">TV2 - Base Velocity (2.1deg)</option>
+					<option value="NVL">NVL - Vertically Integrated Liquid</option>
+					<option value="NET">NET - Echo Tops</option>
+					<option value="N1P">N1P - 1-HR Precipitation</option>
+					<option value="NTP">NTP - Storm Total Precipitation</option>
+					<option value="NVW">NVW - VWAD - Vertical Wind Azimuth Display</option>
+				</select>
+			</div>
+			<div id="RFRAME" class="IMGFRAME" style="left:651px;">
+				<img id="RIMG" src="https://radblast.wunderground.com/cgi-bin/radar/WUNIDS_map?brand=wui&station=FCX&type=N0V&frame=0&noclutter=0&showstorms=0&showlabels=1&smooth=0&severe=0&scale=1.000&transx=000&transy=000"><br />
+				PRODUCT:
+				<select id="RTYP" onChange="chgprod('RIGHT',document.getElementById('RTYP').value)">
+					<option value="N0R">N0R - Base Reflectivity</option>
+					<option value="N0Q">N0Q - Base Reflectivity (Higher Resolution)</option>
+					<option value="L20">L20 - Level II Base Reflectivity</option>
+					<option value="NCR">NCR - Composite Reflectivity</option>
+					<option value="N0Z">N0Z - Long-Range Base Reflectivity</option>
+					<option value="N0V" selected>N0V - Base Velocity</option>
+					<option value="N0U">N0U - Base Velocity (Higher Resolution)</option>
+					<option value="N1V">N1V - Elevated (1.5deg) Base Velocity</option>
+					<option value="N0S">N0S - Storm-Relative Velocity</option>
+					<option value="N1S">N1S - Elevated (1.5deg) Storm-Relative Velocity</option>
+					<option value="NVL">NVL - Vertically Integrated Liquid</option>
+					<option value="NET">NET - Echo Tops</option>
+					<option value="N1P">N1P - 1-HR Precipitation</option>
+					<option value="NTP">NTP - Storm Total Precipitation</option>
+					<option value="NVW">NVW - VWAD - Vertical Wind Azimuth Display</option>
+				</select>
+				<select id="RTYPtdwr" onChange="chgprod('RIGHT',document.getElementById('RTYPtdwr').value)" style="display:none;">
+					<option value="TR0">TR0 - Base Reflectivity (0.2deg)</option>
+					<option value="TR1">TR1 - Base Reflectivity (1.0deg)</option>
+					<option value="TR2">TR2 - Base Reflectivity (2.1deg)</option>
+					<option value="NCR">NCR - Composite Reflectivity</option>
+					<option value="TZL">TZL - Long-Range Base Reflectivity (0.6deg)</option>
+					<option value="TV0" selected>TV0 - Base Velocity (0.2deg)</option>
+					<option value="TV1">TV1 - Base Velocity (1.0deg)</option>
+					<option value="TV2">TV2 - Base Velocity (2.1deg)</option>
+					<option value="NVL">NVL - Vertically Integrated Liquid</option>
+					<option value="NET">NET - Echo Tops</option>
+					<option value="N1P">N1P - 1-HR Precipitation</option>
+					<option value="NTP">NTP - Storm Total Precipitation</option>
+					<option value="NVW">NVW - VWAD - Vertical Wind Azimuth Display</option>
+				</select>
+			</div>
+		</div>
+		<hr />
+		<div id="CONTROLS" style="position:relative;">
+			<div id="L3rd" style="position:absolute;left:0px;width:430px;border-right:1px solid gray;">
+				Site Select: 
+				<select id="STN" onChange="chgsite(document.getElementById('STN').value)">
+					<option value="AHG">AK - PAHG - Anchorage-Kenai</option>
+					<option value="ABC">AK - PABC - Bethel</option>
+					<option value="ACG">AK - PACG - Biorka Island-Sitka</option>
+					<option value="APD">AK - PAPD - Fairbanks-Pedro Dome</option>
+					<option value="AKC">AK - PAKC - King Salmon</option>
+					<option value="AIH">AK - PAIH - Middleton Island</option>
+					<option value="AEC">AK - PAEC - Nome</option>
+					<option value="BMX">AL - KBMX - Birmingham</option>
+					<option value="EOX">AL - KEOX - Ft Rucker</option>
+					<option value="HTX">AL - KHTX - Huntsville-Hytop</option>
+					<option value="MXX">AL - KMXX - Maxwell AFB</option>
+					<option value="MOB">AL - KMOB - Mobile</option>
+					<option value="SRX">AR - KSRX - Fort Smith</option>
+					<option value="LZK">AR - KLZK - Little Rock</option>
+					<option value="FSX">AZ - KFSX - Flagstaff</option>
+					<option value="IWA">AZ - KIWA - Phoenix</option>
+					<option value="EMX">AZ - KEMX - Tucson</option>
+					<option value="YUX">AZ - KYUX - Yuma</option>
+					<option value="PHX">AZ - TPHX - Phoenix</option>
+					<option value="BBX">CA - KBBX - Beale AFB</option>
+					<option value="EYX">CA - KEYX - Edwards AFB</option>
+					<option value="BHX">CA - KBHX - Eureka</option>
+					<option value="VTX">CA - KVTX - Los Angeles</option>
+					<option value="DAX">CA - KDAX - Sacramento</option>
+					<option value="NKX">CA - KNKX - San Diego</option>
+					<option value="MUX">CA - KMUX - San Francisco</option>
+					<option value="HNX">CA - KHNX - San Joaquin Valley</option>
+					<option value="SOX">CA - KSOX - Santa Ana Mountains</option>
+					<option value="VBX">CA - KVBX - Vandenberg AFB</option>
+					<option value="FTG">CO - KFTG - Denver</option>
+					<option value="GJX">CO - KGJX - Grand Junction</option>
+					<option value="PUX">CO - KPUX - Pueblo</option>
+					<option value="DEN">CO - TDEN - Denver</option>
+					<option value="DOX">DE - KDOX - Dover AFB</option>
+					<option value="JAX">FL - KJAX - Jacksonville</option>
+					<option value="BYX">FL - KBYX - Key West</option>
+					<option value="MLB">FL - KMLB - Melbourne</option>
+					<option value="AMX">FL - KAMX - Miami</option>
+					<option value="EVX">FL - KEVX - Northwest Florida-Eglin AFB</option>
+					<option value="TLH">FL - KTLH - Tallahassee</option>
+					<option value="TBW">FL - KTBW - Tampa Bay</option>
+					<option value="FLL">FL - TFLL - Fort Lauderdale</option>
+					<option value="MIA">FL - TMIA - Miami</option>
+					<option value="MCO">FL - TMCO - Orlando International</option>
+					<option value="TPA">FL - TTPA - Tampa Bay</option>
+					<option value="PBI">FL - TPBI - West Palm Beach</option>
+					<option value="FFC">GA - KFFC - Atlanta</option>
+					<option value="VAX">GA - KVAX - Moody AFB</option>
+					<option value="JGX">GA - KJGX - Robins AFB</option>
+					<option value="ATL">GA - TATL - Atlanta</option>
+					<option value="HKM">HI - PHKM - Kamuela-Kohala</option>
+					<option value="HMO">HI - PHMO - Molokai</option>
+					<option value="HKI">HI - PHKI - South Kauai</option>
+					<option value="HWA">HI - PHWA - South Shore</option>
+					<option value="DMX">IA - KDMX - Des Moines</option>
+					<option value="DVN">IA - KDVN - Quad Cities-Davenport</option>
+					<option value="CBX">ID - KCBX - Boise</option>
+					<option value="SFX">ID - KSFX - Pocatello</option>
+					<option value="LOT">IL - KLOT - Chicago</option>
+					<option value="ILX">IL - KILX - Lincoln</option>
+					<option value="MDW">IL - TMDW - Chicago Midway</option>
+					<option value="ORD">IL - TORD - Chicago O'Hare</option>
+					<option value="VWX">IN - KVWX - Evansville</option>
+					<option value="IND">IN - KIND - Indianapolis</option>
+					<option value="IWX">IN - KIWX - Northern Indiana-North Webster</option>
+					<option value="IDS">IN - TIDS - Indianapolis</option>
+					<option value="ODN">JP - RODN - Kadena</option>
+					<option value="KSG">KO - RKSG - Camp Humphreys</option>
+					<option value="KJK">KO - RKJK - Kunsan</option>
+					<option value="DDC">KS - KDDC - Dodge City</option>
+					<option value="GLD">KS - KGLD - Goodland</option>
+					<option value="TWX">KS - KTWX - Topeka</option>
+					<option value="ICT">KS - KICT - Wichita</option>
+					<option value="ICH">KS - TICH - Wichita</option>
+					<option value="HPX">KY - KHPX - Ft Campbell</option>
+					<option value="JKL">KY - KJKL - Jackson</option>
+					<option value="LVX">KY - KLVX - Louisville</option>
+					<option value="PAH">KY - KPAH - Paducah</option>
+					<option value="SDF">KY - TSDF - Louisville</option>
+					<option value="POE">LA - KPOE - Ft Polk</option>
+					<option value="LCH">LA - KLCH - Lake Charles</option>
+					<option value="LIX">LA - KLIX - New Orleans</option>
+					<option value="SHV">LA - KSHV - Shreveport</option>
+					<option value="MSY">LA - TMSY - New Orleans</option>
+					<option value="BOX">MA - KBOX - Boston</option>
+					<option value="BOS">MA - TBOS - Boston</option>
+					<option value="ADW">MD - TADW - Andrews Air Force Base</option>
+					<option value="BWI">MD - TBWI - Baltimore-Wash</option>
+					<option value="DCA">MD - TDCA - Washington National</option>
+					<option value="CBW">ME - KCBW - Caribou</option>
+					<option value="GYX">ME - KGYX - Portland</option>
+					<option value="DTX">MI - KDTX - Detroit</option>
+					<option value="APX">MI - KAPX - Gaylord</option>
+					<option value="GRR">MI - KGRR - Grand Rapids</option>
+					<option value="MQT">MI - KMQT - Marquette</option>
+					<option value="DTW">MI - TDTW - Detroit</option>
+					<option value="DLH">MN - KDLH - Duluth</option>
+					<option value="MPX">MN - KMPX - Minneapolis</option>
+					<option value="MSP">MN - TMSP - Minneapolis</option>
+					<option value="EAX">MO - KEAX - Kansas City</option>
+					<option value="SGF">MO - KSGF - Springfield</option>
+					<option value="LSX">MO - KLSX - St Louis</option>
+					<option value="MCI">MO - TMCI - Kansas City</option>
+					<option value="STL">MO - TSTL - St Louis</option>
+					<option value="GWX">MS - KGWX - Columbus AFB</option>
+					<option value="DGX">MS - KDGX - Jackson</option>
+					<option value="BLX">MT - KBLX - Billings</option>
+					<option value="GGW">MT - KGGW - Glasgow</option>
+					<option value="TFX">MT - KTFX - Great Falls</option>
+					<option value="MSX">MT - KMSX - Missoula</option>
+					<option value="MHX">NC - KMHX - Morehead City</option>
+					<option value="RAX">NC - KRAX - Raleigh-Durham</option>
+					<option value="LTX">NC - KLTX - Wilmington</option>
+					<option value="CLT">NC - TCLT - Charlotte</option>
+					<option value="RDU">NC - TRDU - Raleigh Durham</option>
+					<option value="BIS">ND - KBIS - Bismarck</option>
+					<option value="MVX">ND - KMVX - Grand Forks</option>
+					<option value="MBX">ND - KMBX - Minot AFB</option>
+					<option value="UEX">NE - KUEX - Hastings</option>
+					<option value="LNX">NE - KLNX - North Platte</option>
+					<option value="OAX">NE - KOAX - Omaha</option>
+					<option value="EWR">NJ - TEWR - Newark</option>
+					<option value="ABX">NM - KABX - Albuquerque</option>
+					<option value="FDX">NM - KFDX - Cannon AFB</option>
+					<option value="HDX">NM - KHDX - Holloman AFB</option>
+					<option value="LRX">NV - KLRX - Elko</option>
+					<option value="ESX">NV - KESX - Las Vegas</option>
+					<option value="RGX">NV - KRGX - Reno</option>
+					<option value="LAS">NV - TLAS - Las Vegas</option>
+					<option value="ENX">NY - KENX - Albany</option>
+					<option value="BGM">NY - KBGM - Binghamton</option>
+					<option value="BUF">NY - KBUF - Buffalo</option>
+					<option value="TYX">NY - KTYX - Montague-Ft Drum</option>
+					<option value="OKX">NY - KOKX - New York City-Upton</option>
+					<option value="JFK">NY - TJFK - New York City</option>
+					<option value="ILN">OH - KILN - Cincinnati-Wilmington</option>
+					<option value="CLE">OH - KCLE - Cleveland</option>
+					<option value="LVE">OH - TLVE - Cleveland</option>
+					<option value="CMH">OH - TCMH - Columbus</option>
+					<option value="CVG">OH - TCVG - Covington</option>
+					<option value="DAY">OH - TDAY - Dayton</option>
+					<option value="FDR">OK - KFDR - Frederick-Altus AFB</option>
+					<option value="TLX">OK - KTLX - Oklahoma City</option>
+					<option value="INX">OK - KINX - Tulsa</option>
+					<option value="VNX">OK - KVNX - Vance AFB</option>
+					<option value="OKC">OK - TOKC - Oklahoma City</option>
+					<option value="TUL">OK - TTUL - Tulsa</option>
+					<option value="MAX">OR - KMAX - Medford</option>
+					<option value="PDT">OR - KPDT - Pendleton</option>
+					<option value="RTX">OR - KRTX - Portland</option>
+					<option value="DIX">PA - KDIX - Philadelphia</option>
+					<option value="PBZ">PA - KPBZ - Pittsburgh</option>
+					<option value="CCX">PA - KCCX - State College</option>
+					<option value="PHL">PA - TPHL - Philadelphia</option>
+					<option value="PIT">PA - TPIT - Pittsburgh</option>
+					<option value="JUA">PR - TJUA - San Juan</option>
+					<option value="SJU">PR - TSJU - San Juan</option>
+					<option value="CLX">SC - KCLX - Charleston</option>
+					<option value="CAE">SC - KCAE - Columbia</option>
+					<option value="GSP">SC - KGSP - Greer</option>
+					<option value="ABR">SD - KABR - Aberdeen</option>
+					<option value="UDX">SD - KUDX - Rapid City</option>
+					<option value="FSD">SD - KFSD - Sioux Falls</option>
+					<option value="MRX">TN - KMRX - Knoxville-Morristown</option>
+					<option value="NQA">TN - KNQA - Memphis</option>
+					<option value="OHX">TN - KOHX - Nashville</option>
+					<option value="MEM">TN - TMEM - Memphis</option>
+					<option value="BNA">TN - TBNA - Nashville</option>
+					<option value="AMA">TX - KAMA - Amarillo</option>
+					<option value="BRO">TX - KBRO - Brownsville</option>
+					<option value="GRK">TX - KGRK - Central Texas-Ft Hood</option>
+					<option value="CRP">TX - KCRP - Corpus Christi</option>
+					<option value="DYX">TX - KDYX - Dyess AFB</option>
+					<option value="EPZ">TX - KEPZ - El Paso</option>
+					<option value="FWS">TX - KFWS - Ft Worth</option>
+					<option value="HGX">TX - KHGX - Houston</option>
+					<option value="DFX">TX - KDFX - Laughlin AFB</option>
+					<option value="LBB">TX - KLBB - Lubbock</option>
+					<option value="MAF">TX - KMAF - Midland-Odessa</option>
+					<option value="SJT">TX - KSJT - San Angelo</option>
+					<option value="EWX">TX - KEWX - San Antonio</option>
+					<option value="DAL">TX - TDAL - Dallas Love Field</option>
+					<option value="DFW">TX - TDFW - Dallas-Ft. Worth</option>
+					<option value="HOU">TX - THOU - Houston Hobby</option>
+					<option value="IAH">TX - TIAH - Houston International</option>
+					<option value="ICX">UT - KICX - Cedar City</option>
+					<option value="MTX">UT - KMTX - Salt Lake City</option>
+					<option value="SLC">UT - TSLC - Salt Lake City</option>
+					<option value="FCX" selected>VA - KFCX - Blacksburg</option>
+					<option value="LWX">VA - KLWX - Sterling</option>
+					<option value="AKQ">VA - KAKQ - Wakefield</option>
+					<option value="IAD">VA - TIAD - Dulles</option>
+					<option value="CXX">VT - KCXX - Burlington</option>
+					<option value="LGX">WA - KLGX - Langley Hill</option>
+					<option value="ATX">WA - KATX - Seattle</option>
+					<option value="OTX">WA - KOTX - Spokane</option>
+					<option value="GRB">WI - KGRB - Green Bay</option>
+					<option value="ARX">WI - KARX - La Crosse</option>
+					<option value="MKX">WI - KMKX - Milwaukee</option>
+					<option value="MKE">WI - TMKE - Milwaukee</option>
+					<option value="RLX">WV - KRLX - Charleston</option>
+					<option value="CYS">WY - KCYS - Cheyenne</option>
+					<option value="RIW">WY - KRIW - Riverton</option>
+				</select><br /><br />
+				Frame Control:<br />
+				<button id="frameolder" title="OLDER" onClick="chgframe('OLDER')">&lt;</button>
+				<!-- // TSTORM: &#9736;  ....   SUN: &#9728; -->
+				.<span class="framepanel" id="f29">&#9728;</span><span class="framepanel" id="f28">&#9728;</span><span class="framepanel" id="f27">&#9728;</span><span class="framepanel" id="f26">&#9728;</span><span class="framepanel" id="f25">&#9728;</span><span class="framepanel" id="f24">&#9728;</span><span class="framepanel" id="f23">&#9728;</span><span class="framepanel" id="f22">&#9728;</span><span class="framepanel" id="f21">&#9728;</span><span class="framepanel" id="f20">&#9728;</span><span class="framepanel" id="f19">&#9728;</span><span class="framepanel" id="f18">&#9728;</span><span class="framepanel" id="f17">&#9728;</span><span class="framepanel" id="f16">&#9728;</span><span class="framepanel" id="f15">&#9728;</span><span class="framepanel" id="f14">&#9728;</span><span class="framepanel" id="f13">&#9728;</span><span class="framepanel" id="f12">&#9728;</span><span class="framepanel" id="f11">&#9728;</span><span class="framepanel" id="f10">&#9728;</span><span class="framepanel" id="f9">&#9728;</span><span class="framepanel" id="f8">&#9728;</span><span class="framepanel" id="f7">&#9728;</span><span class="framepanel" id="f6">&#9728;</span><span class="framepanel" id="f5">&#9728;</span><span class="framepanel" id="f4">&#9728;</span><span class="framepanel" id="f3">&#9728;</span><span class="framepanel" id="f2">&#9728;</span><span class="framepanel" id="f1">&#9728;</span><span class="framepanel" style="color:lightblue;" id="f0">&#9728;</span>.
+				
+				<button id="framenewer" title="NEWER" onClick="chgframe('NEWER')">&gt;</button>&nbsp;&nbsp;&nbsp;&nbsp;
+				<button id="looper" onClick="looptoggle()">LOOP</button><br />
+				Q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E
+			</div>
+			<div id="M3rd" style="position:absolute;left:430px;width:380px;border-right:1px solid gray;padding-left:4px;">
+				<div id="zoombuttons" style="float:left;width:40%;text-align:center;">
+					ZOOM:<br />
+					<button class="BZOOM" onClick="chgscl('1')">+</button>
+					<button class="BZOOM" onClick="chgscl('-1')">-</button>
+				</div>
+				<div id="translatebuttons" style="text-align:center;">
+					TRANSLATE:<br />
+					<button class="BTRNS" title="WEST" onClick="chgtrnsl('W')">&#8678;</button> <!-- WEST -->
+					<button class="BTRNS" title="EAST" onClick="chgtrnsl('E')">&#8680;</button> <!-- EAST -->
+					<button class="BTRNS" title="NORTH" onClick="chgtrnsl('N')">&#8679;</button> <!-- NORTH -->
+					<button class="BTRNS" title="SOUTH" onClick="chgtrnsl('S')">&#8681;</button> <!-- SOUTH -->
+				</div>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Z&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;W&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;S
+			</div>
+			<div id="R3rd" style="position:absolute;left:820px;padding-left:4px;">
+				OPTIONS<br />
+				<button class="BOPTS" id="bclutter" onClick="toggleopts('clutter')" style="background-color:pink;">Clutter</button>
+				<button class="BOPTS" id="bsmooth" onClick="toggleopts('smooth')" style="background-color:pink;">Smooth</button>
+				<button class="BOPTS" id="blabels" onClick="toggleopts('labels')" style="background-color:lightgreen;">Labels</button>
+				<button class="BOPTS" id="bsevere" onClick="toggleopts('severe')" style="background-color:pink;">Severe</button><br />
+				<button class="BOPTS" id="brefresh" onClick="refresh()" style="width:320;background-color:lightblue;">REFRESH</button>
+			</div>
+		</div>
+		
+
+
+	</body>
+		<script>
+
+			// = STN_pre + STN + "&type=" + TYP + "&frame=" + FRM + "&noclutter=" + NCL + "&showstorms=" + SST + "&showlabels=" + SLB + "&smooth=" + SMO + "&severe=" + SVR + "&scale=" + SCL + "&transx=" + TRX + "&transy=" + TRY
+			
+			// https://radblast.wunderground.com/cgi-bin/radar/WUNIDS_map?brand=wui&station=FCX&type=N0R&frame=0&noclutter=0&showstorms=0&showlabels=1&smooth=0&severe=0&scale=1.000&transx=000&transy=000
+			
+			// &mapx=400 &mapy=240 &centerx=400 &centery=240
+			var radar_left = {"station":"FCX", "type":"N0Q", "scale":0.5, "transx":0, "transy":0,
+							  "num":1, "frame":0, "delay":15, 
+							  "smooth":0,"noclutter":0, "showstorms":0, "severe":0,"showlabels":1}
+			var radar_right = {"station":"FCX", "type":"N0R", "scale":0.25, "transx":0, "transy":0,
+							   "num":1, "frame":0, "delay":15, 
+							   "smooth":0,"noclutter":0, "showstorms":0, "severe":0,"showlabels":1}
+
+			var STN_pre = "https://radblast.wunderground.com/cgi-bin/radar/WUNIDS_map?brand=wui&station=";
+			// GLOBAL INITIAL VARIABLES
+			var site = "FCX";
+			var lprod = "N0R";
+			var rprod = "N0V";
+			var fnum = "0";
+			var anim = "1";
+			var sclL = "1.0";
+			var sclR = "1.0";
+			var trnslX = "0";
+			var trnslY = "0";
+			var toggle_clutter = "0";
+			var toggle_storms = "0";
+			var toggle_labels = "1";
+			var toggle_smooth = "0";
+			var toggle_svr = "0";
+			var rnum = 1000;
+			//(lprod == "N0Q" || lprod == "L20" || lprod == "N0Z" || lprod == "N0U")
+			
+			var press = 0;	// used to monitor zoom button presses
+			var radarspecscl = ["N0Q","L20","N0Z","N0U","TZL"];
+			var scale_select = ["1.0","0.75","0.50","0.375","0.25","0.125"];
+			var scale_select_LR = ["0.50","0.37","0.25","0.18","0.13"];
+			var scl_N0R = ["1.0","0.75","0.50","0.375","0.25","0.125"];
+			var scl_N0Q = ["0.5","0.375","0.25","0.1875","0.125","0.0625"];
+			var scl_N0U = ["0.77","0.5775","0.385","0.28875","0.1925","0.09625"];
+			var scl_TDWR_NCR = ["0.388","0.291","0.194","0.1455","0.097","0.0485"];
+			var scl_TDWR_TZL = ["0.213","0.15975","0.1065","0.079875","0.05325","0.026625"];
+			var scl_index = 0;
+			var currscl;
+			var frame_select = ["0","1","2","3","4","5","6","7","8","9"];
+			var MAXTR;
+			var REQTR = [0,50,60,80,100,120];
+			var origLsrc;
+			var origRsrc;
+			
+			function resetview() {
+				fnum = "0";
+				anim = "1";
+				sclL = "1.00";
+				sclR = "1.00";
+				scl_index = 0;
+				trnslX = "0";
+				trnslY = "0";
+			}
+
+			function keycontrol() {
+				key = event.keyCode;
+				//console.log(key);
+				if (key == 65) {chgtrnsl("W");}	// WEST
+				if (key == 68) {chgtrnsl("E");}	// EAST
+				if (key == 87) {chgtrnsl("N");}	// NORTH
+				if (key == 83) {chgtrnsl("S");}	// SOUTH
+				if (key == 90) {chgscl("1");}	// ZIN
+				if (key == 88) {chgscl("-1");}	// ZOUT
+				if (key == 81) {chgframe("OLDER");}	// Go Back in Time
+				if (key == 69) {chgframe("NEWER");}	// Go Forward in Time
+				if (key == 82) {refresh();}	// REFRESH
+			}
+
+			function chgsrc(side) {
+				if (side == 'LEFT') {
+					document.getElementById("LIMG").src = STN_pre + site +  "&type=" + lprod + "&frame=" + fnum + "&num=" + anim + "&delay=20&scale=" + sclL + "&transx=" + trnslX + "&transy=" + trnslY + "&noclutter=" + toggle_clutter + "&showstorms=" + toggle_storms + "&showlabels=" + toggle_labels + "&smooth=" + toggle_smooth + "&severe=" + toggle_svr + "&rand=" + rnum.toString();
+				}
+				if (side == 'RIGHT') {
+					document.getElementById("RIMG").src = STN_pre + site +  "&type=" + rprod + "&frame=" + fnum + "&num=" + anim + "&delay=20&scale=" + sclR + "&transx=" + trnslX + "&transy=" + trnslY + "&noclutter=" + toggle_clutter + "&showstorms=" + toggle_storms + "&showlabels=" + toggle_labels + "&smooth=" + toggle_smooth + "&severe=" + toggle_svr + "&rand=" + rnum.toString();
+				}
+			}
+			
+			function chgsite(locale) {
+				site = locale;
+				if (site == "PHX" || site == "DEN" || site == "FLL" || site == "MIA" || site == "MCO" || site == "TPA" || site == "PBI" || site == "ATL" || site == "MDW" || site == "ORD" || site == "IDS" || site == "ICH" || site == "SDF" || site == "MSY" || site == "BOS" || site == "ADW" || site == "BWI" || site == "DCA" || site == "DTW" || site == "MSP" || site == "MCI" || site == "STL" || site == "CLT" || site == "RDU" || site == "EWR" || site == "LAS" || site == "JFK" || site == "LVE" || site == "CMH" || site == "CVG" || site == "DAY" || site == "OKC" || site == "TUL" || site == "PHL" || site == "PIT" || site == "SJU" || site == "MEM" || site == "BNA" || site == "DAL" || site == "DFW" || site == "HOU" || site == "IAH" || site == "SLC" || site == "IAD" || site == "MKE") {
+					document.getElementById("LTYP").style.display = "none";
+					document.getElementById("RTYP").style.display = "none";
+					document.getElementById("LTYPtdwr").style.display = "initial";
+					document.getElementById("RTYPtdwr").style.display = "initial";
+					lprod = "TR0";
+					rprod = "TV0";
+				}
+				else {
+					document.getElementById("LTYP").style.display = "initial";
+					document.getElementById("RTYP").style.display = "initial";
+					document.getElementById("LTYPtdwr").style.display = "none";
+					document.getElementById("RTYPtdwr").style.display = "none";
+					lprod = "N0R";
+					rprod = "N0V";
+				}
+				document.getElementById("STN").blur();	// REMOVE FOCUS (emulates clicking out of) the station picker
+				currscl = scl_N0R;
+				resetview();
+				chgsrc('LEFT');
+				chgsrc('RIGHT');
+			}
+			
+			function chgprod(side,newprod) {
+				if (side == "LEFT") {		// LEFT
+					lprod = newprod;
+					currscl = scl_determine(lprod);
+					sclL = currscl[scl_index];
+					document.getElementById("LTYP").blur();	// REMOVE FOCUS (emulates clicking out of)
+					document.getElementById("LTYPtdwr").blur();	// REMOVE FOCUS (emulates clicking out of)
+					chgsrc('LEFT');
+				}
+				else {						// RIGHT
+					rprod = newprod;
+					currscl = scl_determine(rprod);
+					sclR = currscl[scl_index];
+					document.getElementById("RTYP").blur();	// REMOVE FOCUS (emulates clicking out of)
+					document.getElementById("RTYPtdwr").blur();	// REMOVE FOCUS (emulates clicking out of)
+					chgsrc('RIGHT');
+				}
+			}
+
+			function chgscl(sign) {
+				if (eval(sign) < 0) {		// ZOOMING OUT
+					if (scl_index != 0) {scl_index -= 1;}		// if we're not zoomed all the way out
+					else {trnslX = "0"; trnslX = "0";}		// if we are zoomed all the way out, we should reset the scales
+				}
+				else {						// ZOOMING IN
+					if (scl_index != 5) {scl_index += 1;}		// If we're not zoomed in all the way in
+				}
+				currscl = scl_determine(lprod);	sclL = currscl[scl_index];
+				chgsrc('LEFT');
+				currscl = scl_determine(rprod); sclR = currscl[scl_index];
+				chgsrc('RIGHT');
+				console.log("sclL = " + sclL + " ... sclR = " + sclR);
+			}
+			
+			function scl_determine(p) {
+				// Use visibility settings to dictate product type
+				if (document.getElementById("LTYPtdwr").style.display != "none") {		// TDWR Products
+					if (p == "TZL") {return scl_TDWR_TZL;}
+					else if (p == "NCR" || p == "NVL" || p == "NET" || p == "N1P" || p == "NTP") {return scl_TDWR_NCR;}
+					else {return scl_N0R;}
+				}
+				else {			// WSR88D Products
+					if (p == "N0Q" || p == "L20" || p == "N0Z") {return scl_N0Q;}
+					else if (p == "N0U") {return scl_N0U;}
+					else {return scl_N0R;}
+				}
+			}
+			
+			function chgtrnsl(DIR) {
+				if (DIR == "N") {trnslY = (eval(trnslY) + REQTR[scl_index]).toString();}
+				if (DIR == "S") {trnslY = (eval(trnslY) + (-1) * REQTR[scl_index]).toString();}
+				if (DIR == "E") {trnslX = (eval(trnslX) + (-1) * REQTR[scl_index]).toString();}
+				if (DIR == "W") {trnslX = (eval(trnslX) + REQTR[scl_index]).toString();}
+				chgsrc('LEFT');
+				chgsrc('RIGHT');
+			}
+
+			function chgtrnsl(DIR) {
+				// Just use the 'lprod' to do a basic check (could use 'rprod' if we wanted)
+				// If current product uses the custom scaling
+				if (radarspecscl.includes(lprod)) {
+					if (DIR == "N") {trnslY = (eval(trnslY) + REQTR[scale_select_LR.indexOf(sclL)]).toString();}
+					if (DIR == "S") {trnslY = (eval(trnslY) + (-1) * REQTR[scale_select_LR.indexOf(sclL)]).toString();}
+					if (DIR == "E") {trnslX = (eval(trnslX) + (-1) * REQTR[scale_select_LR.indexOf(sclL)]).toString();}
+					if (DIR == "W") {trnslX = (eval(trnslX) + REQTR[scale_select_LR.indexOf(sclL)]).toString();}
+				}
+				else {
+					if (DIR == "N") {trnslY = (eval(trnslY) + REQTR[scale_select.indexOf(sclL)]).toString();}
+					if (DIR == "S") {trnslY = (eval(trnslY) + (-1) * REQTR[scale_select.indexOf(sclL)]).toString();}
+					if (DIR == "E") {trnslX = (eval(trnslX) + (-1) * REQTR[scale_select.indexOf(sclL)]).toString();}
+					if (DIR == "W") {trnslX = (eval(trnslX) + REQTR[scale_select.indexOf(sclL)]).toString();}
+				}
+				//console.log("Product " + lprod + " in radarspecscl?: " + radarspecscl.includes(lprod));
+				chgsrc('LEFT');
+				chgsrc('RIGHT');
+			}
+			
+			function chgframe(temporal) {
+				// TSTORM: &#9736;  ....   SUN: &#9728;
+				var oldframe = fnum;
+				if (temporal == "OLDER") {		// OLDER IMAGERY
+					if (eval(fnum) < 29) {fnum = (eval(fnum) + 1).toString();}
+					
+				}
+				else {							// NEWER IMAGERY
+					if (eval(fnum) > 0) {
+						fnum = (eval(fnum) - 1).toString();
+					}
+				}
+				document.getElementById("f" + oldframe).style.color = "yellow";
+				document.getElementById("f" + fnum).style.color = "lightblue";
+				chgsrc('LEFT');
+				chgsrc('RIGHT');
+			}
+			
+			function looptoggle() {
+				if (anim == "1") {
+					anim = "10";
+					document.getElementById("looper").innerHTML = "STOP";
+				}
+				else {
+					anim = "1";
+					document.getElementById("looper").innerHTML = "LOOP";
+				}
+				chgsrc('LEFT');
+				chgsrc('RIGHT');
+			}
+			
+			function toggleopts(opt) {
+
+				if (opt == "clutter") {
+					if (toggle_clutter == "0") {
+						toggle_clutter = "1";
+						document.getElementById("b" + opt).style.backgroundColor = "lightgreen";
+					}
+					else {
+						toggle_clutter = "0";
+						document.getElementById("b" + opt).style.backgroundColor = "pink";
+					}
+				}
+				if (opt == "smooth") {
+					if (toggle_smooth == "0") {
+						toggle_smooth = "1";
+						document.getElementById("b" + opt).style.backgroundColor = "lightgreen";
+					}
+					else {
+						toggle_smooth = "0";
+						document.getElementById("b" + opt).style.backgroundColor = "pink";
+					}					
+				}
+				if (opt == "labels") {
+					if (toggle_labels == "0") {
+						toggle_labels = "1";
+						document.getElementById("b" + opt).style.backgroundColor = "lightgreen";
+					}
+					else {
+						toggle_labels = "0";
+						document.getElementById("b" + opt).style.backgroundColor = "pink";
+					}					
+				}
+				if (opt == "severe") {
+					if (toggle_svr == "0") {
+						toggle_svr = "1";
+						document.getElementById("b" + opt).style.backgroundColor = "lightgreen";
+					}
+					else {
+						toggle_svr = "0";
+						document.getElementById("b" + opt).style.backgroundColor = "pink";
+					}					
+				}					
+				chgsrc('LEFT');
+				chgsrc('RIGHT');
+			}
+			
+			function refresh() {
+				r = Math.floor(Math.random() * 9000) + 1000;
+				console.log(r);
+				rnum = r.toString();
+				chgsrc('LEFT');
+				chgsrc('RIGHT');
+			}
+		</script>
+</html>

@@ -1,0 +1,173 @@
+<html>
+	<head>
+		<base href="../">
+		<title>ksgwxfan - Football Game</title>
+		<style>
+			.HEADER {
+				width: 100%;
+				font-weight: bold;
+				font-size: 30px;
+				display: inline-block;
+				}
+			.HEADERPHOTO {
+				width: 3%;
+				border: 2px solid white;
+				box-shadow: 0px 0px 5px white;
+				border-radius: 35%;
+				display: inline-block;
+				}
+			.verttext {
+				position: absolute;
+				writing-mode: vertical-rl;
+				text-align: center;
+				background-color: rgba(255,255,255,.15);
+				font-size: 4em;
+				font-weight: bold;
+				text-shadow: 2px 2px 0px black, -2px -2px 0px black, 2px -2px 0px black, -2px 2px 0px black;
+				user-select: none;
+			}
+			.gameopts {
+				position:absolute;
+				top:50%;
+				left:50%;
+				transform: translate(-50%,-50%);
+				text-align: center;
+				width:98%;
+				height:98%;
+				background-color:rgba(50,50,50,.6);
+				border-radius: 0% 15% 0% 15%;
+			}
+			.gameopts-table {
+				display: table-cell;
+				vertical-align: middle;
+				font-size: 1.5em;
+				font-weight: bold;
+			}
+			.coinside {
+				position: absolute;
+				transform: translate(-50%,-50%);
+				width: 300px;
+				height: 100px;
+				font-size: 2em;
+				font-weight: bold;
+				line-height: 100px;
+				background-color: navy;
+				border: 1px solid black;
+				border-radius: 20%;
+			}
+		</style>
+	</head>
+	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue" onLoad="loading()">
+		<div class="HEADER">
+			<img class="HEADERPHOTO" src="profile.png"> <u>Football Game</u>
+		</div><br><br>
+		<div id="container" style="position:relative;--w:900px;width:var(--w);height:calc(var(--w) * 0.48);margin:auto;font-family: Arial, Helvetica, sans-serif;">
+			<div id="color-ezwest" style="position:absolute;top:0px;left:0px;width:calc(100%/3);height:95%;background-color:lightblue;"></div>
+			<div id="color-midfield" style="position:absolute;top:0px;left:calc(100%/3);width:calc(100%/3);height:95%;background-color:red;"></div>
+			<div id="color-ezeast" style="position:absolute;top:0px;left:calc(100%/3*2);width:calc(100%/3);height:95%;background-color:darkblue;"></div>
+			<img style="position:absolute;top:0px;left:0px;width:100%;" src="footballgame/fb-field-under.svg">
+			<img style="position:absolute;top:0px;left:0px;width:100%;" src="footballgame/fb-field-over.svg">
+			<div id="text-ezwest" class="verttext" style="width:7.8%;height:87%;top:6.5%;left:3.125%;transform:rotate(180deg);">TAR HEELS</div>
+			<div id="text-ezeast" class="verttext" style="width:7.8%;height:87%;top:6.5%;right:3.125%;">DOOK</div>
+			<img style="position:absolute;top:0px;left:0px;width:100%;" src="footballgame/field-texture.png">
+			<!-- GAME OPTIONS -->
+			<div id="startgame" class="gameopts" style="display:table;">
+				<div style="display:table-row;">
+					<div class="gameopts-table" style="padding-left:20px;padding-right:20px;">
+						Football Game<br /><br />
+						* Before beginning, please set the team-names and colors below the console<br /><br />
+						<button id="begin" style="width:30%;height:30%;background-color:navy;border:2px solid black;color:white;font-size:2em;user-select:none;outline:none;" onClick="nextopts('cointoss')">START</button>
+					</div>
+				</div>
+			</div>
+			<div id="cointoss" class="gameopts" style="display:none;">
+				<svg id="coincontainer" width="150" height="150" style="position:absolute;top:50%;left:25%;transform:translate(-50%,-50%);">
+					<ellipse id="coin" cx="50%" cy="50%" rx="74.5" ry="74.5" style="fill:rgb(169, 169, 169);stroke:black;stroke-width:1" />
+				</svg>
+				<div class="coinside" style="top:35%;left:75%;" onClick="chooseside('h')">HEADS</div>
+				<div class="coinside" style="top:65%;left:75%;" onClick="chooseside('t')">TAILS</div>
+			</div>
+		</div>
+		
+		<div id="description" style="margin-top:20px;">
+			Football Game.
+		</div>
+		
+		<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
+		
+		<script>
+		
+		var gameoptids = {startgame, cointoss};
+		var coinprop = {direction: "down", ry: document.getElementById("coin").getAttribute("ry"), numflips: 0};
+		var flip;	// Will be assigned as a timervariable; globally set so it can be cleared whereever desired
+		var rflipnum;	// will hold the random number associated with coin flip
+		
+		function loading() {
+			var imgw = document.getElementById("container").style.getPropertyValue("--w").replace("px","");
+			var imgh = (imgw * .48).toFixed(2);
+			var fontw = imgh * .078;
+			document.getElementById("text-ezwest").style.fontSize = imgw * .07;
+			document.getElementById("text-ezeast").style.fontSize = imgw * .07;
+			//console.log(document.getElementById("coin"));
+		}
+		
+		function nextopts(mode) {	// mode represents the next options screen that should appear
+			for (x in gameoptids) {
+				if (x == mode) {document.getElementById(mode).style.display = "block";}
+				else {document.getElementById(x).style.display = "none";}
+			}
+		}
+		
+		function chooseside(side) {
+			rflipnum = Math.floor(Math.random() * 2) + 1;
+			console.log(rflipnum);
+			flip = setInterval(flipanim,8);
+		}
+		
+		function flipanim() {
+			var y = document.getElementById("coin").getAttribute("ry");
+			if (coinprop.direction == "down") {coinprop.ry = coinprop.ry-8;}	// DOWN
+			else {coinprop.ry = coinprop.ry+8;}		// UP
+			
+			if (coinprop.ry < 0 && coinprop.direction == "down") {
+				coinprop.ry = 0.5;
+				coinprop.direction = "up";
+				if (document.getElementById("coin").style.fill == "rgb(169, 169, 169)") {document.getElementById("coin").style.fill = "rgb(217, 217, 217)";}
+				else {document.getElementById("coin").style.fill = "rgb(169, 169, 169)";}
+			}
+			if (coinprop.ry > 74.5 && coinprop.direction == "up") {
+				coinprop.ry = 74.5;
+				coinprop.direction = "down";
+			}
+			document.getElementById("coin").setAttribute("ry",Math.abs(coinprop.ry));
+			coinprop.numflips += 1;
+			if (coinprop.numflips == 200) {
+				clearInterval(flip);
+				if (rflipnum == 1) {
+					document.getElementById("coincontainer").innerHTML += '<text x="50%" y="50%" fill="black" alignment-baseline="middle" text-anchor="middle" style="font-size:2em;font-weight:bold;">HEADS</text>';
+				}
+				else {
+					document.getElementById("coincontainer").innerHTML += '<text x="50%" y="50%" fill="black" alignment-baseline="middle" text-anchor="middle" style="font-size:2em;font-weight:bold;">TAILS</text>';
+				}
+			}
+		}
+		
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,400 @@
+<html>
+	<head>
+		<base href="../">
+		<title>ksgwxfan - MineSweep</title>
+		<style>
+			.HEADER {
+				width: 100%;
+				font-weight: bold;
+				font-size: 30px;
+				display: inline-block;
+				}
+			.HEADERPHOTO {
+				width: 3%;
+				border: 2px solid white;
+				box-shadow: 0px 0px 5px white;
+				border-radius: 35%;
+				display: inline-block;
+				}
+			.GAMEBOARD {
+				position: relative;
+				width: 500px;
+				height: 500px;
+				margin: auto;
+				background-color: white;
+				}
+			.MAINBORDER {
+				position: absolute;
+				fill: white;
+				stroke-width: 5px;
+				stroke: gray;
+				}
+			.SQUARES {
+				position: absolute;
+				width: 40px;
+				height: 40px;
+				line-height: 40px;
+				background-color: lightgray;
+				border: 4px outset gray;
+				color: black;
+				text-align: left;
+				}
+
+
+		</style>
+	</head>
+	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue">
+		<div class="HEADER">
+			<img class="HEADERPHOTO" src="profile.png"> <u>MineSweep</u>
+		</div><br><br>
+
+		<div class="GAMEBOARD">
+			<svg width="500" height="500">
+				<rect x="8" y="8" class="MAINBORDER" width="484" height="484" />
+			</svg>
+			<!--ROW 1 (index 0) -->
+
+			<div class="SQUARES" id="s00" style="top:10px;left:10px;" onClick=check("s00")></div>
+			<div class="SQUARES" id="s01" style="top:10px;left:58px;" onClick=check("s01")></div>
+			<div class="SQUARES" id="s02" style="top:10px;left:106px;" onClick=check("s02")></div>
+			<div class="SQUARES" id="s03" style="top:10px;left:154px;" onClick=check("s03")></div>
+			<div class="SQUARES" id="s04" style="top:10px;left:202px;" onClick=check("s04")></div>
+			<div class="SQUARES" id="s05" style="top:10px;left:250px;" onClick=check("s05")></div>
+			<div class="SQUARES" id="s06" style="top:10px;left:298px;" onClick=check("s06")></div>
+			<div class="SQUARES" id="s07" style="top:10px;left:346px;" onClick=check("s07")></div>
+			<div class="SQUARES" id="s08" style="top:10px;left:394px;" onClick=check("s08")></div>
+			<div class="SQUARES" id="s09" style="top:10px;left:442px;" onClick=check("s09")></div>
+			<!--ROW 2 (index 1) -->
+			<div class="SQUARES" id="s10" style="top:58px;left:10px;" onClick=check("s10")></div>
+			<div class="SQUARES" id="s11" style="top:58px;left:58px;" onClick=check("s11")></div>
+			<div class="SQUARES" id="s12" style="top:58px;left:106px;" onClick=check("s12")></div>
+			<div class="SQUARES" id="s13" style="top:58px;left:154px;" onClick=check("s13")></div>
+			<div class="SQUARES" id="s14" style="top:58px;left:202px;" onClick=check("s14")></div>
+			<div class="SQUARES" id="s15" style="top:58px;left:250px;" onClick=check("s15")></div>
+			<div class="SQUARES" id="s16" style="top:58px;left:298px;" onClick=check("s16")></div>
+			<div class="SQUARES" id="s17" style="top:58px;left:346px;" onClick=check("s17")></div>
+			<div class="SQUARES" id="s18" style="top:58px;left:394px;" onClick=check("s18")></div>
+			<div class="SQUARES" id="s19" style="top:58px;left:442px;" onClick=check("s19")></div>
+			<!--ROW 3 (index 2) -->
+			<div class="SQUARES" id="s20" style="top:106px;left:10px;" onClick=check("s20")></div>
+			<div class="SQUARES" id="s21" style="top:106px;left:58px;" onClick=check("s21")></div>
+			<div class="SQUARES" id="s22" style="top:106px;left:106px;" onClick=check("s22")></div>
+			<div class="SQUARES" id="s23" style="top:106px;left:154px;" onClick=check("s23")></div>
+			<div class="SQUARES" id="s24" style="top:106px;left:202px;" onClick=check("s24")></div>
+			<div class="SQUARES" id="s25" style="top:106px;left:250px;" onClick=check("s25")></div>
+			<div class="SQUARES" id="s26" style="top:106px;left:298px;" onClick=check("s26")></div>
+			<div class="SQUARES" id="s27" style="top:106px;left:346px;" onClick=check("s27")></div>
+			<div class="SQUARES" id="s28" style="top:106px;left:394px;" onClick=check("s28")></div>
+			<div class="SQUARES" id="s29" style="top:106px;left:442px;" onClick=check("s29")></div>
+			<!--ROW 4 (index 3) -->
+			<div class="SQUARES" id="s30" style="top:154px;left:10px;" onClick=check("s30")></div>
+			<div class="SQUARES" id="s31" style="top:154px;left:58px;" onClick=check("s31")></div>
+			<div class="SQUARES" id="s32" style="top:154px;left:106px;" onClick=check("s32")></div>
+			<div class="SQUARES" id="s33" style="top:154px;left:154px;" onClick=check("s33")></div>
+			<div class="SQUARES" id="s34" style="top:154px;left:202px;" onClick=check("s34")></div>
+			<div class="SQUARES" id="s35" style="top:154px;left:250px;" onClick=check("s35")></div>
+			<div class="SQUARES" id="s36" style="top:154px;left:298px;" onClick=check("s36")></div>
+			<div class="SQUARES" id="s37" style="top:154px;left:346px;" onClick=check("s37")></div>
+			<div class="SQUARES" id="s38" style="top:154px;left:394px;" onClick=check("s38")></div>
+			<div class="SQUARES" id="s39" style="top:154px;left:442px;" onClick=check("s39")></div>
+			<!--ROW 5 (index 4) -->
+			<div class="SQUARES" id="s40" style="top:202px;left:10px;" onClick=check("s40")></div>
+			<div class="SQUARES" id="s41" style="top:202px;left:58px;" onClick=check("s41")></div>
+			<div class="SQUARES" id="s42" style="top:202px;left:106px;" onClick=check("s42")></div>
+			<div class="SQUARES" id="s43" style="top:202px;left:154px;" onClick=check("s43")></div>
+			<div class="SQUARES" id="s44" style="top:202px;left:202px;" onClick=check("s44")></div>
+			<div class="SQUARES" id="s45" style="top:202px;left:250px;" onClick=check("s45")></div>
+			<div class="SQUARES" id="s46" style="top:202px;left:298px;" onClick=check("s46")></div>
+			<div class="SQUARES" id="s47" style="top:202px;left:346px;" onClick=check("s47")></div>
+			<div class="SQUARES" id="s48" style="top:202px;left:394px;" onClick=check("s48")></div>
+			<div class="SQUARES" id="s49" style="top:202px;left:442px;" onClick=check("s49")></div>
+			<!--ROW 6 (index 5) -->
+			<div class="SQUARES" id="s50" style="top:250px;left:10px;" onClick=check("s50")></div>
+			<div class="SQUARES" id="s51" style="top:250px;left:58px;" onClick=check("s51")></div>
+			<div class="SQUARES" id="s52" style="top:250px;left:106px;" onClick=check("s52")></div>
+			<div class="SQUARES" id="s53" style="top:250px;left:154px;" onClick=check("s53")></div>
+			<div class="SQUARES" id="s54" style="top:250px;left:202px;" onClick=check("s54")></div>
+			<div class="SQUARES" id="s55" style="top:250px;left:250px;" onClick=check("s55")></div>
+			<div class="SQUARES" id="s56" style="top:250px;left:298px;" onClick=check("s56")></div>
+			<div class="SQUARES" id="s57" style="top:250px;left:346px;" onClick=check("s57")></div>
+			<div class="SQUARES" id="s58" style="top:250px;left:394px;" onClick=check("s58")></div>
+			<div class="SQUARES" id="s59" style="top:250px;left:442px;" onClick=check("s59")></div>
+			<!--ROW 7 (index 6) -->
+			<div class="SQUARES" id="s60" style="top:298px;left:10px;" onClick=check("s60")></div>
+			<div class="SQUARES" id="s61" style="top:298px;left:58px;" onClick=check("s61")></div>
+			<div class="SQUARES" id="s62" style="top:298px;left:106px;" onClick=check("s62")></div>
+			<div class="SQUARES" id="s63" style="top:298px;left:154px;" onClick=check("s63")></div>
+			<div class="SQUARES" id="s64" style="top:298px;left:202px;" onClick=check("s64")></div>
+			<div class="SQUARES" id="s65" style="top:298px;left:250px;" onClick=check("s65")></div>
+			<div class="SQUARES" id="s66" style="top:298px;left:298px;" onClick=check("s66")></div>
+			<div class="SQUARES" id="s67" style="top:298px;left:346px;" onClick=check("s67")></div>
+			<div class="SQUARES" id="s68" style="top:298px;left:394px;" onClick=check("s68")></div>
+			<div class="SQUARES" id="s69" style="top:298px;left:442px;" onClick=check("s69")></div>
+			<!--ROW 8 (index 7) -->
+			<div class="SQUARES" id="s70" style="top:346px;left:10px;" onClick=check("s70")></div>
+			<div class="SQUARES" id="s71" style="top:346px;left:58px;" onClick=check("s71")></div>
+			<div class="SQUARES" id="s72" style="top:346px;left:106px;" onClick=check("s72")></div>
+			<div class="SQUARES" id="s73" style="top:346px;left:154px;" onClick=check("s73")></div>
+			<div class="SQUARES" id="s74" style="top:346px;left:202px;" onClick=check("s74")></div>
+			<div class="SQUARES" id="s75" style="top:346px;left:250px;" onClick=check("s75")></div>
+			<div class="SQUARES" id="s76" style="top:346px;left:298px;" onClick=check("s76")></div>
+			<div class="SQUARES" id="s77" style="top:346px;left:346px;" onClick=check("s77")></div>
+			<div class="SQUARES" id="s78" style="top:346px;left:394px;" onClick=check("s78")></div>
+			<div class="SQUARES" id="s79" style="top:346px;left:442px;" onClick=check("s79")></div>
+			<!--ROW 9 (index 8) -->
+			<div class="SQUARES" id="s80" style="top:394px;left:10px;" onClick=check("s80")></div>
+			<div class="SQUARES" id="s81" style="top:394px;left:58px;" onClick=check("s81")></div>
+			<div class="SQUARES" id="s82" style="top:394px;left:106px;" onClick=check("s82")></div>
+			<div class="SQUARES" id="s83" style="top:394px;left:154px;" onClick=check("s83")></div>
+			<div class="SQUARES" id="s84" style="top:394px;left:202px;" onClick=check("s84")></div>
+			<div class="SQUARES" id="s85" style="top:394px;left:250px;" onClick=check("s85")></div>
+			<div class="SQUARES" id="s86" style="top:394px;left:298px;" onClick=check("s86")></div>
+			<div class="SQUARES" id="s87" style="top:394px;left:346px;" onClick=check("s87")></div>
+			<div class="SQUARES" id="s88" style="top:394px;left:394px;" onClick=check("s88")></div>
+			<div class="SQUARES" id="s89" style="top:394px;left:442px;" onClick=check("s89")></div>
+			<!--ROW 10 (index 9) -->
+			<div class="SQUARES" id="s90" style="top:442px;left:10px;" onClick=check("s90")></div>
+			<div class="SQUARES" id="s91" style="top:442px;left:58px;" onClick=check("s91")></div>
+			<div class="SQUARES" id="s92" style="top:442px;left:106px;" onClick=check("s92")></div>
+			<div class="SQUARES" id="s93" style="top:442px;left:154px;" onClick=check("s93")></div>
+			<div class="SQUARES" id="s94" style="top:442px;left:202px;" onClick=check("s94")></div>
+			<div class="SQUARES" id="s95" style="top:442px;left:250px;" onClick=check("s95")></div>
+			<div class="SQUARES" id="s96" style="top:442px;left:298px;" onClick=check("s96")></div>
+			<div class="SQUARES" id="s97" style="top:442px;left:346px;" onClick=check("s97")></div>
+			<div class="SQUARES" id="s98" style="top:442px;left:394px;" onClick=check("s98")></div>
+			<div class="SQUARES" id="s99" style="top:442px;left:442px;" onClick=check("s99")></div>
+		</div>
+<button onClick=runcmd()>CLICK ME</button>
+<div id="description">
+
+</div>
+		<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
+		<script>
+		// CONSIDER LOADING SCRIPT WHEN YOUR DOCUMENT LOADS TO AVOID TWICE CLICK ISSUE
+		
+		var proximity = [];		// Will hold data for proximity (how many mines are nearby)
+		var mine = [[0,0,0,0,0,0,0,0,0,0],
+					[0,0,0,0,0,0,0,0,0,0],
+					[0,0,0,0,0,0,0,0,0,0],
+					[0,0,0,0,0,0,0,0,0,0],
+					[0,0,0,0,0,0,0,0,0,0],
+					[0,0,0,0,0,0,0,0,0,0],
+					[0,0,0,0,0,0,0,0,0,0],
+					[0,0,0,0,0,0,0,0,0,0],
+					[0,0,0,0,0,0,0,0,0,0],
+					[0,0,0,0,0,0,0,0,0,0]];
+		var zerocount = {};		// Will store the slots that have zero mines in proximity
+		//var uncover = []; 		// Holds the slots with zero mines around them
+		//var uncovertemp = [];
+		var tempuncover = [];
+		var completed = [];
+
+		function check(sq) {
+			//console.log(document.getElementById(sq).style.borderStyle)
+			//document.getElementById(sq).style.borderStyle = "inset";
+			
+			// Change Color based on value?
+			if (document.getElementById(sq).value == 1) {
+				document.getElementById(sq).style.borderStyle = "inset";
+				document.getElementById(sq).style.backgroundColor = "red";
+			}
+			else {
+				document.getElementById(sq).style.borderStyle = "inset";
+				document.getElementById(sq).style.backgroundColor = "white";
+				document.getElementById(sq).innerHTML = proximity[eval(sq.substr(1, 1))][eval(sq.substr(2, 2))];
+				if (proximity[eval(sq.substr(1, 1))][eval(sq.substr(2, 2))] == 0) {
+					uncover(sq);
+					
+					while (tempuncover.length > 0) {
+						//console.log("tempuncover.length = " + tempuncover.length);
+						// Negation tactic learned at: https://stackoverflow.com/a/7972460/10251181
+						
+						if (!(tempuncover[0] in completed)) {
+							//console.log(tempuncover[0]);
+							uncover(tempuncover[0]);
+						}
+						tempuncover.splice(0,1);
+					}
+				}
+				
+			}
+			
+		}
+		
+		function uncover(slot) {
+			//OBJ name: zerocount
+			//console.log(zerocount[slot]);
+			
+
+			for(i=0;i<zerocount[slot].length;i++) {
+				document.getElementById(zerocount[slot][i]).style.borderStyle = "inset";
+				document.getElementById(zerocount[slot][i]).style.backgroundColor = "white";
+				document.getElementById(zerocount[slot][i]).innerHTML = proximity[eval(zerocount[slot][i].substr(1, 1))][eval(zerocount[slot][i].substr(2, 2))];
+				completed.push(slot);
+				if (zerocount[slot][i] in zerocount) {
+					//console.log("tempuncover.push(" + zerocount[slot][i] + ")");
+					tempuncover.push((zerocount[slot][i]).toString());	// appends "s##" to temp array
+				}
+			}
+		}
+	
+		function runcmd() {
+			// Create / Reset Array to hold which slots have mines
+			
+			var row_num;
+			var column_num;
+			
+			for (z=0;z<20;z++) {
+				var rt = Math.floor((Math.random() * 100) + 0);		//picks a r btw 0-100 (99)
+				//console.log("...rt = " + rt);
+				//document.getElementById("s" + rt).value = 1;
+				
+				
+				if (rt < 10) {row_num = 0; column_num = rt;}
+				else {
+					row_num = eval(rt.toString().substr(0,1));
+					
+					column_num = eval(rt.toString().substr(1,1));
+					
+				}
+				//console.log("rt = " + rt + "; row_num = " + row_num + "; column_num = " + column_num);
+				mine[row_num][column_num] = 1;
+				//console.log("mine[" + row_num + "][" + column_num + "] = " + mine[row_num][column_num]);
+			}
+			
+			for (i=0;i<10;i++) {
+				for (j=0;j<10;j++) {
+					if (mine[i][j] == 1) {
+						document.getElementById("s" + i + j).value = 1;
+					}
+					else {
+						document.getElementById("s" + i + j).value = 0;
+					}
+				}
+			}
+
+			// IS IT POSSIBLE THAT THE FOR-LOOP ISN'T DONE DEFINING THE ABOVE VALUES BEFORE
+			//		IT ATTEMPTS TO CREATE THE PROXIMITY ARRAY?
+			createprox();
+		}
+		
+		function createprox() {
+			//var proximity = [];		// Will hold data for proximity (how many mines are nearby)
+			for (row=0;row<10;row++) {
+				var proxtemp = [];		// Holds row-data; to be appended to the main array at the end?
+				for (col=0;col<10;col++) {
+					var count = 0; 		// will track and store the number of nearby mines for indiv.
+					
+					// if the spot DOES NOT have a mine in it...
+					if (document.getElementById("s" + row + col).value == 0) {
+						
+						// TOP ROW
+						if (row == 0) {
+							// LEFT-MOST COL
+							if (col == 0) {
+								count += verify(mine[row+0][col+1]);
+								count += verify(mine[row+1][col+1]);
+								count += verify(mine[row+1][col+0]);
+							}
+							// RIGHT-MOST COL
+							else if (col == 9) {
+								count += verify(mine[row+0][col-1]);
+								count += verify(mine[row+1][col-1]);
+								count += verify(mine[row+1][col+0]);
+							}
+							// ALL OTHER COLUMNS (indices 1 thru 8)
+							else {
+								count += verify(mine[row+0][col-1]);
+								count += verify(mine[row+1][col-1]);
+								count += verify(mine[row+1][col+0]);
+								count += verify(mine[row+1][col+1]);
+								count += verify(mine[row+0][col+1]);
+							}
+						}
+						// BOTTOM ROW
+						else if (row == 9) {
+							// LEFT-MOST COL
+							if (col == 0) {
+								count += verify(mine[row-1][col+0]);
+								count += verify(mine[row-1][col+1]);
+								count += verify(mine[row+0][col+1]);
+							}
+							// RIGHT-MOST COL
+							else if (col == 9) {
+								count += verify(mine[row+0][col-1]);
+								count += verify(mine[row-1][col-1]);
+								count += verify(mine[row-1][col+0]);
+							}
+							// ALL OTHER COLUMNS (indices 1 thru 8)
+							else {
+								count += verify(mine[row+0][col-1]);
+								count += verify(mine[row-1][col-1]);
+								count += verify(mine[row-1][col+0]);
+								count += verify(mine[row-1][col+1]);
+								count += verify(mine[row+0][col+1]);
+							}
+						}
+						// ALL OTHER ROWS
+						else {
+							if (col == 0) {
+								count += verify(mine[row-1][col+0]);
+								count += verify(mine[row-1][col+1]);
+								count += verify(mine[row+0][col+1]);
+								count += verify(mine[row+1][col+1]);
+								count += verify(mine[row+1][col+0]);
+								//console.log("Row: " + row + " ... Col: " + col + " ... Count: " + count);
+							}
+							else if (col == 9) {
+								count += verify(mine[row-1][col+0]);
+								count += verify(mine[row-1][col-1]);
+								count += verify(mine[row+0][col-1]);
+								count += verify(mine[row+1][col-1]);
+								count += verify(mine[row+1][col+0]);
+							}
+							// IF WE'RE CHECKING INNER-SLOTS (Rows and Cols >=1 && <= 8)
+							else {
+								count += verify(mine[row-1][col-1]);
+								count += verify(mine[row+0][col-1]);
+								count += verify(mine[row+1][col-1]);
+								count += verify(mine[row+1][col+0]);
+								count += verify(mine[row+1][col+1]);
+								count += verify(mine[row+0][col+1]);
+								count += verify(mine[row-1][col+1]);
+								count += verify(mine[row-1][col+0]);
+							}
+						}
+						// Make note of slots whose count == 0
+						if (count == 0) {
+							zerocount["s" + row + col] = [];	// storage for zero prox slots plus adjacents
+							if (row - 1 >= 0 && col - 1 >= 0) {zerocount["s" + row + col].push("s" + (row-1).toString() + (col-1).toString());};
+							if (col - 1 >= 0) {zerocount["s" + row + col].push("s" + (row+0).toString() + (col-1).toString());};
+							if (row + 1 <= 9 && col - 1 >= 0) {zerocount["s" + row + col].push("s" + (row+1).toString() + (col-1).toString());};
+							if (row + 1 <= 9) {zerocount["s" + row + col].push("s" + (row+1).toString() + (col+0).toString());};
+							if (row + 1 <= 9 && col + 1 <= 9) {zerocount["s" + row + col].push("s" + (row+1).toString() + (col+1).toString());};
+							if (col + 1 <= 9) {zerocount["s" + row + col].push("s" + (row+0).toString() + (col+1).toString());};
+							if (row - 1 >= 0 && col + 1 <= 9) {zerocount["s" + row + col].push("s" + (row-1).toString() + (col+1).toString());};
+							if (row - 1 >= 0) {zerocount["s" + row + col].push("s" + (row-1).toString() + (col+0).toString());};
+							console.log("zerocount[s" + row + col + "] = " + zerocount["s" + row + col]);
+						}
+					}
+					// DO I NEED AN ELSE STATEMENT HERE TO HANDLE MINE-SLOTS?
+					proxtemp.push(count);	// Append the count to the temp array
+					
+
+					
+				}
+				proximity.push(proxtemp);	// Append the temp array
+			}
+			
+		}
+				
+		// CHECKS IF SLOTS HAVE MINES OR NOT
+		function verify(slot) {
+			if (slot == 1) {return 1;}
+			else {return 0;}
+		}
+		
+		
+		</script>
+	</body>
+</html>

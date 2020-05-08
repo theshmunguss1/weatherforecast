@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?application progid="SMath Studio Desktop" version="0.99.7030.1435"?>
+<worksheet xmlns="http://smath.info/schemas/worksheet/1.0">
+  <settings ppi="96">
+    <identity>
+      <id>7dc13b55-2d97-4d1e-b9d5-e8cecadccb10</id>
+      <revision>2</revision>
+    </identity>
+    <calculation>
+      <precision>4</precision>
+      <exponentialThreshold>5</exponentialThreshold>
+      <trailingZeros>false</trailingZeros>
+      <significantDigitsMode>false</significantDigitsMode>
+      <roundingMode>0</roundingMode>
+      <fractions>decimal</fractions>
+    </calculation>
+    <pageModel active="false" viewMode="2" printGrid="false" printAreas="true" simpleEqualsOnly="false" printBackgroundImages="true">
+      <paper id="1" orientation="Portrait" width="850" height="1100" />
+      <margins left="39" right="39" top="49" bottom="49" />
+      <header alignment="Center" color="#a9a9a9">&amp;[DATE] &amp;[TIME] - &amp;[FILENAME]</header>
+      <footer alignment="Center" color="#a9a9a9">&amp;[PAGENUM] / &amp;[COUNT]</footer>
+      <backgrounds />
+    </pageModel>
+    <dependencies>
+      <assembly name="SMath Studio Desktop" version="0.99.7030.1435" guid="a37cba83-b69c-4c71-9992-55ff666763bd" />
+      <assembly name="Math Region" version="0.99.7030.1435" guid="02f1ab51-215b-466e-a74d-5d8b1cf85e8d" />
+    </dependencies>
+  </settings>
+  <regions type="content">
+    <region id="0" left="0" top="0" width="62" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+      <math>
+        <input>
+          <e type="operand">w</e>
+          <e type="operand">900</e>
+          <e type="operator" args="2">:</e>
+        </input>
+      </math>
+    </region>
+    <region id="1" left="207" top="0" width="72" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+      <math>
+        <input>
+          <e type="operand">w</e>
+        </input>
+        <result action="numeric">
+          <e type="operand">900</e>
+        </result>
+      </math>
+    </region>
+    <region id="2" left="0" top="18" width="88" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+      <math>
+        <input>
+          <e type="operand">h</e>
+          <e type="operand">0.48</e>
+          <e type="operand">w</e>
+          <e type="operator" args="2">*</e>
+          <e type="operator" args="2">:</e>
+        </input>
+      </math>
+    </region>
+    <region id="3" left="207" top="18" width="72" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+      <math>
+        <input>
+          <e type="operand">h</e>
+        </input>
+        <result action="numeric">
+          <e type="operand">432</e>
+        </result>
+      </math>
+    </region>
+    <region id="4" left="0" top="36" width="76" height="41" color="#000000" bgColor="#ffffff" fontSize="10">
+      <math>
+        <input>
+          <e type="operand">midx</e>
+          <e type="operand">w</e>
+          <e type="operand">2</e>
+          <e type="operator" args="2">/</e>
+          <e type="operator" args="2">:</e>
+        </input>
+      </math>
+    </region>
+    <region id="5" left="207" top="36" width="96" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+      <math>
+        <input>
+          <e type="operand">midx</e>
+        </input>
+        <result action="numeric">
+          <e type="operand">450</e>
+        </result>
+      </math>
+    </region>
+    <region id="6" left="0" top="63" width="76" height="41" color="#000000" bgColor="#ffffff" fontSize="10">
+      <math>
+        <input>
+          <e type="operand">midy</e>
+          <e type="operand">h</e>
+          <e type="operand">2</e>
+          <e type="operator" args="2">/</e>
+          <e type="operator" args="2">:</e>
+        </input>
+      </math>
+    </region>
+    <region id="7" left="207" top="63" width="96" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+      <math>
+        <input>
+          <e type="operand">midy</e>
+        </input>
+        <result action="numeric">
+          <e type="operand">216</e>
+        </result>
+      </math>
+    </region>
+    <region id="8" left="0" top="99" width="144" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+      <math optimize="2">
+        <input>
+          <e type="operand">fieldw</e>
+          <e type="operand">0.9375</e>
+          <e type="operand">w</e>
+          <e type="operator" args="2">*</e>
+          <e type="operator" args="2">:</e>
+        </input>
+      </math>
+    </region>
+    <region id="9" left="207" top="99" width="136" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+      <math>
+        <input>
+          <e type="operand">fieldw</e>
+        </input>
+        <result action="numeric">
+          <e type="operand">843.75</e>
+        </result>
+      </math>
+    </region>
+    <region id="10" left="0" top="117" width="128" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+      <math>
+        <input>
+          <e type="operand">fieldh</e>
+          <e type="operand">0.87</e>
+          <e type="operand">h</e>
+          <e type="operator" args="2">*</e>
+          <e type="operator" args="2">:</e>
+        </input>
+      </math>
+    </region>
+    <region id="11" left="207" top="117" width="136" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+      <math>
+        <input>
+          <e type="operand">fieldh</e>
+        </input>
+        <result action="numeric">
+          <e type="operand">375.84</e>
+        </result>
+      </math>
+    </region>
+    <region id="12" left="0" top="135" width="192" height="43" color="#000000" bgColor="#ffffff" fontSize="10">
+      <math>
+        <input>
+          <e type="operand">GLwest</e>
+          <e type="operand">midx</e>
+          <e type="operand">fieldw</e>
+          <e type="operand">2</e>
+          <e type="operator" args="2">/</e>
+          <e type="bracket">(</e>
+          <e type="operator" args="2">-</e>
+          <e type="operator" args="2">:</e>
+        </input>
+      </math>
+    </region>
+    <region id="13" left="207" top="135" width="136" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+      <math>
+        <input>
+          <e type="operand">GLwest</e>
+        </input>
+        <result action="numeric">
+          <e type="operand">28.125</e>
+        </result>
+      </math>
+    </region>
+    <region id="14" left="0" top="180" width="194" height="43" color="#000000" bgColor="#ffffff" fontSize="10">
+      <math>
+        <input>
+          <e type="operand">GLeast</e>
+          <e type="operand">midx</e>
+          <e type="operand">fieldh</e>
+          <e type="operand">2</e>
+          <e type="operator" args="2">/</e>
+          <e type="bracket">(</e>
+          <e type="operator" args="2">+</e>
+          <e type="operator" args="2">:</e>
+        </input>
+      </math>
+    </region>
+    <region id="15" left="207" top="189" width="136" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+      <math>
+        <input>
+          <e type="operand">GLeast</e>
+        </input>
+        <result action="numeric">
+          <e type="operand">637.92</e>
+        </result>
+      </math>
+    </region>
+    <region id="16" left="0" top="216" width="124" height="41" color="#000000" bgColor="#ffffff" fontSize="10">
+      <math>
+        <input>
+          <e type="operand">ydinc</e>
+          <e type="operand">fieldw</e>
+          <e type="operand">100</e>
+          <e type="operator" args="2">/</e>
+          <e type="operator" args="2">:</e>
+        </input>
+      </math>
+    </region>
+    <region id="17" left="207" top="216" width="128" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+      <math>
+        <input>
+          <e type="operand">ydinc</e>
+        </input>
+        <result action="numeric">
+          <e type="operand">8.4375</e>
+        </result>
+      </math>
+    </region>
+  </regions>
+</worksheet>

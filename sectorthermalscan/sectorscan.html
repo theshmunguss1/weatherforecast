@@ -1,0 +1,972 @@
+<html>
+	<head>
+		<base href="../">
+		<title>ksgwxfan - Sector Thermal Scanner Game</title>
+		<style>
+			.HEADER {
+				width: 100%;
+				font-weight: bold;
+				font-size: 30px;
+				display: inline-block;
+				}
+			.HEADERPHOTO {
+				width: 3%;
+				border: 2px solid white;
+				box-shadow: 0px 0px 5px white;
+				border-radius: 35%;
+				display: inline-block;
+				}
+			.TIMER {
+				text-align:center;
+				font-size: 2em;
+				font-weight: bold;
+				width: 500px;
+				margin: 10 auto 0 auto;"
+			}
+			.BOARD {
+				display: table;
+				position: absolute;
+				top:0;
+				left:0;
+				width: 100%;
+				height: 100%;
+				background-color: black;
+				border-collapse: separate;
+				border-spacing: 1px;
+			}
+			.GAMESIGN {
+				position: absolute;
+				display:table;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				text-align: center;
+				background-color: rgba(255,255,255,0.8);
+			}
+			.ROW {
+				display: table-row;
+			}
+			.CELL {
+				display: table-cell;
+				background: linear-gradient(45deg, black, white);
+				
+			}
+			.TEXTCELL {
+				display: table-cell;
+				vertical-align: middle;
+				color: black;
+				user-select: none;
+			}
+			.COLORBAR {
+				 position: relative;
+				 margin: 10 auto 10 auto;
+				 width: 75%;
+				 min-width: 50%;
+				 max-width: 500px;
+				 height: 20px;
+				 background: linear-gradient(90deg, blue, cyan, green, yellow, red);
+			}
+			.CBTEXT {
+				display: inline-block;
+				position: absolute;
+				font-weight: bold;
+				user-select: none;
+			}
+			.STARTBUTTON {
+				width: 50%;
+				font-size: 2em;
+				height: 20%;
+				border: 3px solid green;
+			}
+			.OPTIONSBOX {
+				 display: table;
+				 margin:auto;
+				 width: 75%;
+				 min-width: 50%;
+				 max-width: 750px;
+			}
+			.OPTSCELL {
+				display: table-cell;
+				border: 1px solid white;
+				width:50px;
+				text-align: center;
+				vertical-align: middle;
+				user-select: none;
+				border-collapse: collapse;
+			}
+
+		</style>
+	</head>
+	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue">
+		<div class="HEADER">
+			<img class="HEADERPHOTO" src="profile.png"> <u>Sector Thermal Scanner Game</u>
+		</div>
+		<div class="TIMER">
+			Guesses Left: <span id="guessesleft" style="color:yellow;">15</span> ... Time Left: <span id="timer" style="color:yellow;">20</span>
+		</div>
+		<div id="container" style="position:relative;height:500px;width:500px;margin: 10 auto 10 auto;">
+			<div class="BOARD">
+                <div class="ROW">
+                    <div id="c00_00" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c00_01" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c00_02" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c00_03" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c00_04" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c00_05" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c00_06" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c00_07" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c00_08" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c00_09" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c00_10" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c00_11" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c00_12" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c00_13" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c00_14" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c00_15" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c00_16" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c00_17" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c00_18" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c00_19" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c00_20" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c00_21" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c00_22" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c00_23" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c00_24" class="CELL" onClick=reveal(this.id)> </div>
+                </div>
+                <div class="ROW">
+                    <div id="c01_00" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c01_01" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c01_02" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c01_03" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c01_04" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c01_05" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c01_06" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c01_07" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c01_08" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c01_09" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c01_10" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c01_11" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c01_12" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c01_13" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c01_14" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c01_15" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c01_16" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c01_17" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c01_18" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c01_19" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c01_20" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c01_21" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c01_22" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c01_23" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c01_24" class="CELL" onClick=reveal(this.id)> </div>
+                </div>
+                <div class="ROW">
+                    <div id="c02_00" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c02_01" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c02_02" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c02_03" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c02_04" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c02_05" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c02_06" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c02_07" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c02_08" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c02_09" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c02_10" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c02_11" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c02_12" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c02_13" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c02_14" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c02_15" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c02_16" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c02_17" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c02_18" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c02_19" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c02_20" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c02_21" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c02_22" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c02_23" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c02_24" class="CELL" onClick=reveal(this.id)> </div>
+                </div>
+                <div class="ROW">
+                    <div id="c03_00" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c03_01" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c03_02" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c03_03" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c03_04" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c03_05" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c03_06" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c03_07" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c03_08" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c03_09" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c03_10" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c03_11" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c03_12" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c03_13" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c03_14" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c03_15" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c03_16" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c03_17" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c03_18" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c03_19" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c03_20" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c03_21" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c03_22" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c03_23" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c03_24" class="CELL" onClick=reveal(this.id)> </div>
+                </div>
+                <div class="ROW">
+                    <div id="c04_00" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c04_01" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c04_02" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c04_03" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c04_04" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c04_05" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c04_06" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c04_07" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c04_08" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c04_09" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c04_10" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c04_11" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c04_12" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c04_13" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c04_14" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c04_15" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c04_16" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c04_17" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c04_18" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c04_19" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c04_20" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c04_21" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c04_22" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c04_23" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c04_24" class="CELL" onClick=reveal(this.id)> </div>
+                </div>
+                <div class="ROW">
+                    <div id="c05_00" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c05_01" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c05_02" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c05_03" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c05_04" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c05_05" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c05_06" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c05_07" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c05_08" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c05_09" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c05_10" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c05_11" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c05_12" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c05_13" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c05_14" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c05_15" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c05_16" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c05_17" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c05_18" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c05_19" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c05_20" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c05_21" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c05_22" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c05_23" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c05_24" class="CELL" onClick=reveal(this.id)> </div>
+                </div>
+                <div class="ROW">
+                    <div id="c06_00" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c06_01" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c06_02" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c06_03" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c06_04" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c06_05" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c06_06" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c06_07" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c06_08" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c06_09" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c06_10" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c06_11" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c06_12" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c06_13" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c06_14" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c06_15" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c06_16" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c06_17" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c06_18" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c06_19" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c06_20" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c06_21" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c06_22" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c06_23" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c06_24" class="CELL" onClick=reveal(this.id)> </div>
+                </div>
+                <div class="ROW">
+                    <div id="c07_00" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c07_01" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c07_02" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c07_03" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c07_04" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c07_05" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c07_06" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c07_07" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c07_08" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c07_09" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c07_10" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c07_11" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c07_12" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c07_13" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c07_14" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c07_15" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c07_16" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c07_17" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c07_18" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c07_19" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c07_20" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c07_21" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c07_22" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c07_23" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c07_24" class="CELL" onClick=reveal(this.id)> </div>
+                </div>
+                <div class="ROW">
+                    <div id="c08_00" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c08_01" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c08_02" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c08_03" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c08_04" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c08_05" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c08_06" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c08_07" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c08_08" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c08_09" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c08_10" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c08_11" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c08_12" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c08_13" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c08_14" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c08_15" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c08_16" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c08_17" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c08_18" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c08_19" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c08_20" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c08_21" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c08_22" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c08_23" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c08_24" class="CELL" onClick=reveal(this.id)> </div>
+                </div>
+                <div class="ROW">
+                    <div id="c09_00" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c09_01" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c09_02" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c09_03" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c09_04" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c09_05" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c09_06" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c09_07" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c09_08" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c09_09" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c09_10" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c09_11" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c09_12" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c09_13" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c09_14" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c09_15" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c09_16" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c09_17" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c09_18" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c09_19" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c09_20" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c09_21" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c09_22" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c09_23" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c09_24" class="CELL" onClick=reveal(this.id)> </div>
+                </div>
+                <div class="ROW">
+                    <div id="c10_00" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c10_01" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c10_02" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c10_03" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c10_04" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c10_05" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c10_06" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c10_07" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c10_08" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c10_09" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c10_10" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c10_11" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c10_12" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c10_13" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c10_14" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c10_15" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c10_16" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c10_17" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c10_18" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c10_19" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c10_20" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c10_21" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c10_22" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c10_23" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c10_24" class="CELL" onClick=reveal(this.id)> </div>
+                </div>
+                <div class="ROW">
+                    <div id="c11_00" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c11_01" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c11_02" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c11_03" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c11_04" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c11_05" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c11_06" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c11_07" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c11_08" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c11_09" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c11_10" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c11_11" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c11_12" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c11_13" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c11_14" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c11_15" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c11_16" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c11_17" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c11_18" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c11_19" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c11_20" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c11_21" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c11_22" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c11_23" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c11_24" class="CELL" onClick=reveal(this.id)> </div>
+                </div>
+                <div class="ROW">
+                    <div id="c12_00" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c12_01" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c12_02" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c12_03" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c12_04" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c12_05" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c12_06" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c12_07" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c12_08" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c12_09" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c12_10" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c12_11" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c12_12" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c12_13" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c12_14" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c12_15" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c12_16" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c12_17" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c12_18" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c12_19" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c12_20" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c12_21" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c12_22" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c12_23" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c12_24" class="CELL" onClick=reveal(this.id)> </div>
+                </div>
+                <div class="ROW">
+                    <div id="c13_00" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c13_01" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c13_02" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c13_03" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c13_04" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c13_05" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c13_06" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c13_07" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c13_08" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c13_09" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c13_10" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c13_11" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c13_12" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c13_13" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c13_14" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c13_15" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c13_16" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c13_17" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c13_18" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c13_19" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c13_20" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c13_21" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c13_22" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c13_23" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c13_24" class="CELL" onClick=reveal(this.id)> </div>
+                </div>
+                <div class="ROW">
+                    <div id="c14_00" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c14_01" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c14_02" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c14_03" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c14_04" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c14_05" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c14_06" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c14_07" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c14_08" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c14_09" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c14_10" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c14_11" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c14_12" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c14_13" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c14_14" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c14_15" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c14_16" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c14_17" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c14_18" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c14_19" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c14_20" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c14_21" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c14_22" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c14_23" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c14_24" class="CELL" onClick=reveal(this.id)> </div>
+                </div>
+                <div class="ROW">
+                    <div id="c15_00" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c15_01" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c15_02" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c15_03" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c15_04" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c15_05" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c15_06" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c15_07" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c15_08" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c15_09" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c15_10" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c15_11" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c15_12" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c15_13" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c15_14" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c15_15" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c15_16" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c15_17" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c15_18" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c15_19" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c15_20" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c15_21" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c15_22" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c15_23" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c15_24" class="CELL" onClick=reveal(this.id)> </div>
+                </div>
+                <div class="ROW">
+                    <div id="c16_00" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c16_01" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c16_02" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c16_03" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c16_04" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c16_05" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c16_06" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c16_07" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c16_08" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c16_09" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c16_10" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c16_11" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c16_12" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c16_13" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c16_14" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c16_15" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c16_16" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c16_17" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c16_18" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c16_19" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c16_20" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c16_21" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c16_22" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c16_23" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c16_24" class="CELL" onClick=reveal(this.id)> </div>
+                </div>
+                <div class="ROW">
+                    <div id="c17_00" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c17_01" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c17_02" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c17_03" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c17_04" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c17_05" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c17_06" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c17_07" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c17_08" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c17_09" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c17_10" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c17_11" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c17_12" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c17_13" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c17_14" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c17_15" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c17_16" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c17_17" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c17_18" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c17_19" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c17_20" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c17_21" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c17_22" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c17_23" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c17_24" class="CELL" onClick=reveal(this.id)> </div>
+                </div>
+                <div class="ROW">
+                    <div id="c18_00" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c18_01" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c18_02" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c18_03" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c18_04" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c18_05" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c18_06" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c18_07" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c18_08" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c18_09" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c18_10" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c18_11" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c18_12" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c18_13" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c18_14" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c18_15" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c18_16" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c18_17" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c18_18" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c18_19" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c18_20" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c18_21" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c18_22" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c18_23" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c18_24" class="CELL" onClick=reveal(this.id)> </div>
+                </div>
+                <div class="ROW">
+                    <div id="c19_00" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c19_01" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c19_02" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c19_03" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c19_04" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c19_05" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c19_06" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c19_07" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c19_08" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c19_09" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c19_10" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c19_11" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c19_12" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c19_13" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c19_14" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c19_15" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c19_16" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c19_17" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c19_18" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c19_19" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c19_20" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c19_21" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c19_22" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c19_23" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c19_24" class="CELL" onClick=reveal(this.id)> </div>
+                </div>
+                <div class="ROW">
+                    <div id="c20_00" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c20_01" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c20_02" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c20_03" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c20_04" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c20_05" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c20_06" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c20_07" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c20_08" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c20_09" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c20_10" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c20_11" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c20_12" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c20_13" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c20_14" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c20_15" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c20_16" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c20_17" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c20_18" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c20_19" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c20_20" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c20_21" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c20_22" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c20_23" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c20_24" class="CELL" onClick=reveal(this.id)> </div>
+                </div>
+                <div class="ROW">
+                    <div id="c21_00" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c21_01" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c21_02" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c21_03" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c21_04" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c21_05" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c21_06" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c21_07" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c21_08" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c21_09" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c21_10" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c21_11" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c21_12" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c21_13" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c21_14" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c21_15" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c21_16" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c21_17" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c21_18" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c21_19" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c21_20" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c21_21" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c21_22" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c21_23" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c21_24" class="CELL" onClick=reveal(this.id)> </div>
+                </div>
+                <div class="ROW">
+                    <div id="c22_00" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c22_01" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c22_02" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c22_03" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c22_04" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c22_05" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c22_06" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c22_07" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c22_08" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c22_09" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c22_10" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c22_11" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c22_12" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c22_13" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c22_14" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c22_15" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c22_16" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c22_17" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c22_18" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c22_19" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c22_20" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c22_21" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c22_22" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c22_23" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c22_24" class="CELL" onClick=reveal(this.id)> </div>
+                </div>
+                <div class="ROW">
+                    <div id="c23_00" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c23_01" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c23_02" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c23_03" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c23_04" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c23_05" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c23_06" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c23_07" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c23_08" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c23_09" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c23_10" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c23_11" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c23_12" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c23_13" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c23_14" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c23_15" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c23_16" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c23_17" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c23_18" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c23_19" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c23_20" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c23_21" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c23_22" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c23_23" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c23_24" class="CELL" onClick=reveal(this.id)> </div>
+                </div>
+                <div class="ROW">
+                    <div id="c24_00" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c24_01" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c24_02" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c24_03" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c24_04" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c24_05" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c24_06" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c24_07" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c24_08" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c24_09" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c24_10" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c24_11" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c24_12" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c24_13" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c24_14" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c24_15" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c24_16" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c24_17" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c24_18" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c24_19" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c24_20" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c24_21" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c24_22" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c24_23" class="CELL" onClick=reveal(this.id)> </div>
+                    <div id="c24_24" class="CELL" onClick=reveal(this.id)> </div>
+                </div>
+			</div>
+			<div id="gametext" class="GAMESIGN">
+				<div class="ROW">
+					<div id="starttext" class="TEXTCELL">
+						<span style="font-size:1.5em;">Welcome to</span><br />
+						<span style="font-size:3.5em;font-weight:bold;">SECTOR<br />THERMAL<br />SCANNER</span><br /><br />
+						<div style="display:inline-block;width:75%;">
+							You are equipped with a thermal scanner, but can only invesigate one sector at a time. You are tasked with finding the sector with the most-intense heat signature, but you have limited time and limited guesses to find it! Good luck!
+						</div><br /><br />
+						<button class="STARTBUTTON" onClick="gamestart()">START</button>
+					</div>
+					<div id="losetext" class="TEXTCELL" style="display:none;">
+						<span style="font-size:3.5em;">YOU LOSE!</span><br /><br />
+						<button class="STARTBUTTON" onClick="gamestart()">NEW<br />GAME</button>
+					</div>
+					<div id="wintext" class="TEXTCELL" style="display:none;">
+						<span style="font-size:3.5em;">YOU WIN!!!</span><br /><br />
+						<span id="winguesses"></span> Guesses in <span id="wintime"></span> Seconds<br /><br />
+						<button class="STARTBUTTON" onClick="gamestart()">NEW<br />GAME</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="COLORBAR">
+			<div class="CBTEXT" style="left:5;text-align:left;">COLD</div>
+			<div class="CBTEXT" style="right:5;text-align:right;">HOT</div>
+		</div>
+		<div id="options" class="OPTIONSBOX">
+			<div style="display:table-row;">
+				<div style="display:table-cell;text-align:center;user-select:none;width:30px;">Guesses:</div>
+				<div class="OPTSCELL" id="g40" onClick="chgguesses(this.id)">40</div>
+				<div class="OPTSCELL" id="g30" onClick="chgguesses(this.id)">30</div>
+				<div class="OPTSCELL" id="g20" onClick="chgguesses(this.id)">20</div>
+				<div class="OPTSCELL" id="g15" onClick="chgguesses(this.id)" style="background-color:rgb(70,70,70);">15</div>
+				<div class="OPTSCELL" id="g10" onClick="chgguesses(this.id)">10</div>
+				<div style="display:table-cell;text-align:center;user-select:none;width:30px;padding-left:10px;">Time:</div>
+				<div class="OPTSCELL" id="t60" onClick="chgtimelimit(this.id)">60s</div>
+				<div class="OPTSCELL" id="t40" onClick="chgtimelimit(this.id)">40s</div>
+				<div class="OPTSCELL" id="t30" onClick="chgtimelimit(this.id)">30s</div>
+				<div class="OPTSCELL" id="t20" onClick="chgtimelimit(this.id)" style="background-color:rgb(70,70,70);">20s</div>
+				<div class="OPTSCELL" id="t15" onClick="chgtimelimit(this.id)">15s</div>
+				<div class="OPTSCELL" id="t10" onClick="chgtimelimit(this.id)">10s</div>
+			</div>
+		</div>
+
+		<hr color="gray" style="width:85%;" />
+		<div id="desc" style="width:90%;display:block;margin:auto;text-align:justify;">
+			Sector Thermal Scanner Game. Adjustable game options underneath (for added/subtracted difficulty). This is a css-based game. The individual blocks are table-cell divs. I used a little python script to control how many squares I wanted, and then when placed, the CSS code automatically lays out everything. Feel free to inspect the code and use however you like. Below is the python script I used to generate the rows and cells of the table.
+			<div style="font-family:monospace;background-color:black;font-size:0.85em;color:lightgreen;width:90%;margin:auto;padding:5px;border:1px solid gray;">
+				rows = 25<br />
+				for x in range(rows):<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;print('                &lt;div class="ROW"&gt;')<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;for y in range(rows):<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print('                    &lt;div id="c{}_{}" class="CELL" onClick=reveal(this.id)&gt; &lt;/div&gt;'.format(str(x).zfill(2),str(y).zfill(2)))<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;print('                &lt;/div&gt;')
+			</div>
+		</div>
+		
+		<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
+		<script>
+			var game = {started: false, guesses: 0, maxguesses:15, guessed: [], time: 20, timeleft: null};
+			var gem = {y:0, x:0};
+			var clock;
+			
+			function gamestart() {
+				game.started = false; game.guesses = 0; game.guessed = []; game.timeleft = game.time;
+				document.getElementById("options").style.visibility = "hidden";
+				document.getElementById("gametext").style.display = "none";
+				document.getElementById("starttext").style.display = "none";
+				document.getElementById("losetext").style.display = "none";
+				document.getElementById("wintext").style.display = "none";
+				document.getElementById("timer").innerHTML = game.timeleft;
+				document.getElementById("guessesleft").innerHTML = game.maxguesses;
+				for (i=0;i<document.getElementsByClassName("CELL").length;i++) {
+					document.getElementById(document.getElementsByClassName("CELL")[i].id).style.background = "linear-gradient(45deg, black, white)";
+				}
+				hide();
+			}
+			
+			function chgtimelimit(tID) {
+				var newtime = parseInt(tID.substr(1,2));
+				if (game.time != newtime) {
+					document.getElementById("t" + game.time).style.backgroundColor = "transparent";
+					game.time = newtime;
+					document.getElementById("timer").innerHTML = game.time;
+					document.getElementById("t" + game.time).style.backgroundColor = "rgb(70,70,70)";
+				}
+			}
+			
+			function chgguesses(gID) {
+				var newguesses = parseInt(gID.substr(1,2));
+				if (game.maxguesses != newguesses) {
+					document.getElementById("g" + game.maxguesses).style.backgroundColor = "transparent";
+					game.maxguesses = newguesses;
+					document.getElementById("guessesleft").innerHTML = game.maxguesses;
+					document.getElementById("g" + game.maxguesses).style.backgroundColor = "rgb(70,70,70)";
+				}
+			}
+			
+			function hide() {
+				//gem = {y:0, x:0};
+				gem.y = Math.floor(Math.random()*25);
+				gem.x = Math.floor(Math.random()*25);
+			}
+			
+			function timeincr() {
+				game.timeleft--;
+				document.getElementById("timer").innerHTML = game.timeleft;
+				// YOU LOSE (out of time)
+				if (game.timeleft == 0) {
+					clearInterval(clock);
+					document.getElementById("options").style.visibility = "initial";
+					document.getElementById("gametext").style.display = "table";
+					document.getElementById("losetext").style.display = "table-cell";
+				}
+			}
+			
+			function reveal(ID) {
+				//console.log(ID);
+				// 0.0, 2.4, 4.8, 7.2, 9.6, 12.0, 14.4, 16.8, 19.2, 21.6, 24.0, 26.4, 28.8, 31.2, 33.6
+				var guess = {y:parseInt(ID.substr(1,2)), x:parseInt(ID.substr(4,2))};
+				//console.log(`y: ${guess.y}, x: ${guess.x}`);
+				var dist = Math.sqrt(Math.abs(guess.y-gem.y)**2 + Math.abs(guess.x-gem.x)**2);
+				if (game.started == false) {
+					game.started = true;
+					clock = setInterval(timeincr,1000);
+				}
+
+				//console.log(`dist = ${dist.toFixed(2)}`);
+				
+				if (game.guessed.includes(ID) == false) {
+					game.guessed.push(ID);
+					game.guesses += 1;
+					document.getElementById("guessesleft").innerHTML = game.maxguesses - game.guesses;
+					document.getElementById(ID).style.background = "none";
+					// YOU LOSE (no more guesses)
+					if (game.guesses == game.maxguesses && dist != 0) {
+						clearInterval(clock);
+						document.getElementById("options").style.visibility = "initial";
+						document.getElementById("gametext").style.display = "table";
+						document.getElementById("losetext").style.display = "table-cell";
+					}
+					// YOU WIN
+					if (dist >= 0 && dist < 1) {
+						document.getElementById(ID).style.background = "repeating-linear-gradient(45deg,purple 0%,red 12%, white 12.1%, white 20%)";
+						clearInterval(clock);
+						document.getElementById("options").style.visibility = "initial";
+						document.getElementById("gametext").style.display = "table";
+						document.getElementById("wintext").style.display = "table-cell";
+						document.getElementById("winguesses").innerHTML = game.guesses;
+						document.getElementById("wintime").innerHTML = game.time - game.timeleft;
+					}
+					else if (dist < 1.5) {document.getElementById(ID).style.backgroundColor = "rgb(255,1,0)";}
+					else if (dist < 3.1) {document.getElementById(ID).style.backgroundColor = "rgb(255,51,0)";}
+					else if (dist < 4.7) {document.getElementById(ID).style.backgroundColor = "rgb(255,101,0)";}
+					else if (dist < 6.3) {document.getElementById(ID).style.backgroundColor = "rgb(255,151,0)";}
+					else if (dist < 7.9) {document.getElementById(ID).style.backgroundColor = "rgb(255,201,0)";}
+					else if (dist < 9.5) {document.getElementById(ID).style.backgroundColor = "rgb(255,251,0)";}
+					else if (dist < 11.1) {document.getElementById(ID).style.backgroundColor = "rgb(209,255,0)";}
+					else if (dist < 12.7) {document.getElementById(ID).style.backgroundColor = "rgb(159,255,0)";}
+					else if (dist < 14.3) {document.getElementById(ID).style.backgroundColor = "rgb(109,255,0)";}
+					else if (dist < 15.9) {document.getElementById(ID).style.backgroundColor = "rgb(59,255,0)";}
+					else if (dist < 17.5) {document.getElementById(ID).style.backgroundColor = "rgb(9,255,0)";}
+					else if (dist < 19.1) {document.getElementById(ID).style.backgroundColor = "rgb(0,255,41)";}
+					else if (dist < 20.7) {document.getElementById(ID).style.backgroundColor = "rgb(0,255,91)";}
+					else if (dist < 22.3) {document.getElementById(ID).style.backgroundColor = "rgb(0,255,141)";}
+					else if (dist < 23.9) {document.getElementById(ID).style.backgroundColor = "rgb(0,255,191)";}
+					else if (dist < 25.5) {document.getElementById(ID).style.backgroundColor = "rgb(0,255,241)";}
+					else if (dist < 27.1) {document.getElementById(ID).style.backgroundColor = "rgb(0,219,255)";}
+					else if (dist < 28.7) {document.getElementById(ID).style.backgroundColor = "rgb(0,169,255)";}
+					else if (dist < 30.3) {document.getElementById(ID).style.backgroundColor = "rgb(0,119,255)";}
+					else if (dist < 31.9) {document.getElementById(ID).style.backgroundColor = "rgb(0,69,255)";}
+					else if (dist < 33.5) {document.getElementById(ID).style.backgroundColor = "rgb(0,19,255)";}
+					else {document.getElementById(ID).style.backgroundColor = "rgb(0,0,255)";}
+				}
+				//console.log(`Guesses: ${game.guesses} ... Guessed: ${game.guessed}`);
+			}
+//>>> for x in range(rows):
+//...     print('\t\t\t<div class="ROW">')
+//...     for y in range(rows):
+//...             print('\t\t\t\t<div id="c{}_{}" class="CELL" onClick=reveal(this.id)> </div>'.format(str(x).zfill(2),str(y).zfill(2)))
+//...     print('\t\t\t</div>')
+//...
+
+		</script>
+	</body>
+</html>

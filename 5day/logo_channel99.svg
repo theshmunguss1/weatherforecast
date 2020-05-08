@@ -10,15 +10,15 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="600"
-   height="520"
-   viewBox="0 0 158.75 137.58333"
+   height="600"
+   viewBox="0 0 158.75 158.75"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
    sodipodi:docname="logo_channel99.svg">
   <sodipodi:namedview
      inkscape:snap-intersection-paths="true"
-     inkscape:object-nodes="false"
+     inkscape:object-nodes="true"
      inkscape:snap-nodes="true"
      id="base"
      pagecolor="#ffffff"
@@ -27,10 +27,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.60956393"
-     inkscape:cx="-6.155328"
-     inkscape:cy="281.08386"
+     inkscape:cx="-8.0552476"
+     inkscape:cy="274.82728"
      inkscape:document-units="px"
-     inkscape:current-layer="layer11"
+     inkscape:current-layer="layer12"
      showgrid="false"
      inkscape:snap-global="false"
      units="px"
@@ -44,7 +44,9 @@
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:snap-object-midpoints="true"
-     inkscape:snap-others="false">
+     inkscape:snap-others="false"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-nodes="true">
     <sodipodi:guide
        inkscape:color="rgb(0,0,255)"
        inkscape:label=""
@@ -69,7 +71,7 @@
        y="-0.2"
        width="1.4"
        height="1.4"
-       style="color-interpolation-filters:sRGB;">
+       style="color-interpolation-filters:sRGB">
       <feGaussianBlur
          id="feGaussianBlur3633"
          result="blur1"
@@ -116,7 +118,6 @@
          id="feComposite3651"
          result="composite3"
          operator="in"
-         k2="1"
          in2="colormatrix3"
          in="flood" />
       <feComposite
@@ -132,7 +133,9 @@
          k3="1"
          k2="1"
          in2="composite3"
-         in="composite4" />
+         in="composite4"
+         k1="0"
+         k4="0" />
     </filter>
     <clipPath
        clipPathUnits="userSpaceOnUse"
@@ -168,14 +171,27 @@
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
        id="filter18710"
-       x="-0.047999999"
+       x="-0.048"
        width="1.096"
-       y="-0.048000001"
+       y="-0.048"
        height="1.096">
       <feGaussianBlur
          inkscape:collect="always"
          stdDeviation="3.1353162"
          id="feGaussianBlur18712" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter926"
+       x="-0.033294135"
+       width="1.0665883"
+       y="-0.18430893"
+       height="1.3686179">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="2.1044901"
+         id="feGaussianBlur928" />
     </filter>
   </defs>
   <metadata
@@ -186,118 +202,96 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
      inkscape:groupmode="layer"
      id="layer12"
-     inkscape:label="SHADOW">
+     inkscape:label="SHADOW"
+     transform="translate(0,21.166666)">
     <g
-       id="g18588"
-       style="fill:#000000;fill-opacity:1;filter:url(#filter18710)"
-       transform="matrix(1.0173876,0,0,1.0173876,-1.3564198,-1.1962693)">
-      <g
-         id="g18352-7-8"
-         style="display:inline;fill:#000000;fill-opacity:1">
-        <circle
-           style="display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.44185415;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
-           id="circle18338-9-5"
-           cx="79.375"
-           cy="68.791664"
-           r="59.467766" />
-        <path
-           id="path9343-5-4"
-           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1.05833328;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           d="m 0.99209608,68.79472 c 78.38290192,157.32143 156.76581392,-4e-6 156.76581392,-4e-6 0,0 -78.382912,-152.932362 -156.76581392,4e-6 z m 0,0 c 78.38290192,-110.682396 156.76581392,-4e-6 156.76581392,-4e-6 0,0 -78.382912,113.671074 -156.76581392,4e-6 z m 0,0 c 78.38290192,-69.29691151 156.76581392,-4e-6 156.76581392,-4e-6 0,0 -78.382912,70.095514 -156.76581392,4e-6 z m 0,0 c 78.38290192,-27.147299 156.76581392,-4e-6 156.76581392,-4e-6 0,0 -78.382912,24.627036 -156.76581392,4e-6 z M 79.374998,-9.5881851 c -146.47095,79.3009891 0,156.0238651 0,156.0238651 0,0 146.470952,-76.722875 0,-156.0238651 z m 0,0 c 104.622112,79.3009891 0,156.7658051 0,156.7658051 0,0 -104.622106,-77.464815 0,-156.7658051 z m 0,0 c -41.848843,79.3009891 0,156.7658051 0,156.7658051 0,0 41.848842,-78.3829 0,-156.7658051 z"
-           inkscape:connector-curvature="0"
-           clip-path="url(#clipPath18342-1-7)" />
-      </g>
-      <flowRoot
-         transform="matrix(0.40466965,0,0,0.40466965,7.2879669,-8.649041)"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:Webdings;-inkscape-font-specification:Webdings;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-         id="flowRoot18468-8"
-         xml:space="preserve"><flowRegion
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Webdings;-inkscape-font-specification:Webdings;fill:#000000;fill-opacity:1"
-           id="flowRegion18470-2"><rect
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Webdings;-inkscape-font-specification:Webdings;fill:#000000;fill-opacity:1"
-             y="74.517471"
-             x="80.752121"
-             height="218.03072"
-             width="195.15097"
-             id="rect18472-1" /></flowRegion><flowPara
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:192px;font-family:Webdings;-inkscape-font-specification:Webdings;fill:#000000;fill-opacity:1"
-           id="flowPara18474-7">C</flowPara></flowRoot>      <g
-         id="g18481-3"
-         style="fill:#000000;fill-opacity:1">
-        <rect
-           style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.96022481;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
-           id="rect18412-2"
-           width="136.80196"
-           height="27.426941"
-           x="74.97184"
-           y="112.69737"
-           transform="matrix(1,0,-0.5,0.8660254,0,0)" />
-        <flowRoot
-           xml:space="preserve"
-           id="flowRoot18403-6"
-           style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-           transform="matrix(0.59707334,0,0,0.59707334,7.2027156,-63.716765)"><flowRegion
-             id="flowRegion18405-9"
-             style="fill:#000000;fill-opacity:1"><rect
-               id="rect18407-5"
-               width="267.82785"
-               height="53.834743"
-               x="13.458687"
-               y="268.32257"
-               style="fill:#000000;fill-opacity:1" /></flowRegion><flowPara
-             id="flowPara18409-9"
-             style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI Heavy';fill:#000000;fill-opacity:1">Channel 99</flowPara></flowRoot>      </g>
-      <rect
-         transform="matrix(1,0,-0.55499404,0.83185432,0,0)"
-         y="109.57184"
-         x="108.15231"
-         height="14.898898"
-         width="59.674915"
-         id="rect18434-2"
-         style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1.03368115;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal" />
-      <flowRoot
-         transform="matrix(0.23475488,0,0,0.21925494,28.449775,35.944251)"
-         style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-         id="flowRoot18415-9"
-         xml:space="preserve"><flowRegion
-           style="fill:#000000;fill-opacity:1"
-           id="flowRegion18417-9"><rect
-             style="fill:#000000;fill-opacity:1"
-             y="257.5556"
-             x="79.40625"
-             height="109.01537"
-             width="460.28708"
-             id="rect18419-6" /></flowRegion><flowPara
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI Bold';fill:#000000;fill-opacity:1"
-           id="flowPara18421-7">FAST NEWS</flowPara></flowRoot>    </g>
+       style="display:inline;fill:#000000;fill-opacity:1;stroke-width:0.83297092;filter:url(#filter18710)"
+       id="g18352-7-8"
+       transform="matrix(1.2213964,0,0,1.2213964,-17.573339,-25.817282)">
+      <circle
+         r="59.467766"
+         cy="68.791664"
+         cx="79.375"
+         id="circle18338-9-5"
+         style="display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.36805165;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal" />
+      <path
+         clip-path="url(#clipPath18342-1-7)"
+         inkscape:connector-curvature="0"
+         d="m 0.99209608,68.79472 c 78.38290192,157.32143 156.76581392,-4e-6 156.76581392,-4e-6 0,0 -78.382912,-152.932362 -156.76581392,4e-6 z m 0,0 c 78.38290192,-110.682396 156.76581392,-4e-6 156.76581392,-4e-6 0,0 -78.382912,113.671074 -156.76581392,4e-6 z m 0,0 c 78.38290192,-69.29691151 156.76581392,-4e-6 156.76581392,-4e-6 0,0 -78.382912,70.095514 -156.76581392,4e-6 z m 0,0 c 78.38290192,-27.147299 156.76581392,-4e-6 156.76581392,-4e-6 0,0 -78.382912,24.627036 -156.76581392,4e-6 z M 79.374998,-9.5881851 c -146.47095,79.3009891 0,156.0238651 0,156.0238651 0,0 146.470952,-76.722875 0,-156.0238651 z m 0,0 c 104.622112,79.3009891 0,156.7658051 0,156.7658051 0,0 -104.622106,-77.464815 0,-156.7658051 z m 0,0 c -41.848843,79.3009891 0,156.7658051 0,156.7658051 0,0 41.848842,-78.3829 0,-156.7658051 z"
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.8815608;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path9343-5-4" />
+    </g>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot18468-8"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:Webdings;-inkscape-font-specification:Webdings;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;filter:url(#filter18710)"
+       transform="matrix(0.41170588,0,0,0.41170588,6.0582674,-9.9956964)"><flowRegion
+         id="flowRegion18470-2"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Webdings;-inkscape-font-specification:Webdings;fill:#000000;fill-opacity:1"><rect
+           id="rect18472-1"
+           width="195.15097"
+           height="218.03072"
+           x="80.752121"
+           y="74.517471"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Webdings;-inkscape-font-specification:Webdings;fill:#000000;fill-opacity:1" /></flowRegion><flowPara
+         id="flowPara18474-7"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:192px;font-family:Webdings;-inkscape-font-specification:Webdings;fill:#000000;fill-opacity:1">C</flowPara></flowRoot>    <rect
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1.03368115;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal;filter:url(#filter18710)"
+       id="rect18434-2"
+       width="59.674915"
+       height="14.898898"
+       x="108.15231"
+       y="109.57184"
+       transform="matrix(1.0173876,0,-0.56464405,0.84631827,-1.3564198,-1.1962693)" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot18415-9"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;filter:url(#filter18710)"
+       transform="matrix(0.2388367,0,0,0.22306726,27.588029,35.372966)"><flowRegion
+         id="flowRegion18417-9"
+         style="fill:#000000;fill-opacity:1"><rect
+           id="rect18419-6"
+           width="460.28708"
+           height="109.01537"
+           x="79.40625"
+           y="257.5556"
+           style="fill:#000000;fill-opacity:1" /></flowRegion><flowPara
+         id="flowPara18421-7"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI Bold';fill:#000000;fill-opacity:1">FAST NEWS</flowPara></flowRoot>    <path
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.58749998;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke markers fill;filter:url(#filter926)"
+       d="M 4.123508,121.32467 18.422342,95.402102 155.82519,94.908339 141.9732,122.3122 Z"
+       id="path920"
+       inkscape:connector-curvature="0" />
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer6"
      inkscape:label="WORLD"
-     style="display:inline">
+     style="display:inline"
+     transform="translate(0,21.166666)"
+     sodipodi:insensitive="true">
     <g
-       style="display:inline"
+       style="display:inline;stroke-width:0.83297092"
        id="g18352-7"
-       transform="matrix(0.9752275,0,0,0.9752275,2.0197635,1.7040114)">
+       transform="matrix(1.1707822,0,0,1.1707822,-13.520156,-22.33543)">
       <circle
          r="59.467766"
          cy="68.791664"
          cx="79.375"
          id="circle18338-9"
-         style="display:inline;opacity:1;fill:#3771c8;fill-opacity:1;stroke:none;stroke-width:0.44185415;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal" />
+         style="display:inline;opacity:1;fill:#3771c8;fill-opacity:1;stroke:none;stroke-width:0.36805165;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal" />
       <path
          clip-path="url(#clipPath18342-1)"
          inkscape:connector-curvature="0"
          d="m 0.99209608,68.79472 c 78.38290192,157.32143 156.76581392,-4e-6 156.76581392,-4e-6 0,0 -78.382912,-152.932362 -156.76581392,4e-6 z m 0,0 c 78.38290192,-110.682396 156.76581392,-4e-6 156.76581392,-4e-6 0,0 -78.382912,113.671074 -156.76581392,4e-6 z m 0,0 c 78.38290192,-69.29691151 156.76581392,-4e-6 156.76581392,-4e-6 0,0 -78.382912,70.095514 -156.76581392,4e-6 z m 0,0 c 78.38290192,-27.147299 156.76581392,-4e-6 156.76581392,-4e-6 0,0 -78.382912,24.627036 -156.76581392,4e-6 z M 79.374998,-9.5881851 c -146.47095,79.3009891 0,156.0238651 0,156.0238651 0,0 146.470952,-76.722875 0,-156.0238651 z m 0,0 c 104.622112,79.3009891 0,156.7658051 0,156.7658051 0,0 -104.622106,-77.464815 0,-156.7658051 z m 0,0 c -41.848843,79.3009891 0,156.7658051 0,156.7658051 0,0 41.848842,-78.3829 0,-156.7658051 z"
-         style="fill:none;stroke:#000000;stroke-width:1.05833328;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         style="fill:none;stroke:#000000;stroke-width:0.8815608;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="path9343-5" />
     </g>
   </g>
@@ -305,15 +299,17 @@
      inkscape:groupmode="layer"
      id="layer11"
      inkscape:label="tower"
-     style="display:inline">
+     style="display:inline"
+     transform="translate(0,21.166666)"
+     sodipodi:insensitive="true">
     <g
        aria-label="C"
-       transform="matrix(0.47170774,0,0,0.47170774,-3.1916456,-25.735111)"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:Webdings;-inkscape-font-specification:Webdings;letter-spacing:0px;word-spacing:0px;fill:#0b0b28;fill-opacity:1;stroke:none"
+       transform="matrix(0.56629559,0,0,0.56629559,-19.776569,-55.276705)"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:Webdings;-inkscape-font-specification:Webdings;letter-spacing:0px;word-spacing:0px;fill:#0b0b28;fill-opacity:1;stroke:none;stroke-width:0.83297092"
        id="flowRoot18468">
       <path
          d="M 272.75195,290.51758 H 80.751953 v -89.25 h 13.03125 v -28.125 h 27.093747 v 14.0625 h 4.21875 v -48.09375 h 16.6875 v 40.03125 h 3.84375 v -66.5625 h 38.4375 v 59.25 h 10.96875 v -22.125 h 11.8125 v -19.3125 h 20.90625 v 59.0625 h 7.6875 v -17.625 h 23.8125 v 29.4375 h 13.5 z m -52.59375,-146.625 v -11.25 h -4.5 v 11.25 z m -6.375,0 v -11.25 h -4.5 v 11.25 z m 35.53125,41.53125 v -11.25 h -4.5 v 11.25 z m -6.375,0 v -11.25 h -4.5 v 11.25 z M 213.7832,157.58008 v -11.25 h -4.5 v 11.25 z m 29.15625,41.53125 v -11.25 h -4.5 v 11.25 z M 171.7832,128.33008 v -11.25 h -4.5 v 11.25 z m -8.34375,0 v -11.25 h -4.5 v 11.25 z m -8.53125,0 v -11.25 h -4.5 v 11.25 z m 8.53125,15.375 v -11.25 h -4.5 v 11.25 z m 69.1875,75.5625 v -11.25 h -4.5 v 11.25 z m -77.71875,-75.5625 v -11.25 h -4.5 v 11.25 z m 71.25,75.5625 v -11.25 h -4.5 v 11.25 z m -71.25,-60.46875 v -11.25 h -4.5 v 11.25 z m 71.25,74.15625 v -11.25 h -4.5 v 11.25 z m -86.25,-80.25 v -11.15625 h -4.5 v 11.15625 z m -8.53125,0 v -11.15625 h -4.5 v 11.15625 z m 36.5625,41.15625 v -11.25 h -4.5 v 11.25 z m -8.53125,0 v -11.25 h -4.5 v 11.25 z m -28.03125,-25.6875 v -11.25 h -4.5 v 11.25 z m 54.75,66.9375 v -11.25 h -4.5 v 11.25 z m -26.71875,-25.875 v -11.25 h -4.5 v 11.25 z m 20.25,25.875 v -11.25 h -4.5 v 11.25 z m 0,13.59375 v -11.25 h -4.5 v 11.25 z m -70.03125,-60.9375 v -11.25 h -4.5 v 11.25 z m 15.65625,19.40625 v -11.25 h -4.5 v 11.25 z m -23.4375,-19.40625 v -11.25 h -4.499997 v 11.25 z m 17.0625,19.40625 v -11.25 h -4.5 v 11.25 z m 0,13.6875 v -11.25 h -4.5 v 11.25 z"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:192px;font-family:Webdings;-inkscape-font-specification:Webdings;fill:#0b0b28"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:192px;font-family:Webdings;-inkscape-font-specification:Webdings;fill:#0b0b28;stroke-width:0.83297092"
          id="path889"
          inkscape:connector-curvature="0" />
     </g>
@@ -322,7 +318,9 @@
      inkscape:groupmode="layer"
      id="layer7"
      inkscape:label="CHANNEL99"
-     style="display:inline">
+     style="display:inline"
+     transform="translate(0,21.166666)"
+     sodipodi:insensitive="true">
     <rect
        style="opacity:1;fill:#ffd42a;fill-opacity:1;stroke:#000000;stroke-width:0.93643767;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
        id="rect18412"
@@ -387,7 +385,9 @@
      inkscape:groupmode="layer"
      id="layer9"
      inkscape:label="FAST NEWS"
-     style="display:inline">
+     style="display:inline"
+     transform="translate(0,21.166666)"
+     sodipodi:insensitive="true">
     <rect
        style="opacity:1;fill:#ff0000;fill-opacity:1;stroke:#000000;stroke-width:1.00807428;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
        id="rect18434"

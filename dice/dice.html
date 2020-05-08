@@ -17,15 +17,11 @@
 				display: inline-block;
 				}
 			.DICE {
-				position: relative;
-				width: 300px;
-				height: 300px;
+				position:relative;
 				background-color: white;
 				color: black;
-				font-size: 400px;
+				display: table-cell;
 				border-radius: 10%;
-				display: block;
-				margin: auto;
 			}
 			.CIRCLE {
 				position: absolute;
@@ -42,15 +38,27 @@
 		<div class="HEADER">
 			<img class="HEADERPHOTO" src="profile.png"> <u>Dice Sim</u>
 		</div>
-		<div class="DICE" id="dice1">
-			<div class="CIRCLE" style="top:22.5%;left:77.5%;"></div>
-			<div class="CIRCLE" style="top:22.5%;left:22.5%;"></div>
-			<div class="CIRCLE" style="top:77.5%;left:22.5%;"></div>
-			<div class="CIRCLE" style="top:77.5%;left:77.5%;"></div>
-			<div class="CIRCLE" style="top:50%;left:22.5%;"></div>
-			<div class="CIRCLE" style="top:50%;left:77.5%;"></div>
+		<div id="diceboard" style="width:1000px;height:500px;margin:auto;display:table;border-collapse:separate;border-spacing:20px;">
+			<div style="display:table-row;">
+				<div class="DICE" id="dice1">
+					<div class="CIRCLE" style="top:22.5%;left:77.5%;"></div>
+					<div class="CIRCLE" style="top:22.5%;left:22.5%;"></div>
+					<div class="CIRCLE" style="top:77.5%;left:22.5%;"></div>
+					<div class="CIRCLE" style="top:77.5%;left:77.5%;"></div>
+					<div class="CIRCLE" style="top:50%;left:22.5%;"></div>
+					<div class="CIRCLE" style="top:50%;left:77.5%;"></div>
+				</div>
+				<div class="DICE" id="dice2">
+					<div class="CIRCLE" style="top:22.5%;left:77.5%;"></div>
+					<div class="CIRCLE" style="top:22.5%;left:22.5%;"></div>
+					<div class="CIRCLE" style="top:77.5%;left:22.5%;"></div>
+					<div class="CIRCLE" style="top:77.5%;left:77.5%;"></div>
+					<div class="CIRCLE" style="top:50%;left:22.5%;"></div>
+					<div class="CIRCLE" style="top:50%;left:77.5%;"></div>
+				</div>
+			</div>
 		</div>
-		<div style="display:block;width:80%;margin:auto;text-align:center;">YOU ROLLED A <span id="rollcount" style="color:yellow;font-size:36px;font-weight:bold;">_</span><br /><button id="clicker" onClick="timeroll()">ROLL</button><br />
+		<div style="display:block;width:80%;margin:auto;text-align:center;">YOU ROLLED A&nbsp;&nbsp;<span id="rollcount" style="color:yellow;font-size:36px;font-weight:bold;">_</span><br /><button id="clicker" onClick="timeroll()">ROLL</button><br />
 		*** Keyboard Controls: Press <span style="color:lightgreen;font-weight:bold;">'R'</span> to roll (in addition to clicking the button).</div>
 		<hr color="gray" style="width:85%;"><br />
 		<div id="desc" style="width:90%;display:block;margin:auto;text-align:justify;">
@@ -107,7 +115,7 @@
 				bounce_count = 0;
 				document.getElementById("rollcount").innerHTML = r;
 				keypressed = false;
-				document.getElementById("clicker").style.display = "initial";
+				document.getElementById("clicker").style.visibility = "initial";
 			}
 		}
 		
@@ -116,7 +124,7 @@
 			timer = setInterval(roll,interval);
 			// Inf loop prevention
 			keypressed = true;
-			document.getElementById("clicker").style.display = "none";
+			document.getElementById("clicker").style.visibility = "hidden";
 			document.getElementById("rollcount").innerHTML = "_";
 		}
 

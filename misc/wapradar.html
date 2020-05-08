@@ -5,8 +5,11 @@
 		<style>
 			.TOP {
 				position:relative;
+				margin: auto;
 				top:0;
 				left:0;
+				height: 550px;
+				width:600px;
 				}
 			.LOWER {
 				position:absolute;
@@ -26,7 +29,7 @@
 				<div id="key" CLASS="LOWER"><img id="legend" src="http://radar.weather.gov/ridge/Legend/N0R/FCX_N0R_Legend_0.gif"></div>
 			</div>
 		</div>
-		<div id="SITE"><br>Select the Radar Site:<br> 
+		<div id="SITE" style="width:auto;margin:auto;text-align:center;"><br>Radar Site:  
 			<select id="siteselect" onChange=chgsrc(document.getElementById("siteselect").value)>
 				<option value="AHG">AK - PAHG - Anchorage-Kenai</option>
 				<option value="ABC">AK - PABC - Bethel</option>
@@ -185,18 +188,18 @@
 				<option value="RLX">WV - KRLX - Charleston</option>
 				<option value="CYS">WY - KCYS - Cheyenne</option>
 				<option value="RIW">WY - KRIW - Riverton</option>
-			</select>
-		</div>
-		<div id="IMGSELECT"><br> Select Radar Img Type:<br>
+			</select> 
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Product: 
 			<button CLASS="BUTTON" onclick=chgprod("N0R",document.getElementById("siteselect").value)>N0R</button> * 
 			<button CLASS="BUTTON" onclick=chgprod("NCR",document.getElementById("siteselect").value)>NCR</button> *
 			<button CLASS="BUTTON" onclick=chgprod("N0V",document.getElementById("siteselect").value)>N0V</button> *		
 			<button CLASS="BUTTON" onclick=chgprod("N0S",document.getElementById("siteselect").value)>N0S</button> * 
 			<button CLASS="BUTTON" onclick=chgprod("N1P",document.getElementById("siteselect").value)>N1P</button> * 
 			<button CLASS="BUTTON" onclick=chgprod("NTP",document.getElementById("siteselect").value)>NTP</button> * 
-			<button CLASS="BUTTON" onclick=chgprod("NET",document.getElementById("siteselect").value)>NET</button> * 
-			<button CLASS="BUTTON" onclick=chgprod("NVL",document.getElementById("siteselect").value)>NVL</button>
-		</div><hr>
+			<!--<button CLASS="BUTTON" onclick=chgprod("NET",document.getElementById("siteselect").value)>NET</button> * -->
+			<!--<button CLASS="BUTTON" onclick=chgprod("NVL",document.getElementById("siteselect").value)>NVL</button>-->
+		</div>
+		<hr />
 		<div id="explainer" style="width:85%;margin:auto;text-align:justify;">
 			I created this trying to make a simple radar site that I could quickly access on my phone, without the use of HAniS. Turns out my phone can't 
 			display my site at all, but i'll keep it here none the less. Feel free to right-click and "inspect the element" or view the page source if 

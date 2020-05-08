@@ -1,0 +1,203 @@
+<html>
+	<head>
+		<base href="../">
+		<title>ksgwxfan - Chess</title>
+		<style>
+			.HEADER {
+				width: 100%;
+				font-weight: bold;
+				font-size: 30px;
+				display: inline-block;
+				}
+			.HEADERPHOTO {
+				width: 3%;
+				border: 2px solid white;
+				box-shadow: 0px 0px 5px white;
+				border-radius: 35%;
+				display: inline-block;
+				}
+			.BOARD {
+				position: relative;
+				display: block;
+				margin: auto;
+				height: 500px;
+				width: 500px;
+				background-color: lightblue;
+			}
+			.CELLS {
+				position: absolute;
+				color: black;
+				font-size: 280%;
+				text-align: center;
+				height: 12%;
+				width: 12%;
+				user-select: none;
+				-ms-user-select: none;
+				-moz-user-select: none;
+				-webkit-user-select: none;
+			}
+			.dark {
+				background-color: gray;
+			}
+			.light {
+				background-color: white;
+			}
+
+		</style>
+	</head>
+	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue" onLoad="loading()">
+		<div class="HEADER">
+			<img class="HEADERPHOTO" src="profile.png"> <u>Chess</u>
+		</div>
+		<div class="BOARD">
+			<div id="contrast" style="position:absolute;width:485px;height:485px;top:50%;left:50%;transform:translate(-50%,-50%);background-color:black;"></div>
+			<div id="a8" class="CELLS light" style="top:2%;left:2%;" onClick="move('a8')"></div>
+			<div id="b8" class="CELLS dark" style="top:2%;left:14%;" onClick="move('b8')"></div>
+			<div id="c8" class="CELLS light" style="top:2%;left:26%;" onClick="move('c8')"></div>
+			<div id="d8" class="CELLS dark" style="top:2%;left:38%;" onClick="move('d8')"></div>
+			<div id="e8" class="CELLS light" style="top:2%;left:50%;" onClick="move('e8')"></div>
+			<div id="f8" class="CELLS dark" style="top:2%;left:62%;" onClick="move('f8')"></div>
+			<div id="g8" class="CELLS light" style="top:2%;left:74%;" onClick="move('g8')"></div>
+			<div id="h8" class="CELLS dark" style="top:2%;left:86%;" onClick="move('h8')"></div>
+			<div id="a7" class="CELLS dark" style="top:14%;left:2%;" onClick="move('a7')"></div>
+			<div id="b7" class="CELLS light" style="top:14%;left:14%;" onClick="move('b7')"></div>
+			<div id="c7" class="CELLS dark" style="top:14%;left:26%;" onClick="move('c7')"></div>
+			<div id="d7" class="CELLS light" style="top:14%;left:38%;" onClick="move('d7')"></div>
+			<div id="e7" class="CELLS dark" style="top:14%;left:50%;" onClick="move('e7')"></div>
+			<div id="f7" class="CELLS light" style="top:14%;left:62%;" onClick="move('f7')"></div>
+			<div id="g7" class="CELLS dark" style="top:14%;left:74%;" onClick="move('g7')"></div>
+			<div id="h7" class="CELLS light" style="top:14%;left:86%;" onClick="move('h7')"></div>
+			<div id="a6" class="CELLS light" style="top:26%;left:2%;" onClick="move('a6')"></div>
+			<div id="b6" class="CELLS dark" style="top:26%;left:14%;" onClick="move('b6')"></div>
+			<div id="c6" class="CELLS light" style="top:26%;left:26%;" onClick="move('c6')"></div>
+			<div id="d6" class="CELLS dark" style="top:26%;left:38%;" onClick="move('d6')"></div>
+			<div id="e6" class="CELLS light" style="top:26%;left:50%;" onClick="move('e6')"></div>
+			<div id="f6" class="CELLS dark" style="top:26%;left:62%;" onClick="move('f6')"></div>
+			<div id="g6" class="CELLS light" style="top:26%;left:74%;" onClick="move('g6')"></div>
+			<div id="h6" class="CELLS dark" style="top:26%;left:86%;" onClick="move('h6')"></div>
+			<div id="a5" class="CELLS dark" style="top:38%;left:2%;" onClick="move('a5')"></div>
+			<div id="b5" class="CELLS light" style="top:38%;left:14%;" onClick="move('b5')"></div>
+			<div id="c5" class="CELLS dark" style="top:38%;left:26%;" onClick="move('c5')"></div>
+			<div id="d5" class="CELLS light" style="top:38%;left:38%;" onClick="move('d5')"></div>
+			<div id="e5" class="CELLS dark" style="top:38%;left:50%;" onClick="move('e5')"></div>
+			<div id="f5" class="CELLS light" style="top:38%;left:62%;" onClick="move('f5')"></div>
+			<div id="g5" class="CELLS dark" style="top:38%;left:74%;" onClick="move('g5')"></div>
+			<div id="h5" class="CELLS light" style="top:38%;left:86%;" onClick="move('h5')"></div>
+			<div id="a4" class="CELLS light" style="top:50%;left:2%;" onClick="move('a4')"></div>
+			<div id="b4" class="CELLS dark" style="top:50%;left:14%;" onClick="move('b4')"></div>
+			<div id="c4" class="CELLS light" style="top:50%;left:26%;" onClick="move('c4')"></div>
+			<div id="d4" class="CELLS dark" style="top:50%;left:38%;" onClick="move('d4')"></div>
+			<div id="e4" class="CELLS light" style="top:50%;left:50%;" onClick="move('e4')"></div>
+			<div id="f4" class="CELLS dark" style="top:50%;left:62%;" onClick="move('f4')"></div>
+			<div id="g4" class="CELLS light" style="top:50%;left:74%;" onClick="move('g4')"></div>
+			<div id="h4" class="CELLS dark" style="top:50%;left:86%;" onClick="move('h4')"></div>
+			<div id="a3" class="CELLS dark" style="top:62%;left:2%;" onClick="move('a3')"></div>
+			<div id="b3" class="CELLS light" style="top:62%;left:14%;" onClick="move('b3')"></div>
+			<div id="c3" class="CELLS dark" style="top:62%;left:26%;" onClick="move('c3')"></div>
+			<div id="d3" class="CELLS light" style="top:62%;left:38%;" onClick="move('d3')"></div>
+			<div id="e3" class="CELLS dark" style="top:62%;left:50%;" onClick="move('e3')"></div>
+			<div id="f3" class="CELLS light" style="top:62%;left:62%;" onClick="move('f3')"></div>
+			<div id="g3" class="CELLS dark" style="top:62%;left:74%;" onClick="move('g3')"></div>
+			<div id="h3" class="CELLS light" style="top:62%;left:86%;" onClick="move('h3')"></div>
+			<div id="a2" class="CELLS light" style="top:74%;left:2%;" onClick="move('a2')"></div>
+			<div id="b2" class="CELLS dark" style="top:74%;left:14%;" onClick="move('b2')"></div>
+			<div id="c2" class="CELLS light" style="top:74%;left:26%;" onClick="move('c2')"></div>
+			<div id="d2" class="CELLS dark" style="top:74%;left:38%;" onClick="move('d2')"></div>
+			<div id="e2" class="CELLS light" style="top:74%;left:50%;" onClick="move('e2')"></div>
+			<div id="f2" class="CELLS dark" style="top:74%;left:62%;" onClick="move('f2')"></div>
+			<div id="g2" class="CELLS light" style="top:74%;left:74%;" onClick="move('g2')"></div>
+			<div id="h2" class="CELLS dark" style="top:74%;left:86%;" onClick="move('h2')"></div>
+			<div id="a1" class="CELLS dark" style="top:86%;left:2%;" onClick="move('a1')"></div>
+			<div id="b1" class="CELLS light" style="top:86%;left:14%;" onClick="move('b1')"></div>
+			<div id="c1" class="CELLS dark" style="top:86%;left:26%;" onClick="move('c1')"></div>
+			<div id="d1" class="CELLS light" style="top:86%;left:38%;" onClick="move('d1')"></div>
+			<div id="e1" class="CELLS dark" style="top:86%;left:50%;" onClick="move('e1')"></div>
+			<div id="f1" class="CELLS light" style="top:86%;left:62%;" onClick="move('f1')"></div>
+			<div id="g1" class="CELLS dark" style="top:86%;left:74%;" onClick="move('g1')"></div>
+			<div id="h1" class="CELLS light" style="top:86%;left:86%;" onClick="move('h1')"></div>
+		</div>
+		<button id="startover" onClick="reset()">new</button>
+		
+
+		<hr color="gray" style="width:85%;"><br />
+		<div id="desc" style="width:90%;display:block;margin:auto;text-align:justify;">
+			Chess
+		</div>
+		
+		<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
+		<script>
+		
+		var light_pawn = "&#9817;";
+		var light_rook = "&#9814;";
+		var light_knight = "&#9816;";
+		var light_bishop = "&#9815;";
+		var light_queen = "&#9813;";
+		var light_king = "&#9812;";
+		var dark_pawn = "&#9823;";
+		var dark_rook = "&#9820;";
+		var dark_knight = "&#9822;";
+		var dark_bishop = "&#9821;";
+		var dark_queen = "&#9819;";
+		var dark_king = "&#9818;";
+		var rows = ["8","7","6","5","4","3","2","1"];	// Used in clearing/resetting board
+		var cols = ["a","b","c","d","e","f","g","h"];		// Used in clearing/resetting board
+		var space = {selected: "", piece: ""};
+		var piece_selected = false;
+		var oldbgcolor;
+		
+		function loading() {
+			// RESET LIGHT PIECES
+			document.getElementById("a1").innerHTML = document.getElementById("h1").innerHTML = light_rook;
+			document.getElementById("b1").innerHTML = document.getElementById("g1").innerHTML = light_knight;
+			document.getElementById("c1").innerHTML = document.getElementById("f1").innerHTML = light_bishop;
+			document.getElementById("d1").innerHTML = light_queen;
+			document.getElementById("e1").innerHTML = light_king;
+			for (i=0;i<8;i++) {document.getElementById(cols[i] + "2").innerHTML = light_pawn;}
+			// RESET DARK PIECES
+			document.getElementById("a8").innerHTML = document.getElementById("h8").innerHTML = dark_rook;
+			document.getElementById("b8").innerHTML = document.getElementById("g8").innerHTML = dark_knight;
+			document.getElementById("c8").innerHTML = document.getElementById("f8").innerHTML = dark_bishop;
+			document.getElementById("d8").innerHTML = dark_queen;
+			document.getElementById("e8").innerHTML = dark_king;
+			for (i=0;i<8;i++) {document.getElementById(cols[i] + "7").innerHTML = dark_pawn;}
+		}
+		
+		function reset() {
+			for (i=0;i<8;i++) {
+				for (j=0;j<8;j++) {
+					document.getElementById(cols[i] + rows[j]).innerHTML = "";
+				}
+			}
+			space.selected = "";
+			space.piece = "";
+			loading();
+		}
+		
+		function move(coord) {
+			if (document.getElementById(coord).innerHTML != "" && piece_selected == false) {		// SELECTING A PIECE TO MOVE
+				space.selected = coord;
+				space.piece = document.getElementById(coord).innerHTML;
+				oldbgcolor = document.getElementById(coord).style.backgroundColor;
+				document.getElementById(coord).style.backgroundColor = "rgba(255,180,180,0.5)";
+				piece_selected = true;
+			}
+			else if (document.getElementById(coord).innerHTML != "" && piece_selected == true) {	// CHOOSE DIFF PIECE IF ONE IS ALREADY SELECTED
+				document.getElementById(space.selected).style.backgroundColor = oldbgcolor;
+				space.selected = coord;
+				space.piece = document.getElementById(coord).innerHTML;
+				oldbgcolor = document.getElementById(coord).style.backgroundColor;
+				document.getElementById(coord).style.backgroundColor = "rgba(255,180,180,0.5)";
+			}
+			else if (document.getElementById(coord).innerHTML == "" && space.selected != "") {
+				document.getElementById(space.selected).style.backgroundColor = oldbgcolor;
+				document.getElementById(space.selected).innerHTML = "";
+				document.getElementById(coord).innerHTML = space.piece;
+				space.selected = "";
+				space.piece = "";
+				piece_selected = false;
+			}
+		}
+		
+		</script>
+	</body>
+</html>

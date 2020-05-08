@@ -1,0 +1,78 @@
+<html>
+	<head>
+		<style>
+			.event_entry {
+				border: 1px dotted gray;
+				width: 75%;
+				margin: 10px 0px 0px 0px;
+				float: left;
+			}
+			.new_desc {
+				color: teal;
+				font-size: 30;
+				font-weight: bold;
+				user-select: none;
+			}
+		</style>
+	</head>
+	<body style="background-color:black;color:white;">
+		<div id="Intro" style="text-align:center;">
+			<h1><u>HT(eMAIL) Maker</u></h1>
+		</div>
+		<div id="main" style="width:100%;margin-left:50px;">
+			Title: <input id="iTitle" value="Mount Airy Ward Announcements" size="50"></input> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Date: <input id="iDate" value="Wednesday, May 29, 2019" size="50"></input>
+			<div id="e01" class="event_entry">
+				<center>Event 1:</center>
+				<ul>
+					<li>Date: <input id="e01_date" size="50" placeholder=" *** Ex: Saturday, Faketember 34"></input>
+						Headline: <input id="e01_head" size="50" placeholder=" *** Ex: Service Project"></input></li>
+					<li>Desc 1: <input id="e01_desc_01" size="65" placeholder=" *** Ex: 9AM-Noon :: Leaves/Debris Cleanup at Brother & Sister Williams' house"></input>
+						<button id="add_desc" title="Add another description line">+</button></li>
+				</ul>
+			</div>
+			<button id="add_event_e01" style="float:left;margin-top:10px;height:80px;width:80px;font-size:40px;font-weight:bold;" title="Add Event" onClick="event_add('e01')">+</button>
+		</div>
+	</body>
+	<script>
+		var event_list = ["e01"];
+		
+		function event_add(curr_eid) {
+			if (eval(curr_eid.substr(1,2)) < 10) {
+				var new_eid = "e0" + (eval(curr_eid.substr(1,2)) + 1).toString();
+				console.log("< 10");
+			}
+			else {
+				var new_eid = "e" + (eval(curr_eid.substr(1,2)) + 1).toString();
+				console.log(">= 10");
+			}
+			var idnum = eval(new_eid.substr(1,2));
+			event_list.push(new_eid);
+			document.getElementById("add_event_" + curr_eid).style.display = "none";
+			document.getElementById("main").innerHTML = document.getElementById("main").innerHTML + 
+				'			<div id="' + new_eid + '" class="event_entry">' +
+				'<center>Event ' + idnum + ':</center>' +
+				'<ul>' + '<li>Date: <input id="' + new_eid + '_date" size="50" placeholder=" *** Ex: Saturday, Faketember 34"></input>' +
+						'Headline: <input id="' + new_eid + '_head" size="50" placeholder=" *** Ex: Service Project"></input></li>' +
+					'<li>Desc 1: <input id="' + new_eid + '_desc_01" size="65" placeholder=" *** Ex: 9AM-Noon :: Leaves/Debris Cleanup at Brother & Sister Williams house"></input>' +
+						'<button id="add_desc" title="Add another description line">+</button></li></ul></div>' +
+				'<button id="add_event_' + new_eid + '" style="float:left;margin-top:10px;height:80px;width:80px;font-size:40px;font-weight:bold;" title="Add Event" onClick="event_add(\'' + new_eid + '\')">+</button></div>';
+		}
+	</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

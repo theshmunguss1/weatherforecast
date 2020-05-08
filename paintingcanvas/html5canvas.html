@@ -1,0 +1,165 @@
+<html>
+	<head>
+		<base href="../">
+		<title>ksgwxfan - Canvas</title>
+		<style>
+			.HEADER {
+				width: 100%;
+				font-weight: bold;
+				font-size: 30px;
+				display: inline-block;
+			}
+			.HEADERPHOTO {
+				width: 3%;
+				border: 2px solid white;
+				box-shadow: 0px 0px 5px white;
+				border-radius: 35%;
+				display: inline-block;
+			}
+			.controls {
+				display: table;
+				background-color: rgba(255,255,255,.5);
+				width: 50px;
+			}
+			.row {
+				display: table-row;
+				vertical-align: middle;
+				text-align: center;
+			}
+			.col {
+				display: table-cell;
+				text-align: center;
+				color: black;
+				vertical-align: middle;
+				border-bottom: 1px solid black;
+				user-select: none;
+			}
+			.pal {
+				width:50px;
+				height:20px;
+			}
+		</style>
+	</head>
+	<body style="background-color:#141414;color:white;font-family:arial" link="lightBlue" vlink="lightBlue" onLoad="toolselect('bpaint')" onKeyDown="keys()">
+		<div class="controls" style="width:740px;margin:auto;">
+			<div id="tools-panel" class="col" style="width:50px;">
+				<div class="row"><div class="col" id="bpaint" onClick="toolselect('bpaint')"><img src="paintingcanvas/brush.svg" width="50" height="50"><br />Paint</div></div>
+				<div class="row"><div class="col" id="bliner" onClick="toolselect('bliner')"><img src="paintingcanvas/line.svg" width="50" height="50"><br />Line</div></div>
+				<div class="row"><div class="col" id="berase" onClick="toolselect('berase')"><img src="paintingcanvas/erase.svg" width="50" height="50"><br />Erase</div></div>
+			</div>
+			<div id="canv-panel" class="col" style="width:640px;height:480px;">
+				<canvas id="canvas" style="display:block;margin:auto;border:1px solid gray;" height="480" width="640"></canvas>
+			</div>
+			<div id="draw-color-panel" class="col">
+				<div class="row"><div class="col pal" style="background-color: rgb(0,0,0);" onClick="chg_clr('rgb(0,0,0)')"><!--black --></div></div>
+				<div class="row"><div class="col pal" style="background-color: rgb(255,255,255);" onClick="chg_clr('rgb(255,255,255)')"><!--black --></div></div>
+				<div class="row"><div class="col pal" style="background-color: rgb(128,0,0);" onClick="chg_clr('rgb(128,0,0)')"><!--black --></div></div>
+				<div class="row"><div class="col pal" style="background-color: rgb(255,0,0);" onClick="chg_clr('rgb(255,0,0)')"><!--black --></div></div>
+				<div class="row"><div class="col pal" style="background-color: rgb(255,128,128);" onClick="chg_clr('rgb(255,128,128)')"><!--black --></div></div>
+				<div class="row"><div class="col pal" style="background-color: rgb(0,128,0);" onClick="chg_clr('rgb(0,128,0)')"><!--black --></div></div>
+				<div class="row"><div class="col pal" style="background-color: rgb(0,255,0);" onClick="chg_clr('rgb(0,255,0)')"><!--black --></div></div>
+				<div class="row"><div class="col pal" style="background-color: rgb(128,255,128);" onClick="chg_clr('rgb(128,255,128)')"><!--black --></div></div>
+				<div class="row"><div class="col pal" style="background-color: rgb(0,0,128);" onClick="chg_clr('rgb(0,0,128)')"><!--black --></div></div>
+				<div class="row"><div class="col pal" style="background-color: rgb(0,0,255);" onClick="chg_clr('rgb(0,0,255)')"><!--black --></div></div>
+				<div class="row"><div class="col pal" style="background-color: rgb(128,128,255);" onClick="chg_clr('rgb(128,128,255)')"><!--black --></div></div>
+				<div class="row"><div class="col pal" style="background-color: rgb(255,140,0);" onClick="chg_clr('rgb(255,140,0)')"><!--black --></div></div>
+				<div class="row"><div class="col pal" style="background-color: rgb(255,255,0);" onClick="chg_clr('rgb(255,255,0)')"><!--black --></div></div>
+				<div class="row"><div class="col pal" style="background-color: rgb(0,255,255);" onClick="chg_clr('rgb(0,255,255)')"><!--black --></div></div>
+			</div>
+		</div>
+
+		<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
+	</body>
+	<script>
+
+		var canvas = document.getElementById("canvas");
+		var ctx = canvas.getContext("2d");
+		var mode = "draw";
+		var dn = false;
+		var prevtool = "bNULL";
+		var drawprop = {dcolor: "rgb(0,0,0)", dradius: 5}
+		
+		canvas.addEventListener("mousedown",function(){determine(true);});
+		canvas.addEventListener("mouseup",function(){determine(false);});
+
+		ctx.fillStyle = 'white';
+		ctx.fillRect(0,0,canvas.offsetWidth,canvas.offsetHeight);
+		
+		//ctx.beginPath();
+		//ctx.arc(250,235,10,0, 2*Math.PI);
+		//ctx.stroke();
+		//ctx.fillStyle = 'rgb(255,0,0)';
+		//ctx.fill();
+
+		function determine(b) {
+			//console.log(b);
+			if (b == true) {place(); canvas.addEventListener("mousemove",place);}
+			else {canvas.removeEventListener("mousemove",place);}
+		}
+
+		function place() {
+			x = event.pageX - canvas.offsetLeft;
+			y = event.pageY - canvas.offsetTop;
+			//console.log("x,y (same as client): " + event.x + "," + event.y);
+			//console.log("pageX/Y: " + event.pageX + "," + event.pageY);
+			//console.log("canvas.offset: " + canvas.offsetLeft + "," + canvas.offsetTop);
+			ctx.beginPath();
+			ctx.arc(x,y,drawprop.dradius,0, 2*Math.PI);
+			ctx.fillStyle = drawprop.dcolor;
+			ctx.fill();		// .fill automatically calls the closePath method
+		}
+		
+		function keys() {
+			//console.log(event.keyCode);
+			if (event.keyCode == 65) {	// 'a' key
+				mode = "erase";
+			}
+		}
+
+		function toolselect(tool) {
+			if (prevtool != tool) {
+				document.getElementById(tool).style.backgroundColor = "yellow";
+				if (prevtool != "bNULL") {document.getElementById(prevtool).style.backgroundColor = "initial";}
+				prevtool = tool;
+			}
+
+		}
+		
+		function chg_clr(COLOR) {
+			//console.log(COLOR);
+			drawprop.dcolor = COLOR;
+		}
+
+	</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
