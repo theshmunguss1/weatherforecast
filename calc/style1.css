@@ -141,14 +141,3 @@ background-color: yellow;
 box-shadow: 0px 0px 30px yellow;
 color:black;	
 }
-
-.calcSIG {
-position: absolute;
-color: #737373;
-font-size: 12;
-font-style: italic;
-text-align: center;
-height: 12%;
-width: 22%;
-display: inline-block;
-}
