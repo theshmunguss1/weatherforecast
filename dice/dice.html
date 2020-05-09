@@ -16,6 +16,14 @@
 				border-radius: 35%;
 				display: inline-block;
 				}
+			.BOARD {
+				 display: table;
+				 width: 70vw;
+				 height: calc(70vw / 2);
+				 margin: 0 auto;
+				 border-collapse: separate;
+				 border-spacing: 20px;
+			}
 			.DICE {
 				position:relative;
 				background-color: white;
@@ -31,6 +39,31 @@
 				height: 20%;
 				border-radius: 50%;
 			}
+			#rollcountcontainer {
+				font-size: 1.2em;
+				display: block;
+				width: 80%;
+				margin: 0 auto;
+				text-align:center;
+			}
+			.ROLLCOUNT {
+				color:yellow;
+				font-size:3em;
+				font-weight:bold;
+			}
+			#controls {
+				width: 80%;
+				margin: 0 auto;
+				text-align: center;
+				font-size: 1.2em;
+			}
+			#desc {
+				width:90%;
+				font-size: 1em;
+				display: block;
+				margin: 0 auto;
+				text-align: justify;
+			}
 
 		</style>
 	</head>
@@ -38,7 +71,7 @@
 		<div class="HEADER">
 			<img class="HEADERPHOTO" src="profile.png"> <u>Dice Sim</u>
 		</div>
-		<div id="diceboard" style="width:1000px;height:500px;margin:auto;display:table;border-collapse:separate;border-spacing:20px;">
+		<div id="diceboard" class="BOARD">
 			<div style="display:table-row;">
 				<div class="DICE" id="dice1">
 					<div class="CIRCLE" style="top:22.5%;left:77.5%;"></div>
@@ -58,10 +91,19 @@
 				</div>
 			</div>
 		</div>
-		<div style="display:block;width:80%;margin:auto;text-align:center;">YOU ROLLED A&nbsp;&nbsp;<span id="rollcount" style="color:yellow;font-size:36px;font-weight:bold;">_</span><br /><button id="clicker" onClick="timeroll()">ROLL</button><br />
-		*** Keyboard Controls: Press <span style="color:lightgreen;font-weight:bold;">'R'</span> to roll (in addition to clicking the button).</div>
+		<div id="rollcountcontainer">
+			YOU ROLLED A 
+			<span id="rollcount1" class="ROLLCOUNT">_</span><span id="dice2and"> and a </span>
+			<span id="rollcount2" class="ROLLCOUNT">_</span><br /><button id="clicker" onClick="timeroll()">ROLL</button>
+		</div>
+		<div id="controls">
+			<u>Dice qty</u>:<input type="radio" name="diceqty" value="1" onClick="hide2()">1</input> 
+			<input type="radio" name="diceqty" value="2" checked onClick="unhide2()">2</input><br /><br />
+
+			*** Keyboard Controls: Press <span style="color:lightgreen;font-weight:bold;">'R'</span> to roll (in addition to clicking the button).
+		</div>
 		<hr color="gray" style="width:85%;"><br />
-		<div id="desc" style="width:90%;display:block;margin:auto;text-align:justify;">
+		<div id="desc">
 			Roll the Dice(or 'die,' whatever)! Just click roll. No SVG's involved. Just CSS. I Gave the die rounded corners, then I defined 6 variables containing circular divs with absolute placements(defining the look of the rolled number), so then the 'innerHTML' of the div would be that of the number that was rolled. Enjoy! Feel free to inspect the code and use however you like with no attribution. 
 		</div>
 		
@@ -92,11 +134,30 @@
 		
 		// TIMING
 		var timer;				// Will initiate the rolling
+		var timer2;				// Will initiate the rolling
 		var interval = 90;		// The frequency of the bounce
 		var bounces;			// Will help determine how long the dice rolls
 		var bounce_count = 0; 	// Will keep track of the counts
+		var bounce_count2 = 0; 	// Will keep track of the counts
 		var keypressed = false;	// Will help prevent multiple keypresses causing inf loops
-		
+
+		function hide2() {
+			//width: 85vw;
+			//height: calc(85vw / 2);
+			document.getElementById("diceboard").style.width = "35vw";
+			document.getElementById("diceboard").style.height = "35vw";
+			document.getElementById("dice2").style.display = "none";
+			document.getElementById("dice2and").style.display = "none";
+			document.getElementById("rollcount2").style.display = "none";
+		}
+		function unhide2() {
+			document.getElementById("diceboard").style.width = "70vw";
+			document.getElementById("diceboard").style.height = "calc(70vw / 2)";
+			document.getElementById("dice2").style.display = "table-cell";
+			document.getElementById("dice2and").style.display = "inline";
+			document.getElementById("rollcount2").style.display = "inline";
+		}
+
 		function keyroll() {
 			//console.log(event.keyCode);
 			if (keypressed == false) {
@@ -113,19 +174,32 @@
 			if (bounce_count == bounces) {
 				clearInterval(timer);
 				bounce_count = 0;
-				document.getElementById("rollcount").innerHTML = r;
+				document.getElementById("rollcount1").innerHTML = r;
 				keypressed = false;
 				document.getElementById("clicker").style.visibility = "initial";
 			}
 		}
-		
+		function roll2() {
+			var r = Math.floor(Math.random() * 6 + 1);	// We want a number >= 1 and <= 6
+			//console.log(r);
+			document.getElementById("dice2").innerHTML = allrolls[r];
+			bounce_count2 += 1;
+			if (bounce_count2 == bounces) {
+				clearInterval(timer2);
+				bounce_count2 = 0;
+				document.getElementById("rollcount2").innerHTML = r;
+			}
+		}
+
 		function timeroll() {
 			bounces = Math.floor(Math.random() * 7 + 9);	// We want a number >= 1 and <= 6
 			timer = setInterval(roll,interval);
+			timer2 = setInterval(roll2,interval);
 			// Inf loop prevention
 			keypressed = true;
 			document.getElementById("clicker").style.visibility = "hidden";
-			document.getElementById("rollcount").innerHTML = "_";
+			document.getElementById("rollcount1").innerHTML = "_";
+			document.getElementById("rollcount2").innerHTML = "_";
 		}
 
 		</script>
