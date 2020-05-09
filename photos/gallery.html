@@ -87,6 +87,7 @@
 			<button class= "BTNyr" id="p2017" onClick="buttonpress('2017')">2017</button>
 			<button class= "BTNyr" id="p2018" onClick="buttonpress('2018')">2018</button>
 			<button class= "BTNyr" id="p2019" onClick="buttonpress('2019')">2019</button>
+			<button class= "BTNyr" id="p2020" onClick="buttonpress('2020')">2020</button>
 		</div><br>
 
 		<div class="VIEWCONT">
@@ -112,14 +113,14 @@
 		<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
 		<script>
 			function loading() {
-				ind = img_2019.length - 1;
-				document.getElementById("disp").src = img_2019[ind];
-				document.getElementById("desc").innerHTML = desc_2019[ind];
-				document.getElementById("p2019").style = "font-weight:bold;background-color:rgba(255,255,255,.2);color:yellow;"
-				document.getElementById("disp_vid").src = img_2019[ind];
+				ind = img_2020.length - 1;
+				document.getElementById("disp").src = img_2020[ind];
+				document.getElementById("desc").innerHTML = desc_2020[ind];
+				document.getElementById("p2020").style = "font-weight:bold;background-color:rgba(255,255,255,.2);color:yellow;"
+				document.getElementById("disp_vid").src = img_2020[ind];
 				document.getElementById("disp_vid").autoplay = true;
 				document.getElementById("disp_vid").loop = true;
-				if (img_2019[ind].substr(img_2019[ind].length-4) == ".mp4") {
+				if (img_2020[ind].substr(img_2020[ind].length-4) == ".mp4") {
 					document.getElementById("disp_vid").style.display = "block";
 					document.getElementById("disp").src = "photos/wait.svg";
 				}
@@ -373,13 +374,15 @@
 							"10/01/2019 - Setting Waxing Crescent. 8sec exposure. Extra time caught more glow from the sliver and the earthshine. Tree-tops were a nice touch.",
 							"Oct 2019 - Very vibrant sunset",
 							"11/12/2019 - Post-Frontal Passage. A strong cold-front moved through this day. Camera is generally pointed south/southeast. Good display of showing winds changing with height. Here, they are 'backing' with height, implying the definite Cold-Air Advection. I was hoping to catch some KH clouds, and I think at times they did but were very short-lived or not robust enough to catch on camera"];
+			var img_2020 = ["photos/2020/0213_sundog.jpg"]
+			var desc_2020 = ["02/13/2020 - Encountered a nice sundog during an evening walk. Enhancement hinted at an upper tangent arc"]
 
-			var ANNUAL = ["2012","2013","2014","2015","2016","2017","2018","2019"];
-			var allimgyrs = [img_2012,img_2013,img_2014,img_2015,img_2016,img_2017,img_2018,img_2019];
-			var alldscyrs = [desc_2012,desc_2013,desc_2014,desc_2015,desc_2016,desc_2017,desc_2018,desc_2019];
+			var ANNUAL = ["2012","2013","2014","2015","2016","2017","2018","2019","2020"];
+			var allimgyrs = [img_2012,img_2013,img_2014,img_2015,img_2016,img_2017,img_2018,img_2019,img_2020];
+			var alldscyrs = [desc_2012,desc_2013,desc_2014,desc_2015,desc_2016,desc_2017,desc_2018,desc_2019,desc_2020];
 			var ind = 0;				// stores the current index of the max index in 2018
-			var prev_yr = "2019";	// will be used as a trigger for changing of style
-			var curr_yr = "2019";	// Holds the current year
+			var prev_yr = "2020";	// will be used as a trigger for changing of style
+			var curr_yr = "2020";	// Holds the current year
 			var imgsrc;
 		
 		</script>
