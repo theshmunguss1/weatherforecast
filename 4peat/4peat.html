@@ -27,11 +27,13 @@
 	position:absolute;
 	top:50%;
 	left:50%;
-	font-size:100%;
+	font-size: 0.8em;
 	transform:translate(-50%,-50%);
+	text-align:center;
 	font-weight:bold;
 	color:white;
 	display:inline-block;
+	user-select:none;
 	}
 .BUTTON {
 	position: absolute;
@@ -62,20 +64,20 @@
 	});
 </script>
 </head>
-<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue">
+<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue" onKeyDown="kbcontrol()">
 <div id="gameborder" class="GAMEEDGE">
 	<div id="gamebox" class="GAME">
-		<div id="title" class="TITLE">4-Peat: A Pocket-Repeat<br>clone By K. Gentry</div>
-		<button id="UL_Button" class="BUTTON" style="top:6%;left:6%;background-color:Yellow;" onclick=buttonclick(1,"UL_Button")>1</button>
-		<button id="UR_Button" class="BUTTON" style="top:6%;right:6%;background-color:Crimson;" onclick=buttonclick(2,"UR_Button")>2</button>
-		<button id="LL_Button" class="BUTTON" style="bottom:6%;left:6%;background-color:CornflowerBlue;" onclick=buttonclick(3,"LL_Button")>3</button>
-		<button id="LR_Button" class="BUTTON" style="bottom:6%;right:6%;background-color:#FFCC99;" onclick=buttonclick(4,"LR_Button")>4</button>
+		<div id="title" class="TITLE">4-Peat:<br />a Pocket-Repeat clone<br />By K. Gentry</div>
+		<button id="UL_Button" class="BUTTON" style="top:6%;left:6%;background-color:Yellow;" onclick=buttonclick(1,"UL_Button")>Q</button>
+		<button id="UR_Button" class="BUTTON" style="top:6%;right:6%;background-color:Crimson;" onclick=buttonclick(2,"UR_Button")>E</button>
+		<button id="LL_Button" class="BUTTON" style="bottom:6%;left:6%;background-color:CornflowerBlue;" onclick=buttonclick(3,"LL_Button")>A</button>
+		<button id="LR_Button" class="BUTTON" style="bottom:6%;right:6%;background-color:#FFCC99;" onclick=buttonclick(4,"LR_Button")>D</button>
 	</div>
 </div>
 <div id="STATS" style="width:100%;margin:auto;text-align:center;"><br><br>
 <!-- Used https://www.elated.com/articles/html5-audio/ as a guide to get my sound working for the buttons -->
 	<audio id="snd" autoplay>
-		<source src="">
+		<source src="4peat/snd_wrong.wav">
 	</audio>
 	<button id="start">New Game</button><br>
 	ROUNDS WON: <span id="rounds_won"></span><br>
