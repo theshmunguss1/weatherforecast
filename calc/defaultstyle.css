@@ -1,3 +1,41 @@
+#calculator {
+	background-color:black;
+	border: 5px solid rgb(60, 60, 120);
+}
+#display {
+	color:black;
+	background-color: lightgreen;
+	border: 6px inset white;
+	border-radius: 20px;
+}
+td, .KUP {
+	border-radius: 10px;
+	border: 3px outset white;
+	text-indent: 0px;
+}
+td:active, .KDOWN {
+	border: 3px inset white;
+	text-indent: 2px;
+}
+table {
+	color: DarkSlateGray;
+	font-size: 2.4em;
+	font-weight: bold;
+}
+table#numcontainer {font-size: 3em;}
+td.number, td.operator.dot {background-color: LightGray;}
+table#opcontainer {}
+td.operator.clear {background-color: pink;}
+td.operator.math {background-color: LightSlateGrey;}
+table#opextra {}
+td.operator.equals {
+	background-color:DarkOliveGreen;
+	color:lightgray;
+}
+td.operator.plusminus {background-color:#AFEEEE;}
+
+/* OLD CSS BELOW */
+
 .calcCASING {
 position: relative;
 background-color:black;

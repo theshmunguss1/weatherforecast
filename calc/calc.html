@@ -1,135 +1,293 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<base href="../">
-	<link id="class_name" rel="stylesheet" href="calc/defaultstyle.css">
-	<title>ksgwxfan - Basic Calculator</title>
-	<meta name="description" content="Basic Calculator that allows around 12 digits, selectable background colors, and different themes">
-	<!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
-	<script>
-		(adsbygoogle = window.adsbygoogle || []).push({
-		google_ad_client: "ca-pub-9591743329396880",
-		enable_page_level_ads: true
-		});
-	</script>
-<style>
-.calcCASING {
-	transform: translate(100%,0%);
-}
-
-.BGBUTTON {
-font-size: 12px;
-font-weight: bold;
-width: 22%;
-padding-top: 5px;
-padding-bottom: 5px;
-background: linear-gradient(rgba(255,255,255,0.5) 5%,transparent 30%);
-outline: none;
-}
-
-.BGBUTTON:active {
-background: linear-gradient(transparent 45%, rgba(255,255,255,0.5) 95%);
-
-}
-
-.THEMEBUTTON {
-font-size: 12px;
-font-weight: bold;
-width: 16%;
-background: linear-gradient(rgba(255,255,255,0.5) 5%,transparent 30%);
-border: 4px solid;
-padding-top: 5px;
-padding-bottom: 5px;
-outline: none;
-}
-
-.THEMEBUTTON:active {
-background: linear-gradient(transparent 45%, rgba(255,255,255,0.5) 95%);
-}
-
-.DESC {
-margin: auto;
-width: 85%;
-}
-
-.calcSIG {
-position: absolute;
-color: white;
-font-size: .7em;
-font-style: italic;
-text-align: center;
-height: 12%;
-width: 22%;
-display: inline-block;
-}
-
-</style>
-</head>
-<!-- Bottom-of-page content was being hid by footer, but W3SCHOOLS helped me out, as always! -->
-<body id="bod" style="background-color:#333333;margin-bottom: 4%;color:white;" link="lightBlue" vlink="lightBlue">
-	<div class="calcCASING">
-	<div class="calcDISPLAY">
-		<div style="position:relative;text-align:right;font-size:14px;width:96%;" id="smalloutput"></div>
-		<div class="calcDISPLAYFONT" style="position:absolute;right:2%;bottom:1%;" id="largeoutput">0.</div>
-	</div>
-	<button id="b1" class="calcNUMBERBUTTON" style="top:31%;left:14%;" onclick=numpress("1")>1</button>
-	<button id="b2" class="calcNUMBERBUTTON" style="top:31%;left:38%;" onclick=numpress("2")>2</button>
-	<button id="b3" class="calcNUMBERBUTTON" style="top:31%;left:62%;" onclick=numpress("3")>3</button>
-	<button id="b4" class="calcNUMBERBUTTON" style="top:48%;left:14%;" onclick=numpress("4")>4</button>
-	<button id="b5" class="calcNUMBERBUTTON" style="top:48%;left:38%;" onclick=numpress("5")>5</button>
-	<button id="b6" class="calcNUMBERBUTTON" style="top:48%;left:62%;" onclick=numpress("6")>6</button>
-	<button id="b7" class="calcNUMBERBUTTON" style="top:65%;left:14%;" onclick=numpress("7")>7</button>
-	<button id="b8" class="calcNUMBERBUTTON" style="top:65%;left:38%;" onclick=numpress("8")>8</button>
-	<button id="b9" class="calcNUMBERBUTTON" style="top:65%;left:62%;" onclick=numpress("9")>9</button>
-	<button id="b0" class="calcNUMBERBUTTON" style="top:82%;left:14%;" onclick=numpress("0")>0</button>
-	<button id="bdot" class="calcNUMBERBUTTON" style="top:80%;left:38%;height:10%;" onclick=numpress(".")>.</button>
-	<button id="equals" class="calcEQLBUTTON" style="top:86%;left:62%;" onclick=equals_press("=")>=</button>
-	<button id="plusminus" class="calcSPECBUTTON" style="top:92%;left:38%;" onclick=numpress("+/-")>+/-</button>
-	<button id="clear" class="calcCLRBUTTON" style="top:29.5%;left:86%;" onclick=clear_press("C")>C</button>
-	<button id="clearentry" class="calcCLRBUTTON" style="top:42%;left:86%;" onclick=clear_press("CE")>CE</button>
-	<button id="plus" class="calcOPBUTTON" style="top:54.5%;left:86%;" onclick=operator_press("+")>+</button>
-	<button id="subtr" class="calcOPBUTTON" style="top:67%;left:86%" onclick=operator_press("-")>-</button>
-	<button id="mult" class="calcOPBUTTON" style="top:79.5%;left:86%" onclick=operator_press("*")>x</button>
-	<button id="divide"  class="calcOPBUTTON" style="top:92%;left:86%" onclick=operator_press("/")>/</button>
-	<div id="signature" class="calcSIG" style="top:89.5%;left:3%;">Basic Calculator Created by K. Gentry</div>
-</div><p>
-<div id="bar" style="border-top:1px solid black;position:fixed;left:0%;bottom:0;width:100%;height:9%;text-align:center;display:block;background:linear-gradient(#ffff80,white);">
-	<div id="chgbg" style="position:absolute;width:40%;left:-1%;color:black;">
-		<b>Background Color:</b><br>
-		<button class="BGBUTTON" style="background-color:rgba(0,0,0,.75);color:white;" id="chgbg_dark" onclick=chgbg("#333333")>Dark (Default)</button>
-		<button class="BGBUTTON" style="background-color:rgb(200,200,200);" id="chgbg_white" onclick=chgbg("white")>White</button>
-		<button class="BGBUTTON" style="background-color:SandyBrown;" id="chgbg_warm" onclick=chgbg("#f5ae70")>Warm</button>
-		<button class="BGBUTTON" style="background-color:LightBlue" id="chgbg_ltblu" onclick=chgbg("PowderBlue")>Cool</button>
-	</div>
-	<div id="chgstyle" style="position:absolute;width:60%;right:1%;color:black;">
-		<b>Change Theme:</b><br>
-		<button class="THEMEBUTTON" style="background-color: black; border-color:rgb(60, 60, 120);color:white;" id="style0" onclick=chglook("defaultstyle")>Standard</button>
-		<button class="THEMEBUTTON" style="background-color: black; border-color:#FF00CC;color:#00ff00;" id="style1" onclick=chglook("style1")>Neon Glow</button>
-		<button class="THEMEBUTTON" style="background-color: #FAFA37;border-color:blue" id="style2" onclick=chglook("style2")>Springtime</button>
-		<button class="THEMEBUTTON" style="background-color:Navy;border-color:green;color:white;"id="style3" onclick=chglook("style3")>Terrestrial Fringe</button>
-		<button class="THEMEBUTTON" style="background-color:orange;" id="style4" onclick=chglook("style4")>Sunfall</button>
-		<button class="THEMEBUTTON" style="background-color:darkred;border-color:blue;color:white;" id="style5" onclick=chglook("style5")>Patriots' Dream</button>
-	</div>
-</div>
-<div class="DESC">
-Almost all you see here is HTML/CSS/Javascript; no SVG's were used. I used Python to
-create code for the star-field in my space theme. I hope you bookmark this calculator, come back often, and that it is of use 
-to you. If you discover something that isn't working right, GOOD! Let me know, and I'll tackle it as soon as I can. This has been a great exercise in trying to account for every kind of problem that can arise. So if it's broken, it means it can be improved! I have found an appreciation for the creation of 
-the most basic calculators. Some items I had to account for include:<p>
-<ul>
-	<li>Preventing 'division by zero' attempts</li>
-	<li>Preventing successive zero entries at the start of a number</li>
-	<li>Display-limit of characters so numbers couldn't extend beyond the virtual display</li>
-	<ul><li>This included defining situations where I wanted scientific-notation or wanted to limit the output</li></ul>
-	<li>Ignoring successive operator entries (sorry if you accidentally hit the wrong button)</li>
-</ul>
-* Disclaimer of Use: Please feel free to use (also applies to the snippets thereof) in any way you want as long as you leave the title of the calculator 
-(in the bottom left corner) in tact. In your code, you can simply put a link to this page. If you simply use a snippet for use or simply learning a technique, you don't have to give credit. You probably would've found out how to do what you needed through an internet search anyway.<p>
-</div>
-<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
-<script src="calc/calc_logic.js"></script>
-
-</body>
+	<head>
+		<base href="../">
+		<link id="class_name" rel="stylesheet" href="calc/defaultstyle.css">
+		<title>ksgwxfan - Basic Calculator</title>
+		<meta name="description" content="Basic Calculator that allows around 12 digits, selectable background colors, and different themes">
+		<meta name="author" content="Kyle Gentry">
+		<meta name="keywords" content="calculator, basic, javascript, css">
+		<style>
+			#header {
+				margin-bottom: 20px;
+				text-decoration: underline;
+				}
+			#headerphoto {
+				vertical-align: middle;
+				width: 3.5%;
+				min-width: 30px;
+				max-width: 50px;
+				border: 2px solid white;
+				box-shadow: 0px 0px 5px white;
+				border-radius: 35%;
+				display: inline-block;
+				margin-right: 10px;
+				}
+			.TABLE {
+				display:table;
+				border-collapse: collapse;
+				width:90%;
+				margin: 0 auto;
+			}
+			.ROW {
+				display: table-row;
+			}
+			.CELL {
+				border: 1px solid gray;
+				display: table-cell;
+				text-align: center;
+				vertical-align: middle;
+			}
+			.CELL.bg {
+				width:20%;
+				padding:20px;
+				border:2px solid black;
+			}
+			.CELL.kb {
+				text-align: left;
+				padding-left: 15px;
+				border:2px solid black;
+			}
+			.CELL.theme {
+				user-select: none;
+				color: white;
+				border: 2px solid black;
+				font-size: 1.5em;
+				text-shadow:
+					-2px 0px 6px black,
+					-2px -2px 6px black,
+					0px 2px 6px black,
+					2px 2px 6px black;
+			}
+			.CELL.theme.normal {
+				background: linear-gradient(45deg, black, black 35%, gray 36%, gray 56%, pink 57%, pink 67%, lightslategray 68%, lightslategray 88%, darkolivegreen 89%);
+			}
+			.CELL.theme.neon {
+				background: linear-gradient(45deg, black, black 10%, crimson 10.1%, crimson 19.9%, black 20%, black 25.9%, orange 26%, orange 41%, black 42%, black 47%, magenta 48%, magenta 58%, black 59%, black 64%, dodgerblue 65%, dodgerblue 75%, black 76%, black 81%, yellow 82%, yellow 88%, black 89%, black 93%, lime 94%);
+			}
+			.CELL.theme.spring {
+				background: linear-gradient(to top, forestgreen, forestgreen 20%, transparent 21%),
+					radial-gradient(circle at top 15% left 30%, yellow, yellow 8%, transparent 9%),
+					radial-gradient(circle at top 15% left 30%, yellow, yellow 2%, transparent 20%),
+					linear-gradient(to top, skyblue, skyblue 50%, cornflowerblue);
+			}
+			.CELL.theme.earth {
+				background: radial-gradient(200% 60% at bottom -5% left 50%, navy, navy 25%, skyblue 40%, transparent 55%), linear-gradient(black, black);
+			}
+			.CELL.theme.sunset {
+				background: linear-gradient(to top, black 10%, transparent 11%),
+					linear-gradient(to top, rgb(255,10,50), darkorange, skyblue, rgb(0,0,20));
+			}
+			.CELL.theme.merica {
+				background: linear-gradient(45deg, rgb(0,0,40) 45%, transparent 45.1%),
+					repeating-linear-gradient(to right, red 0%, red 7.7%, white 7.8%, white 15.5%);
+			}
+			.CELL.theme.rainbow {
+				background: linear-gradient(45deg,
+								red 0%, red 14%,
+								orange 14.1%, orange 28.1%,
+								yellow 28.2%, yellow 42.2%,
+								green 42.3%, green 56.3%,
+								blue 56.4%, blue 70.4%,
+								indigo 70.5%, indigo 84.5%,
+								violet 85.5%);
+			}
+			.CELL.theme.basketball {
+				background: linear-gradient(to top right, darkorange 5%, transparent 20%),
+					radial-gradient(circle at 50% 50%, transparent 50%, black 50.1%),
+					radial-gradient(circle at 50% -100%, transparent 38.9%, black 39%, black 41%, transparent 41.1%),
+					radial-gradient(circle at 50% 200%, transparent 38.9%, black 39%, black 41%, transparent 41.1%),
+					linear-gradient(to right, transparent 48.9%, black 49%, black 51%, transparent 51.1%),
+					linear-gradient(to bottom, transparent 46.9%, black 47%, black 53%, transparent 53.1%),
+					radial-gradient(circle at 50% 50%, darkorange 50%, transparent 50.1%);
+			}
+			#calculator {
+				position: relative;
+				margin: 0 auto;
+				width: 400px;
+				height: 500px;
+				border-radius: 25px;
+				box-shadow: 0px 0px 30px black;
+				font-family: sans-serif;
+			}
+			#display {
+				position: relative;
+				margin: 0 auto;
+				margin-top: 4%;
+				height: 15%;
+				width: 90%;
+				text-align: right;
+			}
+			#output {
+				position: absolute;
+				top: 60%;
+				right: 0%;
+				transform: translate(0,-50%);
+				padding-right: 10px;
+				font-size: 2.9em;
+				font-weight: bold;
+			}
+			#smoutput {
+				position: absolute;
+				top: 15%;
+				right: 0%;
+				transform: translate(0,-50%);
+				padding-right: 10px;
+				font-size: 0.8em;
+			}
+			table {
+				table-layout: fixed;
+				border-spacing: 15px 15px;
+				user-select: none;
+			}
+			td {
+				text-align: center;
+				vertical-align: middle;
+			}
+			table#numcontainer {
+				width: 78%;
+				height: 70%;
+			}
+			table#opcontainer {
+				border-spacing: 15px 10px;
+				position: absolute;
+				top: 21%;
+				left: 74%;
+				width: 26%;
+				height: 79%;
+			}
+			table#opextra {
+				position: absolute;
+				top: 71%;
+				left: 25%;
+				width: 52.5%;
+				height: 20%;
+			}
+			button.number {
+				position: absolute;
+				transform: translate(-50%,-50%);
+				width: 70px;
+				height: 60px;
+				border-radius: 8px;
+				top: 50%;
+				left: 50%;
+			}
+			#signature {
+				position: absolute;
+				color: white;
+				font-size: .7em;
+				font-style: italic;
+				text-align: center;
+				height: 12%;
+				width: 22%;
+				user-select: none;
+			}
+			#about {
+				margin: 0 auto;
+				width: 85%;
+			}
+		</style>
+	</head>
+	<body id="bod" style="background-color:#333333;margin-bottom: 4%;color:white;" link="lightBlue" vlink="lightBlue" onLoad="CLEAR('C')" onKeyDown="kbcontrols()">
+		<h1 id="header">
+			<img id="headerphoto" src="profile.png">Calculator
+		</h1>
+		<!-- Calcuator -->
+		<div id="calculator">
+			<div id="display">
+				<div id="output"></div>
+				<div id="smoutput"></div>
+			</div>
+			<table id="numcontainer">
+				<tr>
+					<td id="b7" class="number" onClick="numberpress('7')">7</td>
+					<td id="b8" class="number" onClick="numberpress('8')">8</td>
+					<td id="b9" class="number" onClick="numberpress('9')">9</td>
+				</tr>
+				<tr>
+					<td id="b4" class="number" onClick="numberpress('4')">4</td>
+					<td id="b5" class="number" onClick="numberpress('5')">5</td>
+					<td id="b6" class="number" onClick="numberpress('6')">6</td>
+				</tr>
+				<tr>
+					<td id="b1" class="number" onClick="numberpress('1')">1</td>
+					<td id="b2" class="number" onClick="numberpress('2')">2</td>
+					<td id="b3" class="number" onClick="numberpress('3')">3</td>
+				</tr>
+				<tr>
+					<td id="b0" class="number" onClick="numberpress('0')">0</td>
+				</tr>
+			</table>
+			<table id="opcontainer">
+				<tr><td id="bC" class="operator clear" onClick="CLEAR('C')">C</td></tr>
+				<tr><td id="bCE" class="operator clear" onClick="CLEAR('CE')">CE</td></tr>
+				<tr><td id="bplus" class="operator math" onClick="mathpress('+')">&plus;</td></tr>
+				<tr><td id="bminus" class="operator math" onClick="mathpress('-')">&minus;</td></tr>
+				<tr><td id="btimes" class="operator math" onClick="mathpress('*')">&Cross;</td></tr>
+				<tr><td id="bdivide" class="operator math" onClick="mathpress('/')">&divide;</td></tr>
+			</table>
+			<table id="opextra">
+				<tr>
+					<td id="bdot" class="operator dot" onClick="dotpress()">&period;</td>
+					<td id="bequals" class="operator equals" rowspan=2 onClick="equals()">&equals;</td>
+				</tr>
+				<tr>
+					<td id="bsign" class="operator plusminus" onClick="signpress()">&PlusMinus;</td>
+				</tr>
+			</table>
+			<div id="signature" style="top:89.5%;left:3%;">Basic Calculator Created by K. Gentry</div>
+		</div>
+		<!-- Below Calculator -->
+		<div class="TABLE" style="margin-top:20px;min-width:400px;table-layout:fixed;">
+			<div class="ROW">
+				<div class="CELL theme normal" onClick='changetheme("calc/defaultstyle.css")'>Default</div>
+				<div class="CELL theme neon" onClick='changetheme("calc/style1.css")'>Neon<br />Glow</div>
+				<div class="CELL theme spring" onClick='changetheme("calc/style2.css")'>Springtime</div>
+				<div class="CELL theme earth" onClick='changetheme("calc/style3.css")'>Terrestrial<br />Fringe</div>
+			</div>
+			<div class="ROW">
+				<div class="CELL theme sunset" onClick='changetheme("calc/style4.css")'>Sunfall</div>
+				<div class="CELL theme merica" onClick='changetheme("calc/style5.css")'>Patriots'<br />Dream</div>
+				<div class="CELL theme rainbow" onClick='changetheme("calc/style6.css")'>Rainbow</div>
+				<div class="CELL theme basketball" onClick='changetheme("calc/style7.css")'>Basketball</div>
+			</div>
+		</div>
+		<div class="TABLE" style="min-width:400px;">
+			<div class="ROW">
+				<div class="CELL bg" id="bgselect">
+					<u>Background Color:</u><br />
+					<span title="Hue">H</span>: <input id="bgh" type="range" value="0" min="0" max="359" step="1"        onInput='options.bgH = parseInt(this.value); changebg()'></input><br />
+					<span title="Saturation">S</span>: <input id="bgs" type="range" value="75" min="0" max="100" step="1" onInput='options.bgS = parseInt(this.value); changebg()'></input><br />
+					<span title="Lightness">L</span>: <input id="bgl" type="range" value="40" min="0" max="100" step="1" onInput='options.bgL = parseInt(this.value); changebg()'></input>
+				</div>
+				<div class="CELL kb" id="keyboardcontrols">
+					<u>Keyboard Controls</u> (Numpad equivalents should work too; Copying values with CTRL+C is supported):
+					<ul>
+						<li>Clear: <mark>C</mark> or <mark>Backspace</mark></li>
+						<li>Clear Entry: <mark>SHIFT + C </mark> or <mark>SHIFT + Backspace</mark></li>
+						<li>Numbers: <mark>0 - 9</mark></li>
+						<li>Operators: <mark>+, -, /, *</mark> - use shift where necessary; <mark>X</mark>  also works for multiplication</li>
+						<li>Equals: <mark>= or ENTER/RETURN</mark></li>
+						<li>Change sign: <mark>SHIFT + - </mark></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="about">
+			<p>Almost all you see here is HTML/CSS/Javascript; no SVG's were used. I used Python to create code for the star-field in my space theme. I hope you bookmark this calculator, come back often, and that it is of use to you. If you discover something that isn't working right, GOOD! Let me know, and I'll tackle it as soon as I can. This has been a great exercise in trying to account for every kind of problem that can arise. So if it's broken, it means it can be improved! I have found an appreciation for the creation of the most basic calculators. Some items I had to account for include:
+				<ul>
+					<li>Preventing 'division by zero' attempts</li>
+					<li>Preventing successive zero entries at the start of a number</li>
+					<li>Display-limit of characters so numbers couldn't extend beyond the virtual display</li>
+					<ul><li>This included defining situations where I wanted scientific-notation or wanted to limit the output</li></ul>
+					<li>Ignoring successive operator entries and allowing you to change the active operator (if you pressed the wrong one)</li>
+				</ul>
+			</p>
+			<p>* Disclaimer of Use: Please feel free to use (also applies to the snippets thereof) in any way you want as long as you leave the title of the calculator (in the bottom left corner) in tact. In your code, you can simply put a link to this page. If you simply use a snippet for use or simply learning a technique, you don't have to give credit. You probably would've found out how to do what you needed through an internet search anyway.</p>
+		</div>
+		<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
+		<script src="calc/calc_logic.js"></script>
+	</body>
 </html>
 <!--document.getElementById("tempval").innerHTML = tempval; -->
 <!--document.getElementById("res").innerHTML = resultant; -->

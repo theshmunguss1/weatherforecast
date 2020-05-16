@@ -1,22 +1,35 @@
 #calculator {
-	background: radial-gradient(140% 80% at bottom -4% left 10%,rgba(5, 10, 10,1) 24.5%,rgba(255,255,255,0) 25%), /*Mountain*/
-		radial-gradient(110% 90% at bottom -6% left 35%,rgba(5, 10, 10,1) 24.5%,rgba(255,255,255,0) 25%), /*Mountain*/
-		radial-gradient(160% 80% at bottom 0% left 70%,rgba(5, 10, 10,1) 24.5%,rgba(255,255,255,0) 25%), /*Mountain*/
-		radial-gradient(160% 80% at bottom -2% left 110%,rgba(5, 10, 10,1) 24.5%,rgba(255,255,255,0) 25%), /*Mountain*/
-		linear-gradient(#000033 7%,MidnightBlue 25%,#99ddff 50%,Orange 70%,OrangeRed 80%); /*SKY*/
+	background: repeating-linear-gradient(to bottom right, rgba(255,255,255,30%) 0%, rgba(255,255,255,30%) 1%, transparent 1.1%, transparent 5.1%),
+		repeating-linear-gradient(to top right, transparent 0%, transparent 12.3%, white 12.4%, white 14.4%),
+		linear-gradient(to top right,
+		red 0%, red 14%,
+		orange 14.1%, orange 28.1%,
+		yellow 28.2%, yellow 42.2%,
+		green 42.3%, green 56.3%,
+		blue 56.4%, blue 70.4%,
+		indigo 70.5%, indigo 84.5%,
+		violet 85.5%);
 	border: 2px solid rgb(0,0,25);
 }
 
 #display {
-	color: rgba(240, 240, 255, 1);
-	background-color: rgba(255,255,255,0.15);
+	color: rgb(0,0,40);
+	background-color: rgba(255,255,255,0.65);
 	border: 6px inset white;
 	border-radius:10%;
+}
+#signature {
+	text-shadow: 
+		-3px 0px 3px black,
+		0px -3px 3px black,
+		3px 0px 3px black,
+		0px 3px 3px black;
 }
 td {
 	border: 2px outset white;
 	color: white;
 	border-radius:10%;
+	background-color: black;
 }
 td:active, .KDOWN {
 	text-indent: 2px;
@@ -24,37 +37,24 @@ td:active, .KDOWN {
 }
 table {
 	font-size: 2.4em;
-	font-weight: bold;
 }
-table#numcontainer {font-size: 3em;}
+table#numcontainer {font-size: 3em; font-weight: bold;}
 td.number, td.operator.dot {
-	color: rgba(0, 0, 30, .85);
-	background: radial-gradient(circle,rgba(255,255,255,.4) 10%,rgba(255,255,255,0) 80%);
 }
 td.number:active, td.operator.dot:active {}
 table#opcontainer {}
-td.operator.clear {
-	background: linear-gradient(rgba(0,0,0,0) 50%,rgba(255, 0, 0,.4));
-	color: rgba(245, 245, 255, .95);
-	text-shadow: 0px 0px 8px black;
-}
+td.operator.clear {color: red;}
 td.operator.clear:active {}
-td.operator.math {
-	background: linear-gradient(rgba(0,0,0,0) 50%,rgba(50, 50, 255,.4));
-	color: rgba(245, 245, 255, .95);
-	text-shadow: 0px 0px 8px black;
-}
+td.operator.math {color: orange;}
+td.operator.math#bplus {color: orange;}
+td.operator.math#bminus {color: yellow;}
+td.operator.math#btimes {color: green;}
+td.operator.math#bdivide {color: blue;}
 td.operator.math:active {}
 table#opextra {}
-td.operator.equals {
-	background: linear-gradient(rgba(0,0,0,0) 82%,rgba(0, 255, 0,.4));
-	color: rgba(245, 245, 255, .95);
-}
+td.operator.equals {color: indigo;}
 td.operator.equals:active {}
-td.operator.plusminus {
-	background: linear-gradient(rgba(0,0,0,.5) 50%,rgba(255, 255, 255,.4));
-	color: rgba(245, 245, 255, .95);
-}
+td.operator.plusminus {color: violet;}
 td.operator.plusminus:active {}
 
 .calcCASING {
