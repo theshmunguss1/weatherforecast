@@ -32,8 +32,6 @@ function sequence(){
 	ongoing_game = true;
 	newGame.removeEventListener("click",sequence);
 	newGame.style.visibility = "hidden";
-	newGame.style.opacity = "0";
-	newGame.style.filter = "alpha(opacity=0)";
 	document.getElementById("indicator").innerHTML = "ROUND # "+parseInt(winqty+1)+" ... Watch and Listen!";
 	seq_choice = Math.floor(1+4*Math.random());
 	seq_array.push(seq_choice);
