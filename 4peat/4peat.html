@@ -4,26 +4,27 @@
 		<title>ksgwxfan - 4-Peat: A Pocket-Repeat Clone</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<style>
-			@media handheld {
+			@media screen and (max-width: 490px) {
 				.GAMEEDGE {
-					width: 85vw;
-					height: 85vw;
-					background-color: blue;
+					width: 90vw;
+					height: 90vw;
 				}
 			}
-			@media screen {
+			@media screen and (min-width: 491px) {
 				.GAMEEDGE {
-					position:relative;
-					margin:auto;
 					width:35vw;
 					min-width: 400px;
 					height: 35vw;
 					min-height: 400px;
-					border-radius:20%;
-					background-color:white;
-					box-shadow: 0px 0px 30px black;
 					}
 			}
+			.GAMEEDGE {
+				position:relative;
+				margin: 0 auto;
+				border-radius:20%;
+				background-color:white;
+				box-shadow: 0px 0px 30px black;
+				}
 			.GAME {
 				position:absolute;
 				top:5%;
