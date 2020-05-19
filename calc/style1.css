@@ -1,12 +1,14 @@
-#calculator {
-	background-color:black;
-	border: 10px double darkorange;
+#calculator {background-color:black;}
+@media screen and (min-width: 491px) {
+	#calculator {border: 10px double darkorange;}
+}
+@media screen and (max-width: 490px) {
+	#calculator {border: 6px double darkorange;}
 }
 #display {
 	color:black;
 	background-color: cyan;
 	border: 6px inset white;
-	border-radius:10%;
 }
 td {
 	border: 2px solid #FF00CC;
@@ -14,10 +16,8 @@ td {
 	background-color: black;
 }
 table {
-	font-size: 2.4em;
 	font-weight: bold;
 }
-table#numcontainer {font-size: 3em;}
 td.number, td.operator.dot {
 	color: white;
 	border: 2px solid #FF00CC;

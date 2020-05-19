@@ -6,7 +6,6 @@
 	color:black;
 	background-color: lightgreen;
 	border: 6px inset white;
-	border-radius: 20px;
 }
 td, .KUP {
 	border-radius: 10px;
@@ -19,10 +18,9 @@ td:active, .KDOWN {
 }
 table {
 	color: DarkSlateGray;
-	font-size: 2.4em;
 	font-weight: bold;
 }
-table#numcontainer {font-size: 3em;}
+table#numcontainer {font-weight: bold;}
 td.number, td.operator.dot {background-color: LightGray;}
 table#opcontainer {}
 td.operator.clear {background-color: pink;}

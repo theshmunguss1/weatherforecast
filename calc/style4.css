@@ -11,7 +11,6 @@
 	color: rgba(240, 240, 255, 1);
 	background-color: rgba(255,255,255,0.15);
 	border: 6px inset white;
-	border-radius:10%;
 }
 td {
 	border: 2px outset white;
@@ -22,11 +21,7 @@ td:active, .KDOWN {
 	text-indent: 2px;
 	border: 2px inset white;
 }
-table {
-	font-size: 2.4em;
-	font-weight: bold;
-}
-table#numcontainer {font-size: 3em;}
+table {font-weight: bold;}
 td.number, td.operator.dot {
 	color: rgba(0, 0, 30, .85);
 	background: radial-gradient(circle,rgba(255,255,255,.4) 10%,rgba(255,255,255,0) 80%);
