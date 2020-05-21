@@ -1,0 +1,117 @@
+#header {
+	margin-bottom: 20px;
+	text-decoration: underline;
+	}
+#headerphoto {
+	vertical-align: middle;
+	width: 3.5%;
+	min-width: 30px;
+	max-width: 50px;
+	border: 2px solid white;
+	box-shadow: 0px 0px 5px white;
+	border-radius: 35%;
+	display: inline-block;
+	margin-right: 10px;
+	}
+.QUES {
+	text-align: center;
+	margin-bottom: 10px;
+	}
+#question {
+	width: 95%;
+	max-width: 600px;
+}
+.ASK_AWAY {
+	width: 100%;
+	font-family: arial;
+	text-align: center;
+	outline: none;
+	}
+
+#ques_repeat {
+	font-weight: bold;
+	text-decoration: underline;
+	}
+
+/* REGULAR SCREEN */
+@media screen and (min-width: 491px) {
+	#ques_repeat {font-size: 2em;}
+	#ballcontainer {
+		width: 40vw;
+		max-width: 600px;
+		height: 40vw;
+		max-height: 600px;
+	}
+	#response {
+		font-size: 1.5vw;
+	}
+}
+
+/* PHONES (portrait) */
+@media screen and (max-width: 490px) and (orientation: portrait) {
+	#ques_repeat {font-size: 1.4em;}
+	#ballcontainer {
+		width: 90vw;
+		height: 90vw;
+	}
+	#response {
+		font-size: 3.2vw;
+	}
+}
+
+/* PHONES (landscape) */
+@media screen and (orientation: landscape) and (max-height: 490px) {
+	#ques_repeat {font-size: 1.4em;}
+	#ballcontainer {
+		width: 90vh;
+		height: 90vh;
+	}
+	#response {
+		font-size: 1.9vw;
+	}
+}
+
+#ballcontainer {
+	position: relative;
+	margin: 0 auto;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+#ball {
+	cursor: pointer;
+	position: absolute;
+	top: 50%; left: 50%;
+	transform: translate(-50%,-50%);
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+#response {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top:65%;
+	left:50%;
+	text-shadow:
+		-1px 0px 20px rgba(255,255,255,80%),
+		0px -1px 20px rgba(255,255,255,60%),
+		1px 0px 20px rgba(255,255,255,80%),
+		0px 1px 20px rgba(255,255,255,60%)
+	;
+	transform: translate(-50%,-50%);
+	width: 20%;
+	height: 20%;
+	text-align: center;
+	font-weight: bold;
+	color: white;
+	user-select: none;
+	cursor: pointer;
+	}
+.DESC {
+	margin: 0 auto;
+	color: white;
+	width: 85%;
+	}

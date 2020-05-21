@@ -10,12 +10,12 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="420"
-   height="420"
-   viewBox="0 0 111.125 111.125"
+   width="500"
+   height="500"
+   viewBox="0 0 132.29167 132.29167"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
    sodipodi:docname="8ball.svg">
   <defs
      id="defs2">
@@ -32,7 +32,7 @@
          id="stop1176" />
     </linearGradient>
     <filter
-       style="color-interpolation-filters:sRGB;"
+       style="color-interpolation-filters:sRGB"
        inkscape:label="Feather"
        id="filter1146">
       <feGaussianBlur
@@ -66,7 +66,7 @@
        fy="250.27124"
        r="55.5625"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(-0.40845248,5.353329e-8,0,-0.42792484,114.96217,318.30374)" />
+       gradientTransform="matrix(-0.48625294,6.3730108e-8,0,-0.50943434,136.85972,322.3616)" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -75,9 +75,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="138.89003"
-     inkscape:cy="202.10771"
+     inkscape:zoom="0.7"
+     inkscape:cx="50.568318"
+     inkscape:cy="409.05727"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -86,12 +86,14 @@
      showguides="true"
      inkscape:guide-bbox="true"
      inkscape:snap-page="true"
-     inkscape:snap-global="false"
+     inkscape:snap-global="true"
      inkscape:window-width="1366"
      inkscape:window-height="715"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
-     inkscape:window-maximized="1">
+     inkscape:window-maximized="1"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-nodes="true">
     <sodipodi:guide
        position="0,0"
        orientation="0,420"
@@ -143,41 +145,41 @@
      inkscape:label="MAIN"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-185.87499)"
+     transform="translate(0,-164.70832)"
      style="display:inline">
     <circle
-       style="display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.3812499;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       style="display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.83482146;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
        id="path829"
-       cx="55.5625"
-       cy="241.43748"
-       r="55.5625"
-       inkscape:label="circle_main" />
+       cx="66.145836"
+       cy="230.85416"
+       inkscape:label="circle_main"
+       r="66.145836" />
     <circle
-       r="55.5625"
-       cy="241.43748"
-       cx="55.5625"
+       cy="230.85416"
+       cx="66.145836"
        id="circle1172"
-       style="display:inline;opacity:0.62025314;fill:url(#radialGradient1180);fill-opacity:1;stroke:none;stroke-width:2.3812499;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
-       inkscape:label="circle_gradient" />
+       style="display:inline;opacity:0.62025314;fill:url(#radialGradient1180);fill-opacity:1;stroke:none;stroke-width:2.83482146;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       inkscape:label="circle_gradient"
+       r="66.145836" />
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="BEVELED CIRCLE EDGE"
-     sodipodi:insensitive="true">
+     transform="translate(0,21.166667)">
     <ellipse
-       style="display:inline;opacity:1;fill:none;fill-opacity:1;stroke:#333333;stroke-width:1.05833328;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       style="display:inline;opacity:1;fill:none;fill-opacity:1;stroke:#333333;stroke-width:1.2599206;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
        id="path836"
-       cx="55.5625"
-       cy="72.731293"
-       rx="28.848675"
-       ry="28.848867" />
+       cx="66.145836"
+       cy="65.418205"
+       rx="34.343662"
+       ry="34.343891" />
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer3"
      inkscape:label="TRIANGLE"
-     sodipodi:insensitive="true">
+     transform="translate(0,21.166667)">
     <path
        sodipodi:type="star"
        style="opacity:1;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.97063881;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;filter:url(#filter1146)"
@@ -193,8 +195,7 @@
        inkscape:rounded="0"
        inkscape:randomized="0"
        d="m 55.562505,103.22375 -25.236348,-43.710632 50.472693,-2e-6 z"
-       inkscape:transform-center-y="7.9433246"
-       inkscape:transform-center-x="-5.4632642e-06"
-       transform="matrix(1.0903436,0,0,1.0903509,-5.0197153,-8.0455261)" />
+       inkscape:transform-center-y="9.4563365"
+       transform="matrix(1.298028,0,0,1.2980368,-5.9758521,-30.744673)" />
   </g>
 </svg>

@@ -20,6 +20,19 @@ ongoing_game=false;
 
 newGame.addEventListener("click",sequence);
 
+function preload() {
+	var SND = document.getElementById("snd");
+	var soundlist = [
+		"4peat/snd_ylw.wav",
+		"4peat/snd_red.wav",
+		"4peat/snd_blu.wav",
+		"4peat/snd_orange.wav",
+		"4peat/snd_wrong.wav"
+	];
+	SND.muted = true;
+	for (x=0; x < soundlist.length; x++) {SND.src = soundlist[x];}
+}
+
 function kbcontrol() {
 	//console.log(event.keyCode);
 	if (event.keyCode == 81) {buttonclick(1,"UL_Button");}
@@ -29,6 +42,7 @@ function kbcontrol() {
 }
 
 function sequence(){
+	document.getElementById("snd").muted = false;
 	ongoing_game = true;
 	newGame.removeEventListener("click",sequence);
 	newGame.style.visibility = "hidden";
@@ -57,23 +71,6 @@ function endgame(e){
 }
 
 function highlight(){
-	document.getElementById(n).style.backgroundColor = ULcolor[1];
-	if (v == 1) {
-		document.getElementById(n).style.boxShadow="0px 0px 50px "+ULcolor[1];
-		sound("4peat/snd_ylw.wav");
-	}
-	else if (v == 2) {
-		document.getElementById(n).style.boxShadow="0px 0px 50px "+ULcolor[1];
-		sound("4peat/snd_ylw.wav");
-	}
-	else if (v == 3) {
-		document.getElementById(n).style.boxShadow="0px 0px 50px "+ULcolor[1];
-		sound("4peat/snd_ylw.wav");
-	}
-	else if (v == 4) {
-		document.getElementById(n).style.boxShadow="0px 0px 50px "+ULcolor[1];
-		sound("4peat/snd_ylw.wav");
-	}
 	1==v?(document.getElementById(n).style.backgroundColor=ULcolor[1],document.getElementById(n).style.boxShadow="0px 0px 50px "+ULcolor[1],sound("4peat/snd_ylw.wav")):2==v?(document.getElementById(n).style.backgroundColor=URcolor[1],document.getElementById(n).style.boxShadow="0px 0px 50px "+URcolor[1],sound("4peat/snd_red.wav")):3==v?(document.getElementById(n).style.backgroundColor=LLcolor[1],document.getElementById(n).style.boxShadow="0px 0px 50px "+LLcolor[1],sound("4peat/snd_blu.wav")):(document.getElementById(n).style.backgroundColor=LRcolor[1],document.getElementById(n).style.boxShadow="0px 0px 50px "+LRcolor[1],sound("4peat/snd_orange.wav")),document.getElementById(n).style.border="1px solid gray",document.getElementById(n).style.color=document.getElementById(n).style.backgroundColor,setTimeout(dehighlight,180)
 }
 

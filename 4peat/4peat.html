@@ -1,9 +1,28 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<base href="../">
 		<title>ksgwxfan - 4-Peat: A Pocket-Repeat Clone</title>
+		<meta name="author" content="Kyle Gentry">
+		<meta name="description" content="4Peat: A Pocket-Repeat or Simon clone">
+		<meta name="keywords" content="4Peat, Pocket, Repeat, Simon, Memory, Game">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<style>
+			#header {
+				margin-bottom: 20px;
+				text-decoration: underline;
+				}
+			#headerphoto {
+				vertical-align: middle;
+				width: 3.5%;
+				min-width: 30px;
+				max-width: 50px;
+				border: 2px solid white;
+				box-shadow: 0px 0px 5px white;
+				border-radius: 35%;
+				display: inline-block;
+				margin-right: 10px;
+				}
 			@media screen and (max-width: 490px) {
 				.GAMEEDGE {
 					width: 90vw;
@@ -68,7 +87,10 @@
 			}
 		</style>
 	</head>
-	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue" onKeyDown="kbcontrol()">
+	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue" onLoad="preload()" onKeyDown="kbcontrol()">
+		<h1 id="header">
+			<img id="headerphoto" src="profile.png">4-Peat
+		</h1>
 		<div id="gameborder" class="GAMEEDGE">
 			<div id="gamebox" class="GAME">
 				<div id="title" class="TITLE">4-Peat:<br />a Pocket-Repeat clone<br />By K. Gentry</div>
