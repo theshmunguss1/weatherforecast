@@ -1,40 +1,51 @@
+<!DOCTYPE html>
 <html>
-<head><base target="_top">
-</head>
-<body id="footer" style="background-color:rgba(255,255,255,0);color:white;" link="lightBlue" vlink="lightBlue"><center>
-<a href="https://ksgwxfan.github.io/">HOME</a> &bull; 
-<a href="https://ksgwxfan.github.io/iresume/iresume.html">iR&#233;sume</a> &bull; 
-<a href="https://ksgwxfan.github.io/iresume/digiport.html">Digital Portfolio</a> &bull; 
-<a target="_blank" href="https://github.com/ksgwxfan/ksgwxfan.github.io/issues">Contact (GitHub Login Required)</a> &bull;
-<span id="c_email" style="color:lightblue;user-select:none;" onClick="toggle_email()" title="Click to reveal email"><u>Contact (email)</u></span> &bull;
-<a target="_blank" href="http://echotops.blogspot.com/">Echo Tops Weather Blog</a>
-</center></body>
-<script>
-	var pre1 = "Kyle";
-	var pre3 = "Gentry";
-	var pre2 = "S";
-	var pre5 = ".com";
-	var pre4 = "@outlook";
-	var vis = "hidden";
-	var clks = 0
-	
-	function toggle_email() {
-		clks += 1;
-		if (vis == "hidden") {	// DISPLAYS EMAIL
-			vis = "show";
-			document.getElementById("c_email").innerHTML = pre1 + pre2 + pre3 + pre4 + pre5;
-			document.getElementById("c_email").style = "color:white;font-weight:bold;";
-			document.getElementById("c_email").title = "Highlight and Copy (CTRL+C)";
-		}
-		else {		// DISPLAYS THE NORMAL SETTING
-			if (clks == 3) {
-				vis = "hidden";
-				document.getElementById("c_email").innerHTML = "<u>Contact (email)</u>";
-				document.getElementById("c_email").style = "color:lightblue;user-select:none;";
-				document.getElementById("c_email").title = "Click to reveal email";
-				clks = 0;
+	<head>
+		<base target="_top">
+		<style>
+			#footer {
+				 background-color: transparent;
+				 color: white;
+				 text-align: center;
 			}
-		}
-	}
-</script>
+		</style>
+	</head>
+	<body link="lightBlue" vlink="lightBlue">
+		<div id="footer">
+			<a href="https://ksgwxfan.github.io/">HOME</a> &bull; 
+			<a href="https://ksgwxfan.github.io/iresume/iresume.html">iR&#233;sume</a> &bull; 
+			<a href="https://ksgwxfan.github.io/iresume/digiport.html">Digital Portfolio</a> &bull; 
+			<a target="_blank" href="https://github.com/ksgwxfan/ksgwxfan.github.io/issues">Contact (GitHub Login Required)</a> &bull;
+			<span id="c_email" style="color:lightblue;user-select:none;" onClick="toggle_email()" title="Click to reveal email"><u>Contact (email)</u></span> &bull;
+			<a target="_blank" href="http://echotops.blogspot.com/">Echo Tops Weather Blog</a>
+		</div>
+		<script>
+			var pre1 = "Kyle";
+			var pre3 = "Gentry";
+			var pre2 = "S";
+			var pre5 = ".com";
+			var pre4 = "@outlook";
+			var vis = "hidden";
+			var clks = 0
+			
+			function toggle_email() {
+				clks += 1;
+				if (vis == "hidden") {	// DISPLAYS EMAIL
+					vis = "show";
+					document.getElementById("c_email").innerHTML = pre1 + pre2 + pre3 + pre4 + pre5;
+					document.getElementById("c_email").style = "color:white;font-weight:bold;";
+					document.getElementById("c_email").title = "Highlight and Copy (CTRL+C)";
+				}
+				else {		// DISPLAYS THE NORMAL SETTING
+					if (clks == 3) {
+						vis = "hidden";
+						document.getElementById("c_email").innerHTML = "<u>Contact (email)</u>";
+						document.getElementById("c_email").style = "color:lightblue;user-select:none;";
+						document.getElementById("c_email").title = "Click to reveal email";
+						clks = 0;
+					}
+				}
+			}
+		</script>
+	</body>
 </html>
