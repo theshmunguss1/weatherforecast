@@ -2,7 +2,9 @@
 	<head>
 		<base href="../">
 		<title>ksgwxfan - Media Gallery</title>
+		<link rel="stylesheet" type="text/css" href="photos/gallery.css"></link>
 		<script src="photos/gallery.js"></script>
+		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<style>
 			#header {
 				width: 100%;
@@ -18,120 +20,23 @@
 				border-radius: 35%;
 				display: inline-block;
 				}
-			.TABLE {
-				display: table;
-				table-layout: fixed;
-				margin: 0 auto;
-			}
-			.TABLE.yrselect {
-				margin-bottom: 20px;
-				border-collapse: collapse;
-				width:60%;
-			}
-			:root {
-				--height: calc(6vw);
-			}
-			.TABLE.viewer {
-				width: 70%
-
-			}
-			.ROW {display: table-row;}
-			.CELL {
-				display: table-cell;
-				vertical-align: middle;
-			}
-			.CELL.year {
-				font-family: sans-serif;
-				height: 40px;
-				text-align: center;
-				border: 1px solid white;
-				background-color: transparent;
-				user-select: none;
-			}
-			.CELL.year:hover {
-				background-color: rgba(255,255,255,20%) !important;
-				color: cyan !important;
-			}
-			.CELL.btn {
-				text-align: center;
-				font-size: 5em;
-				background-color: rgb(0,0,50);
-				width: 10%;
-				user-select: none;
-			}
-			.CELL.btn:hover {
-				background-color: rgb(80,80,80);
-				color: yellow;
-			}
-			.CELL.btn.left {
-				border-right: none;
-				border-top-left-radius: 50px;
-				border-bottom-left-radius: 50px;
-				border: 1px solid white;
-			}
-			.CELL.btn.right {
-				border-left: none;
-				border-top-right-radius: 50px;
-				border-bottom-right-radius: 50px;
-				border: 1px solid white;
-			}
-			#photoview {
-				position: relative;
-				background-color: black;
-				margin: 0 auto;
-				border-top: 1px solid white;
-				border-bottom: 1px solid white;
-				width: 80%;
-				padding-top: 60%;
-				user-select: none;
-			}
-			#disp {
-				position: absolute;
-				transform: translate(-50%,-50%);
-				top:50%; left: 50%;
-				width: 100%;
-				height:100%;
-				object-fit: contain;
-			}
-			#disp_vid {
-				position: absolute;
-				transform: translate(-50%,-50%);
-				top:50%; left: 50%;
-				display: none;
-			}
-			#description {
-				display: table-cell;
-				font-family: sans-serif;
-				font-weight: bold;
-				border: 1px solid gray;
-				padding: 20px;
-				vertical-align: middle;
-				text-align: center;
-				}
-			#about {
-				width: 85%;
-				margin: 0 auto;
-				text-align: justify;
-				}
 		</style>
 	</head>
 	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue" onLoad=chooseyear(2020)>
-		<div id="header">
+		<h1 id="header">
 			<img id="headerphoto" src="profile.png"> <u>Media Gallery</u>
-		</div>
+		</h1>
 		<!-- YEAR HEADER -->
-		<div id="yearselect" class="TABLE yrselect">
-			<div class="ROW">
-				<div id="p2012" class="CELL year" onClick=chooseyear(2012)>Past-2012</div>
-				<div id="p2013" class="CELL year" onClick=chooseyear(2013)>2013</div>
-				<div id="p2014" class="CELL year" onClick=chooseyear(2014)>2014</div>
-				<div id="p2015" class="CELL year" onClick=chooseyear(2015)>2015</div>
-				<div id="p2016" class="CELL year" onClick=chooseyear(2016)>2016</div>
-				<div id="p2017" class="CELL year" onClick=chooseyear(2017)>2017</div>
-				<div id="p2018" class="CELL year" onClick=chooseyear(2018)>2018</div>
-				<div id="p2019" class="CELL year" onClick=chooseyear(2019)>2019</div>
-				<div id="p2020" class="CELL year" onClick=chooseyear(2020)>2020</div>
-			</div>
+		<div id="yrselect">
+			<div id="p2012" class="YEAR" onClick=chooseyear(2012)>Past-2012</div>
+			<div id="p2013" class="YEAR" onClick=chooseyear(2013)>2013</div>
+			<div id="p2014" class="YEAR" onClick=chooseyear(2014)>2014</div>
+			<div id="p2015" class="YEAR" onClick=chooseyear(2015)>2015</div>
+			<div id="p2016" class="YEAR" onClick=chooseyear(2016)>2016</div>
+			<div id="p2017" class="YEAR" onClick=chooseyear(2017)>2017</div>
+			<div id="p2018" class="YEAR" onClick=chooseyear(2018)>2018</div>
+			<div id="p2019" class="YEAR" onClick=chooseyear(2019)>2019</div>
+			<div id="p2020" class="YEAR" onClick=chooseyear(2020)>2020</div>
 		</div>
 		<!-- PHOTO VIEWER -->
 		<div class="TABLE viewer">
@@ -147,11 +52,7 @@
 			</div>
 		</div>
 		<!-- PHOTO/VIDEO DESCRIPTION -->
-		<div class="TABLE" style="width:75%;min-height:50px;margin-top:20px;margin-bottom:100px;">
-			<div class="ROW">
-				<div id="description">...Please Wait</div>
-			</div>
-		</div>
+		<div id="description">...Please Wait</div>
 		<!-- ABOUT THIS PAGE -->
 		<div id="about">
 			<p>Thanks for visiting my media gallery. It is a work in progress. The reason I created this was two-fold: One, I'm trying to use social media much less; Two, I'm self-concious about whether something would 'fit-in' on social-media. So here, I don't really have to worry about that.</p>
