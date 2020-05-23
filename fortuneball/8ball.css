@@ -87,6 +87,16 @@
 	height: 100%;
 	object-fit: contain;
 }
+#triangle {
+	cursor: pointer;
+	position: absolute;
+	top: 68%; left: 50%;
+	transform: translate(-50%,-50%);
+	width:47%;
+	height:47%;
+	object-fit: contain;
+	opacity: 0%;
+}
 
 #response {
 	position: absolute;
@@ -106,7 +116,7 @@
 	height: 20%;
 	text-align: center;
 	font-weight: bold;
-	color: white;
+	color: rgba(255,255,255,65%);
 	user-select: none;
 	cursor: pointer;
 	}

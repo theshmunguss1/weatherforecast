@@ -22,12 +22,13 @@
 		<div class="ASK_AWAY">
 			<div id="ques_repeat"> ? </div>
 			<div id="ballcontainer">
-				<img id="ball" alt="image of fortune-telling pool ball" title="Click / Tap to Shake!" src="fortuneball/8ball.svg" onclick='ask(document.getElementById("question").value)'>
+				<img id="ball" src="fortuneball/8ball.svg" onclick='ask(document.getElementById("question").value)'>
+				<img id="triangle" src="fortuneball/triangle_answer.svg" onclick='ask(document.getElementById("question").value)'>
 				<div id="response" onclick='ask(document.getElementById("question").value)'></div>
 			</div>
 		</div>
 		<div id="description" class="DESC">
-			<p>This was my first Javascript/CSS project. As such, the timing functions confused me for a bit, but was a good learning experience.</p>
+			<p>Just tap or click the ball to shake! This was my first Javascript/CSS project. As such, the timing functions confused me for a bit, but was a good learning experience.</p>
 			<p>* Disclaimer of Use: Feel free to use as you wish (attribution is appreciated but not required)! No copyright infringement of the owners of the Magic 8-ball is intended.</p>
 		</div>
 		<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
@@ -57,49 +58,57 @@
 			"Seems<br />Probable"];
 
 			var repeat = document.getElementById("ques_repeat");
+			var triangle = document.getElementById("triangle");
 			var answer = document.getElementById("response");
 			var b = document.getElementById("ball");
 			var answerO = 0;
+			var alreadyAsked = false;
 
 			function ask(text) {
-				answer.innerHTML = "";
-				answerO = 0;
-				answer.style.opacity = `${answerO}%`;
-				var time = 100;
-				if (text.substr(text.length-1) != "?") {text = text + "?";}
-				repeat.innerHTML = text;
-				setTimeout(shakeleft,time);
-				setTimeout(shakeright,time*2);
-				setTimeout(shakeleft,time*3);
-				setTimeout(shakeright,time*4);
-				setTimeout(shakeleft,time*5);
-				setTimeout(shakeright,time*6);
-				setTimeout(shakeleft,time*7);
-				setTimeout(shakeright,time*8);
-				setTimeout(shakeleft,time*9);
-				setTimeout(shakeright,time*10);
-				setTimeout(display,time*10);
+				if (alreadyAsked == false) {
+					alreadyAsked = true;
+					answer.innerHTML = "";
+					answerO = 0;
+					answer.style.opacity = `${answerO}%`;
+					triangle.style.opacity = `${answerO}%`;
+					var time = 100;
+					if (text.substr(text.length-1) != "?") {text = text + "?";}
+					repeat.innerHTML = text;
+					setTimeout(shakeleft,time);
+					setTimeout(shakeright,time*2);
+					setTimeout(shakeleft,time*3);
+					setTimeout(shakeright,time*4);
+					setTimeout(shakeleft,time*5);
+					setTimeout(shakeright,time*6);
+					setTimeout(shakeleft,time*7);
+					setTimeout(shakeright,time*8);
+					setTimeout(shakeleft,time*9);
+					setTimeout(shakeright,time*10);
+					setTimeout(display,time*10);
 				}
+			}
 			function shakeleft() {
 				b.style.left = "45%";
 				return 0;
-				}
+			}
 
 			function shakeright() {
 				b.style.left = "55%";
 				return 0;
-				}
+			}
 			function display() {
 				var x = Math.floor(Math.random() * responses.length);
 				b.style.left = "50%";
 				answer.innerHTML = responses[x];	<!-- Displays random response -->
-				rvlanswer = setInterval(reveal,60);
-				}
+				rvlanswer = setInterval(reveal,80);
+			}
 			function reveal() {
 				answerO += 10;
+				triangle.style.opacity = `${answerO}%`;
 				answer.style.opacity = `${answerO}%`;
 				if (answerO == 100) {
 					clearInterval(rvlanswer);
+					alreadyAsked = false;
 				}
 			}
 		</script>

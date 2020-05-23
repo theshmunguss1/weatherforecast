@@ -76,10 +76,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="50.568318"
-     inkscape:cy="409.05727"
+     inkscape:cx="-20.714286"
+     inkscape:cy="123.34298"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer3"
      showgrid="false"
      units="px"
      inkscape:lockguides="true"
@@ -137,7 +137,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -182,8 +182,8 @@
      transform="translate(0,21.166667)">
     <path
        sodipodi:type="star"
-       style="opacity:1;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.97063881;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;filter:url(#filter1146)"
-       id="path841"
+       style="display:none;opacity:1;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.97063881;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;filter:url(#filter1146)"
+       id="triangle"
        sodipodi:sides="3"
        sodipodi:cx="55.562504"
        sodipodi:cy="74.083328"
@@ -196,6 +196,7 @@
        inkscape:randomized="0"
        d="m 55.562505,103.22375 -25.236348,-43.710632 50.472693,-2e-6 z"
        inkscape:transform-center-y="9.4563365"
-       transform="matrix(1.298028,0,0,1.2980368,-5.9758521,-30.744673)" />
+       transform="matrix(1.298028,0,0,1.2980368,-5.9758521,-30.744673)"
+       inkscape:label="triangle" />
   </g>
 </svg>
