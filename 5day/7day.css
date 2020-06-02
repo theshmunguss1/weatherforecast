@@ -42,6 +42,31 @@ hr {
 	outline: none;
 }
 
+/* Computers */
+@media not screen and (min-width: 491px) {
+	.MAIN {
+		width: 98vw;
+		height: calc(98vw / 2);
+	}
+	.DAYNAME {font-size: 3.8vw;}
+	.PERC {font-size: 2.5vw;}
+	.HI {font-size: 8vw;}
+	.LO {font-size: 2.5vw;}
+	.UVIcell {font-size: 0.7vw;}
+	.UVIcell.footer {font-size: 1.4vw;}
+	.UVIcell.marker {font-size: 1.2vw;}
+	.TITLE {font-size: 3.4vw;}
+	.desctext {font-size: 3vw;}
+}
+
+/* Phones - Landscape */
+@media screen and (max-height: 490px) {
+	
+}
+/* Phones - Portrait */
+@media screen and (max-width: 490px) {
+	
+}
 
 .MAIN {
 	table-layout: fixed;
@@ -126,7 +151,7 @@ hr {
 	width: 100%;
 	height: 50%;
 }
-.SKYcycle:hover {
+.SKYcycle:active {
 	color: rgba(0,0,0,20%);
 	background-color: rgba(255,255,255,35%);
 }
@@ -150,7 +175,7 @@ hr {
 	width: 50%;
 	height: 100%;
 }
-.DESCcycle:hover {
+.DESCcycle:active {
 	color: rgba(0,0,0,20%);
 	background-color: rgba(255,255,255,35%);
 }
@@ -187,7 +212,7 @@ hr {
 	border:none;
 	color: white;
 }
-.UVIcell.marker:hover {border:1px solid red;}
+.UVIcell.marker:active {border:1px solid red;}
 .UVIcell.low {background-color: green;}
 .UVIcell.mod {background-color: yellow;}
 .UVIcell.high {background-color: orange;}
