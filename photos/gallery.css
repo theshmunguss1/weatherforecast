@@ -55,7 +55,7 @@
 	user-select: none;
 	min-width: 60px;
 }
-.YEAR:hover {
+.YEAR:active {
 	background-color: rgba(255,255,255,20%) !important;
 	color: cyan !important;
 }
@@ -65,7 +65,7 @@
 	width: 10%;
 	user-select: none;
 }
-.CELL.btn:hover {
+.CELL.btn:active {
 	background-color: rgb(80,80,80);
 	color: yellow;
 }
