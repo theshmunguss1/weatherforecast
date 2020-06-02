@@ -85,9 +85,10 @@
 				text-align: justify;
 				margin: auto;
 			}
+			audio {display: none;}
 		</style>
 	</head>
-	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue" onLoad="preload()" onKeyDown="kbcontrol()">
+	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue" onKeyDown="kbcontrol()">
 		<h1 id="header">
 			<img id="headerphoto" src="profile.png">4-Peat
 		</h1>
@@ -103,6 +104,21 @@
 		<div id="STATS" style="width:100%;margin:auto;text-align:center;"><br><br>
 		<!-- Used https://www.elated.com/articles/html5-audio/ as a guide to get my sound working for the buttons -->
 			<audio id="snd" autoplay>
+				<source src="4peat/snd_wrong.wav">
+			</audio>
+			<audio id="preloadsnd1" preload="auto">
+				<source src="4peat/snd_blu.wav">
+			</audio>
+			<audio id="preloadsnd2" preload="auto">
+				<source src="4peat/snd_orange.wav">
+			</audio>
+			<audio id="preloadsnd3" preload="auto">
+				<source src="4peat/snd_red.wav">
+			</audio>
+			<audio id="preloadsnd4" preload="auto">
+				<source src="4peat/snd_ylw.wav">
+			</audio>
+			<audio id="preloadsndw" preload="auto">
 				<source src="4peat/snd_wrong.wav">
 			</audio>
 			<button id="start">New Game</button><br />

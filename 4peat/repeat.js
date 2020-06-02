@@ -20,19 +20,6 @@ ongoing_game=false;
 
 newGame.addEventListener("click",sequence);
 
-function preload() {
-	var SND = document.getElementById("snd");
-	var soundlist = [
-		"4peat/snd_ylw.wav",
-		"4peat/snd_red.wav",
-		"4peat/snd_blu.wav",
-		"4peat/snd_orange.wav",
-		"4peat/snd_wrong.wav"
-	];
-	SND.muted = true;
-	for (x=0; x < soundlist.length; x++) {SND.src = soundlist[x];}
-}
-
 function kbcontrol() {
 	//console.log(event.keyCode);
 	if (event.keyCode == 81) {buttonclick(1,"UL_Button");}
