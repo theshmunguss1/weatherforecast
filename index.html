@@ -18,10 +18,27 @@
 				box-shadow: 0px 0px 15px white;
 				border-radius: 35%;
 				}
+			h1 {text-align:center; text-decoration: underline;}
+			/* Regular Computers */
+			@media screen and (min-width: 491px) {
+				.PRJLINX {font-size: 150%;}
+			}
+			/* Phones - Landscape */
+			@media screen and (max-height: 490px) {
+				.PRJLINX {font-size: 120%;}
+			}
+			/* Phones - Portrait */
+			@media screen and (max-width: 490px) {
+				.PRJLINX {font-size: 120%;}
+			}
+			hr {width:85%;}
 			.PRJLINX {
-				font-size: 26px;
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				flex-wrap: wrap;
 				font-weight: bold;
-				margin: auto;
+				margin: 0 auto;
 				width: 85%;
 				text-align: center;
 				}
@@ -31,9 +48,10 @@
 				text-align: justify;
 				}
 			.smalltext {
-				font-size: 0.6em;
+				font-size: 65%;
 				color: grey;
 			}
+			.program {width: 50%; margin: 10px auto;}
 			iframe {
 				display: flex;
 				flex-wrap: wrap;
@@ -41,86 +59,54 @@
 				width: 100%;
 			}
 		</style>
+		<meta name="viewport" content="width=device-width,initial-scale=1">
 	</head>
 	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue">
 		<h1 class="HEADER">
 			<img class="HEADERPHOTO" src="profile.png"> ksgWXfan's Project Page
 		</h1>
 		<div id="statement" CLASS="TXTBLK">
-			<p>Thanks for stopping by. Herein you'll find a collection of various projects of mine. Many are HTML5/Javascript/CSS related or meteorology-related.</p>
+			<p>Thanks for stopping by. Herein you'll find my creative outlet, primarily for trying out html/js/css stuff, but also for weather-related projects.</p>
 			<p>Feel free to email me or leave a comment through my GitHub repo. Also check out my weather blog (links at bottom).</p>
 			</p>Please respect my external use disclaimers. You'll find that most projects I have I'm cool with you to use with some sort of attribution. A few are less strict than that; a few, more. If there is a method/small snippet that's just a few lines that helps you on your own project, go ahead and use it w/o attribution. A big part of my learning has been similar: searching how to do stuff.</p>
 			<p>This site is dedicated to my beloved dad; my papa, Geoff.</p><!-- I LOVE YOU AND MISS YOU SO MUCH, DADDY! -->
-		</div><br />
-		<div class="PRJLINX" style="margin-top:10px;margin-bottom:25px;">
+		</div>
+		<div class="PRJLINX" style="display:block;margin:0 auto;margin-top:10px;margin-bottom:25px;">
 			&bull; <a href="photos/gallery.html">Media Gallery</a>	
 		</div>
-		<hr color="404040" style="width:85%;">
+		<hr />
+		<h1>Weather-Related</h1>
 		<div class="PRJLINX">
-			Weather Related
-			<table style="width:90%;" align="center">
-		   		<tr>
-					<td style="width: 50%; height: 60px;">&bull; <a href="5day/forecast.html">5 or 7-Day Forecast Generator</a> <span class="smalltext">(html/css/js)</span></td>
-			   	</tr>
-				<tr>
-					<td style="width: 50%; height: 60px;">&bull; <a href="mae/Mesoanalysis_Archive_Explorer.html">Mesoanalysis Archive Explorer</a> <span class="smalltext">(html/css/js)</span></td>
-				</tr>
-				<tr>
-					<td style="width: 50%; height: 60px;">&bull; <a href="https://github.com/ksgwxfan/climate-parser">Climate Parser</a>  <span class="smalltext">(Python)</span><br />
-						<span style="font-size:0.65em"><a href="https://echotops.blogspot.com/2019/11/script-release-climate-parser.html">Blog Post</a>; see readme.md on the GitHub repository</span>
-					</td>
-				</tr>
-				<tr>
-					<td style="width: 50%; height: 60px;">&bull; <a href="https://github.com/ksgwxfan/hurdat2parser">HURDAT2 Parser</a>  <span class="smalltext">(Python)</span><br />
-						<span style="font-size:0.65em"><a href="https://echotops.blogspot.com/2019/11/script-release-hurdat2parser.html">Blog Post</a>; see readme.md on the GitHub repository</span>
-					</td>
-				</tr>
-				<tr>
-					<td style="width: 50%; height: 60px;">&bull; <a href="PYTHON/wctfavs.html">Radar WCTFAV Files</a>  <span class="smalltext">(python/wctfavs)</span></td>
-				</tr>
-				<tr>
-					<td style="width: 50%; height: 60px;">&bull; <a href="PYTHON/RMDaV.html">Recent Mesoanalysis Downloader and Viewer (RMDaV)</a>  <span class="smalltext">(python/html/hanis)</span></td>
-				</tr>
-				<tr>
-					<td style="width: 50%; height: 60px;">&bull; <a href="misc/misc_radar.html">Embeddable Radar Imagery - HAniS</a> <span class="smalltext">(html/hanis)</span></td>
-				</tr>
-				<tr>
-					<td style="width: 50%; height: 60px;">&bull; <a href="misc/wapradar.html">Simple Radar Imagery (Mobile in Mind)</a>  <span class="smalltext">(html/css/js)</span></td>
-				</tr>
-			</table>
+			<div class="program">&bull; <a href="5day/forecast.html">5 or 7-Day Forecast Generator</a><br /><span class="smalltext">(html/css/js) (not phone friendly)</span></div>
+			<div class="program">&bull; <a href="mae/Mesoanalysis_Archive_Explorer.html">Mesoanalysis Archive Explorer</a><br /><span class="smalltext">(html/css/js) (not phone friendly)</span></div>
+			<div class="program">&bull; <a href="https://github.com/ksgwxfan/climate-parser">Climate Parser</a><br /><span class="smalltext">(Python)</span><br />
+				<span style="font-size:0.65em"><a href="https://echotops.blogspot.com/2019/11/script-release-climate-parser.html">Blog Post</a>; see readme.md on the GitHub repository</span></div>
+			<div class="program">&bull; <a href="https://github.com/ksgwxfan/hurdat2parser">HURDAT2 Parser</a><br /><span class="smalltext">(Python)</span><br />
+				<span style="font-size:0.65em"><a href="https://echotops.blogspot.com/2019/11/script-release-hurdat2parser.html">Blog Post</a>; see readme.md on the GitHub repository</span></div>
+			<div class="program">&bull; <a href="PYTHON/wctfavs.html">Radar WCTFAV Files</a><br /><span class="smalltext">(python/wctfavs)</span></div>
+			<div class="program">&bull; <a href="PYTHON/RMDaV.html">Recent Mesoanalysis Downloader and Viewer (RMDaV)</a><br /><span class="smalltext">(python/html/hanis)</span></div>
+			<div class="program">&bull; <a href="misc/misc_radar.html">Embeddable Radar Imagery - HAniS</a><br /><span class="smalltext">(html/hanis)</span></div>
+			<div class="program">&bull; <a href="misc/wapradar.html">Simple Radar Imagery (Mobile in Mind)</a><br /><span class="smalltext">(html/css/js) (not phone friendly)</span></div>
 		</div>
-		<hr color="404040" style="width:85%;">
+		<hr />
+		<h1>HTML / Javascript / CSS Projects</h1>
 		<div class="PRJLINX">
-			HTML / Javascript / CSS Projects<br /><br />
-			<table style="width:90%;" align="center">
-		   		<tr>
-					<td style="width: 50%; height: 60px;">&bull; <a href="calc/calc.html">Basic Calculator</a></td>
-					<td style="width: 50%; height: 60px;">&bull; <a href="bballshotchart/bballshotchart.html">Basketball Shot Chart Maker</a></td>
-			   	</tr>
-			   	<tr>
-					<td style="width: 50%; height: 60px;">&bull; <a href="4peat/4peat.html">4-Peat Memory Game</a></td>
-					<td style="width: 50%; height: 60px;">&bull; <a href="minesweep/minesweep.html">MineSweep (minesweeper)</a></td>
-			   	</tr>
-			   	<tr>
-			   		<td style="width: 50%; height: 60px;">&bull; <a href="dice/dice.html">Dice Simulator</a></td>
-			   		<td style="width: 50%; height: 60px;">&bull; <a href="geometry/octagon.html">Geometry - Octagon Calculator</a></td>
-		   		</tr>
-			   	<tr>
-			   		<td style="width: 50%; height: 60px;">&bull; <a href="match/matchinggame.html">Matching Game</a></td>
-			   		<td style="width: 50%; height: 60px;">&bull; <a href="fortuneball/8ball.html">Fortune-Telling Pool Ball</a></td>
-		   		</tr>
-			   	<tr>
-			   		<td style="width: 50%; height: 60px;">&bull; <a href="sectorthermalscan/sectorscan.html">Sector Thermal Scan Game</a></td>
-		   		</tr>
-   			</table>
+			<div class="program">&bull; <a href="calc/calc.html">Basic Calculator</a></div>
+			<div class="program">&bull; <a href="bballshotchart/bballshotchart.html">Basketball Shot Chart Maker</a><br /><span class="smalltext">(not phone friendly)</span></div>
+			<div class="program">&bull; <a href="4peat/4peat.html">4-Peat Memory Game</a></div>
+			<div class="program">&bull; <a href="minesweep/minesweep.html">MineSweep (minesweeper)</a></div>
+			<div class="program">&bull; <a href="dice/dice.html">Dice Simulator</a></div>
+			<div class="program">&bull; <a href="geometry/octagon.html">Geometry - Octagon Calculator</a><br /><span class="smalltext">(not phone friendly)</span></div>
+			<div class="program">&bull; <a href="match/matchinggame.html">Matching Game</a><br /><span class="smalltext">(not phone friendly)</span></div>
+			<div class="program">&bull; <a href="fortuneball/8ball.html">Fortune-Telling Pool Ball</a></div>
+			<div class="program">&bull; <a href="sectorthermalscan/sectorscan.html">Sector Thermal Scan Game</a><br /><span class="smalltext">(not phone friendly)</span></div>
 		</div>
-		<hr color="404040" style="width:85%;">
+		<hr />
+		<h1>Other</h1>
 		<div class="PRJLINX">
-			Other<br /><br />
-			&bull; <a href="misc/misc.html">Miscellaneous Scripts</a><br /><br />
+			<div class="program">&bull; <a href="misc/misc.html">Miscellaneous Scripts</a></div>
 		</div>
-		<hr color="404040" style="width:80%;">
-		<br />
-		<iframe src="footer.html" target="_top"></iframe>
+		<hr />
+		<iframe src="footer.html"></iframe>
 	</body>
 </html>
