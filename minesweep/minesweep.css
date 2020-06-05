@@ -1,0 +1,83 @@
+:root {--cell_dim: 10;}
+
+/* Regular screens */
+@media only screen and (min-width: 491px) {
+	:root {--game_dim: 45vw;}
+	#gamecontainer {border: 8px solid gray;}
+	.SQUARES {font-size: 2.1vw;}
+}
+/* Phones - Landscape */
+@media only screen and (max-height: 490px) and (orientation: landscape) {
+	:root {--game_dim: 90vh;}
+	#gamecontainer {border: 4px solid gray;}
+	.SQUARES {font-size: 4vh;}
+}
+/* Phones - Portrait */
+@media only screen and (max-width: 490px) and (orientation: portrait) {
+	:root {--game_dim: 94vw;}
+	#gamecontainer {border: 4px solid gray;}
+	.SQUARES {font-size: 4vw;}
+}
+
+#gamecontainer {
+	position: relative;
+	font-family: sans-serif;
+	width: var(--game_dim);
+	height: var(--game_dim);
+	margin: 0 auto;
+}
+#gameboard {
+	display: table;
+	table-layout: fixed;
+	border-collapse: collapse;
+	width: 100%;
+	height: 100%;
+	background-color: white;
+}
+#gameoptions {
+	margin: 10px auto;
+	font-family: sans-serif;
+	text-align: center;
+}
+#minesleft {color:yellow;font-weight:bold;}
+.ROW {display: table-row;}
+.SQUARES {
+	display: table-cell;
+	line-height: 0%;
+	background-color: lightgray;
+	outline: 2px solid gray;
+	vertical-align: middle;
+	color: black;
+	text-align: center;
+	font-weight: bold;
+	user-select: none;
+}
+.ENDMSG {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	background-color: rgba(255,255,255,60%);
+	color: red;
+	font-weight: bold;
+	font-size: 600%;
+	visibility: hidden;
+	user-select: none;
+}
+#gridselect {
+	margin-top: 10px;
+}
+.ctrlinstr {
+	font-weight: bold;
+	color: lightgreen;
+	text-decoration: underline;
+}
+#description {
+	 margin: 0 auto;
+	 width:85%;
+}
