@@ -1,0 +1,281 @@
+.HEADER {
+	width: 100%;
+	font-weight: bold;
+	font-size: 30px;
+	display: inline-block;
+}
+.HEADERPHOTO {
+	width: 3%;
+	border: 2px solid white;
+	box-shadow: 0px 0px 5px white;
+	border-radius: 35%;
+	display: inline-block;
+}
+/* Regular Computers*/
+@media screen and (min-width: 491px) and (min-height: 491px) {
+	#gamecontainer {
+		width: 40vw;
+		height: 40vw;
+	}
+	#start > div {font-size: 4vw;}
+	#start > p {font-size: 2vw;}
+	.card.gs4 {font-size: 6.4vw;}
+	.card.gs6 {font-size: 5.2vw;}
+	.card.gs8 {font-size: 3.6vw;}
+}
+/* Regular Computers and Landscape Phones*/
+@media screen and (min-width: 491px) {
+	#board {border-spacing: 1vw;}
+	button {
+		font-size: 3vw;
+		height: 4vw;
+	}
+}
+/* Phones - Landscape */
+@media screen and (max-height: 490px) {
+	#gamecontainer {
+		width: 98vh;
+		height: 98vh;
+	}
+	#start > div {font-size: 5vw;}
+	#start > p {font-size: 3vw;}
+	.card.gs4 {font-size: 9vw;}
+	.card.gs6 {font-size: 5.8vw;}
+	.card.gs8 {font-size: 3.5vw;}
+}
+/* Phones - Portrait */
+@media screen and (max-width: 490px) {
+	#gamecontainer {
+		width: 96vw;
+		height: 96vw;
+	}
+	#board {border-spacing: 1.2vw;}
+	#start > div {font-size: 8vw;}
+	#start > p {font-size: 6vw;}
+	button {
+		font-size: 10vw;
+		height: 12vw;
+	}
+	.card.gs4 {font-size: 16vw;}
+	.card.gs6 {font-size: 10vw;}
+	.card.gs8 {font-size: 6vw;}
+}
+#gamecontainer {
+	position: relative;
+	margin: 0 auto;
+}
+#board {
+	display: table;
+	table-layout: fixed;
+	border-collapse: separate;
+	width: 100%;
+	height: 100%;
+}
+.bg01 {background: repeating-linear-gradient(45deg, lightblue 0% 2%, white 2.1% 4%, yellow 4.1% 6%, white 6.1% 8%);}
+.bg01pre {background: repeating-linear-gradient(45deg, lightblue 0% 6%, white 6.1% 12.1%, yellow 12.2% 18.2%, white 18.3% 24.3%);}
+.bg02 {background: repeating-radial-gradient(circle at 40% 40%,red 0% 4%, white 4.1% 8.1%, navy 8.2% 12.2%, white 12.3% 16.3%);}
+.bg02pre {background: repeating-radial-gradient(circle,red 0% 10%, white 10.1% 20.1%, navy 20.2% 30.2%, white 30.3% 40.3%);}
+.bg03 {background: repeating-linear-gradient(45deg, MidnightBlue 0% 2%, CornflowerBlue 2.1% 4%, Navy 4.1% 6%, LightBlue 6.1% 8%);}
+.bg03pre {background: repeating-linear-gradient(45deg, MidnightBlue 0% 6%, CornflowerBlue 6.1% 12.1%, Navy 12.2% 18.2%, LightBlue 18.3% 24.3%);}
+.bg04 {background: repeating-linear-gradient(45deg, red 0% 2%, orange 2.1% 4%, yellow 4.1% 6%, green 6.1% 8%, blue 8.1% 10%, indigo 10.1% 12%, violet 12.1% 14%, white 14.1% 16%);}
+.bg04pre {background: repeating-linear-gradient(45deg, red 0% 5%, orange 5.1% 10.1%, yellow 10.2% 15.2%, green 15.3% 20.3%, blue 20.4% 25.4%, indigo 25.5% 30.5%, violet 30.6% 35.6%, white 35.7% 40.7%);}
+.MSG {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	top: 0; left: 0;
+	width: 100%;
+	font-weight: bold;
+	font-family: sans-serif;
+	height: 100%;
+	visibility: hidden;
+	user-select: none;
+}
+button {
+	font-weight: bold;
+	outline: none;
+}
+
+@keyframes correct_animation {
+	0%		{opacity: 100%;}
+	99%	{opacity: 1%;}
+}
+/* OPENING TEXT */
+#start {
+	background: rgba(255,255,255,70%);
+	text-align: center;
+	color: black;
+	visibility: visible;
+}
+#start > div {
+	width: 80%;
+	margin-bottom: 5%;
+}
+/* CORRECT GUESS */
+#right {
+	/*animation: correct_animation 0.6s;*/
+	opacity: 50%;
+	background:
+		linear-gradient(to right, green 0% 2%, transparent 5.1%),
+		linear-gradient(to top, green 0% 2%, transparent 5.1%),
+		linear-gradient(to left, green 0% 2%, transparent 5.1%),
+		linear-gradient(to bottom, green 0% 2%, transparent 5.1%);
+}
+
+/* WRONG GUESS */
+#wrong {
+	opacity: 50%;
+	background:
+		linear-gradient(to right, red 0% 2%, transparent 2.1%),
+		linear-gradient(to top, red 0% 2%, transparent 2.1%),
+		linear-gradient(to left, red 0% 2%, transparent 2.1%),
+		linear-gradient(to bottom, red 0% 2%, transparent 2.1%),
+		linear-gradient(45deg, transparent 0% 48.4%, red 48.5% 51.5%, transparent 51.6%),
+		linear-gradient(135deg, transparent 0% 48.4%, red 48.5% 51.5%, transparent 51.6%);
+}
+.ROW {display: table-row;}
+.card {
+	display: table-cell;
+	line-height: 0%;
+	text-align: center;
+	vertical-align: middle;
+	user-select: none;
+	border: 0.2vw solid white;
+	border-radius: 10% 10%;
+}
+.card.hide {
+	background: red;
+	background-image:
+		repeating-linear-gradient(45deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%),
+		repeating-linear-gradient(135deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%);
+	color: transparent;
+	border-color: white;
+}
+.card.reveal {
+	background: white;
+	opacity: 90%;
+	color: black;
+	border-color: gray;
+}
+#endgame {
+	background: rgba(255,255,255,85%);
+	font-size: 2em;
+	color: black;
+}
+.endtext {
+	color: blue;
+	font-weight: bold;
+}
+#bgchooser {
+	display: table;
+	margin: 0 auto;
+	margin-top: 10px;
+	width: 80%;
+	height: 50px;
+}
+#cardbgchooser {
+	display: table;
+	margin: 0 auto;
+	margin-top: 10px;
+	width: 80%;
+	height: 50px;
+}
+.CELL {display: table-cell;}
+
+.OPTIONSCREEN {
+	display: table-cell;
+	vertical-align: middle;
+	color: black;
+	font-weight: bold;
+	font-size: 2em;
+	padding-left: 5%;
+	padding-right: 5%;
+	background-color: rgba(255,255,255,90%);
+	text-align: center;"
+	-webkit-user-select: none; /* Safari 3.1+ */
+	-moz-user-select: none; /* Firefox 2+ */
+	-ms-user-select: none; /* IE 10+ */
+	user-select: none; /* Standard syntax */
+}
+.END {
+	display: none;
+}
+.BOARD {
+	position: relative;
+	background: repeating-linear-gradient(to top right, lightblue 0% 2%, white 2.1% 4%, yellow 4.1% 6%, white 6.1% 8%);
+	margin: auto;
+	width: 40vw;
+	height: 40vw;
+	border: 2px solid white;
+}
+.CARDBACK {
+	position: absolute;
+	background: red;
+	background-image: repeating-linear-gradient(to top right, rgba(255,255,255,60%) 5%, rgba(255,255,255,0%) 6% 8%, rgba(255,255,255,60%) 10%),
+					  repeating-linear-gradient(to top left, rgba(255,255,255,60%) 5%, rgba(255,255,255,0%) 6% 8%, rgba(255,255,255,60%) 10%);
+	border: 3px solid white;
+	width: 21%;
+	height: 21%;
+	transform: translate(-50%,-50%);
+}
+.CLIPART {
+	position: absolute;
+	border: 3px solid black;
+	background-color: rgba(255,255,255,90%);
+	text-align: center;
+	font-size: 4em;
+	color: black;
+	width: 21%;
+	height: 21%;
+	transform: translate(-50%,-50%);
+	-webkit-user-select: none; /* Safari 3.1+ */
+	-moz-user-select: none; /* Firefox 2+ */
+	-ms-user-select: none; /* IE 10+ */
+	user-select: none; /* Standard syntax */
+}
+.WRONGGUESS {
+	--clear: rgba(255,255,255,.01%);
+	--red: rgba(255,0,0,50%);
+	display:none;
+	position:absolute;
+	top:0%;
+	left:0%;
+	width:100%;
+	height:100%;
+	background:linear-gradient(to top right, var(--clear) 0% 48%, var(--red) 48% 52%, var(--clear) 52% 100%), 
+			   linear-gradient(to top left, var(--clear) 0% 48%, var(--red) 48% 52%, var(--clear) 52% 100%);
+}
+.GOODGUESS {
+	position:absolute;
+	display: none;
+	transform: translate(-50%,-50%);
+	background: linear-gradient(to right, green 0% 2%, rgba(255,255,255,0) 2%),
+				linear-gradient(to top, green 0% 2%, rgba(255,255,255,0) 2%),
+				linear-gradient(to left, green 0% 2%, rgba(255,255,255,0) 2%),
+				linear-gradient(to bottom, green 0% 2%, rgba(255,255,255,0) 2%);
+	top:50%;
+	left:50%;
+	width:99%;
+	height:99%;
+}
+.tableframe {
+	display:table;
+	border-collapse: collapse;
+	width:560px;
+	height:30px;
+	margin:auto;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.col {
+	border: 1px solid gray;
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	user-select: none;
+}
+.row {
+	display: table-row;
+}
