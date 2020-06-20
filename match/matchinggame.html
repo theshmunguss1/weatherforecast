@@ -15,28 +15,28 @@
 		<div id="gamecontainer">
 			<div id="board" class="bg01">
                 <div class="ROW">
-                    <div id="c00_00" class="card gs4 hide" onClick="reveal(this.id)"></div>
-                    <div id="c00_01" class="card gs4 hide" onClick="reveal(this.id)"></div>
-                    <div id="c00_02" class="card gs4 hide" onClick="reveal(this.id)"></div>
-                    <div id="c00_03" class="card gs4 hide" onClick="reveal(this.id)"></div>
+                    <div id="c00_00" class="card gs4 hide red" onClick="reveal(this.id)"></div>
+                    <div id="c00_01" class="card gs4 hide red" onClick="reveal(this.id)"></div>
+                    <div id="c00_02" class="card gs4 hide red" onClick="reveal(this.id)"></div>
+                    <div id="c00_03" class="card gs4 hide red" onClick="reveal(this.id)"></div>
                 </div>
                 <div class="ROW">
-                    <div id="c01_00" class="card gs4 hide" onClick="reveal(this.id)"></div>
-                    <div id="c01_01" class="card gs4 hide" onClick="reveal(this.id)"></div>
-                    <div id="c01_02" class="card gs4 hide" onClick="reveal(this.id)"></div>
-                    <div id="c01_03" class="card gs4 hide" onClick="reveal(this.id)"></div>
+                    <div id="c01_00" class="card gs4 hide red" onClick="reveal(this.id)"></div>
+                    <div id="c01_01" class="card gs4 hide red" onClick="reveal(this.id)"></div>
+                    <div id="c01_02" class="card gs4 hide red" onClick="reveal(this.id)"></div>
+                    <div id="c01_03" class="card gs4 hide red" onClick="reveal(this.id)"></div>
                 </div>
                 <div class="ROW">
-                    <div id="c02_00" class="card gs4 hide" onClick="reveal(this.id)"></div>
-                    <div id="c02_01" class="card gs4 hide" onClick="reveal(this.id)"></div>
-                    <div id="c02_02" class="card gs4 hide" onClick="reveal(this.id)"></div>
-                    <div id="c02_03" class="card gs4 hide" onClick="reveal(this.id)"></div>
+                    <div id="c02_00" class="card gs4 hide red" onClick="reveal(this.id)"></div>
+                    <div id="c02_01" class="card gs4 hide red" onClick="reveal(this.id)"></div>
+                    <div id="c02_02" class="card gs4 hide red" onClick="reveal(this.id)"></div>
+                    <div id="c02_03" class="card gs4 hide red" onClick="reveal(this.id)"></div>
                 </div>
                 <div class="ROW">
-                    <div id="c03_00" class="card gs4 hide" onClick="reveal(this.id)"></div>
-                    <div id="c03_01" class="card gs4 hide" onClick="reveal(this.id)"></div>
-                    <div id="c03_02" class="card gs4 hide" onClick="reveal(this.id)"></div>
-                    <div id="c03_03" class="card gs4 hide" onClick="reveal(this.id)"></div>
+                    <div id="c03_00" class="card gs4 hide red" onClick="reveal(this.id)"></div>
+                    <div id="c03_01" class="card gs4 hide red" onClick="reveal(this.id)"></div>
+                    <div id="c03_02" class="card gs4 hide red" onClick="reveal(this.id)"></div>
+                    <div id="c03_03" class="card gs4 hide red" onClick="reveal(this.id)"></div>
                 </div>
 			</div>
 			<div id="start" class="MSG">
@@ -75,6 +75,24 @@
 				<div id="background4" class="CELL bg04pre" onClick="chgbg(this.id)"></div>
 			</div>
 		</div>
+		<div id="cardbgchooser">
+			<div class="ROW">
+				<div id="card_darkred" class="CELL" style="background-color:darkred;" onClick="chgcardbg(this.id.slice(5))"></div>
+				<div id="card_red" class="CELL" style="background-color:red;" onClick="chgcardbg(this.id.slice(5))"></div>
+				<div id="card_orange" class="CELL" style="background-color:orange;"  onClick="chgcardbg(this.id.slice(5))"></div>
+				<div id="card_yellow" class="CELL" style="background-color:yellow;"  onClick="chgcardbg(this.id.slice(5))"></div>
+				<div id="card_yellowgreen" class="CELL" style="background-color:yellowgreen;"  onClick="chgcardbg(this.id.slice(5))"></div>
+				<div id="card_green" class="CELL" style="background-color:green;"  onClick="chgcardbg(this.id.slice(5))"></div>
+				<div id="card_teal" class="CELL" style="background-color:teal;"  onClick="chgcardbg(this.id.slice(5))"></div>
+				<div id="card_blue" class="CELL" style="background-color:blue;"  onClick="chgcardbg(this.id.slice(5))"></div>
+				<div id="card_indigo" class="CELL" style="background-color:indigo;"  onClick="chgcardbg(this.id.slice(5))"></div>
+				<div id="card_violet" class="CELL" style="background-color:violet;"  onClick="chgcardbg(this.id.slice(5))"></div>
+				<div id="card_black" class="CELL" style="background-color:black;"  onClick="chgcardbg(this.id.slice(5))"></div>
+				<div id="card_white" class="CELL" style="background-color:white;"  onClick="chgcardbg(this.id.slice(5))"></div>
+				<div id="card_pink" class="CELL" style="background-color:pink;"  onClick="chgcardbg(this.id.slice(5))"></div>
+				<div id="card_navy" class="CELL" style="background-color:navy;"  onClick="chgcardbg(this.id.slice(5))"></div>
+			</div>
+		</div>
 		<!--
 		<div id="cardbgchooser">
 			<div class="ROW">
@@ -101,7 +119,7 @@ tab = "    "
 for x in range(4):
 	print(f'{tab*4}<div class="ROW">')
 	for y in range(4):
-		print(f'{tab*5}<div id="c{str(x).zfill(2)}_{str(y).zfill(2)}" class="card gs4 hide" onClick="reveal(this.id)"></div>')
+		print(f'{tab*5}<div id="c{str(x).zfill(2)}_{str(y).zfill(2)}" class="card gs4 hide red" onClick="reveal(this.id)"></div>')
 	print(f'{tab*4}</div>')
 	-->
 </html>

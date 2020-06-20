@@ -6,7 +6,7 @@ var game = {
 	grid_size: 4,
 	matchquery: [],
 	correct: [],
-	cardColor: "red"
+	card_color: "red"
 };
 
 var imgarray = ["&#9728;", 		// sun
@@ -51,6 +51,7 @@ function reset() {
 	game.total_guesses = 0;
 	game.matchquery = [];
 	game.correct = [];
+	game.card_color = "red";
 }
 
 function ZFILL(n) {
@@ -104,7 +105,7 @@ function build(arr) {
 			// New card; give it attributes
 			let card = document.createElement("div");
 			card.setAttribute("id",`c${ZFILL(x)}_${ZFILL(y)}`);
-			card.setAttribute("class",`card gs${game.grid_size} hide`);
+			card.setAttribute("class",`card gs${game.grid_size} hide ${game.card_color}`);
 			card.setAttribute("onClick","reveal(this.id)");
 			// Random number will be used to select a symbol to display
 			let r = 0 + Math.floor(Math.random() * (arr.length - 0));
@@ -126,7 +127,6 @@ function build(arr) {
 
 function reveal(cid) {
 	var cardElement = document.getElementById(cid);
-
 	// start the game timing if it hasn't been set already
 	if (game.started == false) {
 		game.started = true;
@@ -191,8 +191,8 @@ function hide() {
 	var c1 = document.getElementById(game.matchquery[0]);
 	var c2 = document.getElementById(game.matchquery[1]);
 	// Change class to hide
-	c1.setAttribute("class",`card gs${game.grid_size} hide`);
-	c2.setAttribute("class",`card gs${game.grid_size} hide`);
+	c1.setAttribute("class",`card gs${game.grid_size} hide ${game.card_color}`);
+	c2.setAttribute("class",`card gs${game.grid_size} hide ${game.card_color}`);
 	game.matchquery = [];
 	document.getElementById("wrong").style.visibility = "hidden";
 }
@@ -203,11 +203,11 @@ function chgbg(bgid) {
 }
 
 function chgcardbg(c) {
-	console.log(c);
-	game.cardColor = c;
+	//console.log(c);
+	game.card_color = c;
 	for (x=0; x < game.grid_size; x++) {
 		for (y=0; y < game.grid_size; y++) {
-			document.getElementById(`c${ZFILL(x)}_${ZFILL(y)}`).style.backgroundColor = c;
+			document.getElementById(`c${ZFILL(x)}_${ZFILL(y)}`).setAttribute("class",`card gs${game.grid_size} hide ${game.card_color}`)
 		}
 	}
 }
