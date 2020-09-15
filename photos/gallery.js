@@ -1,6 +1,9 @@
 // Global vars
 photo ={"year":1984,"index":0};
 
+// Upon the page loading, this is used only to display the newest image first
+function choosenewest() { chgsrc("<"); }
+
 // Handles selection of year by the 'buttons' at the top
 function chooseyear(y) {
 	// Only has effect if the selected year is different than the current displayed year
@@ -184,7 +187,22 @@ album = {2012:[
             {"src":"photos/2019/1112_caa.mp4","desc":"11/12/2019 - Post-Frontal Passage. A strong cold-front moved through this day. Camera is generally pointed south/southeast. Good display of showing winds changing with height. Here, they are 'backing' with height, implying the definite Cold-Air Advection. I was hoping to catch some KH clouds, and I think at times they did but were very short-lived or not robust enough to catch on camera"}
 		],
 		2020:[
-			{"src":"photos/2020/0213_sundog.jpg","desc":"02/13/2020 - Encountered a nice sundog during an evening walk. Enhancement hinted at an upper tangent arc"}
+			{"src":"photos/2020/0213_sundog.jpg","desc":"02/13/2020 - Encountered a nice sundog during an evening walk. Enhancement hinted at an upper tangent arc"},
+			{"src":"photos/2020/0710-panorama.jpg","desc":"07/10/2020 - Developing shelf-cloud from an approaching storm; looking SSE. Some strong winds were evident as there was some fast-moving scud just above the surface. These strong winds didn't reach the surface or dissipated quickly due to friction."},
+			{"src":"photos/2020/0710_lightning_clip.mp4","desc":"07/10/2020 - Post-storm lightning video capture; looking ESE."},
+			{"src":"photos/2020/0724_lightning_clip.mp4","desc":"07/24/2020 - This storm developed after sunset I think. It had some really nice lightning with it. This is a combined clip of 3 of those strikes. Anvil crawling evident too. They were spaced by variable amounts of time (I video-time-lapsed for -/+ 40 minutes or so). This storm matured and dissipated a little to the WSW."},
+			{"src":"photos/2020/0829_redspider.jpg","desc":"08/29/2020 - Very tiny red spider. Searching for it makes me think it is a <a href='https://en.wikipedia.org/wiki/Blacktailed_red_sheetweaver' target='_blank'>Black-tailed Red Sheetweaver</a> I'd never seen one of these before. It set-up its silk-hammock in a hanging-planter."},
+			{"src":"photos/2020/0903_catepillar.jpg","desc":"09/03/2020 - Beautiful caterpillar; the tobacco hornworm. I didn't know what it was, so I looked it up. <a href='http://entnemdept.ufl.edu/creatures/field/tobacco_hornworm.htm' target='_blank'>Here's the link</a>. I was quite pleased with how my camera did in macro mode here. That's a tomato plant it is munching on in the left panel."},
 		]
 	}
-// for x in range(L): print(f'{"            "}{x}:{"src":zzz,"desc":zzz},')
+
+
+
+
+
+
+
+
+
+
+
