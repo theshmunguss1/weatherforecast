@@ -37,11 +37,26 @@
 				white-space: nowrap;
 				width: 85%;
 				height: 50vh;
+			}
+			#codeblock, #seasonblock {
 				margin: 0 auto;
 				background-color: black;
 				color: LimeGreen;
 				border: 2px outset gray;
 			}
+			@media screen and (max-width: 490px) {
+				#seasonblock {
+					overflow: scroll;
+					white-space: nowrap;
+					width: 90%;
+				}
+			}
+			@media screen and (min-width: 491px) {
+				#seasonblock {
+					width: 600px;
+				}
+			}
+
 
 		</style>
 	</head>
@@ -53,7 +68,7 @@
 		<div id="disclaimer">
 			<p style="color:pink;text-align: center;">* This page is <u>NOT</u> endorsed nor supported by NOAA or its subsidiaries, including the National Hurricane Center. *</p>
 
-			<p style="text-align:center;"><span style="color:yellow;">* Updated 19 SEPT 2020.</span> -- This page will 'reset' upon issuance of the annual release of HURDAT2 out of deference to the expertly analyzed data.</p>
+			<p style="text-align:center;"><span style="color:yellow;">* Updated 23 SEPT 2020.</span> -- This page will 'reset' upon issuance of the annual release of HURDAT2 out of deference to the expertly analyzed data.</p>
 		</div>
 
 		<div id="codeblock">
@@ -71,19 +86,60 @@
 
 			<p>Precision was not the aim of including landfall markers (especially the interpolated ones) but were included to provide homogeneity and temporary inclusion with the <a href="https://www.aoml.noaa.gov/hrd/hurdat/Data_Storm.html">official HURDAT2 record</a>. In general, the official record is updated during the Spring of each year, prior to the start of Hurricane Season.</p>
 			<hr />
-			<p>My primary purpose for this is for use in an updated (and currently unreleased) version of my hurdat2parser program (python) I'm working on. I believe there are other hurdat2 parsing programs out there. Feel free to use this output in any way you'd like. My only request of it is that you strive to avoid representing it as NOAA data.
+			<p>My primary purpose for this is for use in an updated (and currently unreleased) version of my hurdat2parser program (python) I'm working on. I believe there are other hurdat2 parsing programs out there. Feel free to use this output in any way you'd like. My only request of it is that you strive to avoid representing it as NOAA data.</p>
+			<p>* Below you'll find some info for the season through the date listed below. As a courtesy, I included some ranking as well.</p>
 		</div>
 
+		<div id="seasonblock">
+			<pre><code id="seasoncontainer">
+
+			</code></pre>
+		</div>
+		<br /><br />
 
 		<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
 		<script>
 
 			function load_data() {
+				// LOAD HURDAT2 FROM STRING
 				document.getElementById("codecontainer").innerHTML = ""
 				for (i=0; i < hurdat2.length; i++) {
 					document.getElementById("codecontainer").innerHTML += hurdat2[i] + "\n"
 				}
+				// LOAD CURRENT SEASON DATA FROM LIST
+				document.getElementById("seasoncontainer").innerHTML = ""
+				for (i=0; i < seasonstats.length; i++) {
+					document.getElementById("seasoncontainer").innerHTML += seasonstats[i] + "\n"
+				}
 			}
+
+			var seasonstats = [
+				"----------------------------------------",
+				"    Tropical Cyclone Stats for 2020",
+				"             Atlantic Basin",
+				"",
+				"   * Stats calculated for seasons",
+				"     since 1967, through Sep 23.",
+				"",
+				"    * TS-related Statistics include",
+				"       Hurricanes in their totals",
+				"        except for landfall data",
+				"----------------------------------------",
+				"* Tracked Systems: 24                (Rank: 1st)",
+				"* Track Distance: 51834.1 nmi        (Rank: 1st)",
+				"  -- Tropical Storms: 22214.0 nmi    (Rank: 1st)",
+				"  -- Hurricanes: 5599.3 nmi          (Rank: 18th)",
+				"  -- Major Hurricanes: 1020.5 nmi    (Rank: 24th)",
+				"* Tropical Storms: 23                (Rank: 1st)",
+				"* ACE: 105.193 * 10^4 kt^2           (Rank: 12th)",
+				"* Hurricanes: 8                      (Rank: 2nd (tied w/2 other seasons))",
+				"* HDP: 56.060 * 10^4 kt^2            (Rank: 17th)",
+				"* Major Hurricanes: 2                (Rank: 4th (tied w/19 other seasons))",
+				"* MHDP: 19.390 * 10^4 kt^2           (Rank: 22nd)",
+				"* Total Landfalling Systems: 14      (Rank: 1st)",
+				"  -- TS Landfalls: 10                (Rank: 1st)",
+				"  -- HU Landfalls: 5                 (Rank: 1st (tied w/3 other seasons))"
+			];
 
 			var hurdat2 = [
 				"AL012020,             ARTHUR,     18,",
@@ -601,6 +657,22 @@
 				"20200919, 0600,  , LO, 37.8N,  31.1W,  40, 1002,    0,    0,    0,  120,    0,    0,    0,    0,    0,    0,    0,    0,",
 				"20200919, 1200,  , LO, 36.3N,  30.4W,  40, 1006,    0,    0,    0,  120,    0,    0,    0,    0,    0,    0,    0,    0,",
 				"20200919, 1800,  , LO, 35.9N,  29.8W,  35, 1008,    0,    0,    0,  120,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200920, 0000,  , LO, 35.7N,  29.5W,  35, 1008,   80,    0,    0,   90,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200920, 0600,  , LO, 35.5N,  29.4W,  35, 1008,   80,    0,    0,   90,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200920, 1200,  , LO, 35.1N,  29.7W,  35, 1008,   80,    0,    0,   90,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200920, 1800,  , LO, 34.7N,  30.6W,  35, 1008,   80,    0,    0,   90,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200921, 0000,  , LO, 34.2N,  31.4W,  35, 1008,    0,    0,   80,   90,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200921, 0600,  , LO, 33.3N,  31.2W,  35, 1008,    0,    0,   80,   90,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200921, 1200,  , LO, 32.9N,  29.8W,  35, 1008,    0,    0,   80,   90,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200921, 1800,  , TS, 33.3N,  27.8W,  40, 1008,   60,   60,   70,    0,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200922, 0000,  , TS, 33.6N,  26.2W,  50, 1004,   30,   70,   60,    0,    0,   30,    0,    0,    0,    0,    0,    0,",
+				"20200922, 0600,  , TS, 34.6N,  24.4W,  50, 1002,   30,   70,   60,    0,    0,   30,    0,    0,    0,    0,    0,    0,",
+				"20200922, 1200,  , TS, 34.8N,  23.1W,  35, 1006,    0,   50,   50,    0,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200922, 1800,  , TS, 34.7N,  21.8W,  35, 1006,    0,   50,   50,    0,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200923, 0000,  , LO, 34.8N,  20.5W,  35, 1006,    0,   50,   50,    0,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200923, 0600,  , LO, 35.0N,  19.2W,  40, 1006,   30,   40,   40,    0,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200923, 1200,  , LO, 35.6N,  18.1W,  45, 1001,   30,   40,   40,   40,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200923, 1800,  , LO, 36.2N,  17.2W,  45, 1001,   30,   40,   40,   40,    0,    0,    0,    0,    0,    0,    0,    0,",
 				"AL182020,               RENE,     38,",
 				"20200905, 1200,  , DB, 14.5N,  12.5W,  15, -999,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,",
 				"20200905, 1800,  , DB, 14.5N,  14.0W,  15, -999,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,",
@@ -712,6 +784,24 @@
 				"20200919, 0600,  , HU, 24.4N,  57.8W, 115,  950,  200,  200,  140,  150,   90,   60,   70,   90,   50,   40,   40,   50,",
 				"20200919, 1200,  , HU, 25.5N,  58.6W, 105,  958,  200,  200,  140,  150,  130,   90,   80,   90,   50,   40,   40,   50,",
 				"20200919, 1800,  , HU, 26.3N,  59.8W, 105,  958,  220,  200,  140,  150,  130,   90,   80,   90,   50,   40,   40,   50,",
+				"20200920, 0000,  , HU, 26.9N,  60.8W, 105,  956,  180,  180,  180,  180,  120,  120,   80,  100,   70,   70,   40,   60,",
+				"20200920, 0600,  , HU, 27.5N,  61.9W, 100,  958,  180,  180,  180,  180,  120,  120,   80,  100,   70,   70,   40,   60,",
+				"20200920, 1200,  , HU, 28.0N,  62.6W,  90,  964,  180,  180,  180,  180,  120,  100,   80,  100,   70,   60,   30,   60,",
+				"20200920, 1800,  , HU, 28.5N,  63.3W,  90,  964,  200,  200,  150,  170,  120,  110,   70,  100,   70,   60,   30,   60,",
+				"20200921, 0000,  , HU, 29.0N,  63.7W,  90,  963,  200,  200,  150,  170,  120,  110,   70,  100,   70,   60,   30,   60,",
+				"20200921, 0600,  , HU, 29.7N,  63.5W,  85,  962,  200,  200,  150,  150,  110,  110,   60,   80,   60,   60,   30,   50,",
+				"20200921, 1200,  , HU, 30.5N,  62.9W,  80,  960,  200,  200,  150,  120,  110,  110,   40,   70,   70,   70,    0,   50,",
+				"20200921, 1800,  , HU, 32.2N,  61.8W,  80,  958,  240,  240,  180,  150,  120,  120,   60,   80,   70,   70,   20,   50,",
+				"20200922, 0000,  , HU, 34.6N,  61.4W,  85,  956,  240,  240,  180,  150,  120,  120,   60,   80,   90,   80,   20,   50,",
+				"20200922, 0600,  , HU, 37.6N,  62.1W,  90,  950,  300,  300,  180,  180,  150,  150,  120,  150,   90,   90,   50,   50,",
+				"20200922, 1200,  , HU, 39.1N,  63.5W,  90,  950,  510,  420,  270,  330,  270,  120,  150,  210,   90,   90,   80,  130,",
+				"20200922, 1800,  , HU, 40.3N,  64.2W,  80,  953,  470,  390,  270,  280,  240,  120,  130,  210,   80,   80,   80,  110,",
+				"20200923, 0000,  , HU, 41.8N,  64.2W,  70,  955,  470,  390,  270,  280,  240,  120,  130,  210,   80,   80,   80,  110,",
+				"20200923, 0600,  , EX, 43.2N,  63.3W,  60,  957,  470,  390,  250,  250,  240,  120,  120,  200,    0,    0,    0,    0,",
+				"20200923, 1200,  , EX, 45.0N,  62.1W,  55,  964,  180,  180,  120,  180,   70,   80,    0,    0,    0,    0,    0,    0,",
+				"20200923, 1500, L, EX, 46.0N,  61.3W,  50,  967, -999, -999, -999, -999, -999, -999, -999, -999,    0,    0,    0,    0,",
+				"20200923, 1800,  , EX, 47.4N,  60.4W,  50,  974,  120,  180,  150,  180,    0,   60,    0,    0,    0,    0,    0,    0,",
+				"20200924, 0000,  , EX, 49.7N,  58.2W,  45,  975,  120,  180,  150,  180,    0,    0,    0,    0,    0,    0,    0,    0,",
 				"AL212020,              VICKY,     23,",
 				"20200911, 1200,  , DB, 14.0N,  18.0W,  20, -999,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,",
 				"20200911, 1800,  , DB, 14.1N,  19.2W,  20, -999,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,",
@@ -758,6 +848,24 @@
 				"20200919, 0600,  , TS, 25.8N,  92.3W,  50,  996,  150,   40,   40,   90,   80,    0,    0,   50,    0,    0,    0,    0,",
 				"20200919, 1200,  , TS, 26.5N,  92.4W,  50,  995,  150,   40,   40,   90,   60,    0,    0,   50,    0,    0,    0,    0,",
 				"20200919, 1800,  , TS, 26.5N,  92.5W,  50,  994,  150,   40,   40,  140,   60,    0,    0,   50,    0,    0,    0,    0,",
+				"20200919, 1800,  , TS, 26.6N,  92.3W,  50,  994,  150,   40,   40,  140,   60,    0,    0,   50,    0,    0,    0,    0,",
+				"20200920, 0000,  , TS, 26.8N,  92.2W,  50,  997,  160,   40,   40,  140,   80,    0,    0,    0,    0,    0,    0,    0,",
+				"20200920, 0600,  , TS, 26.9N,  92.5W,  50,  996,  170,   30,   40,  140,   80,    0,    0,    0,    0,    0,    0,    0,",
+				"20200920, 1200,  , TS, 27.1N,  92.8W,  50,  996,  170,   30,   40,  140,   80,    0,    0,    0,    0,    0,    0,    0,",
+				"20200920, 1800,  , TS, 27.6N,  93.7W,  50,  996,  170,   30,   40,  140,   80,    0,    0,    0,    0,    0,    0,    0,",
+				"20200921, 0000,  , TS, 27.6N,  94.1W,  50,  996,  170,   30,   40,  130,   80,    0,    0,    0,    0,    0,    0,    0,",
+				"20200921, 0600,  , TS, 27.6N,  94.8W,  45,  995,  150,    0,   40,  120,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200921, 1200,  , TS, 27.8N,  95.5W,  45,  996,  150,    0,   40,  120,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200921, 1800,  , TS, 28.1N,  96.0W,  40,  999,  150,    0,   40,   80,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200922, 0000,  , TS, 28.3N,  96.3W,  40,  999,  110,    0,   40,   60,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200922, 0400, L, TS, 28.5N,  96.4W,  40,  999, -999, -999, -999, -999,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200922, 0600,  , TS, 28.6N,  96.6W,  35,  999,   90,   40,   30,   40,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200922, 1200,  , TS, 28.8N,  96.8W,  35, 1002,   90,   50,   20,   30,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200922, 1800,  , TD, 28.9N,  96.5W,  25, 1008,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200923, 0000,  , EX, 28.9N,  95.7W,  25, 1007,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200923, 0600,  , EX, 29.3N,  95.4W,  25, 1007,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200923, 1200,  , EX, 30.0N,  94.6W,  25, 1007,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200923, 1800,  , EX, 30.2N,  93.9W,  25, 1006,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,",
 				"AL232020,            WILFRED,     21,",
 				"20200914, 1800,  , DB,  8.7N,  17.4W,  20, -999,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,",
 				"20200915, 0000,  , DB,  8.8N,  18.2W,  25, 1010,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,",
@@ -780,6 +888,11 @@
 				"20200919, 0600,  , TS, 12.8N,  36.2W,  35, 1007,   30,   90,   30,    0,    0,    0,    0,    0,    0,    0,    0,    0,",
 				"20200919, 1200,  , TS, 13.1N,  37.4W,  35, 1007,   30,   60,   30,    0,    0,    0,    0,    0,    0,    0,    0,    0,",
 				"20200919, 1800,  , TS, 13.7N,  38.5W,  35, 1007,   40,   40,    0,   30,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200920, 0000,  , TS, 14.3N,  39.9W,  35, 1007,   40,   40,    0,   30,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200920, 0600,  , TS, 14.9N,  41.5W,  35, 1007,   40,   40,    0,   30,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200920, 1200,  , TD, 15.5N,  43.5W,  30, 1008,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200920, 1800,  , TD, 15.8N,  45.1W,  30, 1008,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200921, 0000,  , TD, 15.8N,  46.7W,  30, 1008,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,",
 				"AL242020,              ALPHA,     19,",
 				"20200914, 1200,  , EX, 47.1N,  23.3W,  35,  992,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,",
 				"20200914, 1800,  , EX, 47.1N,  22.8W,  50,  992,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,",
@@ -799,8 +912,9 @@
 				"20200918, 0600,  , EX, 38.0N,  11.1W,  45,  996,    0,   50,   70,    0,    0,    0,    0,    0,    0,    0,    0,    0,",
 				"20200918, 1200,  , SS, 38.9N,  10.3W,  45,  999,   30,   30,   30,    0,    0,    0,    0,    0,    0,    0,    0,    0,",
 				"20200918, 1800,  , SS, 39.9N,   9.0W,  45,  998,   30,   30,   30,    0,    0,    0,    0,    0,    0,    0,    0,    0,",
+				"20200918, 2100, L, SS, 40.4N,   8.4W,  40,  998, -999, -999, -999, -999,    0,    0,    0,    0,    0,    0,    0,    0,",
 				"20200919, 0000,  , LO, 40.5N,   7.7W,  25, 1005,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,"
-			]
+			];
 		</script>
 	</body>
 </html>
