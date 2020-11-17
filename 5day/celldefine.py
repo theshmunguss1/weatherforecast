@@ -1,4 +1,4 @@
-section = 1
+section = 2
 TAB = "    "  # tab string
 DAYSTR = ["MON","TUE","WED","THU","FRI","SAT","SUN"]
 
@@ -38,6 +38,12 @@ if section == 1:
             else: print(f'{TAB*7}<td id="uvi{x}-lv{str(y).zfill(2)}" class="UVIcell marker" title="UVI {y}" onClick=\'uvi_chg("{x}","{str(y).zfill(2)}")\'></td>')
         print(f'{TAB*6}</tr>')	
         print(f'{TAB*5}</table>')
+        # Wind
+        print(f'{TAB*5}<div class="WIND" id="wind{x}" style="display:none;">')
+        print(f'{TAB*6}<img class="WINDboxlogo" src="5day/windboxlogo.svg">')
+        print(f'{TAB*6}<span id="wind{x}dir"></span>&nbsp;')
+        print(f'{TAB*6}<span id="wind{x}spd"></span>')
+        print(f'{TAB*5}</div>')
         # Hi / Lo Temps
         print(f'{TAB*5}<div class="HI" id="hi{x}"></div>')
         print(f'{TAB*5}<div class="LO" id="lo{x}"></div>')
@@ -48,8 +54,8 @@ elif section == 2:
     print(f'{TAB*3}<!-- DAY HEADER ROW BOX -->')
     print(f'{TAB*3}<div class="ROW">')
     for x in range(1,7+1):
-        if x in [6,7]: print(f'{TAB*4}<div class="CELL OPTS" id="d{x}optsblock"><u>Day {x}</u></div>')
-        else: print(f'{TAB*4}<div class="CELL OPTS"><u>Day {x}</u></div>')
+        if x in [6,7]: print(f'{TAB*4}<div class="CELL OPTS" id="d{x}optsblock"><u><span id="d{x}name"></span></u></div>')
+        else: print(f'{TAB*4}<div class="CELL OPTS"><u><span id="d{x}name"></span></u></div>')
     print(f'{TAB*3}</div>')
     # Percent Box Row
     print(f'{TAB*3}<!-- PERCENT-BOX ROW -->')
@@ -70,6 +76,41 @@ elif section == 2:
         print(f'{TAB*5}<u>UVI Toggle:</u><br />')
         print(f'{TAB*5}<input type="radio" name="uvitoggle{x}" id="uvi{x}off" onClick=\'document.getElementById("uvi{x}").style.display = "none"\' checked>OFF</input>')
         print(f'{TAB*5}<input type="radio" name="uvitoggle{x}" id="uvi{x}on" onClick=\'document.getElementById("uvi{x}").style.display = "table"\'>ON</input>')
+        print(f'{TAB*4}</div>')
+    print(f'{TAB*3}</div>')
+    # Wind
+    print(f'{TAB*3}<div class="ROW">')
+    for x in range(1,7+1):
+        if x in [6,7]: print(f'{TAB*4}<div class="CELL OPTS" id="wind{x}block">')
+        else: print(f'{TAB*4}<div class="CELL OPTS">')
+        #print(f'{TAB*4}<div class="CELL OPTS">')
+        print(f'{TAB*5}<u>Wind:</u><br />')
+        print(f'{TAB*5}<input type="radio" name="windtoggle{x}" id="wind{x}off" onClick=\'document.getElementById("wind{x}").style.display = "none"; document.getElementById("wind{x}desc").style.display = "none"\' checked>OFF</input>')
+        print(f'{TAB*5}<input type="radio" name="windtoggle{x}" id="wind{x}on" onClick=\'document.getElementById("wind{x}").style.display = "block"; document.getElementById("wind{x}desc").style.display = "block"\'>ON</input>')
+        print(f'{TAB*5}<div id="wind{x}desc" style="display:none">')
+        print(f'{TAB*6}<select title="Wind Direction" id="wind{x}select" onChange=\'document.getElementById("wind{x}dir").innerHTML = this.value\'>')
+        print("""{T}<option value="">--</option>
+{T}<option value="N">N</option>
+{T}<option value="NNE">NNE</option>
+{T}<option value="NE">NE</option>
+{T}<option value="ENE">ENE</option>
+{T}<option value="E">E</option>
+{T}<option value="ESE">ESE</option>
+{T}<option value="SE">SE</option>
+{T}<option value="SSE">SSE</option>
+{T}<option value="S">S</option>
+{T}<option value="SSW">SSW</option>
+{T}<option value="SW">SW</option>
+{T}<option value="WSW">WSW</option>
+{T}<option value="W">W</option>
+{T}<option value="WNW">WNW</option>
+{T}<option value="NW">NW</option>
+{T}<option value="NNW">NNW</option>
+{T}<!--<option value="Variable">Variable</option>-->""".format(T=TAB*7))
+        print(f'{TAB*6}</select><br />')
+        print(f'{TAB*6}<input type="number" class="WINDmph" value="" id="wind{x}spdchg" placeholder="Speed" onInput=\'document.getElementById("wind{x}spd").innerHTML = this.value\'></input>')
+        print(f'{TAB*6}<br />')
+        print(f'{TAB*5}</div>')
         print(f'{TAB*4}</div>')
     print(f'{TAB*3}</div>')
     # Hi Temperature Row

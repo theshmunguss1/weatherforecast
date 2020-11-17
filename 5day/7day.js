@@ -13,6 +13,9 @@ var sky = ["5day/sky_sun_clr.svg",
 			"5day/sky_cloudy_partly_sunny_tstorm.svg",
 			"5day/sky_cloudy_mostly_sunny_tstorm.svg",
 			"5day/sky_cloudy_tstorm.svg",
+			"5day/sky_cloudy_partly_sunny_tstorm_only.svg",
+			"5day/sky_cloudy_mostly_sunny_tstorm_only.svg",
+			"5day/sky_cloudy_tstorm_only.svg",
 			"5day/sky_hurricane.svg",
 			"5day/sky_cloudy_snow.svg",
 			"5day/sky_cloudy_snra.svg",
@@ -81,6 +84,8 @@ function daystoggle(v) {
 			document.getElementById("percentbox7block").style.display = "table-cell";
 			document.getElementById("uvi6block").style.display = "table-cell";
 			document.getElementById("uvi7block").style.display = "table-cell";
+			document.getElementById("wind6block").style.display = "table-cell";
+			document.getElementById("wind7block").style.display = "table-cell";
 			document.getElementById("tmax6block").style.display = "table-cell";
 			document.getElementById("tmax7block").style.display = "table-cell";
 			document.getElementById("tmin6block").style.display = "table-cell";
@@ -104,6 +109,8 @@ function daystoggle(v) {
 			document.getElementById("percentbox7block").style.display = "none";
 			document.getElementById("uvi6block").style.display = "none";
 			document.getElementById("uvi7block").style.display = "none";
+			document.getElementById("wind6block").style.display = "none";
+			document.getElementById("wind7block").style.display = "none";
 			document.getElementById("tmax6block").style.display = "none";
 			document.getElementById("tmax7block").style.display = "none";
 			document.getElementById("tmin6block").style.display = "none";
@@ -136,12 +143,19 @@ function load_day_select() {
 function day_select(dyofwk) {
 	// Prints the 3 characters corresponding to the proper day
 	document.getElementById("name1").innerHTML = dyofwk.substring(0,3);
+	document.getElementById("d1name").innerHTML = dyofwk.substring(0,3);
 	document.getElementById("name2").innerHTML = dyofwk.substring(3,6);
+	document.getElementById("d2name").innerHTML = dyofwk.substring(3,6);
 	document.getElementById("name3").innerHTML = dyofwk.substring(6,9);
+	document.getElementById("d3name").innerHTML = dyofwk.substring(6,9);
 	document.getElementById("name4").innerHTML = dyofwk.substring(9,12);
+	document.getElementById("d4name").innerHTML = dyofwk.substring(9,12);
 	document.getElementById("name5").innerHTML = dyofwk.substring(12,15);
+	document.getElementById("d5name").innerHTML = dyofwk.substring(12,15);
 	document.getElementById("name6").innerHTML = dyofwk.substring(15,18);
+	document.getElementById("d6name").innerHTML = dyofwk.substring(15,18);
 	document.getElementById("name7").innerHTML = dyofwk.substring(18,21);
+	document.getElementById("d7name").innerHTML = dyofwk.substring(18,21);
 }
 
 function random_forecast() {

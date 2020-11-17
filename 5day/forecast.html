@@ -112,6 +112,11 @@
                             <td id="uvi1-lv11" class="UVIcell marker" title="UVI 11" onClick='uvi_chg("1","11")'></td>
                         </tr>
                     </table>
+                    <div class="WIND" id="wind1" style="display:none;">
+                        <img class="WINDboxlogo" src="5day/windboxlogo.svg">
+                        <span id="wind1dir"></span>&nbsp;
+                        <span id="wind1spd"></span>
+                    </div>
                     <div class="HI" id="hi1"></div>
                     <div class="LO" id="lo1"></div>
                 </td>
@@ -153,6 +158,11 @@
                             <td id="uvi2-lv11" class="UVIcell marker" title="UVI 11" onClick='uvi_chg("2","11")'></td>
                         </tr>
                     </table>
+                    <div class="WIND" id="wind2" style="display:none;">
+                        <img class="WINDboxlogo" src="5day/windboxlogo.svg">
+                        <span id="wind2dir"></span>&nbsp;
+                        <span id="wind2spd"></span>
+                    </div>
                     <div class="HI" id="hi2"></div>
                     <div class="LO" id="lo2"></div>
                 </td>
@@ -194,6 +204,11 @@
                             <td id="uvi3-lv11" class="UVIcell marker" title="UVI 11" onClick='uvi_chg("3","11")'></td>
                         </tr>
                     </table>
+                    <div class="WIND" id="wind3" style="display:none;">
+                        <img class="WINDboxlogo" src="5day/windboxlogo.svg">
+                        <span id="wind3dir"></span>&nbsp;
+                        <span id="wind3spd"></span>
+                    </div>
                     <div class="HI" id="hi3"></div>
                     <div class="LO" id="lo3"></div>
                 </td>
@@ -235,6 +250,11 @@
                             <td id="uvi4-lv11" class="UVIcell marker" title="UVI 11" onClick='uvi_chg("4","11")'></td>
                         </tr>
                     </table>
+                    <div class="WIND" id="wind4" style="display:none;">
+                        <img class="WINDboxlogo" src="5day/windboxlogo.svg">
+                        <span id="wind4dir"></span>&nbsp;
+                        <span id="wind4spd"></span>
+                    </div>
                     <div class="HI" id="hi4"></div>
                     <div class="LO" id="lo4"></div>
                 </td>
@@ -276,6 +296,11 @@
                             <td id="uvi5-lv11" class="UVIcell marker" title="UVI 11" onClick='uvi_chg("5","11")'></td>
                         </tr>
                     </table>
+                    <div class="WIND" id="wind5" style="display:none;">
+                        <img class="WINDboxlogo" src="5day/windboxlogo.svg">
+                        <span id="wind5dir"></span>&nbsp;
+                        <span id="wind5spd"></span>
+                    </div>
                     <div class="HI" id="hi5"></div>
                     <div class="LO" id="lo5"></div>
                 </td>
@@ -317,6 +342,11 @@
                             <td id="uvi6-lv11" class="UVIcell marker" title="UVI 11" onClick='uvi_chg("6","11")'></td>
                         </tr>
                     </table>
+                    <div class="WIND" id="wind6" style="display:none;">
+                        <img class="WINDboxlogo" src="5day/windboxlogo.svg">
+                        <span id="wind6dir"></span>&nbsp;
+                        <span id="wind6spd"></span>
+                    </div>
                     <div class="HI" id="hi6"></div>
                     <div class="LO" id="lo6"></div>
                 </td>
@@ -358,6 +388,11 @@
                             <td id="uvi7-lv11" class="UVIcell marker" title="UVI 11" onClick='uvi_chg("7","11")'></td>
                         </tr>
                     </table>
+                    <div class="WIND" id="wind7" style="display:none;">
+                        <img class="WINDboxlogo" src="5day/windboxlogo.svg">
+                        <span id="wind7dir"></span>&nbsp;
+                        <span id="wind7spd"></span>
+                    </div>
                     <div class="HI" id="hi7"></div>
                     <div class="LO" id="lo7"></div>
                 </td>
@@ -365,7 +400,7 @@
 			<tr id="title-row">
 				<td id="title" class="TITLEBOX" colspan=7>
 					<div id="imgcontainer">
-						<img id="logobox" src="5day/logo_astormyhaze.svg">
+						<img id="logobox" src="5day/logo_echotops.svg">
 					</div>
 					<div class="TITLE">
 						<span id="person">NAME</span>'s <span id="frcstdays">5</span>-Day Forecast for <span id="cityn">CITYNAME</span>
@@ -379,9 +414,10 @@
 			<div class="ROW">
 				<div class="CELL">Logo: 
 					<select id="logoselect" onChange=logo_select(this.value)>
-						<option value="5day/logo_astormyhaze.svg" selected>Echo Tops Blog</option>
+						<option value="5day/logo_echotops.svg" selected>Echo Tops Blog</option>
 						<option value="5day/logo_channel99.svg">Channel99</option>
 						<option value="5day/logo_wxbonanza.svg">Weather Bonanza</option>
+						<option value="5day/logo_weather01.svg">Weather - 01</option>
 					</select>
 				</div>
 				<div class="CELL">Insert Forecaster's Name:
@@ -397,13 +433,13 @@
 		<div class="TABLE">
             <!-- DAY HEADER ROW BOX -->
             <div class="ROW">
-                <div class="CELL OPTS"><u>Day 1</u></div>
-                <div class="CELL OPTS"><u>Day 2</u></div>
-                <div class="CELL OPTS"><u>Day 3</u></div>
-                <div class="CELL OPTS"><u>Day 4</u></div>
-                <div class="CELL OPTS"><u>Day 5</u></div>
-                <div class="CELL OPTS" id="d6optsblock"><u>Day 6</u></div>
-                <div class="CELL OPTS" id="d7optsblock"><u>Day 7</u></div>
+                <div class="CELL OPTS"><u><span id="d1name"></span></u></div>
+                <div class="CELL OPTS"><u><span id="d2name"></span></u></div>
+                <div class="CELL OPTS"><u><span id="d3name"></span></u></div>
+                <div class="CELL OPTS"><u><span id="d4name"></span></u></div>
+                <div class="CELL OPTS"><u><span id="d5name"></span></u></div>
+                <div class="CELL OPTS" id="d6optsblock"><u><span id="d6name"></span></u></div>
+                <div class="CELL OPTS" id="d7optsblock"><u><span id="d7name"></span></u></div>
             </div>
             <!-- PERCENT-BOX ROW -->
             <div class="ROW">
@@ -474,6 +510,211 @@
                     <input type="radio" name="uvitoggle7" id="uvi7on" onClick='document.getElementById("uvi7").style.display = "table"'>ON</input>
                 </div>
             </div>
+            <div class="ROW">
+                <div class="CELL OPTS">
+                    <u>Wind:</u><br />
+                    <input type="radio" name="windtoggle1" id="wind1off" onClick='document.getElementById("wind1").style.display = "none"; document.getElementById("wind1desc").style.display = "none"' checked>OFF</input>
+                    <input type="radio" name="windtoggle1" id="wind1on" onClick='document.getElementById("wind1").style.display = "block"; document.getElementById("wind1desc").style.display = "block"'>ON</input>
+                    <div id="wind1desc" style="display:none">
+                        <select title="Wind Direction" id="wind1select" onChange='document.getElementById("wind1dir").innerHTML = this.value'>
+                            <option value="">--</option>
+                            <option value="N">N</option>
+                            <option value="NNE">NNE</option>
+                            <option value="NE">NE</option>
+                            <option value="ENE">ENE</option>
+                            <option value="E">E</option>
+                            <option value="ESE">ESE</option>
+                            <option value="SE">SE</option>
+                            <option value="SSE">SSE</option>
+                            <option value="S">S</option>
+                            <option value="SSW">SSW</option>
+                            <option value="SW">SW</option>
+                            <option value="WSW">WSW</option>
+                            <option value="W">W</option>
+                            <option value="WNW">WNW</option>
+                            <option value="NW">NW</option>
+                            <option value="NNW">NNW</option>
+                            <!--<option value="Variable">Variable</option>-->
+                        </select><br />
+                        <input type="number" class="WINDmph" value="" id="wind1spdchg" placeholder="Speed" onInput='document.getElementById("wind1spd").innerHTML = this.value'></input>
+                        <br />
+                    </div>
+                </div>
+                <div class="CELL OPTS">
+                    <u>Wind:</u><br />
+                    <input type="radio" name="windtoggle2" id="wind2off" onClick='document.getElementById("wind2").style.display = "none"; document.getElementById("wind2desc").style.display = "none"' checked>OFF</input>
+                    <input type="radio" name="windtoggle2" id="wind2on" onClick='document.getElementById("wind2").style.display = "block"; document.getElementById("wind2desc").style.display = "block"'>ON</input>
+                    <div id="wind2desc" style="display:none">
+                        <select title="Wind Direction" id="wind2select" onChange='document.getElementById("wind2dir").innerHTML = this.value'>
+                            <option value="">--</option>
+                            <option value="N">N</option>
+                            <option value="NNE">NNE</option>
+                            <option value="NE">NE</option>
+                            <option value="ENE">ENE</option>
+                            <option value="E">E</option>
+                            <option value="ESE">ESE</option>
+                            <option value="SE">SE</option>
+                            <option value="SSE">SSE</option>
+                            <option value="S">S</option>
+                            <option value="SSW">SSW</option>
+                            <option value="SW">SW</option>
+                            <option value="WSW">WSW</option>
+                            <option value="W">W</option>
+                            <option value="WNW">WNW</option>
+                            <option value="NW">NW</option>
+                            <option value="NNW">NNW</option>
+                            <!--<option value="Variable">Variable</option>-->
+                        </select><br />
+                        <input type="number" class="WINDmph" value="" id="wind2spdchg" placeholder="Speed" onInput='document.getElementById("wind2spd").innerHTML = this.value'></input>
+                        <br />
+                    </div>
+                </div>
+                <div class="CELL OPTS">
+                    <u>Wind:</u><br />
+                    <input type="radio" name="windtoggle3" id="wind3off" onClick='document.getElementById("wind3").style.display = "none"; document.getElementById("wind3desc").style.display = "none"' checked>OFF</input>
+                    <input type="radio" name="windtoggle3" id="wind3on" onClick='document.getElementById("wind3").style.display = "block"; document.getElementById("wind3desc").style.display = "block"'>ON</input>
+                    <div id="wind3desc" style="display:none">
+                        <select title="Wind Direction" id="wind3select" onChange='document.getElementById("wind3dir").innerHTML = this.value'>
+                            <option value="">--</option>
+                            <option value="N">N</option>
+                            <option value="NNE">NNE</option>
+                            <option value="NE">NE</option>
+                            <option value="ENE">ENE</option>
+                            <option value="E">E</option>
+                            <option value="ESE">ESE</option>
+                            <option value="SE">SE</option>
+                            <option value="SSE">SSE</option>
+                            <option value="S">S</option>
+                            <option value="SSW">SSW</option>
+                            <option value="SW">SW</option>
+                            <option value="WSW">WSW</option>
+                            <option value="W">W</option>
+                            <option value="WNW">WNW</option>
+                            <option value="NW">NW</option>
+                            <option value="NNW">NNW</option>
+                            <!--<option value="Variable">Variable</option>-->
+                        </select><br />
+                        <input type="number" class="WINDmph" value="" id="wind3spdchg" placeholder="Speed" onInput='document.getElementById("wind3spd").innerHTML = this.value'></input>
+                        <br />
+                    </div>
+                </div>
+                <div class="CELL OPTS">
+                    <u>Wind:</u><br />
+                    <input type="radio" name="windtoggle4" id="wind4off" onClick='document.getElementById("wind4").style.display = "none"; document.getElementById("wind4desc").style.display = "none"' checked>OFF</input>
+                    <input type="radio" name="windtoggle4" id="wind4on" onClick='document.getElementById("wind4").style.display = "block"; document.getElementById("wind4desc").style.display = "block"'>ON</input>
+                    <div id="wind4desc" style="display:none">
+                        <select title="Wind Direction" id="wind4select" onChange='document.getElementById("wind4dir").innerHTML = this.value'>
+                            <option value="">--</option>
+                            <option value="N">N</option>
+                            <option value="NNE">NNE</option>
+                            <option value="NE">NE</option>
+                            <option value="ENE">ENE</option>
+                            <option value="E">E</option>
+                            <option value="ESE">ESE</option>
+                            <option value="SE">SE</option>
+                            <option value="SSE">SSE</option>
+                            <option value="S">S</option>
+                            <option value="SSW">SSW</option>
+                            <option value="SW">SW</option>
+                            <option value="WSW">WSW</option>
+                            <option value="W">W</option>
+                            <option value="WNW">WNW</option>
+                            <option value="NW">NW</option>
+                            <option value="NNW">NNW</option>
+                            <!--<option value="Variable">Variable</option>-->
+                        </select><br />
+                        <input type="number" class="WINDmph" value="" id="wind4spdchg" placeholder="Speed" onInput='document.getElementById("wind4spd").innerHTML = this.value'></input>
+                        <br />
+                    </div>
+                </div>
+                <div class="CELL OPTS">
+                    <u>Wind:</u><br />
+                    <input type="radio" name="windtoggle5" id="wind5off" onClick='document.getElementById("wind5").style.display = "none"; document.getElementById("wind5desc").style.display = "none"' checked>OFF</input>
+                    <input type="radio" name="windtoggle5" id="wind5on" onClick='document.getElementById("wind5").style.display = "block"; document.getElementById("wind5desc").style.display = "block"'>ON</input>
+                    <div id="wind5desc" style="display:none">
+                        <select title="Wind Direction" id="wind5select" onChange='document.getElementById("wind5dir").innerHTML = this.value'>
+                            <option value="">--</option>
+                            <option value="N">N</option>
+                            <option value="NNE">NNE</option>
+                            <option value="NE">NE</option>
+                            <option value="ENE">ENE</option>
+                            <option value="E">E</option>
+                            <option value="ESE">ESE</option>
+                            <option value="SE">SE</option>
+                            <option value="SSE">SSE</option>
+                            <option value="S">S</option>
+                            <option value="SSW">SSW</option>
+                            <option value="SW">SW</option>
+                            <option value="WSW">WSW</option>
+                            <option value="W">W</option>
+                            <option value="WNW">WNW</option>
+                            <option value="NW">NW</option>
+                            <option value="NNW">NNW</option>
+                            <!--<option value="Variable">Variable</option>-->
+                        </select><br />
+                        <input type="number" class="WINDmph" value="" id="wind5spdchg" placeholder="Speed" onInput='document.getElementById("wind5spd").innerHTML = this.value'></input>
+                        <br />
+                    </div>
+                </div>
+                <div class="CELL OPTS" id="wind6block">
+                    <u>Wind:</u><br />
+                    <input type="radio" name="windtoggle6" id="wind6off" onClick='document.getElementById("wind6").style.display = "none"; document.getElementById("wind6desc").style.display = "none"' checked>OFF</input>
+                    <input type="radio" name="windtoggle6" id="wind6on" onClick='document.getElementById("wind6").style.display = "block"; document.getElementById("wind6desc").style.display = "block"'>ON</input>
+                    <div id="wind6desc" style="display:none">
+                        <select title="Wind Direction" id="wind6select" onChange='document.getElementById("wind6dir").innerHTML = this.value'>
+                            <option value="">--</option>
+                            <option value="N">N</option>
+                            <option value="NNE">NNE</option>
+                            <option value="NE">NE</option>
+                            <option value="ENE">ENE</option>
+                            <option value="E">E</option>
+                            <option value="ESE">ESE</option>
+                            <option value="SE">SE</option>
+                            <option value="SSE">SSE</option>
+                            <option value="S">S</option>
+                            <option value="SSW">SSW</option>
+                            <option value="SW">SW</option>
+                            <option value="WSW">WSW</option>
+                            <option value="W">W</option>
+                            <option value="WNW">WNW</option>
+                            <option value="NW">NW</option>
+                            <option value="NNW">NNW</option>
+                            <!--<option value="Variable">Variable</option>-->
+                        </select><br />
+                        <input type="number" class="WINDmph" value="" id="wind6spdchg" placeholder="Speed" onInput='document.getElementById("wind6spd").innerHTML = this.value'></input>
+                        <br />
+                    </div>
+                </div>
+                <div class="CELL OPTS" id="wind7block">
+                    <u>Wind:</u><br />
+                    <input type="radio" name="windtoggle7" id="wind7off" onClick='document.getElementById("wind7").style.display = "none"; document.getElementById("wind7desc").style.display = "none"' checked>OFF</input>
+                    <input type="radio" name="windtoggle7" id="wind7on" onClick='document.getElementById("wind7").style.display = "block"; document.getElementById("wind7desc").style.display = "block"'>ON</input>
+                    <div id="wind7desc" style="display:none">
+                        <select title="Wind Direction" id="wind7select" onChange='document.getElementById("wind7dir").innerHTML = this.value'>
+                            <option value="">--</option>
+                            <option value="N">N</option>
+                            <option value="NNE">NNE</option>
+                            <option value="NE">NE</option>
+                            <option value="ENE">ENE</option>
+                            <option value="E">E</option>
+                            <option value="ESE">ESE</option>
+                            <option value="SE">SE</option>
+                            <option value="SSE">SSE</option>
+                            <option value="S">S</option>
+                            <option value="SSW">SSW</option>
+                            <option value="SW">SW</option>
+                            <option value="WSW">WSW</option>
+                            <option value="W">W</option>
+                            <option value="WNW">WNW</option>
+                            <option value="NW">NW</option>
+                            <option value="NNW">NNW</option>
+                            <!--<option value="Variable">Variable</option>-->
+                        </select><br />
+                        <input type="number" class="WINDmph" value="" id="wind7spdchg" placeholder="Speed" onInput='document.getElementById("wind7spd").innerHTML = this.value'></input>
+                        <br />
+                    </div>
+                </div>
+            </div>
             <!-- HI TEMPERATURE ROW -->
             <div class="ROW">
                 <div class="CELL OPTS">
@@ -539,6 +780,11 @@
 		</div>
 		<hr color=gray />
 		<div id="about" style="width:85%;margin:auto;">
+			<p><u>Nov 16, 2020 Update</u>:
+				<ul>
+					<li>Per feedback/request, I included some extra t-storm icons and a way to place wind-direction and optional speed for each day. See the above options to toggle its view.</li>
+				</ul>
+			</p>
 			<p><u>May 7, 2020 Update</u>:
 				<ul>
 					<li>The user can now do 5 or 7 day forecasts.</li>

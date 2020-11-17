@@ -43,13 +43,21 @@ hr {
 }
 
 /* Computers */
-@media not screen and (min-width: 491px) {
+@media screen and (min-width: 770px) and (-webkit-min-device-pixel-ratio: 1) and (max-resolution: 190dpi) {
 	.MAIN {
 		width: 98vw;
 		height: calc(98vw / 2);
 	}
 	.DAYNAME {font-size: 3.8vw;}
 	.PERC {font-size: 2.5vw;}
+	.SKYcycle:hover {
+		color: rgba(0,0,0,20%);
+		background-color: rgba(255,255,255,15%);
+	}
+	.DESCcycle:hover {
+		color: rgba(0,0,0,20%);
+		background-color: rgba(255,255,255,15%);
+	}
 	.HI {font-size: 8vw;}
 	.LO {font-size: 2.5vw;}
 	.UVIcell {font-size: 0.7vw;}
@@ -225,6 +233,19 @@ hr {
 	color: white;
 	text-shadow: 2px 2px 5px black;
 }
+.WIND {
+	font-weight: bold;
+	font-size: 1.7em;
+	text-shadow: 2px 2px 3px black;
+	vertical-align: middle;
+}
+.WINDboxlogo {
+	width:25%;
+	vertical-align:middle;
+}
+.WINDmph {
+	width: 50%;
+}
 .HI {
 	position: absolute;
 	bottom: 5%;
@@ -257,4 +278,8 @@ hr {
 	text-align: center;
 	color: black;
 	font-size: 1.5em;
+}
+.DYOPTSNAME {
+	font-family: sans-serif;
+	font-weight: bold;
 }
