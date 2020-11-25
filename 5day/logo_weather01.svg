@@ -7,7 +7,6 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="250"
@@ -47,8 +46,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="4.9799405"
-     inkscape:cy="141.84573"
+     inkscape:cx="-0.11835571"
+     inkscape:cy="127.39697"
      inkscape:document-units="px"
      inkscape:current-layer="g1542"
      showgrid="false"
@@ -60,9 +59,7 @@
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:snap-global="true"
-     inkscape:snap-bbox="true"
-     inkscape:snap-bbox-midpoints="true" />
+     inkscape:snap-global="false" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -71,7 +68,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -109,6 +106,47 @@
         </g>
       </g>
       <g
+         aria-label="WEATHER"
+         transform="matrix(1.000486,0,0,0.99951426,0.26390457,3.8693045)"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.23252773px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;letter-spacing:0.71373349px;text-anchor:middle;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.51910305;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+         id="text1556">
+        <path
+           d="m 0.7539041,255.71356 1.1003679,-2.39524 4.0901165,1.28566 q 0.7253347,0.25081 1.4569216,0.48801 0.7315868,0.23721 1.4569216,0.48802 l 0.025008,-0.0544 q -0.6378055,-0.44134 -1.275611,-0.88268 -0.6378054,-0.44134 -1.2756109,-0.88268 l -3.4774116,-2.61937 0.900301,-1.95974 4.2526708,0.93181 q 0.7231245,0.18387 1.4870769,0.3865 0.7503431,0.19637 1.5142961,0.399 l 0.02501,-0.0544 q -0.676423,-0.39316 -1.3329851,-0.79367 -0.6565617,-0.40051 -1.3057663,-0.78116 l -3.6399659,-2.26553 1.0253428,-2.23193 8.1708195,5.53367 -1.362956,2.96682 -3.8238039,-0.93257 Q 8.1974743,252.2109 7.629199,252.04872 7.0671759,251.87293 6.5459806,251.71591 l -0.025008,0.0544 q 0.4586743,0.29312 0.9519245,0.61861 0.4995022,0.31188 0.9666389,0.65833 l 3.211099,2.26629 -1.337948,2.91239 z"
+           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:14.9767046px;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro Heavy';letter-spacing:0px;fill:#000000;stroke:none;stroke-width:0.51910305;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path1695"
+           inkscape:connector-curvature="0" />
+        <path
+           d="m 9.7684015,240.6526 4.8417145,-4.01555 1.376759,1.66002 -2.858917,2.37108 0.975204,1.17585 2.443913,-2.0269 1.376759,1.66002 -2.443913,2.02689 1.109056,1.33724 2.974196,-2.46669 1.376759,1.66001 -4.956994,4.11116 z"
+           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:14.9767046px;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro Heavy';letter-spacing:0px;fill:#000000;stroke:none;stroke-width:0.51910305;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path1697"
+           inkscape:connector-curvature="0" />
+        <path
+           d="m 25.201648,237.93225 -0.384447,-0.57754 q -0.40873,-0.6006 -0.85827,-1.31385 -0.44954,-0.71325 -0.868473,-1.34202 l -0.05633,0.0204 q 0.100167,0.76017 0.211759,1.59585 0.120572,0.8165 0.191354,1.53953 l 0.07466,0.68976 z m 1.114977,1.71466 -2.562774,0.92841 0.253368,2.10644 -2.478286,0.89782 -0.527709,-10.1628 2.928884,-1.06105 6.103853,8.14272 -2.562773,0.92842 z"
+           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:14.9767046px;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro Heavy';letter-spacing:0px;fill:#000000;stroke:none;stroke-width:0.51910305;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path1699"
+           inkscape:connector-curvature="0" />
+        <path
+           d="m 31.762523,233.29313 -2.575993,0.002 -0.0013,-2.15664 7.727979,-0.005 0.0013,2.15665 -2.575992,0.002 0.0047,7.57822 -2.575993,0.002 z"
+           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:14.9767046px;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro Heavy';letter-spacing:0px;fill:#000000;stroke:none;stroke-width:0.51910305;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path1701"
+           inkscape:connector-curvature="0" />
+        <path
+           d="m 42.267218,232.1878 2.368339,1.01327 -1.425646,3.3322 2.671266,1.14287 1.425645,-3.3322 2.368339,1.01327 -3.829213,8.95012 -2.368338,-1.01327 1.519902,-3.55251 -2.671265,-1.14287 -1.519903,3.55251 -2.368339,-1.01327 z"
+           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:14.9767046px;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro Heavy';letter-spacing:0px;fill:#000000;stroke:none;stroke-width:0.51910305;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path1703"
+           inkscape:connector-curvature="0" />
+        <path
+           d="m 54.596552,238.9963 4.354974,4.53883 -1.556172,1.49314 -2.571509,-2.68008 -1.102288,1.05764 2.198225,2.29103 -1.556172,1.49313 -2.198225,-2.29103 -1.253583,1.20281 2.675199,2.78814 -1.556172,1.49313 -4.458664,-4.6469 z"
+           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:14.9767046px;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro Heavy';letter-spacing:0px;fill:#000000;stroke:none;stroke-width:0.51910305;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path1705"
+           inkscape:connector-curvature="0" />
+        <path
+           d="m 59.02837,252.43825 0.343671,0.86262 q 0.57648,1.44697 1.773011,0.97026 0.584353,-0.23281 0.6573,-0.69715 0.07849,-0.45043 -0.204206,-1.16 l -0.343671,-0.86262 z m -3.938591,4.43879 2.412244,-2.76666 -0.365843,-0.91827 -3.033068,1.20839 -0.953409,-2.39306 9.043553,-3.603 1.363597,3.42264 q 0.28824,0.72348 0.409633,1.43283 0.126936,0.72326 -0.01297,1.34326 -0.134366,0.6339 -0.5884,1.15335 -0.440122,0.5139 -1.288825,0.85202 -0.973921,0.38802 -1.774675,0.23952 -0.795212,-0.13459 -1.423022,-0.6583 l -2.724542,3.35861 z"
+           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:14.9767046px;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro Heavy';letter-spacing:0px;fill:#000000;stroke:none;stroke-width:0.51910305;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path1707"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
          id="g1564"
          transform="translate(42.59724,21.634185)"
          style="fill:#000000;stroke:none;stroke-width:0.98098212">
@@ -129,46 +167,6 @@
            id="circle1562"
            inkscape:connector-curvature="0" />
       </g>
-      <g
-         aria-label="WEATHER"
-         style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:16.93333435px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Heavy';text-align:center;letter-spacing:-0.26458335px;text-anchor:middle;display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458335;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
-         id="text1052">
-        <path
-           d="m 2.0964522,254.91651 1.2580452,-2.0088 4.2795516,1.67203 -3.164865,-3.45192 1.2551196,-2.00414 4.4902014,1.33568 -3.3725891,-3.12024 1.2521938,-1.99946 5.9036223,5.79799 -1.299005,2.07421 -5.0638218,-1.4998 3.5629448,3.89635 -1.2990051,2.07421 z"
-           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:11.28888893px;font-family:Arial;-inkscape-font-specification:'Arial Heavy';letter-spacing:-0.26458335px;fill:#000000;stroke:none;stroke-width:0.26458335;stroke-miterlimit:4;stroke-dasharray:none"
-           id="path1054"
-           inkscape:connector-curvature="0" />
-        <path
-           d="m 10.902202,242.96032 5.376838,-3.98361 1.027076,1.38628 -3.36606,2.49386 0.764565,1.03196 3.122464,-2.31338 0.981137,1.32428 -3.122464,2.31338 0.948324,1.27999 3.463498,-2.56605 1.089423,1.47044 -5.474276,4.0558 z"
-           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:11.28888893px;font-family:Arial;-inkscape-font-specification:'Arial Heavy';letter-spacing:-0.26458335px;fill:#000000;stroke:none;stroke-width:0.26458335;stroke-miterlimit:4;stroke-dasharray:none"
-           id="path1056"
-           inkscape:connector-curvature="0" />
-        <path
-           d="m 26.498634,242.05925 -2.693455,0.91388 0.05799,1.38896 -2.416802,0.82001 0.279746,-8.62821 2.578618,-0.87491 5.472557,6.67647 -2.474221,0.83949 z m -1.057321,-1.48645 -1.778979,-2.46396 0.09296,3.03602 z"
-           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:11.28888893px;font-family:Arial;-inkscape-font-specification:'Arial Heavy';letter-spacing:-0.26458335px;fill:#000000;stroke:none;stroke-width:0.26458335;stroke-miterlimit:4;stroke-dasharray:none"
-           id="path1058"
-           inkscape:connector-curvature="0" />
-        <path
-           d="m 28.936818,234.55791 7.589096,-0.13143 0.03455,1.9951 -2.546233,0.0441 0.105373,6.08451 -2.496631,0.0432 -0.105373,-6.08451 -2.546233,0.0441 z"
-           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:11.28888893px;font-family:Arial;-inkscape-font-specification:'Arial Heavy';letter-spacing:-0.26458335px;fill:#000000;stroke:none;stroke-width:0.26458335;stroke-miterlimit:4;stroke-dasharray:none"
-           id="path1060"
-           inkscape:connector-curvature="0" />
-        <path
-           d="m 40.15211,234.95623 2.370152,0.78576 -0.889832,2.68408 2.589901,0.85861 0.889832,-2.68408 2.380616,0.78922 -2.542871,7.6703 -2.380616,-0.78923 1.028596,-3.10265 -2.589901,-0.85861 -1.028596,3.10265 -2.370152,-0.78576 z"
-           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:11.28888893px;font-family:Arial;-inkscape-font-specification:'Arial Heavy';letter-spacing:-0.26458335px;fill:#000000;stroke:none;stroke-width:0.26458335;stroke-miterlimit:4;stroke-dasharray:none"
-           id="path1062"
-           inkscape:connector-curvature="0" />
-        <path
-           d="m 51.135409,239.44981 5.292173,4.09542 -1.055903,1.36446 -3.313057,-2.56386 -0.786024,1.01572 3.073297,2.37831 -1.008674,1.30343 -3.073297,-2.37832 -0.974939,1.25984 3.408962,2.63807 -1.12,1.44728 -5.388078,-4.16963 z"
-           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:11.28888893px;font-family:Arial;-inkscape-font-specification:'Arial Heavy';letter-spacing:-0.26458335px;fill:#000000;stroke:none;stroke-width:0.26458335;stroke-miterlimit:4;stroke-dasharray:none"
-           id="path1064"
-           inkscape:connector-curvature="0" />
-        <path
-           d="m 52.377209,250.87283 6.721858,-4.48511 2.309862,3.46181 q 0.642478,0.96288 0.817008,1.58197 0.174529,0.6191 -0.06678,1.23071 -0.23672,0.60856 -0.878644,1.03688 -0.559391,0.37325 -1.126561,0.40711 -0.562584,0.0308 -1.093176,-0.21819 -0.337927,-0.15886 -0.752388,-0.55159 0.124014,0.454 0.113413,0.70626 -0.006,0.16969 -0.13278,0.5657 -0.123673,0.4006 -0.221447,0.57186 l -1.278684,2.30441 -1.566423,-2.34761 1.313776,-2.48023 q 0.258176,-0.47709 0.267251,-0.7217 0.006,-0.32869 -0.1837,-0.61297 l -0.122376,-0.18341 -2.728176,1.82036 z m 5.390304,-0.58156 0.584349,0.87577 q 0.09484,0.14214 0.458834,0.48903 0.17894,0.1788 0.434255,0.19398 0.258374,0.0198 0.478463,-0.12708 0.325547,-0.21722 0.362109,-0.53981 0.03656,-0.32259 -0.342805,-0.89115 l -0.608825,-0.91245 z"
-           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:11.28888893px;font-family:Arial;-inkscape-font-specification:'Arial Heavy';letter-spacing:-0.26458335px;fill:#000000;stroke:none;stroke-width:0.26458335;stroke-miterlimit:4;stroke-dasharray:none"
-           id="path1066"
-           inkscape:connector-curvature="0" />
-      </g>
     </g>
   </g>
   <g
@@ -185,7 +183,7 @@
        r="23.056547" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:25.59242249px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;text-anchor:middle;display:inline;opacity:1;fill:#d40000;fill-opacity:1;stroke:#000000;stroke-width:0.26458335;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:25.59242249px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;text-anchor:middle;opacity:1;fill:#d40000;fill-opacity:1;stroke:#000000;stroke-width:0.26458335;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
        id="text1472"
        y="291.63907"
        x="33.166618"
@@ -196,8 +194,7 @@
          y="314.28238"
          style="fill:#d40000;stroke:#000000;stroke-width:0.26458335;stroke-miterlimit:4;stroke-dasharray:none" /></text>
     <g
-       id="g1542"
-       style="display:inline">
+       id="g1542">
       <path
          d="m 58.819809,267.6259 q 0,10.43976 -7.50194,17.81054 -7.501939,7.39702 -17.967932,7.39702 -10.465992,0 -17.941701,-7.26586 -7.5544005,-7.31833 -7.5544005,-17.75809 0,-10.43976 7.5544005,-17.78432 7.475709,-7.26586 17.941701,-7.26586 10.465993,0 17.915471,7.16094 7.554401,7.26587 7.554401,17.70563 z m -1.337759,-0.15739 q 0,-9.73154 -7.187173,-16.68263 -7.134711,-6.87241 -16.892479,-6.87241 l -2.623055,5.37726 2.85913,0.57708 2.229597,-2.2296 3.934584,0.26231 0.786917,2.09844 -2.36075,2.36075 v 1.41645 l 1.468911,0.28854 0.681994,-1.10168 2.596826,-1.6263 -0.07869,1.10168 0.970531,1.67876 -1.154145,1.20661 0.734456,0.70821 -1.731217,0.10493 0.708225,1.41645 -3.75097,1.78368 0.577073,2.12467 H 38.07144 l -0.524612,-2.09844 -2.754208,-0.0525 -0.49838,0.81315 -1.127915,-0.52461 -1.836139,1.83614 1.468911,1.75745 -0.05246,1.94106 1.547603,1.15414 9.023311,1.023 2.859131,2.01975 -0.340997,5.01003 -6.216642,6.21664 q -0.603303,0.60331 -1.180375,3.35751 -0.550842,2.59683 -0.393459,3.69852 l -0.9443,1.07545 q -1.101683,-2.17714 -2.85913,-6.68879 -0.419689,-1.54761 -0.734456,-3.93459 -0.236075,-1.96729 -0.47215,-3.96081 l -3.934583,-3.46244 3.488663,-4.1182 -1.44268,-2.0722 q -3.331281,-0.682 -4.328042,-1.20661 -0.996761,-0.55085 -3.436203,-3.01651 l 1.363989,2.64928 -0.91807,0.39346 -2.124674,-3.98705 0.419688,-3.72474 -0.655763,-2.62305 -2.045984,-1.99352 -1.495142,-0.36723 -1.311528,0.91806 -1.44268,0.36723 q -5.9543369,6.87242 -5.9543369,15.7908 0,9.96761 7.1347119,16.91871 7.05602,6.87241 17.049862,6.87241 9.993843,0 17.023632,-7.00357 7.05602,-7.00355 7.05602,-16.97116 z"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:68.31809998px;line-height:1.25;font-family:Webdings;-inkscape-font-specification:Webdings;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:10.58333397;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
@@ -212,7 +209,43 @@
          aria-label="WEATHER"
          transform="matrix(1.000486,0,0,0.99951426,0.26390457,3.8693045)"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.23252773px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;letter-spacing:0.71373349px;text-anchor:middle;opacity:1;fill:#c83737;fill-opacity:1;stroke:#000000;stroke-width:0.5291667;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
-         id="text1468" />
+         id="text1468">
+        <path
+           d="m 0.7539041,255.71356 1.1003679,-2.39524 4.0901165,1.28566 q 0.7253347,0.25081 1.4569216,0.48801 0.7315868,0.23721 1.4569216,0.48802 l 0.025008,-0.0544 q -0.6378055,-0.44134 -1.275611,-0.88268 -0.6378054,-0.44134 -1.2756109,-0.88268 l -3.4774116,-2.61937 0.900301,-1.95974 4.2526708,0.93181 q 0.7231245,0.18387 1.4870769,0.3865 0.7503431,0.19637 1.5142961,0.399 l 0.02501,-0.0544 q -0.676423,-0.39316 -1.3329851,-0.79367 -0.6565617,-0.40051 -1.3057663,-0.78116 l -3.6399659,-2.26553 1.0253428,-2.23193 8.1708195,5.53367 -1.362956,2.96682 -3.8238039,-0.93257 Q 8.1974743,252.2109 7.629199,252.04872 7.0671759,251.87293 6.5459806,251.71591 l -0.025008,0.0544 q 0.4586743,0.29312 0.9519245,0.61861 0.4995022,0.31188 0.9666389,0.65833 l 3.211099,2.26629 -1.337948,2.91239 z"
+           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:14.9767046px;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro Heavy';letter-spacing:0px;fill:#c83737;stroke:#000000;stroke-width:0.5291667;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path1726"
+           inkscape:connector-curvature="0" />
+        <path
+           d="m 9.7684015,240.6526 4.8417145,-4.01555 1.376759,1.66002 -2.858917,2.37108 0.975204,1.17585 2.443913,-2.0269 1.376759,1.66002 -2.443913,2.02689 1.109056,1.33724 2.974196,-2.46669 1.376759,1.66001 -4.956994,4.11116 z"
+           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:14.9767046px;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro Heavy';letter-spacing:0px;fill:#c83737;stroke:#000000;stroke-width:0.5291667;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path1728"
+           inkscape:connector-curvature="0" />
+        <path
+           d="m 25.201648,237.93225 -0.384447,-0.57754 q -0.40873,-0.6006 -0.85827,-1.31385 -0.44954,-0.71325 -0.868473,-1.34202 l -0.05633,0.0204 q 0.100167,0.76017 0.211759,1.59585 0.120572,0.8165 0.191354,1.53953 l 0.07466,0.68976 z m 1.114977,1.71466 -2.562774,0.92841 0.253368,2.10644 -2.478286,0.89782 -0.527709,-10.1628 2.928884,-1.06105 6.103853,8.14272 -2.562773,0.92842 z"
+           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:14.9767046px;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro Heavy';letter-spacing:0px;fill:#c83737;stroke:#000000;stroke-width:0.5291667;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path1730"
+           inkscape:connector-curvature="0" />
+        <path
+           d="m 31.762523,233.29313 -2.575993,0.002 -0.0013,-2.15664 7.727979,-0.005 0.0013,2.15665 -2.575992,0.002 0.0047,7.57822 -2.575993,0.002 z"
+           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:14.9767046px;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro Heavy';letter-spacing:0px;fill:#c83737;stroke:#000000;stroke-width:0.5291667;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path1732"
+           inkscape:connector-curvature="0" />
+        <path
+           d="m 42.267218,232.1878 2.368339,1.01327 -1.425646,3.3322 2.671266,1.14287 1.425645,-3.3322 2.368339,1.01327 -3.829213,8.95012 -2.368338,-1.01327 1.519902,-3.55251 -2.671265,-1.14287 -1.519903,3.55251 -2.368339,-1.01327 z"
+           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:14.9767046px;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro Heavy';letter-spacing:0px;fill:#c83737;stroke:#000000;stroke-width:0.5291667;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path1734"
+           inkscape:connector-curvature="0" />
+        <path
+           d="m 54.596552,238.9963 4.354974,4.53883 -1.556172,1.49314 -2.571509,-2.68008 -1.102288,1.05764 2.198225,2.29103 -1.556172,1.49313 -2.198225,-2.29103 -1.253583,1.20281 2.675199,2.78814 -1.556172,1.49313 -4.458664,-4.6469 z"
+           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:14.9767046px;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro Heavy';letter-spacing:0px;fill:#c83737;stroke:#000000;stroke-width:0.5291667;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path1736"
+           inkscape:connector-curvature="0" />
+        <path
+           d="m 59.02837,252.43825 0.343671,0.86262 q 0.57648,1.44697 1.773011,0.97026 0.584353,-0.23281 0.6573,-0.69715 0.07849,-0.45043 -0.204206,-1.16 l -0.343671,-0.86262 z m -3.938591,4.43879 2.412244,-2.76666 -0.365843,-0.91827 -3.033068,1.20839 -0.953409,-2.39306 9.043553,-3.603 1.363597,3.42264 q 0.28824,0.72348 0.409633,1.43283 0.126936,0.72326 -0.01297,1.34326 -0.134366,0.6339 -0.5884,1.15335 -0.440122,0.5139 -1.288825,0.85202 -0.973921,0.38802 -1.774675,0.23952 -0.795212,-0.13459 -1.423022,-0.6583 l -2.724542,3.35861 z"
+           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:14.9767046px;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro Heavy';letter-spacing:0px;fill:#c83737;stroke:#000000;stroke-width:0.5291667;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path1738"
+           inkscape:connector-curvature="0" />
+      </g>
       <g
          transform="translate(42.59724,21.634185)"
          id="g1503">
@@ -233,64 +266,6 @@
            cx="-19.310225"
            cy="256.90958"
            r="10.757599" />
-      </g>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:16.93333435px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Heavy';text-align:center;letter-spacing:-0.26458335px;text-anchor:middle;display:none;opacity:1;fill:#d35f5f;fill-opacity:1;stroke:#280b0b;stroke-width:0.26458335;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
-         id="text860"
-         inkscape:label="ORIGTEXT_HIDE"><textPath
-           xlink:href="#path865"
-           startOffset="50%"
-           id="textPath867"
-           style="font-size:11.28888893px;letter-spacing:-0.26458335px;fill:#d35f5f;stroke:#280b0b;stroke-width:0.26458335;stroke-miterlimit:4;stroke-dasharray:none"><tspan
-             style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:11.28888893px;font-family:Arial;-inkscape-font-specification:'Arial Heavy';letter-spacing:-0.26458335px;fill:#d35f5f;stroke:#280b0b;stroke-width:0.26458335;stroke-miterlimit:4;stroke-dasharray:none"
-             id="tspan858"
-             dx="77.02002">WEATHER</tspan></textPath></text>
-      <circle
-         style="display:none;opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.32291675;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
-         id="path865"
-         cx="33.336823"
-         cy="267.79639"
-         r="25.228788" />
-      <g
-         aria-label="WEATHER"
-         style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:16.93333435px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Heavy';text-align:center;letter-spacing:-0.26458335px;text-anchor:middle;opacity:1;fill:#d35f5f;fill-opacity:1;stroke:#280b0b;stroke-width:0.26458335;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
-         id="text1125">
-        <path
-           d="m 2.0964522,254.91651 1.2580452,-2.0088 4.2795516,1.67203 -3.164865,-3.45192 1.2551196,-2.00414 4.4902014,1.33568 -3.3725891,-3.12024 1.2521938,-1.99946 5.9036223,5.79799 -1.299005,2.07421 -5.0638218,-1.4998 3.5629448,3.89635 -1.2990051,2.07421 z"
-           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:11.28888893px;font-family:Arial;-inkscape-font-specification:'Arial Heavy';letter-spacing:-0.26458335px;fill:#d35f5f;stroke:#280b0b;stroke-width:0.26458335;stroke-miterlimit:4;stroke-dasharray:none"
-           id="path1127"
-           inkscape:connector-curvature="0" />
-        <path
-           d="m 10.902202,242.96032 5.376838,-3.98361 1.027076,1.38628 -3.36606,2.49386 0.764565,1.03196 3.122464,-2.31338 0.981137,1.32428 -3.122464,2.31338 0.948324,1.27999 3.463498,-2.56605 1.089423,1.47044 -5.474276,4.0558 z"
-           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:11.28888893px;font-family:Arial;-inkscape-font-specification:'Arial Heavy';letter-spacing:-0.26458335px;fill:#d35f5f;stroke:#280b0b;stroke-width:0.26458335;stroke-miterlimit:4;stroke-dasharray:none"
-           id="path1129"
-           inkscape:connector-curvature="0" />
-        <path
-           d="m 26.498634,242.05925 -2.693455,0.91388 0.05799,1.38896 -2.416802,0.82001 0.279746,-8.62821 2.578618,-0.87491 5.472557,6.67647 -2.474221,0.83949 z m -1.057321,-1.48645 -1.778979,-2.46396 0.09296,3.03602 z"
-           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:11.28888893px;font-family:Arial;-inkscape-font-specification:'Arial Heavy';letter-spacing:-0.26458335px;fill:#d35f5f;stroke:#280b0b;stroke-width:0.26458335;stroke-miterlimit:4;stroke-dasharray:none"
-           id="path1131"
-           inkscape:connector-curvature="0" />
-        <path
-           d="m 28.936818,234.55791 7.589096,-0.13143 0.03455,1.9951 -2.546233,0.0441 0.105373,6.08451 -2.496631,0.0432 -0.105373,-6.08451 -2.546233,0.0441 z"
-           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:11.28888893px;font-family:Arial;-inkscape-font-specification:'Arial Heavy';letter-spacing:-0.26458335px;fill:#d35f5f;stroke:#280b0b;stroke-width:0.26458335;stroke-miterlimit:4;stroke-dasharray:none"
-           id="path1133"
-           inkscape:connector-curvature="0" />
-        <path
-           d="m 40.15211,234.95623 2.370152,0.78576 -0.889832,2.68408 2.589901,0.85861 0.889832,-2.68408 2.380616,0.78922 -2.542871,7.6703 -2.380616,-0.78923 1.028596,-3.10265 -2.589901,-0.85861 -1.028596,3.10265 -2.370152,-0.78576 z"
-           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:11.28888893px;font-family:Arial;-inkscape-font-specification:'Arial Heavy';letter-spacing:-0.26458335px;fill:#d35f5f;stroke:#280b0b;stroke-width:0.26458335;stroke-miterlimit:4;stroke-dasharray:none"
-           id="path1135"
-           inkscape:connector-curvature="0" />
-        <path
-           d="m 51.135409,239.44981 5.292173,4.09542 -1.055903,1.36446 -3.313057,-2.56386 -0.786024,1.01572 3.073297,2.37831 -1.008674,1.30343 -3.073297,-2.37832 -0.974939,1.25984 3.408962,2.63807 -1.12,1.44728 -5.388078,-4.16963 z"
-           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:11.28888893px;font-family:Arial;-inkscape-font-specification:'Arial Heavy';letter-spacing:-0.26458335px;fill:#d35f5f;stroke:#280b0b;stroke-width:0.26458335;stroke-miterlimit:4;stroke-dasharray:none"
-           id="path1137"
-           inkscape:connector-curvature="0" />
-        <path
-           d="m 52.377209,250.87283 6.721858,-4.48511 2.309862,3.46181 q 0.642478,0.96288 0.817008,1.58197 0.174529,0.6191 -0.06678,1.23071 -0.23672,0.60856 -0.878644,1.03688 -0.559391,0.37325 -1.126561,0.40711 -0.562584,0.0308 -1.093176,-0.21819 -0.337927,-0.15886 -0.752388,-0.55159 0.124014,0.454 0.113413,0.70626 -0.006,0.16969 -0.13278,0.5657 -0.123673,0.4006 -0.221447,0.57186 l -1.278684,2.30441 -1.566423,-2.34761 1.313776,-2.48023 q 0.258176,-0.47709 0.267251,-0.7217 0.006,-0.32869 -0.1837,-0.61297 l -0.122376,-0.18341 -2.728176,1.82036 z m 5.390304,-0.58156 0.584349,0.87577 q 0.09484,0.14214 0.458834,0.48903 0.17894,0.1788 0.434255,0.19398 0.258374,0.0198 0.478463,-0.12708 0.325547,-0.21722 0.362109,-0.53981 0.03656,-0.32259 -0.342805,-0.89115 l -0.608825,-0.91245 z"
-           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:11.28888893px;font-family:Arial;-inkscape-font-specification:'Arial Heavy';letter-spacing:-0.26458335px;fill:#d35f5f;stroke:#280b0b;stroke-width:0.26458335;stroke-miterlimit:4;stroke-dasharray:none"
-           id="path1139"
-           inkscape:connector-curvature="0" />
       </g>
     </g>
   </g>
