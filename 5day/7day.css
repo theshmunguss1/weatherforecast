@@ -34,6 +34,11 @@ hr {
 	min-width:10%;
 }
 
+#lang_selection {
+	vertical-align: middle;
+	border:0.5px solid white;
+}
+
 .DAYTOGGLE {
 	font-family: arial;
 	font-weight: bold;
@@ -95,7 +100,6 @@ hr {
 	vertical-align: top;
 	position:relative;
 	height: 80%;
-	width: 20%;
 	background: linear-gradient(0deg, rgba(255,255,255,.5), rgba(255,255,255,.1) 30%),
 				linear-gradient(180deg, rgba(255,255,255,.5), rgba(255,255,255,.1) 30%),
 				linear-gradient(90deg, rgba(255,255,255,.15), rgba(255,255,255,.1) 20%),
@@ -105,9 +109,14 @@ hr {
 }
 .TITLEBOX {
 	background: linear-gradient(to right, rgba(255,255,255,.8) 25%, rgba(255,255,255,.25) 90%, transparent);
-	background-size: 100% 10%, 100%;
 	position:relative;
 	border-radius: 8px;
+	height: 18%;
+	color: black;
+	margin-left: 1%;
+	font-size: 2.8em;
+	font-weight: bold;
+	/*white-space: nowrap;*/ /* Will enforce title as one line */
 	}
 .TITLE {
 	display: inline-block;
@@ -133,10 +142,10 @@ hr {
 	display: inline-block;
 	width: 9%;
 }
-#logobox {
-	width:100%;
+#logo {
+	width:100px;
 	vertical-align: middle;
-	margin-right: 2%;
+	transform: translate(0%,-6%);
 }
 .DAYNAME {
 	display: inline-block;
@@ -212,13 +221,13 @@ hr {
 	color: black;
 	font-size: 0.5em;
 	height: 50%;
-	width:1%;
 	border:1px solid black;
 }
 .UVIcell.marker {
 	font-size: 1em;
 	border:none;
 	color: white;
+	width: 8%;
 }
 .UVIcell.marker:active {border:1px solid red;}
 .UVIcell.low {background-color: green;}
@@ -231,7 +240,7 @@ hr {
 	font-size: 1.1em;
 	font-style: oblique;
 	color: white;
-	text-shadow: 2px 2px 5px black;
+	text-shadow: 2px 2px 3px black;
 }
 .WIND {
 	font-weight: bold;

@@ -1,5 +1,22 @@
 // This object will contain the global forecast options
-var frcst = {"dayqty":5,"tempunits":"F","H":240,"S":100,"L":50};
+var frcst = {
+	"dayqty":5,
+	"tempunits":"F",
+	"H":240,
+	"S":100,
+	"L":50,
+	"lang_index": 0,
+	"lang": "en"
+};
+
+// A Title Resize Idea: make an event listener to adjust the text size of the TITLEBOX if #textbox.offsetWidth > #title.offsetWidth
+
+var lang_img = [
+	["5day/lang_en.svg", "English", "en"],
+	["5day/lang_fr.svg", "French", "fr"],
+	["5day/lang_sp.svg", "Spanish", "sp"]
+];
+
 var sky = ["5day/sky_sun_clr.svg",
 			"5day/sky_sun_clr_smile.svg",
 			"5day/sky_sun_mostly.svg",
@@ -18,38 +35,89 @@ var sky = ["5day/sky_sun_clr.svg",
 			"5day/sky_cloudy_tstorm_only.svg",
 			"5day/sky_hurricane.svg",
 			"5day/sky_cloudy_snow.svg",
+			"5day/sky_cloudy_snow2.svg",
 			"5day/sky_cloudy_snra.svg",
 			"5day/sky_cloudy_wintrymix2.svg",
 			"5day/sky_cloudy_wintrymix.svg"];
 
 var desc = ["5day/desc_blank.svg",
-			"5day/desc_windy.svg",
-			"5day/desc_hot.svg",
-			"5day/desc_muggy.svg",
-			"5day/desc_dry.svg",
-			"5day/desc_severe.svg",
-			"5day/desc_heavy_rain.svg",
-			"5day/desc_heavy_snow.svg",
-			"5day/desc_blizzard.svg",
-			"5day/desc_frost.svg",
-			"5day/desc_fog.svg",
-			"5day/desc_AM_clearing.svg",
-			"5day/desc_PM_clearing.svg",
-			"5day/desc_NIGHT_clearing.svg",
-			"5day/desc_AM_inc_clouds.svg",
-			"5day/desc_PM_inc_clouds.svg",
-			"5day/desc_NIGHT_inc_clouds.svg",
-			"5day/desc_perc_AM.svg",
-			"5day/desc_perc_PM.svg",
-			"5day/desc_perc_NIGHT.svg",
-			"5day/desc_perc_rain.svg",
-			"5day/desc_perc_tstorms.svg",
-			"5day/desc_perc_snow.svg"
+			"5day/en/desc_windy.svg",
+			"5day/en/desc_hot.svg",
+			"5day/en/desc_muggy.svg",
+			"5day/en/desc_dry.svg",
+			"5day/en/desc_severe.svg",
+			"5day/en/desc_heavy_rain.svg",
+			"5day/en/desc_heavy_snow.svg",
+			"5day/en/desc_blizzard.svg",
+			"5day/en/desc_frost.svg",
+			"5day/en/desc_fog.svg",
+			"5day/en/desc_AM_clearing.svg",
+			"5day/en/desc_PM_clearing.svg",
+			"5day/en/desc_NIGHT_clearing.svg",
+			"5day/en/desc_AM_inc_clouds.svg",
+			"5day/en/desc_PM_inc_clouds.svg",
+			"5day/en/desc_NIGHT_inc_clouds.svg",
+			"5day/en/desc_perc_AM.svg",
+			"5day/en/desc_perc_PM.svg",
+			"5day/en/desc_perc_NIGHT.svg",
+			"5day/en/desc_perc_rain.svg",
+			"5day/en/desc_perc_tstorms.svg",
+			"5day/en/desc_perc_snow.svg"
 		];
 
 // Load-up opts
 function loadup() {
 
+}
+
+function chg_lang(dir) {
+	let lang_selection = document.getElementById("lang_selection");
+	// LEFT
+	if (dir < 0) {
+		if (frcst.lang_index == 0) {frcst.lang_index = lang_img.length - 1;}
+		else {frcst.lang_index -= 1;}
+	}
+	// RIGHT
+	else {
+		if (frcst.lang_index == lang_img.length - 1) {frcst.lang_index = 0;}
+		else {frcst.lang_index += 1;}
+	}
+	lang_selection.src = lang_img[frcst.lang_index][0];
+	lang_selection.setAttribute("title", lang_img[frcst.lang_index][1]);	// "English", "French", "Spanish"
+	frcst.lang = lang_img[frcst.lang_index][2];	// "en", "fr", "sp"
+	// Change the display of days
+	day_select(document.getElementById("dayselect").value);
+	// Change the options list
+	dayopts = document.getElementById("dayselect").options;
+	for (i=0; i < 7; i++) {
+		dayopts[i].innerHTML = dyofwkvar[frcst.lang][0][i];
+	}
+	// Change the title and temperature units
+	let name = document.getElementById("person").innerHTML;
+	let city = document.getElementById("cityn").innerHTML;
+	if (frcst.lang == "en") {
+		document.getElementById("textbox").innerHTML = `<span id="person">${name}</span>'s <span id="frcstdays">${frcst.dayqty}</span>-Day Forecast for <span id="cityn">${city}</span>`;
+		chg_units("F");
+	}
+	else if (frcst.lang == "fr") {
+		document.getElementById("textbox").innerHTML = `Pr&eacute;visions de <span id="frcstdays">${frcst.dayqty}</span> Jours de <span id="person">${name}</span> pour <span id="cityn">${city}</span>`;
+		chg_units("C");
+	}
+	else if (frcst.lang == "sp") {
+		document.getElementById("textbox").innerHTML = `Pron&oacute;stico <span id="frcstdays">${frcst.dayqty}</span> D&iacute;as de <span id="person">${name}</span> para <span id="cityn">${city}</span>`;
+		chg_units("C");
+	}
+	// Change the descriptions
+	for (i=1; i < desc.length; i++) {
+		desc[i] = desc[i].replace(/\/\w\w\//, `/${frcst.lang}/`);
+	}
+	// Change the active descriptions if needed
+	for (i=1; i <= 7; i++) {
+		active = document.getElementById(`desc${i}`);
+		if (active.src.includes("blank") == false) {
+			active.src = active.src.replace(/\/\w\w\//, `/${frcst.lang}/`);
+		}
+	}
 }
 
 //document.getElementById("sky1").addEventListener("mouseover",toggleview("sky1arrows"));
@@ -72,9 +140,8 @@ function daystoggle(v) {
 			document.getElementById("frcstdays").innerHTML = 7;
 			document.getElementById("canvas").style.width = "1300px";
 			document.getElementById("canvas").style.borderSpacing = "5px 10px";
-			document.getElementById("canvas").style.paddingLeft = "0";
-			document.getElementById("title").colspan = 7;
-			document.getElementsByClassName("TITLE")[0].style.fontSize = "2.8em";
+			document.getElementById("title").setAttribute("colspan", 7);
+			document.getElementById("title").style.fontSize = "2.8em";
 			document.getElementById("d6").style.display = "table-cell";
 			document.getElementById("d7").style.display = "table-cell";
 			//Options
@@ -95,11 +162,10 @@ function daystoggle(v) {
 		if (v == 5) {
 			frcst.dayqty = 5;
 			document.getElementById("frcstdays").innerHTML = 5;
-			document.getElementById("canvas").style.width = "1100px";
+			document.getElementById("canvas").style.width = "930px";
 			document.getElementById("canvas").style.borderSpacing = "6px 10px";
-			document.getElementById("canvas").style.paddingLeft = "8px";
-			document.getElementById("title").colspan = 5;
-			document.getElementsByClassName("TITLE")[0].style.fontSize = "2.4em";
+			document.getElementById("title").setAttribute("colspan", 5);
+			document.getElementById("title").style.fontSize = "2.2em";
 			document.getElementById("d6").style.display = "none";
 			document.getElementById("d7").style.display = "none";
 			//Options
@@ -124,38 +190,58 @@ function daystoggle(v) {
 function load_day_select() {
 	z = new Date();		// Get the current time
 	daystr = z.toString().substring(0,3).toUpperCase(); 	// Extracts the day of the week; puts it in upper case for comparison
-	dayopts = document.getElementById("dayselect").options 	// a list of the individual values of the dayselect select obj
-	for (i=0;i<=dayopts.length;i++) {
-		if (daystr == dayopts[i].value.substring(0,3)) {
-			if (daystr == "SUN") {
-				day_select(dayopts[0].value);
-				document.getElementById("dayselect").selectedIndex = 0;
-			}
-			else {
-				day_select(dayopts[i+1].value);
-				document.getElementById("dayselect").selectedIndex = i+1;
-			}
-			break;
-		}
-	}
+	i = dyofwkvar["en"][0].indexOf(daystr);
+	day_select(i);
+	document.getElementById("dayselect").selectedIndex = i;
 }
 
-function day_select(dyofwk) {
+// python code: print('{}: ["{}"],'.format(dy, '","'.join(li[dy:] + li[0:dy])))
+var dyofwkvar = {
+	"en": {
+		0: ["MON","TUE","WED","THU","FRI","SAT","SUN"],
+		1: ["TUE","WED","THU","FRI","SAT","SUN","MON"],
+		2: ["WED","THU","FRI","SAT","SUN","MON","TUE"],
+		3: ["THU","FRI","SAT","SUN","MON","TUE","WED"],
+		4: ["FRI","SAT","SUN","MON","TUE","WED","THU"],
+		5: ["SAT","SUN","MON","TUE","WED","THU","FRI"],
+		6: ["SUN","MON","TUE","WED","THU","FRI","SAT"]
+	},
+	"fr": {
+		0: ["LUN","MAR","MER","JEU","VEN","SAM","DIM"],
+		1: ["MAR","MER","JEU","VEN","SAM","DIM","LUN"],
+		2: ["MER","JEU","VEN","SAM","DIM","LUN","MAR"],
+		3: ["JEU","VEN","SAM","DIM","LUN","MAR","MER"],
+		4: ["VEN","SAM","DIM","LUN","MAR","MER","JEU"],
+		5: ["SAM","DIM","LUN","MAR","MER","JEU","VEN"],
+		6: ["DIM","LUN","MAR","MER","JEU","VEN","SAM"]
+	},
+	"sp": {
+		0: ["LU","MA","MI","JU","VI","SA","DO"],
+		1: ["MA","MI","JU","VI","SA","DO","LU"],
+		2: ["MI","JU","VI","SA","DO","LU","MA"],
+		3: ["JU","VI","SA","DO","LU","MA","MI"],
+		4: ["VI","SA","DO","LU","MA","MI","JU"],
+		5: ["SA","DO","LU","MA","MI","JU","VI"],
+		6: ["DO","LU","MA","MI","JU","VI","SA"]
+	}
+};
+
+function day_select(dyindx) {
 	// Prints the 3 characters corresponding to the proper day
-	document.getElementById("name1").innerHTML = dyofwk.substring(0,3);
-	document.getElementById("d1name").innerHTML = dyofwk.substring(0,3);
-	document.getElementById("name2").innerHTML = dyofwk.substring(3,6);
-	document.getElementById("d2name").innerHTML = dyofwk.substring(3,6);
-	document.getElementById("name3").innerHTML = dyofwk.substring(6,9);
-	document.getElementById("d3name").innerHTML = dyofwk.substring(6,9);
-	document.getElementById("name4").innerHTML = dyofwk.substring(9,12);
-	document.getElementById("d4name").innerHTML = dyofwk.substring(9,12);
-	document.getElementById("name5").innerHTML = dyofwk.substring(12,15);
-	document.getElementById("d5name").innerHTML = dyofwk.substring(12,15);
-	document.getElementById("name6").innerHTML = dyofwk.substring(15,18);
-	document.getElementById("d6name").innerHTML = dyofwk.substring(15,18);
-	document.getElementById("name7").innerHTML = dyofwk.substring(18,21);
-	document.getElementById("d7name").innerHTML = dyofwk.substring(18,21);
+	document.getElementById("name1").innerText = dyofwkvar[frcst.lang][dyindx][0];
+	document.getElementById("d1name").innerText = dyofwkvar[frcst.lang][dyindx][0];
+	document.getElementById("name2").innerText = dyofwkvar[frcst.lang][dyindx][1];
+	document.getElementById("d2name").innerText = dyofwkvar[frcst.lang][dyindx][1];
+	document.getElementById("name3").innerText = dyofwkvar[frcst.lang][dyindx][2];
+	document.getElementById("d3name").innerText = dyofwkvar[frcst.lang][dyindx][2];
+	document.getElementById("name4").innerText = dyofwkvar[frcst.lang][dyindx][3];
+	document.getElementById("d4name").innerText = dyofwkvar[frcst.lang][dyindx][3];
+	document.getElementById("name5").innerText = dyofwkvar[frcst.lang][dyindx][4];
+	document.getElementById("d5name").innerText = dyofwkvar[frcst.lang][dyindx][4];
+	document.getElementById("name6").innerText = dyofwkvar[frcst.lang][dyindx][5];
+	document.getElementById("d6name").innerText = dyofwkvar[frcst.lang][dyindx][5];
+	document.getElementById("name7").innerText = dyofwkvar[frcst.lang][dyindx][6];
+	document.getElementById("d7name").innerText = dyofwkvar[frcst.lang][dyindx][6];
 }
 
 function random_forecast() {
@@ -245,7 +331,7 @@ function change_city(n) {
 	else {document.getElementById("cityn").innerHTML = n;}
 }
 
-function logo_select(logo) {document.getElementById("logobox").src = logo;}
+function logo_select(logo) {document.getElementById("logo").src = logo;}
 
 function change_temp(dy,temp) {
 	document.getElementById(dy).innerHTML = temp;
@@ -253,9 +339,13 @@ function change_temp(dy,temp) {
 
 function chg_units(k) {
 	// Changes temperature units to Fahrenheit or Celcius; only used for random forecast generation
+	let far = document.getElementById("tempF");
+	let cel = document.getElementById("tempC");
 	if (frcst.tempunits != k) {
 		frcst.tempunits = k;
 		if (frcst.tempunits == "C") {
+			// CELCIUS
+			if (cel.checked == false) {cel.checked = true;}
 			// if the just-changed temperature units are now celcius, we need to convert to celcius
 			// going from fahrenheit to celcius
 			for (i=1;i<=7;i++) {
@@ -267,6 +357,8 @@ function chg_units(k) {
 			}
 		}
 		else {
+			// FAHRENHEIT
+			if (far.checked == false) {far.checked = true;}
 			for (i=1;i<=7;i++) {
 				//console.log(eval(document.getElementById("hi" + i.toString()).innerHTML));
 				document.getElementById("hi" + i.toString()).innerHTML = Math.round(eval(document.getElementById("hi" + i.toString()).innerHTML)*9/5+32);

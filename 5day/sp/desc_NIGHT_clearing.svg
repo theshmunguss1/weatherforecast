@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="400"
+   height="84"
+   viewBox="0 0 105.83333 22.225"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   sodipodi:docname="desc_NIGHT_clearing.svg">
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient2968">
+      <stop
+         style="stop-color:#008000;stop-opacity:1;"
+         offset="0"
+         id="stop2964" />
+      <stop
+         style="stop-color:#00ff00;stop-opacity:1"
+         offset="1"
+         id="stop2966" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient1418">
+      <stop
+         style="stop-color:#00ffcc;stop-opacity:1"
+         offset="0"
+         id="stop1414" />
+      <stop
+         style="stop-color:#afc6e9;stop-opacity:1"
+         offset="1"
+         id="stop1416" />
+    </linearGradient>
+    <linearGradient
+       gradientTransform="translate(-1.6742626e-6,-274.77501)"
+       inkscape:collect="always"
+       xlink:href="#linearGradient1418"
+       id="linearGradient2282-1"
+       x1="52.916664"
+       y1="294.58093"
+       x2="52.916664"
+       y2="279.46188"
+       gradientUnits="userSpaceOnUse" />
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter2652"
+       x="-0.043498858"
+       width="1.0869977"
+       y="-0.23077127"
+       height="1.4615425">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.99149229"
+         id="feGaussianBlur2654" />
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2968"
+       id="linearGradient2970"
+       x1="53.840466"
+       y1="17.82637"
+       x2="53.503448"
+       y2="-6.0814748"
+       gradientUnits="userSpaceOnUse" />
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter2381"
+       x="-0.052695174"
+       width="1.1053903"
+       y="-0.12650781"
+       height="1.2530156">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.83382227"
+         id="feGaussianBlur2383" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="157.24717"
+     inkscape:cy="31.314344"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer3"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="715"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     units="px"
+     inkscape:lockguides="false"
+     inkscape:snap-center="true"
+     inkscape:snap-global="false">
+    <sodipodi:guide
+       position="52.916666,11.1125"
+       orientation="1,0"
+       id="guide825"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,0,255)" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="text 1">
+    <use
+       x="0"
+       y="0"
+       xlink:href="#text850"
+       id="use1062"
+       width="100%"
+       height="100%"
+       transform="translate(0.84820822,0.47199672)"
+       style="stroke-width:1.06461895;filter:url(#filter2652)"
+       inkscape:label="shadow" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.93657207px;line-height:1.25;font-family:OpenSymbol;-inkscape-font-specification:'OpenSymbol Bold';text-align:center;text-anchor:middle;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1.05833316;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+       x="76.238945"
+       y="16.491333"
+       id="text850"
+       transform="matrix(1.0222535,0,-0.23751548,0.97823098,0,0)"
+       inkscape:label="text_orig"><tspan
+         sodipodi:role="line"
+         id="tspan2958"
+         x="76.238945"
+         y="16.491333"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';stroke-width:1.05833316">CLARO</tspan></text>
+    <text
+       inkscape:label="text_dupl"
+       transform="matrix(1.0222535,0,-0.23751548,0.97823098,0,0)"
+       id="text2317"
+       y="16.491333"
+       x="76.238945"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.93657207px;line-height:1.25;font-family:OpenSymbol;-inkscape-font-specification:'OpenSymbol Bold';text-align:center;text-anchor:middle;opacity:1;fill:#00aa88;fill-opacity:1;stroke:#000000;stroke-width:1.05833316;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#00aa88;fill-opacity:1;stroke-width:1.05833316;"
+         y="16.491333"
+         x="76.238945"
+         id="tspan2315"
+         sodipodi:role="line">CLARO</tspan></text>
+    <use
+       x="0"
+       y="0"
+       xlink:href="#text2307"
+       id="use2379"
+       width="100%"
+       height="100%"
+       inkscape:label="shadow_left"
+       transform="translate(0.90388874,0.88883182)"
+       style="stroke-width:0.85801983;filter:url(#filter2381)" />
+    <text
+       inkscape:label="text_orig_left"
+       transform="matrix(0.76399009,0,-0.17750928,1.3089175,0,0)"
+       id="text2307"
+       y="13.718966"
+       x="32.396729"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.67449093px;line-height:1.25;font-family:OpenSymbol;-inkscape-font-specification:'OpenSymbol Bold';text-align:center;text-anchor:middle;display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1.05833304;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';stroke-width:1.05833304"
+         y="13.718966"
+         x="32.396729"
+         id="tspan2305"
+         sodipodi:role="line">NOCHE</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.67449093px;line-height:1.25;font-family:OpenSymbol;-inkscape-font-specification:'OpenSymbol Bold';text-align:center;text-anchor:middle;display:inline;opacity:1;fill:#00aa88;fill-opacity:1;stroke:#000000;stroke-width:1.05833304;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+       x="32.396729"
+       y="13.718966"
+       id="text2391"
+       transform="matrix(0.76399009,0,-0.17750928,1.3089175,0,0)"
+       inkscape:label="text_dupl_left"><tspan
+         sodipodi:role="line"
+         id="tspan2389"
+         x="32.396729"
+         y="13.718966"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#00aa88;stroke-width:1.05833304">NOCHE</tspan></text>
+  </g>
+</svg>

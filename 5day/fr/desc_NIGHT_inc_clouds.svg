@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="400"
+   height="84"
+   viewBox="0 0 105.83333 22.225"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   sodipodi:docname="desc_NIGHT_inc_clouds.svg">
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient2968">
+      <stop
+         style="stop-color:#008000;stop-opacity:1;"
+         offset="0"
+         id="stop2964" />
+      <stop
+         style="stop-color:#00ff00;stop-opacity:1"
+         offset="1"
+         id="stop2966" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient1418">
+      <stop
+         style="stop-color:#00ffcc;stop-opacity:1"
+         offset="0"
+         id="stop1414" />
+      <stop
+         style="stop-color:#afc6e9;stop-opacity:1"
+         offset="1"
+         id="stop1416" />
+    </linearGradient>
+    <linearGradient
+       gradientTransform="translate(-1.6742626e-6,-274.77501)"
+       inkscape:collect="always"
+       xlink:href="#linearGradient1418"
+       id="linearGradient2282-1"
+       x1="52.916664"
+       y1="294.58093"
+       x2="52.916664"
+       y2="279.46188"
+       gradientUnits="userSpaceOnUse" />
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter2652"
+       x="-0.024536473"
+       width="1.0490729"
+       y="-0.076877026"
+       height="1.1537541">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.57432659"
+         id="feGaussianBlur2654" />
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2968"
+       id="linearGradient2970"
+       x1="53.840466"
+       y1="17.82637"
+       x2="53.503448"
+       y2="-6.0814748"
+       gradientUnits="userSpaceOnUse" />
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter2381"
+       x="-0.052695174"
+       width="1.1053903"
+       y="-0.1265078"
+       height="1.2530156">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.83382227"
+         id="feGaussianBlur2383" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="152.5"
+     inkscape:cy="31.314344"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer3"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="715"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     units="px"
+     inkscape:lockguides="false"
+     inkscape:snap-center="true"
+     inkscape:snap-global="false">
+    <sodipodi:guide
+       position="52.916666,11.1125"
+       orientation="1,0"
+       id="guide825"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,0,255)" />
+    <sodipodi:guide
+       position="52.916666,11.1125"
+       orientation="0,1"
+       id="guide827"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,0,255)" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="text 1">
+    <use
+       x="0"
+       y="0"
+       xlink:href="#text850"
+       id="use1062"
+       width="100%"
+       height="100%"
+       transform="translate(0.6505565,0.39466305)"
+       style="stroke-width:0.9333393;filter:url(#filter2652)"
+       inkscape:label="shadow" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:8.862216px;line-height:1.25;font-family:OpenSymbol;-inkscape-font-specification:'OpenSymbol Bold';text-align:center;text-anchor:middle;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.52916664;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+       x="83.973969"
+       y="8.0131493"
+       id="text850"
+       transform="matrix(0.9349523,0,-0.21723147,1.0695733,0,0)"
+       inkscape:label="text_orig"><tspan
+         sodipodi:role="line"
+         x="83.973969"
+         y="8.0131493"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';stroke-width:0.52916664;stroke-miterlimit:4;stroke-dasharray:none"
+         id="tspan2323">NUAGES</tspan><tspan
+         sodipodi:role="line"
+         x="83.973969"
+         y="19.116222"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';stroke-width:0.52916664;stroke-miterlimit:4;stroke-dasharray:none"
+         id="tspan862">CROISSANTS</tspan></text>
+    <text
+       inkscape:label="text_dupl"
+       transform="matrix(0.9349523,0,-0.21723147,1.0695733,0,0)"
+       id="text2329"
+       y="8.0131493"
+       x="83.973969"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:8.862216px;line-height:1.25;font-family:OpenSymbol;-inkscape-font-specification:'OpenSymbol Bold';text-align:center;text-anchor:middle;display:inline;opacity:1;fill:#00aa88;fill-opacity:1;stroke:#000000;stroke-width:0.52916664;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+       xml:space="preserve"><tspan
+         id="tspan2327"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#00aa88;fill-opacity:1;stroke-width:0.52916664;stroke-miterlimit:4;stroke-dasharray:none"
+         y="8.0131493"
+         x="83.973969"
+         sodipodi:role="line">NUAGES</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#00aa88;fill-opacity:1;stroke-width:0.52916664;stroke-miterlimit:4;stroke-dasharray:none"
+         y="19.116222"
+         x="83.973969"
+         sodipodi:role="line"
+         id="tspan866">CROISSANTS</tspan></text>
+    <use
+       x="0"
+       y="0"
+       xlink:href="#text2307"
+       id="use2379"
+       width="100%"
+       height="100%"
+       inkscape:label="shadow_left"
+       transform="translate(1.2146776,0.88883182)"
+       style="stroke-width:0.74015778;filter:url(#filter2381)" />
+    <text
+       inkscape:label="text_orig_left"
+       transform="matrix(0.88564719,0,-0.2057757,1.1291178,0,0)"
+       id="text2307"
+       y="15.903562"
+       x="27.983303"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:17.01124382px;line-height:1.25;font-family:OpenSymbol;-inkscape-font-specification:'OpenSymbol Bold';text-align:center;text-anchor:middle;display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1.05833304;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';stroke-width:1.05833304"
+         y="15.903562"
+         x="27.983303"
+         id="tspan2305"
+         sodipodi:role="line">NUIT</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:17.01124382px;line-height:1.25;font-family:OpenSymbol;-inkscape-font-specification:'OpenSymbol Bold';text-align:center;text-anchor:middle;display:inline;opacity:1;fill:#00aa88;fill-opacity:1;stroke:#000000;stroke-width:1.05833304;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+       x="27.983303"
+       y="15.903562"
+       id="text2391"
+       transform="matrix(0.88564719,0,-0.2057757,1.1291178,0,0)"
+       inkscape:label="text_dupl_left"><tspan
+         sodipodi:role="line"
+         id="tspan2389"
+         x="27.983303"
+         y="15.903562"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#00aa88;stroke-width:1.05833304">NUIT</tspan></text>
+  </g>
+</svg>
