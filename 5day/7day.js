@@ -144,6 +144,7 @@ function daystoggle(v) {
 			document.getElementById("title").style.fontSize = "2.8em";
 			document.getElementById("d6").style.display = "table-cell";
 			document.getElementById("d7").style.display = "table-cell";
+			//document.getElementById("title").noWrap = false;
 			//Options
 			document.getElementById("d6optsblock").style.display = "table-cell";
 			document.getElementById("d7optsblock").style.display = "table-cell";
@@ -165,9 +166,10 @@ function daystoggle(v) {
 			document.getElementById("canvas").style.width = "930px";
 			document.getElementById("canvas").style.borderSpacing = "6px 10px";
 			document.getElementById("title").setAttribute("colspan", 5);
-			document.getElementById("title").style.fontSize = "2.2em";
+			document.getElementById("title").style.fontSize = "2em";
 			document.getElementById("d6").style.display = "none";
 			document.getElementById("d7").style.display = "none";
+			//document.getElementById("title").noWrap = true;
 			//Options
 			document.getElementById("d6optsblock").style.display = "none";
 			document.getElementById("d7optsblock").style.display = "none";
