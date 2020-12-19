@@ -1,75 +1,64 @@
+<!DOCTYPE html>
 <html>
-<head>
-<base href="../">
-<title>ksgwxfan - RMDaV</title>
-<style>
-	.HEADER {
-		width: 100%;
-		font-weight: bold;
-		font-size: 30px;
-		}
-	.HEADERPHOTO {
-		width: 3%;
-		border: 2px solid white;
-		box-shadow: 0px 0px 5px white;
-		border-radius: 35%;
-		}
-	.CAPTION {
-		text-align:center;
-		font-size:14px;
-		font-style: italic;
-		}
-</style>
-</head>
-<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue">
-	<div class="HEADER">
-		<img class="HEADERPHOTO" src="profile.png"> <u>Python Creations</u> - Recent Mesoanalysis Downloader and Viewer
-	</div><br>
-	<div id="DWNLD" style="text-align:center;">
-		<img src="download.png"><span style="font-size:36px;font-weight:bold;"><a href="PYTHON/RMDaV/RMDaV.zip">RMDaV.zip</a></span><br><br>
-		<img src="PYTHON/RMDaV/mainphoto.gif">
-	</div><br><br>
-	<div id="info" style="width:85%;margin:auto;">
-		The <a href="http://www.spc.noaa.gov/exper/mesoanalysis/new/viewsector.php?sector=19" target="_blank">SPC Mesoanalysis</a> is one of my 
-		favorite tools to use when looking getting a glimpse of conditions out there. It is based on the RAP model which is updated hourly, making 
-		over 140 products available. The page shows the 'zero-hour' (f0) forecast. Viewing previous imagery is very limited; maybe 2 or 3 images (4 to 6 
-		hrs past/future). Interestingly enough, about 3 days worth of data are archived (the 78 previous hours), but the user's access to these are very 
-		limited. The purpose of this tool/script is to give access to the user to this imagery. The primary use of this would be for archival/later-viewing 
-		and research purposes. Like, when a storm system comes through, afterward (or during), you can run this tool, indicate how long of a back up you 
-		want to do, pick the products you want, download them, and view them later. Being able to look at a regional view (mesoscale) allows some features 
-		to stand out.<br><br>
-		<img class="DESCIMG" src="PYTHON/RMDaV/rmdav_menu.jpg" style="display:block;margin-left:auto;margin-right:auto;"><br>
-		<div class="CAPTION">A snippet of the menu</div><br><br>
-		* The program then creates a file directory structure that archives the images, first by region, then by product, then by date. The 
-		advantage of this is that you can study the images without the included html files and you'd still be able to cycle through them in 
-		order. <br><br>
-		* This script is extremely advantageous because it utilizes the <a href="http://www.ssec.wisc.edu/hanis/" target="_blank">HAniS 
-		module</a> (included with download). My script simultaneously produces an html file (which will be used for viewing), control file 
-		(which tells the script how you want it to look and which options to include), and a filenames file that the HAniS program reads so 
-		it knows what images to display (and corresponding overlays) according to the time.<br><br>
-		This took quite a while as I had little experience with HAniS. Then, if you look at the python code, you'll also notice it is nearly 300 
-		lines long. I also took a long break from working with it when I first got it functional. The thing is if you miss one little detail in 
-		creating the config and filenames (get format wrong), it can throw the whole operation off. So I was really happy when I got it to work.<br><br>
-		In the code I included error controls which should prevent 'malfunction' during use. I wasn't initially sure how to get some things to 
-		work, so searching the web was trusty in that. I tried to include links to all my sources; generally they're found at the start of each 
-		function.<br><br>
-		* Included in the bundle is a small script called 'http_server.py.' This likely will be needed for the web browser to display your file 
-		properly since we're operating locally. Follow the on-screen instructions. You'll notice if you do need it, that you won't be 
-		directly opening the created html file. P.S. - You'll want to unzip the file's contents into their own folder. See the included readme 
-		for terms of use. Contact me if you have any questions!<br><br>
-		<span id="notes" style="color:yellow;">* NOTE: You'll likely run into missing images of the most-recent hour if your request is in the early 
-			part of an hour. This is because it takes time to generate each model run. The filename scheme that I used is anticipatory of what the 
-			filenames will be. So if you encounter some blank images, understand it generally has to do with the time you ran the script and not an 
-			error in the program. I'm considering options on how to handle that.<br><br>
-			* NOTE 2: Some images aren't very overlay friendly. This is due to that archived images have a thatched fill rather than a solid fill. 
-			Play around with which products work the best with one another. Another option is to use the CONUS sector (s19). Things may be able to 
-			be better-seen on that, especially synoptic features.<br><br>
-			* NOTE 3: The SPC does archive the CONUS sector with solid-fill variables. I've been thinking about releasing a similar script with that 
-			so working with older events works. Stay tuned!
-		</span>
-		
-		
-	</div>
-<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
-</body>
+	<head>
+		<base href="../">
+		<title>ksgwxfan - RMDaV</title>
+		<link rel="stylesheet" type="text/css" href="pageheader.css"></link>
+		<style>
+			.CAPTION {
+				text-align:center;
+				font-size:14px;
+				font-style: italic;
+				}
+		</style>
+	</head>
+	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue">
+		<h1 id="header">
+			<img id="headerphoto" src="profile.png">Python Creations - Recent Mesoanalysis Downloader and Viewer
+		</h1>
+		<div id="DWNLD" style="text-align:center;">
+			<img src="download.png"><span style="font-size:36px;font-weight:bold;"><a href="PYTHON/RMDaV/RMDaV.zip">RMDaV.zip</a></span><br><br>
+			<img src="PYTHON/RMDaV/mainphoto.gif">
+		</div><br><br>
+		<div id="info" style="width:85%;margin:auto;">
+			The <a href="http://www.spc.noaa.gov/exper/mesoanalysis/new/viewsector.php?sector=19" target="_blank">SPC Mesoanalysis</a> is one of my 
+			favorite tools to use when looking getting a glimpse of conditions out there. It is based on the RAP model which is updated hourly, making 
+			over 140 products available. The page shows the 'zero-hour' (f0) forecast. Viewing previous imagery is very limited; maybe 2 or 3 images (4 to 6 
+			hrs past/future). Interestingly enough, about 3 days worth of data are archived (the 78 previous hours), but the user's access to these are very 
+			limited. The purpose of this tool/script is to give access to the user to this imagery. The primary use of this would be for archival/later-viewing 
+			and research purposes. Like, when a storm system comes through, afterward (or during), you can run this tool, indicate how long of a back up you 
+			want to do, pick the products you want, download them, and view them later. Being able to look at a regional view (mesoscale) allows some features 
+			to stand out.<br><br>
+			<img class="DESCIMG" src="PYTHON/RMDaV/rmdav_menu.jpg" style="display:block;margin-left:auto;margin-right:auto;"><br>
+			<div class="CAPTION">A snippet of the menu</div><br><br>
+			* The program then creates a file directory structure that archives the images, first by region, then by product, then by date. The 
+			advantage of this is that you can study the images without the included html files and you'd still be able to cycle through them in 
+			order. <br><br>
+			* This script is extremely advantageous because it utilizes the <a href="http://www.ssec.wisc.edu/hanis/" target="_blank">HAniS 
+			module</a> (included with download). My script simultaneously produces an html file (which will be used for viewing), control file 
+			(which tells the script how you want it to look and which options to include), and a filenames file that the HAniS program reads so 
+			it knows what images to display (and corresponding overlays) according to the time.<br><br>
+			This took quite a while as I had little experience with HAniS. Then, if you look at the python code, you'll also notice it is nearly 300 
+			lines long. I also took a long break from working with it when I first got it functional. The thing is if you miss one little detail in 
+			creating the config and filenames (get format wrong), it can throw the whole operation off. So I was really happy when I got it to work.<br><br>
+			In the code I included error controls which should prevent 'malfunction' during use. I wasn't initially sure how to get some things to 
+			work, so searching the web was trusty in that. I tried to include links to all my sources; generally they're found at the start of each 
+			function.<br><br>
+			* Included in the bundle is a small script called 'http_server.py.' This likely will be needed for the web browser to display your file 
+			properly since we're operating locally. Follow the on-screen instructions. You'll notice if you do need it, that you won't be 
+			directly opening the created html file. P.S. - You'll want to unzip the file's contents into their own folder. See the included readme 
+			for terms of use. Contact me if you have any questions!<br><br>
+			<span id="notes" style="color:yellow;">* NOTE: You'll likely run into missing images of the most-recent hour if your request is in the early 
+				part of an hour. This is because it takes time to generate each model run. The filename scheme that I used is anticipatory of what the 
+				filenames will be. So if you encounter some blank images, understand it generally has to do with the time you ran the script and not an 
+				error in the program. I'm considering options on how to handle that.<br><br>
+				* NOTE 2: Some images aren't very overlay friendly. This is due to that archived images have a thatched fill rather than a solid fill. 
+				Play around with which products work the best with one another. Another option is to use the CONUS sector (s19). Things may be able to 
+				be better-seen on that, especially synoptic features.<br><br>
+				* NOTE 3: The SPC does archive the CONUS sector with solid-fill variables. I've been thinking about releasing a similar script with that 
+				so working with older events works. Stay tuned!
+			</span>
+		</div>
+		<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
+	</body>
 </html>

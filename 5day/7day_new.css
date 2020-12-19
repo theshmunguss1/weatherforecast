@@ -1,3 +1,36 @@
+/* Computers */
+@media screen and (min-width: 770px) and (-webkit-min-device-pixel-ratio: 1) and (max-resolution: 190dpi) {
+
+}
+/* iPads */
+@media screen and (min-width: 770px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 190dpi) {
+
+}
+
+@media screen and (orientation: portrait) {
+	#forecastcontainer {
+		--WIDTH: 96vmin;
+		width: var(--WIDTH);
+		height: calc(var(--WIDTH) / 2);
+		background-color: green;
+		margin: 0 auto;
+	}
+}
+
+@media screen and (orientation: landscape) {
+	#forecastcontainer {
+		--HEIGHT: 96vmin;
+		width: calc(2 * var(--HEIGHT));
+		height: var(--HEIGHT);
+		background-color: green;
+		margin: 0 auto;
+	}
+}
+
+
+
+
+
 .TABLE {
 	display:table;
 	border-collapse: collapse;
@@ -34,11 +67,6 @@ hr {
 	min-width:10%;
 }
 
-#lang_selection {
-	vertical-align: middle;
-	border:0.5px solid white;
-}
-
 .DAYTOGGLE {
 	font-family: arial;
 	font-weight: bold;
@@ -49,9 +77,12 @@ hr {
 
 /* Computers */
 @media screen and (min-width: 770px) and (-webkit-min-device-pixel-ratio: 1) and (max-resolution: 190dpi) {
-	.MAIN {
-		width: 98vw;
-		height: calc(98vw / 2);
+	:root {
+		--WIDTH7: 90vw;
+		--HEIGHT7: calc(90vw / 2);
+		--WIDTH5: calc(var(--WIDTH7) * 5 / 7);
+		--HEIGHT5: var(--HEIGHT7);
+		--FONTSIZEtitlebox: 3.4vw;
 	}
 	.DAYNAME {font-size: 3.8vw;}
 	.PERC {font-size: 2.5vw;}
@@ -63,13 +94,15 @@ hr {
 		color: rgba(0,0,0,20%);
 		background-color: rgba(255,255,255,15%);
 	}
-	.HI {font-size: 8vw;}
+	.UVIcell {font-size: 0.6vw;}
+	.UVIcell.footer {font-size: 1.2vw;}
+	.UVIcell.marker {font-size: 1.1vw;}
+	.WIND {font-size: 1.6vw;}
+	.HI {font-size: 7.5vw;}
 	.LO {font-size: 2.5vw;}
-	.UVIcell {font-size: 0.7vw;}
-	.UVIcell.footer {font-size: 1.4vw;}
-	.UVIcell.marker {font-size: 1.2vw;}
-	.TITLE {font-size: 3.4vw;}
+	.TITLEBOX {font-size: var(--FONTSIZEtitlebox);}
 	.desctext {font-size: 3vw;}
+	.DESCcycle {font-size: 1vw;}
 }
 
 /* Phones - Landscape */
@@ -82,14 +115,13 @@ hr {
 }
 
 .MAIN {
-	table-layout: fixed;
-	width: 1300px;
-	height: 650px;
-	margin: auto;
+	width: var(--WIDTH7);
+	height: var(--HEIGHT7);
+	margin: 0 auto;
 	margin-bottom: 10px;
 	border-collapse: separate;
-	border-spacing: 5px 10px;
-	border: 4px solid black;
+	border-spacing: 6px 10px;
+	outline: 4px solid black;
 	background-color: blue;
 	font-family: arial;
 	user-select: none;
@@ -99,7 +131,8 @@ hr {
 	display: table-cell;
 	vertical-align: top;
 	position:relative;
-	height: 80%;
+	/*height: 85%;*/
+	/*width: 20%;*/
 	background: linear-gradient(0deg, rgba(255,255,255,.5), rgba(255,255,255,.1) 30%),
 				linear-gradient(180deg, rgba(255,255,255,.5), rgba(255,255,255,.1) 30%),
 				linear-gradient(90deg, rgba(255,255,255,.15), rgba(255,255,255,.1) 20%),
@@ -114,17 +147,13 @@ hr {
 	height: 18%;
 	color: black;
 	margin-left: 1%;
-	font-size: 2.8em;
+	/*font-size: 2.8em;*/
 	font-weight: bold;
-	/*white-space: nowrap;*/ /* Will enforce title as one line */
 	}
 .TITLE {
 	display: inline-block;
-	padding-left: 11%;
-	color: black;
-	font-size: 2.8em;
-	font-weight: bold;
 	}
+
 #titleunderscore {
 	position: absolute;
 	border-bottom-left-radius: 8px;
@@ -134,18 +163,14 @@ hr {
 	height:10px;
 	background: linear-gradient(to right, #000033 40%, transparent);
 }
-#imgcontainer {
-	position: absolute;
-	transform: translate(-50%,-50%);
-	top: 45%;
-	left: 5%;
-	display: inline-block;
-	width: 9%;
-}
 #logo {
-	width:100px;
+	width: 15vmin;
+	height: 15vmin;
 	vertical-align: middle;
-	transform: translate(0%,-6%);
+}
+#logobox {
+	vertical-align: middle;
+	margin-right: 2%;
 }
 .DAYNAME {
 	display: inline-block;
@@ -155,7 +180,7 @@ hr {
 	text-align: center;
 	border-top-left-radius: 6px;
 	border-top-right-radius: 6px;
-	font-size: 50px;
+	/*font-size: 50px;*/
 	font-weight: bold;
 	}
 .SKYCON {
@@ -211,7 +236,7 @@ hr {
 .UVI {
 	display: none;
 	margin: 0 auto;
-	margin-top:5px;
+	margin-top: 5px;
 	width: 90%;
 	height: 30px;
 	border-collapse: collapse;
@@ -219,12 +244,12 @@ hr {
 .UVIcell {
 	text-align:center;
 	color: black;
-	font-size: 0.5em;
+	/*font-size: 0.5em;*/
 	height: 50%;
 	border:1px solid black;
 }
 .UVIcell.marker {
-	font-size: 1em;
+	/*font-size: 1em;*/
 	border:none;
 	color: white;
 	width: 8%;
@@ -237,43 +262,31 @@ hr {
 .UVIcell.extreme {background-color: magenta;}
 .UVIcell.footer {
 	border: none;
-	font-size: 1.1em;
+	/*font-size: 1.1em;*/
 	font-style: oblique;
 	color: white;
 	text-shadow: 2px 2px 3px black;
 }
 .WIND {
 	font-weight: bold;
-	font-size: 1.7em;
+	/*font-size: 1.7em;*/
 	text-shadow: 2px 2px 3px black;
 	vertical-align: middle;
 }
 .WINDboxlogo {
-	width:25%;
+	width:20%;
 	vertical-align:middle;
 }
 .WINDmph {
 	width: 50%;
 }
-kbd {
-	color: black;
-	font-family: sans-serif;
-	border: 1px solid black;
-	padding-left: 7px;
-	padding-right: 3px;
-	background: linear-gradient(to top, lightgray 15%, transparent 20%),
-		linear-gradient(to right, lightgray 10%, transparent 15%),
-		linear-gradient(white,white);
-}
-
-
 .HI {
 	position: absolute;
 	bottom: 5%;
 	right:3%;
 	width:100%;
 	text-align: right;
-	font-size: 6.5em;
+	/*font-size: 6.5em;*/
 	font-weight: bold;
 	text-shadow: 2px 2px 5px black;
 }
@@ -283,7 +296,7 @@ kbd {
 	padding-left: 8px;
 	text-align: left;
 	color: rgb(0,0,59);
-	font-size: 2em;
+	/*font-size: 2em;*/
 	font-weight: bold;
 }
 

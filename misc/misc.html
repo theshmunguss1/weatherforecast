@@ -2,20 +2,8 @@
 	<head>
 		<base href="../">
 		<title>ksgwxfan - Miscellaneous</title>
+		<link rel="stylesheet" type="text/css" href="pageheader.css"></link>
 		<style>
-			.HEADER {
-				width: 100%;
-				font-weight: bold;
-				font-size: 30px;
-				display: inline-block;
-				}
-			.HEADERPHOTO {
-				width: 3%;
-				border: 2px solid white;
-				box-shadow: 0px 0px 5px white;
-				border-radius: 35%;
-				display: inline-block;
-				}
 			.BTN {
 				width: 100%;
 				text-align:left;
@@ -50,9 +38,9 @@
 		</style>
 	</head>
 	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue">
-		<div class="HEADER">
-			<img class="HEADERPHOTO" src="profile.png"> <u>Miscellaneous Scripts</u>
-		</div><br><br>
+		<h1 id="header">
+			<img id="headerphoto" src="profile.png">Miscellaneous Scripts
+		</h1>
 		<div id="pretext" style="width:85%;margin: 0 auto;">Welcome to miscellaneous scripts. Click the respective button to see the 
 			proper code; click again to retract. Most of these simply require copy/pasting, saving, then running. Just make sure you have the 
 			prior required language installed on your PC first. You may modify or implement this code as desired without attribution unless 
@@ -423,8 +411,7 @@ while choice &lt; 5:
 				1) a projected accumulated total of points between the teams (the "over/under"), and 2) a projected margin of victory relative to 
 				a team (+ means they are projected to lose; minus indicates projected victory). So this basic script takes 
 				in entry of the home and away teams, the over/under, and the victory margin (w/respect to the home team). It then 
-				calculates/outputs the approximate final score and indicates the projected winner. It is normal to get x.5s for answers. This is 
-				exactly due to it cannot be the final score, which would preventstie situations.
+				calculates/outputs the approximate final score and indicates the projected winner. It is normal to get x.5s for answers. This is exactly due to it cannot be the final score, which would prevent ties.
 				<br><pre class="box"># "What's the Over and Under?"
 
 away = str(input("Enter the Away Team's name: "))   # Asks for Away Team Name
@@ -568,7 +555,7 @@ print(yr_list)
 			<button class="BTN" onclick=showhide("scriptSTAR","expSTAR")><span id="expSTAR">+</span><i>&nbsp;&nbsp;&nbsp;</i>
 			CSS Star-Field Generator</button>
 			<div id="scriptSTAR" style="display:none;text-align:justify;"><br>
-				I wrote this in Python for use in an HTML/CSS/Javascript project I was working on. It produces a random star field. You can modify 
+				I wrote this in Python for use in my calculator project. It produces a random star field. You can modify 
 				their quantities, sizes and spatial limits. I hope it helps you out. Read the instructions and look over/adjust the predefined 
 				variables.
 				<br><pre class="box" style="height:45%;"># CSS STAR-FIELD GENERATOR

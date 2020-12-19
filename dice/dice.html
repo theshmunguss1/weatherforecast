@@ -1,28 +1,18 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<base href="../">
 		<title>ksgwxfan - Dice Sim</title>
 		<link rel="stylesheet" type="text/css" href="dice/dice.css"></link>
+		<link rel="stylesheet" type="text/css" href="pageheader.css"></link>
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<style>
-			.HEADER {
-				width: 100%;
-				font-weight: bold;
-				font-size: 30px;
-				display: inline-block;
-				}
-			.HEADERPHOTO {
-				width: 3%;
-				border: 2px solid white;
-				box-shadow: 0px 0px 5px white;
-				border-radius: 35%;
-				display: inline-block;
-				}
+
 		</style>
 	</head>
 	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue" onKeyDown="keyroll()">
-		<h1 class="HEADER">
-			<img class="HEADERPHOTO" src="profile.png"> <u>Dice Sim</u>
+		<h1 id="header">
+			<img id="headerphoto" src="profile.png">Dice Sim
 		</h1>
 		<div id="diceboard" class="BOARD">
 			<div class="DICE" id="dice1" onClick="timeroll()">

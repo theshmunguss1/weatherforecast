@@ -3,63 +3,71 @@
 	<head>
 		<base href="../">
 		<title>ksgwxfan - 5 or 7-Day Forecast Generator</title>
-		<link rel="stylesheet" type="text/css" href="pageheader.css"></link>
-		<link id="class_name" rel="stylesheet" href="5day/7day.css">
+		<link id="class_name" rel="stylesheet" href="5day/7day_new.css">
 		<meta name="author" content="Kyle Gentry">
 		<meta name="description" content="Create a custom weather forecast of variable length, either 5 days or 7 days.">
 		<meta name="keywords" content="Weather, Forecast, Forecaster, 5day, 7day, Generator, custom">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<style>
-
+			.HEADER {
+				width: 100%;
+				font-weight: bold;
+				font-size: 30px;
+				display: inline-block;
+			}
+			.HEADERPHOTO {
+				width: 3%;
+				border: 2px solid white;
+				box-shadow: 0px 0px 5px white;
+				border-radius: 35%;
+				display: inline-block;
+			}
 		</style>
 	</head>
 	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue" onLoad="daystoggle(7);load_day_select();randombg();random_forecast();">
-		<h1 id="header" style="margin-bottom:20px;">
-			<img id="headerphoto" src="profile.png">5 or 7-Day Forecast Generator
-		</h1>
+		<div class="HEADER"style="margin-bottom:20px;">
+			<img class="HEADERPHOTO" src="profile.png"> <u>5 or 7-Day Forecast Generator</u>
+		</div>
 		<!-- GLOBAL OPTIONS -->
 		<div class="TABLE">
 			<div class="ROW">
-				<!-- LANGUAGE SELECT -->
-				<div id="languages" class="CELL">
-					<b><u>Language:</u></b><br />
-					<button id="lang_left" onClick="chg_lang(-1)">&lt;</button>
-					<img id="lang_selection" src="5day/lang_en.svg" title="English">
-					<button id="lang_right" onClick="chg_lang(1)">&gt;</button>
-				</div>
-				<!-- DAY TOGGLE -->
-				<div id="toggledays" class="CELL" title="Toggle between a 5 or 7 day forecast"><u>Forecast <br />Length:</u><br />
+				<div id="toggledays" class="CELL" title="Toggle between a 5 or 7 day forecast"><u>Forecast Length:</u><br />
 					<label>
 						<input type="radio" name="frcst_len" id="choose5" value=5 onClick=daystoggle(this.value)>5 Days</input>
-					</label><br />
+					</label>
 					<label>
 						<input type="radio" name="frcst_len" id="choose7" value=7 onClick=daystoggle(this.value) checked>7 days</input>
 					</label>
 				</div>
-				<!-- BACKGROUND COLOR -->
 				<div class="CELL" id="bgselect">
 					<u>Background Color:</u> <div id="bgpreview" title="* Click to randomize background color" onClick="randombg()"></div><br />
 					<span title="Hue">H</span>: <input id="bgh" type="range" value="240" min="0" max="360" step="1" onInput='frcst.H = parseInt(this.value); changebg()' /><br />
 					<span title="Saturation">S</span>: <input id="bgs" type="range" value="100" min="20" max="100" step="1" onInput='frcst.S = parseInt(this.value); changebg()' /><br />
 					<span title="Lightness">L</span>: <input id="bgl" type="range" value="50" min="25" max="75" step="1" onInput='frcst.L = parseInt(this.value); changebg()' />
 				</div>
-				<!-- RANDOMIZE FORECAST -->
-				<div class="CELL" style="min-width:26%;">
-					<button style="background-color:yellow;font-weight:bold;" title="Click to randomize the forecast" onClick=random_forecast()>RANDOMIZE TEMPERATURES</button><br />
-					<span title="Only used in randomized forecasting"><u><b>Temperature Units:</b></u></span><br />
-					<input id="tempF" type="radio" name="unitselect" value="F" onChange=chg_units(this.value) checked>&deg;F (Fahrenheit)</input><br />
-					<input id="tempC" type="radio" name="unitselect" value="C" onChange=chg_units(this.value)>&deg;C (Celcius)</input>
+				<!--
+				<div class="CELL" id="bgselect" title="Darker Colors tend to work better" style="width:20%;min-width:16%;">
+					<div style="display:inline-block;text-align:right;">Background<br />Color:</div>
+					<input type="color" name="Background Color" value="#0000FF" onChange=changebg(this.value) style="width:50%;min-width:10%;height:35px;" />
 				</div>
-				<!-- START OF THE WEEK -->
+				-->
+				<div class="CELL" style="min-width:26%;">
+					<button style="background-color:yellow;font-weight:bold;margin-right:20px;" title="Click to randomize the forecast" onClick=random_forecast()>RANDOMIZE FORECAST</button><br />
+					Temperature Units: 
+					<select id="unitselect" title="Only used in randomized forecasting" onChange=chg_units(this.value)>
+						<option value="F">&deg;F (Fahrenheit)</option>
+						<option value="C">&deg;C (Celcius)</option>
+					</select>
+				</div>
 				<div class="CELL" style="min-width:15%;" title="Choose the day of the week your forecast is starting on">Starting Day: 
 					<select id="dayselect" onChange=day_select(this.value)>
-						<option value="0" selected>MON</option>
-						<option value="1">TUE</option>
-						<option value="2">WED</option>
-						<option value="3">THU</option>
-						<option value="4">FRI</option>
-						<option value="5">SAT</option>
-						<option value="6">SUN</option>
+						<option value="MONTUEWEDTHUFRISATSUN" selected >MON</option>
+						<option value="TUEWEDTHUFRISATSUNMON">TUE</option>
+						<option value="WEDTHUFRISATSUNMONTUE">WED</option>
+						<option value="THUFRISATSUNMONTUEWED">THU</option>
+						<option value="FRISATSUNMONTUEWEDTHU">FRI</option>
+						<option value="SATSUNMONTUEWEDTHUFRI">SAT</option>
+						<option value="SUNMONTUEWEDTHUFRISAT">SUN</option>
 					</select>
 				</div>
 			</div>
@@ -394,9 +402,7 @@
 				<td id="title" class="TITLEBOX" colspan=7>
 					<div id="titleunderscore"></div>
 					<img id="logo" src="5day/logo_echotops.svg">
-					<div id="textbox" style="display:inline;">
-						<span id="person">NAME</span>'s <span id="frcstdays">7</span>-Day Forecast for <span id="cityn">CITYNAME</span>
-					</div>
+					<span id="person">NAME</span>'s <span id="frcstdays">7</span>-Day Forecast for <span id="cityn">CITYNAME</span>
 				</td>
 			</tr>
 		</table>
@@ -410,8 +416,6 @@
 						<option value="5day/logo_wxbonanza.svg">Weather Bonanza</option>
 						<option value="5day/logo_weather01.svg">Weather - 01</option>
 						<option value="5day/logo_weather02.svg">Weather - 02</option>
-						<option value="5day/logo_weather03.svg">Weather - 03</option>
-						<option value="5day/logo_weather04.svg">Weather - 04</option>
 					</select>
 				</div>
 				<div class="CELL">Insert Forecaster's Name:
@@ -774,14 +778,6 @@
 		</div>
 		<hr color=gray />
 		<div id="about" style="width:85%;margin:auto;">
-			<p><u>Dec 17, 2020 Update</u>:
-				<ul>
-					<li>Per feedback/request, I included some language functionality. For this update English, French, and Spanish are available. The days, title and all descriptors are now language compatible. I'd be shocked if there weren't mistakes, so please let me know if are better ways to phrase things.</li>
-					<li>Upon any other language selection other than English, the temperature units automatically switch to Celcius.</li>
-					<li>Visual tweaks/fixes</li>
-					<li>Added/updated a few more logos</li>
-				</ul>
-			</p>
 			<p><u>Nov 16, 2020 Update</u>:
 				<ul>
 					<li>Per feedback/request, I included some extra t-storm icons and a way to place wind-direction and optional speed for each day. See the above options to toggle its view.</li>
@@ -791,7 +787,7 @@
 				<ul>
 					<li>The user can now do 5 or 7 day forecasts.</li>
 					<li>The days of the week defaults to tomorrow</li>
-					<li>Per user-request, I added an optional UVI control for each day</li>
+					<li>Added an optional UVI control for each day</li>
 					<li>Overhauled control panels
 						<ul>
 							<li>Added Hue, Saturation, and Lighting controls for the background color</li>
@@ -830,12 +826,12 @@
 				</table>
 			</p>
 			
-			<p>So here is a forecast generator. I've included all sorts of controls. Currently, I don't know of a way to quick/easy way to directly save a screen-shot of the forecast. But you can simply use your "print screen" button to copy a total screen-shot to the virtual clipboard, then paste inside of a paint program to crop. Windows 10 users can simply press <kbd>&plusb; Win</kbd> + <kbd>&#8679; Shift</kbd> + <kbd>S</kbd> to draw a screenshot box around the forecast. Other options include a snipping tool or <a href="http://getgreenshot.org/" target="_blank">Greenshot</a>.</p>
+			<p>Here's a little forecast generator for you. I've included all sorts of controls. This includes the City Name, Days, Background, Sky Conditions, Descriptors, and Temperature modification. Currently, I don't know of a way to quick/easy way to save a screen-shot of the forecast. But you can simply use your "print screen" button to copy a total screen-shot to the virtual clipboard, then paste inside of a paint program to crop. Windows 10 users can simply press <kbd>&plusb; Win</kbd> + <kbd>&#8679; Shift</kbd> + <kbd>S</kbd> to draw a screenshot box around the forecast. Other options include a snipping tool or <a href="http://getgreenshot.org/" target="_blank">Greenshot</a>.</p>
 			
-			<p>This took me a little while to make it work, but a lot of the time I was learning SVG's, creating the artwork, and fixing simple mental errors. Feel free to use this tool to make custom forecasts that you can share, silly or not--no credit needed. It's a great tool that parents and/or teachers can use to assist kids with making a forecast. <b><u>Feel free to use your forecast images you make in any way you like.</u></b> If you happen to use the programming code for your own project, I just ask for attribution there, but as for the forecast screenshots, they are yours. Use, modify however you'd like! Thank you for using my page.</p>
+			<p>This took me a little while to make it work, but a lot of the time I was learning SVG's, creating the artwork, and fixing simple mental errors. Feel free to use this tool to make custom forecasts that you can share, silly or not. It's a great tool that parents and/or teachers can use to assist kids with making a forecast. <b><u>Feel free to use your forecast images you make in any way you like.</u></b> If you happen to use the programming code for your own project, I just ask for attribution there, but as for the forecast screenshots, they are yours. Use, modify however you'd like! Thank you for using my page.</p>
 		</div>
 		<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
-		<script src="5day/7day.js">
+		<script src="5day/7day_new.js">
 
 		</script>
 	</body>

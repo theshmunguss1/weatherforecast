@@ -1,200 +1,191 @@
+<!DOCTYPE html>
 <html>
-<head>
-<base href="../">
-<title>ksgwxfan - Radar WCTFAVS</title>
-<style>
-	.HEADER {
-		width: 100%;
-		font-weight: bold;
-		font-size: 30px;
-		}
-	.HEADERPHOTO {
-		width: 3%;
-		border: 2px solid white;
-		box-shadow: 0px 0px 5px white;
-		border-radius: 35%;
-		}
-	.DESC {
-		width:85%;
-		margin:auto;
-		}
-	.CAPTION {
-		text-align:center;
-		font-size:14px;
-		font-style: italic;
-		}
-	.INTEX {
-		position: relative;
-		margin: auto;
-		}
-	.DESCIMG {
-		display: block;
-		margin-left: auto;
-		margin-right: auto;
-		}
-	select:selected {
-		background-color: navy;
-		}
-</style>
-</head>
-<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue">
-	<div class="HEADER">
-		<img class="HEADERPHOTO" src="https://ksgwxfan.github.io/profile.png"> <u>Python Creations</u> - Radar .WCTFAVS Files<br><br>
-	</div>
-	<div style="text-align:center;">
-		<img src="download.png"><span style="font-size:36px;font-weight:bold;"><a href="PYTHON/WCTFAVS/WCTFAVS_files_072018.zip">WCTFAVS_files_072018.zip</a></span><br><br>
-		<img class="DESCIMG" src="PYTHON/WCTFAVS/mainphoto.jpg"><br><br>
-	</div>
-	<div id="info" class="DESC">
-		<span id="update" style="color:rgb(255,120,120);">
-			*** NEW *** - I updated the products available by including the 3-digit product code for each item and reorganized the lists by angle. 
-			Enjoy! (07/24/18)
-		</span><br><br>
-		WCTFAVS files work exclusively in <a href="https://www.ncdc.noaa.gov/wct/" target="_blank">NOAA's Weather Climate Toolkit</a> (WCT). WCTFAVS is a 
-		type of file extension for a basic-formatted text file. The favorites feature in WCT is typically used to store your favorite items, but I 
-		engineered these files with Python, specifically for use with the favorites feature. They specifically access the most recent Level-III radar data. 
-		WCT makes accessing Level-II data very simple, but L3 data is another story. There are near-real time catalogs updated (like through Unidata) which 
-		offer generally quick access to L3 data over the past month. But I figure the NWS servers update quicker and I believe offer more updates. One 
-		downside is they offer only the last 200-300 updated images or so. Furthermore, the NWS server's heirarchy is way too complicated to use recent 
-		L3 data within WCT, so these files can bridge that gap. I believe it's the better option if you want to use WCT in near-real time.<br><br>
+	<head>
+		<base href="../">
+		<title>ksgwxfan - Radar WCTFAVS</title>
+		<link rel="stylesheet" type="text/css" href="pageheader.css"></link>
+		<style>
+			.DESC {
+				width:85%;
+				margin:auto;
+				}
+			.CAPTION {
+				text-align:center;
+				font-size:14px;
+				font-style: italic;
+				}
+			.INTEX {
+				position: relative;
+				margin: auto;
+				}
+			.DESCIMG {
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				}
+			select:selected {
+				background-color: navy;
+				}
+		</style>
+	</head>
+	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue">
+		<h1 id="header">
+			<img id="headerphoto" src="profile.png"> Python Creations - Radar .WCTFAVS Files
+		</h1>
+		<div style="text-align:center;">
+			<img src="download.png"><span style="font-size:36px;font-weight:bold;"><a href="PYTHON/WCTFAVS/WCTFAVS_files_072018.zip">WCTFAVS_files_072018.zip</a></span><br><br>
+			<img class="DESCIMG" src="PYTHON/WCTFAVS/mainphoto.jpg"><br><br>
+		</div>
+		<div id="info" class="DESC">
+			<span id="update" style="color:rgb(255,120,120);">
+				*** NEW *** - I updated the products available by including the 3-digit product code for each item and reorganized the lists by angle. 
+				Enjoy! (07/24/18)
+			</span><br><br>
+			WCTFAVS files work exclusively in <a href="https://www.ncdc.noaa.gov/wct/" target="_blank">NOAA's Weather Climate Toolkit</a> (WCT). WCTFAVS is a 
+			type of file extension for a basic-formatted text file. The favorites feature in WCT is typically used to store your favorite items, but I 
+			engineered these files with Python, specifically for use with the favorites feature. They specifically access the most recent Level-III radar data. 
+			WCT makes accessing Level-II data very simple, but L3 data is another story. There are near-real time catalogs updated (like through Unidata) which 
+			offer generally quick access to L3 data over the past month. But I figure the NWS servers update quicker and I believe offer more updates. One 
+			downside is they offer only the last 200-300 updated images or so. Furthermore, the NWS server's heirarchy is way too complicated to use recent 
+			L3 data within WCT, so these files can bridge that gap. I believe it's the better option if you want to use WCT in near-real time.<br><br>
 
-		<div class="INTEX">
-			<!-- selectbox: 660x200 -->
-			<img class="DESCIMG" src="PYTHON/WCTFAVS/intimg.png">
-			<div id="invite" style="position:absolute;top:18%;right:35%;width:160px;color:rgb(180,0,0);font-weight:bold;">The below list is interactive, so please scroll down to see all the products available!</div>
-			<div id="selbox" style="position:absolute;bottom:18%;left:20.75%;">
-				<select size="10" style="width:660px;height:200px;">
-					<option> TDWR PRODUCTS -----------------------------------------------</option>
-					<option>TR0 - Base reflectivity - 48 nmi Range - 0.1-0.8deg</option>
-					<option>TR1 - Base reflectivity - 48 nmi Range - 1.0deg</option>
-					<option>TR2 - Base reflectivity - 48 nmi Range - 1.6-3.7deg</option>
-					<option>TV0 - Base Radial Velocity - 48 nmi Range - 0.1-0.8deg</option>
-					<option>TV1 - Base Radial Velocity - 48 nmi Range - 1.0deg</option>
-					<option>TV2 - Base Radial Velocity - 48 nmi Range - 1.6-3.7deg</option>
-					<option>TZL - Long Range Reflectivity - 225 nmi Range - 0.6deg</option>
-					<option>------ WSR88D SPECIALTY PRODUCTS ---------------------------------</option>
-					<option>NVL - Vertical Integrated Liquid</option>
-					<option>DVL - Digital Vertical Integrated Liquid</option>
-					<option>NET - Echo Tops</option>
-					<option>EET - Enhanced Echo Tops</option>
-					<option>NVW - Velocity Azimuth Dispaly VAD Wind Profile</option>
-					<option>------ WSR88D - 0.5 DEG ------------------------------------------</option>
-					<option>N0R - Base reflectivity - 124 nmi Range - 0.5deg - Low Resolution</option>
-					<option>N0Z - Base reflectivity - 248 nmi Range - 0.5deg - Low Resolution</option>
-					<option>N0Q - Base reflectivity - 248 nmi Range - 0.5deg</option>
-					<option>DHR - Digital Hybrid Scan Reflectivity</option>
-					<option>N0V - Base Radial Velocity - 124 nmi Range - 0.5deg - Low Resolution</option>
-					<option>N0U - Base Radial Velocity - 162 nmi Range - 0.5deg</option>
-					<option>N0S - Storm Relative Mean Velocity - 0.5deg</option>
-					<option>N0X - Digital Differential Reflectivity - 0.5deg</option>
-					<option>N0C - Digital Correlation Coefficient - 0.5deg</option>
-					<option>N0K - Digital Specific Differential Phase - 0.5deg</option>
-					<option>NSW - Base Spectrum Width - 124km</option>
-					<option>N0H - Digital Hydrometeor Classification - 0.5deg</option>
-					<option>HHC - Hybrid Scan Hydrometeor Classification</option>
-					<option>------ WSR88D - 0.9 DEG ------------------------------------------</option>
-					<option>NAQ - Base reflectivity - 248 nmi Range - 0.9deg</option>
-					<option>NAU - Base Radial Velocity - 162 nmi Range - 0.9deg</option>
-					<option>NAX - Digital Differential Reflectivity - 0.9deg</option>
-					<option>NAC - Digital Correlation Coefficient - 0.9deg</option>
-					<option>NAK - Digital Specific Differential Phase - 0.9deg</option>
-					<option>NAH - Digital Hydrometeor Classification - 0.9deg</option>
-					<option>------ WSR88D - 1.3 DEG ------------------------------------------</option>
-					<option>N1Q - Base reflectivity - 248 nmi Range - 1.3-1.5deg</option>
-					<option>N1U - Base Radial Velocity - 162 nmi Range - 1.3-1.5deg</option>
-					<option>N1S - Storm Rel. Mean radial velocity map - 1.3-1.5deg</option>
-					<option>N1X - Digital Differential Reflectivity - 1.3-1.5deg</option>
-					<option>N1C - Digital Correlation Coefficient - 1.3-1.5deg</option>
-					<option>N1K - Digital Specific Differential Phase - 1.3-1.5deg</option>
-					<option>N1H - Digital Hydrometeor Classification - 1.3-1.5deg</option>
-					<option>------ WSR88D - 1.8 DEG ------------------------------------------</option>
-					<option>NBQ - Base reflectivity - 248 nmi Range - 1.8deg</option>
-					<option>NBU - Base Radial Velocity - 162 nmi Range - 1.8deg</option>
-					<option>NBX - Digital Differential Reflectivity - 1.8deg</option>
-					<option>NBC - Digital Correlation Coefficient - 1.8deg</option>
-					<option>NBK - Digital Specific Differential Phase - 1.8deg</option>
-					<option>NBH - Digital Hydrometeor Classification - 1.8deg</option>
-					<option>------ WSR88D - 2.4 DEG ------------------------------------------</option>
-					<option>N2Q - Base reflectivity - 248 nmi Range - 2.4-2.5deg</option>
-					<option>N2U - Base Radial Velocity - 162 nmi Range - 2.4-2.5deg</option>
-					<option>N2S - Storm Rel. Mean radial velocity map - 2.4-2.5deg</option>
-					<option>N2X - Digital Differential Reflectivity - 2.4-2.5deg</option>
-					<option>N2C - Digital Correlation Coefficient - 2.4-2.5deg</option>
-					<option>N2K - Digital Specific Differential Phase - 2.4-2.5deg</option>
-					<option>N2H - Digital Hydrometeor Classification - 2.4-2.5deg</option>
-					<option>------ WSR88D - 3.1 DEG ------------------------------------------</option>
-					<option>N3Q - Base reflectivity - 248 nmi Range - 3.1-3.4-3.5deg</option>
-					<option>N3U - Base Radial Velocity - 162 nmi Range - 3.1-3.4-3.5deg</option>
-					<option>N3S - Storm Rel. Mean radial velocity map - 3.1-3.4-3.5deg</option>
-					<option>N3X - Digital Differential Reflectivity - 3.1-3.4-3.5deg</option>
-					<option>N3C - Digital Correlation Coefficient - 3.1-3.4-3.5deg</option>
-					<option>N3K - Digital Specific Differential Phase - 3.1-3.4-3.5deg</option>
-					<option>N3H - Digital Hydrometeor Classification - 3.1-3.4-3.5deg</option>
-					<option>------ COMPOSITE REFLECTIVITY ------------------------------------</option>
-					<option>NCR - Composite Reflectivity - 16 levels - 124nmi</option>
-					<option>NCZ - Composite Reflectivity - 16 levels - 248nmi</option>
-					<option>NHL - Layer composite reflectivity Maximum - Upper Level</option>
-					<option>NLA - Layer Composite Reflectivity with AP removed</option>
-					<option>NML - Layer Composite Reflectivity Maximum Mid-Level</option>
-					<option>------ PRECIPITATION ---------------------------------------------</option>
-					<option>N1P - Surface Rainfall Accumulation - 1HR Total</option>
-					<option>DPA - Digital Precipitation Array - 1HR</option>
-					<option>OHA - One Hour Accumulation - Dual Pol - BIASED</option>
-					<option>DAA - Digital Accumulation Array - 1HR - Dual Pol - UNBIASED</option>
-					<option>DOD - Digital One Hour Difference Accumulation (DAA-N1P)</option>
-					<option>DPR - Digital Instantaneous Precipitation Rate</option>
-					<option>N3P - Surface Rainfall Accumulation - 3HR Total</option>
-					<option>DU3 - Digital User-Selectable Accumulation: 3HR-hrly</option>
-					<option>DU6 - Digital User-Selectable Accumulation: 24HR-12Z</option>
-					<option>NTP - Surface Rainfall Accumulation - Storm Total</option>
-					<option>PTA - Storm Total Accumulation - Dual Pol</option>
-					<option>DSP - Digital Storm Total Accumulation - PPS</option>
-					<option>DTA - Digital Storm Total Accumulation - Dual Pol</option>
-					<option>DSD - Digital Storm Total Difference Accumulation (DTA-NTP)</option>
-					<option>------ DATA PRODUCTS ---------------------------------------------</option>
-					<option>NSS - Storm Structure</option>
-					<option>NST - Storm Tracking Information</option>
-					<option>NMD - Mesocyclone</option>
-					<option>NTV - Tornadic Vortex Signature</option>
-					<option>NHI - Hail Index</option>
-					<option>SPD - Supplemental precip data</option>
-					<option>------ TEXT PRODUCTS ---------------------------------------------</option>
-					<option>GSM - General Status Message</option>
-					<option>FTM - Free Text message</option>
-					<option>ASP - Archive III Status Product</option>
-					<option>RCM - Radar Coded message</option>
-					<option>------ MELTING LAYER ---------------------------------------------</option>
-					<option>N0M - Melting Layer – 0.5deg</option>
-					<option>N1M - Melting Layer – 0.9deg</option>
-					<option>N2M - Melting Layer – 1.3-1.5deg</option>
-					<option>N3M - Melting Layer – 1.8deg</option>
-					<option>NAM - Melting Layer – 2.4-2.5deg</option>
-					<option>NBM - Melting Layer – 3.1-3.5deg</option>
-					<option>------ CLUTTER FILTER --------------------------------------------</option>
-					<option>NC1 - Clutter Filter Control - Segment 1</option>
-					<option>NC2 - Clutter Filter Control - Segment 2</option>
-					<option>NC3 - Clutter Filter Control - Segment 3</option>
-					<option>NC4 - Clutter Filter Control - Segment 4</option>
-					<option>NC5 - Clutter Filter Control - Segment 5</option>
-				</select>
-			</div>
-		</div><br>
-		<div class="CAPTION">Interactive preview of what you'll see when you load a WCTFAVS file</div><br><br>
-		<img class="DESCIMG" src="PYTHON/WCTFAVS/filelist.jpg"><br>
-		<!--     <div class="CAPTION">some text</div><br><br>  -->
-		<div class="CAPTION">Quick-look of the included files; grouped according to State Abbreviation</div><br><br>
-		What makes the use of these files possible is that on the NWS servers, they include a file: "sn.last," which will always 
-		hold the newest data for a given product. So each WCTFAV file can pull up the most recent data for a given product. In addition, to 
-		cut-down on quantity of files, I included the airport TDWR Radar data along with a nearby WSR-88d location.<br><br>
-		<img class="DESCIMG" src="PYTHON/WCTFAVS/innerfile.jpg" style="width:auto;"><br>
-		<div class="CAPTION">An example of what the inside of the radar WCTFAV files looks like</div><br><br>
+			<div class="INTEX">
+				<!-- selectbox: 660x200 -->
+				<img class="DESCIMG" src="PYTHON/WCTFAVS/intimg.png">
+				<div id="invite" style="position:absolute;top:18%;right:35%;width:160px;color:rgb(180,0,0);font-weight:bold;">The below list is interactive, so please scroll down to see all the products available!</div>
+				<div id="selbox" style="position:absolute;bottom:18%;left:20.75%;">
+					<select size="10" style="width:660px;height:200px;">
+						<option> TDWR PRODUCTS -----------------------------------------------</option>
+						<option>TR0 - Base reflectivity - 48 nmi Range - 0.1-0.8deg</option>
+						<option>TR1 - Base reflectivity - 48 nmi Range - 1.0deg</option>
+						<option>TR2 - Base reflectivity - 48 nmi Range - 1.6-3.7deg</option>
+						<option>TV0 - Base Radial Velocity - 48 nmi Range - 0.1-0.8deg</option>
+						<option>TV1 - Base Radial Velocity - 48 nmi Range - 1.0deg</option>
+						<option>TV2 - Base Radial Velocity - 48 nmi Range - 1.6-3.7deg</option>
+						<option>TZL - Long Range Reflectivity - 225 nmi Range - 0.6deg</option>
+						<option>------ WSR88D SPECIALTY PRODUCTS ---------------------------------</option>
+						<option>NVL - Vertical Integrated Liquid</option>
+						<option>DVL - Digital Vertical Integrated Liquid</option>
+						<option>NET - Echo Tops</option>
+						<option>EET - Enhanced Echo Tops</option>
+						<option>NVW - Velocity Azimuth Dispaly VAD Wind Profile</option>
+						<option>------ WSR88D - 0.5 DEG ------------------------------------------</option>
+						<option>N0R - Base reflectivity - 124 nmi Range - 0.5deg - Low Resolution</option>
+						<option>N0Z - Base reflectivity - 248 nmi Range - 0.5deg - Low Resolution</option>
+						<option>N0Q - Base reflectivity - 248 nmi Range - 0.5deg</option>
+						<option>DHR - Digital Hybrid Scan Reflectivity</option>
+						<option>N0V - Base Radial Velocity - 124 nmi Range - 0.5deg - Low Resolution</option>
+						<option>N0U - Base Radial Velocity - 162 nmi Range - 0.5deg</option>
+						<option>N0S - Storm Relative Mean Velocity - 0.5deg</option>
+						<option>N0X - Digital Differential Reflectivity - 0.5deg</option>
+						<option>N0C - Digital Correlation Coefficient - 0.5deg</option>
+						<option>N0K - Digital Specific Differential Phase - 0.5deg</option>
+						<option>NSW - Base Spectrum Width - 124km</option>
+						<option>N0H - Digital Hydrometeor Classification - 0.5deg</option>
+						<option>HHC - Hybrid Scan Hydrometeor Classification</option>
+						<option>------ WSR88D - 0.9 DEG ------------------------------------------</option>
+						<option>NAQ - Base reflectivity - 248 nmi Range - 0.9deg</option>
+						<option>NAU - Base Radial Velocity - 162 nmi Range - 0.9deg</option>
+						<option>NAX - Digital Differential Reflectivity - 0.9deg</option>
+						<option>NAC - Digital Correlation Coefficient - 0.9deg</option>
+						<option>NAK - Digital Specific Differential Phase - 0.9deg</option>
+						<option>NAH - Digital Hydrometeor Classification - 0.9deg</option>
+						<option>------ WSR88D - 1.3 DEG ------------------------------------------</option>
+						<option>N1Q - Base reflectivity - 248 nmi Range - 1.3-1.5deg</option>
+						<option>N1U - Base Radial Velocity - 162 nmi Range - 1.3-1.5deg</option>
+						<option>N1S - Storm Rel. Mean radial velocity map - 1.3-1.5deg</option>
+						<option>N1X - Digital Differential Reflectivity - 1.3-1.5deg</option>
+						<option>N1C - Digital Correlation Coefficient - 1.3-1.5deg</option>
+						<option>N1K - Digital Specific Differential Phase - 1.3-1.5deg</option>
+						<option>N1H - Digital Hydrometeor Classification - 1.3-1.5deg</option>
+						<option>------ WSR88D - 1.8 DEG ------------------------------------------</option>
+						<option>NBQ - Base reflectivity - 248 nmi Range - 1.8deg</option>
+						<option>NBU - Base Radial Velocity - 162 nmi Range - 1.8deg</option>
+						<option>NBX - Digital Differential Reflectivity - 1.8deg</option>
+						<option>NBC - Digital Correlation Coefficient - 1.8deg</option>
+						<option>NBK - Digital Specific Differential Phase - 1.8deg</option>
+						<option>NBH - Digital Hydrometeor Classification - 1.8deg</option>
+						<option>------ WSR88D - 2.4 DEG ------------------------------------------</option>
+						<option>N2Q - Base reflectivity - 248 nmi Range - 2.4-2.5deg</option>
+						<option>N2U - Base Radial Velocity - 162 nmi Range - 2.4-2.5deg</option>
+						<option>N2S - Storm Rel. Mean radial velocity map - 2.4-2.5deg</option>
+						<option>N2X - Digital Differential Reflectivity - 2.4-2.5deg</option>
+						<option>N2C - Digital Correlation Coefficient - 2.4-2.5deg</option>
+						<option>N2K - Digital Specific Differential Phase - 2.4-2.5deg</option>
+						<option>N2H - Digital Hydrometeor Classification - 2.4-2.5deg</option>
+						<option>------ WSR88D - 3.1 DEG ------------------------------------------</option>
+						<option>N3Q - Base reflectivity - 248 nmi Range - 3.1-3.4-3.5deg</option>
+						<option>N3U - Base Radial Velocity - 162 nmi Range - 3.1-3.4-3.5deg</option>
+						<option>N3S - Storm Rel. Mean radial velocity map - 3.1-3.4-3.5deg</option>
+						<option>N3X - Digital Differential Reflectivity - 3.1-3.4-3.5deg</option>
+						<option>N3C - Digital Correlation Coefficient - 3.1-3.4-3.5deg</option>
+						<option>N3K - Digital Specific Differential Phase - 3.1-3.4-3.5deg</option>
+						<option>N3H - Digital Hydrometeor Classification - 3.1-3.4-3.5deg</option>
+						<option>------ COMPOSITE REFLECTIVITY ------------------------------------</option>
+						<option>NCR - Composite Reflectivity - 16 levels - 124nmi</option>
+						<option>NCZ - Composite Reflectivity - 16 levels - 248nmi</option>
+						<option>NHL - Layer composite reflectivity Maximum - Upper Level</option>
+						<option>NLA - Layer Composite Reflectivity with AP removed</option>
+						<option>NML - Layer Composite Reflectivity Maximum Mid-Level</option>
+						<option>------ PRECIPITATION ---------------------------------------------</option>
+						<option>N1P - Surface Rainfall Accumulation - 1HR Total</option>
+						<option>DPA - Digital Precipitation Array - 1HR</option>
+						<option>OHA - One Hour Accumulation - Dual Pol - BIASED</option>
+						<option>DAA - Digital Accumulation Array - 1HR - Dual Pol - UNBIASED</option>
+						<option>DOD - Digital One Hour Difference Accumulation (DAA-N1P)</option>
+						<option>DPR - Digital Instantaneous Precipitation Rate</option>
+						<option>N3P - Surface Rainfall Accumulation - 3HR Total</option>
+						<option>DU3 - Digital User-Selectable Accumulation: 3HR-hrly</option>
+						<option>DU6 - Digital User-Selectable Accumulation: 24HR-12Z</option>
+						<option>NTP - Surface Rainfall Accumulation - Storm Total</option>
+						<option>PTA - Storm Total Accumulation - Dual Pol</option>
+						<option>DSP - Digital Storm Total Accumulation - PPS</option>
+						<option>DTA - Digital Storm Total Accumulation - Dual Pol</option>
+						<option>DSD - Digital Storm Total Difference Accumulation (DTA-NTP)</option>
+						<option>------ DATA PRODUCTS ---------------------------------------------</option>
+						<option>NSS - Storm Structure</option>
+						<option>NST - Storm Tracking Information</option>
+						<option>NMD - Mesocyclone</option>
+						<option>NTV - Tornadic Vortex Signature</option>
+						<option>NHI - Hail Index</option>
+						<option>SPD - Supplemental precip data</option>
+						<option>------ TEXT PRODUCTS ---------------------------------------------</option>
+						<option>GSM - General Status Message</option>
+						<option>FTM - Free Text message</option>
+						<option>ASP - Archive III Status Product</option>
+						<option>RCM - Radar Coded message</option>
+						<option>------ MELTING LAYER ---------------------------------------------</option>
+						<option>N0M - Melting Layer – 0.5deg</option>
+						<option>N1M - Melting Layer – 0.9deg</option>
+						<option>N2M - Melting Layer – 1.3-1.5deg</option>
+						<option>N3M - Melting Layer – 1.8deg</option>
+						<option>NAM - Melting Layer – 2.4-2.5deg</option>
+						<option>NBM - Melting Layer – 3.1-3.5deg</option>
+						<option>------ CLUTTER FILTER --------------------------------------------</option>
+						<option>NC1 - Clutter Filter Control - Segment 1</option>
+						<option>NC2 - Clutter Filter Control - Segment 2</option>
+						<option>NC3 - Clutter Filter Control - Segment 3</option>
+						<option>NC4 - Clutter Filter Control - Segment 4</option>
+						<option>NC5 - Clutter Filter Control - Segment 5</option>
+					</select>
+				</div>
+			</div><br>
+			<div class="CAPTION">Interactive preview of what you'll see when you load a WCTFAVS file</div><br><br>
+			<img class="DESCIMG" src="PYTHON/WCTFAVS/filelist.jpg"><br>
+			<!--     <div class="CAPTION">some text</div><br><br>  -->
+			<div class="CAPTION">Quick-look of the included files; grouped according to State Abbreviation</div><br><br>
+			What makes the use of these files possible is that on the NWS servers, they include a file: "sn.last," which will always 
+			hold the newest data for a given product. So each WCTFAV file can pull up the most recent data for a given product. In addition, to 
+			cut-down on quantity of files, I included the airport TDWR Radar data along with a nearby WSR-88d location.<br><br>
+			<img class="DESCIMG" src="PYTHON/WCTFAVS/innerfile.jpg" style="width:auto;"><br>
+			<div class="CAPTION">An example of what the inside of the radar WCTFAV files looks like</div><br><br>
 
-		<img class="DESCIMG" src="PYTHON/WCTFAVS/code_sample.jpg"><br>
-		<div class="CAPTION">A snippet of code I used for the script</div><br><br>
-		I'm not sure if these files will be of service to you, but it sure did to me as a WCT fan. In the future (or at your request) I may 
-		upload the python code I used to generate all of those files (I didn't do it manually by any means!). It did take me a while, but otherwise, 
-		I wouldn't have completed the project.<br><br>
-	</div>
-<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>	
-</body>
+			<img class="DESCIMG" src="PYTHON/WCTFAVS/code_sample.jpg"><br>
+			<div class="CAPTION">A snippet of code I used for the script</div><br><br>
+			I'm not sure if these files will be of service to you, but it sure did to me as a WCT fan. In the future (or at your request) I may 
+			upload the python code I used to generate all of those files (I didn't do it manually by any means!). It did take me a while, but otherwise, 
+			I wouldn't have completed the project.<br><br>
+		</div>
+		<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
+	</body>
 </html>
