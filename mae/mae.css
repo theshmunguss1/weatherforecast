@@ -1,0 +1,77 @@
+body {
+	background-color: #e6d5a0
+}
+div.container {
+	display: block;
+	position: relative;
+	float: left;
+	background-color: white;
+	border: 1px solid black;
+	width: 800px;
+	height: 600px;
+	margin-left: 2px;
+}
+img {
+	width:100%;
+	height:100%;
+	position: absolute;
+	top: 0%;
+	left: 0%;
+}
+div.panel {
+	display: block;
+	position: absolute;
+	text-align: center;
+	border: 1px solid gray;
+	background-color: rgb(245,225,225);
+	left: 815px;
+	width: 500px;
+	float: right;
+	margin-left: 1px;
+	
+}
+div.prodlist {
+	position: relative;
+}
+button {
+	
+}
+div.pcol {
+	width:98px;
+	float:left;
+}
+div.pbutton {
+	font-size: 12px;
+	border: 1px solid black;
+	background-color: yellow;
+	min-width: 98px;
+	user-select: none;
+}
+div.datedisplay {
+	font-size: 20px;
+	width: 800px;
+	margin-left: 2px;
+	text-align: center;
+}
+kbd {
+	font-family: sans-serif;
+	border: 1px solid black;
+	padding-left: 7px;
+	padding-right: 3px;
+	background: linear-gradient(to top, lightgray 15%, transparent 20%),
+		linear-gradient(to right, lightgray 10%, transparent 15%),
+		linear-gradient(white,white);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
