@@ -76,6 +76,8 @@ function markerProximityCheck() {
 	// Canvas-Relative click coords
 	xclick = event.clientX-canvasX0;
 	yclick = event.clientY-canvasY0;
+	//console.log(ctx.canvas.id);
+	//console.log(xclick, yclick);
 
 	// Bool to determine whether or not a mark needs to be noted
 	let markerbool = true;
@@ -118,6 +120,7 @@ function remove_marker(i) {
 }
 
 function place_marker_fill(x,y) {
+	//console.log("called");
 	// Marker
 	ctx.fillStyle = prop.markerColor;
 	ctx.beginPath();
@@ -144,30 +147,25 @@ function place_marker_outline(x,y) {
 	ctx.stroke();
 }
 
-
 function resize() {
-	// Used to dynamically resize the main canvas
-	// Also called by the image canvas to set the needed params
+	// window height < window width (landscape)
+	if (window.innerHeight < window.innerWidth) {
+		canvas.height = window.innerHeight - 50;
+		canvas.width = canvas.height * 0.75;
+	}
+	// window height > window.width (portrait view)
+	else {
+		// w = 0.75 * h
+		canvas.width = window.innerWidth - 50;
+		canvas.height = canvas.width / 0.75;
+	}
+	// Change caller dims accordingly
+	canvas_caller.height = canvas.height;
+	canvas_caller.width = canvas.width;
+	reparameterize();
+}
 
-	// Dynamic Resizing Only (not needed for image canvas)
-	if (ctx.canvas.id.includes("img") == false) {
-		// if window height < window width (landscape view)
-		if (window.innerHeight < window.innerWidth) {
-			canvas.height = window.innerHeight - 50;
-			canvas.width = Math.floor(canvas.height * 0.75);
-		}
-		// window height > window.width (portrait view)
-		else {
-			// w = 0.75 * h
-			canvas.width = window.innerWidth - 50;
-			canvas.height = Math.floor(canvas.width / 0.75);
-		}
-	}
-	// change dims of the caller mode
-	if (ctx_caller.canvas.id.includes("img") == false) {
-		canvas_caller.height = canvas.height;
-		canvas_caller.width = canvas.width;
-	}
+function reparameterize() {
 	prop.board = {
 		"x": canvas.width * 0.05,
 		"y": canvas.height * 0.175,
@@ -258,30 +256,36 @@ function outputcaller() {
 }
 
 function outputimg() {
+	let zxcv = document.getElementById("canvas");
 	canvas = document.getElementById("canvas_img");
 	ctx = canvas.getContext("2d");
 	let dnl_name = document.getElementById("custom_game").value;
-	// call to resize() includes call to draw()
-	resize(); 	// Called, not to resize, but re-adjust the params
 	// Bool based on the checkbox
 	prop.printMarkers = document.getElementById("imglinkmarkers").checked;
-	// Download name conditioned upon above Bool
-	if (dnl_name.length == 0) {
-		if (prop.printMarkers == false && dnl_name.length == 0) {
+	// Adjust params to meet img canvas
+	reparameterize();	
+	// Custom Name
+	if (dnl_name.length > 0) {
+		document.getElementById("imglink").download = dnl_name;
+	}
+	// No Custom File Name
+	else {
+		// No markers to be printed
+		if (prop.printMarkers == false) {
 			document.getElementById("imglink").download = "bingo_card";
 		}
+		// print the markers
 		else {
 			document.getElementById("imglink").download = "bingo_card_with_markers";
 		}
 	}
-	else {
-		document.getElementById("imglink").download = dnl_name;
-	}
 	// change link to download file
 	document.getElementById("imglink").href = canvas.toDataURL();
 	// Reset back to normal canvas
+	prop.printMarkers = true;
 	canvas = document.getElementById("canvas");
 	ctx = canvas.getContext("2d");
+	reparameterize();
 }
 
 function draw() {
@@ -302,6 +306,7 @@ function draw() {
 	}
 	// MARKER FILL(if applicable)
 	if (prop.markers.length > 0 && prop.printMarkers == true) {
+		//console.log(prop.markers);
 		for (marker in prop.markers) {
 			place_marker_fill(
 				prop.markers[marker].x,
