@@ -100,7 +100,7 @@ function chg_lang(dir) {
 		chg_units("F");
 	}
 	else if (frcst.lang == "fr") {
-		document.getElementById("textbox").innerHTML = `Pr&eacute;visions de <span id="frcstdays">${frcst.dayqty}</span> Jours de <span id="person">${name}</span> pour <span id="cityn">${city}</span>`;
+		document.getElementById("textbox").innerHTML = `Pr&eacute;visions de <span id="frcstdays">${frcst.dayqty}</span> jours de <span id="person">${name}</span> pour <span id="cityn">${city}</span>`;
 		chg_units("C");
 	}
 	else if (frcst.lang == "sp") {
