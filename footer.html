@@ -26,26 +26,16 @@
 			var pre5 = ".com";
 			var pre4 = "@outlook";
 			var vis = "hidden";
-			var clks = 0
-			
+			var emailid = document.getElementById("c_email");
+
 			function toggle_email() {
-				clks += 1;
-				if (vis == "hidden") {	// DISPLAYS EMAIL
+				if (vis == "hidden") {
 					vis = "show";
-					document.getElementById("c_email").innerHTML = pre1 + pre2 + pre3 + pre4 + pre5;
-					document.getElementById("c_email").style = "color:white;font-weight:bold;";
-					document.getElementById("c_email").title = "Highlight and Copy (CTRL+C)";
-				}
-				else {		// DISPLAYS THE NORMAL SETTING
-					if (clks == 3) {
-						vis = "hidden";
-						document.getElementById("c_email").innerHTML = "<u>Contact (email)</u>";
-						document.getElementById("c_email").style = "color:lightblue;user-select:none;";
-						document.getElementById("c_email").title = "Click to reveal email";
-						clks = 0;
-					}
+					emailid.innerHTML = `<a href="mailto:${pre1+pre2+pre3+pre4+pre5}">${pre1+pre2+pre3+pre4+pre5}</a>`;
+					emailid.title = "";
 				}
 			}
+
 		</script>
 	</body>
 </html>
