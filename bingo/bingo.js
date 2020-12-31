@@ -136,7 +136,7 @@ function place_marker_fill(x,y) {
 function place_marker_outline(x,y) {
 	// Marker outline
 	ctx.strokeStyle = prop.markerOutlineColor;
-	ctx.lineWidth = 3;
+	ctx.lineWidth = prop.lineWidth * 0.75;
 	ctx.beginPath();
 	ctx.arc(
 		x,
@@ -150,13 +150,12 @@ function place_marker_outline(x,y) {
 function resize() {
 	// window height < window width (landscape)
 	if (window.innerHeight < window.innerWidth) {
-		canvas.height = window.innerHeight - 50;
+		canvas.height = window.innerHeight;
 		canvas.width = canvas.height * 0.75;
 	}
 	// window height > window.width (portrait view)
 	else {
-		// w = 0.75 * h
-		canvas.width = window.innerWidth - 50;
+		canvas.width = document.getElementById("container").clientWidth;
 		canvas.height = canvas.width / 0.75;
 	}
 	// Change caller dims accordingly
@@ -337,7 +336,7 @@ function draw() {
 	);
 	// Game Board outer-line
 	ctx.strokeStyle = prop.boardLineColor;
-	ctx.lineWidth = prop.lineWidth / 4;
+	ctx.lineWidth = prop.lineWidth * 0.25;
 	ctx.strokeRect(
 		prop.board.x,
 		prop.board.y,
@@ -385,7 +384,7 @@ function draw() {
 		// );
 		// ctx.fill();
 		// CIRCLE OUTLINE
-		ctx.lineWidth = 2;
+		ctx.lineWidth = prop.lineWidth * 0.5;
 		ctx.beginPath();
 		ctx.arc(
 			Math.floor(canvas.width * 0.5),
