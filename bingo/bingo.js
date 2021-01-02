@@ -4,8 +4,8 @@ var ctx_caller = canvas_caller.getContext("2d");
 //var canvas_img = document.getElementById("canvas_img");
 var ctx = canvas.getContext("2d");
 
-// prop holds relevant properties; sizing properties (generally those
-//		that will be dynamic are found in the resize() function
+// prop holds relevant properties; sizing properties
+// sizing properties are dynamic; found in reparam... fn
 var prop = {
 	"mode": "game",
 	"oldwidth": 375,
@@ -148,14 +148,24 @@ function place_marker_outline(x,y) {
 }
 
 function resize() {
-	// window height < window width (landscape)
+	// LANDSCAPE - window height < window width
 	if (window.innerHeight < window.innerWidth) {
-		canvas.height = window.innerHeight;
+		// for landscape, the "- 50" is specifically included so the buttons
+		//		and their margin will be displayed on the screen at the same
+		//		time as the canvas
+		canvas.height = document.documentElement.clientHeight - 50;
 		canvas.width = canvas.height * 0.75;
 	}
-	// window height > window.width (portrait view)
+	// PORTRAIT - window height >= window.width
 	else {
-		canvas.width = document.getElementById("container").clientWidth;
+		// Tablets
+		if (document.getElementById("container").clientWidth > 500) {
+			canvas.width = document.getElementById("container").clientWidth - 50;
+		}
+		// Phones (implied)
+		else {
+			canvas.width = document.getElementById("container").clientWidth;
+		}
 		canvas.height = canvas.width / 0.75;
 	}
 	// Change caller dims accordingly
