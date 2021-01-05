@@ -11,12 +11,12 @@
 		</style>
 	</head>
 	<body link="lightBlue" vlink="lightBlue">
-		<div id="footer">
+		<div id="footer" style="user-select:none;">
 			<a href="index.html">HOME</a> &bull; 
 			<a href="iresume/iresume.html">iR&#233;sume</a> &bull; 
 			<a href="iresume/digiport.html">Digital Portfolio</a> &bull; 
 			<a target="_blank" href="https://github.com/ksgwxfan/ksgwxfan.github.io/issues">Contact (GitHub Login Required)</a> &bull;
-			<span id="c_email" style="color:lightblue;user-select:none;" onClick="toggle_email()" title="Click to reveal email"><u>Contact (email)</u></span> &bull;
+			<span id="c_email" style="color:lightblue;cursor:pointer;" onClick="toggle_email()" title="Click to reveal email"><u>Contact (email)</u></span> &bull;
 			<a target="_blank" href="http://echotops.blogspot.com/">Echo Tops Weather Blog</a>
 		</div>
 		<script>
@@ -33,6 +33,7 @@
 					vis = "show";
 					emailid.innerHTML = `<a href="mailto:${pre1+pre2+pre3+pre4+pre5}">${pre1+pre2+pre3+pre4+pre5}</a>`;
 					emailid.title = "";
+					//emailid.style.userSelect = "visible";
 				}
 			}
 
