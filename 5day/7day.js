@@ -49,6 +49,7 @@ var desc = ["5day/desc_blank.svg",
 			"5day/en/desc_heavy_rain.svg",
 			"5day/en/desc_heavy_snow.svg",
 			"5day/en/desc_blizzard.svg",
+			"5day/en/desc_wintry_mix.svg",
 			"5day/en/desc_frost.svg",
 			"5day/en/desc_fog.svg",
 			"5day/en/desc_AM_clearing.svg",
@@ -62,7 +63,9 @@ var desc = ["5day/desc_blank.svg",
 			"5day/en/desc_perc_NIGHT.svg",
 			"5day/en/desc_perc_rain.svg",
 			"5day/en/desc_perc_tstorms.svg",
-			"5day/en/desc_perc_snow.svg"
+			"5day/en/desc_perc_snow.svg",
+			"5day/en/desc_perc_wintry1.svg",
+			"5day/en/desc_perc_wintry2.svg"
 		];
 
 // Load-up opts
