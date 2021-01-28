@@ -2,842 +2,181 @@
 <html>
 	<head>
 		<base href="../">
-		<title>ksgwxfan - 5 or 7-Day Forecast Generator</title>
+		<title>ksgwxfan - 5 or 7-Day Forecast Generator - HTML5Canvas</title>
 		<link rel="stylesheet" type="text/css" href="pageheader.css"></link>
-		<link id="class_name" rel="stylesheet" href="5day/7day.css">
+		<link id="class_name" rel="stylesheet" href="5day/7day_canvas.css">
 		<meta name="author" content="Kyle Gentry">
 		<meta name="description" content="Create a custom weather forecast of variable length, either 5 days or 7 days.">
 		<meta name="keywords" content="Weather, Forecast, Forecaster, 5day, 7day, Generator, custom">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<meta charset="UTF-8">
 		<style>
 
 		</style>
 	</head>
-	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue" onLoad="daystoggle(7);load_day_select();randombg();random_forecast();">
+	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue" onload="random_forecast(); random_bg_color();">
 		<h1 id="header" style="margin-bottom:20px;">
-			<img id="headerphoto" src="profile.png">5 or 7-Day Forecast Generator
+			<img id="headerphoto" src="profile.png">5 or 7-Day Forecast Generator - HTML5Canvas
 		</h1>
-		<!-- GLOBAL OPTIONS -->
-		<div class="TABLE">
-			<div class="ROW">
-				<!-- LANGUAGE SELECT -->
-				<div id="languages" class="CELL">
-					<b><u>Language:</u></b><br />
-					<button id="lang_left" onClick="chg_lang(-1)">&lt;</button>
-					<img id="lang_selection" src="5day/lang_en.svg" title="English">
-					<button id="lang_right" onClick="chg_lang(1)">&gt;</button>
-				</div>
-				<!-- DAY TOGGLE -->
-				<div id="toggledays" class="CELL" title="Toggle between a 5 or 7 day forecast"><u>Forecast <br />Length:</u><br />
-					<label>
-						<input type="radio" name="frcst_len" id="choose5" value=5 onClick=daystoggle(this.value)>5 Days</input>
-					</label><br />
-					<label>
-						<input type="radio" name="frcst_len" id="choose7" value=7 onClick=daystoggle(this.value) checked>7 days</input>
-					</label>
-				</div>
-				<!-- BACKGROUND COLOR -->
-				<div class="CELL" id="bgselect">
-					<u>Background Color:</u> <div id="bgpreview" title="* Click to randomize background color" onClick="randombg()"></div><br />
-					<span title="Hue">H</span>: <input id="bgh" type="range" value="240" min="0" max="360" step="1" onInput='frcst.H = parseInt(this.value); changebg()' /><br />
-					<span title="Saturation">S</span>: <input id="bgs" type="range" value="100" min="20" max="100" step="1" onInput='frcst.S = parseInt(this.value); changebg()' /><br />
-					<span title="Lightness">L</span>: <input id="bgl" type="range" value="50" min="25" max="75" step="1" onInput='frcst.L = parseInt(this.value); changebg()' />
-				</div>
-				<!-- RANDOMIZE FORECAST -->
-				<div class="CELL" style="min-width:26%;">
-					<button style="background-color:yellow;font-weight:bold;" title="Click to randomize the forecast" onClick=random_forecast()>RANDOMIZE TEMPERATURES</button><br />
-					<span title="Only used in randomized forecasting"><u><b>Temperature Units:</b></u></span><br />
-					<input id="tempF" type="radio" name="unitselect" value="F" onChange=chg_units(this.value) checked>&deg;F (Fahrenheit)</input><br />
-					<input id="tempC" type="radio" name="unitselect" value="C" onChange=chg_units(this.value)>&deg;C (Celcius)</input>
-				</div>
-				<!-- START OF THE WEEK -->
-				<div class="CELL" style="min-width:15%;" title="Choose the day of the week your forecast is starting on">Starting Day: 
-					<select id="dayselect" onChange=day_select(this.value)>
-						<option value="0" selected>MON</option>
-						<option value="1">TUE</option>
-						<option value="2">WED</option>
-						<option value="3">THU</option>
-						<option value="4">FRI</option>
-						<option value="5">SAT</option>
-						<option value="6">SUN</option>
-					</select>
-				</div>
+		<div style="text-align:left;font-style:italic;color:pink;font-size:0.9em;margin:5px">
+			* Not working right for you? Try the legacy version instead: <a href="5day/forecast_legacy.html">Click here</a> *
+		</div>
+		<div id="globaloptions">
+			<!-- LANGUAGE -->
+			<div id="languagebox">
+				<span class="globalopt">Language Select:</span><br />
+				<button id="lang_left" onClick="chg_lang(-1)">&lt;</button>
+				<img id="lang_selection" src="5day/lang_en.svg" title="English" style="vertical-align:middle;">
+				<button id="lang_right" onClick="chg_lang(1)">&gt;</button>
+			</div>
+			<!-- FORECAST LENGTH -->
+			<div>
+				<span class="globalopt">Forecast Length:</span><br />
+				<input type="radio" name="frcstlength" value=5 onChange="forecastDayQty(this.value);">5 days</input><br />
+				<input type="radio" name="frcstlength" value=7 checked onChange="forecastDayQty(this.value);">7 days</input>
+			</div>
+			<!-- BACKGROUND COLOR -->
+			<div>
+				<span class="globalopt">Background Color:</span><br />
+				<input id="mainbgcolor" type="color" value="#27688D" onInput="chg_bg(this.value);"></input><br />
+				<button onclick="random_bg_color();">Randomize</button>
+			</div>
+			<!-- RANDOM FORECAST -->
+			<div>
+				<span class="globalopt">Temperature Units:</span><br />
+				<input type="radio" name="tempunits" id="tempF" value="F" onChange="prop.tempUnits = 'F'; convert();" checked>&deg;F</input>
+				<input type="radio" name="tempunits" id="tempC" value="C" onChange="prop.tempUnits = 'C'; convert();">&deg;C</input><br />
+				<!-- <select id="tempunits" onchange="prop.tempUnits = this.value;"> -->
+					<!-- <option value="F">Fahrenheit</option> -->
+					<!-- <option value="C">Celsius</option> -->
+				<!-- </select><br /> -->
+				<button onClick="random_forecast();" title="Time-of-year based random temperatures">Randomize<br />Forecast</button>
+			</div>
+			<!-- HEMISPHERE / FIRST DAY OF WEEK -->
+			<div>
+				<span class="globalopt" id="hemi">Hemisphere Select:</span><br />
+				<select id="hemisphere" onchange="prop.hemisphere = this.value; random_forecast();" title="Hemisphere-based generated temperatures">
+					<option value="N">Northern</option>
+					<option value="S">Southern</option>
+				</select><br />
+				<span class="globalopt">First Day of Week:</span><br />
+				<select id="firstday" onChange="chg_day(this.value);">
+					<option value=0>SUN</option>
+					<option value=1>MON</option>
+					<option value=2>TUE</option>
+					<option value=3>WED</option>
+					<option value=4>THU</option>
+					<option value=5>FRI</option>
+					<option value=6>SAT</option>
+				</select>
 			</div>
 		</div>
-		<hr color=gray />
-		<table id="canvas" class="MAIN" style="margin-top:20px;margin-bottom:20px;">
-			<tr id="forecast-row">
-                <td class="DAY" id="d1">
-                    <div class="DAYNAME" id="name1">MON</div>
-                    <div id="SKYcontainer1" style="position:relative;width:100%;">
-                        <img class="SKYCON" id="sky1" src="5day/sky_sun_clr.svg" skyindex="0">
-                        <div class="SKYcycle up" title="Sky: Cycle Up" id="sky1up" onClick="sky_select(1,'-')"><div class="desctext">&Delta;</div></div>
-                        <div class="SKYcycle dn" title="Sky: Cycle Down" id="sky1dn" onClick="sky_select(1,'+')"><div class="desctext">&Del;</div></div>
-                    </div>
-                    <div id="DESCcontainer" title="Descriptor Toggle/Cycle" style="position:relative;width:100%;">
-                        <img class="DESC" id="desc1" src="5day/desc_blank.svg" descindex="0">
-                        <div class="DESCcycle left" title="Description: Cycle Left" id="desc1L" onClick="desc_select(1,'-')"><div class="desctext">&vltri;</div></div>
-                        <div class="PERC" id="perc1"></div>
-                        <div class="DESCcycle right" title="Description: Cycle Right" id="desc1R" onClick="desc_select(1,'+')"><div class="desctext">&vrtri;</div></div>
-                    </div>
-                    <table id="uvi1" class="UVI" uvivalue="1">
-                        <tr>
-                            <td class="UVIcell footer" colspan="11">UVI: <span id="uvi1num">1</span></td>
-                        </tr>
-                        <tr>
-                            <td class="UVIcell low" colspan="2">low</td>
-                            <td class="UVIcell mod" colspan="3">mod</td>
-                            <td class="UVIcell high" colspan="2">high</td>
-                            <td class="UVIcell veryhigh" colspan="3">very high</td>
-                            <td class="UVIcell extreme">ex</td>
-                        </tr>
-                        <tr>
-                            <td id="uvi1-lv01" class="UVIcell marker" title="UVI 1" onClick='uvi_chg("1","01")'>&Delta;</td>
-                            <td id="uvi1-lv02" class="UVIcell marker" title="UVI 2" onClick='uvi_chg("1","02")'></td>
-                            <td id="uvi1-lv03" class="UVIcell marker" title="UVI 3" onClick='uvi_chg("1","03")'></td>
-                            <td id="uvi1-lv04" class="UVIcell marker" title="UVI 4" onClick='uvi_chg("1","04")'></td>
-                            <td id="uvi1-lv05" class="UVIcell marker" title="UVI 5" onClick='uvi_chg("1","05")'></td>
-                            <td id="uvi1-lv06" class="UVIcell marker" title="UVI 6" onClick='uvi_chg("1","06")'></td>
-                            <td id="uvi1-lv07" class="UVIcell marker" title="UVI 7" onClick='uvi_chg("1","07")'></td>
-                            <td id="uvi1-lv08" class="UVIcell marker" title="UVI 8" onClick='uvi_chg("1","08")'></td>
-                            <td id="uvi1-lv09" class="UVIcell marker" title="UVI 9" onClick='uvi_chg("1","09")'></td>
-                            <td id="uvi1-lv10" class="UVIcell marker" title="UVI 10" onClick='uvi_chg("1","10")'></td>
-                            <td id="uvi1-lv11" class="UVIcell marker" title="UVI 11" onClick='uvi_chg("1","11")'></td>
-                        </tr>
-                    </table>
-                    <div class="WIND" id="wind1" style="display:none;">
-                        <img class="WINDboxlogo" src="5day/windboxlogo.svg">
-                        <span id="wind1dir"></span>&nbsp;
-                        <span id="wind1spd"></span>
-                    </div>
-                    <div class="HI" id="hi1"></div>
-                    <div class="LO" id="lo1"></div>
-                </td>
-                <td class="DAY" id="d2">
-                    <div class="DAYNAME" id="name2">TUE</div>
-                    <div id="SKYcontainer2" style="position:relative;width:100%;">
-                        <img class="SKYCON" id="sky2" src="5day/sky_sun_clr.svg" skyindex="0">
-                        <div class="SKYcycle up" title="Sky: Cycle Up" id="sky2up" onClick="sky_select(2,'-')"><div class="desctext">&Delta;</div></div>
-                        <div class="SKYcycle dn" title="Sky: Cycle Down" id="sky2dn" onClick="sky_select(2,'+')"><div class="desctext">&Del;</div></div>
-                    </div>
-                    <div id="DESCcontainer" title="Descriptor Toggle/Cycle" style="position:relative;width:100%;">
-                        <img class="DESC" id="desc2" src="5day/desc_blank.svg" descindex="0">
-                        <div class="DESCcycle left" title="Description: Cycle Left" id="desc2L" onClick="desc_select(2,'-')"><div class="desctext">&vltri;</div></div>
-                        <div class="PERC" id="perc2"></div>
-                        <div class="DESCcycle right" title="Description: Cycle Right" id="desc2R" onClick="desc_select(2,'+')"><div class="desctext">&vrtri;</div></div>
-                    </div>
-                    <table id="uvi2" class="UVI" uvivalue="1">
-                        <tr>
-                            <td class="UVIcell footer" colspan="11">UVI: <span id="uvi2num">1</span></td>
-                        </tr>
-                        <tr>
-                            <td class="UVIcell low" colspan="2">low</td>
-                            <td class="UVIcell mod" colspan="3">mod</td>
-                            <td class="UVIcell high" colspan="2">high</td>
-                            <td class="UVIcell veryhigh" colspan="3">very high</td>
-                            <td class="UVIcell extreme">ex</td>
-                        </tr>
-                        <tr>
-                            <td id="uvi2-lv01" class="UVIcell marker" title="UVI 1" onClick='uvi_chg("2","01")'>&Delta;</td>
-                            <td id="uvi2-lv02" class="UVIcell marker" title="UVI 2" onClick='uvi_chg("2","02")'></td>
-                            <td id="uvi2-lv03" class="UVIcell marker" title="UVI 3" onClick='uvi_chg("2","03")'></td>
-                            <td id="uvi2-lv04" class="UVIcell marker" title="UVI 4" onClick='uvi_chg("2","04")'></td>
-                            <td id="uvi2-lv05" class="UVIcell marker" title="UVI 5" onClick='uvi_chg("2","05")'></td>
-                            <td id="uvi2-lv06" class="UVIcell marker" title="UVI 6" onClick='uvi_chg("2","06")'></td>
-                            <td id="uvi2-lv07" class="UVIcell marker" title="UVI 7" onClick='uvi_chg("2","07")'></td>
-                            <td id="uvi2-lv08" class="UVIcell marker" title="UVI 8" onClick='uvi_chg("2","08")'></td>
-                            <td id="uvi2-lv09" class="UVIcell marker" title="UVI 9" onClick='uvi_chg("2","09")'></td>
-                            <td id="uvi2-lv10" class="UVIcell marker" title="UVI 10" onClick='uvi_chg("2","10")'></td>
-                            <td id="uvi2-lv11" class="UVIcell marker" title="UVI 11" onClick='uvi_chg("2","11")'></td>
-                        </tr>
-                    </table>
-                    <div class="WIND" id="wind2" style="display:none;">
-                        <img class="WINDboxlogo" src="5day/windboxlogo.svg">
-                        <span id="wind2dir"></span>&nbsp;
-                        <span id="wind2spd"></span>
-                    </div>
-                    <div class="HI" id="hi2"></div>
-                    <div class="LO" id="lo2"></div>
-                </td>
-                <td class="DAY" id="d3">
-                    <div class="DAYNAME" id="name3">WED</div>
-                    <div id="SKYcontainer3" style="position:relative;width:100%;">
-                        <img class="SKYCON" id="sky3" src="5day/sky_sun_clr.svg" skyindex="0">
-                        <div class="SKYcycle up" title="Sky: Cycle Up" id="sky3up" onClick="sky_select(3,'-')"><div class="desctext">&Delta;</div></div>
-                        <div class="SKYcycle dn" title="Sky: Cycle Down" id="sky3dn" onClick="sky_select(3,'+')"><div class="desctext">&Del;</div></div>
-                    </div>
-                    <div id="DESCcontainer" title="Descriptor Toggle/Cycle" style="position:relative;width:100%;">
-                        <img class="DESC" id="desc3" src="5day/desc_blank.svg" descindex="0">
-                        <div class="DESCcycle left" title="Description: Cycle Left" id="desc3L" onClick="desc_select(3,'-')"><div class="desctext">&vltri;</div></div>
-                        <div class="PERC" id="perc3"></div>
-                        <div class="DESCcycle right" title="Description: Cycle Right" id="desc3R" onClick="desc_select(3,'+')"><div class="desctext">&vrtri;</div></div>
-                    </div>
-                    <table id="uvi3" class="UVI" uvivalue="1">
-                        <tr>
-                            <td class="UVIcell footer" colspan="11">UVI: <span id="uvi3num">1</span></td>
-                        </tr>
-                        <tr>
-                            <td class="UVIcell low" colspan="2">low</td>
-                            <td class="UVIcell mod" colspan="3">mod</td>
-                            <td class="UVIcell high" colspan="2">high</td>
-                            <td class="UVIcell veryhigh" colspan="3">very high</td>
-                            <td class="UVIcell extreme">ex</td>
-                        </tr>
-                        <tr>
-                            <td id="uvi3-lv01" class="UVIcell marker" title="UVI 1" onClick='uvi_chg("3","01")'>&Delta;</td>
-                            <td id="uvi3-lv02" class="UVIcell marker" title="UVI 2" onClick='uvi_chg("3","02")'></td>
-                            <td id="uvi3-lv03" class="UVIcell marker" title="UVI 3" onClick='uvi_chg("3","03")'></td>
-                            <td id="uvi3-lv04" class="UVIcell marker" title="UVI 4" onClick='uvi_chg("3","04")'></td>
-                            <td id="uvi3-lv05" class="UVIcell marker" title="UVI 5" onClick='uvi_chg("3","05")'></td>
-                            <td id="uvi3-lv06" class="UVIcell marker" title="UVI 6" onClick='uvi_chg("3","06")'></td>
-                            <td id="uvi3-lv07" class="UVIcell marker" title="UVI 7" onClick='uvi_chg("3","07")'></td>
-                            <td id="uvi3-lv08" class="UVIcell marker" title="UVI 8" onClick='uvi_chg("3","08")'></td>
-                            <td id="uvi3-lv09" class="UVIcell marker" title="UVI 9" onClick='uvi_chg("3","09")'></td>
-                            <td id="uvi3-lv10" class="UVIcell marker" title="UVI 10" onClick='uvi_chg("3","10")'></td>
-                            <td id="uvi3-lv11" class="UVIcell marker" title="UVI 11" onClick='uvi_chg("3","11")'></td>
-                        </tr>
-                    </table>
-                    <div class="WIND" id="wind3" style="display:none;">
-                        <img class="WINDboxlogo" src="5day/windboxlogo.svg">
-                        <span id="wind3dir"></span>&nbsp;
-                        <span id="wind3spd"></span>
-                    </div>
-                    <div class="HI" id="hi3"></div>
-                    <div class="LO" id="lo3"></div>
-                </td>
-                <td class="DAY" id="d4">
-                    <div class="DAYNAME" id="name4">THU</div>
-                    <div id="SKYcontainer4" style="position:relative;width:100%;">
-                        <img class="SKYCON" id="sky4" src="5day/sky_sun_clr.svg" skyindex="0">
-                        <div class="SKYcycle up" title="Sky: Cycle Up" id="sky4up" onClick="sky_select(4,'-')"><div class="desctext">&Delta;</div></div>
-                        <div class="SKYcycle dn" title="Sky: Cycle Down" id="sky4dn" onClick="sky_select(4,'+')"><div class="desctext">&Del;</div></div>
-                    </div>
-                    <div id="DESCcontainer" title="Descriptor Toggle/Cycle" style="position:relative;width:100%;">
-                        <img class="DESC" id="desc4" src="5day/desc_blank.svg" descindex="0">
-                        <div class="DESCcycle left" title="Description: Cycle Left" id="desc4L" onClick="desc_select(4,'-')"><div class="desctext">&vltri;</div></div>
-                        <div class="PERC" id="perc4"></div>
-                        <div class="DESCcycle right" title="Description: Cycle Right" id="desc4R" onClick="desc_select(4,'+')"><div class="desctext">&vrtri;</div></div>
-                    </div>
-                    <table id="uvi4" class="UVI" uvivalue="1">
-                        <tr>
-                            <td class="UVIcell footer" colspan="11">UVI: <span id="uvi4num">1</span></td>
-                        </tr>
-                        <tr>
-                            <td class="UVIcell low" colspan="2">low</td>
-                            <td class="UVIcell mod" colspan="3">mod</td>
-                            <td class="UVIcell high" colspan="2">high</td>
-                            <td class="UVIcell veryhigh" colspan="3">very high</td>
-                            <td class="UVIcell extreme">ex</td>
-                        </tr>
-                        <tr>
-                            <td id="uvi4-lv01" class="UVIcell marker" title="UVI 1" onClick='uvi_chg("4","01")'>&Delta;</td>
-                            <td id="uvi4-lv02" class="UVIcell marker" title="UVI 2" onClick='uvi_chg("4","02")'></td>
-                            <td id="uvi4-lv03" class="UVIcell marker" title="UVI 3" onClick='uvi_chg("4","03")'></td>
-                            <td id="uvi4-lv04" class="UVIcell marker" title="UVI 4" onClick='uvi_chg("4","04")'></td>
-                            <td id="uvi4-lv05" class="UVIcell marker" title="UVI 5" onClick='uvi_chg("4","05")'></td>
-                            <td id="uvi4-lv06" class="UVIcell marker" title="UVI 6" onClick='uvi_chg("4","06")'></td>
-                            <td id="uvi4-lv07" class="UVIcell marker" title="UVI 7" onClick='uvi_chg("4","07")'></td>
-                            <td id="uvi4-lv08" class="UVIcell marker" title="UVI 8" onClick='uvi_chg("4","08")'></td>
-                            <td id="uvi4-lv09" class="UVIcell marker" title="UVI 9" onClick='uvi_chg("4","09")'></td>
-                            <td id="uvi4-lv10" class="UVIcell marker" title="UVI 10" onClick='uvi_chg("4","10")'></td>
-                            <td id="uvi4-lv11" class="UVIcell marker" title="UVI 11" onClick='uvi_chg("4","11")'></td>
-                        </tr>
-                    </table>
-                    <div class="WIND" id="wind4" style="display:none;">
-                        <img class="WINDboxlogo" src="5day/windboxlogo.svg">
-                        <span id="wind4dir"></span>&nbsp;
-                        <span id="wind4spd"></span>
-                    </div>
-                    <div class="HI" id="hi4"></div>
-                    <div class="LO" id="lo4"></div>
-                </td>
-                <td class="DAY" id="d5">
-                    <div class="DAYNAME" id="name5">FRI</div>
-                    <div id="SKYcontainer5" style="position:relative;width:100%;">
-                        <img class="SKYCON" id="sky5" src="5day/sky_sun_clr.svg" skyindex="0">
-                        <div class="SKYcycle up" title="Sky: Cycle Up" id="sky5up" onClick="sky_select(5,'-')"><div class="desctext">&Delta;</div></div>
-                        <div class="SKYcycle dn" title="Sky: Cycle Down" id="sky5dn" onClick="sky_select(5,'+')"><div class="desctext">&Del;</div></div>
-                    </div>
-                    <div id="DESCcontainer" title="Descriptor Toggle/Cycle" style="position:relative;width:100%;">
-                        <img class="DESC" id="desc5" src="5day/desc_blank.svg" descindex="0">
-                        <div class="DESCcycle left" title="Description: Cycle Left" id="desc5L" onClick="desc_select(5,'-')"><div class="desctext">&vltri;</div></div>
-                        <div class="PERC" id="perc5"></div>
-                        <div class="DESCcycle right" title="Description: Cycle Right" id="desc5R" onClick="desc_select(5,'+')"><div class="desctext">&vrtri;</div></div>
-                    </div>
-                    <table id="uvi5" class="UVI" uvivalue="1">
-                        <tr>
-                            <td class="UVIcell footer" colspan="11">UVI: <span id="uvi5num">1</span></td>
-                        </tr>
-                        <tr>
-                            <td class="UVIcell low" colspan="2">low</td>
-                            <td class="UVIcell mod" colspan="3">mod</td>
-                            <td class="UVIcell high" colspan="2">high</td>
-                            <td class="UVIcell veryhigh" colspan="3">very high</td>
-                            <td class="UVIcell extreme">ex</td>
-                        </tr>
-                        <tr>
-                            <td id="uvi5-lv01" class="UVIcell marker" title="UVI 1" onClick='uvi_chg("5","01")'>&Delta;</td>
-                            <td id="uvi5-lv02" class="UVIcell marker" title="UVI 2" onClick='uvi_chg("5","02")'></td>
-                            <td id="uvi5-lv03" class="UVIcell marker" title="UVI 3" onClick='uvi_chg("5","03")'></td>
-                            <td id="uvi5-lv04" class="UVIcell marker" title="UVI 4" onClick='uvi_chg("5","04")'></td>
-                            <td id="uvi5-lv05" class="UVIcell marker" title="UVI 5" onClick='uvi_chg("5","05")'></td>
-                            <td id="uvi5-lv06" class="UVIcell marker" title="UVI 6" onClick='uvi_chg("5","06")'></td>
-                            <td id="uvi5-lv07" class="UVIcell marker" title="UVI 7" onClick='uvi_chg("5","07")'></td>
-                            <td id="uvi5-lv08" class="UVIcell marker" title="UVI 8" onClick='uvi_chg("5","08")'></td>
-                            <td id="uvi5-lv09" class="UVIcell marker" title="UVI 9" onClick='uvi_chg("5","09")'></td>
-                            <td id="uvi5-lv10" class="UVIcell marker" title="UVI 10" onClick='uvi_chg("5","10")'></td>
-                            <td id="uvi5-lv11" class="UVIcell marker" title="UVI 11" onClick='uvi_chg("5","11")'></td>
-                        </tr>
-                    </table>
-                    <div class="WIND" id="wind5" style="display:none;">
-                        <img class="WINDboxlogo" src="5day/windboxlogo.svg">
-                        <span id="wind5dir"></span>&nbsp;
-                        <span id="wind5spd"></span>
-                    </div>
-                    <div class="HI" id="hi5"></div>
-                    <div class="LO" id="lo5"></div>
-                </td>
-                <td class="DAY" id="d6">
-                    <div class="DAYNAME" id="name6">SAT</div>
-                    <div id="SKYcontainer6" style="position:relative;width:100%;">
-                        <img class="SKYCON" id="sky6" src="5day/sky_sun_clr.svg" skyindex="0">
-                        <div class="SKYcycle up" title="Sky: Cycle Up" id="sky6up" onClick="sky_select(6,'-')"><div class="desctext">&Delta;</div></div>
-                        <div class="SKYcycle dn" title="Sky: Cycle Down" id="sky6dn" onClick="sky_select(6,'+')"><div class="desctext">&Del;</div></div>
-                    </div>
-                    <div id="DESCcontainer" title="Descriptor Toggle/Cycle" style="position:relative;width:100%;">
-                        <img class="DESC" id="desc6" src="5day/desc_blank.svg" descindex="0">
-                        <div class="DESCcycle left" title="Description: Cycle Left" id="desc6L" onClick="desc_select(6,'-')"><div class="desctext">&vltri;</div></div>
-                        <div class="PERC" id="perc6"></div>
-                        <div class="DESCcycle right" title="Description: Cycle Right" id="desc6R" onClick="desc_select(6,'+')"><div class="desctext">&vrtri;</div></div>
-                    </div>
-                    <table id="uvi6" class="UVI" uvivalue="1">
-                        <tr>
-                            <td class="UVIcell footer" colspan="11">UVI: <span id="uvi6num">1</span></td>
-                        </tr>
-                        <tr>
-                            <td class="UVIcell low" colspan="2">low</td>
-                            <td class="UVIcell mod" colspan="3">mod</td>
-                            <td class="UVIcell high" colspan="2">high</td>
-                            <td class="UVIcell veryhigh" colspan="3">very high</td>
-                            <td class="UVIcell extreme">ex</td>
-                        </tr>
-                        <tr>
-                            <td id="uvi6-lv01" class="UVIcell marker" title="UVI 1" onClick='uvi_chg("6","01")'>&Delta;</td>
-                            <td id="uvi6-lv02" class="UVIcell marker" title="UVI 2" onClick='uvi_chg("6","02")'></td>
-                            <td id="uvi6-lv03" class="UVIcell marker" title="UVI 3" onClick='uvi_chg("6","03")'></td>
-                            <td id="uvi6-lv04" class="UVIcell marker" title="UVI 4" onClick='uvi_chg("6","04")'></td>
-                            <td id="uvi6-lv05" class="UVIcell marker" title="UVI 5" onClick='uvi_chg("6","05")'></td>
-                            <td id="uvi6-lv06" class="UVIcell marker" title="UVI 6" onClick='uvi_chg("6","06")'></td>
-                            <td id="uvi6-lv07" class="UVIcell marker" title="UVI 7" onClick='uvi_chg("6","07")'></td>
-                            <td id="uvi6-lv08" class="UVIcell marker" title="UVI 8" onClick='uvi_chg("6","08")'></td>
-                            <td id="uvi6-lv09" class="UVIcell marker" title="UVI 9" onClick='uvi_chg("6","09")'></td>
-                            <td id="uvi6-lv10" class="UVIcell marker" title="UVI 10" onClick='uvi_chg("6","10")'></td>
-                            <td id="uvi6-lv11" class="UVIcell marker" title="UVI 11" onClick='uvi_chg("6","11")'></td>
-                        </tr>
-                    </table>
-                    <div class="WIND" id="wind6" style="display:none;">
-                        <img class="WINDboxlogo" src="5day/windboxlogo.svg">
-                        <span id="wind6dir"></span>&nbsp;
-                        <span id="wind6spd"></span>
-                    </div>
-                    <div class="HI" id="hi6"></div>
-                    <div class="LO" id="lo6"></div>
-                </td>
-                <td class="DAY" id="d7">
-                    <div class="DAYNAME" id="name7">SUN</div>
-                    <div id="SKYcontainer7" style="position:relative;width:100%;">
-                        <img class="SKYCON" id="sky7" src="5day/sky_sun_clr.svg" skyindex="0">
-                        <div class="SKYcycle up" title="Sky: Cycle Up" id="sky7up" onClick="sky_select(7,'-')"><div class="desctext">&Delta;</div></div>
-                        <div class="SKYcycle dn" title="Sky: Cycle Down" id="sky7dn" onClick="sky_select(7,'+')"><div class="desctext">&Del;</div></div>
-                    </div>
-                    <div id="DESCcontainer" title="Descriptor Toggle/Cycle" style="position:relative;width:100%;">
-                        <img class="DESC" id="desc7" src="5day/desc_blank.svg" descindex="0">
-                        <div class="DESCcycle left" title="Description: Cycle Left" id="desc7L" onClick="desc_select(7,'-')"><div class="desctext">&vltri;</div></div>
-                        <div class="PERC" id="perc7"></div>
-                        <div class="DESCcycle right" title="Description: Cycle Right" id="desc7R" onClick="desc_select(7,'+')"><div class="desctext">&vrtri;</div></div>
-                    </div>
-                    <table id="uvi7" class="UVI" uvivalue="1">
-                        <tr>
-                            <td class="UVIcell footer" colspan="11">UVI: <span id="uvi7num">1</span></td>
-                        </tr>
-                        <tr>
-                            <td class="UVIcell low" colspan="2">low</td>
-                            <td class="UVIcell mod" colspan="3">mod</td>
-                            <td class="UVIcell high" colspan="2">high</td>
-                            <td class="UVIcell veryhigh" colspan="3">very high</td>
-                            <td class="UVIcell extreme">ex</td>
-                        </tr>
-                        <tr>
-                            <td id="uvi7-lv01" class="UVIcell marker" title="UVI 1" onClick='uvi_chg("7","01")'>&Delta;</td>
-                            <td id="uvi7-lv02" class="UVIcell marker" title="UVI 2" onClick='uvi_chg("7","02")'></td>
-                            <td id="uvi7-lv03" class="UVIcell marker" title="UVI 3" onClick='uvi_chg("7","03")'></td>
-                            <td id="uvi7-lv04" class="UVIcell marker" title="UVI 4" onClick='uvi_chg("7","04")'></td>
-                            <td id="uvi7-lv05" class="UVIcell marker" title="UVI 5" onClick='uvi_chg("7","05")'></td>
-                            <td id="uvi7-lv06" class="UVIcell marker" title="UVI 6" onClick='uvi_chg("7","06")'></td>
-                            <td id="uvi7-lv07" class="UVIcell marker" title="UVI 7" onClick='uvi_chg("7","07")'></td>
-                            <td id="uvi7-lv08" class="UVIcell marker" title="UVI 8" onClick='uvi_chg("7","08")'></td>
-                            <td id="uvi7-lv09" class="UVIcell marker" title="UVI 9" onClick='uvi_chg("7","09")'></td>
-                            <td id="uvi7-lv10" class="UVIcell marker" title="UVI 10" onClick='uvi_chg("7","10")'></td>
-                            <td id="uvi7-lv11" class="UVIcell marker" title="UVI 11" onClick='uvi_chg("7","11")'></td>
-                        </tr>
-                    </table>
-                    <div class="WIND" id="wind7" style="display:none;">
-                        <img class="WINDboxlogo" src="5day/windboxlogo.svg">
-                        <span id="wind7dir"></span>&nbsp;
-                        <span id="wind7spd"></span>
-                    </div>
-                    <div class="HI" id="hi7"></div>
-                    <div class="LO" id="lo7"></div>
-                </td>
-			</tr>
-			<tr id="title-row">
-				<td id="title" class="TITLEBOX" colspan=7>
-					<div id="titleunderscore"></div>
-					<img id="logo" src="5day/logo_echotops.svg">
-					<div id="textbox" style="display:inline;">
-						<span id="person">NAME</span>'s <span id="frcstdays">7</span>-Day Forecast for <span id="cityn">CITYNAME</span>
-					</div>
-				</td>
-			</tr>
-		</table>
-		<hr color=gray />
-		<div class="TABLE">
-			<div class="ROW">
-				<div class="CELL">Logo: 
-					<select id="logoselect" onChange=logo_select(this.value)>
-						<option value="5day/logo_echotops.svg" selected>Echo Tops Blog</option>
-						<option value="5day/logo_channel99.svg">Channel99</option>
-						<option value="5day/logo_wxbonanza.svg">Weather Bonanza</option>
-						<option value="5day/logo_weather01.svg">Weather - 01</option>
-						<option value="5day/logo_weather02.svg">Weather - 02</option>
-						<option value="5day/logo_weather03.svg">Weather - 03</option>
-						<option value="5day/logo_weather04.svg">Weather - 04</option>
-					</select>
+		<hr color="gray" />
+		<div id="container">
+			<canvas id="forecast" width="1000" height="500"></canvas>
+			<canvas id="forecast_img" width="1008" height="504" style="display:none;"></canvas>
+		</div>
+		<div id="forecast-names">
+			<table id="title-modes">
+				<caption class="titleopt">
+					Title Display Modes:
+				</caption>
+				<tr>
+					<td>
+						<input type="radio" name="titleopt" checked onClick='chg_title_mode("both")'>Standard</input>
+					</td>
+					<td>
+						<input type="radio" name="titleopt" onClick='chg_title_mode("name")'>No City</input>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="radio" name="titleopt" onClick='chg_title_mode("city")'>No Name</input>
+					</td>
+					<td>
+						<input type="radio" name="titleopt" onClick='chg_title_mode("custom")'>Custom</input>
+					</td>
+				</tr>
+			</table>
+			<div id="title-display-options">
+				<div><span class="titleopt">Title Display Options:</span></div>
+				<div id="nameentrydiv">
+					Name: 
+					<input id="nameentry" maxlength="15" placeholder="Your Name (15 Chars)" onInput="draw();"></input>
 				</div>
-				<div class="CELL">Insert Forecaster's Name:
-					<input style="width:140px;" maxlength="10" placeholder=" *** 10 max characters ***" id="namebox" onInput=change_name(this.value)></input>
+				<div id="cityentrydiv">
+					City: 
+					<input id="cityentry" maxlength="15" placeholder="City (15 Chars)" onInput="draw();"></input>
 				</div>
-				<div class="CELL">Insert City Name:
-					<input style="width:160px;" maxlength="14" placeholder=" *** 14 max characters " id="citybox" onInput=change_city(this.value)></input>
+				<div id="customtitlediv" style="display:none;">
+					Custom Title: 
+					<input id="customentry" placeholder="Custom Entry (max: 60 chars)" maxlength="60" onInput="draw();" style="width:60%;"></input>
 				</div>
 			</div>
+			<div id="save-the-canvas">
+				<div class="titleopt">Save Forecast As Image</div>
+				Size: <select id="savesize">
+					<option value="720x360">720 x 360</option>
+					<option value="960x480">960 x 480</option>
+					<option value="1008x504" selected>1008 x 504</option>
+					<option value="1600x800">1600 x 800</option>
+				</select><br />
+				Name: <input id="savename"></input><br />
+				<a id="saveimg" href="" onClick="saveimg();">Save Image</a>
+				<!-- <button id="saveimg" onClick="saveimg();">Save Image</button> -->
+			</div>			
 		</div>
-		<hr color=gray />
-		<!-- DAILY OPTIONS -->
-		<div class="TABLE">
-            <!-- DAY HEADER ROW BOX -->
-            <div class="ROW">
-                <div class="CELL OPTS"><u><span id="d1name"></span></u></div>
-                <div class="CELL OPTS"><u><span id="d2name"></span></u></div>
-                <div class="CELL OPTS"><u><span id="d3name"></span></u></div>
-                <div class="CELL OPTS"><u><span id="d4name"></span></u></div>
-                <div class="CELL OPTS"><u><span id="d5name"></span></u></div>
-                <div class="CELL OPTS" id="d6optsblock"><u><span id="d6name"></span></u></div>
-                <div class="CELL OPTS" id="d7optsblock"><u><span id="d7name"></span></u></div>
-            </div>
-            <!-- PERCENT-BOX ROW -->
-            <div class="ROW">
-                <div class="CELL OPTS">
-                    <u>PRCP Chance (%)</u>:<br />
-                    <input class="PERCINSERT" pattern="\d*" maxlength="3" placeholder="50" value="" id="percentbox1" onInput=perc("perc1",this.value) ></input>
-                </div>
-                <div class="CELL OPTS">
-                    <u>PRCP Chance (%)</u>:<br />
-                    <input class="PERCINSERT" pattern="\d*" maxlength="3" placeholder="50" value="" id="percentbox2" onInput=perc("perc2",this.value) ></input>
-                </div>
-                <div class="CELL OPTS">
-                    <u>PRCP Chance (%)</u>:<br />
-                    <input class="PERCINSERT" pattern="\d*" maxlength="3" placeholder="50" value="" id="percentbox3" onInput=perc("perc3",this.value) ></input>
-                </div>
-                <div class="CELL OPTS">
-                    <u>PRCP Chance (%)</u>:<br />
-                    <input class="PERCINSERT" pattern="\d*" maxlength="3" placeholder="50" value="" id="percentbox4" onInput=perc("perc4",this.value) ></input>
-                </div>
-                <div class="CELL OPTS">
-                    <u>PRCP Chance (%)</u>:<br />
-                    <input class="PERCINSERT" pattern="\d*" maxlength="3" placeholder="50" value="" id="percentbox5" onInput=perc("perc5",this.value) ></input>
-                </div>
-                <div class="CELL OPTS" id="percentbox6block">
-                    <u>PRCP Chance (%)</u>:<br />
-                    <input class="PERCINSERT" pattern="\d*" maxlength="3" placeholder="50" value="" id="percentbox6" onInput=perc("perc6",this.value) ></input>
-                </div>
-                <div class="CELL OPTS" id="percentbox7block">
-                    <u>PRCP Chance (%)</u>:<br />
-                    <input class="PERCINSERT" pattern="\d*" maxlength="3" placeholder="50" value="" id="percentbox7" onInput=perc("perc7",this.value) ></input>
-                </div>
-            </div>
-            <!-- UVI row -->
-            <div class="ROW">
-                <div class="CELL OPTS">
-                    <u>UVI Toggle:</u><br />
-                    <input type="radio" name="uvitoggle1" id="uvi1off" onClick='document.getElementById("uvi1").style.display = "none"' checked>OFF</input>
-                    <input type="radio" name="uvitoggle1" id="uvi1on" onClick='document.getElementById("uvi1").style.display = "table"'>ON</input>
-                </div>
-                <div class="CELL OPTS">
-                    <u>UVI Toggle:</u><br />
-                    <input type="radio" name="uvitoggle2" id="uvi2off" onClick='document.getElementById("uvi2").style.display = "none"' checked>OFF</input>
-                    <input type="radio" name="uvitoggle2" id="uvi2on" onClick='document.getElementById("uvi2").style.display = "table"'>ON</input>
-                </div>
-                <div class="CELL OPTS">
-                    <u>UVI Toggle:</u><br />
-                    <input type="radio" name="uvitoggle3" id="uvi3off" onClick='document.getElementById("uvi3").style.display = "none"' checked>OFF</input>
-                    <input type="radio" name="uvitoggle3" id="uvi3on" onClick='document.getElementById("uvi3").style.display = "table"'>ON</input>
-                </div>
-                <div class="CELL OPTS">
-                    <u>UVI Toggle:</u><br />
-                    <input type="radio" name="uvitoggle4" id="uvi4off" onClick='document.getElementById("uvi4").style.display = "none"' checked>OFF</input>
-                    <input type="radio" name="uvitoggle4" id="uvi4on" onClick='document.getElementById("uvi4").style.display = "table"'>ON</input>
-                </div>
-                <div class="CELL OPTS">
-                    <u>UVI Toggle:</u><br />
-                    <input type="radio" name="uvitoggle5" id="uvi5off" onClick='document.getElementById("uvi5").style.display = "none"' checked>OFF</input>
-                    <input type="radio" name="uvitoggle5" id="uvi5on" onClick='document.getElementById("uvi5").style.display = "table"'>ON</input>
-                </div>
-                <div class="CELL OPTS" id="uvi6block">
-                    <u>UVI Toggle:</u><br />
-                    <input type="radio" name="uvitoggle6" id="uvi6off" onClick='document.getElementById("uvi6").style.display = "none"' checked>OFF</input>
-                    <input type="radio" name="uvitoggle6" id="uvi6on" onClick='document.getElementById("uvi6").style.display = "table"'>ON</input>
-                </div>
-                <div class="CELL OPTS" id="uvi7block">
-                    <u>UVI Toggle:</u><br />
-                    <input type="radio" name="uvitoggle7" id="uvi7off" onClick='document.getElementById("uvi7").style.display = "none"' checked>OFF</input>
-                    <input type="radio" name="uvitoggle7" id="uvi7on" onClick='document.getElementById("uvi7").style.display = "table"'>ON</input>
-                </div>
-            </div>
-            <div class="ROW">
-                <div class="CELL OPTS">
-                    <u>Wind:</u><br />
-                    <input type="radio" name="windtoggle1" id="wind1off" onClick='document.getElementById("wind1").style.display = "none"; document.getElementById("wind1desc").style.display = "none"' checked>OFF</input>
-                    <input type="radio" name="windtoggle1" id="wind1on" onClick='document.getElementById("wind1").style.display = "block"; document.getElementById("wind1desc").style.display = "block"'>ON</input>
-                    <div id="wind1desc" style="display:none">
-                        <select title="Wind Direction" id="wind1select" onChange='document.getElementById("wind1dir").innerHTML = this.value'>
-                            <option value="">--</option>
-                            <option value="N">N</option>
-                            <option value="NNE">NNE</option>
-                            <option value="NE">NE</option>
-                            <option value="ENE">ENE</option>
-                            <option value="E">E</option>
-                            <option value="ESE">ESE</option>
-                            <option value="SE">SE</option>
-                            <option value="SSE">SSE</option>
-                            <option value="S">S</option>
-                            <option value="SSW">SSW</option>
-                            <option value="SW">SW</option>
-                            <option value="WSW">WSW</option>
-                            <option value="W">W</option>
-                            <option value="WNW">WNW</option>
-                            <option value="NW">NW</option>
-                            <option value="NNW">NNW</option>
-                            <!--<option value="Variable">Variable</option>-->
-                        </select><br />
-                        <input type="number" class="WINDmph" value="" id="wind1spdchg" placeholder="Speed" onInput='document.getElementById("wind1spd").innerHTML = this.value'></input>
-                        <br />
-                    </div>
-                </div>
-                <div class="CELL OPTS">
-                    <u>Wind:</u><br />
-                    <input type="radio" name="windtoggle2" id="wind2off" onClick='document.getElementById("wind2").style.display = "none"; document.getElementById("wind2desc").style.display = "none"' checked>OFF</input>
-                    <input type="radio" name="windtoggle2" id="wind2on" onClick='document.getElementById("wind2").style.display = "block"; document.getElementById("wind2desc").style.display = "block"'>ON</input>
-                    <div id="wind2desc" style="display:none">
-                        <select title="Wind Direction" id="wind2select" onChange='document.getElementById("wind2dir").innerHTML = this.value'>
-                            <option value="">--</option>
-                            <option value="N">N</option>
-                            <option value="NNE">NNE</option>
-                            <option value="NE">NE</option>
-                            <option value="ENE">ENE</option>
-                            <option value="E">E</option>
-                            <option value="ESE">ESE</option>
-                            <option value="SE">SE</option>
-                            <option value="SSE">SSE</option>
-                            <option value="S">S</option>
-                            <option value="SSW">SSW</option>
-                            <option value="SW">SW</option>
-                            <option value="WSW">WSW</option>
-                            <option value="W">W</option>
-                            <option value="WNW">WNW</option>
-                            <option value="NW">NW</option>
-                            <option value="NNW">NNW</option>
-                            <!--<option value="Variable">Variable</option>-->
-                        </select><br />
-                        <input type="number" class="WINDmph" value="" id="wind2spdchg" placeholder="Speed" onInput='document.getElementById("wind2spd").innerHTML = this.value'></input>
-                        <br />
-                    </div>
-                </div>
-                <div class="CELL OPTS">
-                    <u>Wind:</u><br />
-                    <input type="radio" name="windtoggle3" id="wind3off" onClick='document.getElementById("wind3").style.display = "none"; document.getElementById("wind3desc").style.display = "none"' checked>OFF</input>
-                    <input type="radio" name="windtoggle3" id="wind3on" onClick='document.getElementById("wind3").style.display = "block"; document.getElementById("wind3desc").style.display = "block"'>ON</input>
-                    <div id="wind3desc" style="display:none">
-                        <select title="Wind Direction" id="wind3select" onChange='document.getElementById("wind3dir").innerHTML = this.value'>
-                            <option value="">--</option>
-                            <option value="N">N</option>
-                            <option value="NNE">NNE</option>
-                            <option value="NE">NE</option>
-                            <option value="ENE">ENE</option>
-                            <option value="E">E</option>
-                            <option value="ESE">ESE</option>
-                            <option value="SE">SE</option>
-                            <option value="SSE">SSE</option>
-                            <option value="S">S</option>
-                            <option value="SSW">SSW</option>
-                            <option value="SW">SW</option>
-                            <option value="WSW">WSW</option>
-                            <option value="W">W</option>
-                            <option value="WNW">WNW</option>
-                            <option value="NW">NW</option>
-                            <option value="NNW">NNW</option>
-                            <!--<option value="Variable">Variable</option>-->
-                        </select><br />
-                        <input type="number" class="WINDmph" value="" id="wind3spdchg" placeholder="Speed" onInput='document.getElementById("wind3spd").innerHTML = this.value'></input>
-                        <br />
-                    </div>
-                </div>
-                <div class="CELL OPTS">
-                    <u>Wind:</u><br />
-                    <input type="radio" name="windtoggle4" id="wind4off" onClick='document.getElementById("wind4").style.display = "none"; document.getElementById("wind4desc").style.display = "none"' checked>OFF</input>
-                    <input type="radio" name="windtoggle4" id="wind4on" onClick='document.getElementById("wind4").style.display = "block"; document.getElementById("wind4desc").style.display = "block"'>ON</input>
-                    <div id="wind4desc" style="display:none">
-                        <select title="Wind Direction" id="wind4select" onChange='document.getElementById("wind4dir").innerHTML = this.value'>
-                            <option value="">--</option>
-                            <option value="N">N</option>
-                            <option value="NNE">NNE</option>
-                            <option value="NE">NE</option>
-                            <option value="ENE">ENE</option>
-                            <option value="E">E</option>
-                            <option value="ESE">ESE</option>
-                            <option value="SE">SE</option>
-                            <option value="SSE">SSE</option>
-                            <option value="S">S</option>
-                            <option value="SSW">SSW</option>
-                            <option value="SW">SW</option>
-                            <option value="WSW">WSW</option>
-                            <option value="W">W</option>
-                            <option value="WNW">WNW</option>
-                            <option value="NW">NW</option>
-                            <option value="NNW">NNW</option>
-                            <!--<option value="Variable">Variable</option>-->
-                        </select><br />
-                        <input type="number" class="WINDmph" value="" id="wind4spdchg" placeholder="Speed" onInput='document.getElementById("wind4spd").innerHTML = this.value'></input>
-                        <br />
-                    </div>
-                </div>
-                <div class="CELL OPTS">
-                    <u>Wind:</u><br />
-                    <input type="radio" name="windtoggle5" id="wind5off" onClick='document.getElementById("wind5").style.display = "none"; document.getElementById("wind5desc").style.display = "none"' checked>OFF</input>
-                    <input type="radio" name="windtoggle5" id="wind5on" onClick='document.getElementById("wind5").style.display = "block"; document.getElementById("wind5desc").style.display = "block"'>ON</input>
-                    <div id="wind5desc" style="display:none">
-                        <select title="Wind Direction" id="wind5select" onChange='document.getElementById("wind5dir").innerHTML = this.value'>
-                            <option value="">--</option>
-                            <option value="N">N</option>
-                            <option value="NNE">NNE</option>
-                            <option value="NE">NE</option>
-                            <option value="ENE">ENE</option>
-                            <option value="E">E</option>
-                            <option value="ESE">ESE</option>
-                            <option value="SE">SE</option>
-                            <option value="SSE">SSE</option>
-                            <option value="S">S</option>
-                            <option value="SSW">SSW</option>
-                            <option value="SW">SW</option>
-                            <option value="WSW">WSW</option>
-                            <option value="W">W</option>
-                            <option value="WNW">WNW</option>
-                            <option value="NW">NW</option>
-                            <option value="NNW">NNW</option>
-                            <!--<option value="Variable">Variable</option>-->
-                        </select><br />
-                        <input type="number" class="WINDmph" value="" id="wind5spdchg" placeholder="Speed" onInput='document.getElementById("wind5spd").innerHTML = this.value'></input>
-                        <br />
-                    </div>
-                </div>
-                <div class="CELL OPTS" id="wind6block">
-                    <u>Wind:</u><br />
-                    <input type="radio" name="windtoggle6" id="wind6off" onClick='document.getElementById("wind6").style.display = "none"; document.getElementById("wind6desc").style.display = "none"' checked>OFF</input>
-                    <input type="radio" name="windtoggle6" id="wind6on" onClick='document.getElementById("wind6").style.display = "block"; document.getElementById("wind6desc").style.display = "block"'>ON</input>
-                    <div id="wind6desc" style="display:none">
-                        <select title="Wind Direction" id="wind6select" onChange='document.getElementById("wind6dir").innerHTML = this.value'>
-                            <option value="">--</option>
-                            <option value="N">N</option>
-                            <option value="NNE">NNE</option>
-                            <option value="NE">NE</option>
-                            <option value="ENE">ENE</option>
-                            <option value="E">E</option>
-                            <option value="ESE">ESE</option>
-                            <option value="SE">SE</option>
-                            <option value="SSE">SSE</option>
-                            <option value="S">S</option>
-                            <option value="SSW">SSW</option>
-                            <option value="SW">SW</option>
-                            <option value="WSW">WSW</option>
-                            <option value="W">W</option>
-                            <option value="WNW">WNW</option>
-                            <option value="NW">NW</option>
-                            <option value="NNW">NNW</option>
-                            <!--<option value="Variable">Variable</option>-->
-                        </select><br />
-                        <input type="number" class="WINDmph" value="" id="wind6spdchg" placeholder="Speed" onInput='document.getElementById("wind6spd").innerHTML = this.value'></input>
-                        <br />
-                    </div>
-                </div>
-                <div class="CELL OPTS" id="wind7block">
-                    <u>Wind:</u><br />
-                    <input type="radio" name="windtoggle7" id="wind7off" onClick='document.getElementById("wind7").style.display = "none"; document.getElementById("wind7desc").style.display = "none"' checked>OFF</input>
-                    <input type="radio" name="windtoggle7" id="wind7on" onClick='document.getElementById("wind7").style.display = "block"; document.getElementById("wind7desc").style.display = "block"'>ON</input>
-                    <div id="wind7desc" style="display:none">
-                        <select title="Wind Direction" id="wind7select" onChange='document.getElementById("wind7dir").innerHTML = this.value'>
-                            <option value="">--</option>
-                            <option value="N">N</option>
-                            <option value="NNE">NNE</option>
-                            <option value="NE">NE</option>
-                            <option value="ENE">ENE</option>
-                            <option value="E">E</option>
-                            <option value="ESE">ESE</option>
-                            <option value="SE">SE</option>
-                            <option value="SSE">SSE</option>
-                            <option value="S">S</option>
-                            <option value="SSW">SSW</option>
-                            <option value="SW">SW</option>
-                            <option value="WSW">WSW</option>
-                            <option value="W">W</option>
-                            <option value="WNW">WNW</option>
-                            <option value="NW">NW</option>
-                            <option value="NNW">NNW</option>
-                            <!--<option value="Variable">Variable</option>-->
-                        </select><br />
-                        <input type="number" class="WINDmph" value="" id="wind7spdchg" placeholder="Speed" onInput='document.getElementById("wind7spd").innerHTML = this.value'></input>
-                        <br />
-                    </div>
-                </div>
-            </div>
-            <!-- HI TEMPERATURE ROW -->
-            <div class="ROW">
-                <div class="CELL OPTS">
-                    <u>High Temp</u>:<br>
-                    <input class="TEMPINSERT" maxlength="3" value="" id="tmax1" onInput=change_temp("hi1",this.value) ></input>
-                </div>
-                <div class="CELL OPTS">
-                    <u>High Temp</u>:<br>
-                    <input class="TEMPINSERT" maxlength="3" value="" id="tmax2" onInput=change_temp("hi2",this.value) ></input>
-                </div>
-                <div class="CELL OPTS">
-                    <u>High Temp</u>:<br>
-                    <input class="TEMPINSERT" maxlength="3" value="" id="tmax3" onInput=change_temp("hi3",this.value) ></input>
-                </div>
-                <div class="CELL OPTS">
-                    <u>High Temp</u>:<br>
-                    <input class="TEMPINSERT" maxlength="3" value="" id="tmax4" onInput=change_temp("hi4",this.value) ></input>
-                </div>
-                <div class="CELL OPTS">
-                    <u>High Temp</u>:<br>
-                    <input class="TEMPINSERT" maxlength="3" value="" id="tmax5" onInput=change_temp("hi5",this.value) ></input>
-                </div>
-                <div class="CELL OPTS" id="tmax6block">
-                    <u>High Temp</u>:<br>
-                    <input class="TEMPINSERT" maxlength="3" value="" id="tmax6" onInput=change_temp("hi6",this.value) ></input>
-                </div>
-                <div class="CELL OPTS" id="tmax7block">
-                    <u>High Temp</u>:<br>
-                    <input class="TEMPINSERT" maxlength="3" value="" id="tmax7" onInput=change_temp("hi7",this.value) ></input>
-                </div>
-            </div>
-            <!-- LO TEMPERATURE ROW -->
-            <div class="ROW">
-                <div class="CELL OPTS">
-                    <u>Low (AM) Temp</u>:<br>
-                    <input class="TEMPINSERT" maxlength="3" value="" id="tmin1" onInput=change_temp("lo1",this.value) ></input>
-                </div>
-                <div class="CELL OPTS">
-                    <u>Low (AM) Temp</u>:<br>
-                    <input class="TEMPINSERT" maxlength="3" value="" id="tmin2" onInput=change_temp("lo2",this.value) ></input>
-                </div>
-                <div class="CELL OPTS">
-                    <u>Low (AM) Temp</u>:<br>
-                    <input class="TEMPINSERT" maxlength="3" value="" id="tmin3" onInput=change_temp("lo3",this.value) ></input>
-                </div>
-                <div class="CELL OPTS">
-                    <u>Low (AM) Temp</u>:<br>
-                    <input class="TEMPINSERT" maxlength="3" value="" id="tmin4" onInput=change_temp("lo4",this.value) ></input>
-                </div>
-                <div class="CELL OPTS">
-                    <u>Low (AM) Temp</u>:<br>
-                    <input class="TEMPINSERT" maxlength="3" value="" id="tmin5" onInput=change_temp("lo5",this.value) ></input>
-                </div>
-                <div class="CELL OPTS" id="tmin6block">
-                    <u>Low (AM) Temp</u>:<br>
-                    <input class="TEMPINSERT" maxlength="3" value="" id="tmin6" onInput=change_temp("lo6",this.value) ></input>
-                </div>
-                <div class="CELL OPTS" id="tmin7block">
-                    <u>Low (AM) Temp</u>:<br>
-                    <input class="TEMPINSERT" maxlength="3" value="" id="tmin7" onInput=change_temp("lo7",this.value) ></input>
-                </div>
-            </div>
+		<div id="forecast-modify">
+
 		</div>
-		<hr color=gray />
-		<div id="about" style="width:85%;margin:auto;">
-			<p><u>Dec 17, 2020 Update</u>:
+		<div id="about">
+			<p><span><u>27 JAN 2021</u></span>: Major update (mostly)
 				<ul>
-					<li>Per feedback/request, I included some language functionality. For this update English, French, and Spanish are available. The days, title and all descriptors are now language compatible. I'd be shocked if there weren't mistakes, so please let me know if are better ways to phrase things.</li>
-					<li>Upon any other language selection other than English, the temperature units automatically switch to Celcius.</li>
-					<li>Visual tweaks/fixes</li>
-					<li>Added/updated a few more logos</li>
+					<li><span>Implementation of HTML5 Canvas graphics.</span> This allows the direct download/save of the canvas, without the need to do any screenshots. You can adjust the output size of the image as well. As always, you can still screenshot it if you'd like.</li>
+					<li><span>Dynamic-Sizing and Mobile-Friendly.</span> The canvas will automatically resize to fit the screen of your device. It has also been optimized so it should work for tablets and phones. If you are using a phone, you must use landscape mode for it to work right.</li>
+					<li><span>New random temperature generation algorithm.</span> Some functions were included to generate time-of-year based random temperatures (roughly using climatological averages) for a mostly-temperate mid-latitude climate. The new <span>Hemisphere</span> feature takes advantage of this, to reflect approximated time-of-year averages.</li>
+					<li><span>New Title Display Modes.</span> Tweak how you like the look of the title of your forecast. Include/exclude your name or city, or use your own description in custom mode.</li>
+					<li><span>New Wind and UVI toggles</span></li>
 				</ul>
 			</p>
-			<p><u>Nov 16, 2020 Update</u>:
+			<p><span>Previous Updates:</span>
 				<ul>
-					<li>Per feedback/request, I included some extra t-storm icons and a way to place wind-direction and optional speed for each day. See the above options to toggle its view.</li>
+					<li>17 DEC 2020: Forecast languages supported: English, French, Spanish</li>
+					<li>16 NOV 2020: Added extra icons; wind functionality</li>
+					<li>07 MAY 2020: Choose between 5 or 7 day forecasts; interactive canvas</li>
 				</ul>
-			</p>
-			<p><u>May 7, 2020 Update</u>:
-				<ul>
-					<li>The user can now do 5 or 7 day forecasts.</li>
-					<li>The days of the week defaults to tomorrow</li>
-					<li>Per user-request, I added an optional UVI control for each day</li>
-					<li>Overhauled control panels
-						<ul>
-							<li>Added Hue, Saturation, and Lighting controls for the background color</li>
-							<li>Radio toggles for choosing between 5/7-day forecasts and activation of UVI panels</li>
-							<li>Precipitation Chance entries are now prominent. They are only displayed when specific descriptors are chosen (but will display if none(blank) are chosen)</li>
-						</ul>
-					</li>
-					<li>Sky conditions and forecast-descriptors are now handled directly on the forecast canvas, in addtion to the new UVI panel
-						<ul>
-							<li>Hovering/clicking on the visible sky condition will cycle through the different options</li>
-							<li>The empty area below the sky condition is where the cycle-control is for the descriptor and where percentages appear</li>
-							<li>After toggling the UVI radio button in the lower control panel, a UVI panel will appear on the canvas on the corresponding day. Clicking the area right below the graph will directly change the UVI.
-						</ul>
-					</li>
-					<li>Revamped/added some more SVGs</li>
-				</ul>
-			</p>
-			
 			<p>
 				<table style="margin:0 auto;width:80%;text-align:center;">
+					<caption><b><u>How to change features</u></b></caption>
+					<caption><i>* Click/tap on the canvas to modify sky condition, descriptors, and UVI (if toggled)*</i></caption>
+					<t
 					<tr>
-						<td colspan="4"><u>Examples of how to change the new features</u></td>
+						<td><img src="5day/example-sky.jpg" style="width:100%"></td>
+						<td><img src="5day/example-descr.jpg" style="width:100%"></td>
+						<td><img src="5day/example-uvi.jpg" style="width:100%"></td>
 					</tr>
 					<tr>
-						<td><img src="5day/example-bg.jpg"></td>
-						<td><img src="5day/example-sky.jpg"></td>
-						<td><img src="5day/example-descr.jpg"></td>
-						<td><img src="5day/example-uvi.jpg"></td>
-					</tr>
-					<tr>
-						<td>Randomize/Manually change background</td>
 						<td>Cycle thru sky conditions</td>
 						<td>Cycle thru descriptors</td>
 						<td>Select/change the UVI</td>
 					</tr>
 				</table>
 			</p>
-			
-			<p>So here is a forecast generator. I've included all sorts of controls. Currently, I don't know of a way to quick/easy way to directly save a screen-shot of the forecast. But you can simply use your "print screen" button to copy a total screen-shot to the virtual clipboard, then paste inside of a paint program to crop. Windows 10 users can simply press <kbd>&plusb; Win</kbd> + <kbd>&#8679; Shift</kbd> + <kbd>S</kbd> to draw a screenshot box around the forecast. Other options include a snipping tool or <a href="http://getgreenshot.org/" target="_blank">Greenshot</a>.</p>
-			
-			<p>This took me a little while to make it work, but a lot of the time I was learning SVG's, creating the artwork, and fixing simple mental errors. Feel free to use this tool to make custom forecasts that you can share, silly or not--no credit needed. It's a great tool that parents and/or teachers can use to assist kids with making a forecast. <b><u>Feel free to use your forecast images you make in any way you like.</u></b> If you happen to use the programming code for your own project, I just ask for attribution there, but as for the forecast screenshots, they are yours. Use, modify however you'd like! Thank you for using my page.</p>
+			<hr />
+			<p>Use this forecast generator to make/publish/share your own predictions. If you like forecasting, it's a nice simple way of making a graphical representation for your audience/peers. Parents and/or teachers can use it to assist their kids to make their own forecasts, and who knows, maybe spark an interest in science or meteorology.</p>
+			<p>Thank you for your feedback as well. In general, much of the functionality is influenced by user-feedback/requests which has allowed me an opportunity to expand my programming understanding. It is humbling to know that something I've made and worked at for a long time has benefited others.</p>
+			<p>Thanks to <a href="https://goalkicker.com">GoalKicker.com</a> for some very useful guides on programming (HTML5, Canvas, JS, CSS guides assisted here).
+			<p><span>* TERMS OF USE</span>:
+				<ul>
+					<li>The imagery you create with this generator can be used however you'd like. No attribution necessary/expected.</li>
+					<li>The programming code itself may be used as long as you include attribution.</li>
+				</ul>
+			</p>
 		</div>
-		<iframe src="footer.html"></iframe>
-		<script src="5day/7day.js">
 
-		</script>
+		<iframe src="footer.html"></iframe>
+		<script src="5day/7day_canvas_populate.js"></script>
+		<script src="5day/7day_canvas.js"></script>
 	</body>
 </html>
 
@@ -851,7 +190,3 @@
 
 
 
-
-
-
-	
