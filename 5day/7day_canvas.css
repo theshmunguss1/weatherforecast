@@ -31,6 +31,10 @@ canvas {
 	border-right: 1px solid white;
 }
 
+fieldset {
+	border: none;
+}
+
 /* FORECAST MODIFICATION OPTIONS */
 #forecast-names {
 	display:flex;

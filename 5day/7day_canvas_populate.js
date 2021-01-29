@@ -12,9 +12,10 @@ function populate_options() {
 		dname.innerHTML = prop.lang_packs[prop.language].dayNames[dy-1];
 		newdiv.appendChild(dname);
 		// PRCP Chance Header
-		let prcpboxheader = document.createElement("span");
+		let prcpboxheader = document.createElement("label");
 		prcpboxheader.className = "optvariable";
-		prcpboxheader.innerHTML = "PRCP (&percnt;):"
+		prcpboxheader.htmlFor = `percentbox${dy}`;
+		prcpboxheader.innerHTML = "PRCP (&percnt;):";
 		newdiv.appendChild(prcpboxheader);
 		// PRCP Chance Box
 		let prcpbox = document.createElement("input");
@@ -27,8 +28,9 @@ function populate_options() {
 		prcpbox.setAttribute("oninput", `prop["day${dy}"].prcp = this.value; draw();`);
 		newdiv.appendChild(prcpbox);
 		// UVI Toggle Header
-		let uviheader = document.createElement("span");
+		let uviheader = document.createElement("label");
 		uviheader.className = "optvariable";
+		uviheader.htmlFor = `uvitoggle${dy}`;
 		uviheader.innerHTML = "UVI Toggle:";
 		newdiv.appendChild(uviheader);
 		// UVI Toggle
@@ -40,8 +42,9 @@ function populate_options() {
 		newdiv.appendChild(uvitoggle);
 
 		// Wind Header
-		let windheader = document.createElement("span");
+		let windheader = document.createElement("label");
 		windheader.className = "optvariable";
+		windheader.htmlFor = `windtoggle${dy}`;
 		windheader.innerHTML = "Wind Toggle:";
 		newdiv.appendChild(windheader);
 		// Wind Toggle
@@ -57,6 +60,10 @@ function populate_options() {
 		winddesc.style.display = "none";
 		newdiv.appendChild(winddesc);
 		// Wind Select
+		windselectlbl = document.createElement("label");
+		windselectlbl.htmlFor = `wind${dy}select`;
+		windselectlbl.innerHTML = `Wind Direction:`;
+		winddesc.appendChild(windselectlbl);
 		windselect = document.createElement("select");
 		windselect.title = "Wind Direction";
 		windselect.id = `wind${dy}select`;
@@ -84,6 +91,11 @@ function populate_options() {
 		winddesc.appendChild(windselect);
 		winddesc.innerHTML += "<br />";
 		// Wind Input Number
+		windnumlbl = document.createElement("label");
+		windnumlbl.htmlFor = `wind${dy}speed`;
+		windnumlbl.innerHTML = "Speed";
+		winddesc.appendChild(windnumlbl);
+		winddesc.innerHTML += "<br />";
 		let windnum = document.createElement("input");
 		windnum.type = "number";
 		//windnum.max = "100";
@@ -94,8 +106,9 @@ function populate_options() {
 		windnum.setAttribute("oninput", `chg_wind(this)`);
 		winddesc.appendChild(windnum);
 		// HI TEMP Header
-		let hitempheader = document.createElement("span");
+		let hitempheader = document.createElement("label");
 		hitempheader.className = "optvariable";
+		hitempheader.htmlFor = `tmax${dy}`;
 		hitempheader.innerText = "High Temp:";
 		newdiv.appendChild(hitempheader);
 		// HI TEMP
@@ -108,8 +121,9 @@ function populate_options() {
 		hitemp.setAttribute("oninput", "chg_temp(this);");
 		newdiv.appendChild(hitemp);
 		// LOW TEMP Header
-		let lotempheader = document.createElement("span");
+		let lotempheader = document.createElement("label");
 		lotempheader.className = "optvariable";
+		lotempheader.htmlFor = `tmin${dy}`;
 		lotempheader.innerText = "Low (AM) Temp:";
 		newdiv.appendChild(lotempheader);
 		// LOW TEMP

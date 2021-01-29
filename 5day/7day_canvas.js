@@ -191,6 +191,14 @@ function forecastDayQty(n) {
 	}
 }
 
+function screenreport() {
+	let doc = document.documentElement;
+	let win = window;
+	console.log(`document: ${doc.clientWidth} x ${doc.clientHeight}; Ratio: ${(doc.clientWidth / doc.clientHeight).toFixed(2)}:1`);
+	console.log(`prop.width7 = ${prop.width7}`);
+	//console.log(`window: ${win.innerWidth} x ${win.innerHeight}`);
+}
+
 function resize() {
 	let numdays = document.getElementById("numdays");
 
@@ -198,14 +206,14 @@ function resize() {
 	if (prop.dayQty == 7) {
 		// LANDSCAPE - window height < window width
 		if (window.innerHeight < window.innerWidth) {
+			// Width : Height > 2:1
 			if (window.innerWidth > window.innerHeight * 2) {
-				//console.log("window.innerWidth > window.innerHeight * 2");
 				canvas.height = document.documentElement.clientHeight - 10;
 				canvas.width = canvas.height * 2;
 			}
+			// Width : Height <= 2:1
 			else {
-				//console.log("window.innerWidth <= window.innerHeight * 2");
-				canvas.width = document.getElementById("container").clientWidth;
+				canvas.width = document.documentElement.clientWidth - 10;
 				canvas.height = canvas.width * 0.5;
 			}
 		}
@@ -220,23 +228,25 @@ function resize() {
 	else {
 		// LANDSCAPE - window height < window width
 		if (window.innerHeight < window.innerWidth) {
+			// Width : Height > 2:1
 			if (window.innerWidth > window.innerHeight * 2) {
-				//console.log("5day -> RESIZE -> if");
 				canvas.height = document.documentElement.clientHeight - 10;
 				canvas.width = canvas.height * 1.43143;
+				prop.width7 = canvas.height * 2;
 			}
+			// Width : Height <= 2:1
 			else {
-				//console.log("5day -> RESIZE -> else");
-				canvas.width = document.getElementById("container").clientWidth * 0.715715;
+				canvas.width = document.documentElement.clientWidth * 0.715715;
 				canvas.height = canvas.width * 0.6986;
+				prop.width7 = document.documentElement.clientWidth;
 			}
 		}
 		// PORTRAIT - window height >= window.width
 		else {
-				canvas.width = (document.documentElement.clientWidth - 10) * 0.715715;
-				canvas.height = (document.documentElement.clientWidth - 10) / 2;
+			canvas.width = document.documentElement.clientWidth * 0.715715;
+			canvas.height = document.documentElement.clientWidth / 2;
+			prop.width7 = canvas.height * 2;
 		}
-		prop.width7 = document.documentElement.clientWidth - 10;
 	}
 
 	reparameterize();

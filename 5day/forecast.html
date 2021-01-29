@@ -24,42 +24,57 @@
 		<div id="globaloptions">
 			<!-- LANGUAGE -->
 			<div id="languagebox">
-				<span class="globalopt">Language Select:</span><br />
-				<button id="lang_left" onClick="chg_lang(-1)">&lt;</button>
-				<img id="lang_selection" src="5day/lang_en.svg" title="English" style="vertical-align:middle;">
-				<button id="lang_right" onClick="chg_lang(1)">&gt;</button>
+				<!-- <button onclick="screenreport()">Screen Report</button><br /> -->
+				<fieldset>
+					<legend>Language Select:</legend>
+					<button id="lang_left" onClick="chg_lang(-1)">&lt;</button>
+					<img id="lang_selection" src="5day/lang_en.svg" title="English" style="vertical-align:middle;">
+					<button id="lang_right" onClick="chg_lang(1)">&gt;</button>
+				</fieldset>
+
 			</div>
 			<!-- FORECAST LENGTH -->
 			<div>
-				<span class="globalopt">Forecast Length:</span><br />
-				<input type="radio" name="frcstlength" value=5 onChange="forecastDayQty(this.value);">5 days</input><br />
-				<input type="radio" name="frcstlength" value=7 checked onChange="forecastDayQty(this.value);">7 days</input>
+				<fieldset>
+					<legend>Forecast Length:</legend>
+					<input id="frcstQty5" type="radio" name="frcstlength" value=5 onChange="forecastDayQty(this.value);">
+					<label for="frcstQty5">5 Days</label>
+					<br />
+					<input id="frcstQty7" type="radio" name="frcstlength" value=7 onChange="forecastDayQty(this.value);" checked>
+					<label for="frcstQty7">7 Days</label>
+				</fieldset>
 			</div>
 			<!-- BACKGROUND COLOR -->
 			<div>
-				<span class="globalopt">Background Color:</span><br />
-				<input id="mainbgcolor" type="color" value="#27688D" onInput="chg_bg(this.value);"></input><br />
-				<button onclick="random_bg_color();">Randomize</button>
+				<fieldset>
+					<legend>Background Color:</legend>
+					<input id="mainbgcolor" type="color" value="#27688D" onInput="chg_bg(this.value);">
+					<label for="mainbgcolor" style="display:none;">Background Color</label>
+					<br />
+					<button onclick="random_bg_color();">Randomize</button>
+				</fieldset>
 			</div>
 			<!-- RANDOM FORECAST -->
 			<div>
-				<span class="globalopt">Temperature Units:</span><br />
-				<input type="radio" name="tempunits" id="tempF" value="F" onChange="prop.tempUnits = 'F'; convert();" checked>&deg;F</input>
-				<input type="radio" name="tempunits" id="tempC" value="C" onChange="prop.tempUnits = 'C'; convert();">&deg;C</input><br />
-				<!-- <select id="tempunits" onchange="prop.tempUnits = this.value;"> -->
-					<!-- <option value="F">Fahrenheit</option> -->
-					<!-- <option value="C">Celsius</option> -->
-				<!-- </select><br /> -->
-				<button onClick="random_forecast();" title="Time-of-year based random temperatures">Randomize<br />Forecast</button>
+				<fieldset>
+					<legend>Temperature Units:</legend>
+					<input type="radio" name="tempunits" id="tempF" value="F" onChange="prop.tempUnits = 'F'; convert();" checked>
+					<label for="tempF">&deg;F</label>
+					<input type="radio" name="tempunits" id="tempC" value="C" onChange="prop.tempUnits = 'C'; convert();">
+					<label for="tempF">&deg;C</label>
+					<br />
+					<button onClick="random_forecast();" title="Time-of-year based random temperatures">Randomize<br />Forecast</button>
+				</fieldset>
 			</div>
 			<!-- HEMISPHERE / FIRST DAY OF WEEK -->
 			<div>
-				<span class="globalopt" id="hemi">Hemisphere Select:</span><br />
+				<label for="hemisphere">Hemisphere Select:</label><br />
 				<select id="hemisphere" onchange="prop.hemisphere = this.value; random_forecast();" title="Hemisphere-based generated temperatures">
 					<option value="N">Northern</option>
 					<option value="S">Southern</option>
-				</select><br />
-				<span class="globalopt">First Day of Week:</span><br />
+				</select>
+				<br />
+				<label for="firstday">First Day of Week:</label><br />
 				<select id="firstday" onChange="chg_day(this.value);">
 					<option value=0>SUN</option>
 					<option value=1>MON</option>
@@ -83,47 +98,54 @@
 				</caption>
 				<tr>
 					<td>
-						<input type="radio" name="titleopt" checked onClick='chg_title_mode("both")'>Standard</input>
+						<input id="titlestandard" type="radio" name="titleopt" checked onClick='chg_title_mode("both")'>
+						<label for="titlestandard">Standard</label>
 					</td>
 					<td>
-						<input type="radio" name="titleopt" onClick='chg_title_mode("name")'>No City</input>
+						<input id="titlenameonly" type="radio" name="titleopt" onClick='chg_title_mode("name")'>
+						<label for="titlenameonly">No City</label>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="radio" name="titleopt" onClick='chg_title_mode("city")'>No Name</input>
+						<input id="titlecityonly" type="radio" name="titleopt" onClick='chg_title_mode("city")'>
+						<label for="titlecityonly">No Name</label>
 					</td>
 					<td>
-						<input type="radio" name="titleopt" onClick='chg_title_mode("custom")'>Custom</input>
+						<input id="titlecustom" type="radio" name="titleopt" onClick='chg_title_mode("custom")'>
+						<label for="titlecustom">Custom</label>
 					</td>
 				</tr>
 			</table>
 			<div id="title-display-options">
 				<div><span class="titleopt">Title Display Options:</span></div>
 				<div id="nameentrydiv">
-					Name: 
-					<input id="nameentry" maxlength="15" placeholder="Your Name (15 Chars)" onInput="draw();"></input>
+					<label for="nameentry">Name:</label>
+					<input id="nameentry" maxlength="15" placeholder="Your Name (15 Chars)" onInput="draw();">
 				</div>
 				<div id="cityentrydiv">
-					City: 
-					<input id="cityentry" maxlength="15" placeholder="City (15 Chars)" onInput="draw();"></input>
+					<label for="cityentry">City:</label>
+					<input id="cityentry" maxlength="15" placeholder="City (15 Chars)" onInput="draw();">
 				</div>
 				<div id="customtitlediv" style="display:none;">
-					Custom Title: 
-					<input id="customentry" placeholder="Custom Entry (max: 60 chars)" maxlength="60" onInput="draw();" style="width:60%;"></input>
+					<label for="customentry">Custom:</label>
+					<input id="customentry" placeholder="Custom Entry (max: 60 chars)" maxlength="60" onInput="draw();" style="width:60%;">
 				</div>
 			</div>
 			<div id="save-the-canvas">
-				<div class="titleopt">Save Forecast As Image</div>
-				Size: <select id="savesize">
-					<option value="720x360">720 x 360</option>
-					<option value="960x480">960 x 480</option>
-					<option value="1008x504" selected>1008 x 504</option>
-					<option value="1600x800">1600 x 800</option>
-				</select><br />
-				Name: <input id="savename"></input><br />
-				<a id="saveimg" href="" onClick="saveimg();">Save Image</a>
-				<!-- <button id="saveimg" onClick="saveimg();">Save Image</button> -->
+				<fieldset>
+					<legend class="titleopt">Save Forecast As Image</legend>
+					<label for="savesize">Size:</label> 
+					<select id="savesize">
+						<option value="720x360">720 x 360</option>
+						<option value="960x480">960 x 480</option>
+						<option value="1008x504" selected>1008 x 504</option>
+						<option value="1600x800">1600 x 800</option>
+					</select><br />
+					<label for="savename">Name:</label> 
+					<input id="savename"><br />
+					<a id="saveimg" href="" onClick="saveimg();">Save Image</a>
+				</fieldset>
 			</div>			
 		</div>
 		<div id="forecast-modify">
@@ -132,6 +154,7 @@
 		<div id="about">
 			<p><span><u>27 JAN 2021</u></span>: Major update (mostly)
 				<ul>
+					<li>28 JAN 2021 - * Fixed 2021-01-27 Upload * with resizing and 5-day forecasts; discovered though it does work with phones, the navbar might make it more of a frustrating experience and cumbersome to use; PC's / Tablets recommended</li>
 					<li><span>Implementation of HTML5 Canvas graphics.</span> This allows the direct download/save of the canvas, without the need to do any screenshots. You can adjust the output size of the image as well. As always, you can still screenshot it if you'd like.</li>
 					<li><span>Dynamic-Sizing and Mobile-Friendly.</span> The canvas will automatically resize to fit the screen of your device. It has also been optimized so it should work for tablets and phones. If you are using a phone, you must use landscape mode for it to work right.</li>
 					<li><span>New random temperature generation algorithm.</span> Some functions were included to generate time-of-year based random temperatures (roughly using climatological averages) for a mostly-temperate mid-latitude climate. The new <span>Hemisphere</span> feature takes advantage of this, to reflect approximated time-of-year averages.</li>
