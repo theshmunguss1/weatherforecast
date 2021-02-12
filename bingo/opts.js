@@ -21,7 +21,7 @@ function chg_game_mode(mode) {
 			document.getElementById("downloadcard").style.display = "none";
 			document.getElementById("downloadcaller").style.display = "block";
 			document.getElementById("options").style.display = "none";
-			document.getElementById("options_caller").style.display = "block";
+			document.getElementById("options_caller").style.display = "inline-block";
 		}
 	}
 }
@@ -121,3 +121,33 @@ function chg_opts(e) {
 	}
 
 }
+
+function call_fills(h, s, l) {
+	prop.callerFillColor = `hsl(${h}, ${s}%, ${l}%)`;
+	drawCaller();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

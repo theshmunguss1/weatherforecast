@@ -29,7 +29,7 @@ var prop = {
 	},
 	"called": [],
 	"lastCalled": null,
-	"callerFillColor": "#FF4A4A",
+	"callerFillColor": 0,
 	"callerPrevColor": "#000080",
 	"printMarkers": true,
 	"markers": [],
@@ -521,7 +521,7 @@ function new_call() {
 			else if (rnum >= 46 && rnum <= 60) {rletter = "G"}
 			else if (rnum >= 61 && rnum <= 75) {rletter = "O"}
 			if (prop.called.includes(`${rletter}${rnum}`) == false) {
-				prop.called.push(`${rletter}${rnum}`);
+				prop.called = [`${rletter}${rnum}`].concat(prop.called);
 				prop.lastCalled = `${rletter}${rnum}`;
 				break;
 			}
@@ -534,7 +534,7 @@ function new_call() {
 	}
 }
 
-function fillCalledNumber(rletter, rnum) {
+function fillCalledNumber(rletter, rnum, fill) {
 	let w = canvas_caller.width * 0.19;
 	let h = canvas_caller.height * 0.052;
 	//console.log(rletter, rnum);
@@ -601,7 +601,8 @@ function fillCalledNumber(rletter, rnum) {
 	else if ([15, 30, 45, 60, 75].includes(parseInt(rnum))) {
 		starty = canvas_caller.height * 0.225 + 14 * canvas_caller.height * 0.05;
 	}
-	ctx_caller.fillStyle = prop.callerFillColor;
+	// console.log(fill);
+	ctx_caller.fillStyle = fill;
 	ctx_caller.fillRect(
 		startx,
 		starty,
@@ -681,11 +682,18 @@ function drawCaller() {
 			canvas_caller.height * 0.14
 		);
 	}
-	// FILL-INS (CALLED NUMBERS)
+
 	for (n=0; n<prop.called.length; n++) {
 		let letter = prop.called[n][0];
 		let num = prop.called[n].slice(1);
-		fillCalledNumber(letter, num);
+		let blocknumber = '';
+		if (40 * n <= 160) {
+			blockcolor = `rgb(255, ${40 * n}, ${40 * n})`;
+		}
+		else {
+			blockcolor = `rgb(255, 160, 160)`;
+		}
+		fillCalledNumber(letter, num, blockcolor);
 	}
 	// BORDER
 	ctx_caller.strokeStyle = "black";
