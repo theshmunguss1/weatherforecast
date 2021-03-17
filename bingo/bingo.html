@@ -44,10 +44,12 @@
 			Custom File Name: 
 			<input id="custom_caller" style="width:55%;max-width:500px;" placeholder='"bingo_caller" &lt;exclude extension&gt;>'></input> 
 		</div>
-		<div id="modeopts">
+		<div id="modeopts" style="margin-top:5px;">
 			Mode: 
-			<input type="radio" name="mode" value="game" checked onClick="chg_game_mode('game')">Game Card</input>
-			<input type="radio" name="mode" value="caller" onClick="chg_game_mode('caller')">Caller</input>
+			<button style="background-color:darkred;border:5px inset yellow" id="mode_game" onClick="chg_game_mode('game')">Game Mode</button> 
+			<button id="mode_caller" onClick="chg_game_mode('caller')">Caller Mode</button> 
+			<!-- <input type="radio" name="mode" value="game" checked onClick="chg_game_mode('game')">Game Card</input> -->
+			<!-- <input type="radio" name="mode" value="caller" onClick="chg_game_mode('caller')">Caller</input> -->
 		</div>
 		<table id="options">
 			<caption>
@@ -110,7 +112,7 @@
 					<td id="optsmarkers" colspan=4>
 						<div>
 							Marker Color:
-							<input type="color" onInput="prop.markerColor = this.value; draw();" value="#FF4A4A"></input>
+							<input id="markercolor" type="color" onInput="prop.markerColor = this.value; draw();" value="#FF4A4A"></input>
 						</div>
 						<div>
 							Marker Outline Color:
@@ -123,7 +125,7 @@
 		<div id="options_caller">
 			<b><u>CUSTOMIZATION OPTIONS</u></b><br />
 			Call Color: 
-			<input type="color" onInput="prop.callerPrevColor = this.value; drawCaller();" value="#000080"></input><br />
+			<input id="calledcolor" type="color" onInput="prop.callerPrevColor = this.value; drawCaller();" value="#000080"></input><br />
 			<!-- <input type="color" onInput="prop.callerFillColor = this.value; drawCaller();" value="#FF4A4A"></input> -->
 			<!-- <table id="callfilltable"> -->
 				<!-- <tr> -->

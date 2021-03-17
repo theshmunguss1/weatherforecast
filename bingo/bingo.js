@@ -38,6 +38,18 @@ var prop = {
 	"optsSelected": "bg"
 };
 
+// St. Patrick's Day Theme
+__today = new Date();
+if (__today.getMonth() + 1 == 3 && __today.getDate() == 17) {
+	// Marker Color
+	prop.markerColor = "rgb(75, 255, 75)";
+	document.getElementById("markercolor").value = "#4BFF4B";
+	// Called Color
+	prop.callerPrevColor = "#008000";
+	document.getElementById("calledcolor").value = "#008000";
+	// Called History
+}
+
 // Dynamic Window Resize
 window.addEventListener("resize", resize);
 
@@ -688,10 +700,21 @@ function drawCaller() {
 		let num = prop.called[n].slice(1);
 		let blocknumber = '';
 		if (40 * n <= 160) {
-			blockcolor = `rgb(255, ${40 * n}, ${40 * n})`;
+			if (__today.getMonth() + 1 == 3 && __today.getDate() == 17) {
+				blockcolor = `rgb(${40 * n}, 230, ${40 * n})`;
+			}
+			else {
+				blockcolor = `rgb(255, ${40 * n}, ${40 * n})`;
+			}
+			
 		}
 		else {
-			blockcolor = `rgb(255, 160, 160)`;
+			if (__today.getMonth() + 1 == 3 && __today.getDate() == 17) {
+				blockcolor = `rgb(160, 230, 160)`;
+			}
+			else {
+				blockcolor = `rgb(255, 160, 160)`;
+			}			
 		}
 		fillCalledNumber(letter, num, blockcolor);
 	}

@@ -5,6 +5,8 @@ function chg_game_mode(mode) {
 		if (mode == "game") {
 			canvas_caller.style.display = "none";
 			canvas.style.display = "inline";
+			document.getElementById("mode_game").style = "background-color:darkred;border:5px inset yellow";
+			document.getElementById("mode_caller").style = "initial";
 			document.getElementById("caller_card").style.display = "none";
 			document.getElementById("generate").style.display = "block";
 			document.getElementById("downloadcaller").style.display = "none";
@@ -16,6 +18,8 @@ function chg_game_mode(mode) {
 		else if (mode == "caller") {
 			canvas.style.display = "none";
 			canvas_caller.style.display = "inline";
+			document.getElementById("mode_caller").style = "background-color:darkred;border:5px inset yellow";
+			document.getElementById("mode_game").style = "initial";
 			document.getElementById("generate").style.display = "none";
 			document.getElementById("caller_card").style.display = "block";
 			document.getElementById("downloadcard").style.display = "none";
