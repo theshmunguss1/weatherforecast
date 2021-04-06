@@ -45,12 +45,13 @@
 			<input id="custom_caller" style="width:55%;max-width:500px;" placeholder='"bingo_caller" &lt;exclude extension&gt;>'></input> 
 		</div>
 		<div id="modeopts" style="margin-top:5px;">
-			Mode: 
-			<button style="background-color:darkred;border:5px inset yellow" id="mode_game" onClick="chg_game_mode('game')">Game Mode</button> 
-			<button id="mode_caller" onClick="chg_game_mode('caller')">Caller Mode</button> 
-			<!-- <input type="radio" name="mode" value="game" checked onClick="chg_game_mode('game')">Game Card</input> -->
-			<!-- <input type="radio" name="mode" value="caller" onClick="chg_game_mode('caller')">Caller</input> -->
+			<div>Mode:</div>
+			<div>
+				<button style="background-color:darkred;border:5px inset yellow" id="mode_game" onClick="chg_game_mode('game')">Game Mode</button>
+				<button id="mode_caller" onClick="chg_game_mode('caller')">Caller Mode</button>
+			</div>
 		</div>
+		<hr style="width:75%" />		
 		<table id="options">
 			<caption>
 				<u><b>CUSTOMIZATION OPTIONS</b></u>

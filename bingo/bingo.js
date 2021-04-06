@@ -10,6 +10,7 @@ var prop = {
 	"mode": "game",
 	"oldwidth": 375,
 	"oldheight": 500,
+	"orientation": window.orientation,
 	"backgroundColor": "white",
 	"boardBackgroundColor": "white",
 	"bgSameColor": true,
@@ -51,7 +52,7 @@ if (__today.getMonth() + 1 == 3 && __today.getDate() == 17) {
 }
 
 // Dynamic Window Resize
-window.addEventListener("resize", resize);
+window.addEventListener("resize", resize, false);
 
 // Game Mode Event Listener
 canvas.addEventListener(
@@ -72,7 +73,8 @@ canvas_caller.addEventListener(
 	"mouseup",
 	event => new_call(event)
 );
-resize(); 	// includes call to draw()
+
+resize(true); 	// includes call to draw()
 
 // Option Handling
 document.getElementById("optsSelect").addEventListener(
@@ -159,31 +161,33 @@ function place_marker_outline(x,y) {
 	ctx.stroke();
 }
 
-function resize() {
-	// LANDSCAPE - window height < window width
-	if (window.innerHeight < window.innerWidth) {
-		// for landscape, the "- 50" is specifically included so the buttons
-		//		and their margin will be displayed on the screen at the same
-		//		time as the canvas
-		canvas.height = document.documentElement.clientHeight - 50;
-		canvas.width = canvas.height * 0.75;
-	}
-	// PORTRAIT - window height >= window.width
-	else {
-		// Tablets
-		if (document.getElementById("container").clientWidth > 500) {
-			canvas.width = document.getElementById("container").clientWidth - 50;
+function resize(init=false) {
+	if (init == true || window.orientation != prop.orientation) {
+		// LANDSCAPE - window height < window width
+		if (window.innerHeight < window.innerWidth) {
+			// for landscape, the "- 50" is specifically included so the buttons
+			//		and their margin will be displayed on the screen at the same
+			//		time as the canvas
+			canvas.height = document.documentElement.clientHeight - 50;
+			canvas.width = canvas.height * 0.75;
 		}
-		// Phones (implied)
+		// PORTRAIT - window height >= window.width
 		else {
-			canvas.width = document.getElementById("container").clientWidth;
+			// Tablets
+			if (document.getElementById("container").clientWidth > 500) {
+				canvas.width = document.getElementById("container").clientWidth - 50;
+			}
+			// Phones (implied)
+			else {
+				canvas.width = document.getElementById("container").clientWidth;
+			}
+			canvas.height = canvas.width / 0.75;
 		}
-		canvas.height = canvas.width / 0.75;
+		// Change caller dims accordingly
+		canvas_caller.height = canvas.height;
+		canvas_caller.width = canvas.width;
+		reparameterize();
 	}
-	// Change caller dims accordingly
-	canvas_caller.height = canvas.height;
-	canvas_caller.width = canvas.width;
-	reparameterize();
 }
 
 function reparameterize() {
@@ -205,6 +209,7 @@ function reparameterize() {
 		prop.markers[i].y = canvas.height * (prop.markers[i].y / prop.oldheight);
 		//console.log(prop.markers[i].x, prop.markers[i].y);
 	}
+	prop.orientation = window.orientation;
 	prop.oldwidth = canvas.width;
 	prop.oldheight = canvas.height;
 	draw();

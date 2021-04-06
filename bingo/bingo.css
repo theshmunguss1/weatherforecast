@@ -11,6 +11,11 @@ canvas {
 }
 
 #modeopts {
+	display: flex;
+	flex-wrap: wrap;
+	flex-grow: 1;
+	flex-direction: column;
+	place-content: center center;
 	width: 100%;
 	margin: 0 auto;
 	text-align: center;
