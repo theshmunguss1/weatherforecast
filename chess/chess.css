@@ -1,0 +1,51 @@
+:root {
+	--fontwidth: 5vw;
+}
+
+#gameboard {
+	display: table;
+	background-color: lightblue;
+	color: navy;
+	table-layout: fixed;
+	margin: auto;
+	width: 80vh;
+	height: 80vh;
+	padding: 4px 4px 4px 4px;
+	line-height: 0%;
+}
+#gameboard div:nth-child(n+2) > div {
+	border-top: 1px solid black;
+}
+.board-row {
+	display: table-row;
+}
+.COLUMN, .ROW {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+.COLUMN {
+	height: 3%;
+}
+.ROW {
+	width: 3%;
+}
+.board-row div:nth-child(n+2) {
+	border-left: 1px solid black;
+}
+
+.CELL {
+	display: table-cell;
+	color: black;
+	text-align: center;
+	vertical-align: middle;
+	font-size: var(--fontwidth);
+	user-select: none;
+}
+
+.dark {
+	background-color: gray;
+}
+.light {
+	background-color: white;
+}
