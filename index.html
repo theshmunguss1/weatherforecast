@@ -3,115 +3,117 @@
 	<head>
 		<!--  <base href="https://ksgwxfan.github.io/">  -->
 		<title>ksgwxfan Projects</title>
+		<link rel="stylesheet" type="text/css" href="pageheader.css" />
+		<link rel="stylesheet" type="text/css" href="homepage.css" />
 		<style>
-			.HEADER {
-				font-weight: bold;
-				font-size: 38px;
-				text-decoration: underline;
-				margin: 0 auto;
-				margin-bottom: 20px;
-				text-align: center;
-				}
-			.HEADERPHOTO {
-				width: 8%;
-				border: 2px solid white;
-				box-shadow: 0px 0px 15px white;
-				border-radius: 35%;
-				}
-			h1 {text-align:center; text-decoration: underline;}
-			/* Regular Computers */
-			@media screen and (min-width: 491px) {
-				.PRJLINX {font-size: 150%;}
-			}
-			/* Phones - Landscape */
-			@media screen and (max-height: 490px) {
-				.PRJLINX {font-size: 120%;}
-			}
-			/* Phones - Portrait */
-			@media screen and (max-width: 490px) {
-				.PRJLINX {font-size: 120%;}
-			}
-			hr {width:85%;}
-			.PRJLINX {
-				display: flex;
-				flex-direction: row;
-				justify-content: center;
-				flex-wrap: wrap;
-				font-weight: bold;
-				margin: 0 auto;
-				width: 85%;
-				text-align: center;
-				}
-			.TXTBLK {
-				width:85%;
-				margin: auto;
-				text-align: justify;
-				}
-			.smalltext {
-				font-size: 65%;
-				color: grey;
-			}
-			.program {width: 50%; margin: 10px auto;}
-			iframe {
-				display: flex;
-				flex-wrap: wrap;
-				border: none;
-				width: 100%;
-			}
+
 		</style>
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 	</head>
 	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue">
-		<h1 class="HEADER">
-			<img class="HEADERPHOTO" src="profile.png"> ksgWXfan's Project Page
+		<h1 id="header">
+			<img id="headerphoto" src="profile.png"> ksgWXfan's Project Page
 		</h1>
+		<div style="text-align:center;">
+			<a href="#statement" style="color:yellow;"><em>* Site Welcome *</em></a>
+		</div>
+		<hr />
+		<div class="PRJLINX">
+			<a href="photos/gallery.html">Media Gallery</a>
+		</div>
+		<hr />
+		<h2>Weather-Related</h2>
+		<div class="PRJLINX">
+			<div class="program">
+				<a href="5day/forecast.html">5 or 7-Day Forecast Generator</a>
+				<span class="smalltext">(HTML5 Canvas; Now Tablet Friendly)</span>
+				<span class="smalltext"><i><a href="5day/forecast_legacy.html">*Legacy* 5 or 7-Day Forecast Generator</a></i></span>
+			</div>
+			<div class="program">
+				<a href="unofficial_hurdat2/unofficial_hurdat2.html">Unofficial 2020<br>HURDAT2 <br>(Atlantic Basin)</a>
+			</div>
+			<div class="program">
+				<a href="https://github.com/ksgwxfan/climate-parser">Climate Parser</a>
+				<span class="smalltext">(Python)</span>
+				<span style="font-size:0.65em"><a href="https://echotops.blogspot.com/2019/11/script-release-climate-parser.html">Blog Post</a>; see readme.md on the GitHub repository</span>
+			</div>
+			<div class="program">
+				<a href="https://github.com/ksgwxfan/hurdat2parser">HURDAT2 Parser</a>
+				<span class="smalltext">(Python)</span>
+				<span style="font-size:0.65em"><a href="https://echotops.blogspot.com/2019/11/script-release-hurdat2parser.html">Blog Post</a>; see readme.md on the GitHub repository</span>
+			</div>
+			<div class="program">
+				<a href="mae/Mesoanalysis_Archive_Explorer.html">Mesoanalysis Archive Explorer</a>
+				<span class="smalltext">(html/css/js) (not phone friendly)</span>
+			</div>
+			<div class="program">
+				<a href="PYTHON/wctfavs.html">NWS Level-III Radar Site WCTFAV Files</a>
+				<span class="smalltext">(python/wctfavs)</span>
+			</div>
+			<div class="program">
+				<a href="PYTHON/RMDaV.html">Recent Mesoanalysis Downloader and Viewer (RMDaV)</a>
+				<span class="smalltext">(python/html/hanis)</span>
+			</div>
+			<!--<div class="program">
+				<a href="misc/misc_radar.html">Embeddable Radar Imagery - HAniS</a>
+				<span class="smalltext">(html/hanis)</span>
+			</div>
+			<div class="program">
+				<a href="misc/wapradar.html">Simple Radar Imagery (Mobile in Mind)</a>
+				<span class="smalltext">(html/css/js) (not phone friendly)</span>
+			</div>-->
+		</div>
+		<hr />
+		<h2>HTML / Javascript / CSS Projects</h2>
+		<div class="PRJLINX">
+			<div class="program">
+				<a href="calc/calc.html">Basic Calculator</a>
+			</div>
+			<div class="program">
+				<a href="bingo/bingo.html">Bingo</a>
+				<span class="smalltext">(HTML5 Canvas)</span>
+			</div>
+			<div class="program">
+				<a href="bballshotchart/bballshotchart.html">Basketball Shot Chart Maker</a>
+				<span class="smalltext">(not phone friendly)</span>
+			</div>
+			<div class="program">
+				<a href="4peat/4peat.html">4-Peat Memory Game</a>
+			</div>
+			<div class="program">
+				<a href="minesweep/minesweep.html">MineSweep (minesweeper)</a>
+			</div>
+			<div class="program">
+				<a href="dice/dice.html">Dice Simulator</a>
+			</div>
+			<div class="program">
+				<a href="geometry/octagon.html">Geometry - Octagon Calculator</a>
+				<span class="smalltext">(not phone friendly)</span>
+			</div>
+			<div class="program">
+				<a href="match/matchinggame.html">Matching Game</a>
+				<span class="smalltext">(not phone friendly)</span>
+			</div>
+			<div class="program">
+				<a href="fortuneball/8ball.html">Fortune-Telling Pool Ball</a>
+			</div>
+			<div class="program">
+				<a href="sectorthermalscan/sectorscan.html">Sector Thermal Scan Game</a>
+				<span class="smalltext">(not phone friendly)</span>
+			</div>
+		</div>
+		<hr />
+		<h2>Other</h2>
+		<div class="PRJLINX">
+			<div class="program"><a href="misc/misc.html">Miscellaneous Scripts</a></div>
+		</div>
+		<hr />
 		<div id="statement" CLASS="TXTBLK">
 			<p>Thanks for stopping by. Herein you'll find my creative outlet, primarily for trying out html/js/css stuff, but also for weather-related projects.</p>
 			<p>Feel free to email me or leave a comment through my GitHub repo. Also check out my weather blog (links at bottom).</p>
 			</p>Please respect my external use disclaimers. You'll find that most projects I have I'm cool with you to use with some sort of attribution. A few are less strict than that; a few, more. If there is a method/small snippet that's just a few lines that helps you on your own project, go ahead and use it w/o attribution. A big part of my learning has been similar: searching how to do stuff.</p>
 			<p>This site is dedicated to my beloved dad; my papa, Geoff.</p><!-- I LOVE YOU AND MISS YOU SO MUCH, DADDY! -->
 		</div>
-		<div class="PRJLINX" style="display:block;margin:0 auto;margin-top:10px;margin-bottom:25px;">
-			&bull; <a href="photos/gallery.html">Media Gallery</a>	
-		</div>
-		<hr />
-		<h1>Weather-Related</h1>
-		<div class="PRJLINX">
-			<div class="program">
-				&bull; <a href="5day/forecast.html">5 or 7-Day Forecast Generator</a><br /><span class="smalltext">(HTML5 Canvas; Now Tablet Friendly)</span><br />
-				<span class="smalltext"><i><a href="5day/forecast_legacy.html">*Legacy* 5 or 7-Day Forecast Generator</a></i></span>
-			</div>
-			<div class="program">&bull; <a href="unofficial_hurdat2/unofficial_hurdat2.html">Unofficial Current-Season <br>HURDAT2 (Atlantic Basin)</a><br /><span class="smalltext"></span></div>
-			<div class="program">&bull; <a href="https://github.com/ksgwxfan/climate-parser">Climate Parser</a><br /><span class="smalltext">(Python)</span><br />
-				<span style="font-size:0.65em"><a href="https://echotops.blogspot.com/2019/11/script-release-climate-parser.html">Blog Post</a>; see readme.md on the GitHub repository</span></div>
-			<div class="program">&bull; <a href="https://github.com/ksgwxfan/hurdat2parser">HURDAT2 Parser</a><br /><span class="smalltext">(Python)</span><br />
-				<span style="font-size:0.65em"><a href="https://echotops.blogspot.com/2019/11/script-release-hurdat2parser.html">Blog Post</a>; see readme.md on the GitHub repository</span></div>
-			<div class="program">&bull; <a href="mae/Mesoanalysis_Archive_Explorer.html">Mesoanalysis Archive Explorer</a><br /><span class="smalltext">(html/css/js) (not phone friendly)</span></div>
-			<div class="program">&bull; <a href="PYTHON/wctfavs.html">NWS Level-III Radar Site WCTFAV Files</a><br /><span class="smalltext">(python/wctfavs)</span></div>
-			<div class="program">&bull; <a href="PYTHON/RMDaV.html">Recent Mesoanalysis Downloader and Viewer (RMDaV)</a><br /><span class="smalltext">(python/html/hanis)</span></div>
-			<!--<div class="program">&bull; <a href="misc/misc_radar.html">Embeddable Radar Imagery - HAniS</a><br /><span class="smalltext">(html/hanis)</span></div>
-			<div class="program">&bull; <a href="misc/wapradar.html">Simple Radar Imagery (Mobile in Mind)</a><br /><span class="smalltext">(html/css/js) (not phone friendly)</span></div>-->
-		</div>
-		<hr />
-		<h1>HTML / Javascript / CSS Projects</h1>
-		<div class="PRJLINX">
-			<div class="program">&bull; <a href="calc/calc.html">Basic Calculator</a></div>
-			<div class="program">&bull; <a href="bingo/bingo.html">Bingo</a><br /><span class="smalltext">(HTML5 Canvas)</span></div>
-			<div class="program">&bull; <a href="bballshotchart/bballshotchart.html">Basketball Shot Chart Maker</a><br /><span class="smalltext">(not phone friendly)</span></div>
-			<div class="program">&bull; <a href="4peat/4peat.html">4-Peat Memory Game</a></div>
-			<div class="program">&bull; <a href="minesweep/minesweep.html">MineSweep (minesweeper)</a></div>
-			<div class="program">&bull; <a href="dice/dice.html">Dice Simulator</a></div>
-			<div class="program">&bull; <a href="geometry/octagon.html">Geometry - Octagon Calculator</a><br /><span class="smalltext">(not phone friendly)</span></div>
-			<div class="program">&bull; <a href="match/matchinggame.html">Matching Game</a><br /><span class="smalltext">(not phone friendly)</span></div>
-			<div class="program">&bull; <a href="fortuneball/8ball.html">Fortune-Telling Pool Ball</a></div>
-			<div class="program">&bull; <a href="sectorthermalscan/sectorscan.html">Sector Thermal Scan Game</a><br /><span class="smalltext">(not phone friendly)</span></div>
-		</div>
-		<hr />
-		<h1>Other</h1>
-		<div class="PRJLINX">
-			<div class="program">&bull; <a href="misc/misc.html">Miscellaneous Scripts</a></div>
-		</div>
-		<hr />
 		<iframe src="footer.html"></iframe>
 	</body>
 </html>
