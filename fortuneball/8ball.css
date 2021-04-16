@@ -1,26 +1,36 @@
 .QUES {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	text-align: center;
 	margin-bottom: 10px;
+	font-family: sans-serif;
 	}
+.QUES > span {
+	font-weight: bold;
+	font-style: italic;
+	margin-bottom: 10px;
+}
+
 #question {
 	width: 95%;
 	max-width: 600px;
+	background: transparent;
+	border: none;
+	text-align: center;
+	font-weight: bold;
 }
-.ASK_AWAY {
+.POOLBALL {
 	width: 100%;
-	font-family: arial;
+	font-family: sans-serif;
 	text-align: center;
 	outline: none;
 	}
 
-#ques_repeat {
-	font-weight: bold;
-	text-decoration: underline;
-	}
-
 /* REGULAR SCREEN */
 @media screen and (min-width: 491px) {
-	#ques_repeat {font-size: 2em;}
+	#question {font-size: 2em;}
 	#ballcontainer {
 		width: 40vw;
 		max-width: 600px;
@@ -34,7 +44,7 @@
 
 /* PHONES (portrait) */
 @media screen and (max-width: 490px) and (orientation: portrait) {
-	#ques_repeat {font-size: 1.4em;}
+	#question {font-size: 1.4em;}
 	#ballcontainer {
 		width: 90vw;
 		height: 90vw;
@@ -46,7 +56,7 @@
 
 /* PHONES (landscape) */
 @media screen and (orientation: landscape) and (max-height: 490px) {
-	#ques_repeat {font-size: 1.4em;}
+	#question {font-size: 1.4em;}
 	#ballcontainer {
 		width: 90vh;
 		height: 90vh;

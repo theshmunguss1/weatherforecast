@@ -8,24 +8,20 @@
 		<meta name="description" content="Fortune-Telling Pool Ball. A Magic 8-ball clone.">
 		<meta name="keywords" content="Fortune, Magic, 8 ball">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<style>
-
-		</style>
 	</head>
 	<body style="background: linear-gradient(white -25%,#141414 78%)" link="lightBlue" vlink="lightBlue">
 		<h1 id="header">
-			<img id="headerphoto" src="profile.png">Fortune-Pool Ball
+			<img id="headerphoto" src="profile.png" />Fortune-Pool Ball
 		</h1>
 		<div class="QUES">
-			<b>Submit a fortune-based question to the inanimate, virtual, and randomized-response object below:</b><br />
-			<input type="text" id="question" maxlength="70"></input>
+			<span>Submit a fortune-based question to the inanimate, virtual, and randomized-response object below:</span>
+			<input type="text" id="question" maxlength="70" placeholder="<Enter Question Here>" />
 		</div>
-		<div class="ASK_AWAY">
-			<div id="ques_repeat"> ? </div>
-			<div id="ballcontainer">
-				<img id="ball" src="fortuneball/8ball.svg" onclick='ask(document.getElementById("question").value)'>
-				<img id="triangle" src="fortuneball/triangle_answer.svg" onclick='ask(document.getElementById("question").value)'>
-				<div id="response" onclick='ask(document.getElementById("question").value)'></div>
+		<div class="POOLBALL">
+			<div id="ballcontainer" onclick='ask()'>
+				<img id="ball" src="fortuneball/8ball.svg" />
+				<img id="triangle" src="fortuneball/triangle_answer.svg" />
+				<div id="response"></div>
 			</div>
 		</div>
 		<div id="description" class="DESC">
@@ -33,86 +29,7 @@
 			<p>* Disclaimer of Use: Feel free to use as you wish (attribution is appreciated but not required)! No copyright infringement of the owners of the Magic 8-ball is intended.</p>
 		</div>
 		<iframe src="footer.html"></iframe>
-		<script>
-			var responses = ["Absolutely!",
-			"Very<br />Doubtful",
-			"Be Careful<br />What You<br />Wish<br />For",
-			"Sorry...<br />Shake<br />again",
-			"Do cows<br />moo?",
-			"50% Chance<br />of Yes",
-			"Not Looking Good",
-			"Maybe;<br />Maybe<br />not.",
-			"No<br />Doubt!",
-			"Let Me Think<br />About it.",
-			"Positive<br />Vibes.",
-			"Sources<br />say No.",
-			"User Error.<br />Try<br />Again.",
-			"Definitely<br />Maybe",
-			"Prospects<br />Great.",
-			"My reply<br />is No",
-			"Possibly",
-			"Do<br />Spiders<br />Bark?",
-			"Affirmative.",
-			"YEP!",
-			"Better<br />Odds In<br />Vegas.",
-			"Can't<br />predict<br />now",
-			"Seems<br />Probable"];
-
-			var repeat = document.getElementById("ques_repeat");
-			var triangle = document.getElementById("triangle");
-			var answer = document.getElementById("response");
-			var b = document.getElementById("ball");
-			var answerO = 0;
-			var alreadyAsked = false;
-
-			function ask(text) {
-				if (alreadyAsked == false) {
-					alreadyAsked = true;
-					answer.innerHTML = "";
-					answerO = 0;
-					answer.style.opacity = `${answerO}%`;
-					triangle.style.opacity = `${answerO}%`;
-					var time = 100;
-					if (text.substr(text.length-1) != "?") {text = text + "?";}
-					repeat.innerHTML = text;
-					setTimeout(shakeleft,time);
-					setTimeout(shakeright,time*2);
-					setTimeout(shakeleft,time*3);
-					setTimeout(shakeright,time*4);
-					setTimeout(shakeleft,time*5);
-					setTimeout(shakeright,time*6);
-					setTimeout(shakeleft,time*7);
-					setTimeout(shakeright,time*8);
-					setTimeout(shakeleft,time*9);
-					setTimeout(shakeright,time*10);
-					setTimeout(display,time*10);
-				}
-			}
-			function shakeleft() {
-				b.style.left = "45%";
-				return 0;
-			}
-
-			function shakeright() {
-				b.style.left = "55%";
-				return 0;
-			}
-			function display() {
-				var x = Math.floor(Math.random() * responses.length);
-				b.style.left = "50%";
-				answer.innerHTML = responses[x];	<!-- Displays random response -->
-				rvlanswer = setInterval(reveal,80);
-			}
-			function reveal() {
-				answerO += 10;
-				triangle.style.opacity = `${answerO}%`;
-				answer.style.opacity = `${answerO}%`;
-				if (answerO == 100) {
-					clearInterval(rvlanswer);
-					alreadyAsked = false;
-				}
-			}
-		</script>
+		<script src="fortuneball/8ball.js"></script>
 	</body>
 </html>
 
