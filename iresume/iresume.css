@@ -21,6 +21,7 @@
 
 .section_header {
 	width: 95%;
+	max-width: 800px;
 	margin: 0 auto;
 	height: 25px;
 	line-height: 25px;
@@ -35,24 +36,10 @@
 }
 .info {
 	margin: 0 auto;
+	max-width: 800px;
 	width: 95%;
 	font-family: sans-serif;
 }
 .info ul > li {
 	margin: 10px auto;
-}
-
-
-.SECTIONtitle {
-	position: relative;
-	line-height: 20px;
-	font-family: "Arial Black", Gadget, sans-serif;
-	color: #141414;
-	left: 3%;
-	user-select: none;
-}
-.SECTIONtxt {
-	position: relative;
-	padding-top: 1%;
-	padding-bottom: 2%;
 }
