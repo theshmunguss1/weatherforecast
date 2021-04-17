@@ -3,6 +3,7 @@
 	<head>
 		<base href="../">
 		<title>ksgwxfan - Chess</title>
+		<link rel="stylesheet" type="text/css" href="pageheader.css"></link>
 		<link rel="stylesheet" type="text/css" href="chess/chess.css"></link>
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
 		<style>
@@ -22,8 +23,8 @@
 		</style>
 	</head>
 	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue" onload="loading();">
-		<div class="HEADER">
-			<img class="HEADERPHOTO" src="profile.png"> <u>Chess</u>
+		<div id="header">
+			<img id="headerphoto" src="profile.png"> <u>Chess</u>
 		</div>
 		<div id="gameboard">
             <div class="board-row">
@@ -155,7 +156,8 @@
 			Chess
 		</div>
 		
-		<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
+		<div id="footer"></div>
+		<script src="footer.js"></script>
 		<script src="jquery.js"></script>
 		<script src="chess/chess.js"></script>
 	</body>

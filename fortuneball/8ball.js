@@ -81,8 +81,15 @@ function shakeright() {
 	b.style.left = "55%";
 	return 0;
 }
+
+// document.getElementById("description").addEventListener(
+	// "click",
+	// event => {console.log(Math.floor(Math.random() * (responses.length + 1)))}
+// );
+
+
 function display() {
-	var x = Math.floor(Math.random() * responses.length);
+	var x = Math.floor(Math.random() * (responses.length + 1));
 	b.style.left = "50%";
 	answer.innerHTML = responses[x]; //Displays random response
 	rvlanswer = setInterval(reveal,80);

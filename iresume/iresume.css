@@ -1,0 +1,58 @@
+#personal_info {
+	position: relative;
+	padding-top: 1%;
+	padding-bottom: 2%;
+	text-align: center;
+}
+#name img {vertical-align:middle;}
+#personal_info p {
+	margin: 0 auto;
+}
+#contact_info {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+#contact_info img, #contact_info span {
+	flex-grow: 1;
+	flex-shrink: 0;
+	font-size: 75%;
+}
+
+.section_header {
+	width: 95%;
+	margin: 0 auto;
+	height: 25px;
+	line-height: 25px;
+	padding-left: 15px;
+	background: linear-gradient(lightblue 25%,rgba(255,255,255,.4));
+	border-radius: 20px 4px;
+	outline: none;
+	font-family: sans-serif;
+	font-weight: bold;
+	color: #141414;
+	user-select: none;
+}
+.info {
+	margin: 0 auto;
+	width: 95%;
+	font-family: sans-serif;
+}
+.info ul > li {
+	margin: 10px auto;
+}
+
+
+.SECTIONtitle {
+	position: relative;
+	line-height: 20px;
+	font-family: "Arial Black", Gadget, sans-serif;
+	color: #141414;
+	left: 3%;
+	user-select: none;
+}
+.SECTIONtxt {
+	position: relative;
+	padding-top: 1%;
+	padding-bottom: 2%;
+}

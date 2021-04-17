@@ -5,18 +5,21 @@
 		<title>ksgwxfan - Sector Thermal Scanner Game</title>
 		<link rel="stylesheet" type="text/css" href="pageheader.css"></link>
 		<style>
+			#container {
+				position: relative;
+				width: 85vmin;
+				height: 85vmin;
+				margin: 10px auto;
+			}
 			.TIMER {
 				text-align:center;
 				font-size: 2em;
 				font-weight: bold;
 				width: 500px;
-				margin: 10 auto 0 auto;"
+				margin: 10px auto;
 			}
 			.BOARD {
 				display: table;
-				position: absolute;
-				top:0;
-				left:0;
 				width: 100%;
 				height: 100%;
 				background-color: black;
@@ -49,7 +52,7 @@
 			}
 			.COLORBAR {
 				 position: relative;
-				 margin: 10 auto 10 auto;
+				 margin: 10px auto;
 				 width: 75%;
 				 min-width: 50%;
 				 max-width: 500px;
@@ -93,7 +96,7 @@
 		<div class="TIMER">
 			Guesses Left: <span id="guessesleft" style="color:yellow;">15</span> ... Time Left: <span id="timer" style="color:yellow;">20</span>
 		</div>
-		<div id="container" style="position:relative;height:500px;width:500px;margin: 10 auto 10 auto;">
+		<div id="container">
 			<div class="BOARD">
                 <div class="ROW">
                     <div id="c00_00" class="CELL" onClick=reveal(this.id)> </div>
@@ -795,8 +798,8 @@
 		</div>
 
 		<div class="COLORBAR">
-			<div class="CBTEXT" style="left:5;text-align:left;">COLD</div>
-			<div class="CBTEXT" style="right:5;text-align:right;">HOT</div>
+			<div class="CBTEXT" style="left:5%;text-align:left;">COLD</div>
+			<div class="CBTEXT" style="right:5%;text-align:right;">HOT</div>
 		</div>
 		<div id="options" class="OPTIONSBOX">
 			<div style="display:table-row;">
@@ -819,17 +822,22 @@
 		<hr color="gray" style="width:85%;" />
 		<div id="desc" style="width:90%;display:block;margin:auto;text-align:justify;">
 			Sector Thermal Scanner Game. Adjustable game options underneath (for added/subtracted difficulty). This is a css-based game. The individual blocks are table-cell divs. I used a little python script to control how many squares I wanted, and then when placed, the CSS code automatically lays out everything. Feel free to inspect the code and use however you like. Below is the python script I used to generate the rows and cells of the table.
-			<div style="font-family:monospace;background-color:black;font-size:0.85em;color:lightgreen;width:90%;margin:auto;padding:5px;border:1px solid gray;">
-				rows = 25<br />
-				for x in range(rows):<br />
-				&nbsp;&nbsp;&nbsp;&nbsp;print('                &lt;div class="ROW"&gt;')<br />
-				&nbsp;&nbsp;&nbsp;&nbsp;for y in range(rows):<br />
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print('                    &lt;div id="c{}_{}" class="CELL" onClick=reveal(this.id)&gt; &lt;/div&gt;'.format(str(x).zfill(2),str(y).zfill(2)))<br />
-				&nbsp;&nbsp;&nbsp;&nbsp;print('                &lt;/div&gt;')
+			<div style="font-family:monospace;background-color:black;font-size:0.85em;color:lightgreen;width:90%;padding:0px 15px;border:1px solid gray;">
+				<pre>
+					<code>
+rows=25
+TAB="    "
+for x in range(rows):
+    print(f'{TAB*4}&lt;div class="ROW"&gt;')
+    for y in range(rows):
+        print(f'{TAB*5}&lt;div id="c{}_{}" class="CELL" onClick=reveal(this.id)&gt; &lt;/div&gt;
+    print(f'{TAB*4}&lt;/div&gt;')
+					</code>
+				</pre>
 			</div>
 		</div>
-		
-		<iframe src="footer.html" style="border:none;width:100%;height:40px;"></iframe>
+		<div id="footer"></div>
+		<script src="footer.js"></script>
 		<script>
 			var game = {started: false, guesses: 0, maxguesses:15, guessed: [], time: 20, timeleft: null};
 			var gem = {y:0, x:0};

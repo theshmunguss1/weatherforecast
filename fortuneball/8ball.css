@@ -1,3 +1,7 @@
+body {
+	background: linear-gradient(to bottom, rgb(75%, 75%, 75%), #141414);
+}
+
 .QUES {
 	display: flex;
 	flex-direction: column;
@@ -6,7 +10,7 @@
 	text-align: center;
 	margin-bottom: 10px;
 	font-family: sans-serif;
-	}
+}
 .QUES > span {
 	font-weight: bold;
 	font-style: italic;
@@ -25,20 +29,20 @@
 	font-family: sans-serif;
 	text-align: center;
 	outline: none;
-	}
+}
 
 /* REGULAR SCREEN */
 @media screen and (min-width: 491px) {
 	#question {font-size: 2em;}
 	#ballcontainer {
-		width: 40vw;
+		width: 80vmin;
 		max-width: 600px;
-		height: 40vw;
+		height: 80vmin;
 		max-height: 600px;
-	}
+}
 	#response {
 		font-size: 1.5vw;
-	}
+}
 }
 
 /* PHONES (portrait) */
@@ -47,10 +51,10 @@
 	#ballcontainer {
 		width: 90vw;
 		height: 90vw;
-	}
+}
 	#response {
 		font-size: 3.2vw;
-	}
+}
 }
 
 /* PHONES (landscape) */
@@ -59,10 +63,10 @@
 	#ballcontainer {
 		width: 90vh;
 		height: 90vh;
-	}
+}
 	#response {
 		font-size: 1.9vw;
-	}
+}
 }
 
 #ballcontainer {
@@ -113,9 +117,9 @@
 	color: rgba(255,255,255,65%);
 	user-select: none;
 	cursor: pointer;
-	}
+}
 .DESC {
 	margin: 0 auto;
 	color: white;
 	width: 85%;
-	}
+}
