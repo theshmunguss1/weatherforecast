@@ -141,18 +141,19 @@
 			<div class="ENDMSG" id="win" style="color:green;">YOU<br />WIN!</div>
 		</div>
 		<div id="gameoptions">
-			<div><button id="start" onClick="gameStart()">New Game</button> MINES LEFT: <span id="minesleft">--</span></div>
+			<div><button id="start" onClick="gameStart()">New Game</button> MINES LEFT: <span id="minesleft">--</span><!-- of <span id="spacestotal"></span> spaces--></div>
 			<div id="gridselect" title="Select A Grid-Size for your next game">Grid Size: 
 				<label><input type="radio" name="gridselect" value="10" checked onClick="changeGrid(this.value)">10x10</label>
 				<label><input type="radio" name="gridselect" value="12" onClick="changeGrid(this.value)">12x12</label>
 				<label><input type="radio" name="gridselect" value="15" onClick="changeGrid(this.value)">15x15</label>
 			</div>
-			<div id="difficulty_select" title="Change the Difficulty (number of mines)">Challenge Level: 
-				<label><input type="radio" name="diffselect" value="easy" onClick="difficulty(this.value)">Easy</label>
-				<label><input type="radio" name="diffselect" value="normal" checked onClick="difficulty(this.value)">Normal</label>
-				<label><input type="radio" name="diffselect" value="hard" onClick="difficulty(this.value)">Difficult</label>
-				<label><input type="radio" name="diffselect" value="random" onClick="difficulty(this.value)">Random</label>
+			<div id="difficulty_select" title="Change the Difficulty (number of mines)">
+				<span style="font-weight:bold;">Mine Quantity (%): </span>
+				<label style="font-style:italic;color:pink;">
+					10% <input id="mine_percentage" type="range" min="10" max="30" step="2" value="14" onInput="difficulty(this.value)" /> 30%
+				</label>
 			</div>
+
 		</div>
 		<hr style="width: 90%;" />
 		<div id="description">

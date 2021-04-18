@@ -1,7 +1,6 @@
 var game = {
 	grid_size: 10,
-	difficulty: "normal",
-	max_min: [24,29],
+	max_min: [12,16],
 	mine_qty: 0,
 	mine: [],
 	proximity: [],
@@ -13,17 +12,19 @@ var game = {
 	started: false
 };
 
-function changeGrid(size) {game.grid_size = parseInt(size);}
-
-function difficulty(diff) {
-	game.difficulty = diff;
-	if (game.difficulty == "easy") {game.max_min = [Math.floor(0.18 * game.grid_size**2),Math.floor(0.23 * game.grid_size**2)];}
-	if (game.difficulty == "normal") {game.max_min = [Math.floor(0.24 * game.grid_size**2),Math.floor(0.29 * game.grid_size**2)];}
-	if (game.difficulty == "hard") {game.max_min = [Math.floor(0.30 * game.grid_size**2),Math.floor(0.35 * game.grid_size**2)];}
-	if (game.difficulty == "random") {game.max_min = [Math.floor(0.18 * game.grid_size**2),Math.floor(0.40 * game.grid_size**2)];}
+function changeGrid(size) {
+	game.grid_size = parseInt(size);
+	difficulty(
+		document.getElementById("mine_percentage").value
+	);
 }
 
-
+function difficulty(mine_perc) {
+	game.max_min = [
+		Math.floor((parseInt(mine_perc)-2) / 100 * game.grid_size**2),
+		Math.floor((parseInt(mine_perc)+2) / 100 * game.grid_size**2)
+	];
+}
 
 function ZFILL(n) {
 	if (n < 10) {return "0" + n.toString()}
@@ -56,7 +57,6 @@ function build() {
 
 function gameStart() {
 	build();
-	difficulty(game.difficulty); 	// Ensure selected difficulty gets implemented
 	game.started = true;
 	// Hide the 'new game' button
 	document.getElementById("start").style.display = "none";
@@ -81,6 +81,8 @@ function gameStart() {
 	game.mine_qty = game.max_min[0] + Math.floor(Math.random() * (game.max_min[1]+1-game.max_min[0]));
 	// Notify the player of mines in the game
 	document.getElementById("minesleft").innerHTML = game.mine_qty;
+	// document.getElementById("spacestotal").innerHTML = game.grid_size**2;
+	// console.log(game.grid_size**2);
 	// Build random mine placement
 	i = 0;
 	while (i < game.mine_qty) {
@@ -100,7 +102,7 @@ function check(square) {
 	if (game.started) {
 		// We only need to assess further if the cell hasn't been guessed yet and isn't flagged
 		if (game.guessed.includes(square) == false && game.flagged.includes(square) == false) {
-			choice.style.outlineStyle = "inset"; 	// Visual confirmation of guess
+			// choice.style.outlineStyle = "inset"; 	// Visual confirmation of guess
 			game.guessed.push(square); 		// Internal note of guess
 			// If a mine has been uncovered, GAME OVER
 			if (game.mine[g_row][g_col] == 1) {gameover(square);}
@@ -161,7 +163,7 @@ function zerocheck(sqid,r,c) {
 			if (game.cleared.includes(inspectSquare) == false) {
 				game.cleared.push(inspectSquare);
 				document.getElementById(inspectSquare).style.backgroundColor = "white";
-				document.getElementById(inspectSquare).style.outlineStyle = "inset";
+				// document.getElementById(inspectSquare).style.outlineStyle = "inset";
 				game.guessed.push(inspectSquare);
 				// If there are some mines in the proximity of the square being checked
 				if (proxcheck(r-1,c-1) > 0) {
@@ -180,7 +182,7 @@ function zerocheck(sqid,r,c) {
 			if (game.cleared.includes(inspectSquare) == false) {
 				game.cleared.push(inspectSquare);
 				document.getElementById(inspectSquare).style.backgroundColor = "white";
-				document.getElementById(inspectSquare).style.outlineStyle = "inset";
+				// document.getElementById(inspectSquare).style.outlineStyle = "inset";
 				game.guessed.push(inspectSquare);
 				// If there are some mines in the proximity of the square being checked
 				if (proxcheck(r,c-1) > 0) {
@@ -199,7 +201,7 @@ function zerocheck(sqid,r,c) {
 			if (game.cleared.includes(inspectSquare) == false) {
 				game.cleared.push(inspectSquare);
 				document.getElementById(inspectSquare).style.backgroundColor = "white";
-				document.getElementById(inspectSquare).style.outlineStyle = "inset";
+				// document.getElementById(inspectSquare).style.outlineStyle = "inset";
 				game.guessed.push(inspectSquare);
 				// If there are some mines in the proximity of the square being checked
 				if (proxcheck(r+1,c-1) > 0) {
@@ -218,7 +220,7 @@ function zerocheck(sqid,r,c) {
 			if (game.cleared.includes(inspectSquare) == false) {
 				game.cleared.push(inspectSquare);
 				document.getElementById(inspectSquare).style.backgroundColor = "white";
-				document.getElementById(inspectSquare).style.outlineStyle = "inset";
+				// document.getElementById(inspectSquare).style.outlineStyle = "inset";
 				game.guessed.push(inspectSquare);
 				// If there are some mines in the proximity of the square being checked
 				if (proxcheck(r+1,c) > 0) {
@@ -237,7 +239,7 @@ function zerocheck(sqid,r,c) {
 			if (game.cleared.includes(inspectSquare) == false) {
 				game.cleared.push(inspectSquare);
 				document.getElementById(inspectSquare).style.backgroundColor = "white";
-				document.getElementById(inspectSquare).style.outlineStyle = "inset";
+				// document.getElementById(inspectSquare).style.outlineStyle = "inset";
 				game.guessed.push(inspectSquare);
 				// If there are some mines in the proximity of the square being checked
 				if (proxcheck(r+1,c+1) > 0) {
@@ -256,7 +258,7 @@ function zerocheck(sqid,r,c) {
 			if (game.cleared.includes(inspectSquare) == false) {
 				game.cleared.push(inspectSquare);
 				document.getElementById(inspectSquare).style.backgroundColor = "white";
-				document.getElementById(inspectSquare).style.outlineStyle = "inset";
+				// document.getElementById(inspectSquare).style.outlineStyle = "inset";
 				game.guessed.push(inspectSquare);
 				// If there are some mines in the proximity of the square being checked
 				if (proxcheck(r,c+1) > 0) {
@@ -275,7 +277,7 @@ function zerocheck(sqid,r,c) {
 			if (game.cleared.includes(inspectSquare) == false) {
 				game.cleared.push(inspectSquare);
 				document.getElementById(inspectSquare).style.backgroundColor = "white";
-				document.getElementById(inspectSquare).style.outlineStyle = "inset";
+				// document.getElementById(inspectSquare).style.outlineStyle = "inset";
 				game.guessed.push(inspectSquare);
 				// If there are some mines in the proximity of the square being checked
 				if (proxcheck(r-1,c+1) > 0) {
@@ -294,7 +296,7 @@ function zerocheck(sqid,r,c) {
 			if (game.cleared.includes(inspectSquare) == false) {
 				game.cleared.push(inspectSquare);
 				document.getElementById(inspectSquare).style.backgroundColor = "white";
-				document.getElementById(inspectSquare).style.outlineStyle = "inset";
+				// document.getElementById(inspectSquare).style.outlineStyle = "inset";
 				game.guessed.push(inspectSquare);
 				// If there are some mines in the proximity of the square being checked
 				if (proxcheck(r-1,c) > 0) {
