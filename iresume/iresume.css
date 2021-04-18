@@ -21,7 +21,7 @@
 
 .section_header {
 	width: 95%;
-	max-width: 800px;
+	max-width: 1200px;
 	margin: 0 auto;
 	height: 25px;
 	line-height: 25px;
@@ -36,7 +36,7 @@
 }
 .info {
 	margin: 0 auto;
-	max-width: 800px;
+	max-width: 1200px;
 	width: 95%;
 	font-family: sans-serif;
 }
