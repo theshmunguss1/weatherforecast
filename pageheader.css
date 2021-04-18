@@ -21,10 +21,11 @@
 	flex-wrap: wrap;
 	flex-direction: row;
 	justify-content: center;
-	margin: 20px auto;
+	align-items: center;
+	margin: 10px auto;
 	text-align: center;
 }
-#footer > a, span {
+#footer > a, #footer > span {
 	padding: 0 3px;
 }
 
