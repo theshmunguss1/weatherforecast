@@ -147,10 +147,10 @@
 				<label><input type="radio" name="gridselect" value="12" onClick="changeGrid(this.value)">12x12</label>
 				<label><input type="radio" name="gridselect" value="15" onClick="changeGrid(this.value)">15x15</label>
 			</div>
-			<div id="difficulty_select" title="Change the Difficulty (number of mines)">
-				<span style="font-weight:bold;">Mine Quantity (%): </span>
+			<div id="difficulty_select">
+				<span style="font-weight:bold;">Mine Quantity &rarr; <span id="mineqtymsg">12 to 16 mines</span></span>
 				<label style="font-style:italic;color:pink;">
-					10% <input id="mine_percentage" type="range" min="10" max="30" step="2" value="14" onInput="difficulty(this.value)" /> 30%
+					10% <input id="mine_percentage" type="range" min="10" max="30" step="2" value="14" onInput="difficulty(this.value)"  title="Change the Difficulty (number of mines)" /> 30%
 				</label>
 			</div>
 

@@ -24,6 +24,7 @@ function difficulty(mine_perc) {
 		Math.floor((parseInt(mine_perc)-2) / 100 * game.grid_size**2),
 		Math.floor((parseInt(mine_perc)+2) / 100 * game.grid_size**2)
 	];
+	document.getElementById("mineqtymsg").innerHTML = `${game.max_min[0]} to ${game.max_min[1]} mines`;
 }
 
 function ZFILL(n) {

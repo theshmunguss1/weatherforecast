@@ -4,7 +4,7 @@
 @media only screen and (min-width: 491px) {
 	:root {--game_dim: 80vh;}
 	#gamecontainer {border: 8px solid gray;}
-	.SQUARES {font-size: 3vw;}
+	.SQUARES {font-size: 2.3vw;}
 }
 /* Phones - Landscape */
 @media only screen and (max-height: 499px) and (orientation: landscape) {
@@ -80,6 +80,13 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: middle;
+}
+#mineqtymsg {
+	color: lightblue;
+}
+#mine_percentage {
+	width: 30%;
+	min-width: 160px;
 }
 .ctrlinstr {
 	font-weight: bold;
