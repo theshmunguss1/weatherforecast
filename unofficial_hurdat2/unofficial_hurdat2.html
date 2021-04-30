@@ -40,13 +40,13 @@
 	</head>
 	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue" onLoad="load_data()">
 		<h1 id="header">
-			<img id="headerphoto" src="profile.png">Unofficial Current-Season HURDAT2 for the Atlantic Basin
+			<img id="headerphoto" src="profile.png">Unofficial 2020 HURDAT2 for the Atlantic Basin
 		</h1>
 
 		<div id="disclaimer">
 			<p style="color:pink;text-align: center;">* This page is <u>NOT</u> endorsed nor supported by NOAA or its subsidiaries, including the National Hurricane Center. *</p>
 
-			<p style="text-align:center;"><span style="color:yellow;">* Updated thru 27 NOV 2020.</span> -- This page will 'reset' upon issuance of the annual release of HURDAT2 out of deference to the complete, expertly analyzed data.</p>
+			<p style="text-align:center;"><span style="color:yellow;">* Updated thru 27 NOV 2020.</span><br />-- Upon issuance of the official HURDAT2 update (generally in proximity to the start of Hurricane Season), this site will be cleared to prepare for the upcoming season.</p>
 		</div>
 
 		<div id="codeblock">
@@ -56,15 +56,15 @@
 		</div>
 
 		<div id="disclaimer2">
-			<p>* Information presented here has been gathered from preliminary current-season 'best-track' data from <a href="https://ftp.nhc.noaa.gov/atcf/btk/">https://ftp.nhc.noaa.gov/atcf/btk/</a>. Landfall data is not natively marked in the best-track data. To assist with that, the advisory archives (<a href="https://www.nhc.noaa.gov/archive/2020/">https://www.nhc.noaa.gov/archive/2020/</a>) were used to isolate landfall records and, along with QGIS, were used to assist in interpolating other likely landfalls and their latitude/longitude positioning, and to approximate timing.</p>
+			<p>* Information presented here is retrieved from current-season 'best-track' (<a href="https://ftp.nhc.noaa.gov/atcf/btk/">https://ftp.nhc.noaa.gov/atcf/btk/</a>) data. Because landfall-data are not recorded in the best-track data, they are compiled using the advisory archive (<a href="https://ftp.nhc.noaa.gov/atcf/adv">https://ftp.nhc.noaa.gov/atcf/adv</a>). GIS software has also been used at times to estimate landfall locale and timing.</p>
 			
-			<p>In general, potential landfalls over small islands were not considered due to the highly-variable nature with any change in the preliminary data and general lack of accuracy stemming from coordinate data being rounded to the nearest 10th of a degree.</p>
+			<p>In the future, potential landfalls over small islands will not be considered due to the highly-variable nature with any change in the preliminary data and general lack of accuracy stemming from coordinate data being rounded to the nearest 10th of a degree.</p>
 			
-			<p>Due to lack of information, 'null' data (using -999) was used for TS, TS50kt, and HU wind extents, as applicable, for manually-input landfalls</p>
+			<p>Wind-extent information is currently not included. As such, 'null' space-fillers (-999) are used where applicable.</p>
 
-			<p>Precision was not the aim of including landfall markers (especially the interpolated ones) but were included to provide homogeneity and temporary inclusion with the <a href="https://www.aoml.noaa.gov/hrd/hurdat/Data_Storm.html">official HURDAT2 record</a>. In general, the official record is updated during the Spring of each year, prior to the start of Hurricane Season.</p>
+			<p>Precision is not the aim of landfall inclusion (especially the interpolated ones) but were pursued to provide homogeneity and temporary inclusion with the <a href="https://www.aoml.noaa.gov/hrd/hurdat/Data_Storm.html">official HURDAT2 record</a>. The official record is updated during the Spring of each year, prior to the start of Hurricane Season.</p>
 			<hr />
-			<p>My primary purpose for this is for use in an updated (and currently unreleased) version of my hurdat2parser program (python) I'm working on. I believe there are other hurdat2 parsing programs out there. Feel free to use this output in any way you'd like. My only request of it is that you strive to avoid representing it as NOAA data.</p>
+			<p>Feel free to use this output in any way you'd like. My only request of it is that if used publicly, <u>you must provide the disclaimer that the data, though mostly retrieved from NOAA, is not NOAA-official, provided, nor generated/u>. My primary purpose for this is for use in my <a href="https://github.com/ksgwxfan/hurdat2parser">hurdat2parser</a> program by concatenating it with the official data. One can then compare the current-season to previous years using a supplied function that ranks partial seasons.</p>
 			<p>* Below you'll find some info for the season through the date listed. As a courtesy, I included some ranking as well.</p>
 		</div>
 
