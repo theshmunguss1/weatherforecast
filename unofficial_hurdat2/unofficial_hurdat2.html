@@ -8,87 +8,61 @@
 		<meta name="keywords" content="National Hurricane Center, NHC, hurdat, hurdat2, hurricane, typhoon, weather">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="pageheader.css"></link>
-		<style>
-			#disclaimer, #disclaimer2 {
-				width: 85%;
-				margin: 0 auto;
-				font-family: sans-serif;
-				font-size: 0.9em;
-				font-style: italic;
-				margin-bottom: 10px;
-				color: lightgray;
-			}
-			#codeblock {
-				overflow: scroll;
-				white-space: nowrap;
-				width: 85%;
-				height: 50vh;
-			}
-			#codeblock, #seasonblock {
-				margin: 0 auto;
-				background-color: black;
-				color: LimeGreen;
-				border: 2px outset gray;
-			}
-			#seasonblock {
-				overflow: scroll;
-				white-space: nowrap;
-				width: min(90%, 600px);
-			}
-
-		</style>
+		<link rel="stylesheet" type="text/css" href="unofficial_hurdat2/hurdat2.css"></link>
 	</head>
-	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue" onLoad="load_data()">
+	<body link="lightBlue" vlink="lightBlue" onLoad="load_data()">
 		<h1 id="header">
-			<img id="headerphoto" src="profile.png">Unofficial 2020 HURDAT2 for the Atlantic Basin
+			<img id="headerphoto" src="profile.png">Unofficial 2021 HURDAT2 for the Atlantic Basin
 		</h1>
 
-		<div id="disclaimer">
+		<div class="disclaimer">
 			<p style="color:pink;text-align: center;">* This page is <u>NOT</u> endorsed nor supported by NOAA or its subsidiaries, including the National Hurricane Center. *</p>
 
-			<p style="text-align:center;"><span style="color:yellow;">* Updated thru 27 NOV 2020.</span><br />-- Upon issuance of the official HURDAT2 update (generally in proximity to the start of Hurricane Season), this site will be cleared to prepare for the upcoming season.</p>
+			<p style="text-align:center;"><span style="color:yellow;">* Updated thru 25 MAY 2021.</span>
 		</div>
-
+		<div id="year-switch">
+			<label>
+				<input type="radio" name="switch" value="2021" checked onClick="chg_year(this.value)" /> 2021
+			</label>
+			<label>
+				<input type="radio" name="switch" value="2020" onClick="chg_year(this.value)" /> 2020
+			</label>
+		</div>
 		<div id="codeblock">
 			<pre><code id="codecontainer">
 
 			</code></pre>
 		</div>
+		<div id="codeblock_2020" style="display:none;">
+			<pre><code id="codecontainer_2020">
 
-		<div id="disclaimer2">
-			<p>* Information presented here is retrieved from current-season 'best-track' (<a href="https://ftp.nhc.noaa.gov/atcf/btk/">https://ftp.nhc.noaa.gov/atcf/btk/</a>) data. Because landfall-data are not recorded in the best-track data, they are compiled using the advisory archive (<a href="https://ftp.nhc.noaa.gov/atcf/adv">https://ftp.nhc.noaa.gov/atcf/adv</a>). GIS software has also been used at times to estimate landfall locale and timing.</p>
-			
-			<p>In the future, potential landfalls over small islands will not be considered due to the highly-variable nature with any change in the preliminary data and general lack of accuracy stemming from coordinate data being rounded to the nearest 10th of a degree.</p>
-			
-			<p>Wind-extent information is currently not included. As such, 'null' space-fillers (-999) are used where applicable.</p>
-
-			<p>Precision is not the aim of landfall inclusion (especially the interpolated ones) but were pursued to provide homogeneity and temporary inclusion with the <a href="https://www.nhc.noaa.gov/data/#hurdat">official HURDAT2 record</a>. The official record is updated during the Spring of each year, prior to the start of Hurricane Season.</p>
-			<hr />
-			<p>Feel free to use this output in any way you'd like. My only request of it is that if used publicly, <u>you must provide the disclaimer that the data, though mostly retrieved from NOAA, is not NOAA-official, provided, nor generated/u>. My primary purpose for this is for use in my <a href="https://github.com/ksgwxfan/hurdat2parser">hurdat2parser</a> program by concatenating it with the official data. One can then compare the current-season to previous years using a supplied function that ranks partial seasons.</p>
-			<p>* Below you'll find some info for the season through the date listed. As a courtesy, I included some ranking as well.</p>
+			</code></pre>
 		</div>
-
+		<div class="disclaimer" style="text-align:center;">
+			<p>* Information presented here is retrieved from current-season 'best-track' (<a href="https://ftp.nhc.noaa.gov/atcf/btk/">https://ftp.nhc.noaa.gov/atcf/btk/</a>) data. Because landfall-data are not recorded in the best-track data, they are compiled using the advisory archive (<a href="https://ftp.nhc.noaa.gov/atcf/adv">https://ftp.nhc.noaa.gov/atcf/adv</a>) and GIS software.</p>
+			<p>For such landfall data, wind-extent information is currently not included. As such, 'null' space-fillers (-999) are used where applicable.</p>
+			<p>Precision is not the aim of landfall inclusion (especially the interpolated ones) but were pursued to provide homogeneity and temporary inclusion with the <a href="https://www.nhc.noaa.gov/data/#hurdat">official HURDAT2 record</a>. The official record is usually updated during the Spring of each year, prior to the start of Hurricane Season.</p>
+			<p>* Below you'll find some info for the current season with ranks, through the date listed.</p>
+		</div>
+		<!-- SEASON STATS -->
 		<div id="seasonblock">
 			<pre><code id="seasoncontainer">
 
 			</code></pre>
 		</div>
-		<br /><br />
+		<div id="seasonblock_2020" style="display: none;">
+			<pre><code id="seasoncontainer_2020">
+
+			</code></pre>
+		</div>
+
+		<div class="disclaimer" style="margin-bottom:2em;">
+			<p>My primary purpose for this is for use in my <a href="https://github.com/ksgwxfan/hurdat2parser">hurdat2parser</a> program by concatenating it with the official data. One can then compare the current-season to previous years using a supplied function that ranks partial seasons.</p>
+			<p>Feel free to use this output in any way you'd like. My only request of it is that if used publicly, <u>you must provide the disclaimer that the data, though mostly retrieved from NOAA, is not NOAA-official, published, nor generated</u>.</p>
+		</div>
 		<div id="footer"></div>
 		<script src="footer.js"></script>
-		<script>
-			function load_data() {
-				// LOAD HURDAT2 DATA FROM FILE
-				fetch("unofficial_hurdat2/current_hurdat2.dat")
-					.then(resp => resp.text())
-					.then(txt => {document.getElementById("codecontainer").innerHTML = txt;});
-				// LOAD CURRENT SEASON DATA FROM FILE
-				fetch("unofficial_hurdat2/season_stats.dat")
-					.then(resp => resp.text())
-					.then(txt => {document.getElementById("seasoncontainer").innerHTML = txt;});
-			}
-
-		</script>
+		<script src="unofficial_hurdat2/hurdat2.js"></script>
 	</body>
 </html>
 
