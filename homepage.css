@@ -40,6 +40,9 @@ hr {
 	margin: 10px 5px;
 	padding: 20px 5px;
 }
+.program a {
+	overflow-wrap: break-word;
+}
 
 .program:hover {
 	background-color: rgb(10, 10, 10);
