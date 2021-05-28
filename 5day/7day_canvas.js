@@ -65,7 +65,7 @@ var ctx = canvas.getContext("2d");
 
 function EventListeners() {}
 // Dynamic Window Resize
-window.addEventListener("resize", resize);
+window.addEventListener("orientationchange", resize);
 
 // Canvas Event Listener
 canvas.addEventListener(
@@ -191,61 +191,48 @@ function forecastDayQty(n) {
 	}
 }
 
-function screenreport() {
-	let doc = document.documentElement;
-	let win = window;
-	console.log(`document: ${doc.clientWidth} x ${doc.clientHeight}; Ratio: ${(doc.clientWidth / doc.clientHeight).toFixed(2)}:1`);
-	console.log(`prop.width7 = ${prop.width7}`);
-	//console.log(`window: ${win.innerWidth} x ${win.innerHeight}`);
-}
-
 function resize() {
 	let numdays = document.getElementById("numdays");
-
+	// console.log(innerWidth, innerHeight, document.documentElement.clientWidth, document.documentElement.clientHeight, document.documentElement.offsetWidth, document.documentElement.offsetHeight);
+	largest = Math.max(
+		document.documentElement.clientWidth,
+		document.documentElement.clientHeight
+	);
+	smallest = Math.min(
+		document.documentElement.clientWidth,
+		document.documentElement.clientHeight
+	);
+	// console.log(largest, smallest);
 	// 7 Days
 	if (prop.dayQty == 7) {
-		// LANDSCAPE - window height < window width
-		if (window.innerHeight < window.innerWidth) {
-			// Width : Height > 2:1
-			if (window.innerWidth > window.innerHeight * 2) {
-				canvas.height = document.documentElement.clientHeight - 10;
-				canvas.width = canvas.height * 2;
-			}
-			// Width : Height <= 2:1
-			else {
-				canvas.width = document.documentElement.clientWidth - 10;
-				canvas.height = canvas.width * 0.5;
-			}
+		//LANDSCAPE
+		if ("orientation" in window == false || Math.abs(window.orientation) == 90) {
+			// console.log("landscape");
+			canvas.width = largest-20;
+			canvas.height = canvas.width / 2;
 		}
-		// PORTRAIT - window height >= window.width
+		// PORTRAIT
 		else {
-				canvas.width = document.documentElement.clientWidth - 10;
-				canvas.height = canvas.width / 2;
+			// console.log("portrait");
+			canvas.width = smallest-20;
+			canvas.height = canvas.width / 2;
 		}
+		
 		prop.width7 = canvas.width;
 	}
 	// 5 Days
 	else {
-		// LANDSCAPE - window height < window width
-		if (window.innerHeight < window.innerWidth) {
-			// Width : Height > 2:1
-			if (window.innerWidth > window.innerHeight * 2) {
-				canvas.height = document.documentElement.clientHeight - 10;
-				canvas.width = canvas.height * 1.43143;
-				prop.width7 = canvas.height * 2;
-			}
-			// Width : Height <= 2:1
-			else {
-				canvas.width = document.documentElement.clientWidth * 0.715715;
-				canvas.height = canvas.width * 0.6986;
-				prop.width7 = document.documentElement.clientWidth;
-			}
+		//LANDSCAPE
+		if ("orientation" in window == false || Math.abs(window.orientation) == 90) {
+			canvas.width = (largest-20) * 0.715715;
+			canvas.height = canvas.width * 0.6986;
+			prop.width7 = (largest-20);
 		}
-		// PORTRAIT - window height >= window.width
+		// PORTRAIT
 		else {
-			canvas.width = document.documentElement.clientWidth * 0.715715;
-			canvas.height = document.documentElement.clientWidth / 2;
-			prop.width7 = canvas.height * 2;
+			canvas.width = (smallest-20) * 0.715715;
+			canvas.height = canvas.width * 0.6986;
+			prop.width7 = (smallest-20);
 		}
 	}
 
@@ -278,7 +265,8 @@ function draw() {
 	//console.log("draw() called");
 	//ctx.clearRect(0, 0, prop.width7, canvas.height); //clear
 	// Handle Phones in Portrait Mode
-	if (document.documentElement.clientWidth <= 500) {
+	if (canvas.width < 500) {
+		// console.log("asdf");
 		ctx.clearRect(0, 0, prop.width7, canvas.height);
 		ctx.fillStyle = prop.backgroundColor;
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
