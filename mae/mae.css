@@ -1,58 +1,221 @@
 body {
-	background-color: #e6d5a0
+	background-color: #e6d5a0;
+	font-family: sans-serif;
 }
-div.container {
-	display: block;
+
+/* height = width * (1 / aspect-ratio) */
+#container-display {
+	margin: 0 auto;
+	aspect-ratio: 400 / 309;
+	max-width: 800px;
+	max-height: 600px;
+	font-family: sans-serif;
+}
+
+/* PORTRAIT*/
+@media (orientation: landscape) {
+	body {
+		padding-right: 30%;
+	}
+	#container-date-products {
+		position: fixed;
+		top: 0;
+		right: 0;
+		width: 30%;
+		height: 100vh;
+		border-left: 1px solid black;
+	}
+	#container-display {
+		object-fit: contain;
+	}
+	#divider-portrait {
+		display: none;
+	}
+	#controls {
+		width: 100%;
+		height: 40%;
+	}
+	#products-header {
+		height: 1em;
+	}
+	#products {
+		width: 100%;
+		height: calc(100% - 40% - 1em);
+	}
+	.products-product {
+		height: 2em;
+		line-height: 2em;
+	}
+}
+/* PORTRAIT Phones */
+@media (orientation: portrait)
+   and (max-width: 499px) {
+	#container-date-products {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		height: 60vh;
+		align-items: center;
+	}
+	#container-display {
+		object-fit: contain;
+	}
+	#controls {
+		width: 90%;
+		height: 60vh;
+	}
+	#products {
+		width: 90%;
+		height: 60vh;
+	}
+	.products-product {
+		height: 3em;
+		line-height: 3em;
+	}
+
+}
+/* PORTRAIT Tablets */
+@media (orientation: portrait)
+   and (min-width: 500px) {
+	#container-date-products {
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		height: 40vh;
+		border-right: 1px solid black;
+	}
+	#container-display {
+		object-fit: contain;
+	}
+	#controls {
+		width: 90%;
+	}
+	#products {
+		width: 90%;
+	}
+	#products-header {
+		display: none;
+	}
+	.products-product {
+		height: 3em;
+		line-height: 3em;
+	}
+
+}
+
+#container-date-products > div {
+	
+	}
+
+#container-image {
 	position: relative;
-	float: left;
+	margin: 0 auto;
 	background-color: white;
 	border: 1px solid black;
-	width: 800px;
-	height: 600px;
-	margin-left: 2px;
+	aspect-ratio: 4 / 3;
+	width: 100%;
 }
+#container-display-footer {
+	white-space: nowrap;
+	overflow-x: hidden;
+	text-align: center;
+}
+#datedisplay {
+	font-weight: bold;
+}
+#product-description {
+	font-style: italic;
+}
+
 img {
 	width:100%;
-	height:100%;
 	position: absolute;
 	top: 0%;
 	left: 0%;
 }
-div.panel {
-	display: block;
+
+#missing {
 	position: absolute;
+	display: none;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+	font-size: 3em;
+	font-weight: bold;
 	text-align: center;
-	border: 1px solid gray;
-	background-color: rgb(245,225,225);
-	left: 815px;
-	width: 500px;
-	float: right;
-	margin-left: 1px;
-	
+	opacity: 50%;
 }
-div.prodlist {
-	position: relative;
+
+.heading {
+	text-align: center;
+	text-decoration: underline;
 }
-button {
-	
+
+#controls {
+	display: flex;
+	flex-direction: column;
+	justify-content: stretch;
+	overflow-x: scroll;
+	border-bottom: 1px solid black;
 }
-div.pcol {
-	width:98px;
-	float:left;
+.flex-row {
+	display: flex;
+	flex-direction: row;
+	flex-grow: 1;
 }
-div.pbutton {
-	font-size: 12px;
-	border: 1px solid black;
-	background-color: yellow;
-	min-width: 98px;
+#controls button {
+	flex-grow: 1;
+}
+#controls label {
+	width: 50%;
+}
+#gotodate {
+	width: 100%;
+	height: 80%;
+}
+
+#products {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	white-space: nowrap;
 	user-select: none;
 }
-div.datedisplay {
-	font-size: 20px;
-	width: 800px;
-	margin-left: 2px;
-	text-align: center;
+
+.hrmove {
+	position: absolute;
+	top: 0%;
+	width: 50%;
+	height: 100%;
+	opacity: 30%;
 }
+.hrmove:active {
+	opacity: 30%;
+	background-color: yellow;
+}
+.hrmove.left {left: 0%;}
+.hrmove.right {left: 50%;}
+
+.products-category {
+	background-color: #CCBC8E;
+	height: 1.2em;
+	line-height: 1.2em;
+}
+.products-product {
+	background-color: #FFF2CC;
+	text-indent: 1em;
+}
+
+#description {
+	margin: 0 auto;
+	width: 90%;
+	max-width: 1200px;
+}
+
+/* Email color correct */
+#c_email {
+	color: blue;
+}
+
 kbd {
 	font-family: sans-serif;
 	border: 1px solid black;
@@ -61,6 +224,10 @@ kbd {
 	background: linear-gradient(to top, lightgray 15%, transparent 20%),
 		linear-gradient(to right, lightgray 10%, transparent 15%),
 		linear-gradient(white,white);
+}
+
+code {
+	background-color: rgba(0,0,0,15%);
 }
 
 
