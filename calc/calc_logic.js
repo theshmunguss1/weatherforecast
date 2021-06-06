@@ -3,14 +3,8 @@ calc = {"maxsmchars":57, "maxchars":11, "display":"", "hasdot":false, "hasequals
 options = {"bgH":0,"bgS":75,"bgL":40};
 
 // BACKGROUND COLOR
-function changebg() {
-	var h = options.bgH;
-	var s = options.bgS;
-	var l = options.bgL;
-	var hsl = `hsl(${h},${s}%,${l}%)`;
-	document.body.style.background = `linear-gradient(to top, #333333, ${hsl})`;
-	//document.body.style.color = `${(l >= 50) ? "black" : "white"}`
-	document.getElementById("header").style.color = `${(l >= 60) ? "black" : "white"}`;
+function changebg(newcolor) {
+	document.body.style.background = `linear-gradient(to top, #333333, ${newcolor})`;
 }
 
 function changetheme(s) {
@@ -18,77 +12,76 @@ function changetheme(s) {
 }
 
 function kbcontrols() {
-	//console.log(event);
+	// console.log(event);
 
 	// BACKSPACE PRESSED
-	if (event.keyCode == 8) {
+	if (event.key.toLowerCase().includes("backspace")) {
 		// Thanks to https://stackoverflow.com/questions/6309693/how-can-i-disabling-backspace-key-press-on-all-browsers for making me aware of the preventDefault method
 		event.preventDefault();
 		if (event.shiftKey) {CLEAR("CE"); highlight("bCE");}
 		else {CLEAR("C"); highlight("bC");}
 	}
-	else if (event.keyCode == 49 || event.keyCode == 97) {numberpress('1'); highlight("b1");}
-	else if (event.keyCode == 50 || event.keyCode == 98) {numberpress('2'); highlight("b2");}
-	else if (event.keyCode == 51 || event.keyCode == 99) {numberpress('3'); highlight("b3");}
-	else if (event.keyCode == 52 || event.keyCode == 100) {numberpress('4'); highlight("b4");}
-	else if (event.keyCode == 53 || event.keyCode == 101) {numberpress('5'); highlight("b5");}
-	else if (event.keyCode == 54 || event.keyCode == 102) {numberpress('6'); highlight("b6");}
-	else if (event.keyCode == 55 || event.keyCode == 103) {numberpress('7'); highlight("b7");}
-	else if (event.keyCode == 56 || event.keyCode == 104) {
-		if (event.shiftKey) {mathpress('*'); highlight("btimes");}
-		else {numberpress('8'); highlight("b8");}
-	}
-	else if (event.keyCode == 57 || event.keyCode == 105) {numberpress('9'); highlight("b9");}
-	else if (event.keyCode == 48 || event.keyCode == 96) {numberpress('0'); highlight("b0");}
-	else if (event.keyCode == 189 || event.keyCode == 109) {
-		if (event.shiftKey) {signpress(); highlight("bsign");}
-		else {mathpress('-'); highlight("bminus");}
-	}
-	else if (event.keyCode == 190 || event.keyCode == 110) {dotpress(); highlight("bdot");}
-	else if (event.keyCode == 88 && event.ctrlKey == false) {mathpress('*'); highlight("btimes");}
-	else if (event.keyCode == 191 || event.keyCode == 111) {mathpress('/'); highlight("bdivide");}
-	else if (event.keyCode == 187 || event.keyCode == 107) {
-		if (event.shiftKey) {mathpress('+'); highlight("bplus");}
-		else {equals(); highlight("bequals");}
-	}
-	else if (event.keyCode == 13) {equals(); highlight("bequals");}
-	else if (event.keyCode == 67) {
+	// NUMBERS
+	else if (event.key.includes("1")) {numberpress(1); highlight("b1");}
+	else if (event.key.includes("2")) {numberpress(2); highlight("b2");}
+	else if (event.key.includes("3")) {numberpress(3); highlight("b3");}
+	else if (event.key.includes("4")) {numberpress(4); highlight("b4");}
+	else if (event.key.includes("5")) {numberpress(5); highlight("b5");}
+	else if (event.key.includes("6")) {numberpress(6); highlight("b6");}
+	else if (event.key.includes("7")) {numberpress(7); highlight("b7");}
+	else if (event.key.includes("8")) {numberpress(8); highlight("b8");}
+	else if (event.key.includes("9")) {numberpress(9); highlight("b9");}
+	else if (event.key.includes("0")) {numberpress(0); highlight("b0");}
+	// OPERATORS
+	else if (event.key.includes("+")) {mathpress('+'); highlight("bplus");}
+	else if (event.key.includes("-")) {mathpress('-'); highlight("bminus");}
+	else if (event.key.includes("*") || event.key.toLowerCase() == "x") {mathpress('*'); highlight("btimes");}
+	else if (event.key.includes("/")) {mathpress('/'); highlight("bdivide");}
+	else if (
+		event.key.includes("=")
+		|| event.key.toLowerCase().includes("enter")
+	) {equals(); highlight("bequals");}
+	// Special
+	else if (event.key.includes("_")) {signpress(); highlight("bsign");}
+	else if (event.key.includes(".")) {dotpress(); highlight("bdot");}
+	// CLEAR
+	else if (event.key.toLowerCase() == "c") {
 		if (event.ctrlKey == false) {
+			// Clear Entry
 			if (event.shiftKey) {CLEAR("CE"); highlight("bCE");}
+			// Clear All
 			else {CLEAR("C"); highlight("bC");}
 		}
 	}
 
 }
 
+// Triggered when a key is pressed
 function highlight(bid) {
-	var btnid = bid;
-	if (document.getElementById("class_name").href.includes("calc/style1.css")) {
-		if (/b(\d|\.)/.test(btnid)) {document.getElementById(bid).setAttribute("class",document.getElementById(bid).getAttribute("class") + " KDOWNnum");}
-		else if (/b(plus|minus|times|divide)/.test(btnid)) {document.getElementById(bid).setAttribute("class",document.getElementById(bid).getAttribute("class") + " KDOWNmath");}
-		else if (/bequals/.test(btnid)) {document.getElementById(bid).setAttribute("class",document.getElementById(bid).getAttribute("class") + " KDOWNeq");}
-		else if (/b(C|CE)/.test(btnid)) {document.getElementById(bid).setAttribute("class",document.getElementById(bid).getAttribute("class") + " KDOWNclr");}
-		else if (/bsign/.test(btnid)) {document.getElementById(bid).setAttribute("class",document.getElementById(bid).getAttribute("class") + " KDOWNsign");}
-	}
-	else {
-		document.getElementById(bid).setAttribute("class",document.getElementById(bid).getAttribute("class") + " KDOWN");
-	}
-	
-	setTimeout(dehighlight,220,btnid);
+	let neonStyle = document.getElementById("class_name").href.includes("neon");
+
+	let btn = document.getElementById(bid);
+
+	btn.className = btn.className + " KDOWN"
+		+ (neonStyle == true ? 
+			(btn.className.includes("clear") ? "clr"
+			:btn.className.includes("math") ? "math"
+			:btn.className.includes("number") ? "num"
+			:btn.id.includes("equals") ? "eq"
+			:btn.id.includes("sign") ? "sign"
+			: "") : "");
+	// Set a timer to take-off the button push
+	setTimeout(dehighlight, 220, bid);
 }
 
 function dehighlight(bid) {
-	var btnid = bid;
-	if (document.getElementById("class_name").href.includes("calc/style1.css")) {
-		if (/b(\d|\.)/.test(btnid)) {document.getElementById(bid).setAttribute("class",document.getElementById(bid).getAttribute("class").replace(" KDOWNnum",""));}
-		else if (/b(plus|minus|times|divide)/.test(btnid)) {document.getElementById(bid).setAttribute("class",document.getElementById(bid).getAttribute("class").replace(" KDOWNmath",""));}
-		else if (/bequals/.test(btnid)) {document.getElementById(bid).setAttribute("class",document.getElementById(bid).getAttribute("class").replace(" KDOWNeq",""));}
-		else if (/b(C|CE)/.test(btnid)) {document.getElementById(bid).setAttribute("class",document.getElementById(bid).getAttribute("class").replace(" KDOWNclr",""));}
-		else if (/bsign/.test(btnid)) {document.getElementById(bid).setAttribute("class",document.getElementById(bid).getAttribute("class").replace(" KDOWNsign",""));}
-	}
-	else {
-		document.getElementById(btnid).setAttribute("class",document.getElementById(btnid).getAttribute("class").replace(" KDOWN",""));	
-	}
+	document.getElementById(bid).setAttribute(
+		"class",
+		document.getElementById(bid).getAttribute("class").replace(
+			/ KDOWN.*/,
+			""
+		)
+	);
 }
 
 function CLEAR(btn) {

@@ -1,0 +1,60 @@
+#calculator {
+	background-color: black;
+	border: 3vmin double darkorange;
+}
+#display {
+	color: black;
+	background-color: cyan;
+	border: 1.3vmin inset white;
+}
+
+#calculator button {
+	color: white;
+	border: 0.8vmin solid #FF00CC;
+	border-radius: 10%;
+	background-color: inherit;
+}
+#numcontainer button:active, #bdot:active, .KDOWNnum {
+	box-shadow: 0px 0px 3vmin 0.5vmin #FF00CC !important;
+	color: black !important;
+	font-weight: bold !important;
+	background-color: #FF00CC !important;
+}
+.operator.clear {
+	border-color: crimson !important;
+	color: Crimson !important;
+}
+.operator.clear:active, .KDOWNclr {
+	border-color: red !important;
+	background-color: red !important;
+	box-shadow: 0px 0px 3vmin 0.5vmin #FF00CC !important;
+	color: white !important;
+}
+
+.operator.math {
+	border-color: DodgerBlue !important;
+}
+.operator.math:active, .KDOWNmath {
+	color: white !important;
+	background-color: DodgerBlue !important;
+	box-shadow: 0px 0px 3vmin 0.5vmin DodgerBlue !important;
+}
+#bequals {
+	border-color: #00ff00 !important;
+	color: #00ff00 !important;
+}
+#bequals:active, .KDOWNeq {
+	background-color: #00ff00 !important;
+	box-shadow: 0px 0px 3vmin 0.5vmin #00ff00 !important;
+	color: black !important;
+}
+
+#bsign {
+	border-color: yellow !important;
+	color: yellow !important;
+}
+#bsign:active, .KDOWNsign {
+	background-color: yellow !important;
+	box-shadow: 0px 0px 3vmin 0.5vmin yellow !important;
+	color: black !important;
+}

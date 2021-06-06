@@ -1,0 +1,100 @@
+#calculator {
+	/* Thanks to CSS-Tricks for guiding how to use this type of technique */
+	background: linear-gradient(
+		90deg, #000033 0%, #000033 54%,transparent 54%) left bottom no-repeat, /* BLUE BOX LENGTH */
+		repeating-linear-gradient(90deg,#b30000 0%,#b30000 7.7%,white 7.7%,white 15.4%/* STRIPES */
+	);
+	background-size: 100% 44%, 100%,100%;
+	border: 1.6vmin solid rgb(25,0,0);
+	font-weight: bold;
+}
+
+#display {
+	color: rgba(0,0,30,.9);
+	background-color: rgba(245, 245, 255, .95);
+	border: 1.2vmin inset rgba(0,0,10,.75);
+}
+#calculator button {
+	border-width: 1vmin;
+	border-color: white;
+	border-radius: 2vmin;
+}
+button:active, .KDOWN {
+	border-style: inset;
+	text-indent: 2px;
+}
+
+#numcontainer {
+	font-weight: normal;
+}
+#numcontainer button {
+	color: black;
+	background: linear-gradient(
+			135deg,rgba(100,100,255,.75) 5%,
+			transparent 40%
+		),
+		rgba(255,255,255,.9);
+}
+.operator.clear {
+	background: linear-gradient(
+		to bottom right, rgba(139, 0, 0,.8), transparent 38%
+		),
+		linear-gradient(
+			to bottom left, rgba(139, 0, 0,.8), transparent 38%
+		),
+		linear-gradient(
+			to top right, rgba(139, 0, 0,.8), transparent 38%
+		),
+		linear-gradient(
+			to top left, rgba(139, 0, 0,.8), transparent 38%
+		),
+		rgba(255,255,255,.85);
+	color: darkred;
+}
+.operator.math {
+	background: linear-gradient(
+			to bottom right, rgba(0,0,30,.8), transparent 50%
+		),
+		linear-gradient(
+			to bottom left, rgba(0,0,30,.8), transparent 38%
+		),
+		linear-gradient(
+			to top right, rgba(0,0,30,.8), transparent 38%
+		),
+		linear-gradient(
+			to top left, rgba(0,0,30,.8), transparent 38%
+		),
+		rgba(255,255,255,.85);
+	color: rgba(0,0,30,.8);
+}
+#bequals {
+	background: linear-gradient(
+			to bottom right, rgba(0, 100, 0, .5), transparent 38%
+		),
+		linear-gradient(to bottom left, rgba(0, 100, 0, .5), transparent 38%
+		),
+		linear-gradient(
+			to top right, rgba(0, 100, 0, .5), transparent 38%
+		),
+		linear-gradient(
+			to top left, rgba(0, 100, 0, .5), transparent 38%
+		),
+		rgba(255,255,255,.85);
+	color: rgba(0, 100, 0, 1);
+}
+#bsign {
+	background: linear-gradient(
+			to bottom right, rgba(218, 165, 32, .7), transparent 38%
+		),
+		linear-gradient(
+			to bottom left, rgba(218, 165, 32, .7), transparent 38%
+		),
+		linear-gradient(
+			to top right, rgba(218, 165, 32, .7), transparent 38%
+		),
+		linear-gradient(
+			to top left, rgba(218, 165, 32, .7), transparent 38%
+		),
+		rgba(255,255,255,.85);
+	color: black;
+}

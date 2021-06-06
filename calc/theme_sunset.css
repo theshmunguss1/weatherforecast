@@ -1,0 +1,83 @@
+#calculator {
+	background: radial-gradient(
+			140% 80% at bottom -4% left 10%,
+			rgba(5, 10, 10,1) 24.5%,
+			rgba(255,255,255,0) 25%
+		), /*Mountain*/
+		radial-gradient(
+			110% 90% at bottom -6% left 35%,
+			rgba(5, 10, 10,1) 24.5%,
+			rgba(255,255,255,0) 25%
+		), /*Mountain*/
+		radial-gradient(
+			160% 80% at bottom 0% left 70%,
+			rgba(5, 10, 10,1) 24.5%,
+			rgba(255,255,255,0) 25%
+		), /*Mountain*/
+		radial-gradient(
+			160% 80% at bottom -2% left 110%,
+			rgba(5, 10, 10,1) 24.5%,
+			rgba(255,255,255,0) 25%
+		), /*Mountain*/
+		linear-gradient(
+			#000033 7%,
+			MidnightBlue 25%,
+			#99ddff 50%,
+			Orange 70%,
+			OrangeRed 80%
+		); /*SKY*/
+	border: 1.5vmin solid rgb(0,0,25);
+}
+
+#display {
+	color: rgba(240, 240, 255, 1);
+	background-color: rgba(255,255,255,0.15);
+	border: 1vmin inset white;
+}
+#calculator button {
+	border-width: 0.8vmin;
+	border-color: white;
+	border-radius: 2.5vmin;
+	font-weight: bold;
+}
+button:active, .KDOWN {
+	text-indent: 2px;
+	border-style: inset;
+}
+#numcontainer button {
+	color: rgba(0, 0, 30, .85);
+	background: radial-gradient(
+		circle,rgba(255,255,255,.4) 10%,
+		rgba(255,255,255,0) 80%
+	);
+}
+.operator.clear, .operator.math {
+	background: linear-gradient(
+		rgba(0,0,0,0) 50%,
+		rgba(255, 0, 0,.4)
+	);
+	color: rgba(245, 245, 255, .95);
+	text-shadow: 0px 0px 2vmin black;
+}
+#bequals {
+	background: linear-gradient(
+		rgba(0,0,0,0) 82%,
+		rgba(0, 255, 0,.4)
+	);
+	color: rgba(245, 245, 255, .95);
+}
+#bsign {
+	background: linear-gradient(rgba(0,0,0,.5) 50%,rgba(255, 255, 255,.4));
+	color: rgba(245, 245, 255, .95);
+}
+
+
+
+
+
+
+
+
+
+
+

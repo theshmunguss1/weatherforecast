@@ -1,0 +1,36 @@
+#calculator {
+	background-color: black;
+	border: 1.6vmin solid rgb(60, 60, 120);
+}
+#display {
+	color: black;
+	background-color: lightgreen;
+	border: 1.3vmin inset white;
+	border-radius: 2.5vmin;
+}
+button:active, .KDOWN {
+	border-style: inset;
+	text-indent: 2px;
+}
+/* Buttons */
+#calculator button {
+	color: DarkSlateGray;
+	border-radius: 1.3vmin;
+	border-width: 0.8vmin;
+	border-color: white;
+	font-weight: bold;
+}
+
+/* Operators */
+#opcontainer {
+}
+.operator.clear {background-color: pink;}
+.operator.math {background-color: LightSlateGrey;}
+
+#bequals {
+	background-color: DarkOliveGreen;
+	color: lightgray !important;
+}
+#bsign {
+	background-color: #AFEEEE;
+}

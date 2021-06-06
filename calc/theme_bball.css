@@ -1,0 +1,32 @@
+#calculator {
+	/* radial-gradient(circle at 50% 50%, transparent 50%, black 50.1%),*/
+	background: linear-gradient(to top right, darkorange 5%, transparent 20%),
+		radial-gradient(circle at 50% 50%, transparent 50%, black 50.1%),
+		radial-gradient(95% 100% at 50% 4%, transparent 37.5%, black 37.6%, black 38.4%, transparent 38.5%),
+		radial-gradient(95% 100% at 50% 96%, transparent 37.5%, black 37.6%, black 38.4%, transparent 38.5%),
+		linear-gradient(to right, transparent 49.5%, black 49.6%, black 50.4%, transparent 50.5%),
+		linear-gradient(to bottom, transparent 49.5%, black 49.6%, black 50.4%, transparent 50.5%),
+		radial-gradient(circle at 50% 50%, darkorange 50%, transparent 50.1%)
+	;
+	border: 1.4vmin solid white;
+}
+
+#display {
+	color: white;
+	background-color: rgba(255,255,255,0.45);
+	border: 1.3vmin inset white;
+}
+#calculator button {
+	font-weight: bold;
+	border-color: white;
+	border-width: 0.8vmin;
+	color: black;
+	border-radius: 2vmin;
+	background:
+		linear-gradient(to bottom left, darkorange, transparent 40%),
+		linear-gradient(to top, rgba(255,255,255,80%),rgba(255,255,255,30%));
+}
+button:active, .KDOWN {
+	text-indent: 2px;
+	border-style: inset;
+}
