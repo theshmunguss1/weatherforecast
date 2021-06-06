@@ -1,0 +1,174 @@
+body {
+	background-color: #141414;
+	color: white;
+}
+
+@media (orientation: landscape) {
+	#container-board {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		width: 90%;
+		margin: 0 auto;
+	}
+	#container-game {
+		width: 80vh;
+		height: 80vh;
+		aspect-ratio: 1 / 1;
+		margin: 0 auto;
+		flex-grow: 5;
+	}
+	#statistics {
+		width: 40%;
+		margin: 0 auto;
+		padding-left: 2em;
+	}
+}
+@media (orientation: portrait) {
+	#container-game {
+		width: 85vw;
+		height: 85vw;
+		margin: 0 auto;
+	}
+	#statistics {
+		width: 100%;
+		text-align: center;
+	}
+}
+
+#container-game {
+	display: flex;
+	position: relative;
+	flex-direction: row;
+	flex-wrap: wrap;
+	max-width: 500px;
+	max-height: 500px;
+	background-color: black;
+	border: 5vmin ridge white;
+	border-radius: 28%;
+	box-shadow: 0px 0px 2em black;
+}
+
+[id*="light"] {
+	display: none;
+	transform: translate(-50%, -50%);
+	position: absolute;
+	top: 7.5%;
+	left: 50%;
+	width: 2.5%;
+	height: 2.5%;
+	border-radius: 50%;
+}
+#light-sequence {
+	background-color: red;
+	box-shadow: 0px 0px 3vmin 1.5vmin red;
+}
+#light-respond {
+	background-color: limegreen;
+	box-shadow: 0px 0px 3vmin 1.5vmin limegreen;
+}
+
+#button-ul {background-color: yellow;}
+#button-ur {background-color: crimson;}
+#button-ll {background-color: cornflowerblue;}
+#button-lr {background-color: #FFCC99;}
+
+#container-game > button {
+	width: 35%;
+	height: 35%;
+	font-size: 2em;
+	color: rgba(0,0,0, 30%);
+	font-weight: bold;
+	border-color: white;
+	border-style: outset;
+	border-radius: 50%;
+	margin: auto auto;
+	outline: none;
+	user-select: none;
+}
+
+#title {
+	position:absolute;
+	top: 50%;
+	left: 50%;
+	font-family: sans-serif;
+	width: 100%;
+	font-size: 0.8em;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	font-weight: bold;
+	color: white;
+	user-select: none;
+}
+
+/* Start Button */
+#start {
+	font-size: 1.4em;
+}
+
+#statistics {
+	margin-top: 1em;
+}
+#statistics span {
+	color: yellow;
+	font-weight: bold;
+	font-size: 2em;
+	margin-right: 1em;
+}
+
+#description {
+	color:white;
+	width:85%;
+	text-align: justify;
+	margin: auto;
+}
+
+#container-sound > div {
+	text-decoration: underline;
+}
+
+/* SOUND LABELS */
+label {
+	font-family: sans-serif;
+	margin: 0 auto;
+}
+
+input[type="radio"] {
+	transform: scale(3);
+	margin: 2em 1.5em;
+	user-select: none;
+	outline: none;
+}
+
+audio {display: none;}
+
+kbd {
+	background-color: white;
+	color: black;
+	font-family: sans-serif;
+	font-weight: bold;
+	padding-left: 0.40em;
+	padding-right: 0.2em;
+	text-align: center;
+	box-shadow: inset 1.5px 0px 0px 2px lightgray;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

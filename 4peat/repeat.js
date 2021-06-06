@@ -1,68 +1,214 @@
-var s;
-ULcolor=["Yellow","#ffec80"];
-URcolor=["Crimson","Red"];
-LLcolor=["CornflowerBlue","Cyan"];
-LRcolor=["#FFCC99","#FF7F50"];
-v="";
-n="";
-winqty=0;
-seq_choice=0;
-seq_array=[];
-roundnum=0;
-seq_index=0;
-chc_array=[];
-chc_index=0;
-roundwin=false;
-no_input=true;
-record=0;
-newGame=document.getElementById("start");
-ongoing_game=false;
+// Factory functions to be absorbed by game
+function activate(event=null, sim=false) {
+	// event = null is given here to represent a placeholder as it can be
+	// 	called with an event; to preserve the value of sim (thats the intent)
+	if (game.buttonsDisabled == false || sim == true) {
+		this.style.backgroundColor = this.getAttribute("data-active");
+		this.style.border = "none";
+		this.style.boxShadow = `0px 0px 1em 0.25em ${this.getAttribute("data-active")}`;
+		this.style.color = "transparent";
+		button_click(this, sim);
+	}
+}
 
-newGame.addEventListener("click",sequence);
+function deactivate() {
+	this.style.backgroundColor = this.getAttribute("data-inactive");
+	this.style.borderStyle = "outset";
+	this.style.boxShadow = "none";
+	this.style.color = "rgba(0,0,0, 30%)";
+}
+
+// Game properties
+class GameProperties {
+	constructor() {
+		this.ul = document.getElementById("button-ul");
+		this.ur = document.getElementById("button-ur");
+		this.ll = document.getElementById("button-ll");
+		this.lr = document.getElementById("button-lr");
+		this.wrong = document.getElementById("wrong-sound");
+		this.newGame = document.getElementById("start");
+		this.started = false;
+		this.buttonsDisabled = true;
+		this.sequence = [];
+		this.guesses = [];
+		this.correct = 0;
+		this.record = 0;
+		// setup other methods
+		this.setupExtras();
+	}
+
+	setupExtras() {
+		for (let btn of ["ul", "ur", "ll", "lr"]) {
+			// Index (for association of element to a number)
+			this[btn].number = ["ul", "ur", "ll", "lr"].indexOf(btn) + 1;
+			// Sound access
+			this[btn].sound = document.getElementById(this[btn].id + "-sound");
+			// Activate/Deactivate
+			this[btn].activate = activate.bind(this[btn]);
+			this[btn].deactivate = deactivate.bind(this[btn]);
+			// Add Listeners
+			this[btn].onpointerdown = this[btn].activate;
+			this[btn].onpointerup = this[btn].deactivate;
+		}
+	}
+
+	// Button Aliases
+	get btn1() {return this.ul}
+	get btn2() {return this.ur}
+	get btn3() {return this.ll}
+	get btn4() {return this.lr}
+};
+
+let game = new GameProperties();
+let roundsWon = document.getElementById("rounds-won");
+let newRecord = document.getElementById("new-record");
+let indicator = document.getElementById("indicator");
+let lightSequence = document.getElementById("light-sequence");
+let lightRespond = document.getElementById("light-respond");
+let soundOn = document.getElementById("sound-on");
+
+// Keyboard Listeners
+document.addEventListener("keydown", kbcontrol);
+document.addEventListener("keyup", kbcontrol);
+
+function soundToggle(bool) {
+	for (element of [game.ul.sound, game.ur.sound, game.ll.sound, game.lr.sound, game.wrong]) {
+		element.muted = (bool == 1) ? false : true;
+	}
+}
+
+function reset() {
+	game.buttonsDisabled = true;
+	game.sequence = [];
+	game.guesses = [];
+	game.correct = 0;
+	game.started = false;
+	game.newGame.style.visibility = "visible";
+}
+
+function start_new_game() {
+	game.started = true;
+	indicator.innerHTML = "&nbsp;";
+	roundsWon.innerText = game.correct;
+	// Hide start game button
+	game.newGame.style.visibility = "hidden";
+	soundToggle(soundOn.checked);
+	// Initiate sequencing
+	addToSequence();
+}
 
 function kbcontrol() {
-	//console.log(event.keyCode);
-	if (event.keyCode == 81) {buttonclick(1,"UL_Button");}
-	else if (/[Ee]/.test(event.key)) {buttonclick(2,"UR_Button");}
-	else if (event.keyCode == 65) {buttonclick(3,"LL_Button");}
-	else if (event.keyCode == 68) {buttonclick(4,"LR_Button");}
+	event.stopImmediatePropagation();
+	// console.log(((event.type.includes("down")) ? "" : "de") + "activate");
+	if (event.key.toLowerCase() == "q") {
+		game.ul[((event.type.includes("down")) ? "" : "de") + "activate"]();
+	}
+	if (event.key.toLowerCase() == "e") {
+		game.ur[((event.type.includes("down")) ? "" : "de") + "activate"]();
+	}
+	if (event.key.toLowerCase() == "a") {
+		game.ll[((event.type.includes("down")) ? "" : "de") + "activate"]();
+	}
+	if (event.key.toLowerCase() == "d") {
+		game.lr[((event.type.includes("down")) ? "" : "de") + "activate"]();
+	}
+	// Start new game (when applicable)
+	if (event.key.toLowerCase() == "s") {
+		if (game.started == false) {
+			game.newGame.click();
+		}
+	}
 }
 
-function sequence(){
-	document.getElementById("snd").muted = false;
-	ongoing_game = true;
-	newGame.removeEventListener("click",sequence);
-	newGame.style.visibility = "hidden";
-	document.getElementById("indicator").innerHTML = "ROUND # "+parseInt(winqty+1)+" ... Watch and Listen!";
-	seq_choice = Math.floor(1+4*Math.random());
-	seq_array.push(seq_choice);
-	no_input = true;
-	s = setInterval(seq_display,580)
+function button_click(element, simulated=false) {
+	try {
+		event.preventDefault();
+	} catch (error) {
+		// This error only occurs when this function not called by an event
+	};
+	// play button sound
+	element.sound.play();
+	// if the user initiated the press
+	if (simulated == false) {
+		game.guesses.push(element.number);
+		correct = check_guess(
+			game.guesses.length-1,
+			game.guesses[game.guesses.length-1]
+		);
+		// Correct guess!
+		if (correct) {
+			// if quantity of guesses match sequence length, call new num
+			if (game.guesses.length == game.sequence.length) {
+				game.guesses = [];
+				game.correct += 1;
+				
+				game.record += (game.correct > game.record) ? 1 : 0;
+				// Set displays to reflect numbers
+				roundsWon.innerText = game.correct;
+				newRecord.innerText = game.record;
+				// Turn off recognizance of button presses
+				game.buttonsDisabled = true;
+				// Wait 1 second and call a new number
+				setTimeout(
+					addToSequence,
+					1000
+				);
+			}
+		}
+		// Game over
+		else {
+			setTimeout(
+				playEndSound => {
+					game.wrong.play();
+					lightRespond.style.display = "none";
+					lightSequence.style.display = "none";
+				},
+				200
+			);
+			indicator.innerHTML = "GAME OVER!";
+			reset();
+		}
+	}
 }
 
-function seq_display(){
-	seq_index<=seq_array.length-1?(1==seq_array[seq_index]?(v=1,n="UL_Button"):2==seq_array[seq_index]?(v=2,n="UR_Button"):3==seq_array[seq_index]?(v=3,n="LL_Button"):(v=4,n="LR_Button"),seq_index+=1,highlight()):(clearInterval(s),no_input=false,document.getElementById("indicator").innerHTML="GO!...")
+function check_guess(index, guess) {
+	// right
+	if (game.guesses[index] == game.sequence[index]) {return true;}
+	// wrong
+	else {return false;}
 }
 
-function buttonclick(e,t){
-	1==no_input||(v=e,n=t,highlight(),chc_array.push(e),check())
-}
+function addToSequence() {
+	let n = 1 + Math.floor(Math.random() * 4);
+	game.sequence.push(n);
+	lightRespond.style.display = "none";
+	lightSequence.style.display = "block";
+	timeoutChain();
+} 
 
-
-function check(){
-	chc_index<=seq_array.length-1&&(chc_array[chc_index]==seq_array[chc_index]?chc_index==seq_array.length-1?endgame(roundwin=true):chc_index+=1:(endgame(roundwin=false),sound("4peat/snd_wrong.wav")))
-}
-
-function endgame(e){
-	1==e?(document.getElementById("indicator").innerHTML="YOU WON THAT ROUND!",(winqty+=1)>record&&(record=winqty,document.getElementById("NEW_RECORD").innerHTML=record),setTimeout(sequence,2e3)):(document.getElementById("indicator").innerHTML="WRONG BUTTON! GAME OVER! TRY AGAIN!",winqty=0,seq_array=[],ongoinggame=false,newGame.addEventListener("click",sequence),newGame.style.visibility="visible"),chc_array=[],no_input=true,seq_index=0,chc_index=0,document.getElementById("rounds_won").innerHTML=winqty
-}
-
-function highlight(){
-	1==v?(document.getElementById(n).style.backgroundColor=ULcolor[1],document.getElementById(n).style.boxShadow="0px 0px 50px "+ULcolor[1],sound("4peat/snd_ylw.wav")):2==v?(document.getElementById(n).style.backgroundColor=URcolor[1],document.getElementById(n).style.boxShadow="0px 0px 50px "+URcolor[1],sound("4peat/snd_red.wav")):3==v?(document.getElementById(n).style.backgroundColor=LLcolor[1],document.getElementById(n).style.boxShadow="0px 0px 50px "+LLcolor[1],sound("4peat/snd_blu.wav")):(document.getElementById(n).style.backgroundColor=LRcolor[1],document.getElementById(n).style.boxShadow="0px 0px 50px "+LRcolor[1],sound("4peat/snd_orange.wav")),document.getElementById(n).style.border="1px solid gray",document.getElementById(n).style.color=document.getElementById(n).style.backgroundColor,setTimeout(dehighlight,180)
-}
-
-function sound(e){document.getElementById("snd").src = e;}
-
-function dehighlight(){
-	document.getElementById(n).style.backgroundColor=1==v?ULcolor[0]:2==v?URcolor[0]:3==v?LLcolor[0]:LRcolor[0],document.getElementById(n).style.boxShadow="0px 0px 30px black",document.getElementById(n).style.border="2px solid black",document.getElementById(n).style.color="black"
+function timeoutChain(i=0) {
+	setTimeout(
+		indexOn => {
+			game["btn" + game.sequence[i]].activate(null, sim=true);
+			setTimeout(
+				indexOff => {
+					game["btn" + game.sequence[i]].deactivate();
+					// Setup next in sequence
+					if (i+1 < game.sequence.length) {
+						timeoutChain(i+1);
+					}
+					// If the end has been reached, allow user input
+					else {
+						game.buttonsDisabled = false;
+						lightSequence.style.display = "none";
+						lightRespond.style.display = "block";
+					}					
+				},
+				200,
+				i
+			);
+		},
+		580,
+		i
+	)
 }
