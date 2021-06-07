@@ -1,3 +1,9 @@
+body {
+	background-color: #333333;
+	margin-bottom: 4%;
+	color: white;
+}
+
 .theme {font-size: 1.5em;}
 
 /* landscape*/
@@ -223,6 +229,9 @@
 	width: 90%;
 	margin: 0 auto;
 }
+#keyboardcontrols li {
+	margin: 0.2em 0;
+}
 
 #about {
 	margin: 0 auto;
@@ -230,11 +239,11 @@
 }
 
 kbd {
-	padding-left: 5px;
+	padding-left: 4.8px;
 	padding-right: 3px;
 	background-color: white;
-	border-left: 2px solid gray;
-	border-bottom: 2px solid gray;
+	border-left: 3px solid rgba(0,0,0, 30%);
+	border-bottom: 3px solid rgba(0,0,0, 40%);
 	color: black;
 }
 

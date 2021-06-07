@@ -12,35 +12,40 @@ function changetheme(s) {
 }
 
 function kbcontrols() {
-	// console.log(event);
+	// Space key messes with event communication for some reason; this block
+	//		prevents defaultscrolling feature and returns null since " "
+	// 		matches false and as such matches the number 0
+	if (event.key.toLowerCase() == " ") {
+		event.preventDefault();
+		return null;
+	}
 
 	// BACKSPACE PRESSED
-	if (event.key.toLowerCase().includes("backspace")) {
+	if (event.key.toLowerCase() == "backspace") {
 		// Thanks to https://stackoverflow.com/questions/6309693/how-can-i-disabling-backspace-key-press-on-all-browsers for making me aware of the preventDefault method
 		event.preventDefault();
 		if (event.shiftKey) {CLEAR("CE"); highlight("bCE");}
 		else {CLEAR("C"); highlight("bC");}
 	}
 	// NUMBERS
-	else if (event.key.includes("1")) {numberpress(1); highlight("b1");}
-	else if (event.key.includes("2")) {numberpress(2); highlight("b2");}
-	else if (event.key.includes("3")) {numberpress(3); highlight("b3");}
-	else if (event.key.includes("4")) {numberpress(4); highlight("b4");}
-	else if (event.key.includes("5")) {numberpress(5); highlight("b5");}
-	else if (event.key.includes("6")) {numberpress(6); highlight("b6");}
-	else if (event.key.includes("7")) {numberpress(7); highlight("b7");}
-	else if (event.key.includes("8")) {numberpress(8); highlight("b8");}
-	else if (event.key.includes("9")) {numberpress(9); highlight("b9");}
-	else if (event.key.includes("0")) {numberpress(0); highlight("b0");}
+	else if (event.key == 1) {numberpress(1); highlight("b1");}
+	else if (event.key == 2) {numberpress(2); highlight("b2");}
+	else if (event.key == 3) {numberpress(3); highlight("b3");}
+	else if (event.key == 4) {numberpress(4); highlight("b4");}
+	else if (event.key == 5) {numberpress(5); highlight("b5");}
+	else if (event.key == 6) {numberpress(6); highlight("b6");}
+	else if (event.key == 7) {numberpress(7); highlight("b7");}
+	else if (event.key == 8) {numberpress(8); highlight("b8");}
+	else if (event.key == 9) {numberpress(9); highlight("b9");}
+	else if (event.key == 0) {numberpress(0); highlight("b0");}
 	// OPERATORS
-	else if (event.key.includes("+")) {mathpress('+'); highlight("bplus");}
-	else if (event.key.includes("-")) {mathpress('-'); highlight("bminus");}
-	else if (event.key.includes("*") || event.key.toLowerCase() == "x") {mathpress('*'); highlight("btimes");}
-	else if (event.key.includes("/")) {mathpress('/'); highlight("bdivide");}
-	else if (
-		event.key.includes("=")
-		|| event.key.toLowerCase().includes("enter")
-	) {equals(); highlight("bequals");}
+	else if (event.key == "+") {mathpress('+'); highlight("bplus");}
+	else if (event.key == "-") {mathpress('-'); highlight("bminus");}
+	else if (event.key == "*" || event.key.toLowerCase() == "x") {mathpress('*'); highlight("btimes");}
+	else if (event.key == "/") {mathpress('/'); highlight("bdivide");}
+	else if (event.key == "=" || event.key.toLowerCase().includes("enter")) {
+		equals(); highlight("bequals");
+	}
 	// Special
 	else if (event.key.includes("_")) {signpress(); highlight("bsign");}
 	else if (event.key.includes(".")) {dotpress(); highlight("bdot");}
