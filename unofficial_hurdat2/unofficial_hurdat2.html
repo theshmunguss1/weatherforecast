@@ -18,8 +18,35 @@
 		<div class="disclaimer">
 			<p style="color:pink;text-align: center;">* This page is <u>NOT</u> endorsed nor supported by NOAA or its subsidiaries, including the National Hurricane Center. *</p>
 
-			<p style="text-align:center;"><span style="color:yellow;">* Updated 14 JUN 2021.</span>
+			<p style="text-align:center;">
+				<span style="color:yellow;">* Updated 15 JUN 2021.</span>
+			</p>
 		</div>
+		<!-- <div id="year-switch"> -->
+			<!-- <label> -->
+				<!-- <input type="radio" name="switch" value="2021" checked onClick="chg_year(this.value)" /> 2021 -->
+			<!-- </label> -->
+			<!-- <label> -->
+				<!-- <input type="radio" name="switch" value="2020" onClick="chg_year(this.value)" /> 2020 -->
+			<!-- </label> -->
+		<!-- </div> -->
+		<div id="codeblock">
+			<pre><code id="codecontainer">
+
+			</code></pre>
+		</div>
+		<!-- <div id="codeblock_2020" style="display:none;"> -->
+			<!-- <pre><code id="codecontainer_2020"> -->
+
+			<!-- </code></pre> -->
+		<!-- </div> -->
+		<div class="disclaimer" style="text-align:center;">
+			<p>* Information presented here is retrieved from current-season 'best-track' (<a href="https://ftp.nhc.noaa.gov/atcf/btk/">https://ftp.nhc.noaa.gov/atcf/btk/</a>) data. Because landfall-data are not recorded in the best-track data, they are compiled using the advisory archive (<a href="https://ftp.nhc.noaa.gov/atcf/adv">https://ftp.nhc.noaa.gov/atcf/adv</a>) and GIS software.</p>
+			<p>For such landfall data, wind-extent information is currently not included. As such, 'null' space-fillers (-999) are used where applicable.</p>
+			<p>Precision is not the aim of landfall inclusion (especially the interpolated ones) but were pursued to provide homogeneity and temporary inclusion with the <a href="https://www.nhc.noaa.gov/data/#hurdat">official HURDAT2 record</a>. The official record is usually updated during the Spring of each year, prior to the start of Hurricane Season.</p>
+			<p>* Below you'll find some stats and ranks for the current and other season(s). The stats are valid thru the dates listed.</p>
+		</div>
+		<!-- SEASON STATS -->
 		<div id="year-switch">
 			<label>
 				<input type="radio" name="switch" value="2021" checked onClick="chg_year(this.value)" /> 2021
@@ -28,23 +55,6 @@
 				<input type="radio" name="switch" value="2020" onClick="chg_year(this.value)" /> 2020
 			</label>
 		</div>
-		<div id="codeblock">
-			<pre><code id="codecontainer">
-
-			</code></pre>
-		</div>
-		<div id="codeblock_2020" style="display:none;">
-			<pre><code id="codecontainer_2020">
-
-			</code></pre>
-		</div>
-		<div class="disclaimer" style="text-align:center;">
-			<p>* Information presented here is retrieved from current-season 'best-track' (<a href="https://ftp.nhc.noaa.gov/atcf/btk/">https://ftp.nhc.noaa.gov/atcf/btk/</a>) data. Because landfall-data are not recorded in the best-track data, they are compiled using the advisory archive (<a href="https://ftp.nhc.noaa.gov/atcf/adv">https://ftp.nhc.noaa.gov/atcf/adv</a>) and GIS software.</p>
-			<p>For such landfall data, wind-extent information is currently not included. As such, 'null' space-fillers (-999) are used where applicable.</p>
-			<p>Precision is not the aim of landfall inclusion (especially the interpolated ones) but were pursued to provide homogeneity and temporary inclusion with the <a href="https://www.nhc.noaa.gov/data/#hurdat">official HURDAT2 record</a>. The official record is usually updated during the Spring of each year, prior to the start of Hurricane Season.</p>
-			<p>* Below you'll find some info for the current season with ranks, through the date listed.</p>
-		</div>
-		<!-- SEASON STATS -->
 		<div id="seasonblock">
 			<pre><code id="seasoncontainer">
 

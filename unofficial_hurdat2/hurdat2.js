@@ -12,10 +12,10 @@ function load_data() {
 }
 
 function load_2020() {
-	// LOAD HURDAT2 DATA FROM FILE
+/* 	// LOAD HURDAT2 DATA FROM FILE
 	fetch("unofficial_hurdat2/hurdat2_2020.dat")
 		.then(resp => resp.text())
-		.then(txt => {document.getElementById("codecontainer_2020").innerHTML = txt;});
+		.then(txt => {document.getElementById("codecontainer_2020").innerHTML = txt;}); */
 	// LOAD 2020 SEASON DATA FROM FILE
 	fetch("unofficial_hurdat2/season_stats_2020.dat")
 		.then(resp => resp.text())
@@ -24,11 +24,11 @@ function load_2020() {
 
 function chg_year(yr) {
 	let y2021 = [
-		document.getElementById("codeblock"),
+		// document.getElementById("codeblock"),
 		document.getElementById("seasonblock")
 	];
 	let y2020 = [
-		document.getElementById("codeblock_2020"),
+		// document.getElementById("codeblock_2020"),
 		document.getElementById("seasonblock_2020")
 	];
 
