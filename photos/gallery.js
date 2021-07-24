@@ -188,11 +188,18 @@ album = {2012:[
 		],
 		2020:[
 			{"src":"photos/2020/0213_sundog.jpg","desc":"02/13/2020 - Encountered a nice sundog during an evening walk. Enhancement hinted at an upper tangent arc"},
+			{"src":"photos/2020/0609_convection.jpg","desc":"06/09/2020 - Beautiful convection blew-up this evening; line to the east, moving northward. A very-faint rainbow made a cameo in this shot."},
+			{"src":"photos/2020/0609_convection.mp4","desc":"06/09/2020 - (time-lapse of ~30 minutes of video) Beautiful convection blew-up this evening; line to the east, moving northward."},
 			{"src":"photos/2020/0710-panorama.jpg","desc":"07/10/2020 - Developing shelf-cloud from an approaching storm; looking SSE. Some strong winds were evident as there was some fast-moving scud just above the surface. These strong winds didn't reach the surface or dissipated quickly due to friction."},
 			{"src":"photos/2020/0710_lightning_clip.mp4","desc":"07/10/2020 - Post-storm lightning video capture; looking ESE."},
 			{"src":"photos/2020/0724_lightning_clip.mp4","desc":"07/24/2020 - This storm developed after sunset I think. It had some really nice lightning with it. This is a combined clip of 3 of those strikes. Anvil crawling evident too. They were spaced by variable amounts of time (I video-time-lapsed for -/+ 40 minutes or so). This storm matured and dissipated a little to the WSW."},
 			{"src":"photos/2020/0829_redspider.jpg","desc":"08/29/2020 - Very tiny red spider. Searching for it makes me think it is a <a href='https://en.wikipedia.org/wiki/Blacktailed_red_sheetweaver' target='_blank'>Black-tailed Red Sheetweaver</a> I'd never seen one of these before. It set-up its silk-hammock in a hanging-planter."},
 			{"src":"photos/2020/0903_catepillar.jpg","desc":"09/03/2020 - Beautiful caterpillar; the tobacco hornworm. I didn't know what it was, so I looked it up. <a href='http://entnemdept.ufl.edu/creatures/field/tobacco_hornworm.htm' target='_blank'>Here's the link</a>. I was quite pleased with how my camera did in macro mode here. That's a tomato plant it is munching on in the left panel."},
+		],
+		2021: [
+			{"src":"photos/2021/0409_supercell.jpg","desc":"04/09/2021 - A weak supercell (but very-strong for us) approached from the WNW. This is looking toward the storm, with a prominent hail-core on the right. Though not in the photo, very-evident turquoise hue from the hail-core was in the clouds. Of note, the cloud-feature in the middle of the photo, though appearing to wrap around behind the hail core, actually was in front of it. I just wanted to mention that it wasn't part of any recognizable mesocyclone. The NWS did briefly issue a Tornado Warning for this storm, but it primarily was notable for its abundance of pea-size to dime-sized hail."},
+			{"src":"photos/2021/0512_bunny.jpg","desc":"05/12/2021 - Well, a decent-sized family of rabbits have made themselves cozy in the backyard this year."},
+			{"src":"photos/2021/0612_spider.jpg","desc":"06/12/2021 - Monster-sized spider in the basement. I've seen them down there multiple times. Called a 'Dark Fishing Spider', or something like that."},
 		]
 	}
 
