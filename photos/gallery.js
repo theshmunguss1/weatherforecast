@@ -78,13 +78,18 @@ function chgsrc(dir) {
 album = {2012:[
 			{"src":"photos/2012/2003_0701_shelf.jpg","desc":"07/01/2003 - Ominous Shelf Cloud. This was my first shelfie. It was a beautiful day, and we were on our way back from a trip from Hanging Rock. We were met by this storm and mean-looking shelf. I was so novice at the time I thought it was a wall cloud (associated with a tornadic storm; I always thought the worst), but no, just a shelf-cloud. Impressive gusty winds and heavy rain underneath."},
 			{"src":"photos/2012/2003_sunset1.jpg","desc":"~ 2003 - Sunset"},
+			{"src":"photos/2012/2003_sunset2.jpg","desc":"~ 2003 - Sunset"},
 			{"src":"photos/2012/2005_thunderhead.jpg","desc":"Summer 2005 - Thunderhead. I had just upgraded my camera and was tinkering with it when I was told to look outside. This storm wasn't very strong, but looked cool. It was occurring over Yadkinville, NC."},
 			{"src":"photos/2012/2006_afternoon_moon.jpg","desc":"~ 2006 - Waxing Gibbous in the Evening. I took this while testing out a zoom lens that I got that somewhat worked with my Camera."},
 			{"src":"photos/2012/2006_winter_sunset.jpg","desc":"Unknown - Sunset in the Winter (I believe)."},
 			{"src":"photos/2012/2008_1024_pileus.jpg","desc":"10/2008 - Amazing Cap Cloud. At the time I didn't know what I was looking at other than it was a &quot;cool cloud.&quot; Taken from a plane, not sure where we were during the time. And it could be a wildfire underneath, but I'm pretty sure it was a thunderstorm."},
 			{"src":"photos/2012/2008_pilot_knob.jpg","desc":"~ 2008 - Pilot Knob of Pilot Mountain, NC. In the back are Sauratown Mountain and Hanging Rock, respectively."},
+			{"src":"photos/2012/2010_0325_tree.jpg","desc":"03/25/2010 - Early-spring blooming on a cold but peaceful day in Nauvoo, IL."},
 			{"src":"photos/2012/2010_0615_whalesmouth.jpg","desc":"06/15/2010 - Being devoured by the whale's mouth."},
 			{"src":"photos/2012/2011_0503_whalesmouth.jpg","desc":"05/03/2011 - Another whales mouth/shelf-cloud passage (taken from the same place as the 2010 one, ironically), but not as turbulent"},
+			{"src":"photos/2012/2012_0621_seagull.jpg","desc":"06/21/2012 - Sea Gull at Myrtle Beach."},
+			{"src":"photos/2012/2012_0622_beachsunrise0.jpg","desc":"06/22/2012 - Myrtle Beach Dawn/Twilight"},
+			{"src":"photos/2012/2012_0622_beachsunrise0a.jpg","desc":"06/22/2012 - While waiting on the sunrise, I used someone's lost sandal from the day before as a photo opportunity."},
 			{"src":"photos/2012/2012_0622_beachsunrise1.jpg","desc":"06/22/2012 - Myrtle Beach Sunrise"},
 			{"src":"photos/2012/2012_0622_beachsunrise2.jpg","desc":"06/22/2012 - Myrtle Beach Sunrise"},
 			{"src":"photos/2012/2012_0708_tstorm.jpg","desc":"07/08/2012 - Thunderstorm over SW Va."}
