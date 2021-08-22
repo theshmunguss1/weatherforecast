@@ -9,11 +9,11 @@
 }
 td, .KUP {
 	border-radius: 10px;
-	border: 3px outset white;
+	border-style: 3px outset;
 	text-indent: 0px;
 }
-td:active, .KDOWN {
-	border: 3px inset white;
+.KDOWN {
+	border-style: inset;
 	text-indent: 2px;
 }
 table {
@@ -22,122 +22,39 @@ table {
 }
 table#numcontainer {font-weight: bold;}
 td.number, td.operator.dot {background-color: LightGray;}
-table#opcontainer {}
-td.operator.clear {background-color: pink;}
-td.operator.math {background-color: LightSlateGrey;}
-table#opextra {}
-td.operator.equals {
-	background-color:DarkOliveGreen;
-	color:lightgray;
-}
-td.operator.plusminus {background-color:#AFEEEE;}
 
-/* OLD CSS BELOW */
-
-.calcCASING {
-position: relative;
-background-color:black;
-height: 500px;
-width: 400px;
-border: 5px solid rgb(60, 60, 120);
-border-radius: 8%;
-box-shadow: 0px 0px 30px black;
-font-family:arial;
-display: inline-block;
+/* Buttons */
+#calculator button {
+	color: DarkSlateGray;
+	border-color: white;
+	border-radius: 0.3em 0.3em;
+	font-size: 1.8em;
+	font-weight: bold;
 }
 
-.calcDISPLAY {
-position: absolute;
-transform: translate(-50%,-50%);
-left: 50%;
-top: 12%;
-height: 15%;
-width: 90%;
-color:black;
-margin-left: auto;
-margin-right: auto;
-background-color: lightgreen;
-border: 6px inset white;
-border-radius:10%;
-display: inline-block;
+/* Operators */
+#opcontainer {
+}
+.operator.clear {background-color: pink;}
+.operator.math {background-color: LightSlateGrey;}
+
+#bequals {
+	background-color: DarkOliveGreen;
+	color: lightgray !important;
+}
+#bsign {
+	background-color: #AFEEEE;
 }
 
-.calcDISPLAYFONT {
-font-size: 46px;
-font-weight: bold;
-display: inline-block;
-}
 
-.calcNUMBERBUTTON {
-position: absolute;
-color: DarkSlateGray;
-border-radius:10%;
-height:13%;
-width:20%;
-text-align: center;
-font-weight: bold;
-font-size: 45px;
-background-color:LightGray;
-display: inline-block;
-transform:translate(-50%,-50%);
-outline: none;
-}
 
-.calcOPBUTTON {
-position: absolute;
-height: 10%;
-width: 20%;
-border-radius:10%;
-color: DarkSlateGray;
-text-align: center;
-font-weight: bold;
-font-size: 45px;
-background-color:LightSlateGrey;
-transform: translate(-50%,-50%);
-display: inline-block;
-outline: none;
-}
 
-.calcCLRBUTTON {
-position: absolute;
-height: 10%;
-width: 20%;
-border-radius:10%;
-color: DarkSlateGray;
-background-color:LightSalmon;
-font-size:32px;
-font-weight: bold;
-transform: translate(-50%,-50%);
-display: inline-block;
-outline: none;
-}
 
-.calcEQLBUTTON {
-position: absolute;
-height:22%;
-width:20%;
-border-radius:10%;
-background-color:DarkOliveGreen;
-color:lightgray;	
-text-align: center;
-font-weight: bold;
-font-size: 45px;
-display: inline-block;
-transform:translate(-50%,-50%);
-outline: none;
-}
 
-.calcSPECBUTTON {
-position: absolute;
-background-color:#AFEEEE;
-color: DarkSlateGray;
-height: 10%;
-width: 20%;
-border-radius:10%;
-text-align: center;
-font-weight: bold;
-font-size: 32px;
-display: inline-block;
-transform:translate(-50%,-50%);
-outline: none;
-}
+
+
+
+
+
+
+
