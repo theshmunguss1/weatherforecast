@@ -114,12 +114,37 @@ body {
 	height: 20%;
 	text-align: center;
 	font-weight: bold;
+	font-size: 3vmin;
 	color: rgba(255,255,255,65%);
 	user-select: none;
 	cursor: pointer;
 }
+
+
+
+
+
+
 .DESC {
 	margin: 0 auto;
 	color: white;
 	width: 85%;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

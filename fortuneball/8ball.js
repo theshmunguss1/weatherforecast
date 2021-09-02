@@ -20,6 +20,7 @@ var responses = [
 	"Do<br />Spiders<br />Bark?",
 	"Affirmative.",
 	"YEP!",
+	"Umm...<br />No.",
 	"Better<br />Odds In<br />Vegas.",
 	"Can't<br />predict<br />now",
 	"Seems<br />Probable"
@@ -28,15 +29,12 @@ var responses = [
 var triangle = document.getElementById("triangle");
 var answer = document.getElementById("response");
 var b = document.getElementById("ball");
-var answerO = 0;
+var answerOpacity = 0;
 var alreadyAsked = false;
 var question = document.getElementById("question");
 
 // Add keyboard event listener for ENTER
-question.addEventListener(
-	"keydown",
-	enter_pressed
-);
+question.addEventListener("keydown", enter_pressed);
 
 function enter_pressed(event) {
 	//console.log(event);
@@ -52,34 +50,29 @@ function ask() {
 	if (alreadyAsked == false) {
 		alreadyAsked = true;
 		answer.innerHTML = "";
-		answerO = 0;
-		answer.style.opacity = `${answerO}%`;
-		triangle.style.opacity = `${answerO}%`;
+		answerOpacity = 0;
+		answer.style.opacity = `${answerOpacity}%`;
+		triangle.style.opacity = `${answerOpacity}%`;
 		var time = 100;
 		if (question.value.length >= 1 && question.value.substr(question.value.length-1) != "?") {
 			question.value += "?";
 		}
-		setTimeout(shakeleft,time);
-		setTimeout(shakeright,time*2);
-		setTimeout(shakeleft,time*3);
-		setTimeout(shakeright,time*4);
-		setTimeout(shakeleft,time*5);
-		setTimeout(shakeright,time*6);
-		setTimeout(shakeleft,time*7);
-		setTimeout(shakeright,time*8);
-		setTimeout(shakeleft,time*9);
-		setTimeout(shakeright,time*10);
-		setTimeout(display,time*10);
+		for (i=1;i<=10;i++) {
+			setTimeout(
+				  i % 2 == 1 ? shakeleft
+				: i % 2 == 0 && i != 10 ? shakeright
+				: display,
+				time * i
+			);
+		}
 	}
 }
 function shakeleft() {
 	b.style.left = "45%";
-	return 0;
 }
 
 function shakeright() {
 	b.style.left = "55%";
-	return 0;
 }
 
 // document.getElementById("description").addEventListener(
@@ -88,17 +81,27 @@ function shakeright() {
 // );
 
 
+function r(min=0, max=24) {
+	let rnum = min + Math.floor(
+		Math.random() * ((max+1) - min)
+	);
+	console.log(rnum);
+}
+
+
 function display() {
-	var x = Math.floor(Math.random() * (responses.length + 1));
-	b.style.left = "50%";
+	var x = 0 + Math.floor(Math.random() * responses.length);
+	// console.log(x, responses[x]);
+	b.style.left = "50%"; 	// Re-center image
 	answer.innerHTML = responses[x]; //Displays random response
 	rvlanswer = setInterval(reveal,80);
 }
+
 function reveal() {
-	answerO += 10;
-	triangle.style.opacity = `${answerO}%`;
-	answer.style.opacity = `${answerO}%`;
-	if (answerO == 100) {
+	answerOpacity += 10;
+	triangle.style.opacity = `${answerOpacity}%`;
+	answer.style.opacity = `${answerOpacity}%`;
+	if (answerOpacity == 100) {
 		clearInterval(rvlanswer);
 		alreadyAsked = false;
 	}
