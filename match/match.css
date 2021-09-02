@@ -155,90 +155,65 @@ button {
 .card.hide {
 	color: transparent;
 	border-color: white;
+	background-image:
+		repeating-linear-gradient(45deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%),
+		repeating-linear-gradient(135deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%);
 }
 .card.hide.red {
-	background: red;
-	background-image:
-		repeating-linear-gradient(45deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%),
-		repeating-linear-gradient(135deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%);
+	background-color: red;
+
 }
 .card.hide.darkred {
-	background: darkred;
-	background-image:
-		repeating-linear-gradient(45deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%),
-		repeating-linear-gradient(135deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%);
+	background-color: darkred;
 }
 .card.hide.orange {
-	background: orange;
-	background-image:
-		repeating-linear-gradient(45deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%),
-		repeating-linear-gradient(135deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%);
+	background-color: orange;
 }
 .card.hide.yellow {
-	background: yellow;
+	background-color: yellow;
 	background-image:
-		repeating-linear-gradient(45deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%),
-		repeating-linear-gradient(135deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%);
+		repeating-linear-gradient(45deg, rgba(255,190,120,60%) 0% 2%, transparent 2.1% 6.1%),
+		repeating-linear-gradient(135deg, rgba(255,190,120,60%) 0% 2%, transparent 2.1% 6.1%);
 }
 .card.hide.yellowgreen {
-	background: yellowgreen;
-	background-image:
-		repeating-linear-gradient(45deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%),
-		repeating-linear-gradient(135deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%);
+	background-color: yellowgreen;
 }
 .card.hide.green {
-	background: green;
-	background-image:
-		repeating-linear-gradient(45deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%),
-		repeating-linear-gradient(135deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%);
+	background-color: green;
 }
 .card.hide.teal {
-	background: teal;
-	background-image:
-		repeating-linear-gradient(45deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%),
-		repeating-linear-gradient(135deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%);
+	background-color: teal;
 }
 .card.hide.blue {
-	background: blue;
-	background-image:
-		repeating-linear-gradient(45deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%),
-		repeating-linear-gradient(135deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%);
+	background-color: blue;
 }
 .card.hide.indigo {
-	background: indigo;
-	background-image:
-		repeating-linear-gradient(45deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%),
-		repeating-linear-gradient(135deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%);
+	background-color: indigo;
 }
 .card.hide.violet {
-	background: violet;
+	background-color: violet;
 	background-image:
-		repeating-linear-gradient(45deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%),
-		repeating-linear-gradient(135deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%);
+		repeating-linear-gradient(45deg, rgba(255,25,255,60%) 0% 2%, transparent 2.1% 6.1%),
+		repeating-linear-gradient(135deg, rgba(255,25,255,60%) 0% 2%, transparent 2.1% 6.1%);
 }
 .card.hide.black {
-	background: black;
-	background-image:
-		repeating-linear-gradient(45deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%),
-		repeating-linear-gradient(135deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%);
+	background-color: black;
+
 }
 .card.hide.white {
-	background: white;
+	background-color: white;
 	background-image:
 		repeating-linear-gradient(45deg, rgba(0,0,0,60%) 0% 2%, transparent 2.1% 6.1%),
 		repeating-linear-gradient(135deg, rgba(0,0,0,60%) 0% 2%, transparent 2.1% 6.1%);
 }
 .card.hide.pink {
-	background: pink;
+	background-color: pink;
 	background-image:
-		repeating-linear-gradient(45deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%),
-		repeating-linear-gradient(135deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%);
+		repeating-linear-gradient(45deg, rgba(255,255,255,80%) 0% 2%, transparent 2.1% 8.1%),
+		repeating-linear-gradient(135deg, rgba(255,255,255,80%) 0% 2%, transparent 2.1% 8.1%);
 }
 .card.hide.navy {
-	background: navy;
-	background-image:
-		repeating-linear-gradient(45deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%),
-		repeating-linear-gradient(135deg, rgba(255,255,255,60%) 0% 2%, transparent 2.1% 6.1%);
+	background-color: navy;
 }
 #endgame {
 	background: rgba(255,255,255,85%);

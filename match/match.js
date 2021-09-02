@@ -214,20 +214,34 @@ function chgcardbg(c) {
 
 function changebgpattern(indexNum) {
 	var patterncollection = [
-							"repeating-linear-gradient(to top right, lightblue 0% 2%, white 2.1% 4%, yellow 4.1% 6%, white 6.1% 8%)",
-							"repeating-linear-gradient(to top right, black 0% 2%, white 2.1% 4%)",
-							"repeating-linear-gradient(to top right, MidnightBlue 0% 2%, CornflowerBlue 2.1% 4%, Navy 4.1% 6%, LightBlue 6.1% 8%)",
-							"repeating-linear-gradient(to top right, red 0% 2%, orange 2.1% 4%, yellow 4.1% 6%, green 6.1% 8%, blue 8.1% 10%, indigo 10.1% 12%, violet 12.1% 14%, white 14.1% 16%)",
-							"yellow radial-gradient(red 0% 40%, rgba(255,255,255,0) 40%) repeat -2% -2% / 8% 8%",
-							"darkgreen radial-gradient(lightblue 0% 40%, rgba(255,255,255,0) 40%) repeat -2% -2% / 8% 8%"
-							];
+		"repeating-linear-gradient(to top right, lightblue 0% 2%, white 2.1% 4%, yellow 4.1% 6%, white 6.1% 8%)",
+		"repeating-linear-gradient(to top right, black 0% 2%, white 2.1% 4%)",
+		"repeating-linear-gradient(to top right, MidnightBlue 0% 2%, CornflowerBlue 2.1% 4%, Navy 4.1% 6%, LightBlue 6.1% 8%)",
+		"repeating-linear-gradient(to top right, red 0% 2%, orange 2.1% 4%, yellow 4.1% 6%, green 6.1% 8%, blue 8.1% 10%, indigo 10.1% 12%, violet 12.1% 14%, white 14.1% 16%)",
+		"yellow radial-gradient(red 0% 40%, rgba(255,255,255,0) 40%) repeat -2% -2% / 8% 8%",
+		"darkgreen radial-gradient(lightblue 0% 40%, rgba(255,255,255,0) 40%) repeat -2% -2% / 8% 8%"
+		];
 	
 	document.getElementById("container").style.background = patterncollection[indexNum];
 }
 
 function changecardback(colorcode) {
 	//console.log("changecardback function activated");
-	for (x = 0; x<document.getElementsByClassName("CARDBACK").length; x++) {
-		document.getElementsByClassName("CARDBACK")[x].style.backgroundColor = colorcode;
+	for (element of document.getElementsByClassName("CARDBACK")) {
+		element.style.backgroundColor = colorcode;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
