@@ -265,7 +265,8 @@ function draw() {
 	//console.log("draw() called");
 	//ctx.clearRect(0, 0, prop.width7, canvas.height); //clear
 	// Handle Phones in Portrait Mode
-	if (canvas.width < 500) {
+	if (document.documentElement.clientWidth < 500) {
+		// console.log(canvas.width, document.documentElement.clientWidth);
 		// console.log("asdf");
 		ctx.clearRect(0, 0, prop.width7, canvas.height);
 		ctx.fillStyle = prop.backgroundColor;
