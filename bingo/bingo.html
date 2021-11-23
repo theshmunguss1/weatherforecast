@@ -70,34 +70,34 @@
 					<td id="optsbg" style="display:table-cell;" colspan=4>
 						<div>
 							Card-Background:
-							<input type="color" onInput="chg_bg(false, this.value)" value="#ffffff"></input>
+							<input id="input-bg" type="color" onInput="chg_bg(false, this.value)" value="#ffffff"></input>
 						</div>
 						Keep Outer and Inner Background Colors the Same?:<br />
 						<input type="radio" name="innerbg" value=1 onClick="keep_bg_same(this.value)" checked>YES</input> 
 						<input type="radio" name="innerbg" value=0 onClick="keep_bg_same(this.value)">NO</input>
 						<div id="innerbgcolor" style="display:none">
 							Inner-Card-Background:
-							<input id="inp_innerbg" type="color" onInput="chg_bg(true, this.value)" value="#ffffff"></input>
+							<input id="input-bg-inner" type="color" onInput="chg_bg(true, this.value)" value="#ffffff"></input>
 						</div>
 					</td>
 					<!-- TITLE & LINE COLOR -->
 					<td id="optslines" colspan=4>
 						<div>
-							Title &amp; Line Color: <input type="color" onInput="chg_line_color(false, this.value)"></input>
+							Title &amp; Line Color: <input id="input-line-color" type="color" onInput="chg_line_color(false, this.value)"></input>
 						</div>
 						Keep Outer and Inner Line Colors the Same?:<br />
 						<input type="radio" name="innerlines" value=1 onClick="keep_lines_same(this.value)" checked>YES</input> 
 						<input type="radio" name="innerlines" value=0 onClick="keep_lines_same(this.value)">NO</input>
-						<div id="innerlinecolor" style="display:none">
+						<div id="div-line-color-inner" style="display:none">
 							Inner-Line Color:
-							<input id="inp_innerlinecolor" type="color" onInput="chg_line_color(true, this.value)" value="#ffffff"></input>
+							<input id="input-line-color-inner" type="color" onInput="chg_line_color(true, this.value)" value="#ffffff"></input>
 						</div>
 					</td>
 					<!-- NUMBERS & FREE-SPACE -->
 					<td id="optsnumbers" colspan=4>
 						<div>
 							Numbers:
-							<input type="color" onInput="prop.numberColor = this.value;draw();" value="#000000"></input>
+							<input id="input-color-numbers" type="color" onInput="prop.numberColor = this.value;draw();" value="#000000"></input>
 						</div>
 						<div>
 							Free-Space Toggle:
@@ -113,11 +113,11 @@
 					<td id="optsmarkers" colspan=4>
 						<div>
 							Marker Color:
-							<input id="markercolor" type="color" onInput="prop.markerColor = this.value; draw();" value="#FF4A4A"></input>
+							<input id="input-marker-color" type="color" onInput="prop.markerColor = this.value; draw();" value="#FF4A4A"></input>
 						</div>
 						<div>
 							Marker Outline Color:
-							<input type="color" onInput="prop.markerOutlineColor = this.value; draw();" value="#000000"></input>
+							<input id="input-marker-outlinecolor" type="color" onInput="prop.markerOutlineColor = this.value; draw();" value="#000000"></input>
 						</div>
 					</td>
 				</tr>
@@ -125,8 +125,9 @@
 		</table>
 		<div id="options_caller">
 			<b><u>CUSTOMIZATION OPTIONS</u></b><br />
-			Call Color: 
-			<input id="calledcolor" type="color" onInput="prop.callerPrevColor = this.value; drawCaller();" value="#000080"></input><br />
+			Background Color: 
+			<input id="input-called-bg" type="color" onInput="prop.callerBackground = this.value; drawCaller();" value="#ffffff"></input><br />
+			Call Color: <input id="input-called-color" type="color" onInput="prop.callerPrevColor = this.value; drawCaller();" value="#000080"></input><br />
 			<!-- <input type="color" onInput="prop.callerFillColor = this.value; drawCaller();" value="#FF4A4A"></input> -->
 			<!-- <table id="callfilltable"> -->
 				<!-- <tr> -->

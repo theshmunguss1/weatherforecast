@@ -30,6 +30,7 @@ var prop = {
 	},
 	"called": [],
 	"lastCalled": null,
+	"callerBackground": "#ffffff",
 	"callerFillColor": 0,
 	"callerPrevColor": "#000080",
 	"printMarkers": true,
@@ -39,16 +40,54 @@ var prop = {
 	"optsSelected": "bg"
 };
 
-// St. Patrick's Day Theme
+// give Date objects a tuple representing month/date
+Date.prototype.tuple = function() {
+	return [this.getMonth()+1, this.getDate()];
+}
+
 __today = new Date();
-if (__today.getMonth() + 1 == 3 && __today.getDate() == 17) {
+
+// St. Patrick's Day Theme
+if (JSON.stringify(__today.tuple()) == JSON.stringify([3,17])) {
 	// Marker Color
 	prop.markerColor = "rgb(75, 255, 75)";
-	document.getElementById("markercolor").value = "#4BFF4B";
+	document.getElementById("input-marker-color").value = "#4BFF4B";
 	// Called Color
 	prop.callerPrevColor = "#008000";
-	document.getElementById("calledcolor").value = "#008000";
+	document.getElementById("input-called-color").value = "#008000";
 	// Called History
+}
+
+// Thanksgiving
+if (__today.tuple() >= [11,23] && __today.tuple() < [12,1]) {
+
+	// Marker Color
+	prop.markerColor = "#ff9e42"; //"#e43a01";
+	document.getElementById("input-marker-color").value = prop.markerColor;
+	prop.markerOutlineColor = "#ffffff";
+	document.getElementById("input-marker-outlinecolor").value = prop.markerOutlineColor;
+	// BG color
+	prop.backgroundColor = "#ffc800";
+	document.getElementById("input-bg").value = prop.backgroundColor;
+	prop.boardBackgroundColor = "#ffde66";
+	document.getElementById("input-bg-inner").value = prop.boardBackgroundColor;
+	// Line colors
+	prop.lineColor = "#990026";
+	prop.titleColor = prop.lineColor;
+	document.getElementById("input-line-color").value = prop.lineColor;
+	prop.boardLineColor = "#8a0000";
+	document.getElementById("input-line-color-inner").value = prop.boardLineColor;
+	// Numbers
+	prop.numberColor = "#640000";
+	document.getElementById("input-color-numbers").value = prop.numberColor;
+
+
+	// Called Color
+	// prop.callerBackground = "#ffe68a";
+	// document.getElementById("input-called-bg").value = prop.callerBackground;
+	// Called History
+	prop.callerPrevColor = "#990045";
+	document.getElementById("input-called-color").value = prop.callerPrevColor;
 }
 
 // Dynamic Window Resize
@@ -639,7 +678,7 @@ function drawCaller() {
 	var hoffset = canvas_caller.width * 0.025;
 	ctx_caller.clearRect(0, 0, canvas_caller.width, canvas_caller.height); //clear
 	// BACKGROUND
-	ctx_caller.fillStyle = "white";
+	ctx_caller.fillStyle = prop.callerBackground;
 	ctx_caller.fillRect(0, 0, canvas_caller.width, canvas_caller.height);
 	// HEADER
 	ctx_caller.fillStyle = "rgb(150,150,150)";

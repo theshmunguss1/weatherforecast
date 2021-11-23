@@ -41,7 +41,7 @@ function chg_bg(boardbgbool, c) {
 	else {
 		prop.backgroundColor = c;
 		if (prop.bgSameColor) {
-			document.getElementById("inp_innerbg").value = prop.backgroundColor;
+			document.getElementById("input-bg-inner").value = prop.backgroundColor;
 			prop.boardBackgroundColor = c;
 		}
 	}
@@ -53,7 +53,7 @@ function keep_bg_same(BOOL) {
 	if (BOOL == true) {
 		prop.bgSameColor = true;
 		prop.boardBackgroundColor = prop.backgroundColor;
-		document.getElementById("inp_innerbg").value = prop.backgroundColor;
+		document.getElementById("input-bg-inner").value = prop.backgroundColor;
 		document.getElementById("innerbgcolor").style.display = "none";
 	}
 	// Allow different colors
@@ -74,7 +74,7 @@ function chg_line_color(linecolorbool, c) {
 		prop.titleColor = c;
 		if (prop.lineSameColor) {
 			prop.boardLineColor = c;
-			document.getElementById("inp_innerlinecolor").value = prop.lineColor;
+			document.getElementById("input-line-color-inner").value = prop.lineColor;
 		}
 	}
 	draw();
@@ -85,13 +85,13 @@ function keep_lines_same(BOOL) {
 	if (BOOL == true) {
 		prop.lineSameColor = true;
 		prop.boardLineColor = prop.lineColor;
-		document.getElementById("inp_innerlinecolor").value = prop.lineColor;
+		document.getElementById("input-line-color-inner").value = prop.lineColor;
 		document.getElementById("innerlinecolor").style.display = "none";
 	}
 	// Allow different colors
 	else {
 		prop.lineSameColor = false;
-		document.getElementById("innerlinecolor").style.display = "block";
+		document.getElementById("div-line-color-inner").style.display = "block";
 	}
 	draw();
 }
