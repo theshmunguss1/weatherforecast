@@ -63,7 +63,7 @@ if (JSON.stringify(__today.tuple()) == JSON.stringify([3,17])) {
 }
 
 // Thanksgiving
-if (__today.tuple() >= [11,23] && __today.tuple() < [12,1]) {
+if (__today.tuple() >= [11,20] && __today.tuple() < [12,1]) {
 
 	// Marker Color
 	prop.markerColor = "#ff9e42"; //"#e43a01";
