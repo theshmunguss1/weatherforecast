@@ -33,11 +33,15 @@ var prop = {
 	"callerBackground": "#ffffff",
 	"callerFillColor": 0,
 	"callerPrevColor": "#000080",
+	"last_call_time": performance.now(),
 	"printMarkers": true,
 	"markers": [],
 	"markerColor": "rgb(255,75,75)",
 	"markerOutlineColor": "black",
-	"optsSelected": "bg"
+	"optsSelected": "bg",
+	"drawHolidaySVG": false,
+	"snow_pos": [0, -500],
+	"last_draw_time": performance.now(),
 };
 
 // give Date objects a tuple representing month/date
@@ -88,6 +92,48 @@ if (__today.tuple() >= [11,23] && __today.tuple() < [12,1]) {
 	// Called History
 	prop.callerPrevColor = "#990045";
 	document.getElementById("input-called-color").value = prop.callerPrevColor;
+}
+
+// CHRISTMAS
+if (__today.tuple() >= [12,1]) {
+	__snow_scape = new Image();
+	__snow_scape.src = "bingo/snowy_landscape.svg";
+	__snow_scape.onload = draw;
+	__snow_img = new Image();
+	__snow_img.src = "bingo/snow.svg";
+	__snow_img.onload = draw;
+
+	prop.drawHolidaySVG = true;
+	document.getElementById("holiday-svg").style.display = "block";
+
+	// Marker Color
+	prop.markerColor = "#f00000b0"; //"#e43a01";
+	document.getElementById("input-marker-color").value = prop.markerColor.slice(0,8);
+	prop.markerOutlineColor = "#ffffff";
+	document.getElementById("input-marker-outlinecolor").value = prop.markerOutlineColor;
+	// BG color
+	prop.backgroundColor = "#76ea8d";
+	document.getElementById("input-bg").value = prop.backgroundColor;
+	prop.boardBackgroundColor = "#d4ffd1";
+	document.getElementById("input-bg-inner").value = prop.boardBackgroundColor;
+	// Line colors
+	prop.lineColor = "#007A00";
+	prop.titleColor = prop.lineColor;
+	document.getElementById("input-line-color").value = prop.lineColor;
+	prop.boardLineColor = "#007A00";
+	document.getElementById("input-line-color-inner").value = prop.boardLineColor;
+	// Numbers
+	// prop.numberColor = "#640000";
+	// document.getElementById("input-color-numbers").value = prop.numberColor;
+
+
+	// Called Color
+	prop.callerBackground = "#3cdd31";
+	document.getElementById("input-called-bg").value = prop.callerBackground;
+	// Called History
+	prop.callerPrevColor = "#00573e";
+	document.getElementById("input-called-color").value = prop.callerPrevColor;
+
 }
 
 // Dynamic Window Resize
@@ -369,16 +415,38 @@ function draw() {
 			prop.board.height
 		);
 	}
+	// CHRISTMAS
+	if (__today.tuple() >= [12,1] && prop.drawHolidaySVG == true) {
+	    ctx.drawImage(__snow_scape, 0, 0, canvas.width, canvas.height);
+		ctx.fillStyle = "rgba(255,255,255, 25%)";
+		ctx.fillRect(
+			0, 0,
+			canvas.width,
+			canvas.height
+		)
+
+		ctx.drawImage(
+			__snow_img,
+			prop.snow_pos[0],
+			prop.snow_pos[1],
+			canvas.width,
+			canvas.height * 2
+		);
+
+    }
 	// MARKER FILL(if applicable)
 	if (prop.markers.length > 0 && prop.printMarkers == true) {
 		//console.log(prop.markers);
+		// ctx.globalCompositeOperation = "multiply";
 		for (marker in prop.markers) {
 			place_marker_fill(
 				prop.markers[marker].x,
 				prop.markers[marker].y
 			);
 		}
+		// ctx.globalCompositeOperation = "source-over";
 	}
+
 	// BINGO NAME (TITLE)
 	ctx.fillStyle = prop.titleColor;
 	ctx.textAlign = "center";
@@ -490,6 +558,27 @@ function draw() {
 			);
 		}
 	}
+	// CHRISTMAS
+	if (__today.tuple() >= [12,1] && prop.drawHolidaySVG == true) {
+		prop.snow_pos[1] = prop.snow_pos[1] + 2;
+		function update() {
+			if (prop.snow_pos[1] >= 0) {
+				prop.snow_pos = [0, -500];
+			}
+			let now = performance.now();
+			// in seconds
+			let elapsed = (now - prop.last_draw_time) / 1000;
+			if (elapsed >= 1/15) {
+				// console.log("a_here");
+				prop.last_draw_time = now;
+				draw();
+			}
+			if (prop.mode == "game" && prop.drawHolidaySVG) {
+				requestAnimationFrame(update); 	// animate!
+			}
+		}
+	    requestAnimationFrame(update); 	// initiate!
+    }
 }
 
 function caller_active() {
@@ -563,11 +652,13 @@ function new_call() {
 		// canvas_caller.width * 0.40,
 		// canvas_caller.height * 0.11
 	// );
+	let now = performance.now();
 	if (
 		xclick >= canvas_caller.width * 0.04
 		&& xclick <= canvas_caller.width * 0.44 
 		&& yclick >= canvas_caller.height * 0.04
 		&& yclick <= canvas_caller.height * 0.15
+		&& (now - prop.last_call_time) / 1000 > 1
 	) {
 		while (true) {
 			rnum = 1 + Math.floor(Math.random() * ((75+1) - 1));
@@ -585,6 +676,7 @@ function new_call() {
 				break;
 			}
 		}
+		prop.last_call_time = now;
 
 		drawCaller();
 	}
@@ -680,6 +772,25 @@ function drawCaller() {
 	// BACKGROUND
 	ctx_caller.fillStyle = prop.callerBackground;
 	ctx_caller.fillRect(0, 0, canvas_caller.width, canvas_caller.height);
+	// CHRISTMAS
+	if (__today.tuple() >= [12,1] && prop.drawHolidaySVG == true) {
+	    ctx_caller.drawImage(__snow_scape, 0, 0, canvas.width, canvas.height);
+		ctx_caller.fillStyle = "rgba(255,255,255, 25%)";
+		ctx_caller.fillRect(
+			0, 0,
+			canvas.width,
+			canvas.height
+		)
+
+		ctx_caller.drawImage(
+			__snow_img,
+			prop.snow_pos[0],
+			prop.snow_pos[1],
+			canvas.width,
+			canvas.height * 2
+		);
+
+    }
 	// HEADER
 	ctx_caller.fillStyle = "rgb(150,150,150)";
 	ctx_caller.textAlign = "right";
@@ -820,6 +931,30 @@ function drawCaller() {
 				canvas_caller.height * 0.05 * n + voffset * 1.51
 			);
 		}
+	}
+	// CHRISTMAS
+	if (__today.tuple() >= [12,1] && prop.drawHolidaySVG == true) {
+		prop.snow_pos[1] = prop.snow_pos[1] + 2;
+		function update_for_caller() {
+			if (prop.snow_pos[1] >= 0) {
+				prop.snow_pos = [0, -500];
+			}
+			let now = performance.now();
+			// in seconds
+			let elapsed = (now - prop.last_draw_time) / 1000;
+			if (elapsed >= 1/15) {
+				// console.log("b_here");
+				prop.last_draw_time = now;
+				drawCaller();
+			}
+			if (prop.mode == "caller" && prop.drawHolidaySVG) {
+				requestAnimationFrame(update_for_caller); 	// animate!
+			}
+		}
+	    requestAnimationFrame(update_for_caller); 	// initiate!
+    }
+	else {
+		requestAnimationFrame(zxcv => {null;});
 	}
 }
 

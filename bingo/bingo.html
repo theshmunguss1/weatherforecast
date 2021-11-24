@@ -51,7 +51,13 @@
 				<button id="mode_caller" onClick="chg_game_mode('caller')">Caller Mode</button>
 			</div>
 		</div>
-		<hr style="width:75%" />		
+		<hr style="width:75%" />
+		<!-- HOLIDAY SVG -->
+		<div id="holiday-svg" style="text-align:center; display:none;">
+			<u>Holiday Image Underlay:</u><br />
+			<input type="radio" name="holidaysvg" value="true" onClick="prop.drawHolidaySVG = true; draw(); drawCaller();" checked>On</input>
+			<input type="radio" name="holidaysvg" value="false" onClick="prop.drawHolidaySVG = false; draw(); drawCaller();">Off</input>
+		</div>
 		<table id="options">
 			<caption>
 				<u><b>CUSTOMIZATION OPTIONS</b></u>
@@ -113,7 +119,7 @@
 					<td id="optsmarkers" colspan=4>
 						<div>
 							Marker Color:
-							<input id="input-marker-color" type="color" onInput="prop.markerColor = this.value; draw();" value="#FF4A4A"></input>
+							<input id="input-marker-color" type="color" onInput="prop.markerColor = this.value + 'b0'; draw();" value="#FF4A4A"></input>
 						</div>
 						<div>
 							Marker Outline Color:
