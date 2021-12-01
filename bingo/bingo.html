@@ -24,7 +24,7 @@
 		</div>
 		<div id="caller_card" style="display:none;">
 			<!--<button onClick="draw()">CLICK ME!</button>-->
-			<button id="callclear" onClick="resetCaller()" title="Clear the Calls (start new game)">Clear the Calls</button>
+			<button id="callclear" onClick="prop.clearCallsConfirm++; resetCaller()" title="Clear the Calls (start new game)">Clear the Calls</button>
 		</div>
 		<div id="container">
 			<canvas id="canvas" width="375" height="500"></canvas>

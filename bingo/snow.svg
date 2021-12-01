@@ -22,13 +22,8 @@
     <pattern
        inkscape:collect="always"
        xlink:href="#Polkadots-medwhite"
-       id="pattern2632"
-       patternTransform="scale(3.7802807)" />
-    <pattern
-       inkscape:collect="always"
-       xlink:href="#Polkadots-medwhite"
        id="pattern2529"
-       patternTransform="scale(3.5646898)" />
+       patternTransform="matrix(3.3054519,0,0,3.3054519,7.4999998e-7,-4.6594667e-6)" />
     <pattern
        inkscape:isstock="true"
        inkscape:stockid="Polka dots, medium white"
@@ -355,9 +350,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="369.64177"
-     inkscape:cy="482.54808"
+     inkscape:zoom="0.9899495"
+     inkscape:cx="226.71849"
+     inkscape:cy="609.27097"
      inkscape:document-units="px"
      inkscape:current-layer="layer3"
      showgrid="false"
@@ -378,7 +373,22 @@
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
-     fit-margin-bottom="0" />
+     fit-margin-bottom="0"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-bbox-edge-midpoints="false"
+     inkscape:bbox-paths="true"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-others="false">
+    <sodipodi:guide
+       position="0,132.29167"
+       orientation="0,1"
+       id="guide2445"
+       inkscape:locked="true"
+       inkscape:label=""
+       inkscape:color="rgb(0,0,255)" />
+  </sodipodi:namedview>
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -387,38 +397,22 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
-  <g
-     inkscape:label="bg"
-     inkscape:groupmode="layer"
-     id="layer1"
-     transform="translate(-7.4999998e-7,-32.41666)" />
-  <g
-     inkscape:groupmode="layer"
-     id="layer2"
-     inkscape:label="Hills"
-     transform="translate(-7.4999998e-7,132.29167)" />
   <g
      inkscape:groupmode="layer"
      id="layer3"
      inkscape:label="fg"
      transform="translate(-7.4999998e-7,132.29167)">
     <rect
-       style="display:none;opacity:1;vector-effect:none;fill:url(#pattern2529);fill-opacity:1;stroke:none;stroke-width:0.21086828;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:61.20825577;stroke-opacity:1;paint-order:stroke fill markers"
+       style="display:inline;opacity:1;vector-effect:none;fill:url(#pattern2529);fill-opacity:1;stroke:none;stroke-width:0.21086828;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:61.20825577;stroke-opacity:1;paint-order:stroke fill markers"
        id="rect908"
        width="99.21875"
-       height="132.29167"
-       x="0"
-       y="-2.6458333e-06"
+       height="264.58334"
+       x="7.4999997e-07"
+       y="-132.29167"
        inkscape:label="snow" />
-    <path
-       style="opacity:1;vector-effect:none;fill:url(#pattern2632);fill-opacity:1;stroke:none;stroke-width:0.22797254;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:61.20825577;stroke-opacity:1;paint-order:stroke fill markers"
-       d="M 7.4999998e-7,-132.29167 H 99.218751 V 132.29167 H 7.4999998e-7 Z"
-       id="rect908-5"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccc" />
   </g>
 </svg>

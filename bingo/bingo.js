@@ -33,6 +33,7 @@ var prop = {
 	"callerBackground": "#ffffff",
 	"callerFillColor": 0,
 	"callerPrevColor": "#000080",
+	"clearCallsConfirm": 0,
 	"last_call_time": performance.now(),
 	"printMarkers": true,
 	"markers": [],
@@ -40,7 +41,8 @@ var prop = {
 	"markerOutlineColor": "black",
 	"optsSelected": "bg",
 	"drawHolidaySVG": false,
-	"snow_pos": [0, -500],
+	"snow_pos": -500,
+	"snow_pos2": -500,
 	"last_draw_time": performance.now(),
 };
 
@@ -49,6 +51,7 @@ Date.prototype.tuple = function() {
 	return [this.getMonth()+1, this.getDate()];
 }
 
+// __today = new Date(2021, 12-1, 1);
 __today = new Date();
 
 // St. Patrick's Day Theme
@@ -98,17 +101,20 @@ if (__today.tuple() >= [11,20] && __today.tuple() < [12,1]) {
 if (__today.tuple() >= [12,1]) {
 	__snow_scape = new Image();
 	__snow_scape.src = "bingo/snowy_landscape.svg";
-	__snow_scape.onload = draw;
+	__snow_scape.onload = () => {null;};
 	__snow_img = new Image();
+	__snow_img2 = new Image();
 	__snow_img.src = "bingo/snow.svg";
-	__snow_img.onload = draw;
+	__snow_img2.src = "bingo/snow2.svg";
+	__snow_img.onload = () => {null;};
+	__snow_img2.onload = draw;
 
 	prop.drawHolidaySVG = true;
 	document.getElementById("holiday-svg").style.display = "block";
 
 	// Marker Color
 	prop.markerColor = "#f00000b0"; //"#e43a01";
-	document.getElementById("input-marker-color").value = prop.markerColor.slice(0,8);
+	document.getElementById("input-marker-color").value = prop.markerColor.slice(0,7);
 	prop.markerOutlineColor = "#ffffff";
 	document.getElementById("input-marker-outlinecolor").value = prop.markerOutlineColor;
 	// BG color
@@ -176,7 +182,7 @@ function markerProximityCheck() {
 	xclick = event.clientX-canvasX0;
 	yclick = event.clientY-canvasY0;
 	//console.log(ctx.canvas.id);
-	//console.log(xclick, yclick);
+	console.log(xclick, yclick);
 
 	// Bool to determine whether or not a mark needs to be noted
 	let markerbool = true;
@@ -297,6 +303,8 @@ function reparameterize() {
 	prop.orientation = window.orientation;
 	prop.oldwidth = canvas.width;
 	prop.oldheight = canvas.height;
+	prop.snow_pos = -1 * canvas.height;
+	prop.snow_pos2 = -1 * canvas.height;
 	draw();
 	drawCaller();
 }
@@ -427,24 +435,31 @@ function draw() {
 
 		ctx.drawImage(
 			__snow_img,
-			prop.snow_pos[0],
-			prop.snow_pos[1],
+			0,
+			prop.snow_pos,
 			canvas.width,
-			canvas.height * 2
+			canvas.height * 2,
+		);
+		ctx.drawImage(
+			__snow_img2,
+			0,
+			prop.snow_pos2,
+			canvas.width,
+			canvas.height * 2,
 		);
 
     }
 	// MARKER FILL(if applicable)
 	if (prop.markers.length > 0 && prop.printMarkers == true) {
 		//console.log(prop.markers);
-		// ctx.globalCompositeOperation = "multiply";
+		ctx.globalCompositeOperation = "multiply";
 		for (marker in prop.markers) {
 			place_marker_fill(
 				prop.markers[marker].x,
 				prop.markers[marker].y
 			);
 		}
-		// ctx.globalCompositeOperation = "source-over";
+		ctx.globalCompositeOperation = "source-over";
 	}
 
 	// BINGO NAME (TITLE)
@@ -507,15 +522,15 @@ function draw() {
 	// FREE SPACE
 	if (prop.freeSpace == true) {
 		// CIRCLE
-		// ctx.fillStyle = prop.freeSpaceColor;
-		// ctx.beginPath();
-		// ctx.arc(
-			// Math.floor(canvas.width * 0.5),
-			// canvas.height * 0.5 + prop.board.height * 0.075,
-			// canvas.width * 0.08,
-			// 0,
-			// 360 * Math.PI / 180
-		// );
+		ctx.fillStyle = prop.freeSpaceColor;
+		ctx.beginPath();
+		ctx.arc(
+			Math.floor(canvas.width * 0.5),
+			canvas.height * 0.5 + prop.board.height * 0.075,
+			canvas.width * 0.08,
+			0,
+			360 * Math.PI / 180
+		);
 		// ctx.fill();
 		// CIRCLE OUTLINE
 		ctx.lineWidth = prop.lineWidth * 0.5;
@@ -560,24 +575,28 @@ function draw() {
 	}
 	// CHRISTMAS
 	if (__today.tuple() >= [12,1] && prop.drawHolidaySVG == true) {
-		prop.snow_pos[1] = prop.snow_pos[1] + 2;
+		prop.snow_pos = prop.snow_pos + 3;
+		prop.snow_pos2 = prop.snow_pos2 + 6;
+		if (prop.snow_pos >= 0) {
+			prop.snow_pos = -1 * canvas.height;
+		}
+		if (prop.snow_pos2 >= 0) {
+			// console.log(prop.snow_pos2[1]);
+			prop.snow_pos2 = -1 * canvas.height;
+			// console.log(prop.snow_pos2[1]);
+		}
 		function update() {
-			if (prop.snow_pos[1] >= 0) {
-				prop.snow_pos = [0, -500];
-			}
-			let now = performance.now();
-			// in seconds
-			let elapsed = (now - prop.last_draw_time) / 1000;
-			if (elapsed >= 1/15) {
-				// console.log("a_here");
-				prop.last_draw_time = now;
+			if (
+				prop.drawHolidaySVG == true && 
+				prop.mode == "game" &&
+				(performance.now() - prop.last_draw_time) / 1000 >= 1/15
+			) {
+				prop.last_draw_time = performance.now();
 				draw();
 			}
-			if (prop.mode == "game" && prop.drawHolidaySVG) {
-				requestAnimationFrame(update); 	// animate!
-			}
+			requestAnimationFrame(update); 	// animate!
 		}
-	    requestAnimationFrame(update); 	// initiate!
+	    requestAnimationFrame(update); // initiate!
     }
 }
 
@@ -759,10 +778,31 @@ function fillCalledNumber(rletter, rnum, fill) {
 	);
 }
 
+function revert_call_btn_txt() {
+	prop.clearCallsConfirm = 0;
+	document.getElementById("callclear").innerHTML = "Clear the Calls";
+}
+
 function resetCaller() {
-	prop.called = [];
-	prop.lastCalled = null;
-	drawCaller();
+	// Do nothing if no calls have been made
+	if (prop.called.length == 0) {
+		prop.clearCallsConfirm = 0;
+	}
+	if (prop.clearCallsConfirm == 1) {
+		document.getElementById("callclear").innerHTML = "Confirm Clear?";
+		prop.clearCallsConfirm_interval = setTimeout(
+			revert_call_btn_txt,
+			5000
+		);
+	}
+	if (prop.clearCallsConfirm == 2) {
+		prop.called = [];
+		prop.lastCalled = null;
+		prop.clearCallsConfirm = 0;
+		document.getElementById("callclear").innerHTML = "Clear the Calls";
+		clearTimeout(prop.clearCallsConfirm_interval);
+		drawCaller();
+	}
 }
 
 function drawCaller() {
@@ -784,12 +824,18 @@ function drawCaller() {
 
 		ctx_caller.drawImage(
 			__snow_img,
-			prop.snow_pos[0],
-			prop.snow_pos[1],
+			0,
+			prop.snow_pos,
 			canvas.width,
 			canvas.height * 2
 		);
-
+		ctx_caller.drawImage(
+			__snow_img2,
+			0,
+			prop.snow_pos2,
+			canvas.width,
+			canvas.height * 2
+		);
     }
 	// HEADER
 	ctx_caller.fillStyle = "rgb(150,150,150)";
@@ -934,28 +980,30 @@ function drawCaller() {
 	}
 	// CHRISTMAS
 	if (__today.tuple() >= [12,1] && prop.drawHolidaySVG == true) {
-		prop.snow_pos[1] = prop.snow_pos[1] + 2;
+		prop.snow_pos = prop.snow_pos + 3;
+		prop.snow_pos2 = prop.snow_pos2 + 6;
+		if (prop.snow_pos >= 0) {
+			prop.snow_pos = -1 * canvas.height;
+		}
+		if (prop.snow_pos2 >= 0) {
+			prop.snow_pos2 = -1 * canvas.height;
+		}
 		function update_for_caller() {
-			if (prop.snow_pos[1] >= 0) {
-				prop.snow_pos = [0, -500];
-			}
-			let now = performance.now();
-			// in seconds
-			let elapsed = (now - prop.last_draw_time) / 1000;
-			if (elapsed >= 1/15) {
-				// console.log("b_here");
-				prop.last_draw_time = now;
+			if (
+				prop.drawHolidaySVG == true && 
+				prop.mode == "caller" &&
+				(performance.now() - prop.last_draw_time) / 1000 >= 1/15
+			) {
+				prop.last_draw_time = performance.now();
 				drawCaller();
 			}
-			if (prop.mode == "caller" && prop.drawHolidaySVG) {
-				requestAnimationFrame(update_for_caller); 	// animate!
-			}
+			requestAnimationFrame(update_for_caller); 	// animate!
 		}
-	    requestAnimationFrame(update_for_caller); 	// initiate!
+		requestAnimationFrame(update_for_caller); 	// animate!
     }
-	else {
-		requestAnimationFrame(zxcv => {null;});
-	}
+	// else {
+		// requestAnimationFrame(zxcv => {null;});
+	// }
 }
 
 
