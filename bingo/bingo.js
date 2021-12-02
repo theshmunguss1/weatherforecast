@@ -113,7 +113,7 @@ if (__today.tuple() >= [12,1]) {
 	document.getElementById("holiday-svg").style.display = "block";
 
 	// Marker Color
-	prop.markerColor = "#f00000b0"; //"#e43a01";
+	prop.markerColor = "#f00000c0"; //"#e43a01";
 	document.getElementById("input-marker-color").value = prop.markerColor.slice(0,7);
 	prop.markerOutlineColor = "#ffffff";
 	document.getElementById("input-marker-outlinecolor").value = prop.markerOutlineColor;
@@ -123,10 +123,10 @@ if (__today.tuple() >= [12,1]) {
 	prop.boardBackgroundColor = "#d4ffd1";
 	document.getElementById("input-bg-inner").value = prop.boardBackgroundColor;
 	// Line colors
-	prop.lineColor = "#007A00";
+	prop.lineColor = "#006000";
 	prop.titleColor = prop.lineColor;
 	document.getElementById("input-line-color").value = prop.lineColor;
-	prop.boardLineColor = "#007A00";
+	prop.boardLineColor = "#006000";
 	document.getElementById("input-line-color-inner").value = prop.boardLineColor;
 	// Numbers
 	// prop.numberColor = "#640000";
@@ -452,14 +452,14 @@ function draw() {
 	// MARKER FILL(if applicable)
 	if (prop.markers.length > 0 && prop.printMarkers == true) {
 		//console.log(prop.markers);
-		ctx.globalCompositeOperation = "multiply";
+		// ctx.globalCompositeOperation = "multiply";
 		for (marker in prop.markers) {
 			place_marker_fill(
 				prop.markers[marker].x,
 				prop.markers[marker].y
 			);
 		}
-		ctx.globalCompositeOperation = "source-over";
+		// ctx.globalCompositeOperation = "source-over";
 	}
 
 	// BINGO NAME (TITLE)
