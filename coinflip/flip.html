@@ -2,39 +2,25 @@
 <html>
 	<head>
 		<base href="../">
-		<title>ksgwxfan - Coin Flip Sim</title>
-		<style>
-			.HEADER {
-				width: 100%;
-				font-weight: bold;
-				font-size: 30px;
-				display: inline-block;
-				}
-			.HEADERPHOTO {
-				width: 3%;
-				border: 2px solid white;
-				box-shadow: 0px 0px 5px white;
-				border-radius: 35%;
-				display: inline-block;
-				}
-		</style>
+		<title>Coin Flip Simulator</title>
+		<meta name="author" content="Kyle Gentry">
+		<meta name="description" content="Simulate a Coin Flip">
+		<meta name="keywords" content="coin, flip, random">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="pageheader.css"></link>
+		<link rel="stylesheet" type="text/css" href="coinflip/coinflip.css"></link>
 	</head>
 	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue">
-		<div class="HEADER">
-			<img class="HEADERPHOTO" src="profile.png"> <u>Coin Flip</u>
-		</div><br><br>
+		<h1 id="header">
+			<img id="headerphoto" src="profile_small.png" alt="Profile Image - Small">Coin Flip
+		</h1>
 		
-		<div id="container" style="width:500px;height:500px;margin:auto;border:1px solid gray;">
-			<img id="coin" src="coinflip/Qside1.svg" style="width:100%;100%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);">
+		<div id="container">
+			<canvas id="canvas"></canvas>
 		</div>
-		
+
+		<div id="footer"></div>
+		<script src="footer.js"></script>
+		<script src="coinflip/coinflip.js"></script>
 	</body>
-	<script>
-	
-		function flipanim() {
-			//console.log("height: " + document.getElementById("coin").style.height + " ... width: " + document.getElementById("coin").style.width);
-			document.getElementById("coin").style.height = (document.getElementById("coin").style.height.replace("%","") - 5).toString() + "%";
-		}
-	
-	</script>
 </html>
