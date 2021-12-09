@@ -50,6 +50,7 @@ function unhide_solution() {
 }
 
 function verify_canvas_size() {
+	document.getElementById("puzzle-date-display").innerText = puzzle.TODAY;
 	px = input_canvas_px.valueAsNumber;
 	if (isNaN(px)) {px = 500;}
 	if (px < 300) {px = 300;}

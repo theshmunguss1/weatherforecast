@@ -27,6 +27,10 @@ canvas {
 :root {
 	--WIDTH: calc(75vmin);
 }
+#puzzle-date-display {
+	margin-bottom: 10px;
+	text-align: center;
+}
 #container-table {
 	position: relative;
 	margin: 0 auto;
@@ -139,6 +143,9 @@ canvas {
 @media only print {
 	body {background-color: transparent;}
 	h1, h2, h3, h4, h5, h6 {display: none;}
+	#puzzle-date-display {
+		display: none;
+	}
 	#container-table {
 		width: 80%;
 	}

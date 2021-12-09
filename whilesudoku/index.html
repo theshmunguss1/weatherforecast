@@ -4,7 +4,7 @@
 		<base href="../">
 		<title>While Sudoku</title>
 		<meta name="author" content="Kyle Gentry">
-		<meta name="description" content="While Sudoku Puzzles">
+		<meta name="description" content="While Sudoku is a series of Sudoku Puzzles published in various formats. Here, a new puzzle will be generated each day. Printing or saving the puzzles as an image is supported.">
 		<meta name="keywords" content="sudoku, puzzle, game">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="pageheader.css"></link>
@@ -19,6 +19,8 @@
 			<canvas id="canvas" width="500" height="500"></canvas>
 		</div>
 
+		<!-- Puzzle Date -->
+		<div id="puzzle-date-display"></div>
 		<div id="container-table">
 			<div id="puzzle-bg"></div>
 			<table id="sudoku-grid-sections">
@@ -284,10 +286,16 @@
 				<strong><u>While Sudoku</u></strong> is a series of sudoku puzzle books. The puzzles are created via Python programming. Each puzzle will have a unique pattern and solution which can be determined entirely by logic. Herein, you'll find daily-updated puzzles that can be printed or saved to your computer / device as an image.
 			</p>
 			<p>
-				Physical books are released on Amazon at <a href="">AMZN LINK HERE</a>. They are formatted with 2 puzzles per page, in a 5.25" x 8" book, a decent size for easy portability.
+				Paperback book versions are <a href="https://www.amazon.com/dp/B09LZ9SJ8Y?binding=paperback">released on Amazon</a>. They are formatted with 2 puzzles per page, with 5.25" x 8" dimensions, a decent size for easier portability.
 			</p>
 			<p>
 				I also generate Digital (PDF) books of the same name at <a href="https://whilesudoku.gumroad.com">whilesudoku.gumroad.com</a>. These are formatted for e-ink "paper" tablets (6.18" x 8.24"), or devices that allow on-screen note-taking. But since they are PDF's, they should be compatible with most, if not all, devices that can support opening PDF files.
+			</p>
+			<p>
+				Please visit my <a href="https://www.facebook.com/whilesudoku">While Sudoku Facebook Page</a>, and give it a like! Thank you!
+			</p>
+			<p>
+				The daily puzzle is updated using <a href="https://aws.amazon.com/lambda/">AWS Lambda</a>. This site was instrumental in walking-through the upload process:<br /><a href="https://tryexceptpass.org/article/using-github-as-flat-data-store/">https://tryexceptpass.org/article/using-github-as-flat-data-store/</a>
 			</p>
 		</div>
 		<div id="footer"></div>
