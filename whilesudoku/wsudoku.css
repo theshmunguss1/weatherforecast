@@ -1,0 +1,187 @@
+body {
+	background-color: #141414;
+	color: white;
+}
+body > div {
+	font-family: sans-serif;
+}
+
+.description {
+	width: 85%;
+	margin: 0 auto;
+	/* color: lightgray; */
+}
+
+#container {
+	margin: 0 auto;
+	text-align: center;
+	width: 95%;
+	display: none;
+}
+
+canvas {
+	margin: 0 auto;
+	text-align: center;
+	background-color: white;
+}
+:root {
+	--WIDTH: calc(75vmin);
+}
+#container-table {
+	position: relative;
+	margin: 0 auto;
+	text-align: center;
+	width: 	var(--WIDTH);
+	aspect-ratio: 1 / 1;
+	outline: 5px solid white;
+	/* display: none; */
+}
+#puzzle-bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: white;
+}
+#sudoku-grid-sections {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+#sudoku-grid-section td {
+	border: 1px solid transparent;
+}
+.grid-section-fill {
+	background-color: lightgray;
+}
+#in-grid-logo {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: calc(100% * 0.3);
+	transform: translate(-50%, -50%);
+}
+#sudoku-grid, #solution{
+	border-collapse: collapse;
+	table-layout: fixed;
+	font-family: sans-serif;
+}
+#sudoku-grid {
+	color: black;
+	margin: 0 auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+#sudoku-grid td, #solution td {
+	border: 1px solid black;
+	text-align: center;
+	font-size: calc(90vmin / 9 / 1.8);
+	font-weight: bold;
+}
+#sudoku-grid td {
+	line-height: 0%;
+}
+#container-solution {
+	display: none;
+	width: 25%;
+	margin: 10px auto;
+	text-align: center;
+	color: white;
+}
+#solution {
+	margin: 0 auto;
+}
+#solution td {
+	font-size: 8pt;
+	padding: 0 5px 0 5px;
+	border: 1px solid white;
+}
+
+#print-subtitle {
+	display: none;
+	margin: 10px auto;
+	width: 100%;
+	text-align: center;
+	font-size: 1.5em;
+	color: black;
+}
+
+#save-options, #container-print, #container-save {
+	width: 100%;
+	margin: 15px auto;
+	text-align: center;
+}
+#container-save {
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+}
+
+#container-approx-dims {
+	margin: 2px auto;
+	color: gray;
+	font-size: 0.8em;
+}
+#container-save-img {
+	margin: 10px auto;
+}
+
+@media only print {
+	body {background-color: transparent;}
+	h1, h2, h3, h4, h5, h6 {display: none;}
+	#container-table {
+		width: 80%;
+	}
+	#container-solution {
+		display: block;
+		text-align: match-parent;
+		position: fixed;
+		bottom: 10%;
+		right: 0%;
+		color: black;
+	}
+	#solution {
+		transform: rotate(180deg);
+	}
+	#solution td {
+		border: 1px solid black;
+	}
+	#print-subtitle {display: block;}
+	#save-options {
+		display: none;
+	}
+	.description {display: none;}
+	#footer {display: none;}
+	/* canvas {display: none;} */
+	/* #container-table {display: block;} */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

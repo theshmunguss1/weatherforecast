@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="../">
+		<title>While Sudoku</title>
+		<meta name="author" content="Kyle Gentry">
+		<meta name="description" content="While Sudoku Puzzles">
+		<meta name="keywords" content="sudoku, puzzle, game">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="pageheader.css"></link>
+		<link rel="stylesheet" type="text/css" href="whilesudoku/wsudoku.css"></link>
+	</head>
+	<body link="lightBlue" vlink="lightBlue">
+		<h1 id="header">
+			<img id="headerphoto" src="profile_small.png" alt="Profile Image - Small">While Sudoku
+		</h1>
+
+		<div id="container">
+			<canvas id="canvas" width="500" height="500"></canvas>
+		</div>
+
+		<div id="container-table">
+			<div id="puzzle-bg"></div>
+			<table id="sudoku-grid-sections">
+				<tr>
+					<td class="grid-section-fill"></td>
+					<td></td>
+					<td class="grid-section-fill"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td class="grid-section-fill"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="grid-section-fill"></td>
+					<td></td>
+					<td class="grid-section-fill"></td>
+				</tr>
+			</table>
+			<img id="in-grid-logo" src="whilesudoku/whilesudoku_logo.svg" />
+			<table id="sudoku-grid">
+				<tr id="r0">
+					<td id="r0c0"></td>
+					<td id="r0c1"></td>
+					<td id="r0c2"></td>
+					<td id="r0c3"></td>
+					<td id="r0c4"></td>
+					<td id="r0c5"></td>
+					<td id="r0c6"></td>
+					<td id="r0c7"></td>
+					<td id="r0c8"></td>
+				</tr>
+				<tr id="r1">
+					<td id="r1c0"></td>
+					<td id="r1c1"></td>
+					<td id="r1c2"></td>
+					<td id="r1c3"></td>
+					<td id="r1c4"></td>
+					<td id="r1c5"></td>
+					<td id="r1c6"></td>
+					<td id="r1c7"></td>
+					<td id="r1c8"></td>
+				</tr>
+				<tr id="r2">
+					<td id="r2c0"></td>
+					<td id="r2c1"></td>
+					<td id="r2c2"></td>
+					<td id="r2c3"></td>
+					<td id="r2c4"></td>
+					<td id="r2c5"></td>
+					<td id="r2c6"></td>
+					<td id="r2c7"></td>
+					<td id="r2c8"></td>
+				</tr>
+				<tr id="r3">
+					<td id="r3c0"></td>
+					<td id="r3c1"></td>
+					<td id="r3c2"></td>
+					<td id="r3c3"></td>
+					<td id="r3c4"></td>
+					<td id="r3c5"></td>
+					<td id="r3c6"></td>
+					<td id="r3c7"></td>
+					<td id="r3c8"></td>
+				</tr>
+				<tr id="r4">
+					<td id="r4c0"></td>
+					<td id="r4c1"></td>
+					<td id="r4c2"></td>
+					<td id="r4c3"></td>
+					<td id="r4c4"></td>
+					<td id="r4c5"></td>
+					<td id="r4c6"></td>
+					<td id="r4c7"></td>
+					<td id="r4c8"></td>
+				</tr>
+				<tr id="r5">
+					<td id="r5c0"></td>
+					<td id="r5c1"></td>
+					<td id="r5c2"></td>
+					<td id="r5c3"></td>
+					<td id="r5c4"></td>
+					<td id="r5c5"></td>
+					<td id="r5c6"></td>
+					<td id="r5c7"></td>
+					<td id="r5c8"></td>
+				</tr>
+				<tr id="r6">
+					<td id="r6c0"></td>
+					<td id="r6c1"></td>
+					<td id="r6c2"></td>
+					<td id="r6c3"></td>
+					<td id="r6c4"></td>
+					<td id="r6c5"></td>
+					<td id="r6c6"></td>
+					<td id="r6c7"></td>
+					<td id="r6c8"></td>
+				</tr>
+				<tr id="r7">
+					<td id="r7c0"></td>
+					<td id="r7c1"></td>
+					<td id="r7c2"></td>
+					<td id="r7c3"></td>
+					<td id="r7c4"></td>
+					<td id="r7c5"></td>
+					<td id="r7c6"></td>
+					<td id="r7c7"></td>
+					<td id="r7c8"></td>
+				</tr>
+				<tr id="r8">
+					<td id="r8c0"></td>
+					<td id="r8c1"></td>
+					<td id="r8c2"></td>
+					<td id="r8c3"></td>
+					<td id="r8c4"></td>
+					<td id="r8c5"></td>
+					<td id="r8c6"></td>
+					<td id="r8c7"></td>
+					<td id="r8c8"></td>
+				</tr>
+			</table>
+		</div>
+
+		<div id="print-subtitle"></div>
+
+		<div id="container-solution">
+			<span>Solution</span><br />
+			<table id="solution">
+				<tr id="solved_r0">
+					<td id="solved_r0c0"></td>
+					<td id="solved_r0c1"></td>
+					<td id="solved_r0c2"></td>
+					<td id="solved_r0c3"></td>
+					<td id="solved_r0c4"></td>
+					<td id="solved_r0c5"></td>
+					<td id="solved_r0c6"></td>
+					<td id="solved_r0c7"></td>
+					<td id="solved_r0c8"></td>
+				</tr>
+				<tr id="solved_r1">
+					<td id="solved_r1c0"></td>
+					<td id="solved_r1c1"></td>
+					<td id="solved_r1c2"></td>
+					<td id="solved_r1c3"></td>
+					<td id="solved_r1c4"></td>
+					<td id="solved_r1c5"></td>
+					<td id="solved_r1c6"></td>
+					<td id="solved_r1c7"></td>
+					<td id="solved_r1c8"></td>
+				</tr>
+				<tr id="solved_r2">
+					<td id="solved_r2c0"></td>
+					<td id="solved_r2c1"></td>
+					<td id="solved_r2c2"></td>
+					<td id="solved_r2c3"></td>
+					<td id="solved_r2c4"></td>
+					<td id="solved_r2c5"></td>
+					<td id="solved_r2c6"></td>
+					<td id="solved_r2c7"></td>
+					<td id="solved_r2c8"></td>
+				</tr>
+				<tr id="solved_r3">
+					<td id="solved_r3c0"></td>
+					<td id="solved_r3c1"></td>
+					<td id="solved_r3c2"></td>
+					<td id="solved_r3c3"></td>
+					<td id="solved_r3c4"></td>
+					<td id="solved_r3c5"></td>
+					<td id="solved_r3c6"></td>
+					<td id="solved_r3c7"></td>
+					<td id="solved_r3c8"></td>
+				</tr>
+				<tr id="solved_r4">
+					<td id="solved_r4c0"></td>
+					<td id="solved_r4c1"></td>
+					<td id="solved_r4c2"></td>
+					<td id="solved_r4c3"></td>
+					<td id="solved_r4c4"></td>
+					<td id="solved_r4c5"></td>
+					<td id="solved_r4c6"></td>
+					<td id="solved_r4c7"></td>
+					<td id="solved_r4c8"></td>
+				</tr>
+				<tr id="solved_r5">
+					<td id="solved_r5c0"></td>
+					<td id="solved_r5c1"></td>
+					<td id="solved_r5c2"></td>
+					<td id="solved_r5c3"></td>
+					<td id="solved_r5c4"></td>
+					<td id="solved_r5c5"></td>
+					<td id="solved_r5c6"></td>
+					<td id="solved_r5c7"></td>
+					<td id="solved_r5c8"></td>
+				</tr>
+				<tr id="solved_r6">
+					<td id="solved_r6c0"></td>
+					<td id="solved_r6c1"></td>
+					<td id="solved_r6c2"></td>
+					<td id="solved_r6c3"></td>
+					<td id="solved_r6c4"></td>
+					<td id="solved_r6c5"></td>
+					<td id="solved_r6c6"></td>
+					<td id="solved_r6c7"></td>
+					<td id="solved_r6c8"></td>
+				</tr>
+				<tr id="solved_r7">
+					<td id="solved_r7c0"></td>
+					<td id="solved_r7c1"></td>
+					<td id="solved_r7c2"></td>
+					<td id="solved_r7c3"></td>
+					<td id="solved_r7c4"></td>
+					<td id="solved_r7c5"></td>
+					<td id="solved_r7c6"></td>
+					<td id="solved_r7c7"></td>
+					<td id="solved_r7c8"></td>
+				</tr>
+				<tr id="solved_r8">
+					<td id="solved_r8c0"></td>
+					<td id="solved_r8c1"></td>
+					<td id="solved_r8c2"></td>
+					<td id="solved_r8c3"></td>
+					<td id="solved_r8c4"></td>
+					<td id="solved_r8c5"></td>
+					<td id="solved_r8c6"></td>
+					<td id="solved_r8c7"></td>
+					<td id="solved_r8c8"></td>
+				</tr>
+			</table>
+		</div>
+
+		<!-- SAVE OPTIONS -->
+		<div id="save-options">
+			<!-- Reveal Solution -->
+			<div id="container-reveal">
+				<button id="solution-reveal" onclick="this.hidden = true; unhide_solution()">Reveal Solution</button>
+			</div>
+			<hr style="max-width: 50%;" />
+			<!-- Print Dialog -->
+			<div id="container-print">
+				<button id="print-me" onclick="print()">Print Puzzle</button>
+			</div>
+			<hr style="max-width: 50%;" />
+
+			<!-- IMAGE -->
+			<div id="container-save">
+				<div style="width:85%;text-decoration:underline;">Save Puzzle as an Image (PNG):</div>
+				<label>
+					<input id="input-canvas-px" type="number" min="100"placeholder="Minimum: 300px" value="500" onchange="verify_canvas_size()"></input>
+					Image Width in Pixels
+				</label>
+				<div id="container-approx-dims">
+					(<span id="img-approx-dims"> </span>)
+				<div>
+				<div id="container-save-img">
+					<button id="button-save-img" onclick="save_image()">Save Image</button>
+					<a id="img-download" href="" download></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="description">
+			<p>
+				<strong><u>While Sudoku</u></strong> is a series of sudoku puzzle books. The puzzles are created via Python programming. Each puzzle will have a unique pattern and solution which can be determined entirely by logic. Herein, you'll find daily-updated puzzles that can be printed or saved to your computer / device as an image.
+			</p>
+			<p>
+				Physical books are released on Amazon at <a href="">AMZN LINK HERE</a>. They are formatted with 2 puzzles per page, in a 5.25" x 8" book, a decent size for easy portability.
+			</p>
+			<p>
+				I also generate Digital (PDF) books of the same name at <a href="https://whilesudoku.gumroad.com">whilesudoku.gumroad.com</a>. These are formatted for e-ink "paper" tablets (6.18" x 8.24"), or devices that allow on-screen note-taking. But since they are PDF's, they should be compatible with most, if not all, devices that can support opening PDF files.
+			</p>
+		</div>
+		<div id="footer"></div>
+		<script src="footer.js"></script>
+		<script src="whilesudoku/puzzle.js"></script>
+		<script src="whilesudoku/wsudoku.js"></script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
