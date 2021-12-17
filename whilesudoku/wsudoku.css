@@ -11,6 +11,10 @@ body > div {
 	margin: 0 auto;
 	/* color: lightgray; */
 }
+.description img {
+	width: 90%;
+	max-width: 500px;
+}
 
 #container {
 	margin: 0 auto;
