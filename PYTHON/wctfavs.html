@@ -2,13 +2,13 @@
 <html>
 	<head>
 		<base href="../">
-		<title>ksgwxfan - Radar WCTFAVS</title>
+		<title>Radar wctfavs</title>
 		<link rel="stylesheet" type="text/css" href="PYTHON/wctfavs.css"></link>
 		<link rel="stylesheet" type="text/css" href="pageheader.css"></link>
 	</head>
 	<body link="lightBlue" vlink="lightBlue" onLoad="populate_products()">
 		<h1 id="header">
-			<img id="headerphoto" src="profile_small.png" alt="Profile Image - Small"> Python Creations - Radar .WCTFAVS Files
+			<img id="headerphoto" src="profile_small.png" alt="Profile Image - Small">Radar .WCTFAVS Files
 		</h1>
 		<!-- DOWNLOAD LINK -->
 		<div class="download_link">
@@ -21,9 +21,9 @@
 		<img id="intro-screenshot" src="PYTHON/WCTFAVS/mainphoto.jpg" />
 		<!-- Information / Description -->
 		<div class="information">
-			<p>WCTFAVS files work exclusively in <a href="https://www.ncdc.noaa.gov/wct/">NOAA's Weather Climate Toolkit</a> (WCT).<tt>WCTFAV</tt> is a type of file extension for a basic-formatted text file. The favorites feature in WCT is typically used to store your favorite items, but I engineered these files with Python, specifically for use with the favorites feature. They specifically access the most recent Level-III radar data.</p>
-			<p>WCT makes accessing Level-II data very simple, but L3 data is a little more difficult, although MUCH easier than before. You can now access the data via a menu process, but if you find that to get cumbersome, these files may help you. I believe it's a helpful option if you want to use WCT in near-real time.</p>
-			<p>* For convenience, "mrms_products.txt" was also included, it linking the most-recent MRMS Products</p>
+			<p>WCTFAVS files work exclusively in <a href="https://www.ncdc.noaa.gov/wct/">NOAA's Weather Climate Toolkit</a> (WCT). Files of the <kbd>.wctfav</kbd> extension are tab-delimited text files where each line represents a product. The first column is the html link to the file of interest, the second column is a human-readable description of the file. These files can be loaded using the favorites tab in the Data Selector of WCT. Though use is typically to store your favorite or most-frequently accessed data, I engineered these files with Python, specifically for use with the favorites feature. They specifically access the most recent Level-III radar data.</p>
+			<p>WCT makes accessing Level-II data very simple, but L3 data is a little more difficult, although MUCH easier than before. You can now access the data via a menu process, but if you find that to get cumbersome, these files may help you. Especially if you want to use WCT in near-real time.</p>
+			<p>* For convenience, <kbd>mrms_products.wctfavs</kbd> was also included, it linking the most-recent MRMS Products</p>
 		</div>
 		<div id="interactive-example">
 			<!-- selectbox: 660x200 -->
@@ -39,7 +39,7 @@
 			</figcaption>
 		</figure>
 		<div class="information">
-			What makes the use of these files possible is that on the NWS servers, they include a file: "<code>sn.last</code>", which will always hold the newest data for a given product. So each WCTFAV file can pull up the most recent data for a given product. TDWR Sites Files are grouped together by State.
+			What makes the use of these files possible is that on the NWS servers, they include a file: <kbd>sn.last</kbd>, which will always hold the newest data for a given product. So each WCTFAV file can pull up the most recent data for a given product. TDWR Sites Files are grouped together by State.
 		</div>
 
 		<div id="footer"></div>

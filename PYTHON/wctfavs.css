@@ -7,6 +7,12 @@ body {
 	align-items: center;
 }
 
+kbd {
+	background-color: darkslategray;
+	border-radius: 4px 4px;
+	padding: 0 4px;
+}
+
 .download_link {
 	font-size: 2em;
 	font-weight: bold;
