@@ -19,7 +19,6 @@
 #footer {
 	display: flex;
 	flex-wrap: wrap;
-	flex-direction: row;
 	justify-content: center;
 	align-items: center;
 	margin: 10px auto;
@@ -34,3 +33,16 @@
 	cursor: pointer;
 }
 
+@media (min-width: 500px) {
+	#footer {
+		flex-direction: row;
+	}
+	#footer span:last-of-type {display: none;}
+	.footer-bullet {display: inline;}
+}
+@media (max-width: 499px) {
+	#footer {
+		flex-direction: column;
+	}
+	.footer-bullet {display: none;}
+}

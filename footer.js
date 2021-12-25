@@ -1,8 +1,8 @@
 var footer = document.getElementById("footer");
-	let _vis = "hidden";
+let _vis = "hidden";
 
+// [tag, label, attr]
 let links = [
-
 	{"tag": "a", "label": "HOME",
 	 "attr": {"href": "index.html"}},
 	{"tag": "a", "label": "iR&#233;sume",
@@ -16,28 +16,25 @@ let links = [
 			    "id": "c_email",
 		   "onClick": "toggle_email()"}},
 	{"tag": "a", "label": "Echo Tops Weather Blog",
-	"attr": {"href": "http://echotops.blogspot.com/"}}
+	"attr": {"href": "https://echotops.blogspot.com/"}}
 ];
 
 function createLink(tag, label, attrs, last=false) {
 	element = document.createElement(tag);
-	element.innerHTML = label
+	element.innerHTML = label;
 	for (attr in attrs) {
-		element.setAttribute(attr, attrs[attr])
+		element.setAttribute(attr, attrs[attr]);
 	};
 	footer.appendChild(element);
-	if (last == false) {
-		footer.innerHTML += "<span> &bull; </span>";
-	}
+	footer.innerHTML += "<span class='footer-bullet'> &bull; </span>";
 }
 
 // Build Links
-for (i=0; i<links.length; i++) {
+for (link of links) {
 	createLink(
-		links[i].tag,
-		links[i].label,
-		links[i].attr,
-		(i == links.length - 1) ? true : false
+		link.tag,
+		link.label,
+		link.attr
 	);
 }
 
@@ -52,8 +49,29 @@ function toggle_email() {
 
 	if (_vis == "hidden") {
 		_vis = "show";
-		emailid.innerHTML = `<a href="mailto:${pre1+pre2+pre3+pre4+pre5}">${pre1+pre2+pre3+pre4+pre5}</a>`;
+		let email_addy = pre1 + pre2 + pre3 + pre4 + pre5;
+		emailid.innerHTML = [
+			"<a href='mailto:",
+			email_addy.toLowerCase(),
+			"'>",
+			email_addy,
+			"</a>"
+		].join("");
 		emailid.title = "";
-		//emailid.style.userSelect = "visible";
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
