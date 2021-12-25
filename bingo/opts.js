@@ -13,13 +13,13 @@ function chg_game_mode(mode) {
 			document.getElementById("downloadcard").style.display = "block";
 			document.getElementById("options_caller").style.display = "none";
 			document.getElementById("options").style.display = "table";
-			requestAnimationFrame(draw);
+			cancelAnimationFrame(prop.call_ani_id);
+			prop.card_ani_id = requestAnimationFrame(draw);
 		}
 		// CALLER MODE
 		else if (mode == "caller") {
 			canvas.style.display = "none";
 			canvas_caller.style.display = "inline";
-			requestAnimationFrame(() => null);
 			document.getElementById("mode_caller").style = "background-color:darkred;border:5px inset yellow";
 			document.getElementById("mode_game").style = "initial";
 			document.getElementById("generate").style.display = "none";
@@ -28,7 +28,8 @@ function chg_game_mode(mode) {
 			document.getElementById("downloadcaller").style.display = "block";
 			document.getElementById("options").style.display = "none";
 			document.getElementById("options_caller").style.display = "inline-block";
-			requestAnimationFrame(drawCaller);
+			cancelAnimationFrame(prop.card_ani_id);
+			prop.call_ani_id = requestAnimationFrame(drawCaller);
 		}
 	}
 }
