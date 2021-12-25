@@ -17,6 +17,7 @@
 		<h1 id="header" style="margin-bottom:20px;">
 			<img id="headerphoto" src="profile_small.png" alt="Profile Image - Small">Bingo
 		</h1>
+		<div id="storage-disclaimer">* The last used bingo play-card and/or marker-placement will be saved for 24 hours *</div>
 		<div id="generate">
 			<!--<button onClick="draw()">CLICK ME!</button>-->
 			<button id="genbtn" onClick="newCard()" title="Refresh the card with new numbers">Generate New Card</button>
@@ -55,8 +56,8 @@
 		<!-- HOLIDAY SVG -->
 		<div id="holiday-svg" style="text-align:center; display:none;">
 			<u>Holiday Image Underlay:</u><br />
-			<input type="radio" name="holidaysvg" value="true" onClick="prop.drawHolidaySVG = true; draw(); drawCaller();" checked>On</input>
-			<input type="radio" name="holidaysvg" value="false" onClick="prop.drawHolidaySVG = false; draw(); drawCaller();">Off</input>
+			<input type="radio" name="holidaysvg" value="true" onClick="cancelAnimationFrame(prop.call_ani_id);prop.drawHolidaySVG = true; draw(); drawCaller();" checked>On</input>
+			<input type="radio" name="holidaysvg" value="false" onClick="cancelAnimationFrame(prop.card_ani_id);prop.drawHolidaySVG = false; draw(); drawCaller();">Off</input>
 		</div>
 		<table id="options">
 			<caption>

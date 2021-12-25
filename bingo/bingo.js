@@ -35,6 +35,7 @@ var prop = {
 	"callerPrevColor": "#000080",
 	"clearCallsConfirm": 0,
 	"last_call_time": performance.now(),
+	"call_ani_id" : -1,
 	"printMarkers": true,
 	"markers": [],
 	"markerColor": "rgb(255,75,75)",
@@ -44,11 +45,47 @@ var prop = {
 	"snow_pos": -500,
 	"snow_pos2": -500,
 	"last_draw_time": performance.now(),
+	"card_ani_id" : -1,
 };
+
+function ZFILL(n, len=2) {
+	nstr = n.toString();
+	if (nstr.length >= len) {
+		return nstr
+	}
+	else {
+		while (nstr.length < len) {
+			nstr = "0" + nstr;
+		}
+	}
+	return nstr;
+}
 
 // give Date objects a tuple representing month/date
 Date.prototype.tuple = function() {
 	return [this.getMonth()+1, this.getDate()];
+}
+Date.prototype.isoformat = function() {
+	return [
+		this.getFullYear().toString(),
+		this.getMonth() + 1,
+		this.getDate()
+	].join("-") + "T"
+	+ [
+		ZFILL(this.getHours()),
+		ZFILL(this.getMinutes()),
+		ZFILL(this.getSeconds()),
+	].join(":")
+}
+Date.prototype.fromisoformat = function(dstr) {
+	// 2021-12-24T15:32:50
+	return new Date(
+		parseInt(dstr.slice(0, 4)),
+		parseInt(dstr.slice(5,7)) - 1,
+		parseInt(dstr.slice(8,10)),
+		parseInt(dstr.slice(11, 13)),
+		parseInt(dstr.slice(14, 16)),
+	)
 }
 
 // __today = new Date(2021, 12-1, 1);
@@ -181,8 +218,8 @@ function markerProximityCheck() {
 	// Canvas-Relative click coords
 	xclick = event.clientX-canvasX0;
 	yclick = event.clientY-canvasY0;
-	//console.log(ctx.canvas.id);
-	console.log(xclick, yclick);
+	// console.log(ctx.canvas.id);
+	// console.log(xclick, yclick);
 
 	// Bool to determine whether or not a mark needs to be noted
 	let markerbool = true;
@@ -211,6 +248,8 @@ function markerProximityCheck() {
 				"y": yclick
 			}
 		);
+		localStorage.setItem("bingo_markers", JSON.stringify(prop.markers));
+		localStorage.setItem("bingo_time", Date.now());
 	}
 	draw();
 }
@@ -221,6 +260,8 @@ function remove_marker(i) {
 	let before = prop.markers.slice(0,i);
 	let after = prop.markers.slice(i+1);
 	prop.markers = before.concat(after);
+	localStorage.setItem("bingo_markers", JSON.stringify(prop.markers));
+	localStorage.setItem("bingo_time", Date.now());
 	draw();
 }
 
@@ -278,6 +319,29 @@ function resize(init=false) {
 		canvas_caller.height = canvas.height;
 		canvas_caller.width = canvas.width;
 		reparameterize();
+		if (init == true) {
+			// First check the age of the previous-card data
+			// d = Date.prototype.fromisoformat("2021-12-24T15:32:50")
+			if (localStorage.getItem("bingo_time") == null) {
+				localStorage.setItem("bingo_time", Date.now());
+			}
+			if ((Date.now() - JSON.parse(localStorage.getItem("bingo_time"))) / 1000 < 24 * 60 * 60) {
+				localStorage.setItem("bingo_time", Date.now());
+				// Load previous card info
+				if (!localStorage.getItem("bingo_markers") == false) {
+					prop.markers = JSON.parse(localStorage.getItem("bingo_markers"));	
+				}
+				// Load previous card info
+				if (!localStorage.getItem("bingo_card") == false) {
+					let space_nums = JSON.parse(localStorage.getItem("bingo_card"));
+					prop.spaces.B.numbers = space_nums[0];
+					prop.spaces.I.numbers = space_nums[1];
+					prop.spaces.N.numbers = space_nums[2];
+					prop.spaces.G.numbers = space_nums[3];
+					prop.spaces.O.numbers = space_nums[4];	
+				}
+			}
+		}
 	}
 }
 
@@ -305,12 +369,19 @@ function reparameterize() {
 	prop.oldheight = canvas.height;
 	prop.snow_pos = -1 * canvas.height;
 	prop.snow_pos2 = -1 * canvas.height;
-	draw();
-	drawCaller();
+	if (prop.mode == "game") {		
+		draw();
+	}
+	else {		
+		drawCaller();
+	}
 }
 
 function newCard() {
 	prop.markers = []; 	// Clear the markers
+	localStorage.setItem("bingo_markers", JSON.stringify(prop.markers));
+	localStorage.setItem("bingo_time", Date.now());
+	
 	//console.log(1 + Math.floor(Math.random() * (15 - 1 + 1)));
 	
 	for (letter in prop.spaces) {
@@ -322,11 +393,18 @@ function newCard() {
 			prop.spaces[letter].numbers.push(r);
 		}
 	};
+	space_nums = [];
+	for (letter in prop.spaces) {
+		space_nums.push(prop.spaces[letter].numbers);
+	}
+	localStorage.setItem("bingo_card", JSON.stringify(space_nums));
 	draw();
 }
 
 function clearCard() {
 	prop.markers = [];
+	localStorage.setItem("bingo_markers", JSON.stringify(prop.markers));
+	localStorage.setItem("bingo_time", Date.now());
 	draw();
 }
 
@@ -585,19 +663,20 @@ function draw() {
 			prop.snow_pos2 = -1 * canvas.height;
 			// console.log(prop.snow_pos2[1]);
 		}
-		function update() {
+		
+		function update(nowcard) {
 			if (
-				prop.drawHolidaySVG == true && 
+				prop.drawHolidaySVG == true &&
 				prop.mode == "game" &&
-				(performance.now() - prop.last_draw_time) / 1000 >= 1/15
+				(nowcard - prop.last_draw_time) / 1000 >= 1/15
 			) {
-				prop.last_draw_time = performance.now();
 				draw();
 			}
-			requestAnimationFrame(update); 	// animate!
+			prop.card_ani_id = requestAnimationFrame(update); 	// animate!
 		}
-	    requestAnimationFrame(update); // initiate!
+	    prop.card_ani_id = requestAnimationFrame(update); // initiate!
     }
+	prop.last_draw_time = performance.now();
 }
 
 function caller_active() {
@@ -806,6 +885,7 @@ function resetCaller() {
 }
 
 function drawCaller() {
+	// console.log("called");
 	var voffset = canvas_caller.height * 0.175;
 	var hoffset = canvas_caller.width * 0.025;
 	ctx_caller.clearRect(0, 0, canvas_caller.width, canvas_caller.height); //clear
@@ -988,19 +1068,20 @@ function drawCaller() {
 		if (prop.snow_pos2 >= 0) {
 			prop.snow_pos2 = -1 * canvas.height;
 		}
-		function update_for_caller() {
+		function update_for_caller(nowcall) {
 			if (
-				prop.drawHolidaySVG == true && 
+				prop.drawHolidaySVG == true &&
 				prop.mode == "caller" &&
-				(performance.now() - prop.last_draw_time) / 1000 >= 1/15
+				(nowcall - prop.last_draw_time) / 1000 >= 1/15
 			) {
-				prop.last_draw_time = performance.now();
 				drawCaller();
 			}
-			requestAnimationFrame(update_for_caller); 	// animate!
+			prop.call_ani_id = requestAnimationFrame(update_for_caller); 	// animate!
 		}
-		requestAnimationFrame(update_for_caller); 	// animate!
+		prop.call_ani_id = requestAnimationFrame(update_for_caller); 	// animate!
     }
+	prop.last_draw_time = performance.now();
+
 	// else {
 		// requestAnimationFrame(zxcv => {null;});
 	// }
