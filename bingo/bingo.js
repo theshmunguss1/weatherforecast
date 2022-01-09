@@ -88,11 +88,29 @@ Date.prototype.fromisoformat = function(dstr) {
 	)
 }
 
-// __today = new Date(2021, 12-1, 1);
+// __today = new Date(2021, 3-1, 11);
 __today = new Date();
 
+// Valentine's Day
+if (
+		__today.getMonth() == 2-1 &&
+		__today.getDate() <= 16
+) {
+/* 	// Marker Color
+	prop.markerColor = "red";
+	document.getElementById("input-marker-color").value = "#4BFF4B";
+	// Called Color
+	prop.callerPrevColor = "#008000";
+	document.getElementById("input-called-color").value = "#008000";
+	// Called History */
+}
+
 // St. Patrick's Day Theme
-if (JSON.stringify(__today.tuple()) == JSON.stringify([3,17])) {
+if (
+		__today.getMonth() == 3-1 &&
+		__today.getDate() >= 11 &&
+		__today.getDate() <= 17
+) {
 	// Marker Color
 	prop.markerColor = "rgb(75, 255, 75)";
 	document.getElementById("input-marker-color").value = "#4BFF4B";
@@ -103,7 +121,10 @@ if (JSON.stringify(__today.tuple()) == JSON.stringify([3,17])) {
 }
 
 // Thanksgiving
-if (__today.tuple() >= [11,20] && __today.tuple() < [12,1]) {
+if (
+		__today.getMonth() == 11-1 &&
+		__today.getDate() >= 20
+) {
 
 	// Marker Color
 	prop.markerColor = "#ff9e42"; //"#e43a01";
@@ -135,7 +156,7 @@ if (__today.tuple() >= [11,20] && __today.tuple() < [12,1]) {
 }
 
 // CHRISTMAS
-if (__today.tuple() >= [12,1]) {
+if (__today.getMonth() == 12-1) {
 	__snow_scape = new Image();
 	__snow_scape.src = "bingo/snowy_landscape.svg";
 	__snow_scape.onload = () => {null;};
@@ -318,7 +339,7 @@ function resize(init=false) {
 		// Change caller dims accordingly
 		canvas_caller.height = canvas.height;
 		canvas_caller.width = canvas.width;
-		reparameterize();
+
 		if (init == true) {
 			// First check the age of the previous-card data
 			// d = Date.prototype.fromisoformat("2021-12-24T15:32:50")
@@ -342,6 +363,8 @@ function resize(init=false) {
 				}
 			}
 		}
+
+		reparameterize();
 	}
 }
 
@@ -502,7 +525,7 @@ function draw() {
 		);
 	}
 	// CHRISTMAS
-	if (__today.tuple() >= [12,1] && prop.drawHolidaySVG == true) {
+	if (__today.getMonth() == 12-1) {
 	    ctx.drawImage(__snow_scape, 0, 0, canvas.width, canvas.height);
 		ctx.fillStyle = "rgba(255,255,255, 25%)";
 		ctx.fillRect(
@@ -651,31 +674,7 @@ function draw() {
 			);
 		}
 	}
-	// CHRISTMAS
-	if (__today.tuple() >= [12,1] && prop.drawHolidaySVG == true) {
-		prop.snow_pos = prop.snow_pos + 3;
-		prop.snow_pos2 = prop.snow_pos2 + 6;
-		if (prop.snow_pos >= 0) {
-			prop.snow_pos = -1 * canvas.height;
-		}
-		if (prop.snow_pos2 >= 0) {
-			// console.log(prop.snow_pos2[1]);
-			prop.snow_pos2 = -1 * canvas.height;
-			// console.log(prop.snow_pos2[1]);
-		}
-		
-		function update(nowcard) {
-			if (
-				prop.drawHolidaySVG == true &&
-				prop.mode == "game" &&
-				(nowcard - prop.last_draw_time) / 1000 >= 1/15
-			) {
-				draw();
-			}
-			prop.card_ani_id = requestAnimationFrame(update); 	// animate!
-		}
-	    prop.card_ani_id = requestAnimationFrame(update); // initiate!
-    }
+
 	prop.last_draw_time = performance.now();
 }
 
@@ -893,7 +892,7 @@ function drawCaller() {
 	ctx_caller.fillStyle = prop.callerBackground;
 	ctx_caller.fillRect(0, 0, canvas_caller.width, canvas_caller.height);
 	// CHRISTMAS
-	if (__today.tuple() >= [12,1] && prop.drawHolidaySVG == true) {
+	if (__today.getMonth() == 12-1) {
 	    ctx_caller.drawImage(__snow_scape, 0, 0, canvas.width, canvas.height);
 		ctx_caller.fillStyle = "rgba(255,255,255, 25%)";
 		ctx_caller.fillRect(
@@ -1058,33 +1057,9 @@ function drawCaller() {
 			);
 		}
 	}
-	// CHRISTMAS
-	if (__today.tuple() >= [12,1] && prop.drawHolidaySVG == true) {
-		prop.snow_pos = prop.snow_pos + 3;
-		prop.snow_pos2 = prop.snow_pos2 + 6;
-		if (prop.snow_pos >= 0) {
-			prop.snow_pos = -1 * canvas.height;
-		}
-		if (prop.snow_pos2 >= 0) {
-			prop.snow_pos2 = -1 * canvas.height;
-		}
-		function update_for_caller(nowcall) {
-			if (
-				prop.drawHolidaySVG == true &&
-				prop.mode == "caller" &&
-				(nowcall - prop.last_draw_time) / 1000 >= 1/15
-			) {
-				drawCaller();
-			}
-			prop.call_ani_id = requestAnimationFrame(update_for_caller); 	// animate!
-		}
-		prop.call_ani_id = requestAnimationFrame(update_for_caller); 	// animate!
-    }
+
 	prop.last_draw_time = performance.now();
 
-	// else {
-		// requestAnimationFrame(zxcv => {null;});
-	// }
 }
 
 
