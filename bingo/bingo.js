@@ -88,7 +88,6 @@ Date.prototype.fromisoformat = function(dstr) {
 	)
 }
 
-// __today = new Date(2021, 3-1, 11);
 __today = new Date();
 
 // Valentine's Day
