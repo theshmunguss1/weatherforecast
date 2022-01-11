@@ -13,8 +13,7 @@ function chg_game_mode(mode) {
 			document.getElementById("downloadcard").style.display = "block";
 			document.getElementById("options_caller").style.display = "none";
 			document.getElementById("options").style.display = "table";
-			cancelAnimationFrame(prop.call_ani_id);
-			prop.card_ani_id = requestAnimationFrame(draw);
+			draw();
 		}
 		// CALLER MODE
 		else if (mode == "caller") {
@@ -28,8 +27,7 @@ function chg_game_mode(mode) {
 			document.getElementById("downloadcaller").style.display = "block";
 			document.getElementById("options").style.display = "none";
 			document.getElementById("options_caller").style.display = "inline-block";
-			cancelAnimationFrame(prop.card_ani_id);
-			prop.call_ani_id = requestAnimationFrame(drawCaller);
+			drawCaller();
 		}
 	}
 }

@@ -35,9 +35,9 @@ var prop = {
 	"callerPrevColor": "#000080",
 	"clearCallsConfirm": 0,
 	"last_call_time": performance.now(),
-	"call_ani_id" : -1,
 	"printMarkers": true,
 	"markers": [],
+	"markers_storage": [],
 	"markerColor": "rgb(255,75,75)",
 	"markerOutlineColor": "black",
 	"optsSelected": "bg",
@@ -88,35 +88,52 @@ Date.prototype.fromisoformat = function(dstr) {
 	)
 }
 
+// __today = new Date(2022, 3-1, 17);
 __today = new Date();
 
 // Valentine's Day
 if (
 		__today.getMonth() == 2-1 &&
-		__today.getDate() <= 16
+		__today.getDate() <= 14
 ) {
-/* 	// Marker Color
-	prop.markerColor = "red";
-	document.getElementById("input-marker-color").value = "#4BFF4B";
+	// Underlay
+	__valentines_pattern = new Image();
+	__valentines_pattern.src = "bingo/valentines.svg";
+	__valentines_pattern.onload = draw;
+
+	// Marker Color
+	prop.markerColor = "#FF0048";
+	document.getElementById("input-marker-color").value = prop.markerColor;
+
 	// Called Color
-	prop.callerPrevColor = "#008000";
-	document.getElementById("input-called-color").value = "#008000";
-	// Called History */
+	prop.callerPrevColor = "#800030";
+	document.getElementById("input-called-color").value = prop.callerPrevColor;
+
+	prop.drawHolidaySVG = true;
+	document.getElementById("holiday-svg").style.display = "block";
+
+
 }
 
 // St. Patrick's Day Theme
 if (
 		__today.getMonth() == 3-1 &&
-		__today.getDate() >= 11 &&
+		__today.getDate() >= 10 &&
 		__today.getDate() <= 17
 ) {
+	__stpattys_pattern = new Image();
+	__stpattys_pattern.src = "bingo/stpatricks.svg";
+	__stpattys_pattern.onload = draw;
+
 	// Marker Color
 	prop.markerColor = "rgb(75, 255, 75)";
 	document.getElementById("input-marker-color").value = "#4BFF4B";
 	// Called Color
 	prop.callerPrevColor = "#008000";
 	document.getElementById("input-called-color").value = "#008000";
-	// Called History
+
+	prop.drawHolidaySVG = true;
+	document.getElementById("holiday-svg").style.display = "block";
 }
 
 // Thanksgiving
@@ -203,24 +220,12 @@ if (__today.getMonth() == 12-1) {
 window.addEventListener("resize", resize, false);
 
 // Game Mode Event Listener
-canvas.addEventListener(
-	"click",
-	event => markerProximityCheck()
-);
+canvas.addEventListener("click", markerProximityCheck);
 
 // Caller Mode Event Listener
-canvas_caller.addEventListener(
-	"mousedown",
-	event => caller_active(event)
-);
-canvas_caller.addEventListener(
-	"touchstart",
-	event => caller_active(event)
-);
-canvas_caller.addEventListener(
-	"mouseup",
-	event => new_call(event)
-);
+canvas_caller.addEventListener("mousedown", caller_active);
+canvas_caller.addEventListener("touchstart", caller_active);
+canvas_caller.addEventListener("mouseup", new_call);
 
 resize(true); 	// includes call to draw()
 
@@ -230,11 +235,10 @@ document.getElementById("optsSelect").addEventListener(
 	event => chg_opts(event)
 );
 
-function markerProximityCheck() {
+function markerProximityCheck(event=null) {
 	// Canvas top-left coords
 	let canvasX0 = canvas.getBoundingClientRect().x;
 	let canvasY0 = canvas.getBoundingClientRect().y;
-
 	// Canvas-Relative click coords
 	xclick = event.clientX-canvasX0;
 	yclick = event.clientY-canvasY0;
@@ -268,9 +272,22 @@ function markerProximityCheck() {
 				"y": yclick
 			}
 		);
-		localStorage.setItem("bingo_markers", JSON.stringify(prop.markers));
-		localStorage.setItem("bingo_time", Date.now());
+		prop.markers_storage.push(
+			{
+				"x": xclick / canvas.width,
+				"y": yclick / canvas.height
+			}
+		);
 	}
+
+	// Update localStorage with clicks as percentage of canvas dimensions
+	// xclick / canvas.width
+	// yclick / canvas.height
+	localStorage.setItem("bingo_markers", JSON.stringify(prop.markers_storage));
+	localStorage.setItem("bingo_time", Date.now());
+	// console.log(prop.markers);
+	// console.log(localStorage["bingo_markers"]);
+
 	draw();
 }
 
@@ -278,9 +295,17 @@ function remove_marker(i) {
 	// Restructures the array while leaving out the marker that
 	// 		needs to be removed
 	let before = prop.markers.slice(0,i);
+	let before_strg = prop.markers_storage.slice(0,i);
 	let after = prop.markers.slice(i+1);
+	let after_strg = prop.markers_storage.slice(i+1);
+	// console.log(prop.markers_storage);
+	// console.log(before_strg);
+	// console.log(after_strg);
 	prop.markers = before.concat(after);
-	localStorage.setItem("bingo_markers", JSON.stringify(prop.markers));
+	// console.log(before_strg.concat(after_strg));
+	prop.markers_storage = before_strg.concat(after_strg);
+	localStorage.setItem("bingo_markers", JSON.stringify(prop.markers_storage));
+	// console.log(prop.markers_storage);
 	localStorage.setItem("bingo_time", Date.now());
 	draw();
 }
@@ -348,10 +373,6 @@ function resize(init=false) {
 			if ((Date.now() - JSON.parse(localStorage.getItem("bingo_time"))) / 1000 < 24 * 60 * 60) {
 				localStorage.setItem("bingo_time", Date.now());
 				// Load previous card info
-				if (!localStorage.getItem("bingo_markers") == false) {
-					prop.markers = JSON.parse(localStorage.getItem("bingo_markers"));	
-				}
-				// Load previous card info
 				if (!localStorage.getItem("bingo_card") == false) {
 					let space_nums = JSON.parse(localStorage.getItem("bingo_card"));
 					prop.spaces.B.numbers = space_nums[0];
@@ -363,11 +384,11 @@ function resize(init=false) {
 			}
 		}
 
-		reparameterize();
+		reparameterize(init);
 	}
 }
 
-function reparameterize() {
+function reparameterize(init=false) {
 	prop.board = {
 		"x": canvas.width * 0.05,
 		"y": canvas.height * 0.175,
@@ -391,6 +412,32 @@ function reparameterize() {
 	prop.oldheight = canvas.height;
 	prop.snow_pos = -1 * canvas.height;
 	prop.snow_pos2 = -1 * canvas.height;
+	// Load previous marker info
+	if (init == true && !localStorage.getItem("bingo_markers") == false) {
+		let canvasX0 = canvas.getBoundingClientRect().x;
+		let canvasY0 = canvas.getBoundingClientRect().y;
+
+					// Canvas-Relative click coords
+					// xclick = event.clientX-canvasX0;
+					// yclick = event.clientY-canvasY0;
+		let _strg_markers = JSON.parse(localStorage.getItem("bingo_markers"));
+
+		// xclick / canvas.width
+		for (mrkr of _strg_markers) {
+			prop.markers_storage.push(
+				{
+					"x": mrkr.x,
+					"y": mrkr.y
+				}
+			);
+			prop.markers.push(
+				{
+					"x": mrkr.x * canvas.width,
+					"y": mrkr.y * canvas.height
+				}
+			)
+		}
+	}
 	if (prop.mode == "game") {		
 		draw();
 	}
@@ -513,16 +560,29 @@ function draw() {
 	// BACKGROUND
 	ctx.fillStyle = prop.backgroundColor;
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
-	// GAME BOARD itself
-	if (prop.backgroundColor != prop.boardBackgroundColor) {
-		ctx.fillStyle = prop.boardBackgroundColor;
-		ctx.fillRect(
-			prop.board.x,
-			prop.board.y,
-			prop.board.width,
-			prop.board.height
-		);
+
+	// Valentine's Day
+	if (
+			__today.getMonth() == 2-1 &&
+			__today.getDate() <= 14
+	) {
+		if (prop.drawHolidaySVG == true) {
+			ctx.drawImage(__valentines_pattern, 0, 0, canvas.width, canvas.height);
+		}
 	}
+
+	// St. Patrick's Day Theme
+	
+	if (
+			__today.getMonth() == 3-1 &&
+			__today.getDate() >= 10 &&
+			__today.getDate() <= 17
+	) {
+		if (prop.drawHolidaySVG == true) {
+			ctx.drawImage(__stpattys_pattern, 0, 0, canvas.width, canvas.height);
+		}
+	}
+
 	// CHRISTMAS
 	if (__today.getMonth() == 12-1) {
 	    ctx.drawImage(__snow_scape, 0, 0, canvas.width, canvas.height);
@@ -549,6 +609,18 @@ function draw() {
 		);
 
     }
+
+	// GAME BOARD itself
+	if (prop.backgroundColor != prop.boardBackgroundColor) {
+		ctx.fillStyle = prop.boardBackgroundColor;
+		ctx.fillRect(
+			prop.board.x,
+			prop.board.y,
+			prop.board.width,
+			prop.board.height
+		);
+	}
+
 	// MARKER FILL(if applicable)
 	if (prop.markers.length > 0 && prop.printMarkers == true) {
 		//console.log(prop.markers);
@@ -563,6 +635,7 @@ function draw() {
 	}
 
 	// BINGO NAME (TITLE)
+	
 	ctx.fillStyle = prop.titleColor;
 	ctx.textAlign = "center";
 	ctx.font = `bold ${prop.fontSize * 2}px sans-serif`;
@@ -890,6 +963,28 @@ function drawCaller() {
 	// BACKGROUND
 	ctx_caller.fillStyle = prop.callerBackground;
 	ctx_caller.fillRect(0, 0, canvas_caller.width, canvas_caller.height);
+
+	// Valentine's Day
+	if (
+			__today.getMonth() == 2-1 &&
+			__today.getDate() <= 14
+	) {
+		if (prop.drawHolidaySVG == true) {
+			ctx_caller.drawImage(__valentines_pattern, 0, 0, canvas_caller.width, canvas_caller.height);
+		}
+	}
+
+	// St. Patrick's Day Theme
+	if (
+			__today.getMonth() == 3-1 &&
+			__today.getDate() >= 10 &&
+			__today.getDate() <= 17
+	) {
+		if (prop.drawHolidaySVG == true) {
+			ctx_caller.drawImage(__stpattys_pattern, 0, 0, canvas_caller.width, canvas_caller.height);
+		}
+	}
+
 	// CHRISTMAS
 	if (__today.getMonth() == 12-1) {
 	    ctx_caller.drawImage(__snow_scape, 0, 0, canvas.width, canvas.height);
@@ -979,7 +1074,11 @@ function drawCaller() {
 		let num = prop.called[n].slice(1);
 		let blocknumber = '';
 		if (40 * n <= 160) {
-			if (__today.getMonth() + 1 == 3 && __today.getDate() == 17) {
+			if (
+					__today.getMonth() + 1 == 3 && 
+					__today.getDate() >= 10 &&
+					__today.getDate() <= 17
+			) {
 				blockcolor = `rgb(${40 * n}, 230, ${40 * n})`;
 			}
 			else {
@@ -988,7 +1087,11 @@ function drawCaller() {
 			
 		}
 		else {
-			if (__today.getMonth() + 1 == 3 && __today.getDate() == 17) {
+			if (
+					__today.getMonth() + 1 == 3 && 
+					__today.getDate() >= 10 &&
+					__today.getDate() <= 17
+			) {
 				blockcolor = `rgb(160, 230, 160)`;
 			}
 			else {
