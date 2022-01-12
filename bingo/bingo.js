@@ -221,6 +221,7 @@ window.addEventListener("resize", resize, false);
 
 // Game Mode Event Listener
 canvas.addEventListener("click", markerProximityCheck);
+// canvas.addEventListener("click", () => {console.log(localStorage["bingo_markers"]); console.log(prop.markers_storage)});
 
 // Caller Mode Event Listener
 canvas_caller.addEventListener("mousedown", caller_active);
@@ -448,7 +449,8 @@ function reparameterize(init=false) {
 
 function newCard() {
 	prop.markers = []; 	// Clear the markers
-	localStorage.setItem("bingo_markers", JSON.stringify(prop.markers));
+	prop.markers_storage = [];
+	localStorage.setItem("bingo_markers", JSON.stringify(prop.markers_storage));
 	localStorage.setItem("bingo_time", Date.now());
 	
 	//console.log(1 + Math.floor(Math.random() * (15 - 1 + 1)));
@@ -472,8 +474,10 @@ function newCard() {
 
 function clearCard() {
 	prop.markers = [];
-	localStorage.setItem("bingo_markers", JSON.stringify(prop.markers));
+	prop.markers_storage = [];
+	localStorage.setItem("bingo_markers", JSON.stringify(prop.markers_storage));
 	localStorage.setItem("bingo_time", Date.now());
+
 	draw();
 }
 
