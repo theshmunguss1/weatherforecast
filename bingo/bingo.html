@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <!DOCTYPE html>
 <html>
 	<head>
@@ -192,3 +193,195 @@
 
 
 
+=======
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="../">
+		<title>Bingo</title>
+		<link rel="stylesheet" type="text/css" href="pageheader.css"></link>
+		<link id="class_name" rel="stylesheet" href="bingo/bingo.css">
+		<meta name="author" content="Kyle Gentry">
+		<meta name="description" content="Generate Bingo Cards to print them, interactively use them, virtually play a game, or call a game.">
+		<meta name="keywords" content="bingo, game, printable">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+	</head>
+	<body>
+		<h1 id="header">Bingo</h1>
+		<div id="storage-disclaimer">* The last used bingo play-card and/or marker-placement will be saved for 24 hours *</div>
+		<div id="generate">
+			<!--<button onClick="draw()">CLICK ME!</button>-->
+			<button id="genbtn" onClick="newCard()" title="Refresh the card with new numbers">Generate New Card</button>
+			<button id="clrbtn" onClick="clearCard();" title="Clear card of all markers">Clear Markers</button>
+		</div>
+		<div id="caller_card" style="display:none;">
+			<!--<button onClick="draw()">CLICK ME!</button>-->
+			<button id="callclear" onClick="prop.clearCallsConfirm++; resetCaller()" title="Clear the Calls (start new game)">Clear the Calls</button>
+		</div>
+		<div id="container">
+			<canvas id="canvas" width="375" height="500"></canvas>
+			<canvas id="canvas_caller" width="375" height="500" style="display:none;"></canvas>
+			<canvas id="canvas_img" width="720" height="960" style="display:none"></canvas>
+			<canvas id="canvas_caller_img" width="720" height="960" style="display:none"></canvas>
+		</div>
+		<div id="downloadcard" style="text-align:center;">
+			<a id="imglink" download="bingo_card" href="" onClick="outputimg()">Download Card</a> <input id="imglinkmarkers" type="checkbox">Include Markers?</input><br />
+			<span style="font-size: 0.75em;font-family:sans-serif;color:gray;"><i>PNG picture format; Native Size 960x720 (10"x7.5")</i></span><br />
+			Custom File Name: 
+			<input id="custom_game" style="width:55%;max-width:500px;" placeholder='"bingo_card" &lt;exclude extension&gt;'></input>
+		</div>
+		<div id="downloadcaller" style="text-align:center;display:none;">
+			<a id="imglink_caller" download="bingo_caller" href="" onClick="outputcaller()">Download Caller Card</a><br />
+			<span style="font-size: 0.75em;font-family:sans-serif;color:gray;"><i>PNG picture format; Native Size 960x720 (10"x7.5")</i></span><br />
+			Custom File Name: 
+			<input id="custom_caller" style="width:55%;max-width:500px;" placeholder='"bingo_caller" &lt;exclude extension&gt;>'></input> 
+		</div>
+		<div id="modeopts" style="margin-top:5px;">
+			<div>Mode:</div>
+			<div>
+				<button style="background-color:darkred;border:5px inset yellow" id="mode_game" onClick="chg_game_mode('game')">Game Mode</button>
+				<button id="mode_caller" onClick="chg_game_mode('caller')">Caller Mode</button>
+			</div>
+		</div>
+		<hr style="width:75%" />
+
+		<!-- HOLIDAY SVG -->
+		<div id="holiday-svg" style="text-align:center; display:none;">
+			<u>Holiday Image Underlay:</u><br />
+			<input type="radio" name="holidaysvg" value="true" onClick="prop.drawHolidaySVG = true; draw(); drawCaller();" checked>On</input>
+			<input type="radio" name="holidaysvg" value="false" onClick="prop.drawHolidaySVG = false; draw(); drawCaller();">Off</input>
+		</div>
+
+		<table id="options">
+			<caption>
+				<u><b>CUSTOMIZATION OPTIONS</b></u>
+			</caption>
+			<thead>
+				<tr id="optsSelect">
+					<td id="cellbg" style="background-color:rgb(0,0,70);color:yellow;">Backgrounds</td>
+					<td id="celllines">Title &amp; Lines</td>
+					<td id="cellnumbers">Numbers &amp; Free-Space</td>
+					<td id="cellmarkers">Markers</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<!-- BACKGROUNDS -->
+					<td id="optsbg" style="display:table-cell;" colspan=4>
+						<div>
+							Card-Background:
+							<input id="input-bg" type="color" onInput="chg_bg(false, this.value)" value="#ffffff"></input>
+						</div>
+						Keep Outer and Inner Background Colors the Same?:<br />
+						<input type="radio" name="innerbg" value=1 onClick="keep_bg_same(this.value)" checked>YES</input> 
+						<input type="radio" name="innerbg" value=0 onClick="keep_bg_same(this.value)">NO</input>
+						<div id="innerbgcolor" style="display:none">
+							Inner-Card-Background:
+							<input id="input-bg-inner" type="color" onInput="chg_bg(true, this.value)" value="#ffffff"></input>
+						</div>
+					</td>
+					<!-- TITLE & LINE COLOR -->
+					<td id="optslines" colspan=4>
+						<div>
+							Title &amp; Line Color: <input id="input-line-color" type="color" onInput="chg_line_color(false, this.value)"></input>
+						</div>
+						Keep Outer and Inner Line Colors the Same?:<br />
+						<input type="radio" name="innerlines" value=1 onClick="keep_lines_same(this.value)" checked>YES</input> 
+						<input type="radio" name="innerlines" value=0 onClick="keep_lines_same(this.value)">NO</input>
+						<div id="div-line-color-inner" style="display:none">
+							Inner-Line Color:
+							<input id="input-line-color-inner" type="color" onInput="chg_line_color(true, this.value)" value="#ffffff"></input>
+						</div>
+					</td>
+					<!-- NUMBERS & FREE-SPACE -->
+					<td id="optsnumbers" colspan=4>
+						<div>
+							Numbers:
+							<input id="input-color-numbers" type="color" onInput="prop.numberColor = this.value;draw();" value="#000000"></input>
+						</div>
+						<div>
+							Free-Space Toggle:
+							<input type="radio" name="freespacetoggle" value=1 onClick="prop.freeSpace = this.value; draw();" checked>ON</input> 
+							<input type="radio" name="freespacetoggle" value=0 onClick="prop.freeSpace = this.value; draw();">OFF</input>
+						</div>
+						<!--<div id="freespcolorview">
+							Free-Space Color:
+							<input type="color" onInput="chg_freesp_color(this.value)" value="#DCDCFF"></input>
+						</div>-->
+					</td>
+					<!-- MARKERS -->
+					<td id="optsmarkers" colspan=4>
+						<div>
+							Marker Color:
+							<input id="input-marker-color" type="color" onInput="prop.markerColor = this.value + 'b0'; draw();" value="#FF4A4A"></input>
+						</div>
+						<div>
+							Marker Outline Color:
+							<input id="input-marker-outlinecolor" type="color" onInput="prop.markerOutlineColor = this.value; draw();" value="#000000"></input>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div id="options_caller">
+			<b><u>CUSTOMIZATION OPTIONS</u></b><br />
+			Background Color: 
+			<input id="input-called-bg" type="color" onInput="prop.callerBackground = this.value; drawCaller();" value="#ffffff"></input><br />
+			Call Color: <input id="input-called-color" type="color" onInput="prop.callerPrevColor = this.value; drawCaller();" value="#000080"></input><br />
+			<!-- <input type="color" onInput="prop.callerFillColor = this.value; drawCaller();" value="#FF4A4A"></input> -->
+			<!-- <table id="callfilltable"> -->
+				<!-- <tr> -->
+					<!-- <td style="text-align:right;">Call Fills:</td> -->
+					<!-- <td style="background-color: hsl(0, 100%, 65%)" onclick="call_fills(0, 100, 65)"></td> -->
+					<!-- <td style="background-color: hsl(300, 75%, 40%)" onclick="call_fills(330, 75, 40)"></td> -->
+					<!-- <td style="background-color: hsl(0, 100%, 50%)" onclick="call_fills(0, 100, 50)"></td> -->
+					<!-- <td style="background-color: hsl(38, 100%, 50%)" onclick="call_fills(38, 100, 50)"></td> -->
+					<!-- <td style="background-color: hsl(170, 100%, 35%)" onclick="call_fills(170, 100, 35)"></td> -->
+					<!-- <td style="background-color: hsl(230, 100%, 45%)" onclick="call_fills(230, 100, 45)"></td> -->
+				<!-- </tr> -->
+			<!-- </table> -->
+		</div>
+		<hr style="width:90%;" />
+		<div id="description">
+			<p>Bingo! This was my first truly successful HTML5 Canvas project. You can use this site to play an active game of bingo with a randomly-generated card, or you can turn-on caller mode and call a game of bingo yourself! In addition, you can save the cards to your device for printing/future use/reference.</p>
+			<p>The controls are fairly straight-forward. Generate a new card at the top; click/tap where you'd like to place a marker; click/tap again to remove it. For subsequent rounds, you can either opt to clear your card of markers or simply generate a new card. Switch to caller mode with the option at the bottom. Saving cards is done via the download option below the canvas. You can also control the inclusion/exclusion (default) of your markers in the download (if applicable). You can also pre-determine a filename for your bingo card if you desire (optional).</p>
+			<p>USE: Cards may be used/shared/printed in any way you'd like with my only requirement being that they are not modified in any way (the only exception being is resizing). The code itself may NOT be used elsewhere. Thanks!</p>
+			<p>This project wouldn't have been possible without <a href="https://books.goalkicker.com/">GoalKicker</a>'s guide on HTML5Canvas, especially the idea about using hidden canvases, and downloading the canvas to an image file.</p>
+		</div>
+		<!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 1000" style="background-color: white;">
+			<line x1="0" y1="0" x2="300" y2="300" stroke="red" />
+			<line x1="300" y1="300" x2="400" y2="200" stroke="green" />
+		</svg>-->
+		<div id="footer"></div>
+	</body>
+	<script src="header.js"></script>
+	<script src="footer.js"></script>
+	<script src="bingo/bingo.js"></script>
+	<script src="bingo/opts.js"></script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> Stashed changes
