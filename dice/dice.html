@@ -3,14 +3,17 @@
 	<head>
 		<base href="../">
 		<title>Dice Simulator</title>
-		<link rel="stylesheet" type="text/css" href="dice/dice.css"></link>
 		<link rel="stylesheet" type="text/css" href="pageheader.css"></link>
+		<link rel="stylesheet" type="text/css" href="dice/dice.css"></link>
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 	</head>
-	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue" onKeyDown="keyroll()">
-		<h1 id="header">
-			<img id="headerphoto" src="profile_small.png" alt="Profile Image - Small">Dice Sim
-		</h1>
+	<body onKeyDown="keyroll()">
+		<h1 id="header">Dice Sim</h1>
+		<div id="controls">
+			<u>Dice qty</u>:
+			<input type="radio" name="diceqty" value="1" onClick="hide2()">1</input> 
+			<input type="radio" name="diceqty" value="2" checked onClick="unhide2()">2</input>
+		</div>
 		<div id="diceboard" class="BOARD">
 			<div class="DICE" id="dice1" onClick="timeroll()">
 				<div class="CIRCLE" style="top:22.5%;left:77.5%;"></div>
@@ -30,20 +33,20 @@
 			</div>
 		</div>
 		<div id="rollcountcontainer">
-			YOU ROLLED A <span id="rollcount1" class="ROLLCOUNT">_</span>
-			<span id="dice2and"> and a </span> 
+			YOU ROLLED A
+			<span id="rollcount1" class="ROLLCOUNT">_</span>
+			<span id="dice2and">and a</span>
 			<span id="rollcount2" class="ROLLCOUNT">_</span>
 		</div>
-		<div id="controls">
-			<u>Dice qty</u>:<input type="radio" name="diceqty" value="1" onClick="hide2()">1</input> 
-			<input type="radio" name="diceqty" value="2" checked onClick="unhide2()">2</input><br /><br />
-			*** Controls: Press <span style="color:lightgreen;font-weight:bold;">'R'</span> to roll or just click/tap the dice.
+		<div id="instructions">
+			*** Keyboard Controls: Press <span style="color:lightgreen;font-weight:bold;">'R'</span> to roll or just click/tap the dice.
 		</div>
 		<hr color="gray" style="width:85%;"><br />
 		<div id="desc">
 			Roll the Dice(or 'die,' whatever)! Just click roll. No SVG's involved. Just CSS. For the dots, I defined 6 variables containing circular divs with absolute placements(defining the look of the rolled number), so then the 'innerHTML' of the div would be that of the number that was rolled. Enjoy! Feel free to inspect the code and use however you like with no attribution. 
 		</div>
 		<div id="footer"></div>
+		<script src="header.js"></script>
 		<script src="footer.js"></script>
 		<script src="dice/dice.js"></script>
 	</body>
