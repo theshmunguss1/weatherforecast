@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<base href="../">
-		<title>ksgwxfan - Sector Thermal Scanner Game</title>
+		<title>Sector Thermal Scanner Game</title>
 		<link rel="stylesheet" type="text/css" href="pageheader.css"></link>
 		<style>
 			#container {
@@ -89,10 +89,8 @@
 			}
 		</style>
 	</head>
-	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue">
-		<h1 id="header">
-			<img id="headerphoto" src="profile_small.png" alt="Profile Image - Small">Sector Thermal Scanner Game
-		</h1>
+	<body>
+		<h1 id="header">Sector Thermal Scanner Game</h1>
 		<div class="TIMER">
 			Guesses Left: <span id="guessesleft" style="color:yellow;">15</span> ... Time Left: <span id="timer" style="color:yellow;">20</span>
 		</div>
@@ -837,6 +835,7 @@ for x in range(rows):
 			</div>
 		</div>
 		<div id="footer"></div>
+		<script src="header.js"></script>
 		<script src="footer.js"></script>
 		<script>
 			var game = {started: false, guesses: 0, maxguesses:15, guessed: [], time: 20, timeleft: null};

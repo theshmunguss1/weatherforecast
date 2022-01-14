@@ -1,7 +1,10 @@
 body {
 	background-color: #e6d5a0;
 	font-family: sans-serif;
+	color: black;
 }
+a:link {color: darkblue;}
+a:visited {color: darkblue;}
 
 /* height = width * (1 / aspect-ratio) */
 #container-display {

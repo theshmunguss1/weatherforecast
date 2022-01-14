@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<base href="../">
-		<title>ksgwxfan - Media Gallery</title>
+		<title>Media Gallery</title>
 		<link rel="stylesheet" type="text/css" href="pageheader.css"></link>
 		<link rel="stylesheet" type="text/css" href="photos/gallery.css"></link>
 		<script src="photos/gallery.js"></script>
@@ -10,10 +10,8 @@
 
 		</style>
 	</head>
-	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue" onLoad="chooseyear(2021); choosenewest()">
-		<h1 id="header">
-			<img id="headerphoto" src="profile_small.png" alt="Profile Image - Small">Media Gallery
-		</h1>
+	<body onLoad="chooseyear(2021); choosenewest()">
+		<h1 id="header">Media Gallery</h1>
 		<!-- YEAR HEADER -->
 		<div id="yrselect">
 			<div id="p2012" class="YEAR" onClick=chooseyear(2012)>Past-2012</div>
@@ -49,6 +47,7 @@
 			<p style="font-style:italic;font-size:10pt;">* Origin of idea for a 'picture gallery' came from W3Schools</p>
 		</div>
 		<div id="footer"></div>
+		<script src="header.js"></script>
 		<script src="footer.js"></script>
 	</body>
 </html>

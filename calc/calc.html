@@ -2,19 +2,17 @@
 <html>
 	<head>
 		<base href="../">
+		<link rel="stylesheet" type="text/css" href="pageheader.css"></link>
 		<link id="universal" rel="stylesheet" href="calc/universalsettings.css">
 		<link id="class_name" rel="stylesheet" href="calc/theme_default.css">
-		<link rel="stylesheet" type="text/css" href="pageheader.css"></link>
 		<title>Basic Calculator</title>
 		<meta name="description" content="Basic Calculator that allows around 12 digits, selectable background colors, and different themes">
 		<meta name="author" content="Kyle Gentry">
 		<meta name="keywords" content="calculator, math, javascript, css">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 	</head>
-	<body link="lightBlue" vlink="lightBlue" onLoad="CLEAR('C')" onKeyDown="kbcontrols()">
-		<h1 id="header">
-			<img id="headerphoto" src="profile_small.png" alt="Profile Image - Small">Calculator
-		</h1>
+	<body onLoad="CLEAR('C')" onKeyDown="kbcontrols()">
+		<h1 id="header">Calculator</h1>
 		<!-- Calcuator -->
 		<div id="calculator">
 			<div id="display">
@@ -121,6 +119,7 @@
 			<p>* Disclaimer of Use: Please feel free to use in any way you want as long as you leave the title of the calculator (in the bottom left corner) in tact. In your code, you can simply put a link to this page.</p>
 		</div>
 		<div id="footer"></div>
+		<script src="header.js"></script>
 		<script src="footer.js"></script>
 		<script src="calc/calc_logic.js"></script>
 	</body>

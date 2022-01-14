@@ -86,7 +86,7 @@ function chg_lang(dir) {
 		else {frcst.lang_index += 1;}
 	}
 	lang_selection.src = lang_img[frcst.lang_index][0];
-	lang_selection.setAttribute("title", lang_img[frcst.lang_index][1]);	// "English", "French", "Spanish"
+	lang_selection.setAttribute("forecast-title", lang_img[frcst.lang_index][1]);	// "English", "French", "Spanish"
 	frcst.lang = lang_img[frcst.lang_index][2];	// "en", "fr", "sp"
 	// Change the display of days
 	day_select(document.getElementById("dayselect").value);
@@ -143,11 +143,11 @@ function daystoggle(v) {
 			document.getElementById("frcstdays").innerHTML = 7;
 			document.getElementById("canvas").style.width = "1300px";
 			document.getElementById("canvas").style.borderSpacing = "5px 10px";
-			document.getElementById("title").setAttribute("colspan", 7);
-			document.getElementById("title").style.fontSize = "2.8em";
+			document.getElementById("forecast-title").setAttribute("colspan", 7);
+			document.getElementById("forecast-title").style.fontSize = "2.8em";
 			document.getElementById("d6").style.display = "table-cell";
 			document.getElementById("d7").style.display = "table-cell";
-			//document.getElementById("title").noWrap = false;
+			//document.getElementById("forecast-title").noWrap = false;
 			//Options
 			document.getElementById("d6optsblock").style.display = "table-cell";
 			document.getElementById("d7optsblock").style.display = "table-cell";
@@ -168,11 +168,11 @@ function daystoggle(v) {
 			document.getElementById("frcstdays").innerHTML = 5;
 			document.getElementById("canvas").style.width = "930px";
 			document.getElementById("canvas").style.borderSpacing = "6px 10px";
-			document.getElementById("title").setAttribute("colspan", 5);
-			document.getElementById("title").style.fontSize = "2em";
+			document.getElementById("forecast-title").setAttribute("colspan", 5);
+			document.getElementById("forecast-title").style.fontSize = "2em";
 			document.getElementById("d6").style.display = "none";
 			document.getElementById("d7").style.display = "none";
-			//document.getElementById("title").noWrap = true;
+			//document.getElementById("forecast-title").noWrap = true;
 			//Options
 			document.getElementById("d6optsblock").style.display = "none";
 			document.getElementById("d7optsblock").style.display = "none";

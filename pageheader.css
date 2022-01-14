@@ -1,10 +1,28 @@
+body {
+	background-color: #141414;
+	color: white;
+}
+a:link {color: lightblue;}
+a:visited {color: lightblue;}
+
+/***************************************/
+/*              HEADER                 */
+/***************************************/
+
 #header {
 	width: 100%;
 	font-weight: bold;
-	font-size: 30px;
 	margin-bottom: 20px;
-	text-decoration: underline;
+	/* text-decoration: underline; */
 }
+#header a {
+	text-decoration-line: none;
+}
+#header #title {
+	text-decoration: underline;
+	margin: 0 10px;
+}
+
 #headerphoto {
 	width: 3%;
 	min-width: 30px;
@@ -13,8 +31,11 @@
 	box-shadow: 0px 0px 5px white;
 	vertical-align: middle;
 	border-radius: 35%;
-	margin-right: 10px;
 }
+
+/***************************************/
+/*              FOOTER                 */
+/***************************************/
 
 #footer {
 	display: flex;

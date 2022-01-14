@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<base href="../">
-		<title>ksgwxfan - 5 or 7-Day Forecast Generator - Legacy</title>
+		<title>Legacy 5 or 7-Day Forecast Generator</title>
 		<link rel="stylesheet" type="text/css" href="pageheader.css"></link>
 		<link id="class_name" rel="stylesheet" href="5day/7day.css">
 		<meta name="author" content="Kyle Gentry">
@@ -13,10 +13,8 @@
 
 		</style>
 	</head>
-	<body style="background-color:#141414;color:white;" link="lightBlue" vlink="lightBlue" onLoad="daystoggle(7);load_day_select();randombg();random_forecast();">
-		<h1 id="header" style="margin-bottom:20px;">
-			<img id="headerphoto" src="profile_small.png" alt="Profile Image - Small">Legacy 5 or 7-Day Forecast Generator
-		</h1>
+	<body onLoad="daystoggle(7);load_day_select();randombg();random_forecast();">
+		<h1 id="header">Legacy 5 or 7-Day Forecast Generator</h1>
 		<!-- GLOBAL OPTIONS -->
 		<div class="TABLE">
 			<div class="ROW">
@@ -394,7 +392,7 @@
                 </td>
 			</tr>
 			<tr id="title-row">
-				<td id="title" class="TITLEBOX" colspan=7>
+				<td id="forecast-title" class="TITLEBOX" colspan=7>
 					<div id="titleunderscore"></div>
 					<img id="logo" src="5day/logo_echotops.svg">
 					<div id="textbox" style="display:inline;">
@@ -838,6 +836,7 @@
 			<p>This took me a little while to make it work, but a lot of the time I was learning SVG's, creating the artwork, and fixing simple mental errors. Feel free to use this tool to make custom forecasts that you can share, silly or not--no credit needed. It's a great tool that parents and/or teachers can use to assist kids with making a forecast. <b><u>Feel free to use your forecast images you make in any way you like.</u></b> If you happen to use the programming code for your own project, I just ask for attribution there, but as for the forecast screenshots, they are yours. Use, modify however you'd like! Thank you for using my page.</p>
 		</div>
 		<div id="footer"></div>
+		<script src="header.js"></script>
 		<script src="footer.js"></script>
 		<script src="5day/7day.js">
 

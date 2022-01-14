@@ -1,8 +1,97 @@
-var courtobj = {teamA: "", teamB: "", colorA: "#7BAFD4", colorB: "#000099", current_team: "A", current_half: "1", current_class: "pieceA1", mode: "NA", erase: "N"};
+class Game {
+	constructor(qtrqty) {
+		this._a = null;
+		this._b = null;
+		this._qtrqty = qtrqty;
+	}
+}
+
+class Team {
+	constructor(gameobj, name, color) {
+		this._game = gameobj;
+		this._name = name;
+		this._color = color;
+		this._stats = {
+			qtr1: {fgm: 0,	fga: 0,	fg3m: 0, fg3a: 0, ptspaint: 0},
+			qtr2: {fgm: 0,	fga: 0,	fg3m: 0, fg3a: 0, ptspaint: 0},
+			qtr3: {fgm: 0,	fga: 0,	fg3m: 0, fg3a: 0, ptspaint: 0},
+			qtr4: {fgm: 0,	fga: 0,	fg3m: 0, fg3a: 0, ptspaint: 0}
+		};
+	}
+
+	// Team Stats object
+	get stats() {
+		return this._stats
+	}
+	
+	stats_thru(qtr=null, half=false) {
+		// if 2 halves
+		return null;
+	}
+
+	// Game (parent) object
+	get game() {return this._game}
+	get gameobj() {return this._game}
+
+	// Team Name
+	set name(newname) {
+		this._name = newname;
+	}
+	get name() {
+		return this._name
+	}
+
+	// Team Color
+	set color(newcolor) {
+		this._color = newcolor;
+	}
+	get color() {
+		return this._color
+	}
+}
+
+var courtobj = {
+	teamA: "",
+	teamB: "",
+	colorA: "#7BAFD4",
+	colorB: "#000099",
+	current_team: "A",
+	current_half: "1",
+	current_class: "pieceA1",
+	mode: "NA",
+	erase: "N"
+};
 // Huge help with understanding how to change classes: (https://www.w3schools.com/jsref/met_element_getelementsbyclassname.asp)
-var teamstats = {Afgm_1: 0, Afga_1: 0, Afg3m_1: 0, Afg3a_1: 0, Aptspaint_1: 0, Afgm_2: 0, Afga_2: 0, Afg3m_2: 0, Afg3a_2: 0, Aptspaint_2: 0,
-				 Bfgm_1: 0, Bfga_1: 0, Bfg3m_1: 0, Bfg3a_1: 0, Bptspaint_1: 0, Bfgm_2: 0, Bfga_2: 0, Bfg3m_2: 0, Bfg3a_2: 0, Bptspaint_2: 0,
-				 Afgm_3: 0, Afga_3: 0, Afg3m_3: 0, Afg3a_3: 0, Bfgm_3: 0, Bfga_3: 0, Bfg3m_3: 0, Bfg3a_3: 0};
+var teamstats = {
+	Afgm_1: 0,
+	Afga_1: 0,
+	Afg3m_1: 0,
+	Afg3a_1: 0,
+	Aptspaint_1: 0,
+	Afgm_2: 0,
+	Afga_2: 0,
+	Afg3m_2: 0,
+	Afg3a_2: 0,
+	Aptspaint_2: 0,
+	Bfgm_1: 0,
+	Bfga_1: 0,
+	Bfg3m_1: 0,
+	Bfg3a_1: 0,
+	Bptspaint_1: 0,
+	Bfgm_2: 0,
+	Bfga_2: 0,
+	Bfg3m_2: 0,
+	Bfg3a_2: 0,
+	Bptspaint_2: 0,
+	Afgm_3: 0,
+	Afga_3: 0,
+	Afg3m_3: 0,
+	Afg3a_3: 0,
+	Bfgm_3: 0,
+	Bfga_3: 0,
+	Bfg3m_3: 0,
+	Bfg3a_3: 0
+};
 var cell_highlight = "#4d4d4d";
 var allplayers;		// Will be object to hold all of the player objects
 var idcount = 0;	// Will be used to give ID's to each shot
