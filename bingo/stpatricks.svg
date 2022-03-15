@@ -21,9 +21,9 @@
      id="defs2">
     <pattern
        inkscape:collect="always"
-       xlink:href="#pattern1612"
-       id="pattern1620"
-       patternTransform="matrix(0.11288257,0.04333152,-0.04333152,0.11288257,0,-1.7529297e-6)" />
+       xlink:href="#pattern1566"
+       id="pattern1576"
+       patternTransform="matrix(0.24700984,0.09481819,-0.09481819,0.24700984,0,-1.7529297e-6)" />
     <inkscape:path-effect
        effect="powerstroke"
        id="path-effect1766"
@@ -76,6 +76,46 @@
          d="m 60.000005,120.00001 c 66.680165,0 -50.000003,-116.6801705 -50.000001,-50.000001 2e-6,66.680171 116.680166,-50.000003 49.999998,-50.000001 C -6.680167,20.000009 110.00001,136.68018 110,70.000006 110,3.3198368 -6.6801643,120.00001 60.000005,120.00001 Z"
          inkscape:transform-center-y="2.4242154e-06" />
     </pattern>
+    <pattern
+       patternUnits="userSpaceOnUse"
+       width="54.839554"
+       height="109.67912"
+       patternTransform="matrix(0.26458334,0,0,0.26458334,0,-1.7529297e-6)"
+       id="pattern1566">
+      <rect
+         y="2.680613e-14"
+         x="0"
+         height="109.67912"
+         width="54.839554"
+         id="rect1549"
+         style="display:inline;opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:10.88503933;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path1551"
+         d="m 0,63.979482 v 45.699628 c 15.121965,0 9.6066031,-13.129742 0.21421701,-22.635598 C 9.7200748,96.435895 22.849813,101.95126 22.849812,86.829288 22.849812,71.707323 9.7200736,77.222682 0.21421701,86.615065 9.6066024,77.109224 15.121965,63.979482 0,63.979482 Z"
+         style="opacity:1;vector-effect:none;fill:#b0e190;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:10.88503838;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path1553"
+         d="m 54.839554,63.979486 c -15.121966,0 -9.606607,13.129731 -0.214224,22.635594 -9.505856,-9.392387 -22.635594,-14.907757 -22.635594,0.214224 0,15.121966 13.129738,9.606606 22.635594,0.214223 -9.392383,9.505848 -14.907745,22.635593 0.214224,22.635593 z"
+         style="opacity:1;vector-effect:none;fill:#b0e190;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:10.88503838;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" />
+      <path
+         sodipodi:type="star"
+         style="opacity:1;vector-effect:none;fill:#b0e190;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:10.88503838;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+         id="path1555"
+         sodipodi:sides="4"
+         sodipodi:cx="27.419777"
+         sodipodi:cy="31.989738"
+         sodipodi:r1="22.849812"
+         sodipodi:r2="0.22849815"
+         sodipodi:arg1="1.5707963"
+         sodipodi:arg2="2.3561945"
+         inkscape:flatsided="true"
+         inkscape:rounded="-0.943"
+         inkscape:randomized="0"
+         d="M 27.419778,54.83955 C 57.892364,54.839549 4.5699645,1.5171529 4.5699654,31.989739 4.5699662,62.462325 57.892362,9.1399261 27.419776,9.1399269 c -30.4725858,8e-7 22.849813,53.3223971 22.849812,22.8498111 0,-30.4725863 -53.3223966,22.849813 -22.84981,22.849812 z"
+         inkscape:transform-center-y="2.4242154e-06" />
+    </pattern>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -85,8 +125,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.50000001"
-     inkscape:cx="-264.10678"
-     inkscape:cy="388.64554"
+     inkscape:cx="-384.45426"
+     inkscape:cy="261.47117"
      inkscape:document-units="px"
      inkscape:current-layer="layer2"
      showgrid="false"
@@ -130,7 +170,8 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-164.70833)"
-     sodipodi:insensitive="true">
+     sodipodi:insensitive="true"
+     style="display:inline">
     <rect
        style="opacity:1;vector-effect:none;fill:#c6e9af;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.76200002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
        id="rect812"
@@ -144,11 +185,11 @@
      id="layer2"
      inkscape:label="pattern">
     <rect
-       style="fill:url(#pattern1620);stroke:none"
+       style="fill:url(#pattern1576);stroke:none"
        width="99.21875"
        height="132.29167"
        x="0"
        y="-1.7529297e-06"
-       id="rect1618" />
+       id="rect1572" />
   </g>
 </svg>
