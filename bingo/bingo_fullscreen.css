@@ -1,0 +1,164 @@
+:root {
+	--board-margin: 3vmin;
+}
+
+body {
+	font-family: sans-serif;
+	background-color: white;
+	color: black;
+	position: relative;
+	user-select: none;
+}
+
+
+#container {
+	width: calc(98vmax - var(--board-margin) * 2);
+	height: calc(98vmin - var(--board-margin) * 2);
+	margin: var(--board-margin) var(--board-margin);
+	outline: 5px solid lightblue;
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+
+.bingoletter {
+	font-weight: 800;
+	font-size: 8vmin;
+	text-align: center;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	vertical-align: middle;
+	line-height: 0;
+	height: 13vmin;
+}
+.bingonumber {
+	/* font-weight: bold; */
+	font-size: 4.8vmin;
+	/* height: 5.2vmin; */
+	text-align: center;
+	border: 1px solid black;
+	vertical-align: middle;
+	line-height: 0;
+}
+
+#controls-column{
+	text-align: center;
+	width: 25%;
+}
+
+#controls-frame {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+}
+
+#call-display {
+	color: navy;
+	font: 900 14vmin sans-serif;
+	white-space: nowrap;
+	border-bottom: 2px solid lightblue;
+
+	flex-shrink: 1;
+}
+
+#label-last-called {
+	font: italic 2.5vmin sans-serif;
+}
+
+#table-recent-calls {
+	display: table;
+	max-height: 40vmin;
+	flex-grow: 1;
+	border-collapse: collapse;
+	table-layout: fixed;
+	empty-cells: show;
+}
+
+#table-recent-calls div {
+	max-height: 20%;
+}
+
+.recent-row {
+	display: table-row;
+}
+
+.recent-call {
+	display: table-cell;
+	/* outline: 1px solid lightblue; */
+	vertical-align: middle;
+	font-weight: bold;
+	color: gray;
+}
+
+#recent1 {font-size: 9vmin; opacity: 90%;}
+#recent2 {font-size: 8vmin;  opacity: 80%;}
+#recent3 {font-size: 7vmin;  opacity: 70%;}
+#recent4 {font-size: 6vmin;  opacity: 60%;}
+#recent5 {font-size: 5vmin;  opacity: 50%;}
+
+
+#button-box {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+#signature {
+	border-top: 1px solid black;
+	text-align: center;
+	font-style: italic;
+}
+
+#newcall-button {
+	flex-grow: 9;
+	font: bold 4vmin sans-serif;
+	width: 100%;
+}
+
+#newgame-button {
+	flex-grow: 1;
+	width: 100%;
+	font-size: 3vmin;
+}
+
+#new-game-dialog {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255,255,255, 85%);
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#new-game-confirm-text {
+	font-size: 5vmin;
+	font-weight: bold;
+}
+
+#new-game-dialog button {
+	margin: 3vmin 3vmin;
+	padding: 3vmin;
+	font-size: 3vmin;
+}
+
+@media (aspect-ratio: 4/3) {
+	#call-display {
+		font: 900 11vmin sans-serif;ss
+	}
+}
+
+
+
+
+
+
+
+
+
+
+

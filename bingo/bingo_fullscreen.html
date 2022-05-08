@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="../">
+		<title>Bingo Caller</title>
+		<link rel="stylesheet" type="text/css" href="pageheader.css"></link>
+		<link id="class_name" rel="stylesheet" href="bingo/bingo_fullscreen.css">
+		<meta name="author" content="Kyle Gentry">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<style>
+
+		</style>
+	</head>
+	<!-- OPTIONS -> Side of call buttons; bg color -->
+	<body link="lightBlue" vlink="lightBlue">
+		<table id="container">
+            <tr>
+                <td id="b" class="bingoletter">B</td>
+                <td id="i" class="bingoletter">I</td>
+                <td id="n" class="bingoletter">N</td>
+                <td id="g" class="bingoletter">G</td>
+                <td id="o" class="bingoletter">O</td>
+				<td id="controls-column" rowspan="16">
+					<div id="controls-frame">					
+						<div id="label-last-called">Last Called:</div>
+						<div id="call-display">---</div>
+						<div id="table-recent-calls">
+							<div class="recent-row">
+								<div class="recent-call" id="recent1">&nbsp;</div>
+							</div>
+							<div class="recent-row">
+								<div class="recent-call" id="recent2">&nbsp;</div>
+							</div>
+							<div class="recent-row">
+								<div class="recent-call" id="recent3">&nbsp;</div>
+							</div>
+							<div class="recent-row">
+								<div class="recent-call" id="recent4">&nbsp;</div>
+							</div>
+							<div class="recent-row">
+								<div class="recent-call" id="recent5">&nbsp;</div>
+							</div>
+						</div>
+						<div id="button-box">
+							<div id="signature">ksgwxfan.github.io</div>
+							<button id="newcall-button" onclick="new_call()">New<br />Call</button>
+							<button id="newgame-button" onclick="new_game_dialog.style.display = 'flex'">New Game</button>
+						</div>
+					</div>
+				</td>
+            </tr>
+            <tr>
+                <td id="b-1" class="bingonumber">1</td>
+                <td id="i-16" class="bingonumber">16</td>
+                <td id="n-31" class="bingonumber">31</td>
+                <td id="g-46" class="bingonumber">46</td>
+                <td id="o-61" class="bingonumber">61</td>
+            </tr>
+            <tr>
+                <td id="b-2" class="bingonumber">2</td>
+                <td id="i-17" class="bingonumber">17</td>
+                <td id="n-32" class="bingonumber">32</td>
+                <td id="g-47" class="bingonumber">47</td>
+                <td id="o-62" class="bingonumber">62</td>
+            </tr>
+            <tr>
+                <td id="b-3" class="bingonumber">3</td>
+                <td id="i-18" class="bingonumber">18</td>
+                <td id="n-33" class="bingonumber">33</td>
+                <td id="g-48" class="bingonumber">48</td>
+                <td id="o-63" class="bingonumber">63</td>
+            </tr>
+            <tr>
+                <td id="b-4" class="bingonumber">4</td>
+                <td id="i-19" class="bingonumber">19</td>
+                <td id="n-34" class="bingonumber">34</td>
+                <td id="g-49" class="bingonumber">49</td>
+                <td id="o-64" class="bingonumber">64</td>
+            </tr>
+            <tr>
+                <td id="b-5" class="bingonumber">5</td>
+                <td id="i-20" class="bingonumber">20</td>
+                <td id="n-35" class="bingonumber">35</td>
+                <td id="g-50" class="bingonumber">50</td>
+                <td id="o-65" class="bingonumber">65</td>
+            </tr>
+            <tr>
+                <td id="b-6" class="bingonumber">6</td>
+                <td id="i-21" class="bingonumber">21</td>
+                <td id="n-36" class="bingonumber">36</td>
+                <td id="g-51" class="bingonumber">51</td>
+                <td id="o-66" class="bingonumber">66</td>
+            </tr>
+            <tr>
+                <td id="b-7" class="bingonumber">7</td>
+                <td id="i-22" class="bingonumber">22</td>
+                <td id="n-37" class="bingonumber">37</td>
+                <td id="g-52" class="bingonumber">52</td>
+                <td id="o-67" class="bingonumber">67</td>
+            </tr>
+            <tr>
+                <td id="b-8" class="bingonumber">8</td>
+                <td id="i-23" class="bingonumber">23</td>
+                <td id="n-38" class="bingonumber">38</td>
+                <td id="g-53" class="bingonumber">53</td>
+                <td id="o-68" class="bingonumber">68</td>
+            </tr>
+            <tr>
+                <td id="b-9" class="bingonumber">9</td>
+                <td id="i-24" class="bingonumber">24</td>
+                <td id="n-39" class="bingonumber">39</td>
+                <td id="g-54" class="bingonumber">54</td>
+                <td id="o-69" class="bingonumber">69</td>
+            </tr>
+            <tr>
+                <td id="b-10" class="bingonumber">10</td>
+                <td id="i-25" class="bingonumber">25</td>
+                <td id="n-40" class="bingonumber">40</td>
+                <td id="g-55" class="bingonumber">55</td>
+                <td id="o-70" class="bingonumber">70</td>
+            </tr>
+            <tr>
+                <td id="b-11" class="bingonumber">11</td>
+                <td id="i-26" class="bingonumber">26</td>
+                <td id="n-41" class="bingonumber">41</td>
+                <td id="g-56" class="bingonumber">56</td>
+                <td id="o-71" class="bingonumber">71</td>
+            </tr>
+            <tr>
+                <td id="b-12" class="bingonumber">12</td>
+                <td id="i-27" class="bingonumber">27</td>
+                <td id="n-42" class="bingonumber">42</td>
+                <td id="g-57" class="bingonumber">57</td>
+                <td id="o-72" class="bingonumber">72</td>
+            </tr>
+            <tr>
+                <td id="b-13" class="bingonumber">13</td>
+                <td id="i-28" class="bingonumber">28</td>
+                <td id="n-43" class="bingonumber">43</td>
+                <td id="g-58" class="bingonumber">58</td>
+                <td id="o-73" class="bingonumber">73</td>
+            </tr>
+            <tr>
+                <td id="b-14" class="bingonumber">14</td>
+                <td id="i-29" class="bingonumber">29</td>
+                <td id="n-44" class="bingonumber">44</td>
+                <td id="g-59" class="bingonumber">59</td>
+                <td id="o-74" class="bingonumber">74</td>
+            </tr>
+            <tr>
+                <td id="b-15" class="bingonumber">15</td>
+                <td id="i-30" class="bingonumber">30</td>
+                <td id="n-45" class="bingonumber">45</td>
+                <td id="g-60" class="bingonumber">60</td>
+                <td id="o-75" class="bingonumber">75</td>
+            </tr>
+
+		</table>
+		<div id="new-game-dialog">
+			<span id="new-game-confirm-text">Are you sure you want to start a new game?</span>
+			<div>
+				<button onclick="new_game()">YES</button>
+				<button onclick="new_game_dialog.style.display = 'none'">NO</button>
+			</div>
+		</div>
+	</body>
+	<script src="bingo/bingo_fullscreen.js" onload="rebuild_bingo_possibilities()"></script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
