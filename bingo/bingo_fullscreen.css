@@ -53,21 +53,9 @@ body {
 	height: 100%;
 }
 
-#call-display {
-	color: navy;
-	font: 900 14vmin sans-serif;
-	white-space: nowrap;
-	border-bottom: 2px solid lightblue;
-
-	flex-shrink: 1;
-}
-
-#label-last-called {
-	font: italic 2.5vmin sans-serif;
-}
-
 #table-recent-calls {
 	display: table;
+	position: relative;
 	max-height: 40vmin;
 	flex-grow: 1;
 	border-collapse: collapse;
@@ -78,6 +66,7 @@ body {
 #table-recent-calls div {
 	max-height: 20%;
 }
+
 
 .recent-row {
 	display: table-row;
@@ -97,6 +86,18 @@ body {
 #recent4 {font-size: 6vmin;  opacity: 60%;}
 #recent5 {font-size: 5vmin;  opacity: 50%;}
 
+#label-last-called {
+	font: italic 2.5vmin sans-serif;
+}
+
+#call-display {
+	color: navy;
+	font: 900 14vmin sans-serif;
+	white-space: nowrap;
+	border-bottom: 2px solid lightblue;
+
+	flex-shrink: 1;
+}
 
 #button-box {
 	flex-grow: 1;
