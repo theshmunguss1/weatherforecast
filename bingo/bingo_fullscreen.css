@@ -100,9 +100,9 @@ body {
 }
 
 #button-box {
-	flex-grow: 1;
 	display: flex;
 	flex-direction: column;
+	flex-grow: 1;
 }
 
 #signature {
@@ -112,44 +112,79 @@ body {
 }
 
 #newcall-button {
-	flex-grow: 9;
 	font: bold 4vmin sans-serif;
 	width: 100%;
+	padding: 5vmin;
 }
 
-#newgame-button {
+#other-buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-content: center;
 	flex-grow: 1;
 	width: 100%;
 	font-size: 3vmin;
 }
+#other-buttons button {
+	flex-grow: 1;
+	font-size: 2.5vmin;
+}
 
-#new-game-dialog {
+#new-game-dialog, #options {
 	position: absolute;
 	left: 0;
 	top: 0;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(255,255,255, 85%);
+	background-color: rgba(255,255,255, 90%);
 	display: none;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
 
-#new-game-confirm-text {
+/* #options {display: flex;} */
+
+
+.options-text, label, #options button {
 	font-size: 5vmin;
 	font-weight: bold;
+	margin: 3vmin;
+}
+.options-text {
+	font-style: italic;
+	text-decoration: underline;
+	/* flex-grow: 1; */
+}
+
+/* Adds height to the button */
+#options button {
+	padding: 4vmin;
+	border: 5px solid black;
+}
+
+label {
+	padding: 0 3vmin;
+	color: rgb(100,100,100);
+}
+
+input {
+	vertical-align: middle;
+	transform: scale(4, 4);
 }
 
 #new-game-dialog button {
 	margin: 3vmin 3vmin;
 	padding: 3vmin;
 	font-size: 3vmin;
+	font-weight: bold;
+	border: 5px solid black;
 }
 
 @media (aspect-ratio: 4/3) {
 	#call-display {
-		font: 900 11vmin sans-serif;ss
+		font: 900 11vmin sans-serif;
 	}
 }
 

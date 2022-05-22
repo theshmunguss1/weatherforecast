@@ -14,7 +14,7 @@
 	<!-- OPTIONS -> Side of call buttons; bg color -->
 	<body link="lightBlue" vlink="lightBlue">
 		<table id="container">
-            <tr>
+            <tr id="game-columns">
                 <td id="b" class="bingoletter">B</td>
                 <td id="i" class="bingoletter">I</td>
                 <td id="n" class="bingoletter">N</td>
@@ -23,28 +23,33 @@
 				<td id="controls-column" rowspan="16">
 					<div id="controls-frame">
 						<div id="table-recent-calls">
-							<div class="recent-row">
+							<div class="recent-row" id="recent-row-5">
 								<div class="recent-call" id="recent5">&nbsp;</div>
 							</div>
-							<div class="recent-row">
+							<div class="recent-row" id="recent-row-4">
 								<div class="recent-call" id="recent4">&nbsp;</div>
 							</div>
-							<div class="recent-row">
+							<div class="recent-row" id="recent-row-3">
 								<div class="recent-call" id="recent3">&nbsp;</div>
 							</div>
-							<div class="recent-row">
+							<div class="recent-row" id="recent-row-2">
 								<div class="recent-call" id="recent2">&nbsp;</div>
 							</div>
-							<div class="recent-row">
+							<div class="recent-row" id="recent-row-1">
 								<div class="recent-call" id="recent1">&nbsp;</div>
 							</div>
 						</div>
-						<div id="label-last-called">Last Called:</div>
-						<div id="call-display">---</div>
+						<div id="container-last-called">
+							<div id="label-last-called">Last Called:</div>
+							<div id="call-display">---</div>
+						</div>
+						<button id="newcall-button" onclick="new_call()">New<br />Call</button>
 						<div id="button-box">
+							<div id="other-buttons">
+								<button id="newgame-button" onclick="new_game_dialog.style.display = 'flex'">New Game</button>
+								<button id="options-button" onclick="options_dialog.style.display = 'flex'">Options</button>
+							</div>
 							<div id="signature">ksgwxfan.github.io</div>
-							<button id="newcall-button" onclick="new_call()">New<br />Call</button>
-							<button id="newgame-button" onclick="new_game_dialog.style.display = 'flex'">New Game</button>
 						</div>
 					</div>
 				</td>
@@ -156,8 +161,48 @@
             </tr>
 
 		</table>
+		<div id="options">
+			<!-- CALLER SIDE -->
+			<span class="options-text">Select Side for Call Display:</span>
+			<div>
+				<label>
+					<input type="radio" name="caller_side" value="left" onchange="change_side(this.value)"/>
+					&nbsp;Left
+				</label>
+				<label>
+					<input type="radio" name="caller_side" value="right" onchange="change_side(this.value)" checked />
+					&nbsp;Right
+				</label>
+			</div>
+			<!-- CALLER VERT PLACEMENT -->
+			<span class="options-text">Placement of Caller Button:</span>
+			<div>
+				<label>
+					<input type="radio" name="call_btn_place" value="upper" onchange='change_call_btn_placement(this.value)' />
+					&nbsp;Upper
+				</label>
+				<label>
+					<input type="radio" name="call_btn_place" value="lower" onchange='change_call_btn_placement(this.value)' checked />
+					&nbsp;Lower
+				</label>
+			</div>
+			<!-- RECENT CALL DIRECTION -->
+			<span class="options-text">Recent-Calls List Direction:</span>
+			<div>
+				<label>
+					<input type="radio" name="recent_call_place" value="upper" onchange='change_recent_calls_direction(this.value)' />
+					&nbsp;Top-to-Bottom
+				</label>
+				<label>
+					<input type="radio" name="recent_call_place" value="lower" onchange='change_recent_calls_direction(this.value)' checked />
+					&nbsp;Bottom-to-Top
+				</label>
+			</div>
+			<!-- CLOSE BUTTON -->
+			<button onclick="options_dialog.style.display = 'none'">CLOSE</button>
+		</div>
 		<div id="new-game-dialog">
-			<span id="new-game-confirm-text">Are you sure you want to start a new game?</span>
+			<span class="options-text">Are you sure you want to start a new game?</span>
 			<div>
 				<button onclick="new_game()">YES</button>
 				<button onclick="new_game_dialog.style.display = 'none'">NO</button>

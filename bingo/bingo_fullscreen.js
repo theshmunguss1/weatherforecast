@@ -6,7 +6,21 @@
 
 const doc = document.documentElement;
 const container = document.getElementById("container");
+const b_column = document.getElementById("b");
+const o_column = document.getElementById("o");
+const recent_row_1 = document.getElementById("recent-row-1");
+const recent_row_2 = document.getElementById("recent-row-2");
+const recent_row_3 = document.getElementById("recent-row-3");
+const recent_row_4 = document.getElementById("recent-row-4");
+const recent_row_5 = document.getElementById("recent-row-5");
+const game_columns = document.getElementById("game-columns");
+const controls_column = document.getElementById("controls-column");
+const controls_frame = document.getElementById("controls-frame");
+const table_recent_calls = document.getElementById("table-recent-calls");
+const button_box = document.getElementById("button-box");
+const container_last_called = document.getElementById("container-last-called");
 const new_game_dialog = document.getElementById("new-game-dialog");
+const options_dialog = document.getElementById("options");
 const call_display = document.getElementById("call-display");
 const newcall_btn = document.getElementById("newcall-button");
 
@@ -14,7 +28,11 @@ const bingo = {
 	min : 1,
 	max : 75,
 	possibilities : [],
-	called : []
+	called : [],
+	caller_side : "right",
+	caller_placement : "lower",
+	recent_call_dir : "lower",
+	
 }
 
 function rebuild_bingo_possibilities() {
@@ -101,6 +119,66 @@ function new_game() {
 
 	// make sure new-call button is enabled
 	newcall_btn.disabled = false;
+}
+
+function change_side(dir) {
+	bingo.caller_side = dir;
+	if (dir == "left") {
+		game_columns.insertBefore(
+			controls_column,
+			b_column
+		);
+	}
+	else {
+		game_columns.removeChild(controls_column);
+		game_columns.appendChild(controls_column);
+	}
+}
+
+function change_call_btn_placement(dir) {
+	bingo.caller_placement = dir;
+	if (dir == "upper") {
+		controls_frame.insertBefore(
+			newcall_btn,
+			(bingo.recent_call_dir == "lower") ? table_recent_calls : container_last_called
+		);
+	}
+	else {
+		controls_frame.insertBefore(
+			newcall_btn,
+			button_box
+		);
+	}
+}
+
+function change_recent_calls_direction(dir) {
+	bingo.recent_call_dir = dir;
+
+	// Remove all nodes
+	controls_frame.removeChild(container_last_called);
+	for (element of [recent_row_1, recent_row_2, recent_row_3, recent_row_4, recent_row_5]) {
+		table_recent_calls.removeChild(element);
+	}
+
+	// Add back based on order
+	if (dir == "upper") {
+		controls_frame.insertBefore(
+			container_last_called,
+			table_recent_calls
+		);
+		for (element of [recent_row_1, recent_row_2, recent_row_3, recent_row_4, recent_row_5]) {
+			table_recent_calls.appendChild(element);
+		}
+	}
+	else {
+		for (element of [recent_row_5, recent_row_4, recent_row_3, recent_row_2, recent_row_1]) {
+			table_recent_calls.appendChild(element);
+		}
+		controls_frame.insertBefore(
+			container_last_called,
+			(bingo.caller_placement == "lower") ? newcall_btn : button_box
+		);
+	}
 }
 
 
