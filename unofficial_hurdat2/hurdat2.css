@@ -5,6 +5,25 @@ body {
 body > div {
 	font-family: sans-serif;
 }
+
+.info-block {
+	margin: 0 auto;
+	background-color: black;
+	color: LimeGreen;
+	border: 2px outset gray;
+}
+.info-block.current {
+	overflow: scroll;
+	white-space: nowrap;
+	width: 85%;
+	height: 50vh;
+}
+.info-block.season {
+	overflow: scroll;
+	white-space: nowrap;
+	width: min(90%, 600px);
+}
+
 .disclaimer {
 	width: 85%;
 	margin: 0 auto;
@@ -13,6 +32,11 @@ body > div {
 	margin-bottom: 10px;
 	color: lightgray;
 }
+
+.disclaimer p {
+	text-align: center;
+}
+
 #year-switch {
 	text-align: center;
 	margin: 1em;
@@ -24,21 +48,4 @@ body > div {
 #year-switch input {
 	transform: scale(2) translateX(-0.1em);
 	border-radius: 0px;
-}
-[id*="codeblock"] {
-	overflow: scroll;
-	white-space: nowrap;
-	width: 85%;
-	height: 50vh;
-}
-[id*="codeblock"], [id*="seasonblock"] {
-	margin: 0 auto;
-	background-color: black;
-	color: LimeGreen;
-	border: 2px outset gray;
-}
-[id*="seasonblock"] {
-	overflow: scroll;
-	white-space: nowrap;
-	width: min(90%, 600px);
 }

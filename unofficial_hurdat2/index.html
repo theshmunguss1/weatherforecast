@@ -11,36 +11,24 @@
 		<link rel="stylesheet" type="text/css" href="unofficial_hurdat2/hurdat2.css"></link>
 	</head>
 	<body onLoad="load_data()">
-		<h1 id="header">Unofficial 2021 HURDAT2 for the Atlantic Basin</h1>
+		<h1 id="header">Unofficial 2022 HURDAT2 for the Atlantic Basin</h1>
 
 		<div class="disclaimer">
-			<p style="color:pink;text-align: center;">* This page is <u>NOT</u> endorsed nor supported by NOAA or its subsidiaries, including the National Hurricane Center. *</p>
+			<p style="color:pink;">* This page is <u>NOT</u> endorsed nor supported by NOAA or its subsidiaries, including the National Hurricane Center. *</p>
 
-			<p style="text-align:center;">
+			<p>
 				<ul style="color: yellow;">
-					<li>Updated 30 NOV 2021.</li>
-					<li>This will be the last update for the 2020 Atlantic Season.</li>
+					<li>Last Updated 30 NOV 2021.</li>
 				</ul>
 			</p>
 		</div>
-		<!-- <div id="year-switch"> -->
-			<!-- <label> -->
-				<!-- <input type="radio" name="switch" value="2021" checked onClick="chg_year(this.value)" /> 2021 -->
-			<!-- </label> -->
-			<!-- <label> -->
-				<!-- <input type="radio" name="switch" value="2020" onClick="chg_year(this.value)" /> 2020 -->
-			<!-- </label> -->
-		<!-- </div> -->
-		<div id="codeblock">
-			<pre><code id="codecontainer">
+
+		<div class="info-block current">
+			<pre><code id="current-season">
 
 			</code></pre>
 		</div>
-		<!-- <div id="codeblock_2020" style="display:none;"> -->
-			<!-- <pre><code id="codecontainer_2020"> -->
 
-			<!-- </code></pre> -->
-		<!-- </div> -->
 		<div class="disclaimer" style="text-align:center;">
 			<p>* Information presented here is retrieved from current-season 'best-track' (<a href="https://ftp.nhc.noaa.gov/atcf/btk/">https://ftp.nhc.noaa.gov/atcf/btk/</a>) data. Because landfall-data are not recorded in the best-track data, they are compiled using the advisory archive (<a href="https://ftp.nhc.noaa.gov/atcf/adv">https://ftp.nhc.noaa.gov/atcf/adv</a>) and GIS software.</p>
 			<p>For such landfall data, wind-extent information is currently not included. As such, 'null' space-fillers (-999) are used where applicable.</p>
@@ -50,25 +38,26 @@
 		<!-- SEASON STATS -->
 		<div id="year-switch">
 			<label>
-				<input type="radio" name="switch" value="2021" checked onClick="chg_year(this.value)" /> 2021
+				<input type="radio" name="switch" value="2022" checked onClick="load_season_stats(this.value)" /> 2022
 			</label>
 			<label>
-				<input type="radio" name="switch" value="2020" onClick="chg_year(this.value)" /> 2020
+				<input type="radio" name="switch" value="2021" onClick="load_season_stats(this.value)" /> 2021
+			</label>
+			<label>
+				<input type="radio" name="switch" value="2020" onClick="load_season_stats(this.value)" /> 2020
 			</label>
 		</div>
-		<div id="seasonblock">
-			<pre><code id="seasoncontainer">
-
-			</code></pre>
-		</div>
-		<div id="seasonblock_2020" style="display: none;">
-			<pre><code id="seasoncontainer_2020">
+		<div class="info-block season">
+			<pre><code id="season-stats">
 
 			</code></pre>
 		</div>
 
 		<div class="disclaimer" style="margin-bottom:2em;">
+			<p>The stats above are only relative to the selected season and seasons prior to it.</p>
+
 			<p>My primary purpose for this is for use in my <a href="https://github.com/ksgwxfan/hurdat2parser">hurdat2parser</a> program by concatenating it with the official data. One can then compare the current-season to previous years using a supplied function that ranks partial seasons.</p>
+
 			<p>Feel free to use this output in any way you'd like. My only request of it is that if used publicly, <u>you must provide the disclaimer that the data, though mostly retrieved from NOAA, is not NOAA-official, published, nor generated</u>.</p>
 		</div>
 		<div id="footer"></div>

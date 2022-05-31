@@ -1,45 +1,23 @@
+const current_year = 2022;
+const box_current_season = document.getElementById("current-season");
+const box_season_stats = document.getElementById("season-stats");
+
 function load_data() {
 	// LOAD HURDAT2 DATA FROM FILE
 	fetch("unofficial_hurdat2/current_hurdat2.dat")
 		.then(resp => resp.text())
-		.then(txt => {document.getElementById("codecontainer").innerHTML = txt;});
+		.then(txt => {box_current_season.innerHTML = txt;});
 	// LOAD CURRENT SEASON DATA FROM FILE
-	fetch("unofficial_hurdat2/season_stats.dat")
+	fetch(`unofficial_hurdat2/season_stats_${current_year}.dat`)
 		.then(resp => resp.text())
-		.then(txt => {document.getElementById("seasoncontainer").innerHTML = txt;})
-		.then(now => load_2020());
-
+		.then(txt => {box_season_stats.innerHTML = txt;})
 }
 
-function load_2020() {
-/* 	// LOAD HURDAT2 DATA FROM FILE
-	fetch("unofficial_hurdat2/hurdat2_2020.dat")
-		.then(resp => resp.text())
-		.then(txt => {document.getElementById("codecontainer_2020").innerHTML = txt;}); */
-	// LOAD 2020 SEASON DATA FROM FILE
-	fetch("unofficial_hurdat2/season_stats_2020.dat")
-		.then(resp => resp.text())
-		.then(txt => {document.getElementById("seasoncontainer_2020").innerHTML = txt;});
-}
+function load_season_stats(yr) {
 
-function chg_year(yr) {
-	let y2021 = [
-		// document.getElementById("codeblock"),
-		document.getElementById("seasonblock")
-	];
-	let y2020 = [
-		// document.getElementById("codeblock_2020"),
-		document.getElementById("seasonblock_2020")
-	];
-
-	if (parseInt(yr) == 2021) {
-		for (element of y2020) {element.style.display = "none";}
-		for (element of y2021) {element.style.display = "block";}
-	}
-	else {
-		for (element of y2021) {element.style.display = "none";}
-		for (element of y2020) {element.style.display = "block";}
-	}
+	fetch(`unofficial_hurdat2/season_stats_${yr}.dat`)
+		.then(resp => resp.text())
+		.then(txt => {box_season_stats.innerHTML = txt;});
 }
 
 
