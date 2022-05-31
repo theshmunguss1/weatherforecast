@@ -1,4 +1,4 @@
-var game = {
+const game = {
 	grid_size: 10,
 	max_min: [12,16],
 	mine_qty: 0,
@@ -9,22 +9,27 @@ var game = {
 	flag: false,
 	flagged: [],
 	cleared: [],
-	started: false
+	start_time: performance.now()
 };
+const gameboard = document.getElementById("gameboard");
+const mine_perc = document.getElementById("mine_percentage");
+const mine_qty_msg = document.getElementById("mineqtymsg");
+const start_dialog = document.getElementById("start-new-game");
+const win_dialog = document.getElementById("win");
+const lose_dialog = document.getElementById("lose");
+const remaining = document.getElementById("minesleft");
 
 function changeGrid(size) {
 	game.grid_size = parseInt(size);
-	difficulty(
-		document.getElementById("mine_percentage").value
-	);
+	changeDifficulty();
 }
 
-function difficulty(mine_perc) {
+function changeDifficulty() {
 	game.max_min = [
-		Math.floor((parseInt(mine_perc)-2) / 100 * game.grid_size**2),
-		Math.floor((parseInt(mine_perc)+2) / 100 * game.grid_size**2)
+		Math.floor((parseInt(mine_perc.value)-2) / 100 * game.grid_size**2),
+		Math.floor((parseInt(mine_perc.value)+2) / 100 * game.grid_size**2)
 	];
-	document.getElementById("mineqtymsg").innerHTML = `${game.max_min[0]} to ${game.max_min[1]} mines`;
+	mine_qty_msg.innerHTML = `${game.max_min[0]} to ${game.max_min[1]} mines`;
 }
 
 function ZFILL(n) {
@@ -33,7 +38,6 @@ function ZFILL(n) {
 }
 
 function build() {
-	var gameboard = document.getElementById("gameboard");
 	// Clear contents
 	gameboard.innerHTML = "";
 	// Change the denominator of width/height of squares
@@ -58,11 +62,11 @@ function build() {
 
 function gameStart() {
 	build();
-	game.started = true;
-	// Hide the 'new game' button
-	document.getElementById("start").style.display = "none";
-	document.getElementById("gridselect").style.visibility = "hidden";
-	document.getElementById("difficulty_select").style.visibility = "hidden";
+	
+	game.start_time = performance.now();
+	start_dialog.style.visibility = "hidden";
+	win_dialog.style.visibility = "hidden";
+	lose_dialog.style.visibility = "hidden";
 	// Reset all squares back to their initial state
 	for (x=0; x < game.grid_size; x++) {
 		let buildarr = []
@@ -97,36 +101,39 @@ function gameStart() {
 }
 
 function check(square) {
-	var choice = document.getElementById(square); 	// element id of the guess
-	var g_row = parseInt(square.slice(1,3)); 	// The guess's row
-	var g_col = parseInt(square.slice(4));		// The guess's column
-	if (game.started) {
-		// We only need to assess further if the cell hasn't been guessed yet and isn't flagged
-		if (game.guessed.includes(square) == false && game.flagged.includes(square) == false) {
-			// choice.style.outlineStyle = "inset"; 	// Visual confirmation of guess
-			game.guessed.push(square); 		// Internal note of guess
-			// If a mine has been uncovered, GAME OVER
-			if (game.mine[g_row][g_col] == 1) {gameover(square);}
-			// If mine-free
-			else {
-				game.cleared.push(square);		// If the cell has been cleared, it will go towards the tally it would take to win
-				choice.style.backgroundColor = "white";
-				let prox = proxcheck(g_row,g_col);	// Counts the cells in proximity with a mine
-				// Find and display the mines in proximity to the cell
-				if (prox > 0) {choice.innerHTML = prox;}
-				// If there are 0 mines in proximity, we also want to check other cells in proximity for zeros and uncover those too
-				else {zerocheck(square,g_row,g_col);}
-				// If you've cleared/verified enough cells are free, you win
-				if (game.cleared.length == (game.grid_size**2 - game.mine_qty)) {
-					youwin();
-				}
+	// Toggle Flag if CTRL key is pressed
+	if (event.ctrlKey == true) {
+		return toggle_flag(square);
+	}
+
+	let choice = document.getElementById(square); 	// element id of the guess
+	let g_row = parseInt(square.slice(1,3)); 	// The guess's row
+	let g_col = parseInt(square.slice(4));		// The guess's column
+
+	// We only need to assess further if the cell hasn't been guessed yet and isn't flagged
+	if (game.guessed.includes(square) == false && game.flagged.includes(square) == false) {
+		// choice.style.outlineStyle = "inset"; 	// Visual confirmation of guess
+		game.guessed.push(square); 		// Internal note of guess
+		// If a mine has been uncovered, GAME OVER
+		if (game.mine[g_row][g_col] == 1) {gameover(square);}
+		// If mine-free
+		else {
+			game.cleared.push(square);		// If the cell has been cleared, it will go towards the tally it would take to win
+			choice.style.backgroundColor = "white";
+			let prox = proxcheck(g_row,g_col);	// Counts the cells in proximity with a mine
+			// Find and display the mines in proximity to the cell
+			if (prox > 0) {choice.innerHTML = prox;}
+			// If there are 0 mines in proximity, we also want to check other cells in proximity for zeros and uncover those too
+			else {zerocheck(square,g_row,g_col);}
+			// If you've cleared/verified enough cells are free, you win
+			if (game.cleared.length == (game.grid_size**2 - game.mine_qty)) {
+				youwin();
 			}
 		}
 	}
 }
 
 function toggle_flag(square) {
-	var remaining = document.getElementById("minesleft");
 	event.preventDefault(); 	// Prevent the right-click menu from appearing
 	let choice = document.getElementById(square);
 	// If the square hasn't already been uncovered
@@ -339,8 +346,12 @@ function verify(cell) {
 }
 
 function youwin() {
-	document.getElementById("win").style.visibility = "visible";
-	document.getElementById("start").style.visibility = "visible";
+	document.getElementById("win-time").innerText = (
+		(
+			performance.now() - game.start_time
+		) / 1000
+	).toFixed(1);
+	win_dialog.style.visibility = "visible";
 	document.getElementById("minesleft").innerHTML = 0;
 	reset();
 }
@@ -367,7 +378,7 @@ function gameover(square) {
 	// Highlight the culprit
 	document.getElementById(square).style.backgroundColor = "yellow";
 	document.getElementById(square).innerHTML = "&Otimes;";
-	document.getElementById("lose").style.visibility = "visible";
+	lose_dialog.style.visibility = "visible";
 	reset();
 }
 
@@ -378,9 +389,5 @@ function reset() {
 	game.zerocount = [];
 	game.guessed = [];
 	game.flagged = [];
-	game.cleared = [];
-	game.started = false;
-	document.getElementById("start").style.display = "inline";
-	document.getElementById("gridselect").style.visibility = "visible";
-	document.getElementById("difficulty_select").style.visibility = "visible";
+	game.cleared = [];;
 }
