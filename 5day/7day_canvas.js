@@ -62,10 +62,17 @@ var logo = [
 var canvas = document.getElementById("forecast");
 var ctx = canvas.getContext("2d");
 
+function change_orientation() {
+	// this is needed as the document element won't reflect the proper changes in dimensions until after the resize function was complete
+	setTimeout(resize, 500);
+}
 
 function EventListeners() {}
 // Dynamic Window Resize
-window.addEventListener("orientationchange", resize);
+window.addEventListener(
+	"orientationchange",
+	change_orientation
+);
 
 // Canvas Event Listener
 canvas.addEventListener(
