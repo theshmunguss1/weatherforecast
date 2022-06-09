@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="../">
+		<title>Matching Game</title>
+		<link rel="stylesheet" type="text/css" href="pageheader.css"></link>
+		<link rel="stylesheet" type="text/css" href="match/match.css"></link>
+		<style>
+
+		</style>
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+	</head>
+	<body onload="change_gridsize('4');">
+		<h1 id="header">Matching Game</h1>
+		<div id="gamecontainer">
+			<!-- GAME BOARD -->
+			<div id="board" class="bg01">
+
+			</div>
+			<!-- INTRO SCREEN -->
+			<div id="start" class="options">
+				<span>Welcome to the<br />Matching Game!</span>
+				<span>Grid Size:</span>
+				<div>
+					<label>
+						<input type="radio" name="gridsize" value="4" onChange="change_gridsize(this.value)" checked /> 4x4
+					</label>
+					<label>
+						<input type="radio" name="gridsize" value="6" onChange="change_gridsize(this.value)" /> 6x6
+					</label>
+					<label>
+						<input type="radio" name="gridsize" value="8" onChange="change_gridsize(this.value)" /> 8x8
+					</label>
+				</div>
+				<button onClick="assign()">START</button>
+			</div>
+			<div id="right" class="options"></div>
+			<div id="wrong" class="options"></div>
+			<div id="endgame" class="options">
+				<span>YOU WON!</span>
+				<span>
+					Game Stats:<br />
+					<span id="numguesses" class="endtext"></span> guesses<br />
+					<span id="numseconds" class="endtext"></span> seconds!
+				</span>
+				<div>
+					<label>
+						<input type="radio" name="gridsizeend" value="4" onChange="change_gridsize(this.value)" checked /> 4x4
+					</label>
+					<label>
+						<input type="radio" name="gridsizeend" value="6" onChange="change_gridsize(this.value)" /> 6x6
+					</label>
+					<label>
+						<input type="radio" name="gridsizeend" value="8" onChange="change_gridsize(this.value)" /> 8x8
+					</label>
+				</div>
+				<button onClick="assign()">Play Again!</button>
+			</div>
+		</div>
+		
+		<div id="bgchooser">
+			<!-- COLOR CHOOSER -->
+			<div id="background1" class="bg01pre" onClick="chgbg(this.id)">&nbsp;</div>
+			<div id="background2" class="bg02pre" onClick="chgbg(this.id)">&nbsp;</div>
+			<div id="background3" class="bg03pre" onClick="chgbg(this.id)">&nbsp;</div>
+			<div id="background4" class="bg04pre" onClick="chgbg(this.id)">&nbsp;</div>
+			<div id="background5" class="CELL">
+				<input type="color" title="Choose Solid Background Color" oninput="chgbg(this.value)" />
+			</div>
+		</div>
+		<div id="cardbgchooser">
+			<div onClick="chgcardbg(this.style.backgroundColor)" style="background-color:darkred;">&nbsp;</div>
+			<div onClick="chgcardbg(this.style.backgroundColor)" style="background-color:red;">&nbsp;</div>
+			<div onClick="chgcardbg(this.style.backgroundColor)" style="background-color:orange;">&nbsp;</div>
+			<div onClick="chgcardbg(this.style.backgroundColor)" style="background-color:yellow;">&nbsp;</div>
+			<div onClick="chgcardbg(this.style.backgroundColor)" style="background-color:yellowgreen;">&nbsp;</div>
+			<div onClick="chgcardbg(this.style.backgroundColor)" style="background-color:green;">&nbsp;</div>
+			<div onClick="chgcardbg(this.style.backgroundColor)" style="background-color:teal;">&nbsp;</div>
+			<div onClick="chgcardbg(this.style.backgroundColor)" style="background-color:blue;">&nbsp;</div>
+			<div onClick="chgcardbg(this.style.backgroundColor)" style="background-color:indigo;">&nbsp;</div>
+			<div onClick="chgcardbg(this.style.backgroundColor)" style="background-color:violet;">&nbsp;</div>
+			<div onClick="chgcardbg(this.style.backgroundColor)" style="background-color:black;">&nbsp;</div>
+			<div onClick="chgcardbg(this.style.backgroundColor)" style="background-color:white;">&nbsp;</div>
+			<div onClick="chgcardbg(this.style.backgroundColor)" style="background-color:pink;">&nbsp;</div>
+			<div onClick="chgcardbg(this.style.backgroundColor)" style="background-color:navy;">&nbsp;</div>
+		</div>
+		<div id="description" style="width:80%;margin:auto;margin-top:20px;margin-bottom:10px;">
+			<p>Here's a seemingly simple matching game. Enjoy. Feel free to inspect the code and use however you like. No attribution necessary.</p>
+			<ul>
+				<li>8 June 2022: cleaned up the code quite a bit; improved dynamic CSS as well; added solid-background option (via color chooser).
+			</ul>
+		</div>
+		<div id="footer"></div>
+		<script src="header.js"></script>
+		<script src="footer.js"></script>
+		
+	</body>
+	<script src="match/match.js"></script>
+	<!--
+tab = "    "
+for x in range(4):
+	print(f'{tab*4}<div class="row">')
+	for y in range(4):
+		print(f'{tab*5}<div id="c{str(x).zfill(2)}_{str(y).zfill(2)}" class="card gs4 hide red" onClick="reveal(this.id)"></div>')
+	print(f'{tab*4}</div>')
+	-->
+</html>

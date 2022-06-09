@@ -1,57 +1,62 @@
-var game = {
+const imgarray = [
+	"&#9728;", 		// sun
+	"&#9731;", 		// snowman
+	"&#10070;", 	// diamond, crossed
+	"&#10026;", 	// star
+	"&#9835;", 		// music note
+	"&#9745;", 		// ballot-box
+	"&#9786;", 		// smiley face
+	"&#9872;", 		// flag
+	"&#9775;", 		// yinyang
+	"&#9851;", 		// recycle
+	"&#9918;", 		// baseball
+	"&#9917;", 		// soccer ball
+	"&#9860;", 		// dice-five
+	"&#9986;", 		// scissors
+	"&#9996;", 		// peace-hand
+	"&#9743;", 		// phone
+	"&#9951;", 		// truck
+	"&#9973;", 		// sailboat
+	"&#9752;", 		// clover
+	"&#10048;", 	// flower
+	"&#9813;", 		// chess-king
+	"&#9816;", 		// chess-knight
+	"&#9820;", 		// chess-rook
+	"&#9817;", 		// chess-pawn
+	"&hearts;", 	// hearts
+	"&#9993;", 		// envelope
+	"&#9876;", 		// swords
+	"&#9760;", 		// skull/bones
+	"&#9730;",		// umbrella
+	"&#9736;", 		// thunderstorm
+	"&#9889;", 		// high-voltage
+	"&#9992;", 		// airplane
+	"&#9883;",		// atom
+	"&#8486;",		// ohm
+	"&#9888;",		// warning sign
+	"&#10052;",		// snowflake
+	"&#9789;",		// moon
+	"&#128269;",	// magnify glass
+];
+
+const game = {
 	started: false,
-	st_time: 0,
-	en_time: 0,
+	start_time: 0,
 	total_guesses: 0,
-	grid_size: 4,
+	grid_size: -1,
 	matchquery: [],
 	correct: [],
 	card_color: "red"
 };
 
-var imgarray = ["&#9728;", 		// sun
-				"&#9731;", 		// snowman
-				"&#10070;", 	// diamond, crossed
-				"&#10026;", 	// star
-				"&#9835;", 		// music note
-				"&#9745;", 		// ballot-box
-				"&#9786;", 		// smiley face
-				"&#9872;", 		// flag
-				"&#9775;", 		// yinyang
-				"&#9851;", 		// recycle
-				"&#9757;", 		// finger pointing up
-				"&#9918;", 		// baseball
-				"&#9917;", 		// soccer ball
-				"&#9860;", 		// dice-five
-				"&#9986;", 		// scissors
-				"&#9996;", 		// peace-hand
-				"&#9743;", 		// phone
-				"&#9951;", 		// truck
-				"&#9973;", 		// sailboat
-				"&#9752;", 		// clover
-				"&#10048;", 	// flower
-				"&#9813;", 		// chess-king
-				"&#9816;", 		// chess-knight
-				"&#9820;", 		// chess-rook
-				"&#9817;", 		// chess-pawn
-				"&hearts;", 	// hearts
-				"&#9993;", 		// envelope
-				"&#9876;", 		// swords
-				"&#9762;", 		// radioactive
-				"&#9760;", 		// skull/bones
-				"&#9730;",		// umbrella
-				"&#9736;", 		// thunderstorm
-				"&#9889;", 		// high-voltage
-				"&#9992;"]; 	// airplane
+const board = document.getElementById("board");
 
 function reset() {
 	game.started = false;
-	game.st_time = 0;
-	game.en_time = 0;
+	game.start_time = 0;
 	game.total_guesses = 0;
 	game.matchquery = [];
 	game.correct = [];
-	game.card_color = "red";
 }
 
 function ZFILL(n) {
@@ -59,8 +64,33 @@ function ZFILL(n) {
 	else {return n.toString()}
 }
 
-function change_gridsize(v) {
-	if (v != game.grid_size) {game.grid_size = parseInt(v);}
+function change_gridsize(v=null, newgame=false) {
+
+	if (v == null) {v = game.grid_size}
+
+	if (parseInt(v) != game.grid_size || newgame == true) {
+		game.grid_size = parseInt(v);
+
+		// Clear board
+		board.innerHTML = "";
+
+		// Rebuild layout
+		for (x=0; x < game.grid_size; x++) {
+			//New Row
+			let newrow = document.createElement("div");
+			board.appendChild(newrow);
+			newrow.setAttribute("class", "row");
+			for (y=0; y < game.grid_size; y++) {
+				// New card; give it attributes
+				let card = document.createElement("div");
+				card.setAttribute("id",`c${ZFILL(x)}_${ZFILL(y)}`);
+				card.setAttribute("class",`card gs${game.grid_size} hide ${game.card_color}`);
+				card.setAttribute("onClick","reveal(this.id)");
+
+				newrow.appendChild(card);
+			}
+		}
+	}
 }
 
 function randomColor() {
@@ -73,18 +103,23 @@ function randomColor() {
 
 }
 
+// Starts a new game
 function assign() {
-	// Hide the start/end message
-	document.getElementById("start").style.visibility = "hidden";
-	document.getElementById("endgame").style.visibility = "hidden";
+
+	reset();
+
+
+	change_gridsize(null, true);
 
 	var selectedarray = []; 	// will hold symbols that will be used in game
 	// randomly select enough symbols
 	while (selectedarray.length < game.grid_size**2 / 2) {
-		let r = 0 + Math.floor(Math.random() * (imgarray.length - 0));
-		if (selectedarray.indexOf(imgarray[r]) == -1) {selectedarray.push(imgarray[r]);}
+		let r = Math.floor(Math.random() * imgarray.length);
+		// if it isn't in the array, append it
+		if (selectedarray.indexOf(imgarray[r]) == -1) {
+			selectedarray.push(imgarray[r]);
+		}
 	}
-	//console.log(selectedarray);
 
 	// Double-up the array
 	selectedarray = selectedarray.concat(selectedarray);
@@ -94,35 +129,26 @@ function assign() {
 }
 
 function build(arr) {
-	let board = document.getElementById("board");
-	// clear the game grid
-	board.innerHTML = "";
 	for (x=0; x < game.grid_size; x++) {
-		//New Row
-		let newrow = document.createElement("div");
-		newrow.setAttribute("class","ROW");
 		for (y=0; y < game.grid_size; y++) {
-			// New card; give it attributes
-			let card = document.createElement("div");
-			card.setAttribute("id",`c${ZFILL(x)}_${ZFILL(y)}`);
-			card.setAttribute("class",`card gs${game.grid_size} hide ${game.card_color}`);
-			card.setAttribute("onClick","reveal(this.id)");
+			// Card element
+			let card = document.getElementById(`c${ZFILL(x)}_${ZFILL(y)}`);
+
 			// Random number will be used to select a symbol to display
-			let r = 0 + Math.floor(Math.random() * (arr.length - 0));
+			let r = 0 + Math.floor(Math.random() * arr.length);
 			card.innerHTML = arr[r];
-			// Append the card once to the row once finished setting it up
-			newrow.appendChild(card);
-			// delete the just used symbol since it has been assigned
-			let newarr = [];
-			for (i=0; i < arr.length; i++) {
-				if (i != r) {newarr.push(arr[i]);}
-			}
-			arr.length = 0; 	// clear the old array
-			arr = arr.concat(newarr); 	// renew the 'old' array
-			newarr.length = 0; 		// clear the 'newarr'
+
+			// delete/exclude the just used symbol since it has been assigned
+
+			arr = [].concat(
+				arr.slice(0, r),
+				arr.slice(r+1)
+			);
 		}
-		board.appendChild(newrow);
 	}
+	// Hide the start/end message
+	document.getElementById("start").style.visibility = "hidden";
+	document.getElementById("endgame").style.visibility = "hidden";
 }
 
 function reveal(cid) {
@@ -130,7 +156,7 @@ function reveal(cid) {
 	// start the game timing if it hasn't been set already
 	if (game.started == false) {
 		game.started = true;
-		game.st_time = Date.now();
+		game.start_time = performance.now();
 	}
 	// we only want to reveal the card if hasn't been uncovered yet,
 	// Either part of a correct match or we haven't selected two yet 
@@ -172,14 +198,14 @@ function reveal(cid) {
 }
 
 function youWin() {
-	// Mark the end timing
-	game.en_time = Date.now();
 	// Calculate the total number of seconds the game took to finish
-	var total_time = ((game.en_time - game.st_time) / 1000).toFixed(1);
+	let total_time = (
+		(performance.now() - game.start_time) / 1000
+	).toFixed(1);
+
 	document.getElementById("numguesses").innerHTML = game.total_guesses;
 	document.getElementById("numseconds").innerHTML = total_time;
 	document.getElementById("endgame").style.visibility = "visible";
-	reset();
 }
 
 function correct() {
@@ -198,17 +224,22 @@ function hide() {
 }
 
 function chgbg(bgid) {
-	var newbg = bgid.slice(-1);
-	document.getElementById("board").setAttribute("class",`bg${ZFILL(newbg)}`);
+	// Solid color
+	if (bgid.includes("#")) {
+		board.setAttribute("class", "");
+		board.style.backgroundColor = bgid;
+	}
+	// Background Pattern preset
+	else {
+		let newbg = parseInt(bgid.slice(-1));
+		board.setAttribute("class",`bg${ZFILL(newbg)}`);
+	}
 }
 
 function chgcardbg(c) {
-	//console.log(c);
 	game.card_color = c;
-	for (x=0; x < game.grid_size; x++) {
-		for (y=0; y < game.grid_size; y++) {
-			document.getElementById(`c${ZFILL(x)}_${ZFILL(y)}`).setAttribute("class",`card gs${game.grid_size} hide ${game.card_color}`)
-		}
+	for (let card of document.querySelectorAll(".card")) {
+		card.setAttribute("class",`card gs${game.grid_size} hide ${game.card_color}`)
 	}
 }
 

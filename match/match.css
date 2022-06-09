@@ -1,76 +1,114 @@
-.HEADER {
-	width: 100%;
-	font-weight: bold;
-	font-size: 30px;
-	display: inline-block;
-}
-.HEADERPHOTO {
-	width: 3%;
-	border: 2px solid white;
-	box-shadow: 0px 0px 5px white;
-	border-radius: 35%;
-	display: inline-block;
-}
-/* Regular Computers*/
-@media screen and (min-width: 491px) and (min-height: 491px) {
-	#gamecontainer {
-		width: 40vw;
-		height: 40vw;
-	}
-	#start > div {font-size: 4vw;}
-	#start > p {font-size: 2vw;}
-	.card.gs4 {font-size: 6.4vw;}
-	.card.gs6 {font-size: 5.2vw;}
-	.card.gs8 {font-size: 3.6vw;}
-}
-/* Regular Computers and Landscape Phones*/
-@media screen and (min-width: 491px) {
-	#board {border-spacing: 1vw;}
-	button {
-		font-size: 3vw;
-		height: 4vw;
-	}
-}
-/* Phones - Landscape */
-@media screen and (max-height: 490px) {
-	#gamecontainer {
-		width: 98vh;
-		height: 98vh;
-	}
-	#start > div {font-size: 5vw;}
-	#start > p {font-size: 3vw;}
-	.card.gs4 {font-size: 9vw;}
-	.card.gs6 {font-size: 5.8vw;}
-	.card.gs8 {font-size: 3.5vw;}
-}
-/* Phones - Portrait */
-@media screen and (max-width: 490px) {
-	#gamecontainer {
-		width: 96vw;
-		height: 96vw;
-	}
-	#board {border-spacing: 1.2vw;}
-	#start > div {font-size: 8vw;}
-	#start > p {font-size: 6vw;}
-	button {
-		font-size: 10vw;
-		height: 12vw;
-	}
-	.card.gs4 {font-size: 16vw;}
-	.card.gs6 {font-size: 10vw;}
-	.card.gs8 {font-size: 6vw;}
-}
 #gamecontainer {
 	position: relative;
 	margin: 0 auto;
+	font-weight: bold;
+	font-family: sans-serif;
+	aspect-ratio: 1 / 1;
 }
+
 #board {
 	display: table;
 	table-layout: fixed;
 	border-collapse: separate;
 	width: 100%;
 	height: 100%;
+	border-spacing: 1.2vmin;
 }
+
+.options {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	color: black;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	visibility: hidden;
+	user-select: none;
+	background: rgba(255,255,255,70%);
+}
+
+/* OPENING TEXT */
+#start {visibility: visible;}
+
+.options :nth-child(n+1) {
+	margin: 2vmin;
+}
+
+/* WELCOME MESSAGE or 1st line */
+.options > :nth-child(1) {
+	text-decoration: underline;
+	font-size: 8vmin;
+}
+
+/* GRID SIZE MESSAGE or 2nd line */
+.options > :nth-child(2) {
+	font-size: 5vmin;
+}
+.options label {font-size: 6vmin;}
+
+#start, #endgame {background: rgba(255,255,255,70%);}
+
+
+button {
+	font-weight: bold;
+	box-shadow: 0px 0px 5vmin;
+	padding: 5%;
+	font-size: 5vmin;
+}
+
+.card.gs4 {font-size: 14vmin;}
+.card.gs6 {font-size: 8vmin;}
+.card.gs8 {font-size: 6vmin;}
+
+/* Landscape */
+@media (min-aspect-ratio: 9/8) {
+	#gamecontainer {width: 80vmin;}
+
+	/* .card.gs4 {font-size: 6.4vmax;} */
+	/* .card.gs6 {font-size: 5.2vmax;} */
+	/* .card.gs8 {font-size: 3.6vmax;} */
+}
+
+
+/* Portrait */
+@media (max-aspect-ratio: 8/9) {
+	#gamecontainer {width: 93vmin;}
+
+	/* .card.gs4 {font-size: 16vmin;} */
+	/* .card.gs6 {font-size: 10vmin;} */
+	/* .card.gs8 {font-size: 6vmin;} */
+}
+
+[type="radio"] {
+	transform: scale(2.5, 2.5);
+	vertical-align: middle;
+	margin: 1em;
+}
+
+[type="color"] {
+	/* transform: scale(2.5, 2.5); */
+	width: 100%;
+	height: 100%;
+}
+
+#bgchooser {
+	display: flex;
+	margin: 2vmin auto;
+	flex-direction: row;
+	justify-content: center;
+	align-items: stretch;
+	text-align: center;
+	width: 75%;
+	height: 5vmin;
+	min-width: 300px;
+}
+#bgchooser :nth-child(n+1) {flex-grow: 1;}
+
 .bg01 {background: repeating-linear-gradient(45deg, lightblue 0% 2%, white 2.1% 4%, yellow 4.1% 6%, white 6.1% 8%);}
 .bg01pre {background: repeating-linear-gradient(45deg, lightblue 0% 6%, white 6.1% 12.1%, yellow 12.2% 18.2%, white 18.3% 24.3%);}
 .bg02 {background: repeating-radial-gradient(circle at 40% 40%,red 0% 4%, white 4.1% 8.1%, navy 8.2% 12.2%, white 12.3% 16.3%);}
@@ -79,45 +117,17 @@
 .bg03pre {background: repeating-linear-gradient(45deg, MidnightBlue 0% 6%, CornflowerBlue 6.1% 12.1%, Navy 12.2% 18.2%, LightBlue 18.3% 24.3%);}
 .bg04 {background: repeating-linear-gradient(45deg, red 0% 2%, orange 2.1% 4%, yellow 4.1% 6%, green 6.1% 8%, blue 8.1% 10%, indigo 10.1% 12%, violet 12.1% 14%, white 14.1% 16%);}
 .bg04pre {background: repeating-linear-gradient(45deg, red 0% 5%, orange 5.1% 10.1%, yellow 10.2% 15.2%, green 15.3% 20.3%, blue 20.4% 25.4%, indigo 25.5% 30.5%, violet 30.6% 35.6%, white 35.7% 40.7%);}
-.MSG {
-	position: absolute;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-	top: 0; left: 0;
-	width: 100%;
-	font-weight: bold;
-	font-family: sans-serif;
-	height: 100%;
-	visibility: hidden;
-	user-select: none;
-}
-button {
-	font-weight: bold;
-	outline: none;
-}
+
 
 @keyframes correct_animation {
-	0%		{opacity: 100%;}
-	99%	{opacity: 1%;}
+	from { opacity: 100%; }
+	to	{ opacity: 1%; }
 }
-/* OPENING TEXT */
-#start {
-	background: rgba(255,255,255,70%);
-	text-align: center;
-	color: black;
-	visibility: visible;
-}
-#start > div {
-	width: 80%;
-	margin-bottom: 5%;
-}
+
 /* CORRECT GUESS */
 #right {
-	/*animation: correct_animation 0.6s;*/
-	opacity: 50%;
+	/* animation-name: correct_animation; */
+	/* animation-duration: 2s; */
 	background:
 		linear-gradient(to right, green 0% 2%, transparent 5.1%),
 		linear-gradient(to top, green 0% 2%, transparent 5.1%),
@@ -127,16 +137,16 @@ button {
 
 /* WRONG GUESS */
 #wrong {
-	opacity: 50%;
 	background:
 		linear-gradient(to right, red 0% 2%, transparent 2.1%),
 		linear-gradient(to top, red 0% 2%, transparent 2.1%),
 		linear-gradient(to left, red 0% 2%, transparent 2.1%),
 		linear-gradient(to bottom, red 0% 2%, transparent 2.1%),
-		linear-gradient(45deg, transparent 0% 48.4%, red 48.5% 51.5%, transparent 51.6%),
-		linear-gradient(135deg, transparent 0% 48.4%, red 48.5% 51.5%, transparent 51.6%);
+		linear-gradient(45deg, transparent 0% 48.4%,  rgba(255,0,0,50%) 48.5% 51.5%, transparent 51.6%),
+		linear-gradient(135deg, transparent 0% 48.4%, rgba(255,0,0,50%) 48.5% 51.5%, transparent 51.6%);
 }
-.ROW {display: table-row;}
+
+.row {display: table-row;}
 .card {
 	display: table-cell;
 	line-height: 0%;
@@ -147,8 +157,7 @@ button {
 	border-radius: 10% 10%;
 }
 .card.reveal {
-	background: white;
-	opacity: 90%;
+	background: rgba(255,255,255, 80%);
 	color: black;
 	border-color: gray;
 }
@@ -215,30 +224,25 @@ button {
 .card.hide.navy {
 	background-color: navy;
 }
-#endgame {
-	background: rgba(255,255,255,85%);
-	font-size: 2em;
-	color: black;
-}
+
 .endtext {
 	color: blue;
 	font-weight: bold;
 }
-#bgchooser {
-	display: table;
-	margin: 0 auto;
-	margin-top: 10px;
-	width: 80%;
-	height: 50px;
-}
+
 #cardbgchooser {
-	display: table;
-	margin: 0 auto;
-	margin-top: 10px;
-	width: 80%;
-	height: 50px;
+	display: flex;
+	flex-direction: row;
+	jusitfy-content: center;
+	align-items: stretch;
+	margin: 2vmin auto;
+	width: 75%;
+	height: 5vmin;
+	min-width: 300px;
 }
-.CELL {display: table-cell;}
+#cardbgchooser :nth-child(n+1) {
+	flex-grow: 1;
+}
 
 .OPTIONSCREEN {
 	display: table-cell;
@@ -330,7 +334,4 @@ button {
 	text-align: center;
 	vertical-align: middle;
 	user-select: none;
-}
-.row {
-	display: table-row;
 }
