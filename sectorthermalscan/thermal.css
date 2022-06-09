@@ -1,0 +1,85 @@
+#frame-timer {
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	font-size: 2em;
+	font-weight: bold;
+	width: 500px;
+	margin: 10px auto;
+}
+#guessesleft, #timer {color: yellow}
+
+#container {
+	position: relative;
+	width: 85vmin;
+	height: 85vmin;
+	margin: 10px auto;
+}
+
+#board {
+	display: table;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	border-collapse: separate;
+	border-spacing: 1px;
+}
+.GAMESIGN {
+	position: absolute;
+	display:table;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	background-color: rgba(255,255,255,0.8);
+}
+.row {display: table-row;}
+.cell {
+	display: table-cell;
+	background: linear-gradient(45deg, black, white);
+	
+}
+.TEXTCELL {
+	display: table-cell;
+	vertical-align: middle;
+	color: black;
+	user-select: none;
+}
+.COLORBAR {
+	 position: relative;
+	 margin: 10px auto;
+	 width: 75%;
+	 min-width: 50%;
+	 max-width: 500px;
+	 height: 20px;
+	 background: linear-gradient(90deg, blue, cyan, green, yellow, red);
+}
+.CBTEXT {
+	display: inline-block;
+	position: absolute;
+	font-weight: bold;
+	user-select: none;
+}
+.STARTBUTTON {
+	width: 50%;
+	font-size: 2em;
+	height: 20%;
+	border: 3px solid green;
+}
+.OPTIONSBOX {
+	 display: table;
+	 margin:auto;
+	 width: 75%;
+	 min-width: 50%;
+	 max-width: 750px;
+}
+.OPTSCELL {
+	display: table-cell;
+	border: 1px solid white;
+	width:50px;
+	text-align: center;
+	vertical-align: middle;
+	user-select: none;
+	border-collapse: collapse;
+}
