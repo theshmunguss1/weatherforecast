@@ -1,6 +1,6 @@
 const imgarray = [
 	"&#9728;", 		// sun
-	"&#9731;", 		// snowman
+	"&#9924;", 		// snowman
 	"&#10070;", 	// diamond, crossed
 	"&#10026;", 	// star
 	"&#9835;", 		// music note
@@ -23,7 +23,7 @@ const imgarray = [
 	"&#9816;", 		// chess-knight
 	"&#9820;", 		// chess-rook
 	"&#9817;", 		// chess-pawn
-	"&hearts;", 	// hearts
+	"&#9829;", 	// hearts
 	"&#9993;", 		// envelope
 	"&#9876;", 		// swords
 	"&#9760;", 		// skull/bones
@@ -37,6 +37,14 @@ const imgarray = [
 	"&#10052;",		// snowflake
 	"&#9789;",		// moon
 	"&#128269;",	// magnify glass
+	"&#9962;",		// church
+	"&#9981;",		// fuel pump
+	"&#9976;",		// ice skate
+	"&#8987;",		// hourglass
+	"&#9200;",		// alarm clock
+	"&#9000;",		// keyboard
+	"&#12320;",		// postal mark face
+	"&#9677;",		// circle with vertical fill
 ];
 
 const game = {

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="../">
+		<title>MineSweep</title>
+		<link rel="stylesheet" type="text/css" href="pageheader.css"></link>
+		<link rel="stylesheet" type="text/css" href="minesweep/minesweep.css"></link>
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<meta name="keywords" content="minesweeper, game">
+		<style>
+
+		</style>
+	</head>
+	<body onload="build();">
+		<h1 id="header">MineSweep</h1>
+		<div id="gamecontainer">
+			<!-- GAME BOARD -->
+			<div id="gameboard">
+
+			</div>
+			<!-- START DIALOG -->
+			<div class="ENDMSG" id="start-new-game">
+				<button id="start-main" onClick="gameStart()">New Game</button>
+				<div id="gridselect" title="Select A Grid-Size for your next game">
+					Grid Size:<br />
+					<label><input type="radio" name="gridselect" value="10" checked onClick="changeGrid(this.value)">10x10</label>
+					<label><input type="radio" name="gridselect" value="12" onClick="changeGrid(this.value)">12x12</label>
+					<label><input type="radio" name="gridselect" value="15" onClick="changeGrid(this.value)">15x15</label>
+				</div>
+				<hr style="width:75%;"/>
+				<div id="difficulty_select">
+					<span>Mine Quantity &rarr; <span id="mineqtymsg">12 to 16 mines</span></span>
+					<label>
+						10% <input id="mine_percentage" type="range" min="10" max="30" step="2" value="14" onInput="changeDifficulty()"  title="Change the Difficulty (number of mines)" /> 30%
+					</label>
+				</div>
+			</div>
+			<!-- LOST GAME -->
+			<div class="ENDMSG" id="lose">
+				<span>GAME<br />OVER</span>
+				<button id="start-over-lose" onClick="gameStart()">New Game</button>
+				<button id="start-options-lose" onClick="lose_dialog.style.visibility = 'hidden'; start_dialog.style.visibility = 'visible';">Change Options</button>
+			</div>
+			<!-- WON GAME -->
+			<div class="ENDMSG" id="win">
+				<span>YOU<br />WIN!</span>
+				<div id="frame-win-time">
+					<span id="win-time"></span> seconds!
+				</div>
+				<button id="start-over-win" onClick="gameStart()">New Game</button>
+				<button id="start-options-win" onClick="win_dialog.style.visibility = 'hidden'; start_dialog.style.visibility = 'visible';">Change Options</button>
+			</div>
+		</div>
+		<div id="gameoptions">
+			MINES LEFT: <span id="minesleft">--</span>
+		</div>
+		<hr style="width: 90%;" />
+		<div id="description">
+			<ul>
+				<li>June 2022: changed name (to index); dynamic generation (decreased size of html file)</li>
+				<li>May 2022: meld of game options to the game board</li>
+			</ul>
+			<p>Welcome to MineSweep, a minesweeper clone. The goal is to preferably isolate the locations of all of the mines in the field. Here are some keys that will be needed or make game-play easier:
+				<ul>
+					<li>Click/tap a cell to test it. If there are any mines in its proximity, the quantity will appear.</li>
+					<li>Placing a flag on the cell will protect it from accidentally being clicked. To toggle a flag on a cell, if using a mouse, you can <span class="ctrlinstr">RIGHT-CLICK</span> (alternate-click) it or hold down the <span class="ctrlinstr">CTRL</span> button and primary-click (usually left-click) it. If using a tablet or phone, <span class="ctrlinstr">TOUCH and HOLD</span> to flag a particular cell.</li>
+				</ul>
+			</p>
+			<p>I hope you enjoy the game. If you want to use the game to modify or place on your site, feel free, but attribution either in your website code or on the page is all I require. If you simply like a portion of the code (a function spurring your interest/idea), don't worry about attribution. Thanks.</p>
+		</div>
+		<div id="footer"></div>
+		<script src="header.js"></script>
+		<script src="footer.js"></script>
+	</body>
+	<script src="minesweep/minesweep.js"></script>
+</html>

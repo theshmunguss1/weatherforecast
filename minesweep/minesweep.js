@@ -55,7 +55,6 @@ function build() {
 			newCell.setAttribute("onClick","check(this.id)");
 			newCell.setAttribute("onContextMenu","toggle_flag(this.id)");
 			newRow.appendChild(newCell);
-			//coltext += `${TAB+TAB+TAB+TAB+TAB}<div id="s${ZFILL(x)}_${ZFILL(y)}" class="SQUARES" onClick="check(this.id)" style="width:calc(var(--game_dim) / ${game.grid_size});height:calc(var(--game_dim) / var(--cell_dim))" onContextMenu="toggle_flag(this.id)"></div>\n`;
 		}
 	}
 }
