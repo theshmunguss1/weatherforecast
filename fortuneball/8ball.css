@@ -31,49 +31,30 @@ body {
 	outline: none;
 }
 
+#question {font-size: 1.4em;}
+#ballcontainer {
+	width: 90vmin;
+	height: 90vmin;
+	position: relative;
+	margin: 20px auto;
+}
+#response {
+		font-size: 1.9vmax;
+}
+
+
 /* REGULAR SCREEN */
-@media screen and (min-width: 491px) {
+@media screen and (min-width: 500px) {
 	#question {font-size: 2em;}
 	#ballcontainer {
 		width: 80vmin;
 		max-width: 600px;
 		height: 80vmin;
 		max-height: 600px;
-}
+	}
 	#response {
 		font-size: 1.5vw;
-}
-}
-
-/* PHONES (portrait) */
-@media screen and (max-width: 490px) and (orientation: portrait) {
-	#question {font-size: 1.4em;}
-	#ballcontainer {
-		width: 90vw;
-		height: 90vw;
-}
-	#response {
-		font-size: 3.2vw;
-}
-}
-
-/* PHONES (landscape) */
-@media screen and (orientation: landscape) and (max-height: 490px) {
-	#question {font-size: 1.4em;}
-	#ballcontainer {
-		width: 90vh;
-		height: 90vh;
-}
-	#response {
-		font-size: 1.9vw;
-}
-}
-
-#ballcontainer {
-	position: relative;
-	margin: 0 auto;
-	margin-top: 10px;
-	margin-bottom: 20px;
+	}
 }
 
 #ball {
@@ -88,7 +69,8 @@ body {
 #triangle {
 	cursor: pointer;
 	position: absolute;
-	top: 68%; left: 50%;
+	top: 68%;
+	left: 50%;
 	transform: translate(-50%,-50%);
 	width:47%;
 	height:47%;
