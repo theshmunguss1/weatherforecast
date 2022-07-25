@@ -10,7 +10,6 @@ body {
 	user-select: none;
 }
 
-
 #container {
 	width: calc(98vmax - var(--board-margin) * 2);
 	height: calc(98vmin - var(--board-margin) * 2);
@@ -18,6 +17,11 @@ body {
 	outline: 5px solid lightblue;
 	border-collapse: collapse;
 	table-layout: fixed;
+	/* background:  */
+		/* url('snow.svg'), */
+		/* url('snowy_landscape.svg') */
+	/* ; */
+	/* background-repeat: no-repeat; */
 }
 
 .bingoletter {

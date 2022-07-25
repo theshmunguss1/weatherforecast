@@ -32,7 +32,29 @@ const bingo = {
 	caller_side : "right",
 	caller_placement : "lower",
 	recent_call_dir : "lower",
-	
+	called_background_color: "yellow",
+	called_text_color: "black",
+}
+
+_today = new Date();
+// use Christmas Theme
+if (_today.getMonth() == 11 ||
+    _today.getMonth() == 6 && (_today.getDate() == 26 || _today.getDate() == 27)
+) {
+		ChristmasTimeIsHere();
+}
+
+// CHRISTMAS THEME
+function ChristmasTimeIsHere() {
+	container.style.backgroundColor = "lightgreen";
+	bingo.called_background_color = "red";
+	bingo.called_text_color = "white";
+	call_display.style.color = "darkred";
+	recent1.style.color = "darkred";
+	recent2.style.color = "darkred";
+	recent3.style.color = "darkred";
+	recent4.style.color = "darkred";
+	recent5.style.color = "darkred";
 }
 
 function rebuild_bingo_possibilities() {
@@ -72,7 +94,8 @@ function new_call() {
 	// the related selected element
 	let selected = document.getElementById(bingo.possibilities[r]);
 	// change background of selected element
-	selected.style.backgroundColor = "yellow";
+	selected.style.backgroundColor = bingo.called_background_color;
+	selected.style.color = bingo.called_text_color;
 	selected.style.fontWeight = "bold";
 
 	// narrow possibilities array
@@ -105,6 +128,7 @@ function new_game() {
 	// Remove background colors and bold-font of previously-called spaces
 	for (space of bingo.called) {
 		document.getElementById(space).style.backgroundColor = "initial";
+		document.getElementById(space).style.color = "initial";
 		document.getElementById(space).style.fontWeight = "initial";
 	}
 
