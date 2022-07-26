@@ -46,7 +46,9 @@ if (_today.getMonth() == 11 ||
 
 // CHRISTMAS THEME
 function ChristmasTimeIsHere() {
+	document.body.style.backgroundColor = "green";
 	container.style.backgroundColor = "lightgreen";
+	container.style.outline = "none";
 	bingo.called_background_color = "red";
 	bingo.called_text_color = "white";
 	call_display.style.color = "darkred";
