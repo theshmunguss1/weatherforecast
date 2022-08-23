@@ -4,55 +4,69 @@
 		<base href="../">
 		<title>Current Season Hurdat2</title>
 		<meta name="author" content="Kyle Gentry">
-		<meta name="description" content="Unofficial Current-Season Hurdat2 for the Atlantic Basin">
-		<meta name="keywords" content="2022 Hurdat2, National Hurricane Center, NHC, hurdat, hurdat2, hurricane, typhoon, weather">
+		<meta name="description" content="Unofficial Hurdat2">
+		<meta name="keywords" content="National Hurricane Center, NHC, hurdat, hurdat2, hurricane, typhoon, weather">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="pageheader.css"></link>
 		<link rel="stylesheet" type="text/css" href="unofficial_hurdat2/hurdat2.css"></link>
 	</head>
 	<body onLoad="load_data()">
-		<h1 id="header">Unofficial 2022 Hurdat2 for the Atlantic Basin</h1>
+		<h1 id="header">Unofficial 2022 Hurdat2</h1>
 
 		<div class="disclaimer">
 			<p style="color:pink;">* This page is <u>NOT</u> endorsed nor supported by NOAA or its subsidiaries, including the National Hurricane Center. *</p>
 
 			<p>
 				<ul style="color:yellow;">
-					<li>Last Updated 21 August 2022; stats valid thru 23 August 2022.</li>
+					<li>Last Updated 22 August 2022</li>
+					<li>This update includes East/Central Pacific Basin data!</li>
 				</ul>
 			</p>
 		</div>
 
+		<div id="basin-switch">
+			<label>
+				<input type="radio" name="basin_switch" value="atl" checked onClick="load_basin(this.value)" /> Atlantic
+			</label>
+			<label>
+				<input type="radio" name="basin_switch" value="pac" onClick="load_basin(this.value)" /> East/Central Pacific
+			</label>
+		</div>
+
 		<div class="info-block current">
-			<pre><code id="current-season">
-
-			</code></pre>
+			<pre>
+				<code id="current-season-atl">
+				</code>
+				<code id="current-season-pac" style="display:none;">
+				</code>
+			</pre>
 		</div>
 
-		<div class="disclaimer">
-			<p>* Information presented here is formulated from current-season 'best-track' (<a href="https://ftp.nhc.noaa.gov/atcf/btk/">https://ftp.nhc.noaa.gov/atcf/btk/</a>) data.</p>
-			<p>Because landfall-data are not recorded in the best-track data, they are compiled using the advisory archive (<a href="https://ftp.nhc.noaa.gov/atcf/adv">https://ftp.nhc.noaa.gov/atcf/adv</a>) and observing the track (estimating location and time).</p>
-			<p>For such landfall data, wind-extent information is currently not included. As such, 'null' space-fillers (-999) are used where applicable.</p>
-			<p>Precision is not the aim of landfall inclusion (especially the interpolated ones) but were pursued to provide homogeneity with the actual <a href="https://www.nhc.noaa.gov/data/#hurdat">Hurdat2 record</a>.</p>
-			<hr />
-			<p>* Below you'll find some stats and ranks for the current and other season(s). The stats are valid thru the dates listed (for current-season stats).</p>
-		</div>
 		<!-- SEASON STATS -->
 		<div id="year-switch">
 			<label>
-				<input type="radio" name="switch" value="2022" checked onClick="load_season_stats(this.value)" /> 2022
+				<input type="radio" name="year_switch" value="2022" checked onClick="load_season_stats(this.value)" /> 2022
 			</label>
 			<label>
-				<input type="radio" name="switch" value="2021" onClick="load_season_stats(this.value)" /> 2021
+				<input type="radio" name="year_switch" value="2021" onClick="load_season_stats(this.value)" /> 2021
 			</label>
 			<label>
-				<input type="radio" name="switch" value="2020" onClick="load_season_stats(this.value)" /> 2020
+				<input type="radio" name="year_switch" value="2020" onClick="load_season_stats(this.value)" /> 2020
 			</label>
 		</div>
 		<div class="info-block season">
 			<pre><code id="season-stats">
 
 			</code></pre>
+		</div>
+
+		<div class="disclaimer">
+			<p>* Aug 22, 2022 Update :: Data for the East/Central Pacific Basins will now be uploaded.</p>
+			<p>* Information presented here is formulated from current-season 'best-track' (<a href="https://ftp.nhc.noaa.gov/atcf/btk/">https://ftp.nhc.noaa.gov/atcf/btk/</a>) data.</p>
+			<p>Because landfall-data are not recorded in the best-track data, they are compiled using the advisory archive (<a href="https://ftp.nhc.noaa.gov/atcf/adv">https://ftp.nhc.noaa.gov/atcf/adv</a>) and observing the track (estimating location and time).</p>
+			<p>For such landfall data, wind-extent information is currently not included. As such, 'null' space-fillers (-999) are used where applicable.</p>
+			<p>Precision is not the aim of landfall inclusion (especially the interpolated ones) but were pursued to provide homogeneity with the actual <a href="https://www.nhc.noaa.gov/data/#hurdat">Hurdat2 record</a>.</p>
+			<hr />
 		</div>
 
 		<div class="disclaimer">
