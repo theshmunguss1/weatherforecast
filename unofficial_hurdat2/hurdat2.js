@@ -10,18 +10,16 @@ function load_data() {
 	fetch(`unofficial_hurdat2/current_hurdat2_atl.dat`)
 		.then(resp => resp.text())
 		.then(txt => {
-			document.getElementById(`current-season-atl`).innerHTML = txt;
+			document.getElementById(`current-season-atl`).innerText = txt;
 		});
 	fetch(`unofficial_hurdat2/current_hurdat2_pac.dat`)
 		.then(resp => resp.text())
 		.then(txt => {
-			document.getElementById(`current-season-pac`).innerHTML = txt;
+			document.getElementById(`current-season-pac`).innerText = txt;
 		});
 
 	// LOAD CURRENT SEASON DATA FROM FILE
-	fetch(`unofficial_hurdat2/season_stats_${hd2.year}_${hd2.basin}.dat`)
-		.then(resp => resp.text())
-		.then(txt => {box_season_stats.innerHTML = txt;})
+	load_season_stats(hd2.year);
 }
 
 function load_basin(new_basin) {
@@ -41,7 +39,7 @@ function load_season_stats(yr) {
 	fetch(`unofficial_hurdat2/season_stats_${yr}_${hd2.basin}.dat`)
 		.then(resp => resp.text())
 		.then(txt => {
-			box_season_stats.innerHTML = txt;
+			box_season_stats.innerText = txt;
 		});
 }
 

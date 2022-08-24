@@ -36,11 +36,11 @@ body > div {
 	text-align: center;
 	margin: 1em;
 }
-[id="*switch"] label {
+[id$="switch"] label {
 	margin: 0 1em;
 }
 
-[id="*switch"] input {
+[id$="switch"] input {
 	transform: scale(2) translateX(-0.1em);
 	border-radius: 0px;
 }
