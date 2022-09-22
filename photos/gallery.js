@@ -209,7 +209,15 @@ album = {2012:[
 			{"src":"photos/2021/0809_spider.jpg","desc":"08/09/2021 - Small spider dangling from a tree catching some late-afternoon rays."},
 			{"src":"photos/2021/0811_tstorm_maturing.jpg","desc":"08/11/2021 - Cumulonimbus approaching maturation over Southern Patrick County, VA. This afternoon was characterized by a typical summer atmosphere of moderate CAPE and low-shear. This updraft was punching 40kft according to KFCX Echo Tops. Looking Northeast."},
 			{"src":"photos/2021/0812_congestus.mp4","desc":"08/12/2021 - Another Moderate CAPE/low-shear day. This convective surge occurred on the northern Surry/Stokes County border. Half-way in, I accidentally changed the fpm of the time-lapse from 4-per-minute to 12-per-minute. Luckily this occurred as the towering cumulus-congestus was making its push for its 20-25kft climax. At the end, the anvil from a large thunderstorm (echo-tops 45kft+) further east over Stokes County makes a late-appearance. Time-lapse of ~45 minutes."},
-		]
+			{"src":"photos/2021/0823_spider.jpg","desc":"08/23/2021 - Wolf Spider?"},
+			{"src":"photos/2021/0823_smallspider.jpg","desc":"08/23/2021 - small spider"},
+			{"src":"photos/2021/0823_wasp.jpg","desc":"08/23/2021 - wasp"},
+			{"src":"photos/2021/0903_babyspider.jpg","desc":"09/03/2021 - small, baby garden spider?"},
+			{"src":"photos/2021/0910_gardenspider.jpg","desc":"09/10/2021 - This mega garden spider hang out near the front porch for a while. A slug and smaller spider make a cameo appearance as well."},
+		],
+		2022: [
+			{"src": "photos/2022/0519_tstorm.mp4", "desc": "Evening Thunderstorm; 30 minute time-lapse (between 5:30pm and 6:00pm); looking east over Stokes County. Initially, the storm was moving southeasterly, but 'steered' more easterly with time. You can see collapsing updrafts flattening to the classic anvil shape with Pileus forming over some of the strongest updrafts. In addition, watch how the anvil dissapates as it subsides. Upper-level northerly shear evident."}
+		],
 	}
 
 
