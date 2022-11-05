@@ -168,7 +168,6 @@ for (dy=1; dy <= 7; dy++) {
 // Set day
 load_day_select();
 
-
 // Set global image sources
 prop.dayImage.src = "5day/TEMPLATE_7day.svg";
 prop.logo.src = "5day/logo_echotops.svg";
@@ -606,14 +605,14 @@ function chg_lang(dir) {
 	}
 	// Change to celsius if not US
 	if (prop.language != "en" && prop.tempUnits != "C") {
-		document.getElementById("tempC").checked = true;
+		document.getElementById("input-tempC").checked = true;
 		prop.tempUnits = "C";
-		convert();
+		convert_temps();
 	}
 	// else if (prop.language == "en" && prop.tempUnits != "F") {
-		// document.getElementById("tempF").checked = true;
+		// document.getElementById("input-tempF").checked = true;
 		// prop.tempUnits = "F";
-		// convert();
+		// convert_temps();
 	// }
 	// Change the active descriptions
 	for (dy=1; dy <= 7; dy++) {
@@ -983,19 +982,16 @@ function get_daynum(currentdate = null) {
 	return daynum;
 }
 
-function convert() {
-	// This function will NOT be called unless a change has occurred in the tempUnits
+function convert_temps() {
+	// This function typically won't be called unless a change has occurred in the tempUnits
 	for (dy=1; dy<=7; dy++) {
-		// Convert to Fahrenheit
-		if (prop.tempUnits == "F") {
-			prop[`day${dy}`].hi = Math.floor(9 / 5 * prop[`day${dy}`].hi + 32);
-			prop[`day${dy}`].lo = Math.floor(9 / 5 * prop[`day${dy}`].lo + 32);
-		}
-		// Convert to Celsius
-		else if (prop.tempUnits == "C") {
-			prop[`day${dy}`].hi = Math.ceil((prop[`day${dy}`].hi - 32) * 5 / 9);
-			prop[`day${dy}`].lo = Math.ceil((prop[`day${dy}`].lo - 32) * 5 / 9);
-		}
+		// `temp${prop.tempUnits}to${(prop.tempUnits != "F") ? "F" : "C"}`
+		prop[`day${dy}`].hi = window[
+			(prop.tempUnits == "F") ? "tempCtoF" : "tempFtoC"
+		](prop[`day${dy}`].hi);
+		prop[`day${dy}`].lo = window[
+			(prop.tempUnits == "F") ? "tempCtoF" : "tempFtoC"
+		](prop[`day${dy}`].lo);
 	}
 	draw();
 }
@@ -1011,16 +1007,23 @@ function random_forecast() {
 	// Variance Control for the random values
 	let varhi = 5 + Math.floor(Math.random() * ((15 + 1) - 5));
 	let varlo = 5 + Math.floor(Math.random() * ((10 + 1) - 5));
-	// Hemisphere Based Averages as functions of the day number
+	let avghi;
+	let avglo;
+	// Hemisphere Based Averages in Fahrenheit as functions of the day number
 	// Northern Hemisphere (tmax ~ july)
 	if (prop.hemisphere == "N") {
-		var avghi = Math.round(21 * Math.sin(daynum / 58 + 1.45 * Math.PI) + 67);
-		var avglo = Math.round(20 * Math.sin(daynum / 58 + 1.45 * Math.PI) + 45);
+		avghi = Math.round(21 * Math.sin(daynum / 58 + 1.45 * Math.PI) + 67);
+		avglo = Math.round(20 * Math.sin(daynum / 58 + 1.45 * Math.PI) + 45);
 	}
 	// Southern Hemisphere (tmax ~ jan/dec)
 	else {
-		var avghi = Math.round(21 * Math.sin(daynum / 58 + 0.52 * Math.PI) + 67);
-		var avglo = Math.round(20 * Math.sin(daynum / 58 + 0.52 * Math.PI) + 45);
+		avghi = Math.round(21 * Math.sin(daynum / 58 + 0.52 * Math.PI) + 67);
+		avglo = Math.round(20 * Math.sin(daynum / 58 + 0.52 * Math.PI) + 45);
+	}
+	// go ahead and convert to Celcius if needed
+	if (prop.tempUnits == "C") {
+		avghi = tempFtoC(avghi);
+		avglo = tempFtoC(avglo);
 	}
 
 	for (dy=1; dy <= 7; dy++) {
@@ -1033,23 +1036,48 @@ function random_forecast() {
 				(dy >= 2 && prop[`day${dy}`].lo < prop[`day${dy}`].hi
 				&& prop[`day${dy}`].lo < prop[`day${dy-1}`].hi)
 			) {
+				document.getElementById(`tmax${dy}`).value = prop[`day${dy}`].hi;
+				document.getElementById(`tmin${dy}`).value = prop[`day${dy}`].lo;
 				break;
 			}
 		}
 	}
 
-	// Changing the canvas itself
-	for (dy=1; dy <= 7; dy++) {
-		// Celsius Conversion
-		if (prop.tempUnits == "C") {
-			prop[`day${dy}`].hi = Math.ceil((prop[`day${dy}`].hi - 32) * 5 / 9);
-			prop[`day${dy}`].lo = Math.ceil((prop[`day${dy}`].lo - 32) * 5 / 9);
-		}
-		document.getElementById(`tmax${dy}`).value = prop[`day${dy}`].hi;
-		document.getElementById(`tmin${dy}`).value = prop[`day${dy}`].lo;
-	}
-
 	draw();
+}
+
+function tempFtoC(tempF) {
+	return Math.ceil((tempF - 32) * 5 / 9);
+}
+
+function tempCtoF(tempC) {
+	return Math.floor(9 / 5 * tempC + 32);
+}
+
+function dewpoint_depression(temp, dewp) {
+	return temp - dewp;
+}
+
+function is_freezing(temp) {
+	if ((prop.tempUnits == "C" && temp <= 0) || (prop.tempUnits == "F" && temp <= 32)) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+function supports_snow(temp) {
+	if ((prop.tempUnits == "C" && temp <= 2) || (prop.tempUnits == "F" && temp <= 36)) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+function support_thunderstorms() {
+	
 }
 
 function ZFILL(n, targetlength=2) {
@@ -1070,21 +1098,68 @@ function chg_bg(c) {
 	draw();
 }
 
-function random_bg_color() {
+function RANDOM_NUM(_min, _max) {
+	return _min + Math.floor(Math.random() * (_max+1 - _min));
+}
 
-	var r = 20 + Math.floor(Math.random() * ((192 + 1) - 20));
-	if (r > 128) {
-		var g = 20 + Math.floor(Math.random() * ((64 + 1) - 20));
+function random_bg_color() {
+	// I used Mozilla's CSS color picker tool to help me map out thresholds and
+	//     then y=mx+b to figure out the rest. That stuff you learn in math is
+	//     beneficial!
+
+	//     000------060------120------180------240------300------360
+	//  R  255 ____ 255   >   0        0        0    >  255 ____ 255
+	//  G   0   >   255 ____ 255 ____ 255   >   0        0        0
+	//  B   0        0        0    >  255 ____ 255 ____ 255   >   0
+
+	let h = RANDOM_NUM(0, 359);
+	let s = 100; // in %
+	let l = RANDOM_NUM(25, 42); // in %
+	// let l = 50; // in %
+
+	let r;
+	let g;
+	let b;
+
+	if (h <= 120) {
+		// h / 120 = x / 255
+		// h == 30: h/120 = 0.25 .25 *
+		if (h <= 60) {
+			r = 255
+			g = 255 / 60 * h;
+		}
+		else {
+			r = -255 / 60 * h + 255 / 60 * 120;
+			g = 255;
+		}
+		b = 0;
+	}
+	else if (h <= 240) {
+		if (h <= 180) {
+			g = 255;
+			b = 255 / 60 * (h - 120);
+		}
+		else {
+			g = -255 / 60 * h + 255 / 60 * 240;
+			b = 255;
+		}
+		r = 0;
 	}
 	else {
-		var g = 20 + Math.floor(Math.random() * ((192 + 1) - 20));
+		if (h <= 300) {
+			r = 255 / 60 * (h - 240);
+			b = 255;
+		}
+		else {
+			r = 255;
+			b = -255 / 60 * h + 255 / 60 * 360;
+		}
+		g = 0;
 	}
-	if (g > 128) {
-		var b = 20 + Math.floor(Math.random() * ((64 + 1) - 20));
-	}
-	else {
-		var b = 20 + Math.floor(Math.random() * ((192 + 1) - 20));
-	}
+
+	r = parseInt(r * l / 50);
+	g = parseInt(g * l / 50);
+	b = parseInt(b * l / 50);
 
 	// Hex
 	let hexr = ZFILL(r.toString(16));
@@ -1092,6 +1167,9 @@ function random_bg_color() {
 	let hexb = ZFILL(b.toString(16));
 	document.getElementById("mainbgcolor").value = `#${hexr}${hexg}${hexb}`;
 	chg_bg(`#${hexr}${hexg}${hexb}`);
+	// console.log(h, [r,g,b]);
+	// console.log(hexr, hexg, hexb);
+	// console.log(`hsl(${h}, ${s}%, ${l}%)`);
 }
 
 

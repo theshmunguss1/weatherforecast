@@ -56,9 +56,9 @@
 			<div>
 				<fieldset>
 					<legend>Temperature Units:</legend>
-					<input type="radio" name="tempunits" id="tempF" value="F" onChange="prop.tempUnits = 'F'; convert();" checked>
+					<input type="radio" name="tempunits" id="input-tempF" value="F" onChange="prop.tempUnits = 'F'; convert_temps();" checked>
 					<label for="tempF">&deg;F</label>
-					<input type="radio" name="tempunits" id="tempC" value="C" onChange="prop.tempUnits = 'C'; convert();">
+					<input type="radio" name="tempunits" id="input-tempC" value="C" onChange="prop.tempUnits = 'C'; convert_temps();">
 					<label for="tempC">&deg;C</label>
 					<br />
 					<button onClick="random_forecast();" title="Time-of-year based random temperatures">Randomize<br />Forecast</button>
