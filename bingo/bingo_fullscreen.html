@@ -211,6 +211,21 @@
 					New-Call Buffer
 				</label>
 			</div>
+			<!-- REMOTE CONTROL-->
+			<div style="display:flex;flex-direction:column;align-items:center;">
+				<label>
+					<input
+						id="input-pres-remote-toggle"
+						type="checkbox"
+						name="pres_remote_toggle"
+						title="Toggles optional control with a presentation remote"
+						onclick="localStorage.setItem('pres_remote_toggle', this.checked);" />
+					Presentation Remote Control **Experimental**
+				</label>
+				<label style="font-size:2vmin;font-weight:normal;width:50%;">
+					* When on the Caller (main) screen, the &LessLess; and &GreaterGreater; buttons on the controller (equal to "PageUp"and "PageDown" keyboard presses) initiate a new call. The blank-screen button (looks similar to &boxbox;; equal to "B") will pop-up the new-game screen.
+				</label>
+			</div>
 			<div>
 				<!-- VISUALS PLACEMENT RESET -->
 				<button onclick="placement_reset()">Reset Options</button>
@@ -307,9 +322,12 @@
 		<div id="new-game-dialog">
 			<span class="options-text">Are you sure you want to start a new game?</span>
 			<div>
-				<button onclick="new_game();">YES</button>
-				<button onclick="new_game_dialog.style.display='none'">NO</button>
+				<button id="new-game-no" onclick="new_game_dialog.style.display='none'">NO</button>
+				<button id="new-game-yes" onclick="new_game();">YES</button>
 			</div>
+			<span style="font-size:3vmin;width:50%;">
+				* If the experimental presentation remote control feature is turned on, press &LessLess; to cancel and &GreaterGreater; to confirm.
+			</span>
 		</div>
 	</body>
 	<script src="bingo/bingo_fullscreen.js"></script>

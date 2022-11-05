@@ -155,11 +155,11 @@ body {
 #options button,
 #color-options button,
 #options label {
-	font-size: 5vmin;
+	font-size: 4vmin;
 	color: black;
 	font-weight: bold;
-	margin: 1vmin;
-	padding: 0 10vmin;
+	margin: 0.5vmin;
+	padding: 0 5vmin;
 }
 .options-text {
 	font-style: italic;
@@ -202,7 +202,7 @@ input[type='color'] {
 #new-game-dialog button {
 	margin: 3vmin 3vmin;
 	padding: 3vmin;
-	font-size: 3vmin;
+	font-size: 5vmin;
 	font-weight: bold;
 	border: 5px solid black;
 }

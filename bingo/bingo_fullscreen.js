@@ -6,8 +6,6 @@
 
 const doc = document.documentElement;
 const container = document.getElementById("container");
-const b_column = document.getElementById("b");
-const o_column = document.getElementById("o");
 const recent_row_1 = document.getElementById("recent-row-1");
 const recent_row_2 = document.getElementById("recent-row-2");
 const recent_row_3 = document.getElementById("recent-row-3");
@@ -23,6 +21,7 @@ const new_game_dialog = document.getElementById("new-game-dialog");
 const options_dialog = document.getElementById("options");
 const color_options = document.getElementById("color-options");
 const call_buffer_toggle = document.getElementById("input-call-buffer-toggle");
+const pres_remote_toggle = document.getElementById("input-pres-remote-toggle");
 const call_display = document.getElementById("call-display");
 const newcall_btn = document.getElementById("newcall-button");
 
@@ -78,6 +77,7 @@ if (Object.keys(window).includes("localStorage") == false) {
 	localStorage = new STRG();
 	// const localStorage = {};
 }
+
 // if localStorage is available, try loading from it
 else {
 	// Location of visuals
@@ -109,6 +109,15 @@ else {
 			toggle_valu
 		) {
 			call_buffer_toggle.click();
+		}
+	}
+	if (localStorage.getItem("pres_remote_toggle") != null) {
+		let pres_toggle_valu = localStorage.getItem("pres_remote_toggle");
+		while (
+			pres_remote_toggle.checked.toString() !=
+			pres_toggle_valu
+		) {
+			pres_remote_toggle.click();
 		}
 	}
 
@@ -146,6 +155,35 @@ else {
 			localStorage.getItem("new_call_outline_color")
 		);
 		document.getElementById("color-new-call-outline").value = localStorage.getItem("new_call_outline_color");
+	}
+}
+
+
+document.addEventListener("keyup", remote_presentation_press);
+
+function remote_presentation_press(event) {
+
+	// Respond to specific key/button presses corresponding to presentation remotes
+	if (pres_remote_toggle.checked) {
+		if (["PageUp", "PageDown", "b", "B"].includes(event.key)) {
+			// Initiate a new game dialog
+			if (["b", "B"].includes(event.key) && new_game_dialog.style.display != "flex") {
+				new_game_dialog.style.display = "flex";
+			}
+			// make new game or cancel
+			else if (new_game_dialog.style.display == "flex") {
+				if (event.key == "PageDown") {
+					new_game();
+				}
+				else {
+					new_game_dialog.style.display = 'none';
+				}
+			}
+			// Fire new call if button is not disabled
+			else if (newcall_btn.disabled == false) {
+				new_call();
+			}
+		}
 	}
 }
 
@@ -278,7 +316,7 @@ function change_side(dir) {
 	if (dir == "left") {
 		game_columns.insertBefore(
 			controls_column,
-			b_column
+			document.getElementById("b")
 		);
 	}
 	else {
