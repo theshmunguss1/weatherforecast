@@ -26,28 +26,37 @@ var desc = ["5day/desc_blank.svg",
 			"5day/en/desc_perc_wintry2.svg"
 		];
 
-var sky = [ "5day/sky_sun_clr.svg",
-			"5day/sky_sun_clr_smile.svg",
+var sky = [ "5day/sky_sun.svg",
+			"5day/sky_sun_smile.svg",
 			"5day/sky_sun_mostly.svg",
-			"5day/sky_sun_partly.svg",
+			"5day/sky_partly.svg",
 			"5day/sky_cloudy_mostly.svg",
-			"5day/sky_cloudy_overcast.svg",
-			"5day/sky_cloudy_rain_partly_sunny.svg",
-			"5day/sky_cloudy_rain_mostlycloudy.svg",
+			"5day/sky_cloudy.svg",
+			"5day/sky_partly_rain.svg",
+			"5day/sky_cloudy_mostly_rain.svg",
 			"5day/sky_cloudy_rain.svg",
 			"5day/sky_cloudy_rain_catsdogs.svg",
-			"5day/sky_cloudy_partly_sunny_tstorm.svg",
-			"5day/sky_cloudy_mostly_sunny_tstorm.svg",
+			"5day/sky_partly_tstorm.svg",
+			"5day/sky_partly_tstorm_only.svg",
+			"5day/sky_cloudy_mostly_tstorm.svg",
+			"5day/sky_cloudy_mostly_tstorm_only.svg",
 			"5day/sky_cloudy_tstorm.svg",
-			"5day/sky_cloudy_partly_sunny_tstorm_only.svg",
-			"5day/sky_cloudy_mostly_sunny_tstorm_only.svg",
 			"5day/sky_cloudy_tstorm_only.svg",
 			"5day/sky_hurricane.svg",
+			"5day/sky_partly_snow.svg",
+			"5day/sky_cloudy_mostly_snow.svg",
 			"5day/sky_cloudy_snow.svg",
 			"5day/sky_cloudy_snow2.svg",
-			"5day/sky_cloudy_snra.svg",
+			"5day/sky_partly_snowrain.svg",
+			"5day/sky_cloudy_mostly_snowrain.svg",
+			"5day/sky_cloudy_snowrain.svg",
+			"5day/sky_partly_wintrymix.svg",
+			"5day/sky_cloudy_mostly_wintrymix.svg",
+			"5day/sky_cloudy_wintrymix.svg",
+			"5day/sky_partly_wintrymix2.svg",
+			"5day/sky_cloudy_mostly_wintrymix2.svg",
 			"5day/sky_cloudy_wintrymix2.svg",
-			"5day/sky_cloudy_wintrymix.svg"];
+];
 
 var logo = [
 	"5day/logo_echotops.svg",
@@ -159,7 +168,7 @@ for (dy=1; dy <= 7; dy++) {
 		"hi": word[dy-1],
 		"lo": word[dy-1].toLowerCase()
 	}
-	prop[`day${dy}`].sky.src = "5day/sky_sun_clr.svg";
+	prop[`day${dy}`].sky.src = "5day/sky_sun.svg";
 	prop[`day${dy}`].sky.onload = draw;
 	prop[`day${dy}`].desc.src = "5day/desc_blank.svg";
 	prop[`day${dy}`].desc.onload = draw;
@@ -994,6 +1003,61 @@ function convert_temps() {
 		](prop[`day${dy}`].lo);
 	}
 	draw();
+}
+
+function skycast(_lo, _hi) {
+            // "5day/sky_sun.svg",
+			// "5day/sky_sun_smile.svg",
+			// "5day/sky_sun_mostly.svg",
+			// "5day/sky_partly.svg",
+			// "5day/sky_cloudy_mostly.svg",
+			// "5day/sky_cloudy.svg",
+			// "5day/sky_partly_rain.svg",
+			// "5day/sky_cloudy_mostly_rain.svg",
+			// "5day/sky_cloudy_rain.svg",
+			// "5day/sky_cloudy_rain_catsdogs.svg",
+			// "5day/sky_partly_tstorm.svg",
+			// "5day/sky_cloudy_mostly_tstorm.svg",
+			// "5day/sky_cloudy_tstorm.svg",
+			// "5day/sky_partly_tstorm_only.svg",
+			// "5day/sky_cloudy_mostly_tstorm_only.svg",
+			// "5day/sky_cloudy_tstorm_only.svg",
+			// "5day/sky_hurricane.svg",
+			// "5day/sky_cloudy_snow.svg",
+			// "5day/sky_cloudy_snow2.svg",
+			// "5day/sky_cloudy_snra.svg",
+			// "5day/sky_cloudy_wintrymix2.svg",
+			// "5day/sky_cloudy_wintrymix.svg"
+
+	// base it off of fahrenheit (for just this function)
+	let lo = (prop.tempUnits == "F") ? _lo : tempCtoF(_lo);
+	let hi = (prop.tempUnits == "F") ? _hi : tempCtoF(_hi);
+	// 'dewpoint depression'
+	let dd = hi - lo;
+
+	let sun;
+	let sun_fc;
+	let prcp;
+	let pcrp_fc;
+	let skycon = "";
+	let chance;
+
+	// low dewpoint depression
+	if (dd <= 5) {
+		// COLD
+		if (hi <= 36) {
+			chance = RANDOM_NUM(1,100);
+			skycon = (chance <= 15) ?
+				"sun" : (chance <= 40) ?
+				"partly" : "cloudy";
+
+			chance = RANDOM_NUM(1,100);
+			prcp = (chance >= 40)
+		}
+	}
+	console.log(chance, skycon);
+	
+
 }
 
 function random_forecast() {
