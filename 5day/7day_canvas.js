@@ -1017,17 +1017,25 @@ function skycast(_lo, _hi) {
 			// "5day/sky_cloudy_rain.svg",
 			// "5day/sky_cloudy_rain_catsdogs.svg",
 			// "5day/sky_partly_tstorm.svg",
-			// "5day/sky_cloudy_mostly_tstorm.svg",
-			// "5day/sky_cloudy_tstorm.svg",
 			// "5day/sky_partly_tstorm_only.svg",
+			// "5day/sky_cloudy_mostly_tstorm.svg",
 			// "5day/sky_cloudy_mostly_tstorm_only.svg",
+			// "5day/sky_cloudy_tstorm.svg",
 			// "5day/sky_cloudy_tstorm_only.svg",
 			// "5day/sky_hurricane.svg",
+			// "5day/sky_partly_snow.svg",
+			// "5day/sky_cloudy_mostly_snow.svg",
 			// "5day/sky_cloudy_snow.svg",
 			// "5day/sky_cloudy_snow2.svg",
-			// "5day/sky_cloudy_snra.svg",
+			// "5day/sky_partly_snowrain.svg",
+			// "5day/sky_cloudy_mostly_snowrain.svg",
+			// "5day/sky_cloudy_snowrain.svg",
+			// "5day/sky_partly_wintrymix.svg",
+			// "5day/sky_cloudy_mostly_wintrymix.svg",
+			// "5day/sky_cloudy_wintrymix.svg",
+			// "5day/sky_partly_wintrymix2.svg",
+			// "5day/sky_cloudy_mostly_wintrymix2.svg",
 			// "5day/sky_cloudy_wintrymix2.svg",
-			// "5day/sky_cloudy_wintrymix.svg"
 
 	// base it off of fahrenheit (for just this function)
 	let lo = (prop.tempUnits == "F") ? _lo : tempCtoF(_lo);
@@ -1035,29 +1043,87 @@ function skycast(_lo, _hi) {
 	// 'dewpoint depression'
 	let dd = hi - lo;
 
-	let sun;
-	let sun_fc;
 	let prcp;
-	let pcrp_fc;
-	let skycon = "";
+	let skycon;
 	let chance;
 
-	// low dewpoint depression
-	if (dd <= 5) {
-		// COLD
-		if (hi <= 36) {
-			chance = RANDOM_NUM(1,100);
-			skycon = (chance <= 15) ?
-				"sun" : (chance <= 40) ?
-				"partly" : "cloudy";
+	function chance_of(humidity) {
+		return 1000 / (0.1 * humidity ** 1.8 + 10) - 10;
+	}
 
+	// COLD
+	if (hi <= 36) {
+		if (dd <= 5) {
 			chance = RANDOM_NUM(1,100);
-			prcp = (chance >= 40)
+			skycon = (chance >= 40) ? "cloudy" :
+				     (chance >= 30) ? "cloudy_mostly" :
+				     (chance >= 10) ? "partly" : RANDOM_ARG("sun", "sun_mostly");
+			chance = RANDOM_NUM(1,100);
+			prcp = (["cloudy", "cloudy_mostly", "partly"].includes(skycon)) ? ((chance >= 30) ? RANDOM_ARG("snow", "snowrain", "wintrymix", "wintrymix2") : "") : "";
+		}
+		else if (dd <= 15) {
+			chance = RANDOM_NUM(1,100);
+			skycon = (chance >= 90) ? "cloudy" :
+					 (chance >= 80) ? "cloudy_mostly" :
+					 (chance >= 40) ? "partly" : RANDOM_ARG("sun", "sun_mostly");
+			chance = RANDOM_NUM(1,100);
+			prcp = (["cloudy", "cloudy_mostly", "partly"].includes(skycon)) ?
+				(chance >= 70) ? RANDOM_ARG("snow", "snowrain", "wintrymix", "wintrymix2") : "" : "";
+		}
+		else {
+			skycon = RANDOM_ARG("partly", "sun", "sun_mostly");
+			prcp = "";
 		}
 	}
-	console.log(chance, skycon);
-	
-
+	else if (hi <= 65) {
+		if (dd <= 5) {
+			chance = RANDOM_NUM(1,100);
+			skycon = (chance >= 30) ? "cloudy" :
+				     (chance >= 5) ? "cloudy_mostly" : "partly";
+			chance = RANDOM_NUM(1,100);
+			prcp = (chance >= 20) ? "rain" :
+				(chance >= 10) ? "tstorm" : "";
+		}
+		else if (dd <= 15) {
+			chance = RANDOM_NUM(1,100);
+			skycon = (chance >= 90) ? "cloudy" :
+				     (chance >= 70) ? "cloudy_mostly" :
+					 (chance >= 40) ? "partly" : RANDOM_ARG("sun", "sun_mostly");
+			chance = RANDOM_NUM(1,100);
+			prcp = (["partly", "cloudy_mostly"].includes(skycon)) ? (chance >= 70) ? "rain" : (chance >= 95) ? "tstorm" : "" : "";
+		}
+		else {
+			skycon = RANDOM_ARG("partly", "cloudy_mostly", "sun", "sun_mostly");
+			chance = RANDOM_NUM(1,100);
+			prcp = (["partly", "cloudy_mostly"].includes(skycon)) ? 
+				(chance > 90) ? "rain" : "" : "";
+		}
+	}
+	else {
+		if (dd <= 5) {
+			chance = RANDOM_NUM(1,100);
+			skycon = (chance >= 30) ? RANDOM_ARG("cloudy", "cloudy_mostly") : "partly";
+			chance = RANDOM_NUM(1,100);
+			prcp = (chance >= 40) ? "rain" :
+				(chance >= 10) ? "tstorm" : "";
+		}
+		else if (dd <= 15) {
+			chance = RANDOM_NUM(1,100);
+			skycon = (chance >= 90) ? "cloudy" :
+				     (chance >= 70) ? "cloudy_mostly" :
+					 (chance >= 40) ? "partly" : RANDOM_ARG("sun", "sun_mostly");
+			chance = RANDOM_NUM(1,100);
+			prcp = (["partly", "cloudy_mostly"].includes(skycon)) ? (chance >= 30) ? "rain" : "tstorm" : "";
+		}
+		else {
+			chance = RANDOM_NUM(1,100);
+			skycon = (chance >= 50) ? RANDOM_ARG("cloudy", "cloudy_mostly", "partly") : RANDOM_ARG("sun", "sun_mostly");
+			chance = RANDOM_NUM(1,100);
+			prcp = (["cloudy", "cloudy_mostly", "partly"].includes(skycon)) ? (chance >= 50) ? RANDOM_ARG("rain", "tstorm", "tstorm_only") : "" : "";
+		}
+	}
+	// console.log(`5day/sky_${skycon}${(prcp != '') ? "_" : ""}${prcp}.svg`);
+	return `5day/sky_${skycon}${(prcp != '') ? "_" : ""}${prcp}.svg`;
 }
 
 function random_forecast() {
@@ -1105,8 +1171,9 @@ function random_forecast() {
 				break;
 			}
 		}
+		prop[`day${dy}`].sky.src = skycast(prop[`day${dy}`].lo, prop[`day${dy}`].hi);
+		
 	}
-
 	draw();
 }
 
@@ -1164,6 +1231,12 @@ function chg_bg(c) {
 
 function RANDOM_NUM(_min, _max) {
 	return _min + Math.floor(Math.random() * (_max+1 - _min));
+}
+
+function RANDOM_ARG() {
+	return arguments[
+		RANDOM_NUM(0, arguments.length - 1)
+	];
 }
 
 function random_bg_color() {
