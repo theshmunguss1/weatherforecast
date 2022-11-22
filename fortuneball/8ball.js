@@ -7,12 +7,13 @@ class FortuneAnswer {
 	get is_positive() {return this.answer_type == 0}
 	get is_negative() {return this.answer_type == 1}
 	get is_neutral() {return this.answer_type == 2}
+	get is_any() {return true};
 
 }
 
 let responses = [
 	new FortuneAnswer(0, "Absolutely!"),
-	new FortuneAnswer(1, "Very<br />Doubtful"),
+	new FortuneAnswer(1, "Inconceiv-able!"),
 	new FortuneAnswer(2, "Be Careful<br />What You<br />Wish<br />For"),
 	new FortuneAnswer(2, "Sorry...<br />Shake<br />again"),
 	new FortuneAnswer(0, "Do cows<br />moo?"),
@@ -22,12 +23,12 @@ let responses = [
 	new FortuneAnswer(0, "No<br />Doubt!"),
 	new FortuneAnswer(2, "Let Me Think<br />About it."),
 	new FortuneAnswer(0, "Positive<br />Vibes."),
-	new FortuneAnswer(1, "Sources<br />say No."),
-	new FortuneAnswer(2, "User Error.<br />Try<br />Again."),
+	new FortuneAnswer(1, "Consensus<br />says No."),
+	new FortuneAnswer(2, "User Error.<br />Try Again."),
 	new FortuneAnswer(2, "Definitely<br />Maybe"),
-	new FortuneAnswer(0, "Prospects<br />Great."),
-	new FortuneAnswer(1, "My reply<br />is No"),
-	new FortuneAnswer(2, "Possibly"),
+	new FortuneAnswer(0, "Prospects<br />are great."),
+	new FortuneAnswer(1, "Well...<br />It isn't<br />Yes."),
+	new FortuneAnswer(2, "Who knows?<br />Not me."),
 	new FortuneAnswer(1, "No<br />Way"),
 	new FortuneAnswer(0, "Do<br />Spiders<br />Bark?"),
 	new FortuneAnswer(0, "Affirmative."),
@@ -36,8 +37,9 @@ let responses = [
 	new FortuneAnswer(1, "NO."),
 	new FortuneAnswer(1, "Umm...<br />No."),
 	new FortuneAnswer(1, "Better<br />Odds In<br />Vegas."),
-	new FortuneAnswer(2, "Can't<br />predict<br />now"),
+	new FortuneAnswer(2, "Don't bother me<br />right now."),
 	new FortuneAnswer(0, "Seems<br />Probable"),
+	new FortuneAnswer(1, "You won't<br />like the<br />answer."),
 ];
 
 let triangle = document.getElementById("triangle");
@@ -47,16 +49,33 @@ let answerOpacity = 0;
 let alreadyAsked = false;
 let question = document.getElementById("question");
 
-// Control the type of answer allowed/given
-let controlledAnswerType = "any";
-
 // Add keyboard event listener for ENTER
-question.addEventListener("keydown", enter_pressed);
+document.addEventListener("keydown", enter_pressed);
 
+let options = {
+	"answertype" : "any",
+	"question" : "",
+};
+
+process_urlparams();
+
+function process_urlparams() {
+	let terms = document.location.search.split(/(\&|\?)/);
+	for (let term of terms) {
+		if (term.length > 0) {
+			options[term.split("=")[0]] = decodeURI(term.split("=")[1]);
+		}
+	}
+	if (options["question"] != "" && options["question"].length > 1) {
+		question.value = options["question"];
+		ask();
+	}
+
+}
 
 function enter_pressed(event) {
-	//console.log(event);
-	if (event.keyCode == 13) {
+	// console.log(event);
+	if (event.key == "Enter") {
 		if (question.value.length >= 1) {
 			ask();
 		}
@@ -72,8 +91,8 @@ function ask() {
 		answer.style.opacity = `${answerOpacity}%`;
 		triangle.style.opacity = `${answerOpacity}%`;
 		let time = 100;
-		if (question.value.length >= 1 && question.value.substr(question.value.length-1) != "?") {
-			question.value += "?";
+		if (question.value.length >= 1 && question.value.slice(-1) != "?") {
+			question.value = question.value + "?";
 		}
 		for (i=1;i<=10;i++) {
 			setTimeout(
@@ -111,7 +130,7 @@ function display() {
 	// build valid responses
 	let validResponses = [];
 	for (let resp of responses) {
-		if (controlledAnswerType == "any" || resp[`is_${controlledAnswerType}`]) {
+		if (resp[`is_${options['answertype']}`]) {
 			validResponses.push(resp);
 		}
 	}
@@ -120,8 +139,20 @@ function display() {
 	// console.log(x, responses[x]);
 	// ball.style.left = "50%"; 	// Re-center image
 	ball.style.left = "initial"; 	// Re-center image
-	answer.innerHTML = validResponses[x].answer; //Displays random response
+	answer.innerHTML = validResponses[
+		RANDOM_NUM(0, validResponses.length-1)
+	].answer; //Displays random response
 	rvlanswer = setInterval(reveal, 80);
+}
+
+function RANDOM_NUM(_min, _max) {
+	return _min + Math.floor(Math.random() * (_max+1 - _min));
+}
+
+function RANDOM_ARG() {
+	return arguments[
+		RANDOM_NUM(0, arguments.length - 1)
+	];
 }
 
 function reveal() {
