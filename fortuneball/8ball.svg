@@ -1,202 +1,41 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
-
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="500"
-   height="500"
-   viewBox="0 0 132.29167 132.29167"
-   version="1.1"
-   id="svg8"
-   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
-   sodipodi:docname="8ball.svg">
-  <defs
-     id="defs2">
-    <linearGradient
-       inkscape:collect="always"
-       id="linearGradient1178">
-      <stop
-         style="stop-color:#b3b3b3;stop-opacity:1"
-         offset="0"
-         id="stop1174" />
-      <stop
-         style="stop-color:#cccccc;stop-opacity:0"
-         offset="1"
-         id="stop1176" />
-    </linearGradient>
-    <filter
-       style="color-interpolation-filters:sRGB"
-       inkscape:label="Feather"
-       id="filter1146">
-      <feGaussianBlur
-         stdDeviation="3"
-         result="blur"
-         id="feGaussianBlur1138" />
-      <feComposite
-         in="SourceGraphic"
-         in2="blur"
-         operator="atop"
-         result="composite1"
-         id="feComposite1140" />
-      <feComposite
-         in2="composite1"
-         operator="in"
-         result="composite2"
-         id="feComposite1142" />
-      <feComposite
-         in2="composite2"
-         operator="in"
-         result="composite3"
-         id="feComposite1144" />
-    </filter>
-    <radialGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient1178"
-       id="radialGradient1180"
-       cx="101.51255"
-       cy="250.27124"
-       fx="101.51255"
-       fy="250.27124"
-       r="55.5625"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(-0.48625294,6.3730108e-8,0,-0.50943434,136.85972,322.3616)" />
-  </defs>
-  <sodipodi:namedview
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0.0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="-20.714286"
-     inkscape:cy="123.34298"
-     inkscape:document-units="px"
-     inkscape:current-layer="layer3"
-     showgrid="false"
-     units="px"
-     inkscape:lockguides="true"
-     showguides="true"
-     inkscape:guide-bbox="true"
-     inkscape:snap-page="true"
-     inkscape:snap-global="true"
-     inkscape:window-width="1366"
-     inkscape:window-height="715"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1"
-     inkscape:snap-bbox="true"
-     inkscape:bbox-nodes="true">
-    <sodipodi:guide
-       position="0,0"
-       orientation="0,420"
-       id="guide815"
-       inkscape:locked="true" />
-    <sodipodi:guide
-       position="111.125,0"
-       orientation="-420,0"
-       id="guide817"
-       inkscape:locked="true" />
-    <sodipodi:guide
-       position="111.125,111.125"
-       orientation="0,-420"
-       id="guide819"
-       inkscape:locked="true" />
-    <sodipodi:guide
-       position="0,111.125"
-       orientation="420,0"
-       id="guide821"
-       inkscape:locked="true" />
-    <sodipodi:guide
-       position="55.5625,55.5625"
-       orientation="1,0"
-       id="guide823"
-       inkscape:locked="true"
-       inkscape:label=""
-       inkscape:color="rgb(0,0,255)" />
-    <sodipodi:guide
-       position="55.5625,55.5625"
-       orientation="0,1"
-       id="guide825"
-       inkscape:locked="true"
-       inkscape:label=""
-       inkscape:color="rgb(0,0,255)" />
-  </sodipodi:namedview>
-  <metadata
-     id="metadata5">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <g
-     inkscape:label="MAIN"
-     inkscape:groupmode="layer"
-     id="layer1"
-     transform="translate(0,-164.70832)"
-     style="display:inline">
-    <circle
-       style="display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.83482146;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
-       id="path829"
-       cx="66.145836"
-       cy="230.85416"
-       inkscape:label="circle_main"
-       r="66.145836" />
-    <circle
-       cy="230.85416"
-       cx="66.145836"
-       id="circle1172"
-       style="display:inline;opacity:0.62025314;fill:url(#radialGradient1180);fill-opacity:1;stroke:none;stroke-width:2.83482146;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
-       inkscape:label="circle_gradient"
-       r="66.145836" />
-  </g>
-  <g
-     inkscape:groupmode="layer"
-     id="layer2"
-     inkscape:label="BEVELED CIRCLE EDGE"
-     transform="translate(0,21.166667)">
-    <ellipse
-       style="display:inline;opacity:1;fill:none;fill-opacity:1;stroke:#333333;stroke-width:1.2599206;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
-       id="path836"
-       cx="66.145836"
-       cy="65.418205"
-       rx="34.343662"
-       ry="34.343891" />
-  </g>
-  <g
-     inkscape:groupmode="layer"
-     id="layer3"
-     inkscape:label="TRIANGLE"
-     transform="translate(0,21.166667)">
-    <path
-       sodipodi:type="star"
-       style="display:none;opacity:1;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.97063881;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;filter:url(#filter1146)"
-       id="triangle"
-       sodipodi:sides="3"
-       sodipodi:cx="55.562504"
-       sodipodi:cy="74.083328"
-       sodipodi:r1="29.140423"
-       sodipodi:r2="14.570211"
-       sodipodi:arg1="1.5707963"
-       sodipodi:arg2="2.6179939"
-       inkscape:flatsided="true"
-       inkscape:rounded="0"
-       inkscape:randomized="0"
-       d="m 55.562505,103.22375 -25.236348,-43.710632 50.472693,-2e-6 z"
-       inkscape:transform-center-y="9.4563365"
-       transform="matrix(1.298028,0,0,1.2980368,-5.9758521,-30.744673)"
-       inkscape:label="triangle" />
-  </g>
+<svg width="500" height="500" enable-background="new" version="1.1" viewBox="0 0 132.29 132.29" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <radialGradient id="radialGradient1180" cx="101.51" cy="250.27" r="55.562" gradientTransform="matrix(-.57066 7.4793e-8 0 -.59787 145.43 179.79)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#585858" offset="0"/>
+   <stop stop-color="#0f0f0f" stop-opacity="0" offset="1"/>
+  </radialGradient>
+  <clipPath id="clipPath845">
+   <circle cx="66.146" cy="230.85" r="66.146" fill="#ff8080" style="paint-order:fill markers stroke"/>
+  </clipPath>
+  <filter id="filter857" x="-.0684" y="-.0684" width="1.1368" height="1.1368" color-interpolation-filters="sRGB">
+   <feGaussianBlur stdDeviation="4.3781746"/>
+  </filter>
+  <filter id="filter965" x="-.098775" y="-.11344" width="1.1975" height="1.2269" color-interpolation-filters="sRGB">
+   <feGaussianBlur stdDeviation="8.3924841"/>
+  </filter>
+  <filter id="filter1003" x="-.098775" y="-.11344" width="1.1975" height="1.2269" color-interpolation-filters="sRGB">
+   <feGaussianBlur stdDeviation="8.3924841"/>
+  </filter>
+ </defs>
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <g>
+  <circle cx="66.146" cy="66.146" r="66.146" fill="#0f0f0f" style="paint-order:fill markers stroke"/>
+  <circle cx="66.146" cy="66.146" r="66.146" fill="url(#radialGradient1180)" style="paint-order:fill markers stroke"/>
+  <path transform="translate(0 -164.71)" d="m66.147 154.04c-42.386 0-76.811 34.423-76.811 76.809 0 42.386 34.425 76.811 76.811 76.811 42.386 0 76.809-34.425 76.809-76.811 0-42.386-34.423-76.809-76.809-76.809zm-1.14e-4 9.0482c35.101 0 58.586 32.659 58.586 67.761 0 35.101-23.485 50.317-58.586 50.317-35.101 0-58.586-15.215-58.586-50.317 0-35.101 23.485-67.761 58.586-67.761z" clip-path="url(#clipPath845)" color="#000000" color-rendering="auto" dominant-baseline="auto" enable-background="accumulate" filter="url(#filter857)" image-rendering="auto" shape-rendering="auto" solid-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;paint-order:fill markers stroke;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+  <ellipse cx="66.146" cy="86.585" rx="34.344" ry="34.344" stroke="#333" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.2599" style="paint-order:fill markers stroke"/>
+ </g>
+ <g display="none">
+  <path transform="scale(.26458)" d="m169.38 255.77-21.592 37.4 80.92 140.16h42.59l80.408-139.27-22.105-38.289z" fill="#0b0b67" filter="url(#filter1003)" style="paint-order:stroke fill markers"/>
+  <path transform="scale(.26458)" d="m189.49 270.84-19.603 31.956 68.02 107.46h24.141l67.556-106.65-20.07-32.763z" fill="#00f" filter="url(#filter965)" style="paint-order:stroke fill markers"/>
+ </g>
 </svg>

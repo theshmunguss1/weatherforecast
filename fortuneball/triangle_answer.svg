@@ -1,87 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="300"
-   height="300"
-   viewBox="0 0 79.374998 79.375002"
-   version="1.1"
+   enable-background="new"
    id="svg8"
-   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
-   sodipodi:docname="triangle_answer.svg">
+   version="1.1"
+   viewBox="0 0 132.29167 132.29167"
+   height="500"
+   width="500">
   <defs
      id="defs2">
+    <clipPath
+       id="clipPath845"
+       clipPathUnits="userSpaceOnUse">
+      <circle
+         cy="230.85416"
+         cx="66.145836"
+         id="circle847"
+         style="display:inline;opacity:1;fill:#ff8080;fill-opacity:1;stroke:none;stroke-width:2.83482146;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+         r="66.145836" />
+    </clipPath>
     <filter
-       style="color-interpolation-filters:sRGB"
-       inkscape:label="Feather"
-       id="filter1146">
+       height="1.2268768"
+       y="-0.1134384"
+       width="1.1975497"
+       x="-0.09877483"
+       id="filter965"
+       style="color-interpolation-filters:sRGB">
       <feGaussianBlur
-         stdDeviation="3"
-         result="blur"
-         id="feGaussianBlur1138" />
-      <feComposite
-         in="SourceGraphic"
-         in2="blur"
-         operator="atop"
-         result="composite1"
-         id="feComposite1140" />
-      <feComposite
-         in2="composite1"
-         operator="in"
-         result="composite2"
-         id="feComposite1142" />
-      <feComposite
-         in2="composite2"
-         operator="in"
-         result="composite3"
-         id="feComposite1144" />
+         id="feGaussianBlur967"
+         stdDeviation="8.3924841" />
     </filter>
     <filter
-       inkscape:collect="always"
-       style="color-interpolation-filters:sRGB"
-       id="filter838"
-       x="-0.091808453"
-       width="1.1836169"
-       y="-0.10601126"
-       height="1.2120225">
+       height="1.2268768"
+       y="-0.1134384"
+       width="1.1975497"
+       x="-0.09877483"
+       id="filter1003"
+       style="color-interpolation-filters:sRGB">
       <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="2.6320321"
-         id="feGaussianBlur840" />
+         id="feGaussianBlur1005"
+         stdDeviation="8.3924841" />
     </filter>
   </defs>
-  <sodipodi:namedview
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0.0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="93.818481"
-     inkscape:cy="157.18327"
-     inkscape:document-units="px"
-     inkscape:current-layer="layer1"
-     showgrid="false"
-     units="px"
-     borderlayer="true"
-     inkscape:snap-page="true"
-     inkscape:window-width="1366"
-     inkscape:window-height="715"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1"
-     inkscape:snap-bbox="true"
-     inkscape:snap-bbox-midpoints="true"
-     inkscape:snap-object-midpoints="true"
-     inkscape:snap-global="false" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -90,33 +54,23 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
-     inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
-     id="layer1"
-     transform="translate(0,-217.62499)">
+     transform="matrix(1.0536585,0,0,1.0536585,-3.5456563,-4.8916131)"
+     style="display:inline"
+     id="g1009">
     <path
-       sodipodi:type="star"
-       style="fill:#0000ff;fill-opacity:0.95294118;stroke-width:0.31804585;filter:url(#filter838)"
-       id="path1477"
-       sodipodi:sides="3"
-       sodipodi:cx="34.402485"
-       sodipodi:cy="248.0706"
-       sodipodi:r1="39.724564"
-       sodipodi:r2="19.862286"
-       sodipodi:arg1="-2.6179939"
-       sodipodi:arg2="-1.5707963"
-       inkscape:flatsided="false"
-       inkscape:rounded="0"
-       inkscape:randomized="0"
-       d="m 3.2259931e-6,228.20832 34.4024817740069,0 34.402481,0 -17.201237,29.79343 -17.201243,29.79342 -17.201245,-29.79343 z"
-       inkscape:transform-center-y="9.9311418"
-       inkscape:transform-center-x="-2.0434112e-06"
-       transform="matrix(0.99980676,0,0,1,5.2916655,3.2505941)"
-       inkscape:label="main-triangle" />
+       style="fill:#0b0b67;fill-opacity:1;stroke:none;stroke-width:20;stroke-miterlimit:4;stroke-dasharray:none;paint-order:stroke fill markers;filter:url(#filter1003)"
+       d="m 169.37695,255.76953 -21.59179,37.40039 80.91992,140.1582 h 42.58984 l 80.4082,-139.26953 -22.10546,-38.28906 z"
+       transform="scale(0.26458334)"
+       id="path956" />
+    <path
+       id="path969"
+       transform="scale(0.26458334)"
+       d="m 189.4891,270.8406 -19.60327,31.95596 68.0201,107.46049 h 24.14102 l 67.5555,-106.65366 -20.06964,-32.76279 z"
+       style="fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:20;stroke-miterlimit:4;stroke-dasharray:none;paint-order:stroke fill markers;filter:url(#filter965)" />
   </g>
 </svg>
