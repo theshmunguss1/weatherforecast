@@ -89,7 +89,7 @@ function modify_permalink() {
 	}
 	
 	permalink.value = base + ((opts.length > 0) ? "?" + opts.join("&") : "");
-	// console.log(permalink.value);
+
 }
 
 function goto_permalink() {
@@ -110,7 +110,8 @@ function enter_pressed(event) {
 
 function ask() {
 	if (alreadyAsked == false) {
-		options.question = question.value;
+		options.question = question.value.replaceAll("?", "");
+		console.log(options.question);
 		modify_permalink();
 		alreadyAsked = true; 	// prevent invocation if active
 		answer.innerHTML = "";	// clear previous answer
