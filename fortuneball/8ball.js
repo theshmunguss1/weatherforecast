@@ -81,8 +81,12 @@ function modify_permalink() {
 	let base = document.location.origin + document.pathname;
 	let opts = [];
 
-	if (options.answertype != "any") {opts.push(`answertype=${options.answertype}`)}
-	if (question.value != "") {opts.push(`question=${encodeURI(question.value)}`)}
+	if (options.answertype != "any") {
+		opts.push(`answertype=${options.answertype}`)
+	}
+	if (options.question != "") {
+		opts.push(`question=${encodeURI(options.question)}`)
+	}
 	
 	permalink.value = base + ((opts.length > 0) ? "?" + opts.join("&") : "");
 	// console.log(permalink.value);
