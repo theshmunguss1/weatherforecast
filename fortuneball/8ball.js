@@ -78,7 +78,7 @@ function process_urlparams() {
 }
 
 function modify_permalink() {
-	let base = document.location.pathname;
+	let base = document.location.origin + document.pathname;
 	let opts = [];
 
 	if (options.answertype != "any") {opts.push(`answertype=${options.answertype}`)}
@@ -106,6 +106,8 @@ function enter_pressed(event) {
 
 function ask() {
 	if (alreadyAsked == false) {
+		options.question = question.value;
+		modify_permalink();
 		alreadyAsked = true; 	// prevent invocation if active
 		answer.innerHTML = "";	// clear previous answer
 		answerOpacity = 0;		// 'hide' the answer
