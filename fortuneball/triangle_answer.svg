@@ -13,16 +13,6 @@
    width="500">
   <defs
      id="defs2">
-    <clipPath
-       id="clipPath845"
-       clipPathUnits="userSpaceOnUse">
-      <circle
-         cy="230.85416"
-         cx="66.145836"
-         id="circle847"
-         style="display:inline;opacity:1;fill:#ff8080;fill-opacity:1;stroke:none;stroke-width:2.83482146;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
-         r="66.145836" />
-    </clipPath>
     <filter
        height="1.2268768"
        y="-0.1134384"
@@ -64,13 +54,13 @@
      id="g1009">
     <path
        style="fill:#0b0b67;fill-opacity:1;stroke:none;stroke-width:20;stroke-miterlimit:4;stroke-dasharray:none;paint-order:stroke fill markers;filter:url(#filter1003)"
-       d="m 169.37695,255.76953 -21.59179,37.40039 80.91992,140.1582 h 42.58984 l 80.4082,-139.26953 -22.10546,-38.28906 z"
+       d="m 169.37695,255.76953 -21.59179,37.40039 77.39006,140.1582 h 49.64956 l 76.87834,-139.26953 -22.10546,-38.28906 z"
        transform="scale(0.26458334)"
        id="path956" />
     <path
        id="path969"
        transform="scale(0.26458334)"
-       d="m 189.4891,270.8406 -19.60327,31.95596 68.0201,107.46049 h 24.14102 l 67.5555,-106.65366 -20.06964,-32.76279 z"
+       d="m 189.4891,270.8406 -19.60327,31.95596 66.01538,107.46049 h 28.14265 L 329.60245,303.60339 309.53281,270.8406 Z"
        style="fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:20;stroke-miterlimit:4;stroke-dasharray:none;paint-order:stroke fill markers;filter:url(#filter965)" />
   </g>
 </svg>
