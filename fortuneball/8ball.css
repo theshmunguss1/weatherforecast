@@ -2,7 +2,7 @@ body {
 	background: linear-gradient(to bottom, rgb(75%, 75%, 75%), #141414);
 }
 
-.QUES {
+#question-container {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -11,7 +11,7 @@ body {
 	margin-bottom: 10px;
 	font-family: sans-serif;
 }
-.QUES > span {
+#question-container > span {
 	font-weight: bold;
 	font-style: italic;
 	margin-bottom: 10px;
@@ -24,7 +24,7 @@ body {
 	text-align: center;
 	font-weight: bold;
 }
-.POOLBALL {
+#poolball-bounds {
 	width: 100%;
 	font-family: sans-serif;
 	text-align: center;
@@ -102,12 +102,49 @@ body {
 	cursor: pointer;
 }
 
+#fortune-options {
+	display: flex;
+	margin: 0 auto;
+	flex-wrap: wrap;
+	color: white;
+	font-family: sans-serif;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+#fortune-options input[type="radio"] {
+	transform: scale(2);
+	margin: 0.8em;
+}
 
+#controlled-answer-container {
+	display:flex;
+	flex-direction: column;
+	padding: 1em;
+}
 
+#controlled-answer-container > label {
+	font-weight: bold;
+	text-decoration: underline;
+}
+#controlled-answer-container > div {
+	display: flex;
+	align-items: center;
+}
+#permalink-container {
+	flex-grow: 1;
+	margin: 0 1em;
+}
+#permalink {
+	background-color: transparent;
+	padding: 0.3em 0;
+	width: 100%;
+	text-align: center;
+	color: white;
+	font-style: italic;
+}
 
-
-
-.DESC {
+#description {
 	margin: 0 auto;
 	color: white;
 	width: 85%;

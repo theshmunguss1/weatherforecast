@@ -48,6 +48,7 @@ let ball = document.getElementById("ball");
 let answerOpacity = 0;
 let alreadyAsked = false;
 let question = document.getElementById("question");
+let permalink = document.getElementById("permalink");
 
 // Add keyboard event listener for ENTER
 document.addEventListener("keydown", enter_pressed);
@@ -66,11 +67,31 @@ function process_urlparams() {
 			options[term.split("=")[0]] = decodeURI(term.split("=")[1]);
 		}
 	}
-	if (options["question"] != "" && options["question"].length > 1) {
-		question.value = options["question"];
+	document.getElementById(`radio-${options.answertype}`).setAttribute("checked", true);
+	if (options.question != "" && options.question.length > 1) {
+		question.value = options.question;
+	}
+	modify_permalink();
+	if (options.question != "" && options.question.length > 1) {
 		ask();
 	}
+}
 
+function modify_permalink() {
+	let base = document.location.pathname;
+	let opts = [];
+
+	if (options.answertype != "any") {opts.push(`answertype=${options.answertype}`)}
+	if (question.value != "") {opts.push(`question=${encodeURI(question.value)}`)}
+	
+	permalink.value = base + ((opts.length > 0) ? "?" + opts.join("&") : "");
+	// console.log(permalink.value);
+}
+
+function goto_permalink() {
+	let a = document.createElement("a");
+	a.href = permalink.value;
+	a.click();
 }
 
 function enter_pressed(event) {
@@ -136,7 +157,7 @@ function display() {
 	}
 
 	let x = Math.floor(Math.random() * validResponses.length);
-	// console.log(x, responses[x]);
+	// console.log(x, validResponses[x]);
 	// ball.style.left = "50%"; 	// Re-center image
 	ball.style.left = "initial"; 	// Re-center image
 	answer.innerHTML = validResponses[

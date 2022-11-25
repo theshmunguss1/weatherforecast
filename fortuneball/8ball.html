@@ -11,18 +11,36 @@
 	</head>
 	<body style="color:black;">
 		<h1 id="header">Fortune-Pool Ball</h1>
-		<div class="QUES">
+		<div id="question-container">
 			<span>Submit a fortune-based question to the inanimate, virtual, and randomized-response object below:</span>
 			<input type="text" id="question" maxlength="70" placeholder="<Enter Question Here>" />
 		</div>
-		<div class="POOLBALL">
+		<div id="poolball-bounds">
 			<div id="ballcontainer" onclick='ask()'>
 				<img id="ball" src="fortuneball/8ball.svg" />
 				<img id="triangle" src="fortuneball/triangle_answer.svg" />
 				<div id="response"></div>
 			</div>
 		</div>
-		<div id="description" class="DESC">
+		<div id="fortune-options">
+			<div id="controlled-answer-container">
+				<label>Controlled Answer Type</label>
+				<div>
+					<input id="radio-any" type="radio" name="controlled-answer" onclick="options.answertype = this.value;modify_permalink();" value="any" checked>Any</input>
+					<input id="radio-positive" type="radio" name="controlled-answer" onclick="options.answertype = this.value;modify_permalink();" value="positive">Positive</input>
+					<input id="radio-negative" type="radio" name="controlled-answer" onclick="options.answertype = this.value;modify_permalink();" value="negative">Negative</input>
+					<input id="radio-neutral" type="radio" name="controlled-answer" onclick="options.answertype = this.value;modify_permalink();" value="neutral">Neutral</input>
+				</div>
+			</div>
+			<div id="permalink-container">
+				<div style="font-weight:bold;text-decoration:underline;">Link back to this question and selected options:</div>
+				<input id="permalink" value="https://ksgwxfan.github.io/fortuneball/8ball.html" />
+				<div>
+					<button onclick="goto_permalink()">GO HERE (for bookmarking)</button> or copy/paste the above link
+				</div>
+			</div>
+		</div>
+		<div id="description">
 			<p>Just tap or click the ball to shake!</p>
 			<p>This was my first Javascript/CSS project that I've tweaked occasionally since.</p>
 			<p>* Disclaimer of Use: Feel free to use as you wish (attribution is appreciated but not required)! No copyright infringement of the owners of the Magic 8-ball is intended.</p>
