@@ -78,7 +78,7 @@ function process_urlparams() {
 }
 
 function modify_permalink() {
-	let base = document.location.origin + document.pathname;
+	let base = document.location.origin + document.location.pathname;
 	let opts = [];
 
 	if (options.answertype != "any") {
