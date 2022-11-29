@@ -99,7 +99,7 @@ function goto_permalink() {
 }
 
 function enter_pressed(event) {
-	console.log(event);
+	// console.log(event);
 	if (event.key == "Enter") {
 		if (question.value.length >= 1) {
 			ask();
@@ -111,7 +111,7 @@ function enter_pressed(event) {
 function ask() {
 	if (alreadyAsked == false) {
 		options.question = question.value.replaceAll("?", "");
-		console.log(options.question);
+		// console.log(options.question);
 		modify_permalink();
 		alreadyAsked = true; 	// prevent invocation if active
 		answer.innerHTML = "";	// clear previous answer
