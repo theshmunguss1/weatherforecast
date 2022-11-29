@@ -99,7 +99,7 @@ function goto_permalink() {
 }
 
 function enter_pressed(event) {
-	// console.log(event);
+	console.log(event);
 	if (event.key == "Enter") {
 		if (question.value.length >= 1) {
 			ask();
