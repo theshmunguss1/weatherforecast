@@ -1,1 +1,1 @@
-document.getElementById("last-updated") = "testing";
+document.getElementById("last-updated").innerText = "testing";
