@@ -1,1 +1,1 @@
-document.getElementById("last-updated") = "Last Updated: 22 Apr 2023;"
+document.getElementById("last-updated").innerText = "Last Updated: 22 Apr 2023;"
