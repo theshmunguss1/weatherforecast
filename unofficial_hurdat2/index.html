@@ -11,14 +11,14 @@
 		<link rel="stylesheet" type="text/css" href="unofficial_hurdat2/hurdat2.css"></link>
 	</head>
 	<body onLoad="load_data()">
-		<h1 id="header">Unofficial 2022 Hurdat2</h1>
+		<h1 id="header">Unofficial 2023 Hurdat2</h1>
 
 		<div class="disclaimer">
 			<p style="color:pink;">* This page is <u>NOT</u> endorsed nor supported by NOAA or its subsidiaries, including the National Hurricane Center. *</p>
 
 			<p>
 				<ul style="color:yellow;">
-					<li>Last Updated 15 November 2022</li>
+					<li id="last-updated">--</li>
 				</ul>
 			</p>
 		</div>
@@ -40,7 +40,10 @@
 		<!-- SEASON STATS -->
 		<div id="year-switch">
 			<label>
-				<input type="radio" name="year_switch" value="2022" checked onClick="load_season_stats(this.value)" /> 2022
+				<input type="radio" name="year_switch" value="2023" checked onClick="load_season_stats(this.value)" /> 2023
+			</label>
+			<label>
+				<input type="radio" name="year_switch" value="2022" onClick="load_season_stats(this.value)" /> 2022
 			</label>
 			<label>
 				<input type="radio" name="year_switch" value="2021" onClick="load_season_stats(this.value)" /> 2021
@@ -75,5 +78,6 @@
 		<script src="header.js"></script>
 		<script src="footer.js"></script>
 		<script src="unofficial_hurdat2/hurdat2.js"></script>
+		<script src="unofficial_hurdat2/last_updated.js"></script>
 	</body>
 </html>
