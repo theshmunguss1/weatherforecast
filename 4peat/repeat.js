@@ -130,6 +130,7 @@ function button_click(element, simulated=false) {
 	element.sound.play();
 	// if the user initiated the press
 	if (simulated == false) {
+		navigator.vibrate([200]);
 		game.guesses.push(element.number);
 		correct = check_guess(
 			game.guesses.length-1,
@@ -165,6 +166,7 @@ function button_click(element, simulated=false) {
 				},
 				200
 			);
+			navigator.vibrate([200, 50, 200, 50, 200]);
 			indicator.innerHTML = "GAME OVER!";
 			reset();
 		}
