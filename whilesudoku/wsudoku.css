@@ -128,6 +128,12 @@ canvas {
 	margin: 15px auto;
 	text-align: center;
 }
+#print-disclaimer {
+	font-size: 0.8em;
+	font-style: italic;
+	width: 40%;
+	margin: 0 auto;
+}
 #container-save {
 	justify-content: center;
 	align-items: center;
