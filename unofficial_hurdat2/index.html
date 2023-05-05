@@ -68,18 +68,18 @@
 			<p style="color:pink;">* April 2023 Update :: I'm trying to implement some automated stuff to cut down on manual maintenance. Expect some errors.</p>
 			<p style="color:pink;">* Aug 22, 2022 Update :: Data for the East/Central Pacific Basins will now be included.</p>
 			<p>* Information presented here is formulated from current-season 'best-track' (<a href="https://ftp.nhc.noaa.gov/atcf/btk/">https://ftp.nhc.noaa.gov/atcf/btk/</a>) data.</p>
-			<p>Because landfall-data are not recorded in the best-track data, they are compiled using the advisory archive (<a href="https://ftp.nhc.noaa.gov/atcf/adv">https://ftp.nhc.noaa.gov/atcf/adv</a>) and observing the track (estimating location and time).</p>
+			<p>Because landfalls are not recorded in the best-track data, they are compiled using the advisory archive (<a href="https://ftp.nhc.noaa.gov/atcf/adv">https://ftp.nhc.noaa.gov/atcf/adv</a>) and track observation (estimating location and time).</p>
 			<p>For such landfall data, wind-extent information is currently not included. As such, 'null' space-fillers (-999) are used where applicable.</p>
-			<p>Precision is not the aim of landfall inclusion (especially the interpolated ones) but were pursued to provide homogeneity with the actual <a href="https://www.nhc.noaa.gov/data/#hurdat">Hurdat2 record</a>.</p>
+			<p>The aim of landfall inclusion is homogeneity with the offical <a href="https://www.nhc.noaa.gov/data/#hurdat">Hurdat2 record</a>.</p>
 			<hr />
 		</div>
 
 		<div class="disclaimer">
 			<!-- <p>The stats above are only relative to the selected season and seasons prior to it.</p> -->
 
-			<p>The primary purpose for the current-season Hurdat2 is for concatenation with the NHC-released Hurdat2, which is usually updated during the Spring of each year, prior to the start of Hurricane Season, and as such would not include current-season data. In addition it is for use in my <a href="https://github.com/ksgwxfan/hurdat2parser">hurdat2parser</a> program, allowing comparison of the current-season to previous years using a supplied function that ranks partial seasons (it's how the above stats are generated).</p>
+			<p>The primary purpose for the current-season Hurdat2 is for concatenation with the NHC-released Hurdat2, which is usually updated during the Spring of each year prior to the start of Hurricane Season. Because of this, the latest hurdat2 data wouldn't include data from the current season. In addition it is for use in my <a href="https://github.com/ksgwxfan/hurdat2parser">hurdat2parser</a> program, allowing comparison of the current-season to previous years using a supplied function that ranks partial seasons (it's how the above stats are generated).</p>
 
-			<p>Feel free to use this output in any way you'd like. My only request of it is that if used publicly, <u>you must provide the disclaimer that the data, though aretrieved from NOAA/NHC, is not NOAA-official, nor generated</u>.</p>
+			<p>Feel free to use this output in any way you'd like. My only request of it is that if used publicly, <u>you must provide the disclaimer that the data is not NOAA/NHC official</u>.</p>
 		</div>
 		<div id="footer"></div>
 		<script src="header.js"></script>
