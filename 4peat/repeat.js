@@ -71,6 +71,38 @@ let soundOn = document.getElementById("sound-on");
 document.addEventListener("keydown", kbcontrol);
 document.addEventListener("keyup", kbcontrol);
 
+// Test to see if localStorage is available
+// if not available...create a placeholding variable
+if (Object.keys(window).includes("localStorage") == false) {
+	class STRG {
+		constructor() {}
+
+		setItem(k, v) {
+			this[k] = v;
+		}
+
+		getItem(k) {
+			return this[k];
+		}
+
+		clear() {
+
+		}
+
+		removeItem(i) {
+
+		}
+	}
+	localStorage = new STRG();
+	// const localStorage = {};
+}
+
+// Load the record score
+if (localStorage.getItem("record_4peat") != null) {
+	game.record = parseInt(localStorage.getItem("record_4peat"));
+	newRecord.innerText = game.record;
+}
+
 function soundToggle(bool) {
 	for (element of [game.ul.sound, game.ur.sound, game.ll.sound, game.lr.sound, game.wrong]) {
 		element.muted = (bool == 1) ? false : true;
@@ -142,8 +174,15 @@ function button_click(element, simulated=false) {
 			if (game.guesses.length == game.sequence.length) {
 				game.guesses = [];
 				game.correct += 1;
-				
-				game.record += (game.correct > game.record) ? 1 : 0;
+
+				if (game.correct > game.record) {
+					game.record = game.correct;
+					localStorage.setItem(
+						"record_4peat",
+						(game.record).toString()
+					);
+				}
+				// game.record += (game.correct > game.record) ? 1 : 0;
 				// Set displays to reflect numbers
 				roundsWon.innerText = game.correct;
 				newRecord.innerText = game.record;
