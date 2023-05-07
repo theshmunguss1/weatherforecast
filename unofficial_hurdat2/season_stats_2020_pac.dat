@@ -1,8 +1,8 @@
 ----------------------------------------------------------------------
                    Tropical Cyclone Stats for 2020
-                Central Pacific / East Pacific Basins
+                East Pacific / Central Pacific Basins
 
-        Stats calculated for Seasons since 1967 (55 total seasons)
+        Stats calculated for Seasons since 1967 (56 total seasons)
 
     * TS-related Statistics include Hurricanes in their totals except
                             for landfall data
@@ -10,15 +10,16 @@
          * Hurdat2 Landfall data incomplete for seasons 1971-1990
 ----------------------------------------------------------------------
 * Tropical Cyclones: 21            Rank 8/20 (tied w/5 other seasons)
-* TC Track Distance: 17726.0 nmi   Rank 38/55
-* TS Distance: 14064.0 nmi         Rank 35/55
-* HU Distance: 4197.3 nmi          Rank 38/55
-* MHU Distance: 1417.6 nmi         Rank 29/51
+* TC Track Distance: 17726.0 nmi   Rank 39/56
+* TS Distance: 14064.0 nmi         Rank 36/56
+* HU Distance: 4197.3 nmi          Rank 39/56
+* MHU Distance: 1417.6 nmi         Rank 29/52
 * Tropical Storms: 17              Rank 9/18 (tied w/6 other seasons)
-* ACE: 77.3 * 10^4 kt^2            Rank 45/55
+* ACE: 77.3 * 10^4 kt^2            Rank 46/56
 * Hurricanes: 4                    Rank 12/13 (tied w/3 other seasons)
-* HDP: 47.5 * 10^4 kt^2            Rank 43/55
+* HDP: 47.5 * 10^4 kt^2            Rank 44/56
 * Major Hurricanes: 3              Rank 9/12 (tied w/7 other seasons)
-* MHDP: 24.0 * 10^4 kt^2           Rank 36/51
+* MHDP: 24.0 * 10^4 kt^2           Rank 36/52
 * Total Landfalling TC's: 1        Rank 6/7 (tied w/6 other seasons)
 * TS Landfalls: 1                  Rank 4/5 (tied w/8 other seasons)
+* HU Landfalls: 0                  Rank 5/5 (tied w/31 other seasons)
