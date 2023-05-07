@@ -52,6 +52,10 @@ const bingo = {
 	default_new_call_outline_color: "#000000",
 }
 
+function localStorageQuery(key, _default=null) {
+	return (localStorage.getItem(key) != null) ? localStorage.getItem(key) : _default;
+}
+
 // Test to see if localStorage is available
 // if not available...create a placeholding variable
 if (Object.keys(window).includes("localStorage") == false) {
@@ -83,23 +87,17 @@ else {
 	// Location of visuals
 	if (localStorage.getItem("caller_side") != null) {
 		document.getElementById(
-			`input-caller-side-${
-				localStorage.getItem('caller_side')
-			}`
+			"input-caller-side-" + localStorage.getItem('caller_side')
 		).click();
 	}
 	if (localStorage.getItem("caller_placement") != null) {
 		document.getElementById(
-			`input-caller-placement-${
-				localStorage.getItem('caller_placement')
-			}`
+			"input-caller-placement-" + localStorage.getItem('caller_placement')
 		).click();
 	}
 	if (localStorage.getItem("recent_call_dir") != null) {
 		document.getElementById(
-			`input-recent-call-dir-${
-				localStorage.getItem('recent_call_dir')
-			}`
+			"input-recent-call-dir-" + localStorage.getItem('recent_call_dir')
 		).click();
 	}
 	if (localStorage.getItem("call_buffer_toggle") != null) {
@@ -157,7 +155,6 @@ else {
 		document.getElementById("color-new-call-outline").value = localStorage.getItem("new_call_outline_color");
 	}
 }
-
 
 document.addEventListener("keyup", remote_presentation_press);
 
