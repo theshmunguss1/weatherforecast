@@ -47,6 +47,9 @@ const imgarray = [
 	"&#9677;",		// circle with vertical fill
 ];
 
+const container = document.getElementById("container");
+const board = document.getElementById("board");
+
 const game = {
 	started: false,
 	start_time: 0,
@@ -54,10 +57,45 @@ const game = {
 	grid_size: -1,
 	matchquery: [],
 	correct: [],
-	card_color: "red"
+	card_color: "red",
 };
 
-const board = document.getElementById("board");
+const new_record_guesses = document.getElementById("new-record-guesses");
+const new_record_time = document.getElementById("new-record-time");
+const panel_start = document.getElementById("start");
+const panel_endgame = document.getElementById("endgame");
+const panel_records = document.getElementById("records");
+const right = document.getElementById("right");
+const wrong = document.getElementById("wrong");
+const numguesses = document.getElementById("numguesses");
+const numseconds = document.getElementById("numseconds");
+const record_fine_print = document.getElementById("record-fine-print");
+
+// Test to see if localStorage is available
+// if not available...create a placeholding variable
+if (Object.keys(window).includes("localStorage") == false) {
+	class STRG {
+		constructor() {}
+
+		setItem(k, v) {
+			this[k] = v;
+		}
+
+		getItem(k) {
+			return this[k];
+		}
+
+		clear() {
+
+		}
+
+		removeItem(i) {
+
+		}
+	}
+	localStorage = new STRG();
+	// const localStorage = {};
+}
 
 function reset() {
 	game.started = false;
@@ -65,6 +103,49 @@ function reset() {
 	game.total_guesses = 0;
 	game.matchquery = [];
 	game.correct = [];
+	new_record_guesses.innerHTML = "";
+	new_record_time.innerHTML = "";
+	record_fine_print.style.display = "none";
+}
+
+function viewRecords(source_element_id) {
+	panel_start.style.visibility = "hidden";
+	panel_endgame.style.visibility = "hidden";
+	panel_records.style.visibility = "visible";
+	document.getElementById("btn-hide-records").setAttribute(
+		"lastscreen",
+		source_element_id
+	);
+	
+}
+function hideRecords() {
+	panel_records.style.visibility = "hidden";
+	element_to_show = document.getElementById("btn-hide-records").getAttribute(
+		"lastscreen"
+	);
+	document.getElementById(element_to_show).style.visibility = "visible";
+
+}
+
+function loadRecords() {
+	// localStorage.getItem("record_match_" + game.grid_size + "time")
+	for (let _size of [4,6,8]) {
+		if (localStorage.getItem("record_match_" + _size + "guesses") != null) {
+			document.getElementById("record" + _size + "guesses").innerText = localStorage.getItem("record_match_" + _size + "guesses");
+		}
+		if (localStorage.getItem("record_match_" + _size + "time") != null) {
+			document.getElementById("record" + _size + "time").innerText = localStorage.getItem("record_match_" + _size + "time");
+		}
+	}
+}
+
+function clearRecords() {
+	for (let _size of [4,6,8]) {
+		localStorage.removeItem("record_match_" + _size + "guesses");
+		document.getElementById("record" + _size + "guesses").innerText = "--";
+		localStorage.removeItem("record_match_" + _size + "time");
+		document.getElementById("record" + _size + "time").innerText = "--";
+	}
 }
 
 function ZFILL(n) {
@@ -155,8 +236,8 @@ function build(arr) {
 		}
 	}
 	// Hide the start/end message
-	document.getElementById("start").style.visibility = "hidden";
-	document.getElementById("endgame").style.visibility = "hidden";
+	panel_start.style.visibility = "hidden";
+	panel_endgame.style.visibility = "hidden";
 }
 
 function reveal(cid) {
@@ -182,12 +263,15 @@ function reveal(cid) {
 				game.total_guesses += 1;
 				// Correct guess!
 				if (g1.innerHTML == g2.innerHTML) {
-					document.getElementById("right").style.visibility = "visible";
+					for (let ele of document.getElementsByClassName("right")) {
+						ele.style.visibility = "visible";
+					}
+					// right.style.visibility = "visible";
 					g1.style.color = randomColor();
 					g2.style.color = g1.style.color;
 					game.correct.push(g1.id);
 					game.correct.push(g2.id);
-					setTimeout(correct,600);
+					setTimeout(correct, 600);
 					// Display the finish text if game is done
 					if (game.correct.length == game.grid_size**2) {
 						youWin();
@@ -196,7 +280,7 @@ function reveal(cid) {
 				// Wrong guess!
 				else {
 					// Display the "wrong" indicator
-					document.getElementById("wrong").style.visibility = "visible";
+					wrong.style.visibility = "visible";
 					setTimeout(hide,3000);
 				}
 						
@@ -211,14 +295,59 @@ function youWin() {
 		(performance.now() - game.start_time) / 1000
 	).toFixed(1);
 
-	document.getElementById("numguesses").innerHTML = game.total_guesses;
-	document.getElementById("numseconds").innerHTML = total_time;
-	document.getElementById("endgame").style.visibility = "visible";
+	// check for records
+	if (
+		localStorage.getItem("record_match_" + game.grid_size + "time") == null ||
+		total_time <= parseInt(
+			localStorage.getItem("record_match_" + game.grid_size + "time")
+		)
+	) {
+		record_fine_print.style.display = "block";
+		new_record_time.innerHTML = "&bigstar;";
+		// Tied Record
+		if (total_time == 
+			parseInt(localStorage.getItem("record_match_" + game.grid_size + "time"))
+		) {
+			new_record_time.innerHTML += "&bigstar;";
+		}
+		localStorage.setItem(
+			"record_match_" + game.grid_size + "time",
+			total_time.toString()
+		);
+		document.getElementById("record" + game.grid_size + "time").innerText = total_time;
+	}
+	if (
+		localStorage.getItem("record_match_" + game.grid_size + "guesses") == null ||
+		game.total_guesses <= parseInt(
+			localStorage.getItem("record_match_" + game.grid_size + "guesses")
+		)
+	) {
+		record_fine_print.style.display = "block";
+		new_record_guesses.innerHTML = "&bigstar;";
+		// Tied Record
+		if (game.total_guesses == 
+			parseInt(localStorage.getItem("record_match_" + game.grid_size + "guesses"))
+		) {
+			new_record_guesses.innerHTML += "&bigstar;";
+		}
+		localStorage.setItem(
+			"record_match_" + game.grid_size + "guesses",
+			game.total_guesses.toString()
+		);
+		document.getElementById("record" + game.grid_size + "guesses").innerText = game.total_guesses;
+	}
+
+	numguesses.innerHTML = game.total_guesses;
+	numseconds.innerHTML = total_time;
+	panel_endgame.style.visibility = "visible";
 }
 
 function correct() {
 	game.matchquery = [];
-	document.getElementById("right").style.visibility = "hidden";
+	// right.style.visibility = "hidden";
+	for (let ele of document.getElementsByClassName("right")) {
+		ele.style.visibility = "hidden";
+	}
 }
 
 function hide() {
@@ -228,7 +357,7 @@ function hide() {
 	c1.setAttribute("class",`card gs${game.grid_size} hide ${game.card_color}`);
 	c2.setAttribute("class",`card gs${game.grid_size} hide ${game.card_color}`);
 	game.matchquery = [];
-	document.getElementById("wrong").style.visibility = "hidden";
+	wrong.style.visibility = "hidden";
 }
 
 function chgbg(bgid) {
@@ -261,7 +390,7 @@ function changebgpattern(indexNum) {
 		"darkgreen radial-gradient(lightblue 0% 40%, rgba(255,255,255,0) 40%) repeat -2% -2% / 8% 8%"
 		];
 	
-	document.getElementById("container").style.background = patterncollection[indexNum];
+	container.style.background = patterncollection[indexNum];
 }
 
 function changecardback(colorcode) {

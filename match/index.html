@@ -10,7 +10,7 @@
 		</style>
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 	</head>
-	<body onload="change_gridsize('4');">
+	<body onload="change_gridsize('4'); loadRecords()">
 	<!-- <body onload="change_gridsize('4'); for (let char of imgarray) {document.getElementById('char-container').innerHTML += ' ' + char};"> -->
 		<h1 id="header">Matching Game</h1>
 		<!-- <div id="char-container" style="font-size: 2em"></div> -->
@@ -21,7 +21,7 @@
 			</div>
 			<!-- INTRO SCREEN -->
 			<div id="start" class="options">
-				<span>Welcome to the<br />Matching Game!</span>
+				<span id="welcomemsg">Welcome to the<br />Matching Game!</span>
 				<span>Grid Size:</span>
 				<div>
 					<label>
@@ -34,17 +34,34 @@
 						<input type="radio" name="gridsize" value="8" onChange="change_gridsize(this.value)" /> 8x8
 					</label>
 				</div>
-				<button onClick="assign()">START</button>
+				<div>
+					<button onClick="assign()">START</button>
+					<button onClick="viewRecords('start')">View Records</button>
+				</div>
 			</div>
-			<div id="right" class="options"></div>
+			<!-- <div id="right" class="options" style="visibility:visible"></div> -->
+			<div class="right" id="correct-l"></div>
+			<div class="right" id="correct-u"></div>
+			<div class="right" id="correct-r"></div>
+			<div class="right" id="correct-b"></div>
 			<div id="wrong" class="options"></div>
 			<div id="endgame" class="options">
-				<span>YOU WON!</span>
-				<span>
-					Game Stats:<br />
-					<span id="numguesses" class="endtext"></span> guesses<br />
-					<span id="numseconds" class="endtext"></span> seconds!
-				</span>
+				<div>YOU WON!</div>
+				<div>
+					<div>Game Stats:</div>
+					<div>
+						<span id="numguesses" class="endtext"></span> guesses
+						<span id="new-record-guesses"></span>
+					</div>
+					<div>
+						<span id="numseconds" class="endtext"></span> seconds!
+						<span id="new-record-time"></span>
+					</div>
+				</div>
+				<div id="record-fine-print">
+					<span>&bigstar;</span> - New Record<br />
+					<span>&bigstar;&bigstar;</span> - Tied Record
+				</div>
 				<div>
 					<label>
 						<input type="radio" name="gridsizeend" value="4" onChange="change_gridsize(this.value)" checked /> 4x4
@@ -56,7 +73,39 @@
 						<input type="radio" name="gridsizeend" value="8" onChange="change_gridsize(this.value)" /> 8x8
 					</label>
 				</div>
-				<button onClick="assign()">Play Again!</button>
+				<div>
+					<button onClick="assign()">Play Again</button>
+					<button onClick="viewRecords('endgame')">View Records</button>
+				</div>
+			</div>
+			<div id="records" class="options">
+				<div>
+					<div id="stats-header">Record Stats:</div>
+					<div>
+						4x4: <span id="record4guesses" class="endtext">--</span> guesses
+					</div>
+					<div>
+						4x4: <span id="record4time" class="endtext">--</span> seconds
+					</div>
+					<hr />
+					<div>
+						6x6: <span id="record6guesses" class="endtext">--</span> guesses
+					</div>
+					<div>
+						6x6: <span id="record6time" class="endtext">--</span> seconds
+					</div>
+					<hr />
+					<div>
+						8x8: <span id="record8guesses" class="endtext">--</span> guesses
+					</div>
+					<div>
+						8x8: <span id="record8time" class="endtext">--</span> seconds
+					</div>
+				</div>
+				<div>
+					<button id="btn-hide-records" onClick="hideRecords()" lastscreen="">&lt; Back</button>
+					<button onClick="clearRecords()">Clear</button>
+				</div>
 			</div>
 		</div>
 		
@@ -89,7 +138,8 @@
 		<div id="description" style="width:80%;margin:auto;margin-top:20px;margin-bottom:10px;">
 			<p>Here's a seemingly simple matching game. Enjoy. Feel free to inspect the code and use however you like. No attribution necessary.</p>
 			<ul>
-				<li>8 June 2022: cleaned up the code quite a bit; improved dynamic CSS as well; added solid-background option (via color chooser).
+				<li>May 2023: best scores are now saved and viewable. Only guessing wrong now prevents a user from keeping the guessing going.</li>
+				<li>8 June 2022: cleaned up the code quite a bit; improved dynamic CSS as well; added solid-background option (via color chooser).</li>
 			</ul>
 		</div>
 		<div id="footer"></div>

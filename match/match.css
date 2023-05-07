@@ -23,44 +23,70 @@
 	height: 100%;
 	color: black;
 	display: flex;
+	font-size: 5vmin;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	text-align: center;
 	visibility: hidden;
 	user-select: none;
-	background: rgba(255,255,255,
-        85%);
+	background: rgba(255,255,255, 85%);
 }
 
 /* OPENING TEXT */
 #start {visibility: visible;}
 
+/* applies to all sub-elements of .options class */
 .options :nth-child(n+1) {
-	margin: 2vmin;
+	margin: 1.5vmin auto;
+}
+
+#endgame {
+	background: rgba(255,255,255, 90%);
+}
+
+#records {
+	align-items: center;
+}
+#records div {
+	margin: 0;
+}
+
+#record-fine-print {
+	display: none;
+	font-size: 3vmin;
+	/* line-height: 1em; */
+}
+
+#stats-header {
+	text-decoration: underline;
 }
 
 /* WELCOME MESSAGE or 1st line */
-.options > :nth-child(1) {
+#welcomemsg {
 	text-decoration: underline;
 	font-size: 8vmin;
 }
 
-/* GRID SIZE MESSAGE or 2nd line */
-.options > :nth-child(2) {
-	font-size: 5vmin;
+/* Grid Sizes */
+.options label {
+	font-size: 6vmin;
 }
-.options label {font-size: 6vmin;}
-
-
 
 button {
 	font-weight: bold;
-	box-shadow: 0px 0px 5vmin;
-	padding: 5%;
+	box-shadow: 0px 0px 4vmin;
+	padding: 0.6em;
 	font-size: 5vmin;
 }
 
+[id*="new-record"], #record-fine-print span {
+	color: green;
+	font-size: 5vmin;
+	font-weight: bold;
+}
+
+/* Revealed answer sizing */
 .card.gs4 {font-size: 14vmin;}
 .card.gs6 {font-size: 8vmin;}
 .card.gs8 {font-size: 6vmin;}
@@ -85,10 +111,9 @@ button {
 }
 
 [type="radio"] {
-	transform: scale(2.5,
-        2.5);
+	transform: scale(2.5, 2.5);
 	vertical-align: middle;
-	margin: 1em;
+	margin: 2vmin !important;
 }
 
 [type="color"] {
@@ -202,20 +227,30 @@ button {
 #right {
 	/* animation-name: correct_animation; */
 	/* animation-duration: 2s; */
-	background:
-		linear-gradient(to right,
-        green 0% 2%,
-        transparent 5.1%),
-		linear-gradient(to top,
-        green 0% 2%,
-        transparent 5.1%),
-		linear-gradient(to left,
-        green 0% 2%,
-        transparent 5.1%),
-		linear-gradient(to bottom,
-        green 0% 2%,
-        transparent 5.1%);
+	/* background: */
+		/* linear-gradient(to right, */
+        /* green 0% 2%, */
+        /* transparent 5.1%), */
+		/* linear-gradient(to top, */
+        /* green 0% 2%, */
+        /* transparent 5.1%), */
+		/* linear-gradient(to left, */
+        /* green 0% 2%, */
+        /* transparent 5.1%), */
+		/* linear-gradient(to bottom, */
+        /* green 0% 2%, */
+        /* transparent 5.1%); */
 }
+.right {
+	background-color: green;
+	visibility: hidden;
+	opacity: 50%;
+	position: absolute;
+}
+#correct-l {top: 0; left: 0; width: 4%; height: 100%;}
+#correct-u {top: 0; left: 0; width: 100%; height: 4%;}
+#correct-r {bottom: 0; right: 0; width: 4%; height: 100%;}
+#correct-b {bottom: 0; right: 0; width: 100%; height: 4%;}
 
 /* WRONG GUESS */
 #wrong {
