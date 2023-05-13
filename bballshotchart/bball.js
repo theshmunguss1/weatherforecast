@@ -102,9 +102,17 @@ function loading() {
 	halfselect("1");
 }
 
-function mode_change() {
+function mode_change(modeButton) {
+	console.log(event);
+	if (event.key == null) {
+		event.key = "1337";
+	}
 	// M = 77; S = 83; E = 69
-	if (/M$/.test(event.code)) {
+	// Miss Mode
+	if (
+		(modeButton != null && modeButton == "M") ||
+		event.key.toUpperCase() == "M"
+	) {
 		if (courtobj.mode == "score" || courtobj.mode == "NA") {
 			courtobj.mode = "miss";
 			document.getElementById("mode_miss").style.display = "block";
@@ -115,7 +123,11 @@ function mode_change() {
 			document.getElementById("mode_miss").style.display = "none";
 		}
 	}
-	if (/S$/.test(event.code)) {		// Score Mode Toggle
+	// Score Mode Toggle
+	if (
+		(modeButton != null && modeButton == "S") ||
+		event.key.toUpperCase() == "S"
+	) {
 		if (courtobj.mode == "miss" || courtobj.mode == "NA") {
 			courtobj.mode = "score";
 			document.getElementById("mode_score").style.display = "block";
@@ -126,7 +138,11 @@ function mode_change() {
 			document.getElementById("mode_score").style.display = "none";
 		}
 	}
-	if (/E$/.test(event.code)) {		// Erase Mode Toggle
+	// Erase Mode Toggle
+	if (
+		(modeButton != null && modeButton == "E") ||
+		event.key.toUpperCase() == "E"
+	) {
 		if (courtobj.current_half != "3") {
 			if (courtobj.erase == "N") {	// TURN ON ERASE MODE
 				courtobj.erase = "Y";
