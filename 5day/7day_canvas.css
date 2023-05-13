@@ -35,6 +35,36 @@ fieldset {
 	border: none;
 }
 
+#forecast-portrait {
+	background-color: green;
+	font-size: 2em;
+	font-weight: bold;
+	width: 90vw;
+	padding: 3em 2em;
+	text-shadow:
+		1vw   1vw 3vw black,
+		1vw   0vw 3vw black,
+		1vw  -1vw 3vw black,
+		0vw  -1vw 3vw black,
+		-1vw -1vw 3vw black,
+		-1vw  0vw 3vw black,
+		-1vw  1vw 3vw black,
+		0vw   1vw 3vw black
+	;
+}
+
+@media (orientation: landscape) or (
+	(orientation: portrait) and
+	(min-width: 500px)
+) {
+	#forecast {display: inline;}
+	#forecast-portrait {display: none;}
+}
+@media (orientation: portrait) and (max-width: 499px) {
+	#forecast {display: none;}
+	#forecast-portrait {display: block;}
+}
+
 /* FORECAST MODIFICATION OPTIONS */
 #forecast-names {
 	display:flex;

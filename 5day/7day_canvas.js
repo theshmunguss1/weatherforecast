@@ -69,6 +69,7 @@ var logo = [
 ];
 
 var canvas = document.getElementById("forecast");
+var canvas_portrait = document.getElementById("forecast-portrait");
 var ctx = canvas.getContext("2d");
 
 function change_orientation() {
@@ -77,17 +78,15 @@ function change_orientation() {
 }
 
 function EventListeners() {}
+
 // Dynamic Window Resize
-window.addEventListener(
-	"orientationchange",
-	change_orientation
-);
+screen.orientation.onchange = change_orientation;
 
 // Canvas Event Listener
-canvas.addEventListener(
-	"contextmenu",
-	event => respond(event)
-);
+// canvas.addEventListener(
+	// "contextmenu",
+	// event => respond(event)
+// );
 canvas.addEventListener(
 	"mousemove",
 	event => canvas_click(event)
@@ -279,40 +278,7 @@ function reparameterize() {
 function draw() {
 	//console.log("draw() called");
 	//ctx.clearRect(0, 0, prop.width7, canvas.height); //clear
-	// Handle Phones in Portrait Mode
-	if (document.documentElement.clientWidth < 500) {
-		// console.log(canvas.width, document.documentElement.clientWidth);
-		// console.log("asdf");
-		ctx.clearRect(0, 0, prop.width7, canvas.height);
-		ctx.fillStyle = prop.backgroundColor;
-		ctx.fillRect(0, 0, canvas.width, canvas.height);
-		ctx.textAlign = "center";
-		ctx.font = "bold 30px sans-serif";
-		ctx.strokeStyle = "black";
-		ctx.lineWidth = 3;
-		ctx.strokeText(
-			"Please Use in",
-			canvas.width / 2,
-			canvas.height / 2 - 20
-		);
-		ctx.strokeText(
-			"Landscape Mode",
-			canvas.width / 2,
-			canvas.height / 2 + 20
-		);
-		ctx.fillStyle = "white";
-		ctx.fillText(
-			"Please Use in",
-			canvas.width / 2,
-			canvas.height / 2 - 20
-		);
-		ctx.fillText(
-			"Landscape Mode",
-			canvas.width / 2,
-			canvas.height / 2 + 20
-		);
-		return null;
-	}
+
 	// BACKGROUND
 	ctx.fillStyle = prop.backgroundColor;
 	ctx.fillRect(0, 0, prop.width7, canvas.height);
@@ -1303,6 +1269,7 @@ function random_bg_color() {
 	let hexg = ZFILL(g.toString(16));
 	let hexb = ZFILL(b.toString(16));
 	document.getElementById("mainbgcolor").value = `#${hexr}${hexg}${hexb}`;
+	canvas_portrait.style.backgroundColor = document.getElementById("mainbgcolor").value;
 	chg_bg(`#${hexr}${hexg}${hexb}`);
 	// console.log(h, [r,g,b]);
 	// console.log(hexr, hexg, hexb);
