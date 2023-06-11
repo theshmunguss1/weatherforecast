@@ -375,7 +375,7 @@ function chgbg(bgid) {
 
 function chgcardbg(c) {
 	game.card_color = c;
-	for (let card of document.querySelectorAll(".card")) {
+	for (let card of document.querySelectorAll(".card.hide")) {
 		card.setAttribute("class",`card gs${game.grid_size} hide ${game.card_color}`)
 	}
 }
