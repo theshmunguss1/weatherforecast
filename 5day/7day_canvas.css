@@ -196,3 +196,19 @@ fieldset {
 	font-style: italic;
 	font-weight: bold;
 }
+#param-save {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 0;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	margin: 0 auto;
+	margin-bottom: 1em;
+	text-align: center;
+}
+#param-save span {
+	font-size: 0.9em;
+	width: 85%;
+	text-align: justify;
+}

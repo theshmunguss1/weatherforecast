@@ -189,6 +189,55 @@ prop.logo.onload = draw;
 prop.uvi.onload = draw;
 prop.dayImage.onload = resize;
 
+function save_urlparams() {
+	let options = {};
+	let params = [];
+	if (document.getElementById("nameentry").value != "") {
+		options.name = document.getElementById("nameentry").value;
+	}
+	if (document.getElementById("cityentry").value != "") {
+		options.city = document.getElementById("cityentry").value;
+	}
+	options.temp = prop.tempUnits;
+	options.days = prop.dayQty;
+	options.hemi = prop.hemisphere;
+	for (let key of Object.keys(options)) {
+		params.push(key + "=" + encodeURI(options[key]))
+	}
+	let paramstr = "?" + params.join("&");
+	// console.log(document.location.pathname + paramstr);
+	document.location.assign(
+		document.location.origin + document.location.pathname + paramstr
+	);
+}
+
+function process_urlparams() {
+	let options = {}
+	let terms = document.location.search.split(/(\&|\?)/);
+	for (let term of terms) {
+		if (term.length > 0) {
+			options[term.split("=")[0]] = decodeURI(term.split("=")[1]);
+		}
+	}
+	// console.log(options);
+	if (Object.keys(options).includes("name")) {
+		document.getElementById("nameentry").value = options["name"];
+	}
+	if (Object.keys(options).includes("city")) {
+		document.getElementById("cityentry").value = options["city"];
+	}
+	if (Object.keys(options).includes("temp")) {
+		document.getElementById("input-temp" + options["temp"]).click();
+	}
+	if (Object.keys(options).includes("days")) {
+		document.getElementById("frcstQty" + options["days"]).click();
+	}
+	if (Object.keys(options).includes("hemi")) {
+		document.getElementById("hemisphere").value = options["hemi"]
+		prop.hemisphere = options["hemi"];
+		random_forecast();
+	}
+}
 
 function forecastDayQty(n) {
 	prop.dayQty = parseInt(n);
