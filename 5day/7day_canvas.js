@@ -271,13 +271,13 @@ function resize() {
 		//LANDSCAPE
 		if ("orientation" in window == false || Math.abs(window.orientation) == 90) {
 			// console.log("landscape");
-			canvas.width = largest-20;
+			canvas.width = largest * 0.9;
 			canvas.height = canvas.width / 2;
 		}
 		// PORTRAIT
 		else {
 			// console.log("portrait");
-			canvas.width = smallest-20;
+			canvas.width = smallest * 0.9;
 			canvas.height = canvas.width / 2;
 		}
 		
