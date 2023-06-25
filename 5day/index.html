@@ -14,7 +14,7 @@
 
 		</style>
 	</head>
-	<body onload="random_forecast(); random_bg_color();">
+	<body onload="random_forecast(); random_bg_color(); process_urlparams()">
 		<h1 id="header">Weather Forecast Generator</h1>
 		<div style="text-align:left;font-style:italic;color:pink;font-size:0.9em;margin:5px">
 			* Not working right for you? Try the legacy version instead: <a href="5day/forecast_legacy.html">Click here</a> *
@@ -149,6 +149,12 @@
 				</fieldset>
 			</div>			
 		</div>
+		<div id="param-save">
+			<button id="param-save-button" onclick="save_urlparams()">
+				Click to reload page with current settings
+			</button>
+			<span>* This will reload the page with the current name, city, and selected temperature unit, day quantity (5 or 7), and hemisphere. The new page can then be bookmarked to reference with those preferred settings in-tact.
+		</div>
 		<div id="forecast-modify">
 
 		</div>
@@ -156,6 +162,7 @@
 
 			<p><span>Brief update history:</span>
 				<ul>
+					<li>JUN 2023: At a user's request, the ability to remember common variables was added. The page that loads with those options can be bookmarked to visit and automatically load later.</li>
 					<li>NOV 2022: Improved random background color creation; Added additional sky condition imagery; introduced a skycast algorithm</li>
 					<li>31 AUG 2021: Fixed issue preventing 5-day forecast use on smartphones</li>
 					<li>27 MAY 2021: Improved canvas size logic and dynamics</li>
