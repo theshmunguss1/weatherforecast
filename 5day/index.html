@@ -14,7 +14,7 @@
 
 		</style>
 	</head>
-	<body onload="random_forecast(); random_bg_color(); process_urlparams()">
+	<body onload="random_forecast(); random_bg_color(); lsload(); process_urlparams();">
 		<h1 id="header">Weather Forecast Generator</h1>
 		<div style="text-align:left;font-style:italic;color:pink;font-size:0.9em;margin:5px">
 			* Not working right for you? Try the legacy version instead: <a href="5day/forecast_legacy.html">Click here</a> *
@@ -74,13 +74,13 @@
 				<br />
 				<label for="firstday">First Day of Week:</label><br />
 				<select id="firstday" onChange="chg_day(this.value);">
-					<option value=0>SUN</option>
-					<option value=1>MON</option>
-					<option value=2>TUE</option>
-					<option value=3>WED</option>
-					<option value=4>THU</option>
-					<option value=5>FRI</option>
-					<option value=6>SAT</option>
+					<option value="0">SUN</option>
+					<option value="1">MON</option>
+					<option value="2">TUE</option>
+					<option value="3">WED</option>
+					<option value="4">THU</option>
+					<option value="5">FRI</option>
+					<option value="6">SAT</option>
 				</select>
 			</div>
 		</div>
@@ -99,17 +99,17 @@
 				</caption>
 				<tr>
 					<td>
-						<input id="titlestandard" type="radio" name="titleopt" checked onClick='chg_title_mode("both")'>
+						<input id="titleboth" type="radio" name="titleopt" checked onClick='chg_title_mode("both")'>
 						<label for="titlestandard">Standard</label>
 					</td>
 					<td>
-						<input id="titlenameonly" type="radio" name="titleopt" onClick='chg_title_mode("name")'>
+						<input id="titlename" type="radio" name="titleopt" onClick='chg_title_mode("name")'>
 						<label for="titlenameonly">No City</label>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input id="titlecityonly" type="radio" name="titleopt" onClick='chg_title_mode("city")'>
+						<input id="titlecity" type="radio" name="titleopt" onClick='chg_title_mode("city")'>
 						<label for="titlecityonly">No Name</label>
 					</td>
 					<td>
@@ -150,10 +150,40 @@
 			</div>			
 		</div>
 		<div id="param-save">
+			<div id="param-save-checks">
+				<label for="save-lang">
+					<input onclick="lschange()" type="checkbox" id="save-lang" />
+					Save Language
+				</label>
+				<label for="save-lang">
+					<input onclick="lschange()" type="checkbox" id="save-bg" />
+					Save BG color
+				</label>
+				<label for="save-lang">
+					<input onclick="lschange()" type="checkbox" id="save-firstday" />
+					Save Day Order
+				</label>
+				<label for="save-lang">
+					<input onclick="lschange()" type="checkbox" id="save-prcp" />
+					Save PRCP
+				</label>
+				<label for="save-lang">
+					<input onclick="lschange()" type="checkbox" id="save-uvi" />
+					Save UVI
+				</label>
+				<label for="save-lang">
+					<input onclick="lschange()" type="checkbox" id="save-wind" />
+					Save Wind
+				</label>
+				<label for="save-lang">
+					<input onclick="lschange()" type="checkbox" id="save-temps" />
+					Save Temperatures
+				</label>
+			</div>
 			<button id="param-save-button" onclick="save_urlparams()">
 				Click to reload page with current settings
 			</button>
-			<span>* This will reload the page with the current name, city, and selected temperature unit, day quantity (5 or 7), and hemisphere. The new page can then be bookmarked to reference with those preferred settings in-tact.
+			<span>* This will reload the page with the current name, city, and selected temperature unit, day quantity (5 or 7), and hemisphere. Use the check buttons above to optionally save the items described. The new page can then be bookmarked to reference with those preferred settings in-tact.
 		</div>
 		<div id="forecast-modify">
 

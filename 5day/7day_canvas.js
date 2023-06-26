@@ -108,6 +108,14 @@ canvas.addEventListener(
 	// event => canvas_click(event)
 // );
 
+let savelang = document.getElementById("save-lang");
+let savebg = document.getElementById("save-bg");
+let savefdindex = document.getElementById("save-firstday");
+let saveprcp = document.getElementById("save-prcp");
+let saveuvi = document.getElementById("save-uvi");
+let savewind = document.getElementById("save-wind");
+let savetemps = document.getElementById("save-temps");
+
 var prop = {
 	"dayQty": 7,
 	"weekArray": ["SUN","MON","TUE","WED","THU","FRI","SAT"],
@@ -166,7 +174,7 @@ for (dy=1; dy <= 7; dy++) {
 		"wspd": "",
 		"hi": word[dy-1],
 		"lo": word[dy-1].toLowerCase()
-	}
+	};
 	prop[`day${dy}`].sky.src = "5day/sky_sun.svg";
 	prop[`day${dy}`].sky.onload = draw;
 	prop[`day${dy}`].desc.src = "5day/desc_blank.svg";
@@ -189,18 +197,145 @@ prop.logo.onload = draw;
 prop.uvi.onload = draw;
 prop.dayImage.onload = resize;
 
+function lschange() {
+	// let saveprcp = document.getElementById("save-prcp");
+	// let saveuvi = document.getElementById("save-uvi");
+	// let savewind = document.getElementById("save-wind");
+	// let savetemps = document.getElementById("save-temps");
+	try {
+		// console.log(saveprcp.checked);
+		localStorage.setItem("forecast.save-lang", (savelang.checked) ? 1 : 0);
+		localStorage.setItem("forecast.save-bg", (savebg.checked) ? 1 : 0);
+		localStorage.setItem("forecast.save-firstday", (savefdindex.checked) ? 1 : 0);
+		localStorage.setItem("forecast.save-prcp", (saveprcp.checked) ? 1 : 0);
+		localStorage.setItem("forecast.save-uvi", (saveuvi.checked) ? 1 : 0);
+		localStorage.setItem("forecast.save-wind", (savewind.checked) ? 1 : 0);
+		localStorage.setItem("forecast.save-temps", (savetemps.checked) ? 1 : 0);
+	} catch (e) {
+		console.log(e);
+	}
+}
+
+function lsload() {
+	try {
+		savelang.checked = Boolean(
+			parseInt(localStorage.getItem("forecast.save-lang"))
+		);
+		savebg.checked = Boolean(
+			parseInt(localStorage.getItem("forecast.save-bg"))
+		);
+		savefdindex.checked = Boolean(
+			parseInt(localStorage.getItem("forecast.save-firstday"))
+		);
+		saveprcp.checked = Boolean(
+			parseInt(localStorage.getItem("forecast.save-prcp"))
+		);
+		saveuvi.checked = Boolean(
+			parseInt(localStorage.getItem("forecast.save-uvi"))
+		);
+		savewind.checked = Boolean(
+			parseInt(localStorage.getItem("forecast.save-wind"))
+		);
+		savetemps.checked = Boolean(
+			parseInt(localStorage.getItem("forecast.save-temps"))
+		);
+	} catch (e) {
+		console.log(e);
+	}
+}
+
 function save_urlparams() {
 	let options = {};
 	let params = [];
+	if (savelang.checked) {
+		if (prop.language != "en") {
+			options.lang = (prop.language == "sp") ? -1 : 1;
+		}
+	}
+	if (savebg.checked) {
+		options.bg = prop.backgroundColor.slice(1);
+	}
+	if (savefdindex.checked) {
+		options.fdindex = prop.lang_packs[prop.language].dayNames.indexOf(
+			prop.weekArray[0]
+		);
+	}
 	if (document.getElementById("nameentry").value != "") {
 		options.name = document.getElementById("nameentry").value;
 	}
 	if (document.getElementById("cityentry").value != "") {
 		options.city = document.getElementById("cityentry").value;
 	}
-	options.temp = prop.tempUnits;
-	options.days = prop.dayQty;
-	options.hemi = prop.hemisphere;
+	if (prop.titleMode != "both") {
+		options.titleMode = prop.titleMode;
+	}
+	if (document.getElementById("customentry").value != "") {
+		options.custom = document.getElementById("customentry").value;
+	}
+	let SRC = prop.logo.src.match(/5day\/\w+\.svg/)[0];
+	if (!SRC.includes("echotops")) {
+		options.icon = logo.indexOf(SRC);
+	}
+	if (prop.tempUnits != "F") {
+		options.temp = prop.tempUnits;
+	}
+	if (prop.dayQty != 7) {
+		options.days = prop.dayQty;
+	}
+	if (document.getElementById("hemisphere").value != "N") {		
+		options.hemi = prop.hemisphere;
+	}
+	if (saveprcp.checked) {
+		let prcpstr = "";
+		for (let dy=1; dy<=7; dy++) {
+			prcpstr += prop[`day${dy}`].prcp + ((dy != 7) ? "|" : "");
+		}
+		options["prcp"] = prcpstr;
+	}
+	if (saveuvi.checked) {
+		let uvistr = "";
+		for (let dy=1; dy<=7; dy++) {
+			uvistr += (
+				prop[`day${dy}`].uvi ? "t":"f"
+			) + prop[`day${dy}`].uvi_level + (
+				(dy != 7) ? "|" : ""
+			);
+		}
+		options["uvi"] = uvistr;
+	}
+	if (savewind.checked) {
+		let windstr = "";
+		// "wind": false,
+		// "wdir": "",
+		// "wspd": "",
+		for (let dy=1; dy<=7; dy++) {
+			windstr += 
+				[
+					prop[`day${dy}`].wind ? "t":"f",
+					document.getElementById(`wind${dy}select`).value,
+					prop[`day${dy}`].wspd
+				].join("_") + (
+				(dy != 7) ? "|" : ""
+			);
+		}
+		options["wind"] = windstr;
+	}
+	if (savetemps.checked) {
+		let tempsstr = "";
+		for (let dy=1; dy<=7; dy++) {
+			tempsstr += 
+				[
+					prop[`day${dy}`].hi,
+					prop[`day${dy}`].lo
+				].join("_") + (
+				(dy != 7) ? "|" : ""
+			);
+		}
+		options["temps"] = tempsstr;
+	}
+
+
+	// Put values in format to save
 	for (let key of Object.keys(options)) {
 		params.push(key + "=" + encodeURI(options[key]))
 	}
@@ -213,18 +348,42 @@ function save_urlparams() {
 
 function process_urlparams() {
 	let options = {}
-	let terms = document.location.search.split(/(\&|\?)/);
+	let terms = document.location.search.slice(1).split(/\&/);
 	for (let term of terms) {
 		if (term.length > 0) {
 			options[term.split("=")[0]] = decodeURI(term.split("=")[1]);
 		}
 	}
 	// console.log(options);
+	if (Object.keys(options).includes("lang")) {
+		document.getElementById(
+			"lang_" + (
+				(options["lang"] < 0) ? "left" : "right"
+			)
+		).click();
+	}
+	if (Object.keys(options).includes("bg")) {
+		document.getElementById("mainbgcolor").value = "#" + options["bg"];
+		document.getElementById("mainbgcolor").oninput();
+	}
+	if (Object.keys(options).includes("fdindex")) {
+		document.getElementById("firstday").value = options["fdindex"];
+		document.getElementById("firstday").onchange();
+	}
 	if (Object.keys(options).includes("name")) {
 		document.getElementById("nameentry").value = options["name"];
 	}
 	if (Object.keys(options).includes("city")) {
 		document.getElementById("cityentry").value = options["city"];
+	}
+	if (Object.keys(options).includes("titleMode")) {
+		document.getElementById("title" + options["titleMode"]).click();
+	}
+	if (Object.keys(options).includes("custom")) {
+		document.getElementById("customentry").value = options["custom"];
+	}
+	if (Object.keys(options).includes("icon")) {
+		prop.logo.src = logo[options["icon"]];
 	}
 	if (Object.keys(options).includes("temp")) {
 		document.getElementById("input-temp" + options["temp"]).click();
@@ -233,9 +392,53 @@ function process_urlparams() {
 		document.getElementById("frcstQty" + options["days"]).click();
 	}
 	if (Object.keys(options).includes("hemi")) {
-		document.getElementById("hemisphere").value = options["hemi"]
-		prop.hemisphere = options["hemi"];
-		random_forecast();
+		document.getElementById("hemisphere").value = options["hemi"];
+		document.getElementById("hemisphere").onchange();
+	}
+	if (Object.keys(options).includes("prcp")) {
+		// console.log(options["prcp"].split(/\|/));
+		let prcpli = options["prcp"].split(/\|/);
+		for (let dy=1; dy<=7; dy++) {
+			if (prcpli[dy-1] != "") {
+				document.getElementById("percentbox" + dy).value = prcpli[dy-1];
+				document.getElementById("percentbox" + dy).oninput();
+			}
+		}
+	}
+	if (Object.keys(options).includes("uvi")) {
+		let uvili = options["uvi"].split(/\|/);
+		for (let dy=1; dy<=7; dy++) {
+			if (uvili[dy-1][0] != "f") {
+				prop[`day${dy}`].uvi_level = parseInt(uvili[dy-1].slice(1));
+				document.getElementById("uvitoggle" + dy).onclick();
+			}
+		}
+	}
+	if (Object.keys(options).includes("wind")) {
+		let windli = options["wind"].split(/\|/);
+		// console.log(windli);
+		for (let dy=1; dy<=7; dy++) {
+			let winddyli = windli[dy-1].split("_");
+			// console.log(winddyli);
+			if (winddyli[0] != "f") {
+				document.getElementById(`windtoggle${dy}`).click();
+				document.getElementById(`wind${dy}select`).value = winddyli[1];
+				document.getElementById(`wind${dy}select`).onchange();
+				document.getElementById(`wind${dy}speed`).value = winddyli[2];
+				document.getElementById(`wind${dy}speed`).oninput();
+			}
+		}
+	}
+	if (Object.keys(options).includes("temps")) {
+		let tempsli = options["temps"].split(/\|/);
+		// console.log(tempsli);
+		for (let dy=1; dy<=7; dy++) {
+			let tempsdyli = tempsli[dy-1].split("_");
+			document.getElementById(`tmax${dy}`).value = tempsdyli[0];
+			document.getElementById(`tmax${dy}`).oninput();
+			document.getElementById(`tmin${dy}`).value = tempsdyli[1];
+			document.getElementById(`tmin${dy}`).oninput();
+		}
 	}
 }
 
@@ -674,9 +877,12 @@ function load_day_select() {
 	// "en": ["SUN","MON","TUE","WED","THU","FRI","SAT"],
 	let z = new Date();		// Get the current time
 	// rearrange week array so tmrw is day 1 (index 0)
-	// if tmrw is Sunday (index 0)
-
-	if (z.getDay() == 6) {
+	// if time is less than 11am, put today's day as the start
+	if (z.getHours() <= 10) {
+		document.getElementById("firstday").value = z.getDay();
+		prop.weekArray = prop.lang_packs[prop.language].dayNames.slice(z.getDay()).concat(prop.lang_packs[prop.language].dayNames.slice(0, z.getDay()));
+	}
+	else if (z.getDay() == 6) {
 		// change the displayed selected value
 		document.getElementById("firstday").value = 0;
 		prop.weekArray = prop.lang_packs[prop.language].dayNames;

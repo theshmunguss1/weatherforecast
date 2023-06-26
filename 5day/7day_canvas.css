@@ -209,6 +209,15 @@ fieldset {
 }
 #param-save span {
 	font-size: 0.9em;
+	font-style: italic;
 	width: 85%;
 	text-align: justify;
+}
+#param-save-checks {
+	display: flex;
+	flex-wrap: wrap;
+}
+#param-save-checks label {
+	margin: 0 2em;
+	flex-grow: 1;
 }
