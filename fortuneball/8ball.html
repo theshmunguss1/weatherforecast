@@ -13,7 +13,7 @@
 		<h1 id="header">Fortune-Pool Ball</h1>
 		<div id="question-container">
 			<span>Submit a fortune-based question to the inanimate, virtual, and randomized-response object below:</span>
-			<input type="text" id="question" maxlength="70" placeholder="<Enter Question Here>" />
+			<input type="text" id="question" maxlength="70" placeholder="<Enter Question Here>" oninput="options.question = this.value; modify_permalink();" />
 		</div>
 		<div id="poolball-bounds">
 			<div id="ballcontainer" onclick='ask()'>

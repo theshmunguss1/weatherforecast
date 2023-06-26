@@ -61,7 +61,7 @@ let options = {
 process_urlparams();
 
 function process_urlparams() {
-	let terms = document.location.search.split(/(\&|\?)/);
+	let terms = document.location.search.slice(1).split(/\&/);
 	for (let term of terms) {
 		if (term.length > 0) {
 			options[term.split("=")[0]] = decodeURI(term.split("=")[1]);
