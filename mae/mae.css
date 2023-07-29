@@ -118,16 +118,28 @@ a:visited {color: darkblue;}
 	aspect-ratio: 4 / 3;
 	width: 100%;
 }
-#container-display-footer {
+#container-display-footer, #container-display-current-time {
 	white-space: nowrap;
 	overflow-x: hidden;
 	text-align: center;
 }
-#datedisplay {
+#datedisplay, #current-time {
 	font-weight: bold;
 }
 #product-description {
 	font-style: italic;
+}
+#current-time {
+	font-family: Courier;
+}
+
+#modern-backdrop {
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	display: none;
 }
 
 img {
@@ -183,6 +195,10 @@ img {
 	white-space: nowrap;
 	user-select: none;
 }
+#products option:hover {
+	background: yellow;
+	color: black;
+}
 
 .hrmove {
 	position: absolute;
@@ -200,12 +216,9 @@ img {
 
 .products-category {
 	background-color: #CCBC8E;
-	height: 1.2em;
-	line-height: 1.2em;
 }
 .products-product {
 	background-color: #FFF2CC;
-	text-indent: 1em;
 }
 
 #description {
@@ -213,6 +226,7 @@ img {
 	width: 90%;
 	max-width: 1200px;
 }
+#selection-link {display: none;}
 
 /* Email color correct */
 #c_email {

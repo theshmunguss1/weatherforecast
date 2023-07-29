@@ -1,12 +1,59 @@
-let mae = {};
+class MAEProduct {
+	constructor(code, desc, nov22, mar823, mar923) {
+		this._code = code;
+		// this._sf = ['brn', 'cpsh', 'def', 'dvvr', 'effh', 'icon', 'laps', 'lclh', 'lcls', 'lfch', 'lfrh', 'lllr', 'lr3c', 'mcon', 'mixr', 'mlcp_eshr', 'mlcp', 'mucp', 'muli', 'mxth', 'peff', 'pwtr2', 'pwtr', 'qlcs1', 'qlcs2', 'sbcp', 'stor', 'stpc', 'tdlr', 'thea', 'trap', 'ttd', 'vtm'].includes(this._code);
+		this._description = desc;
+		this._nov22 = Boolean(nov22);
+		this._mar823 = Boolean(mar823);
+		this._mar923 = Boolean(mar923);
+	}
+
+	get code() {
+		return this._code;
+	}
+
+	get sf() {
+		return this._sf;
+	}
+
+	get description() {return this._description}
+
+	is_available(date) {
+		if (
+			date < new Date(2022, 11-1, 30, 20)
+		) {
+			return this._nov22;
+		}
+		else if (
+			date >= new Date(2022, 11-1, 30, 20) &&
+			date < new Date(2023, 3-1, 9)
+		) {
+			return this._mar823;
+		}
+		else {
+			return this._mar923;
+		}
+	}
+}
+
+let mae = {
+	"ptype" : "500mb",
+	"time" : new Date(
+		utcNow() - 120 * 1000 * 60
+	),
+};
+
 let mainimg = document.getElementById("mainimg");
+let backdrop = document.getElementById("modern-backdrop");
 let datedisp = document.getElementById("datedisplay");
 let desc = document.getElementById("product-description");
 let gotodate = document.getElementById("gotodate");
 let missing = document.getElementById("missing");
-let selection_link = document.getElementById("selection_link");
+let selection_link = document.getElementById("selection-link");
+let prod_select = document.getElementById("products");
 // bool to determine param value upon searchparam and bookmark loading
 let current_btn_pressed = false;
+let current_time = document.getElementById("current-time");
 
 // mainimg error event listener
 mainimg.addEventListener(
@@ -18,101 +65,142 @@ mainimg.addEventListener(
 );
 
 // key listener
-document.addEventListener(
-	"keyup",
-	kbshortcut
-);
+document.onkeypress = kbshortcut;
 
 function load() {
-	let element = document.getElementById("products");
-	for (product of product_list) {
-		opt = document.createElement("div");
-		// Test if we're dealing with a category name
-		if (product.code == "CATEGORY") {
-			opt.setAttribute("class", "products-category");
-		}
-		// Actual product
-		else {
-			opt.setAttribute("class", "products-product");
-			opt.setAttribute("id", "prod_" + product.code);
-			opt.setAttribute("onclick", "change_product(this)");
-		}
-		opt.innerText = product.description;
-		element.appendChild(opt);
-	}
-	// Parse Search Parameters (if applicable)
-	params = new URLSearchParams(location.search);
-	// Default Date
-	if (params.get("date") != null) {
-		try {
-			// handle if user always wants current time upon startup
-			if (["current", "present"].includes(params.get("date").toLowerCase())) {
-				mae.time = new Date(
-					(Date.now() - 120 * 1000 * 60) + new Date(Date.now()).getTimezoneOffset()
-					* 1000 * 60
-				);
-				current_btn_pressed = true;
-			}
-			else {
-				mae.time = new Date(
-					parseInt(params.get("date").slice(0,4)),
-					parseInt(params.get("date").slice(4,6)) - 1,
-					parseInt(params.get("date").slice(6,8)),
-					parseInt(params.get("date").slice(8))
-				);
-				// Throw error at invalid date
-				if (date_is_valid(mae.time) == false) {
-					throw Error(
-						"Date of " + mae.time.getFullYear()
-						+ "-" + (mae.time.getMonth() + 1)
-						+ "-" + mae.time.getDate()
-						+ " " + mae.time.getHours() + "Z is invalid."
-					);
-				}
-			}
+	updateCurrentTime(true);
+	load_products();
+	process_urlparams();
 
-		} catch(error) {
-			console.log(error.message);
-			mae.time = new Date(2011, 4-1, 27, 21);
-		};
+	change_product();
+}
+
+function updateCurrentTime(init=false) {
+	// This is used to sync the current time on page with system
+	let z = new Date().getTime();
+	if (init) {
+		setTimeout(
+			updateCurrentTime,
+			(60 - new Date().getSeconds()) * 1000
+		);
 	}
-	else {
-		mae.time = new Date(2011, 4-1, 27, 21);
+	else if ("interval" in current_time == false) {
+		current_time.interval = setInterval(updateCurrentTime, 60000);
 	}
-	// Default Product
-	if (params.get("product") != null) {
-		try {
-			mae.ptype = params.get("product");
-			// Throw error at invalid date
-			if (product_is_valid(mae.ptype) == false) {
-				throw Error(`'${mae.ptype}' is an invalid product.`);
-			}
-		} catch(error) {
-			console.log(error.message);
-			mae.ptype = "dy1torn";
-		};
-	}
-	else {
-		mae.ptype = "dy1torn";
-	}
-	change_product(
-		document.getElementById("prod_" + mae.ptype),
-		true
+
+	let now = utcNow(
+		new Date().getMinutes(),
+		new Date().getSeconds(),
+	);
+	// console.log(now);
+	current_time.innerText = [
+		now.getDate(),
+		month_abbr(now.getMonth() + 1),
+		now.getFullYear(),
+		"-",
+		[
+			now.getHours().toString().padStart(2,"0"),
+			":",
+			now.getMinutes().toString().padStart(2,"0"),
+			"Z",
+		].join(""),
+	].join(" ");
+}
+
+function utcNow(minutes=0, seconds=0) {
+	return new Date(
+		new Date().getUTCFullYear(),
+		new Date().getUTCMonth(),
+		new Date().getUTCDate(),
+		new Date().getUTCHours(),
+		minutes,
+		seconds
 	);
 }
 
+function utcEquiv(date) {
+	let offset_ms = date.getTimezoneOffset() * 60 * 1000;
+	return new Date(date.getTime() + offset_ms);
+}
 
-function change_product(element, init=false) {
-	if ((element.getAttribute("id") != "prod_" + mae.ptype
-		&& init == false) || init == true) {
-		// Take off old highlight
-		document.getElementById("prod_" + mae.ptype).style.backgroundColor = "#FFF2CC";
-		// Change product and highlight new
-		mae.ptype = element.id.match(/_(.*)/)[1];
-		mae.pdesc = element.innerText;
-		element.style.backgroundColor = "yellow";
-		display_new_image();
+function load_products() {
+	let lastoptgroup = {};
+	let opt;
+
+	// Clear options
+	prod_select.innerHTML = "";
+
+	// read-in products
+	for (product of product_list) {
+		// show product if it ``init`` or if valid
+		if (product.is_available(mae.time)) {
+			if (product.code == "CATEGORY") {
+				opt = document.createElement("optgroup");
+				opt.setAttribute("label", product.description);
+				opt.setAttribute("class", "products-category");
+				prod_select.appendChild(opt);
+				lastoptgroup = opt;
+			}
+			else {
+				opt = document.createElement("option");
+				opt.setAttribute("class", "products-product");
+				opt.setAttribute("id", "prod_" + product.code);
+				opt.setAttribute("value", product.code);
+				opt.jsobj = product;
+				opt.jsobj.htmlobj = opt;
+				// opt.setAttribute("onclick", "change_product(this.value)");
+				lastoptgroup.appendChild(opt);
+			}
+			opt.innerText = product.description;
+			// prod.appendChild(opt);
+		}
 	}
+	// try to switch back the product if it exists in the date-dependent list
+	try {
+		document.getElementById(`prod_${mae.ptype}`).setAttribute("selected", true);
+	} catch {
+		console.log(
+			`* "${mae.ptype}" unavailable for selection on the date of `
+			+ [
+				mae.time.getFullYear(),
+				(mae.time.getMonth() + 1).toString().padStart(2, "0"),
+				mae.time.getDate().toString().padStart(2, "0")
+					+ " "
+					+ mae.time.getHours().toString().padStart(2, "0")
+					+ "Z",
+			].join("-")
+		);
+	};
+}
+
+function process_urlparams() {
+	let terms = document.location.search.slice(1).split(/\&/);
+	let params = {};
+	for (let term of terms) {
+		if (term.length > 0) {
+			params[term.split("=")[0]] = decodeURI(term.split("=")[1]);
+		}
+	}
+
+	// Handle saved date
+	if ("date" in params) {
+		
+	}
+
+	// Handle saved product
+	if ("product" in params) {
+		mae.ptype = params.product;
+		document.getElementById(`prod_${params.product}`).setAttribute("selected", true);
+	}
+	else {
+		document.getElementById(`prod_${mae.ptype}`).setAttribute("selected", true);
+	}
+
+}
+
+function change_product() {
+	mae.ptype = prod_select.value;
+	display_new_image();
 }
 
 function change_date(delta, units) {
@@ -125,6 +213,7 @@ function change_date(delta, units) {
 	if (date_is_valid(newtime)) {
 		current_btn_pressed = false;
 		mae.time = newtime;
+		load_products();
 		display_new_image();
 	}
 }
@@ -172,18 +261,18 @@ function check_gotodate() {
 	if (newdate.toString() != mae.time.toString() && date_is_valid(newdate)) {
 		mae.time = new Date(year, month-1, day, hour);
 		current_btn_pressed = false;
+		load_products();
 		display_new_image();
 	}
 	else {
 		gotodate.value = "";
 	}
-	
 }
 
 function gotopresent() {
+	// go to time of now minus 2 hours
 	mae.time = new Date(
-		(Date.now() - 120 * 1000 * 60) + new Date(Date.now()).getTimezoneOffset()
-		* 1000 * 60
+		utcNow() - 120 * 1000 * 60
 	);
 	current_btn_pressed = true;
 	display_new_image();
@@ -193,10 +282,7 @@ function date_is_valid(date) {
 	// min="2005101800"
 	if (
 		date >= new Date(2005, 10, 18, 00) &&
-		date <= new Date(
-			Date.now() + new Date(Date.now()).getTimezoneOffset()
-			* 1000 * 60
-		)
+		date <= utcNow()
 	) {
 		return true;
 	}
@@ -238,22 +324,80 @@ function display_new_image() {
 	// Turn off missing indicator if necessary
 	missing.style.display = "none";
 	mainimg.style.display = "block";
+
+	// Display the backdrop (or disable) based upon the date (because newer products are all transparent)
+	if (mae.time >= new Date(2022,12,1)) {
+		backdrop.style.display = "block";
+	}
+	else {
+		backdrop.style.display = "none";
+	}
+
 	// Change date placeholder text
 	change_date_placeholder();
+
 	// Product description
-	datedisp.innerText = mae.time.getFullYear()
-			     + " " + month_abbr(mae.time.getMonth() + 1)
-				 + " " + mae.time.getDate().toString().padStart(2, "0")
-				 + " - " + mae.time.getHours().toString().padStart(2, "0")
-				 + "Z";
-	desc.innerText = mae.pdesc + ` (${mae.ptype})`;
+	datedisp.innerText = [
+		mae.time.getDate(),
+		month_abbr(mae.time.getMonth() + 1),
+		mae.time.getFullYear(),
+		"-",
+		mae.time.getHours().toString().padStart(2,"0") + "Z"
+	].join(" ");
+
+	// label text; errors upon invalid (date-based) selection
+	try {
+		desc.innerText = prod_select.selectedOptions[0].innerText + ` (${mae.ptype})`;
+
+		// try to center on selection
+		try {
+			document.getElementById(`prod_${mae.ptype}`)
+				.scrollIntoView({"block": "center",});
+		} catch {
+			document.getElementById(`prod_${mae.ptype}`).scrollIntoView();
+		}
+	} catch (error) {
+		// pass
+	}
+
 	// Change imagery
 	new_src = "https://www.spc.noaa.gov/exper/ma_archive/images_s4/"
-		+ mae.time.getFullYear().toString()
+		+ mae.time.getFullYear()
 		+ (mae.time.getMonth() + 1).toString().padStart(2, "0")
 		+ mae.time.getDate().toString().padStart(2, "0")
-		+ "/" + mae.time.getHours().toString().padStart(2, "0")
-		+ "_" + mae.ptype + ".gif";
+		+ "/"
+	;
+	// Different file format
+	// for Dec2022 thru Jan-04-2023 17z, they have a suffix like ptype_22122203_sf.gif
+	if (
+		mae.time >= new Date(2022, 12-1, 1) &&
+		mae.time < new Date(2023, 1-1, 4, 18)
+	) {
+		new_src += mae.ptype + "_";
+		// Prefer solid-fill images vs. thatched
+		if (
+			['brn', 'cpsh', 'def', 'dvvr', 'effh', 'icon', 'laps', 'lclh', 'lcls', 'lfch', 'lfrh', 'lllr', 'lr3c', 'mcon', 'mixr', 'mlcp_eshr', 'mlcp', 'mucp', 'muli', 'mxth', 'peff', 'pwtr2', 'pwtr', 'qlcs1', 'qlcs2', 'sbcp', 'stor', 'stpc', 'tdlr', 'thea', 'trap', 'vtm'].includes(mae.ptype)
+		) {
+			// of note, 'ttd', also has solid fill during this time, but it doesn't render well, so it was not included in the above list
+			new_src += "sf_";
+		}
+		new_src += [
+			mae.time.getFullYear().toString().substr(2).padStart(2, "0"),
+			(mae.time.getMonth() + 1).toString().padStart(2, "0"),
+			mae.time.getDate().toString().padStart(2, "0"),
+			mae.time.getHours().toString().padStart(2, "0"),
+		].join("");
+	}
+	// Standard file format for nearly all of the archive
+	else {
+		new_src += mae.time.getHours().toString().padStart(2, "0")
+			+ "_" + mae.ptype
+	}
+
+	// add file type suffix
+	new_src += ".gif";
+	// console.log(new_src);
+
 	mainimg.src = new_src;
 	// Modify the selection link
 	selection_link.href = location.pathname;
@@ -290,157 +434,204 @@ function chg_hr_key(event) {
 
 let product_list = [
 	// Observations
-	{"code":"CATEGORY", "description": "Observations"},
-	{"code":"bigsfc", "description": "Surface Observations"},
-	{"code":"1kmv", "description": "Sat - Visible"},
-	{"code":"ir", "description": "Sat - Infrared"},
-	{"code":"wv", "description": "Sat - Water Vapor"},
-	{"code":"rgnlrad", "description": "Radar Mosaic"},
-	{"code":"dy1otlk", "description": "Day 1 Severe Weather Outlook"},
-	{"code":"dy1torn", "description": "Day 1 Tornado Outlook"},
-	{"code":"dy1hail", "description": "Day 1 Hail Outlook"},
-	{"code":"dy1wind", "description": "Day 1 Wind Outlook"},
-	{"code":"dy1fire", "description": "Day 1 Fire Wx Outlook"},
-	{"code":"spcww", "description": "Watches in Effect (transparent)"},
-	{"code":"mcdsum", "description": "Mesoscale Discussion Summary (transparent)"},
-	{"code":"rgnlwarn", "description": "Radar-SPC Outlook-Warnings Summary"},
-	{"code":"activity_loop", "description": "Radar-SPC Outlook-Warnings Loop"},
+	new MAEProduct("CATEGORY", "Observations", 1, 0, 0),
+	new MAEProduct("bigsfc", "Surface Observations", 1, 0, 0),
+	new MAEProduct("1kmv", "Visible Satellite", 1, 0, 0),
+	new MAEProduct("ir", "Sat - Infrared", 1, 0, 0),
+	new MAEProduct("wv", "Sat - Water Vapor", 1, 0, 0),
+	new MAEProduct("rgnlrad", "Radar Base Reflectivity", 1, 0, 0),
+	new MAEProduct("rgnlrad_small", "Radar Base Reflectivity (small)", 1, 0, 0),
+	new MAEProduct("activity_loop", "Activity Loop", 1, 0, 0),
+	new MAEProduct("dy1otlk", "Day 1 Severe Weather Outlook", 1, 0, 0),
+	new MAEProduct("dy1torn", "Day 1 Tornado Outlook", 1, 0, 0),
+	new MAEProduct("dy1hail", "Day 1 Hail Outlook", 1, 0, 0),
+	new MAEProduct("dy1wind", "Day 1 Wind Outlook", 1, 0, 0),
+	new MAEProduct("dy1fire", "Day 1 Fire Wx Outlook", 1, 0, 0),
+	new MAEProduct("spcww", "Watches in Effect (transparent)", 1, 0, 0),
+	new MAEProduct("mcdsum", "Mesoscale Discussion Summary (transparent)", 1, 0, 0),
+	new MAEProduct("rgnlwarn", "Radar-SPC Outlook-Warnings Summary", 1, 0, 0),
 
 	// Surface
-	{"code":"CATEGORY", "description": "Surface"},
-	{"code":"pmsl", "description": "Sea-Level Pressure"},
-	{"code":"ttd", "description": "Temp-Dewpoint-SLP"},
-	{"code":"mcon", "description": "Moisture Convergence and Mixing-Ratio"},
-	{"code":"thea", "description": "Theta-E Advection"},
-	{"code":"mxth", "description": "Mixing Ratio and Theta"},
-	{"code":"icon", "description": "Instantaneous Contraction Rate and Theta"},
-	{"code":"trap", "description": "Fluid Trapping Diagnostic"},
-	{"code":"vtm", "description": "Horizontal Velocity Gradient Tensor Magnitude"},
-	{"code":"dvvr", "description": "SFC Vorticity and Divergence"},
-	{"code":"def", "description": "SFC Total Deformation"},
-	{"code":"pchg", "description": "2-Hr Pressure Change"},
-	{"code":"temp_chg", "description": "3-Hr Temperature Change"},
-	{"code":"dwpt_chg", "description": "3-Hr Dew-Point Change"},
-	{"code":"mixr_chg", "description": "3-Hr Mixing Ratio Change"},
-	{"code":"thte_chg", "description": "3-Hr Theta-E Change"},
+	new MAEProduct("CATEGORY", "Surface", 1, 1, 1),
+	new MAEProduct("pmsl", "MSL Pressure/Wind", 1, 1, 1),
+	new MAEProduct("ttd", "Temp/Wind/Dwpt", 1, 1, 1),
+	new MAEProduct("thet", "MSL Pressure/Theta-E/Wind", 0, 1, 1),
+	new MAEProduct("mcon", "Moisture Convergence", 1, 1, 1),
+	new MAEProduct("thea", "Theta-E Advection", 1, 1, 1),
+	new MAEProduct("mxth", "Mixing Ratio / Theta", 1, 1, 1),
+	new MAEProduct("icon", "Instantaneous Contraction Rate (sfc)", 1, 1, 1),
+	new MAEProduct("trap", "Fluid Trapping (sfc)", 1, 1, 1),
+	new MAEProduct("vtm", "Velocity Tensor Magnitude (sfc)", 1, 1, 1),
+	new MAEProduct("dvvr", "Divergence and Vorticity (sfc)", 1, 1, 1),
+	new MAEProduct("def", "Deformation and Axes of Dilitation (sfc)", 1, 1, 1),
+	new MAEProduct("pchg", "2-hour Pressure Change", 1, 1, 1),
+	new MAEProduct("temp_chg", "3-hour Temp Change", 1, 0, 0),
+	new MAEProduct("dwpt_chg", "3-hour Dwpt Change", 1, 0, 0),
+	new MAEProduct("mixr_chg", "3-hour 100mb Mixing Ratio Change", 1, 0, 0),
+	new MAEProduct("thte_chg", "3-hour Theta-E Change", 1, 0, 0),
 
 	// Upper Air
-	{"code":"CATEGORY", "description": "Upper Air"},
-	{"code":"925mb", "description": "925mb Analysis"},
-	{"code":"850mb", "description": "850mb Analysis"},
-	{"code":"700mb", "description": "700mb Analysis"},
-	{"code":"500mb", "description": "500mb Analysis"},
-	{"code":"300mb", "description": "300mb Analysis"},
-	{"code":"dlcp", "description": "Deep-Layer Moisture-Flux Convergence and Mean Mixing Ratio"},
-	{"code":"sfnt", "description": "Surface Frontogenesis"},
-	{"code":"tadv", "description": "850mb Temperature Advection"},
-	{"code":"8fnt", "description": "850 Frontogenesis"},
-	{"code":"7fnt", "description": "700 Frontogenesis"},
-	{"code":"857f", "description": "850-700 Frontogenesis"},
-	{"code":"75ft", "description": "700-500 Frontogenesis"},
-	{"code":"vadv", "description": "500mb Vorticity Advection"},
-	{"code":"padv", "description": "400-250mb Potential Vorticity Advection"},
-	{"code":"ddiv", "description": "250-850mb Differential Divergence"},
-	{"code":"ageo", "description": "300mb Jet Circulation"},
-	{"code":"500mb_chg", "description": "12-Hr 500mb Height Change"},
-	{"code":"trap_500", "description": "500mb Fluid Trapping"},
-	{"code":"trap_250", "description": "250mb Fluid Trapping"},
+	new MAEProduct("CATEGORY", "Upper Air", 1, 1, 1),
+	new MAEProduct("925mb", "925mb Analysis", 1, 0, 1),
+	new MAEProduct("850mb", "850mb Analysis", 1, 0, 1),
+	new MAEProduct("850mb2", "850mb Analysis (version 2)", 0, 0, 1),
+	new MAEProduct("700mb", "700mb Analysis", 1, 0, 1),
+	new MAEProduct("500mb", "500mb Analysis", 1, 0, 1),
+	new MAEProduct("300mb", "300mb Analysis", 1, 0, 1),
+	new MAEProduct("dlcp", "Deep Moist Convergence", 1, 1, 1),
+	new MAEProduct("tadv_925", "925mb Temp Advection", 0, 0, 1),
+	new MAEProduct("tadv", "850mb Temp Advection", 1, 0, 1),
+	new MAEProduct("7tad", "700mb Temp Advection", 0, 0, 1),
+	new MAEProduct("sfnt", "Sfc Frontogenesis", 1, 1, 1),
+	new MAEProduct("9fnt", "925mb Frontogenesis", 0, 0, 1),
+	new MAEProduct("8fnt", "850mb Frontogenesis", 1, 0, 1),
+	new MAEProduct("7fnt", "700mb Frontogenesis", 1, 0, 1),
+	new MAEProduct("925f", "1000-925mb Frontogenesis", 0, 0, 1),
+	new MAEProduct("98ft", "925-850mb Frontogenesis", 0, 0, 1),
+	new MAEProduct("857f", "850-700mb Frontogenesis", 1, 0, 1),
+	new MAEProduct("75ft", "700-500mb Frontogenesis", 1, 0, 1),
+	new MAEProduct("vadv", "700-400mb Diff. Vorticity Advection", 1, 0, 1),
+	new MAEProduct("padv", "400-250mb Pot. Vorticity Advection", 1, 0, 1),
+	new MAEProduct("ddiv", "850-250mb Diff. Divergence", 1, 0, 1),
+	new MAEProduct("ageo", "300mb Jet Circulation", 1, 0, 1),
+	new MAEProduct("500mb_chg", "12-hour 500mb Height Change", 1, 0, 0),
+	new MAEProduct("trap_500", "Fluid Trapping (500mb)", 1, 0, 1),
+	new MAEProduct("trap_250", "Fluid Trapping (250mb)", 1, 0, 1),
 
-	// Thermodynamics
-	{"code":"CATEGORY", "description": "Thermodynamics"},
-	{"code":"sbcp", "description": "SFC CAPE"},
-	{"code":"mlcp", "description": "ML CAPE"},
-	{"code":"mucp", "description": "MU CAPE"},
-	{"code":"ncap", "description": "Normalized CAPE"},
-	{"code":"dcape", "description": "Downdraft CAPE"},
-	{"code":"muli", "description": "SFC-based Lifted Index and SFC-based CIN"},
-	{"code":"laps", "description": "Mid-Level Lapse Rates"},
-	{"code":"lllr", "description": "Low-Level Lapse Rates"},
-	{"code":"lclh", "description": "LCL Heights"},
-	{"code":"lfch", "description": "LFC Heights"},
-	{"code":"lfrh", "description": "LFC-LCL RH"},
-	{"code":"sbcp_chg", "description": "3-Hr SBCAPE Change"},
-	{"code":"mlcp_chg", "description": "3-Hr MLCAPE Change"},
-	{"code":"mucp_chg", "description": "3-Hr MUCAPE Change"},
-	{"code":"lllr_chg", "description": "3-Hr Low-Level Lapse Rate Change"},
-	{"code":"laps_chg", "description": "6-Hr Mid-Level Lapse Rate Change"},
+	// Thermodynamics / Classic
+	new MAEProduct("CATEGORY", "Thermodynamics / Classic", 1, 1, 1),
+	new MAEProduct("sbcp", "CAPE - Surface-Based", 1, 1, 1),
+	new MAEProduct("mlcp", "CAPE - 100mb Mixed-Layer", 1, 1, 1),
+	new MAEProduct("mucp", "CAPE - Most-Unstable / LPL Height", 1, 1, 1),
+	new MAEProduct("eltm", "EL Temp / MUCAPE / MUCIN", 0, 1, 1),
+	new MAEProduct("ncap", "CAPE - Normalized", 1, 1, 1),
+	new MAEProduct("dcape", "CAPE - Downdraft", 1, 1, 1),
+	new MAEProduct("muli", "Surface-based Lifted Index", 1, 1, 1),
+	new MAEProduct("laps", "Mid-Level Lapse Rates", 1, 1, 1),
+	new MAEProduct("lllr", "Low-Level Lapse Rates", 1, 1, 1),
+	new MAEProduct("maxlr", "Max 2-6 km AGL Lapse Rate", 0, 1, 1),
+	new MAEProduct("lclh", "LCL Height", 1, 1, 1),
+	new MAEProduct("lfch", "LFC Height", 1, 1, 1),
+	new MAEProduct("lfrh", "LCL-LFC Mean RH", 1, 1, 1),
+	new MAEProduct("sbcp_chg", "3-hour Surface-Based CAPE Change", 1, 0, 0),
+	new MAEProduct("mlcp_chg", "3-hour 100mb Mixed-Layer CAPE Change", 1, 0, 0),
+	new MAEProduct("mucp_chg", "3-hour Most-Unstable CAPE Change", 1, 0, 0),
+	new MAEProduct("lllr_chg", "3-hour Low-Level LR Change", 1, 0, 0),
+	new MAEProduct("laps_chg", "6-hour Mid-Level LR Change", 1, 0, 0),
+	new MAEProduct("ttot", "Total Totals", 0, 1, 1),
+	new MAEProduct("kidx", "K-Index", 0, 0, 1),
+	new MAEProduct("show", "Showalter Index", 0, 1, 1),
 
-	// Wind
-	{"code":"CATEGORY", "description": "Wind"},
-	{"code":"eshr", "description": "Bulk Shear-Effective"},
-	{"code":"shr6", "description": "Bulk Shear-0-6km"},
-	{"code":"shr8", "description": "Bulk Shear-0-8km"},
-	{"code":"shr1", "description": "Bulk Shear-0-1km"},
-	{"code":"brns", "description": "BRN Shear"},
-	{"code":"effh", "description": "SR Helicity-Effective"},
-	{"code":"srh3", "description": "SR Helicity-0-3km"},
-	{"code":"srh1", "description": "SR Helicity-0-1km"},
-	{"code":"clsh", "description": "Effective Inflow Base-Eff. SRH-Storm Motion"},
-	{"code":"llsr", "description": "SR Winds-0-2km"},
-	{"code":"mlsr", "description": "SR Winds-4-6km"},
-	{"code":"ulsr", "description": "SR Winds-9-11km"},
-	{"code":"alsr", "description": "SR Winds-Anvil Level"},
-	{"code":"mnwd", "description": "850-300mb Mean Wind"},
-	{"code":"xover", "description": "850 and 500 Wind Crossover"},
-	{"code":"srh3_chg", "description": "3-Hr SRH Change-0-3km"},
-	{"code":"shr1_chg", "description": "3-Hr 0-1km Bulk Shear Change"},
-	{"code":"shr6_chg", "description": "3-Hr 0-6km Bulk Shear Change"},
+	// Wind Shear
+	new MAEProduct("CATEGORY", "Wind Shear", 1, 1, 1),
+	new MAEProduct("eshr", "Bulk Shear - Effective", 1, 1, 1),
+	new MAEProduct("shr6", "Bulk Shear - Sfc-6km", 1, 1, 1),
+	new MAEProduct("shr8", "Bulk Shear - Sfc-8km", 1, 1, 1),
+	new MAEProduct("shr3", "Bulk Shear - Sfc-3km", 0, 1, 1),
+	new MAEProduct("shr1", "Bulk Shear - Sfc-1km", 1, 1, 1),
+	new MAEProduct("brns", "BRN Shear", 1, 1, 1),
+	new MAEProduct("effh", "SR Helicity - Effective", 1, 1, 1),
+	new MAEProduct("srh3", "SR Helicity - Sfc-3km", 1, 1, 1),
+	new MAEProduct("srh1", "SR Helicity - Sfc-1km", 1, 1, 1),
+	new MAEProduct("srh5", "SR Helicity - Sfc-500m", 0, 1, 1),
+	new MAEProduct("clsh", "Effective Inflow Base-Eff. SRH-Storm Motion", 1, 1, 1),
+	new MAEProduct("llsr", "SR Wind - Sfc-2km", 1, 1, 1),
+	new MAEProduct("mlsr", "SR Wind - 4-6km", 1, 1, 1),
+	new MAEProduct("ulsr", "SR Wind - 9-11km", 1, 1, 1),
+	new MAEProduct("alsr", "SR Wind - Anvil Level", 1, 1, 1),
+	new MAEProduct("mnwd", "850-300mb Mean Wind", 1, 0, 1),
+	new MAEProduct("xover", "850 and 500mb Winds", 1, 0, 1),
+	new MAEProduct("srh3_chg", "3hr Sfc-3km SR Helicity Change", 1, 0, 0),
+	new MAEProduct("shr1_chg", "3hr Sfc-1km Bulk Shear Change", 1, 0, 0),
+	new MAEProduct("shr6_chg", "3hr Sfc-6km Bulk Shear Change", 1, 0, 0),
 
 	// Composites
-	{"code":"CATEGORY", "description": "Composites"},
-	{"code":"scp", "description": "Supercell Composite"},
-	{"code":"lscp", "description": "Left-Moving Supercell Composite"},
-	{"code":"stor", "description": "Significant Tornado Parameter (fixed)"},
-	{"code":"stpc", "description": "Significant Tornado Parameter (effective)"},
-	{"code":"nstp", "description": "Non-Supercell Tornado Parameter"},
-	{"code":"sigh", "description": "Significant Hail Parameter"},
-	{"code":"dcp", "description": "Derecho Composite Parameter"},
-	{"code":"cbsig", "description": "Craven SigSvr Parameter"},
-	{"code":"brn", "description": "Bulk Richardson Number"},
-	{"code":"mcsm", "description": "MCS Maintenance"},
-	{"code":"ehi1", "description": "Energy Helicity Index 0-1km"},
-	{"code":"ehi3", "description": "Energy Helicity Index 0-3km"},
-	{"code":"vgp3", "description": "3km Vorticity Generation Parameter"},
+	new MAEProduct("CATEGORY", "Composites", 1, 1, 1),
+	new MAEProduct("scp", "Supercell Composite", 1, 1, 1),
+	new MAEProduct("lscp", "Supercell Composite (left-moving)", 1, 1, 1),
+	new MAEProduct("stor", "Sgfnt Tornado (fixed layer)", 1, 1, 1),
+	new MAEProduct("stpc", "Sgfnt Tornado (effective layer)", 1, 1, 1),
+	new MAEProduct("stpc5", "Sgfnt Tornado (using 0-500m SRH )", 0, 1, 1),
+	new MAEProduct("nstp", "Non-Supercell Tornado", 1, 1, 1),
+	new MAEProduct("lli", "Non-Supercell Tornado Parameter ???", 0, 1, 1),
+	new MAEProduct("vtp3", "Violent Tornado Parameter (VTP)", 0, 1, 1),
+	new MAEProduct("sigh", "Sgfnt Hail", 1, 1, 1),
+	new MAEProduct("sars1", "SARS Hail Size", 0, 0, 1),
+	new MAEProduct("sars2", "SARS Sig. Hail Percentage", 0, 0, 1),
+	new MAEProduct("lghl", "Large Hail Parameter", 0, 1, 1),
+	new MAEProduct("dcp", "Derecho Composite", 1, 1, 1),
+	new MAEProduct("cbsig", "Craven/Brooks Sgfnt Severe", 1, 1, 1),
+	new MAEProduct("brn", "Bulk Richardson Number", 1, 1, 1),
+	new MAEProduct("mcsm", "MCS Maintenance", 1, 1, 1),
+	new MAEProduct("mbcp", "Microburst Composite", 0, 1, 1),
+	new MAEProduct("desp", "Enhanced Stretching Potential", 0, 1, 1),
+	new MAEProduct("eehi", "Enhanced 0-1km EHI and MLCIN", 0, 1, 1),
+	new MAEProduct("ehi1", "EHI - Sfc-1km", 1, 1, 1),
+	new MAEProduct("ehi3", "EHI - Sfc-3km", 1, 1, 1),
+	new MAEProduct("vgp3", "VGP - Sfc-3km", 1, 1, 1),
+	new MAEProduct("crit", "Critical Angle", 0, 1, 1),
 
 	// Multi-Parameter Fields
-	{"code":"CATEGORY", "description": "Multi-Paramenter Fields"},
-	{"code":"cpsh", "description": "MUCAPE and MUCIN and Effective Bulk Shear"},
-	{"code":"comp", "description": "850 to 500 Crossover and MULI"},
-	{"code":"lcls", "description": "Mean LCL and SRH"},
-	{"code":"lr3c", "description": "Low-Level Lapse-Rates and LL MLCAPE"},
-	{"code":"3cvr", "description": "SFC Vorticity and 0-3km MLCAPE"},
-	{"code":"tdlr", "description": "SFC DewPoint and Mid-Level LR"},
-	{"code":"hail", "description": "Hail Parameters"},
+	new MAEProduct("CATEGORY", "Multi-Parameter Fields", 1, 1, 1),
+	new MAEProduct("mlcp_eshr", "100mb Mixed-Layer CAPE / Effective Bulk Shear", 0, 1, 1),
+	new MAEProduct("cpsh", "Most-Unstable CAPE / Effective Bulk Shear", 1, 1, 1),
+	new MAEProduct("comp", "Most-Unstable LI / 850 & 500mb Winds", 1, 0, 1),
+	new MAEProduct("lcls", "LCL Height / Sfc-1km SR Helicity", 1, 1, 1),
+	new MAEProduct("lr3c", "Sfc-3km Lapse Rate / Sfc-3km MLCAPE", 1, 1, 1),
+	new MAEProduct("3cape_shr3", "Bulk Shear - Sfc-3km / Sfc-3km MLCAPE", 0, 1, 1),
+	new MAEProduct("3cvr", "Sfc Vorticity / Sfc-3km MLCAPE", 1, 1, 1),
+	new MAEProduct("tdlr", "Sfc Dwpt / 700-500mb Lapse Rates", 1, 1, 1),
+	new MAEProduct("hail", "Hail Parameters", 1, 1, 1),
+	new MAEProduct("qlcs1", "Lowest 3km max. Theta-e diff., MUCAPE, and 0-3km vector shear", 0, 1, 1),
+	new MAEProduct("qlcs2", "Lowest 3km max. Theta-e diff., MLCAPE, and 0-3km vector shear", 0, 1, 1),
 
-	// Heavy Precipitation
-	{"code":"CATEGORY", "description": "Heavy Rain"},
-	{"code":"pwtr", "description": "Precipitable Water"},
-	{"code":"tran", "description": "850 Moisture Transport"},
-	{"code":"prop", "description": "Upwind Propagation Vector"},
-	{"code":"peff", "description": "Precipitation Potential Placement"},
+	// Heavy Rain
+	new MAEProduct("CATEGORY", "Heavy Rain", 1, 1, 1),
+	new MAEProduct("pwtr", "Precipitable Water", 1, 1, 1),
+	new MAEProduct("pwtr2", "Precipitable Water (w/850mb Moisture Transport Vector)", 0, 1, 1),
+	new MAEProduct("tran", "850mb Moisture Transport", 1, 0, 1),
+	new MAEProduct("tran_925", "925mb Moisture Transport", 0, 0, 1),
+	new MAEProduct("tran_925-850", "925-850mb Moisture Transport", 0, 0, 1),
+	new MAEProduct("prop", "Upwind Propagation Vector", 1, 0, 1),
+	new MAEProduct("peff", "Precipitation Potential Placement", 1, 1, 1),
+	new MAEProduct("mixr", "100mb Mean Mixing Ratio", 0, 1, 1),
 
-	// Winter Weather
-	{"code":"CATEGORY", "description": "Winter Weather"},
-	{"code":"fztp", "description": "Near-Freezing SFC Temps-Wind-Pres"},
-	{"code":"swbt", "description": "SFC Wet-Bulb Temps"},
-	{"code":"fzlv", "description": "Freezing Level"},
-	{"code":"thck", "description": "Critical Thicknesses"},
-	{"code":"epvl", "description": "Equivalent Potential Vorticity-Low-Level"},
-	{"code":"epvm", "description": "Equivalent Potential Vorticity-Mid-Level"},
-	{"code":"les1", "description": "Lake-Effect Snow-1"},
-	{"code":"les2", "description": "Lake-Effect Snow-2"},
+	// Winter / Fire
+	new MAEProduct("CATEGORY", "Winter / Fire", 1, 1, 1),
+	new MAEProduct("ptyp", "Precipitation Type", 0, 1, 1),
+	new MAEProduct("fztp", "Near-Freezing Surface Temp", 1, 1, 1),
+	new MAEProduct("swbt", "Surface Wet-Bulb Temp", 1, 1, 1),
+	new MAEProduct("fzlv", "Freezing Level", 1, 0, 1),
+	new MAEProduct("thck", "Critical Thicknesses", 1, 0, 1),
+	new MAEProduct("epvl", "800-750mb EPVg", 1, 0, 1),
+	new MAEProduct("epvm", "650-500mb EPVg", 1, 0, 1),
+	new MAEProduct("les1", "Lake Effect Snow 1", 1, 0, 1),
+	new MAEProduct("les2", "Lake Effect Snow 2", 1, 0, 1),
+	new MAEProduct("dend", "Dendritic Growth Layer Depth", 0, 1, 1),
+	new MAEProduct("dendrh", "Dendritic Growth Layer RH", 0, 1, 1),
+	new MAEProduct("ddrh", "Dendritic Growth Layer Depth & RH", 0, 1, 1),
+	new MAEProduct("mxwb", "Max Wet Bulb Temperature", 0, 1, 1),
+	new MAEProduct("sfir", "Sfc RH / Temp / Wind", 1, 1, 1),
+	new MAEProduct("fosb", "Fosberg Index", 1, 1, 1),
+	new MAEProduct("lhan", "Low Altitude Haines Index", 1, 0, 1),
+	new MAEProduct("mhan", "Mid Altitude Haines Index", 1, 0, 1),
+	new MAEProduct("hhan", "High Altitude Haines Index", 1, 0, 1),
+	new MAEProduct("lasi", "Lower Atmospheric Severity Index", 1, 0, 1),
+	new MAEProduct("lfrh2", "LCL-LFC Mean RH (fire wx version)", 0, 1, 1),
 
-	// Fire Weather
-	{"code":"CATEGORY", "description": "Fire Weather"},
-	{"code":"sfir", "description": "SLP-Temp-Wind-RH"},
-	{"code":"fosb", "description": "Forsberg Index"},
-	{"code":"lhan", "description": "Haines Index-Low-Altitude"},
-	{"code":"mhan", "description": "Haines Index-Mid-Altitude"},
-	{"code":"hhan", "description": "Haines Index-High-Altitude"},
-	{"code":"lasi", "description": "SPC Lower Atmospheric Severity Index"}
+	// Beta
+	new MAEProduct("CATEGORY", "Beta", 0, 1, 1),
+	new MAEProduct("sherbe", "SHERBE", 0, 1, 1),
+	new MAEProduct("moshe", "Modified SHERBE", 0, 1, 1),
+	new MAEProduct("cwasp", "CWASP (Craven-Wiedenfeld Aggregate Severe Parameter)", 0, 1, 1),
+	new MAEProduct("tehi", "Tornadic 0-1km EHI", 0, 1, 1),
+	new MAEProduct("tts", "Tornadic Tilting & Stretching", 0, 1, 1),
+	new MAEProduct("oprh", "OPRH (Dendritic Layer Omega * PWat * RH)", 0, 1, 1),
+	new MAEProduct("ptstpe", "Prob EF0+ (conditional on RM supercell)", 0, 1, 1),
+	new MAEProduct("pstpe", "Prob EF2+ (conditional on RM supercell)", 0, 1, 1),
+	new MAEProduct("pvstpe", "Prob EF4+ (conditional on RM supercell)", 0, 1, 1),
+	new MAEProduct("pw3k", "PW * 3kmRH", 0, 1, 1),
 ];
-
-
 
 
 

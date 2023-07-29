@@ -2,17 +2,22 @@
 <html>
 	<head>
 		<base href="../">
-		<title>Mesoanalysis Archive Explorer (unofficial)</title>
+		<title>Mesoanalysis Archive Explorer</title>
 		<link rel="stylesheet" href="pageheader.css">
 		<link rel="stylesheet" href="mae/mae.css">
+		<meta name="keywords" content="Mesoscale, Mesoanalysis, Mesoscale Analysis, Weather, Meteorology, SPC, Storm Prediction Center" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 	</head>
 	<!-- <body onLoad="populate_years(); selectdate();chg_prod('dy1torn');" onKeyDown="chg_hr_key(event)"> -->
 	<body onload="load()">
+		<div id="header" style="display:none; visibility:hidden;">
+		
+		</div>
 		<!-- MAIN DISPLAY -->
 		<div id="container-display">
 			<div id="container-image">
 				<img id="bgimage" src="mae/base_map.gif">
+				<div id="modern-backdrop"></div>
 				<img id="mainimg" src="">
 				<div id="missing">SORRY, THIS IMAGE CANNOT BE DISPLAYED!</div>
 				<div class="hrmove left" onclick='change_date(-1, "hour")' target="Go Back 1 Hour"></div>
@@ -21,6 +26,9 @@
 			<div id="container-display-footer">
 				<span id="datedisplay"></span> :: 
 				<span id="product-description"></span>
+			</div>
+			<div id="container-display-current-time">
+				Current Time: <span id="current-time"></span>
 			</div>
 		</div>
 		<hr id="divider-portrait" />
@@ -55,18 +63,22 @@
 				</div>
 			</div>
 			<div id="products-header" class="heading">Products</div>
-			<div id="products">
+			<select id="products" size="10" onchange="change_product()">
 				
-			</div>
+			</select>
 		</div>
 		<hr />
 		<div id="description">
 			<h3 style="text-align:center;"><u>The Mesoanalysis Archive Explorer</u></h3>
-			<a id="selection_link" href="">Selected State Link (to enable bookmarking of custom date and product)</a>
+			<a id="selection-link" href="">Selected State Link (to enable bookmarking of custom date and product)</a>
 			<ul>
+				<li>July 2023: <ul>
+					<li>Revamp to accomodate modernization of archived products and general date-based availability thereof. Of note, there's a chance that the date of a lot of modern images will be offset by an hour or so. This is an error in the filenames of the archive. The url's reflect the correct, requested data.</li>
+					<li>Disabled the ability to modify startup product and date. I may restore it in the future.</li>
+				</ul></li>
 				<li>June 2021: Now tablet and phone friendly!</li>
 				<li>Hourly Movement: Click/Tap on the left side of the map to go-back 1 hour or on the right-side, to go forward 1 hour. Keyboard shortcuts of <kbd>&lt;</kbd> and <kbd>&gt;</kbd> will do the same thing.</li>
-				<li>The start date and product can be customized. This is done through search-parameters. It is recommended to use the above link as it is generated on the fly as your selections change. That link can then be visited and bookmarked. If you always want a recent time to be used, before you click the link, press the "present time" button.</li>
+				<!-- <li>The start date and product can be customized. This is done through search-parameters. It is recommended to use the above link as it is generated on the fly as your selections change. That link can then be visited and bookmarked. If you always want a recent time to be used, before you click the link, press the "present time" button.</li> -->
 			</ul>
 			<p>This page uses imagery stored in the <a href="https://www.spc.noaa.gov/exper/ma_archive/">SPC Mesoanalysis Archive</a>, but <u><i>this page is not sponsored nor affiliated with the Storm Prediction Center / NOAA</i></u>.</p>
 			
