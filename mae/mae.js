@@ -70,7 +70,7 @@ document.onkeypress = kbshortcut;
 function load() {
 	updateCurrentTime(true);
 	load_products();
-	process_urlparams();
+	// process_urlparams();
 
 	change_product();
 }
@@ -123,54 +123,60 @@ function utcEquiv(date) {
 	return new Date(date.getTime() + offset_ms);
 }
 
-function load_products() {
-	let lastoptgroup = {};
-	let opt;
-
-	// Clear options
-	prod_select.innerHTML = "";
-
-	// read-in products
-	for (product of product_list) {
-		// show product if it ``init`` or if valid
+function show_hide_products() {
+	for (let product of product_list) {
 		if (product.is_available(mae.time)) {
-			if (product.code == "CATEGORY") {
-				opt = document.createElement("optgroup");
-				opt.setAttribute("label", product.description);
-				opt.setAttribute("class", "products-category");
-				prod_select.appendChild(opt);
-				lastoptgroup = opt;
+			product.html.style.display = "block";
+		}
+		else {
+			product.html.style.display = "none";
+			if (product.code == mae.ptype) {
+				console.log(
+					`* "${mae.ptype}" unavailable for selection on the date of `
+					+ [
+						mae.time.getFullYear(),
+						(mae.time.getMonth() + 1).toString().padStart(2, "0"),
+						mae.time.getDate().toString().padStart(2, "0")
+							+ " "
+							+ mae.time.getHours().toString().padStart(2, "0")
+							+ "Z",
+					].join("-")
+				);
 			}
-			else {
-				opt = document.createElement("option");
-				opt.setAttribute("class", "products-product");
-				opt.setAttribute("id", "prod_" + product.code);
-				opt.setAttribute("value", product.code);
-				opt.jsobj = product;
-				opt.jsobj.htmlobj = opt;
-				// opt.setAttribute("onclick", "change_product(this.value)");
-				lastoptgroup.appendChild(opt);
-			}
-			opt.innerText = product.description;
-			// prod.appendChild(opt);
 		}
 	}
-	// try to switch back the product if it exists in the date-dependent list
-	try {
-		document.getElementById(`prod_${mae.ptype}`).setAttribute("selected", true);
-	} catch {
-		console.log(
-			`* "${mae.ptype}" unavailable for selection on the date of `
-			+ [
-				mae.time.getFullYear(),
-				(mae.time.getMonth() + 1).toString().padStart(2, "0"),
-				mae.time.getDate().toString().padStart(2, "0")
-					+ " "
-					+ mae.time.getHours().toString().padStart(2, "0")
-					+ "Z",
-			].join("-")
-		);
-	};
+}
+
+function load_products() {
+	let lastoptgroup;
+	let opt;
+
+	for (let product of product_list) {
+		// Category
+		if (product.code == "CATEGORY") {
+			opt = document.createElement("optgroup");
+			opt.setAttribute("label", product.description);
+			opt.setAttribute("class", "products-category");
+			prod_select.appendChild(opt);
+			lastoptgroup = opt;
+		}
+		// Product
+		else {
+			opt = document.createElement("option");
+			opt.innerText = product.description;
+			opt.setAttribute("value", product.code);
+			opt.setAttribute("class", "products-product");
+			opt.setAttribute("id", "prod_" + product.code);
+			opt.setAttribute("onclick", "change_product(this.value)");
+			lastoptgroup.appendChild(opt);
+		}
+		opt.js = product;
+		product.html = opt;
+	}
+	// change to default
+	document.getElementById("prod_" + mae.ptype).defaultSelected = true;
+
+	show_hide_products();
 }
 
 function process_urlparams() {
@@ -213,7 +219,7 @@ function change_date(delta, units) {
 	if (date_is_valid(newtime)) {
 		current_btn_pressed = false;
 		mae.time = newtime;
-		load_products();
+		show_hide_products();
 		display_new_image();
 	}
 }
@@ -261,7 +267,7 @@ function check_gotodate() {
 	if (newdate.toString() != mae.time.toString() && date_is_valid(newdate)) {
 		mae.time = new Date(year, month-1, day, hour);
 		current_btn_pressed = false;
-		load_products();
+		show_hide_products();
 		display_new_image();
 	}
 	else {
@@ -275,6 +281,7 @@ function gotopresent() {
 		utcNow() - 120 * 1000 * 60
 	);
 	current_btn_pressed = true;
+	show_hide_products();
 	display_new_image();
 }
 
@@ -350,12 +357,12 @@ function display_new_image() {
 		desc.innerText = prod_select.selectedOptions[0].innerText + ` (${mae.ptype})`;
 
 		// try to center on selection
-		try {
-			document.getElementById(`prod_${mae.ptype}`)
-				.scrollIntoView({"block": "center",});
-		} catch {
-			document.getElementById(`prod_${mae.ptype}`).scrollIntoView();
-		}
+		// try {
+			// document.getElementById(`prod_${mae.ptype}`)
+				// .scrollIntoView({"block": "center",});
+		// } catch {
+			// document.getElementById(`prod_${mae.ptype}`).scrollIntoView();
+		// }
 	} catch (error) {
 		// pass
 	}
@@ -632,18 +639,3 @@ let product_list = [
 	new MAEProduct("pvstpe", "Prob EF4+ (conditional on RM supercell)", 0, 1, 1),
 	new MAEProduct("pw3k", "PW * 3kmRH", 0, 1, 1),
 ];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

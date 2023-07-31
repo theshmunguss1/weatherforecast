@@ -11,61 +11,63 @@
 	<!-- <body onLoad="populate_years(); selectdate();chg_prod('dy1torn');" onKeyDown="chg_hr_key(event)"> -->
 	<body onload="load()">
 		<div id="header" style="display:none; visibility:hidden;">
-		
 		</div>
+
 		<!-- MAIN DISPLAY -->
-		<div id="container-display">
-			<div id="container-image">
-				<img id="bgimage" src="mae/base_map.gif">
-				<div id="modern-backdrop"></div>
-				<img id="mainimg" src="">
-				<div id="missing">SORRY, THIS IMAGE CANNOT BE DISPLAYED!</div>
-				<div class="hrmove left" onclick='change_date(-1, "hour")' target="Go Back 1 Hour"></div>
-				<div class="hrmove right" onclick='change_date(1, "hour")' target="Go Forward 1 Hour"></div>
-			</div>
-			<div id="container-display-footer">
-				<span id="datedisplay"></span> :: 
-				<span id="product-description"></span>
-			</div>
-			<div id="container-display-current-time">
-				Current Time: <span id="current-time"></span>
-			</div>
-		</div>
-		<hr id="divider-portrait" />
-		<!-- PRODUCTS and DATE -->
-		<div id="container-date-products">
-			<div id="controls">
-				<div class="heading">Controls</div>
-				<div class="flex-row">
-					<button onclick='change_date(-1, "year")'>&lt;YR</button>
-					<button onclick='change_date(-1, "month")'>&lt;MO</button>
-					<button onclick='change_date(-1, "day")'>&lt;DY</button>
+		<div id="container-all">
+			<div id="container-display">
+				<div id="container-image">
+					<img id="bgimage" src="mae/base_map.gif">
+					<div id="modern-backdrop"></div>
+					<img id="mainimg" src="">
+					<div id="missing">SORRY, THIS IMAGE CANNOT BE DISPLAYED!</div>
+					<div class="hrmove left" onclick='change_date(-1, "hour")' target="Go Back 1 Hour"></div>
+					<div class="hrmove right" onclick='change_date(1, "hour")' target="Go Forward 1 Hour"></div>
 				</div>
-				<div class="flex-row">
-					<button onclick='change_date(-6, "hour")'>&lt;6HR</button>
-					<button onclick='change_date(-1, "hour")'>&lt;HR</button>
-					<button onclick='change_date(1, "hour")'>HR&gt;</button>
-					<button onclick='change_date(6, "hour")'>6HR&gt;</button>
+				<div id="container-display-footer">
+					<span id="datedisplay"></span> :: 
+					<span id="product-description"></span>
 				</div>
-				<div class="flex-row">
-					<button onclick='change_date(1, "year")'>YR&gt;</button>
-					<button onclick='change_date(1, "month")'>MO&gt;</button>
-					<button onclick='change_date(1, "day")'>DY&gt;</button>
-				</div>
-				<div class="flex-row">
-					<button onclick="gotopresent()">Present Time</button>
-				</div>
-				<div class="flex-row">
-					<label>
-						<input id="gotodate" type="tel" size="10" placeholder="" />
-					</label>
-					<button onclick="check_gotodate()">Change Date</button>
+				<div id="container-display-current-time">
+					Current Time: <span id="current-time"></span>
 				</div>
 			</div>
-			<div id="products-header" class="heading">Products</div>
-			<select id="products" size="10" onchange="change_product()">
-				
-			</select>
+			<hr id="divider-portrait" />
+			<!-- PRODUCTS and DATE -->
+			<div id="container-controls-products">
+				<div id="controls">
+					<div class="heading">Controls</div>
+					<div class="flex-row">
+						<button onclick='change_date(-1, "year")'>&lt;YR</button>
+						<button onclick='change_date(-1, "month")'>&lt;MO</button>
+						<button onclick='change_date(-1, "day")'>&lt;DY</button>
+					</div>
+					<div class="flex-row">
+						<button onclick='change_date(-6, "hour")'>&lt;6HR</button>
+						<button onclick='change_date(-1, "hour")'>&lt;HR</button>
+						<button onclick='change_date(1, "hour")'>HR&gt;</button>
+						<button onclick='change_date(6, "hour")'>6HR&gt;</button>
+					</div>
+					<div class="flex-row">
+						<button onclick='change_date(1, "year")'>YR&gt;</button>
+						<button onclick='change_date(1, "month")'>MO&gt;</button>
+						<button onclick='change_date(1, "day")'>DY&gt;</button>
+					</div>
+					<div class="flex-row">
+						<button onclick="gotopresent()">Present Time</button>
+					</div>
+					<div class="flex-row">
+						<label>
+							<input id="gotodate" type="tel" size="10" placeholder="" />
+						</label>
+						<button onclick="check_gotodate()">Change Date</button>
+					</div>
+				</div>
+				<div id="products-header" class="heading">Products</div>
+				<select id="products" size="10" onchange="change_product()">
+					
+				</select>
+			</div>
 		</div>
 		<hr />
 		<div id="description">

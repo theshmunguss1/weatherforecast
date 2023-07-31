@@ -6,126 +6,77 @@ body {
 a:link {color: darkblue;}
 a:visited {color: darkblue;}
 
+#container-all {
+	display: grid;
+}
+
 /* height = width * (1 / aspect-ratio) */
 #container-display {
 	margin: 0 auto;
 	aspect-ratio: 400 / 309;
-	max-width: 800px;
-	max-height: 600px;
+	/* max-width: 1000px; */
+	/* max-height: 750px; */
 	font-family: sans-serif;
+	/* object-fit: contain; */
 }
-
-/* PORTRAIT*/
-@media (orientation: landscape) {
-	body {
-		padding-right: 30%;
-	}
-	#container-date-products {
-		position: fixed;
-		top: 0;
-		right: 0;
-		width: 30%;
-		height: 100vh;
-		border-left: 1px solid black;
-	}
-	#container-display {
-		object-fit: contain;
-	}
-	#divider-portrait {
-		display: none;
-	}
-	#controls {
-		width: 100%;
-		height: 40%;
-	}
-	#products-header {
-		height: 1em;
-	}
-	#products {
-		width: 100%;
-		height: calc(100% - 40% - 1em);
-	}
-	.products-product {
-		height: 2em;
-		line-height: 2em;
-	}
-}
-/* PORTRAIT Phones */
-@media (orientation: portrait)
-   and (max-width: 499px) {
-	#container-date-products {
-		display: flex;
-		flex-direction: column;
-		width: 100%;
-		height: 60vh;
-		align-items: center;
-	}
-	#container-display {
-		object-fit: contain;
-	}
-	#controls {
-		width: 90%;
-		height: 60vh;
-	}
-	#products {
-		width: 90%;
-		height: 60vh;
-	}
-	.products-product {
-		height: 3em;
-		line-height: 3em;
-	}
-
-}
-/* PORTRAIT Tablets */
-@media (orientation: portrait)
-   and (min-width: 500px) {
-	#container-date-products {
-		display: flex;
-		flex-direction: row;
-		width: 100%;
-		height: 40vh;
-		border-right: 1px solid black;
-	}
-	#container-display {
-		object-fit: contain;
-	}
-	#controls {
-		width: 90%;
-	}
-	#products {
-		width: 90%;
-	}
-	#products-header {
-		display: none;
-	}
-	.products-product {
-		height: 3em;
-		line-height: 3em;
-	}
-
-}
-
-#container-date-products > div {
-	
-	}
-
 #container-image {
 	position: relative;
 	margin: 0 auto;
 	background-color: white;
 	border: 1px solid black;
 	aspect-ratio: 4 / 3;
-	width: 100%;
+	/* max-width:1000px; */
+	object-fit: contain;
 }
+#mainimg, #bgimage {
+	width:100%;
+	position: absolute;
+	top: 0%;
+	left: 0%;
+}
+
+@media (orientation: landscape) {
+	#container-all {
+		grid-template-columns: 7fr 3fr;
+		align-items: center;
+	}
+	#container-display {
+		grid-row: 1;
+		grid-column: 1;
+		width: min(100%, calc(90vmin * 4 / 3));
+		/* height: 90vmin; */
+	}
+	#container-controls-products {
+		grid-row: 1;
+		grid-column: 2;
+		margin: 0 0.5em;
+	}
+	#controls, #products {
+		width: 100%;
+		height: calc(90vmin / 2);
+	}
+}
+@media (orientation: portrait) {
+	#container-display {
+		grid-row: 1;
+	}
+	#container-controls-products {
+		grid-row: 2;
+	}
+}
+
 #container-display-footer, #container-display-current-time {
 	white-space: nowrap;
 	overflow-x: hidden;
 	text-align: center;
 }
-#datedisplay, #current-time {
+#datedisplay {
 	font-weight: bold;
 }
+#current-time {
+	font-style: italic;
+}
+
 #product-description {
 	font-style: italic;
 }
@@ -140,13 +91,6 @@ a:visited {color: darkblue;}
 	height: 100%;
 	background-color: white;
 	display: none;
-}
-
-img {
-	width:100%;
-	position: absolute;
-	top: 0%;
-	left: 0%;
 }
 
 #missing {
@@ -170,7 +114,6 @@ img {
 	display: flex;
 	flex-direction: column;
 	justify-content: stretch;
-	overflow-x: scroll;
 	border-bottom: 1px solid black;
 }
 .flex-row {
@@ -181,23 +124,20 @@ img {
 #controls button {
 	flex-grow: 1;
 }
-#controls label {
-	width: 50%;
-}
+
 #gotodate {
 	width: 100%;
 	height: 80%;
 }
 
 #products {
-	overflow-y: scroll;
-	overflow-x: hidden;
-	white-space: nowrap;
 	user-select: none;
 }
 #products option:hover {
-	background: yellow;
-	color: black;
+	background: lightblue;
+}
+#products option:checked {
+	font-weight: bold;
 }
 
 .hrmove {
