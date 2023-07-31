@@ -59,9 +59,18 @@ a:visited {color: darkblue;}
 @media (orientation: portrait) {
 	#container-display {
 		grid-row: 1;
+		grid-column: 0;
+		width: 95vw;
 	}
 	#container-controls-products {
 		grid-row: 2;
+		grid-column: 0;
+	}
+	#controls, #products {
+		width: 95vw;
+		height: calc(
+			calc(100vh - 95vw * 3 / 4) / 2.5
+		);
 	}
 }
 
