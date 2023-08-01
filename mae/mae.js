@@ -124,7 +124,7 @@ function utcEquiv(date) {
 }
 
 function show_hide_products() {
-	for (let product of product_list) {
+	for (let product of mae.product_list) {
 		if (product.is_available(mae.time)) {
 			product.html.style.display = "block";
 		}
@@ -151,7 +151,7 @@ function load_products() {
 	let lastoptgroup;
 	let opt;
 
-	for (let product of product_list) {
+	for (let product of mae.product_list) {
 		// Category
 		if (product.code == "CATEGORY") {
 			opt = document.createElement("optgroup");
@@ -297,7 +297,7 @@ function date_is_valid(date) {
 }
 
 function product_is_valid(prod) {
-	for (product of product_list) {
+	for (product of mae.product_list) {
 		if (prod == product.code) {return true;}
 	}
 	return false;
@@ -333,7 +333,7 @@ function display_new_image() {
 	mainimg.style.display = "block";
 
 	// Display the backdrop (or disable) based upon the date (because newer products are all transparent)
-	if (mae.time >= new Date(2022,12,1)) {
+	if (mae.time >= new Date(2022,12-1,1)) {
 		backdrop.style.display = "block";
 	}
 	else {
@@ -439,7 +439,8 @@ function chg_hr_key(event) {
 	if (event.keyCode == 188) {chg_hr(-1);}
 }
 
-let product_list = [
+// Define the products used herein
+mae.product_list = [
 	// Observations
 	new MAEProduct("CATEGORY", "Observations", 1, 0, 0),
 	new MAEProduct("bigsfc", "Surface Observations", 1, 0, 0),
