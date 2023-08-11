@@ -1,8 +1,3 @@
-// Monitor the Screen orientation
-// window.addEventListener(
-	// "orientationchange",
-	// resize_on_orientation_chg,
-// );
 
 const doc = document.documentElement;
 const container = document.getElementById("container");
@@ -21,6 +16,7 @@ const new_game_dialog = document.getElementById("new-game-dialog");
 const options_dialog = document.getElementById("options");
 const color_options = document.getElementById("color-options");
 const call_buffer_toggle = document.getElementById("input-call-buffer-toggle");
+const call_buffer_toggle_time = document.getElementById("input-call-buffer-toggle-time");
 const pres_remote_toggle = document.getElementById("input-pres-remote-toggle");
 const call_display = document.getElementById("call-display");
 const newcall_btn = document.getElementById("newcall-button");
@@ -30,26 +26,123 @@ const bingo = {
 	max : 75,
 	possibilities : [],
 	called : [],
-	caller_side : "right",
-	caller_placement : "lower",
-	recent_call_dir : "lower",
+}
 
-	// background_color: "#FFFFFF",
-	// text_color: "#000000",
-	called_background_color: "#FFFF00",
-	called_text_color: "#000000",
-	new_call_outline_color: "#000000",
+let _defaults = {
+	placements: {
+		caller_side : "right",
+		recent_call_dir : "lower",
+		caller_placement : "lower",
+		call_buffer_toggle : 1,
+		call_buffer_toggle_time : 2,
+		pres_remote_toggle : 0,
+	},
+	colors: {
+		background_color: "#FFFFFF",
+		text_color: "#000000",
+		called_background_color: "#FFFF00",
+		called_text_color: "#000000",
+		new_call_outline_color: "#000000",
 
-	default_caller_side: "right",
-	default_caller_placement: "lower",
-	default_recent_call_dir: "lower",
-	default_called_background_color: "#FFFF00",
-	default_called_text_color: "#000000",
-	default_background_color: "#FFFFFF",
-	default_text_color: "#000000",
-	default_call_display_color: "#000080",
-	default_recent_calls_color: "#808080",
-	default_new_call_outline_color: "#000000",
+		call_display_color: "#000080",
+		recent_calls_color: "#808080",
+	},
+}
+
+function reset_placements() {
+	// Placements
+	for (let opt of Object.keys(_defaults.placements)) {
+		let ele_id = `input-${opt.replaceAll("_", "-")}`;
+		// only add this suffix if it isn't a toggle switch
+		if (!opt.includes("toggle")) {
+			ele_id += `-${_defaults.placements[opt]}`;
+			document.getElementById(ele_id).click();
+		}
+		// toggles
+		else {
+			if (ele_id == "input-call-buffer-toggle-time") {
+				call_buffer_toggle_time.value = _defaults.placements[opt];
+			}
+			else {
+				if (
+					document.getElementById(ele_id).checked !=
+					Boolean(_defaults.placements[opt])
+				) {
+					document.getElementById(ele_id).click();
+				}
+			}
+		}
+
+		localStorage.removeItem(opt);
+		
+	}
+}
+function reset_colors() {
+	// Colors
+	for (let opt of Object.keys(_defaults.colors)) {
+		bingo[opt] = _defaults.colors[opt];
+		document.getElementById(opt).value = bingo[opt];
+		document.getElementById(opt).oninput();
+		localStorage.removeItem(opt);
+	}
+}
+
+// load defaults
+function load_defaults() {
+	// need this so things won't try to load before other needed resources
+	let click_queue = [];
+
+	// Placements / Options
+	for (let opt of Object.keys(_defaults.placements)) {
+		// record the default in ls if not there
+		if (!localStorage.getItem(opt)) {
+			localStorage.setItem(opt, _defaults.placements[opt]);
+		}
+		// compare the valu in ls to the default; make change as necessary
+		if (localStorage.getItem(opt) != _defaults.placements[opt]) {
+			console.log(`loading option '${opt}': ` + localStorage.getItem(opt));
+			bingo[opt] = localStorage.getItem(opt);
+			let ele_id = `input-${opt.replaceAll("_", "-")}`;
+			// only add this suffix if it isn't a toggle switch
+			if (!opt.includes("toggle")) {
+				ele_id += `-${localStorage.getItem(opt)}`;
+			}
+			click_queue.push(document.getElementById(ele_id));
+			
+		}
+		// if the value Not different from default
+		else {
+			bingo[opt] = _defaults.placements[opt];
+		}
+	}
+	// now that needed vars exist, click necessary changes
+	for (let element of click_queue) {
+		// call buffer time
+		if (element.id == "input-call-buffer-toggle-time") {
+			element.value = bingo.call_buffer_toggle_time;
+			element.oninput();
+		}
+		else {
+			element.click();
+		}
+	}
+
+	// Colors
+	for (let opt of Object.keys(_defaults.colors)) {
+		// console.log("trying ", opt);
+		if (!localStorage.getItem(opt)) {
+			localStorage.setItem(opt, _defaults.colors[opt]);
+		}
+		if (localStorage.getItem(opt) != _defaults.colors[opt]) {
+			console.log(`loading color '${opt}': ` + localStorage.getItem(opt));
+			bingo[opt] = localStorage.getItem(opt);
+			document.getElementById(opt).value = bingo[opt];
+			document.getElementById(opt).oninput()
+		}
+		else {
+			bingo[opt] = _defaults.colors[opt];
+		}
+	}
 }
 
 function localStorageQuery(key, _default=null) {
@@ -82,79 +175,7 @@ if (Object.keys(window).includes("localStorage") == false) {
 	// const localStorage = {};
 }
 
-// if localStorage is available, try loading from it
-else {
-	// Location of visuals
-	if (localStorage.getItem("caller_side") != null) {
-		document.getElementById(
-			"input-caller-side-" + localStorage.getItem('caller_side')
-		).click();
-	}
-	if (localStorage.getItem("caller_placement") != null) {
-		document.getElementById(
-			"input-caller-placement-" + localStorage.getItem('caller_placement')
-		).click();
-	}
-	if (localStorage.getItem("recent_call_dir") != null) {
-		document.getElementById(
-			"input-recent-call-dir-" + localStorage.getItem('recent_call_dir')
-		).click();
-	}
-	if (localStorage.getItem("call_buffer_toggle") != null) {
-		let toggle_valu = localStorage.getItem("call_buffer_toggle");
-		while (
-			call_buffer_toggle.checked.toString() !=
-			toggle_valu
-		) {
-			call_buffer_toggle.click();
-		}
-	}
-	if (localStorage.getItem("pres_remote_toggle") != null) {
-		let pres_toggle_valu = localStorage.getItem("pres_remote_toggle");
-		while (
-			pres_remote_toggle.checked.toString() !=
-			pres_toggle_valu
-		) {
-			pres_remote_toggle.click();
-		}
-	}
-
-	// COLORS
-	if (localStorage.getItem("background_color") != null) {
-		change_board_color(localStorage.getItem("background_color"));
-		document.getElementById("color-bg").value = localStorage.getItem("background_color");
-	}
-	if (localStorage.getItem("text_color") != null) {
-		change_board_color(localStorage.getItem("text_color"), "fg");
-		document.getElementById("color-text").value = localStorage.getItem("text_color");
-	}
-	if (localStorage.getItem("called_background_color") != null) {
-		change_called_color(localStorage.getItem("called_background_color"));
-		document.getElementById("color-called-bg").value = localStorage.getItem("called_background_color");
-	}
-	if (localStorage.getItem("called_text_color") != null) {
-		change_called_color(localStorage.getItem("called_text_color"), "fg");
-		document.getElementById("color-called-text").value = localStorage.getItem("called_text_color");
-	}
-	if (localStorage.getItem("call_display_color") != null) {
-		change_call_display_color(
-			localStorage.getItem("call_display_color")
-		);
-		document.getElementById("color-call-display").value = localStorage.getItem("call_display_color");
-	}
-	if (localStorage.getItem("recent_calls_color") != null) {
-		change_recent_calls_color(
-			localStorage.getItem("recent_calls_color")
-		);
-		document.getElementById("color-recent-calls").value = localStorage.getItem("recent_calls_color");
-	}
-	if (localStorage.getItem("new_call_outline_color") != null) {
-		change_new_call_outline_color(
-			localStorage.getItem("new_call_outline_color")
-		);
-		document.getElementById("color-new-call-outline").value = localStorage.getItem("new_call_outline_color");
-	}
-}
+load_defaults();
 
 document.addEventListener("keyup", remote_presentation_press);
 
@@ -226,12 +247,46 @@ function call_protect(seconds=1) {
 	);
 }
 
+function toggle_call_buffer() {
+	localStorage.setItem(
+		'call_buffer_toggle',
+		call_buffer_toggle.checked ? 1 : 0
+	);
+	// disable time change if off
+	if (!call_buffer_toggle.checked) {
+		call_buffer_toggle_time.disabled = true;
+	}
+	else {
+		call_buffer_toggle_time.disabled = false;
+	}
+}
+
+function change_buffer_time() {
+	// validation
+	if (
+		call_buffer_toggle_time.value == "" ||
+		call_buffer_toggle_time <= 0
+	) {
+		bingo.call_buffer_toggle_time = _defaults.placements.call_buffer_toggle_time;
+	}
+	else {
+		if (call_buffer_toggle_time.value > 10) {
+			call_buffer_toggle_time.value = 10;
+		}
+		bingo.call_buffer_toggle_time = parseInt(
+			call_buffer_toggle_time.value
+		);
+	}
+
+	localStorage.setItem("call_buffer_toggle_time", bingo.call_buffer_toggle_time);
+}
+
 function new_call() {
 	// console.log(MIN + Math.floor(Math.random() * (MAX-MIN+1)));
 
 	// prevent accidental/inadvertent call
 	if (call_buffer_toggle.checked) {		
-		call_protect(2);
+		call_protect(bingo.call_buffer_toggle_time);
 	}
 
 	// random bingo space (index)
@@ -422,71 +477,3 @@ function change_new_call_outline_color(new_color) {
 		document.getElementById(bingo.called[0]).style.outline = `1.25vmin double ${bingo.new_call_outline_color}`;
 	}
 }
-
-function placement_reset() {
-	document.getElementById(
-		`input-caller-side-${bingo.default_caller_side}`
-	).click();
-	document.getElementById(
-		`input-caller-placement-${bingo.default_caller_placement}`
-	).click();
-	document.getElementById(
-		`input-recent-call-dir-${bingo.default_recent_call_dir}`
-	).click();
-
-	while (call_buffer_toggle.checked == false) {
-		call_buffer_toggle.click();
-	}
-
-	for (let item of [
-		"caller_side", "caller_placement", "recent_call_dir", 
-		"call_buffer_toggle"
-	]) {
-		localStorage.removeItem(item);
-	}
-
-}
-
-function color_reset() {
-	// background
-	change_board_color(bingo.default_background_color);
-	document.getElementById("color-bg").value = bingo.default_background_color;
-
-	change_board_color(bingo.default_text_color, "fg");
-	document.getElementById("color-text").value = bingo.default_text_color;
-
-	change_called_color(bingo.default_called_background_color);
-	document.getElementById("color-called-bg").value = bingo.default_called_background_color;
-
-	change_called_color(bingo.default_called_text_color, "fg");
-	document.getElementById("color-called-text").value = bingo.default_called_text_color;
-
-	change_call_display_color(bingo.default_call_display_color);
-	document.getElementById("color-call-display").value = bingo.default_call_display_color;
-
-	change_recent_calls_color(bingo.default_recent_calls_color);
-	document.getElementById("color-recent-calls").value = bingo.default_recent_calls_color;
-
-	change_new_call_outline_color(bingo.default_new_call_outline_color);
-	document.getElementById("color-new-call-outline").value = bingo.default_new_call_outline_color;
-
-	for (let item of [
-		"background_color", "text_color", "called_background_color",
-		"called_text_color", "call_display_color", "recent_calls_color",
-		"new_call_outline_color",
-	]) {
-		localStorage.removeItem(item);
-	}
-
-}
-
-
-
-
-
-
-
-
-
-
-

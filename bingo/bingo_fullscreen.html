@@ -208,9 +208,22 @@
 						type="checkbox"
 						name="call_buffer_toggle"
 						title="Call buffer prevents immediate successive new calls."
-						onclick="localStorage.setItem('call_buffer_toggle', this.checked);"
+						onclick="toggle_call_buffer()"
 						checked />
 					New-Call Buffer
+				</label>
+				<label>
+					<input
+						id="input-call-buffer-toggle-time"
+						type="number"
+						min="1"
+						max="10"
+						value="2"
+						name="call_buffer_toggle_time"
+						title="Time (seconds) for the call buffer"
+						oninput="change_buffer_time()"
+					/>
+					Time (s)
 				</label>
 			</div>
 			<!-- REMOTE CONTROL-->
@@ -221,7 +234,7 @@
 						type="checkbox"
 						name="pres_remote_toggle"
 						title="Toggles optional control with a presentation remote"
-						onclick="localStorage.setItem('pres_remote_toggle', this.checked);" />
+						onclick="localStorage.setItem('pres_remote_toggle', (this.checked) ? 1 : 0);" />
 					Presentation Remote Control **Experimental**
 				</label>
 				<label style="font-size:2vmin;font-weight:normal;width:50%;">
@@ -230,7 +243,7 @@
 			</div>
 			<div>
 				<!-- VISUALS PLACEMENT RESET -->
-				<button onclick="placement_reset()">Reset Options</button>
+				<button onclick="reset_placements()">Reset Options</button>
 				<!-- CLOSE BUTTON -->
 				<button onclick="options_dialog.style.display = 'none'">CLOSE</button>
 				<!-- COLOR OPTIONS -->
@@ -247,7 +260,7 @@
 			<!-- BACKGROUND -->
 			<label>
 				<input
-					id="color-bg"
+					id="background_color"
 					type="color"
 					oninput="change_board_color(this.value);"
 					value="#FFFFFF" 
@@ -256,7 +269,7 @@
 			<!-- MAIN TEXT -->
 			<label>
 				<input
-					id="color-text"
+					id="text_color"
 					type="color"
 					oninput="change_board_color(this.value, 'fg');"
 					value="#000000" 
@@ -265,7 +278,7 @@
 			<!-- CALLED COLOR BACKGROUND -->
 			<label>
 				<input
-					id="color-called-bg"
+					id="called_background_color"
 					type="color"
 					oninput="change_called_color(this.value);"
 					value="#FFFF00"
@@ -274,7 +287,7 @@
 			<!-- CALLED TEXT COLOR -->
 			<label>
 				<input
-					id="color-called-text"
+					id="called_text_color"
 					type="color"
 					oninput="change_called_color(this.value, 'fg');"
 					value="#000000" 
@@ -283,7 +296,7 @@
 			<!-- LAST-CALLED NUMBER -->
 			<label>
 				<input
-					id="color-call-display"
+					id="call_display_color"
 					type="color"
 					oninput="change_call_display_color(this.value);"
 					value="#000080" 
@@ -292,16 +305,16 @@
 			<!-- RECENTLY-CALLED NUMBERS -->
 			<label>
 				<input
-					id="color-recent-calls"
+					id="recent_calls_color"
 					type="color"
 					oninput="change_recent_calls_color(this.value);"
-					value="#808080" 
+					value="#808080"
 				/>Recently Called Numbers
 			</label>
 			<!-- NEW CALL OUTLINE COLOR-->
 			<label>
 				<input
-					id="color-new-call-outline"
+					id="new_call_outline_color"
 					type="color"
 					oninput="change_new_call_outline_color(this.value)"
 					value="#000000" 
@@ -315,7 +328,7 @@
 						options_dialog.style.display = 'flex'"
 					title="Go back to main options"
 				>&lt;</button>
-				<button onclick="color_reset()">Reset Colors</button>
+				<button onclick="reset_colors()">Reset Colors</button>
 				<button onclick="color_options.style.display = 'none'">Close</button>
 			</div>
 		</div>
