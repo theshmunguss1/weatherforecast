@@ -198,7 +198,7 @@ input[type='color'] {
 	width: 10vmin;
 	height: 5vmin;
 }
-#input-call-buffer-toggle-time {
+#input-call-buffer-time {
 	font-size: 2em;
 	font-weight: bold;
 	text-align: center;

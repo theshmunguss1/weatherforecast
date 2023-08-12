@@ -16,7 +16,7 @@ const new_game_dialog = document.getElementById("new-game-dialog");
 const options_dialog = document.getElementById("options");
 const color_options = document.getElementById("color-options");
 const call_buffer_toggle = document.getElementById("input-call-buffer-toggle");
-const call_buffer_toggle_time = document.getElementById("input-call-buffer-toggle-time");
+const call_buffer_time = document.getElementById("input-call-buffer-time");
 const pres_remote_toggle = document.getElementById("input-pres-remote-toggle");
 const call_display = document.getElementById("call-display");
 const newcall_btn = document.getElementById("newcall-button");
@@ -34,7 +34,7 @@ let _defaults = {
 		recent_call_dir : "lower",
 		caller_placement : "lower",
 		call_buffer_toggle : 1,
-		call_buffer_toggle_time : 2,
+		call_buffer_time : 2,
 		pres_remote_toggle : 0,
 	},
 	colors: {
@@ -54,14 +54,14 @@ function reset_placements() {
 	for (let opt of Object.keys(_defaults.placements)) {
 		let ele_id = `input-${opt.replaceAll("_", "-")}`;
 		// only add this suffix if it isn't a toggle switch
-		if (!opt.includes("toggle")) {
+		if (!opt.includes("toggle") && !opt.includes("time")) {
 			ele_id += `-${_defaults.placements[opt]}`;
 			document.getElementById(ele_id).click();
 		}
 		// toggles
 		else {
-			if (ele_id == "input-call-buffer-toggle-time") {
-				call_buffer_toggle_time.value = _defaults.placements[opt];
+			if (ele_id == "input-call-buffer-time") {
+				call_buffer_time.value = _defaults.placements[opt];
 			}
 			else {
 				if (
@@ -92,11 +92,29 @@ function load_defaults() {
 	// need this so things won't try to load before other needed resources
 	let click_queue = [];
 
+	// Because of some changes made, is localStorage needing to be cleared?
+	// if (!localStorage.getItem("bingorevamp")) {
+		// localStorage.clear();
+		// localStorage.setItem("bingorevamp", 1);
+	// }
+
 	// Placements / Options
 	for (let opt of Object.keys(_defaults.placements)) {
 		// record the default in ls if not there
 		if (!localStorage.getItem(opt)) {
 			localStorage.setItem(opt, _defaults.placements[opt]);
+		}
+		// compare true/false values and correct as needed
+		if (["true", "false"].includes(localStorage.getItem(opt))) {
+			console.log(
+				`* converting saved-setting '${opt}' (${
+					localStorage.getItem(opt)
+				}) to newer setting`
+			);
+			localStorage.setItem(
+				opt,
+				(localStorage.getItem(opt) == "true") ? 1 : 0
+			);
 		}
 		// compare the valu in ls to the default; make change as necessary
 		if (localStorage.getItem(opt) != _defaults.placements[opt]) {
@@ -118,8 +136,8 @@ function load_defaults() {
 	// now that needed vars exist, click necessary changes
 	for (let element of click_queue) {
 		// call buffer time
-		if (element.id == "input-call-buffer-toggle-time") {
-			element.value = bingo.call_buffer_toggle_time;
+		if (element == call_buffer_time) {
+			element.value = bingo.call_buffer_time;
 			element.oninput();
 		}
 		else {
@@ -145,13 +163,9 @@ function load_defaults() {
 	}
 }
 
-function localStorageQuery(key, _default=null) {
-	return (localStorage.getItem(key) != null) ? localStorage.getItem(key) : _default;
-}
-
 // Test to see if localStorage is available
 // if not available...create a placeholding variable
-if (Object.keys(window).includes("localStorage") == false) {
+if (!"localStorage" in window) {
 	class STRG {
 		constructor() {}
 
@@ -174,6 +188,7 @@ if (Object.keys(window).includes("localStorage") == false) {
 	localStorage = new STRG();
 	// const localStorage = {};
 }
+let ls = localStorage;
 
 load_defaults();
 
@@ -248,37 +263,36 @@ function call_protect(seconds=1) {
 }
 
 function toggle_call_buffer() {
-	localStorage.setItem(
-		'call_buffer_toggle',
-		call_buffer_toggle.checked ? 1 : 0
-	);
+	bingo.call_buffer_toggle = (call_buffer_toggle.checked) ? 1 : 0;
+	localStorage.setItem('call_buffer_toggle', bingo.call_buffer_toggle);
+
 	// disable time change if off
 	if (!call_buffer_toggle.checked) {
-		call_buffer_toggle_time.disabled = true;
+		call_buffer_time.disabled = true;
 	}
 	else {
-		call_buffer_toggle_time.disabled = false;
+		call_buffer_time.disabled = false;
 	}
 }
 
 function change_buffer_time() {
 	// validation
 	if (
-		call_buffer_toggle_time.value == "" ||
-		call_buffer_toggle_time <= 0
+		call_buffer_time.value == "" ||
+		call_buffer_time <= 0
 	) {
-		bingo.call_buffer_toggle_time = _defaults.placements.call_buffer_toggle_time;
+		bingo.call_buffer_time = _defaults.placements.call_buffer_time;
 	}
 	else {
-		if (call_buffer_toggle_time.value > 10) {
-			call_buffer_toggle_time.value = 10;
+		if (call_buffer_time.value > 10) {
+			call_buffer_time.value = 10;
 		}
-		bingo.call_buffer_toggle_time = parseInt(
-			call_buffer_toggle_time.value
+		bingo.call_buffer_time = parseInt(
+			call_buffer_time.value
 		);
 	}
 
-	localStorage.setItem("call_buffer_toggle_time", bingo.call_buffer_toggle_time);
+	localStorage.setItem("call_buffer_time", bingo.call_buffer_time);
 }
 
 function new_call() {
@@ -286,7 +300,7 @@ function new_call() {
 
 	// prevent accidental/inadvertent call
 	if (call_buffer_toggle.checked) {		
-		call_protect(bingo.call_buffer_toggle_time);
+		call_protect(bingo.call_buffer_time);
 	}
 
 	// random bingo space (index)

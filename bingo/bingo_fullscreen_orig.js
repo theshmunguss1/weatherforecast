@@ -155,6 +155,7 @@ else {
 		document.getElementById("color-new-call-outline").value = localStorage.getItem("new_call_outline_color");
 	}
 }
+let ls = localStorage;
 
 document.addEventListener("keyup", remote_presentation_press);
 
