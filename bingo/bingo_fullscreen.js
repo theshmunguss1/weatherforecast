@@ -15,6 +15,7 @@ const container_last_called = document.getElementById("container-last-called");
 const new_game_dialog = document.getElementById("new-game-dialog");
 const options_dialog = document.getElementById("options");
 const color_options = document.getElementById("color-options");
+const help_dialog = document.getElementById("help");
 const call_buffer_toggle = document.getElementById("input-call-buffer-toggle");
 const call_buffer_time = document.getElementById("input-call-buffer-time");
 const pres_remote_toggle = document.getElementById("input-pres-remote-toggle");
@@ -89,6 +90,7 @@ function reset_colors() {
 
 // load defaults
 function load_defaults() {
+
 	// need this so things won't try to load before other needed resources
 	let click_queue = [];
 
@@ -195,6 +197,8 @@ load_defaults();
 document.addEventListener("keyup", remote_presentation_press);
 
 function remote_presentation_press(event) {
+	// console.log(event);
+	// console.log("pres_remote_toggle:", pres_remote_toggle.checked);
 
 	// Respond to specific key/button presses corresponding to presentation remotes
 	if (pres_remote_toggle.checked) {
@@ -244,6 +248,7 @@ function ChristmasTimeIsHere() {
 }
 
 function rebuild_bingo_possibilities() {
+
 	bingo.possibilities = [];
 	for (n=1; n <= 75; n++) {
 		let letter = (n >= 1 && n <= 15) ? "b" :
@@ -252,6 +257,17 @@ function rebuild_bingo_possibilities() {
 			(n >= 46 && n <= 60) ? "g" : "o";
 		bingo.possibilities.push(`${letter}-${n}`);
 	}
+
+}
+
+function try_fullScreen() {
+	// need to control the :fullscreen selector somehow
+	// element.attributeStyleMap.set() <- use to modify css?
+	document.body.requestFullscreen({"navigationUI": "hide"});
+}
+
+function exit_fullScreen() {
+	document.exitFullscreen();
 }
 
 function call_protect(seconds=1) {

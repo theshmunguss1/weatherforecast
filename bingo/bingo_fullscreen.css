@@ -9,6 +9,9 @@ body {
 	position: relative;
 	user-select: none;
 }
+body::backdrop {
+	background: transparent;
+}
 
 #container {
 	width: calc(100vmax - var(--board-margin) * 2);
@@ -135,7 +138,7 @@ body {
 	font-size: 2.5vmin;
 }
 
-#new-game-dialog, #options, #color-options {
+#new-game-dialog, #options, #color-options, #help {
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -150,10 +153,12 @@ body {
 
 /* #options {display: flex;} */
 
+code {font-weight: bold;}
 
 .options-text,
 #options button,
 #color-options button,
+#help > button,
 #options label {
 	font-size: 4vmin;
 	color: black;
@@ -168,7 +173,7 @@ body {
 }
 
 /* Adds height to the button */
-#options button, #color-options button {
+#options button, #color-options button, {
 	padding: 3vmin;
 	border: 5px solid black;
 }
@@ -180,6 +185,33 @@ body {
 	color: rgb(100,100,100);
 }
 
+#help-button {
+	font-weight: bold;
+}
+#help {
+	font-size: 2.4vmin;
+}
+#help h1 {
+	text-decoration: underline;
+}
+#help h1,
+#help h2,
+#help h3,
+#help h4,
+#help h5,
+#help h6 {
+	margin: 0.5em auto;
+}
+#help p {
+	width: 90%;
+	margin: 0.5em auto;
+}
+.help-action-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 1em;
+}
 input {
 	vertical-align: middle;
 	margin: 2vmin;
