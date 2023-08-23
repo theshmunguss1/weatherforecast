@@ -22,7 +22,7 @@ const call_display = document.getElementById("call-display");
 const newcall_btn = document.getElementById("newcall-button");
 const lastGamebtn = document.getElementById("last-game");
 const log = document.getElementById("logging-container");
-const logtoggle = document.getElementById("logging-toggle");
+const logging_toggle = document.getElementById("input-logging-toggle");
 const logbtn = document.getElementById("logging-button");
 
 const bingo = {
@@ -40,6 +40,7 @@ let _defaults = {
 		call_buffer_toggle : 1,
 		call_buffer_time : 2,
 		pres_remote_toggle : 0,
+		logging_toggle : 0,
 	},
 	colors: {
 		background_color: "#FFFFFF",
@@ -313,17 +314,19 @@ function openLog() {
 }
 
 function toggle_logging() {
-	if (logtoggle.checked) {
+	if (logging_toggle.checked) {
 		logbtn.disabled = false;
+		localStorage.setItem("logging_toggle", 1);
 	}
 	else {
 		logbtn.disabled = true;
 		log.innerHTML = '<div>---</div>';
+		localStorage.setItem("logging_toggle", 0);
 	}
 }
 
 function appendLog(time, msg) {
-	if (logtoggle.checked) {
+	if (logging_toggle.checked) {
 		let event_container = document.createElement("div");
 		event_container.setAttribute("class", "logging-event");
 

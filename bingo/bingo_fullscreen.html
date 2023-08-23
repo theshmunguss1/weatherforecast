@@ -376,14 +376,13 @@
 			<p class="help-action-container">
 				<label>
 					<input
-						id="logging-toggle"
+						id="input-logging-toggle"
 						type="checkbox"
 						oninput="toggle_logging()"
 						title="Toggle a viewable log for basic events/troubleshooting"
-						checked
 					/>Logging?
 				</label>
-				<button id="logging-button" onclick="openLog()">Show log</button>
+				<button id="logging-button" onclick="openLog()" disabled>Show log</button>
 				<span>Show a basic event log. If turned off, the logs history will be deleted.</span>
 			</p>
 			<button
