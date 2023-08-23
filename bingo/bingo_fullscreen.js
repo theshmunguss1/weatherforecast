@@ -202,7 +202,7 @@ document.addEventListener("keyup", remote_presentation_press);
 function remote_presentation_press(event) {
 	appendLog(
 		new Date(),
-		`<REMOTE> remote_presentation_press() called -> Key: '${event.key}'`
+		`remote_presentation_press() called -> Key: '${event.key}'`
 	)
 	// console.log(event);
 	// console.log(event.key);
