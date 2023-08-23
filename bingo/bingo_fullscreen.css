@@ -138,7 +138,7 @@ body::backdrop {
 	font-size: 2.5vmin;
 }
 
-#new-game-dialog, #options, #color-options, #help {
+#new-game-dialog, #options, #color-options, #help, #logging {
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -159,6 +159,7 @@ code {font-weight: bold;}
 #options button,
 #color-options button,
 #help > button,
+#logging > button,
 #options label {
 	font-size: 4vmin;
 	color: black;
@@ -212,6 +213,25 @@ code {font-weight: bold;}
 	align-items: center;
 	gap: 1em;
 }
+.help-action-container button {
+	font-size: 2vmin;
+}
+#logging {
+	text-align: center;
+}
+#logging-container {
+	width: 90vw;
+	margin: 0 auto;
+	height: 75vh;
+	overflow-y: scroll;
+	user-select: text;
+}
+.logging-event {
+	font-size: 2vmin;
+	display: flex;
+	gap: 2em;
+}
+
 input {
 	vertical-align: middle;
 	margin: 2vmin;

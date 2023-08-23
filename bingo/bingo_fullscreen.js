@@ -1,4 +1,3 @@
-
 const doc = document.documentElement;
 const container = document.getElementById("container");
 const recent_row_1 = document.getElementById("recent-row-1");
@@ -21,6 +20,10 @@ const call_buffer_time = document.getElementById("input-call-buffer-time");
 const pres_remote_toggle = document.getElementById("input-pres-remote-toggle");
 const call_display = document.getElementById("call-display");
 const newcall_btn = document.getElementById("newcall-button");
+const lastGamebtn = document.getElementById("last-game");
+const log = document.getElementById("logging-container");
+const logtoggle = document.getElementById("logging-toggle");
+const logbtn = document.getElementById("logging-button");
 
 const bingo = {
 	min : 1,
@@ -197,30 +200,64 @@ load_defaults();
 document.addEventListener("keyup", remote_presentation_press);
 
 function remote_presentation_press(event) {
+	appendLog(
+		new Date(),
+		`remote_presentation_press() called -> Key: '${event.key}'`
+	)
 	// console.log(event);
+	// console.log(event.key);
 	// console.log("pres_remote_toggle:", pres_remote_toggle.checked);
 
 	// Respond to specific key/button presses corresponding to presentation remotes
 	if (pres_remote_toggle.checked) {
-		if (["PageUp", "PageDown", "b", "B"].includes(event.key)) {
+		appendLog(
+			"",
+			"presentation remote toggle is ON"
+		);
+		// if (["PageUp", "PageDown", "b", "B"].includes(event.key)) {
+		if (
+			event.key.match(/PageUp/i) ||
+			event.key.match(/PageDown/i) ||
+			event.key.match(/^b$/i)
+		) {
+			appendLog(
+				"",
+				`The key ('${event.key}') that was pressed was a match and the board should respond`
+			);
 			// Initiate a new game dialog
 			if (["b", "B"].includes(event.key) && new_game_dialog.style.display != "flex") {
+				appendLog("", "New Game Dialog Displayed");
 				new_game_dialog.style.display = "flex";
 			}
 			// make new game or cancel
 			else if (new_game_dialog.style.display == "flex") {
 				if (event.key == "PageDown") {
+					appendLog("", "<REMOTE> New Game START");
 					new_game();
 				}
 				else {
+					appendLog("", "<REMOTE> New Game CANCELLED");
 					new_game_dialog.style.display = 'none';
 				}
 			}
 			// Fire new call if button is not disabled
 			else if (newcall_btn.disabled == false) {
+				appendLog("", "<PRES REMOTE> new_call()");
 				new_call();
 			}
 		}
+		else {
+			appendLog(
+				"",
+				`The key ('${event.key}') was not recognized to produce a response`
+			);
+		}
+	}
+	else {
+		appendLog(
+			"",
+			`But the presentation remote toggle is OFF`
+		);
 	}
 }
 
@@ -270,6 +307,61 @@ function exit_fullScreen() {
 	document.exitFullscreen();
 }
 
+function openLog() {
+	help_dialog.style.display = 'none';
+	document.getElementById('logging').style.display = 'block';
+}
+
+function toggle_logging() {
+	if (logtoggle.checked) {
+		logbtn.disabled = false;
+	}
+	else {
+		logbtn.disabled = true;
+	}
+}
+
+function appendLog(time, msg) {
+	if (logtoggle.checked) {
+		let event_container = document.createElement("div");
+		event_container.setAttribute("class", "logging-event");
+
+		let time_ele = document.createElement("span");
+		let msg_ele = document.createElement("span");
+
+		if (time != "") {
+			time_ele.innerText = [
+				time.getFullYear(),
+				(time.getMonth() + 1).toString().padStart(2, "0"),
+				time.getDate().toString().padStart(2, "0"),
+			].join("-") + " " + [
+				time.getHours().toString().padStart(2, "0"),
+				time.getMinutes().toString().padStart(2, "0"),
+				time.getSeconds().toString().padStart(2, "0"),
+			].join(":");
+		}
+
+		msg_ele.innerText = msg;
+
+		event_container.appendChild(time_ele);
+		event_container.appendChild(msg_ele);
+
+		// log.insertBefore(
+			// event_container,
+			// log.querySelectorAll("div")[0]
+		// );
+		log.appendChild(event_container);
+		log.scroll({"top":10000});
+
+		// if (log.childNodes.length > 50) {
+			// log.removeChild(log.lastChild);
+		// }
+		if (log.childNodes.length > 50) {
+			log.removeChild(log.firstChild);
+		}
+	}
+}
+
 function call_protect(seconds=1) {
 	newcall_btn.disabled = true;
 	setTimeout(
@@ -311,25 +403,70 @@ function change_buffer_time() {
 	localStorage.setItem("call_buffer_time", bingo.call_buffer_time);
 }
 
-function new_call() {
-	// console.log(MIN + Math.floor(Math.random() * (MAX-MIN+1)));
+function restore_last_game() {
+	let STEP = 50;    //ms
 
-	// prevent accidental/inadvertent call
-	if (call_buffer_toggle.checked) {		
-		call_protect(bingo.call_buffer_time);
+	if (Boolean(localStorage.getItem("lastGame"))) {
+		// as previous game is likely being loaded, disable the button
+		newcall_btn.disabled = true;
+		help_dialog.style.display = "none";
+		let last_game_calls = localStorage.getItem("lastGame").split(",").reverse();
+
+		// timer to re-enable new-call button
+		if (last_game_calls.length < 75) {
+			setTimeout(
+				re_enable => {newcall_btn.disabled = false},
+				STEP * last_game_calls.length
+			)
+		}
+
+		// iterate and re-highlight called spaces
+		for (let [indx, each] of last_game_calls.entries()) {
+			setTimeout(
+				new_call,
+				STEP * indx,
+				each
+			);
+		}
 	}
+}
+
+function new_call(space=null) {
+	// console.log(MIN + Math.floor(Math.random() * (MAX-MIN+1)));
+	let r;
+	// disable restore last game button since a new game is ongoing...
+	lastGamebtn.disabled = true;
 
 	// random bingo space (index)
-	let r = Math.floor(Math.random() * bingo.possibilities.length);
+	if (space == null) {
+		// prevent accidental/inadvertent call
+		if (call_buffer_toggle.checked) {		
+			call_protect(bingo.call_buffer_time);
+		}
+		r = Math.floor(Math.random() * bingo.possibilities.length);
+	}
+	// manipulate the next call
+	else {
+		r = bingo.possibilities.indexOf(space);
+	}
 
 	// Note the space being called
 	// record
 	bingo.called.unshift(bingo.possibilities[r]);
 
+	// record in localStorage
+	localStorage.setItem("lastGame", bingo.called.toString());
+
 	// make sure only the most-recent call has a box highlight around it
 	if (bingo.called.length > 1) {
 		document.getElementById(bingo.called[1]).style.outline = "none";
 	}
+
+	appendLog(
+		new Date(),
+		`New Call --> '${bingo.possibilities[r]}'`
+	);
+	
 
 	// Display the space just called
 	call_display.innerText = bingo.possibilities[r].toUpperCase();
@@ -363,6 +500,7 @@ function new_call() {
 }
 
 function new_game() {
+	appendLog(new Date(), "*** Starting New Game ***");
 	// Clear Recent Calls
 	call_display.innerText = "---";
 

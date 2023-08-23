@@ -363,15 +363,40 @@
 			<p class="help-action-container">
 				<button onclick="try_fullScreen();">Go<br />Fullscreen</button>
 				<button onclick="exit_fullScreen();">Exit<br />Fullscreen</button>
-				<span>Use these to attempt to request/revoke fullscreen usage</span>
+				<span>Use these to attempt to request/revoke fullscreen usage; . For example, lots of browsers for android-based devices (not only phones, but even smartboards) don't give their users this simple control over their browsing experience.</span>
+			</p>
+			<p class="help-action-container">
+				<button id="last-game" onclick="restore_last_game();">Restore Last Game</button>
+				<span>*EXPERIMENTAL* Use this if the page refreshed unexpectedly or if a new game was started by mistake. This will only work if the game has not started (no calls made).</span>
 			</p>
 			<p class="help-action-container">
 				<button onclick="localStorage.clear();">Reset localStorage</button>
 				<span>Click this to clear all settings and styles. You must then refresh the page. It will then react as if you're visiting the page for the first time.</span>
 			</p>
+			<p class="help-action-container">
+				<label>
+					<input
+						id="logging-toggle"
+						type="checkbox"
+						oninput="toggle_logging()"
+						title="Toggle a viewable log for basic events/troubleshooting"
+					/>Logging?
+				</label>
+				<button id="logging-button" onclick="openLog()" disabled>Show log</button>
+				<span>Show a basic event log</span>
+			</p>
 			<button
 				style="margin-top:1em;" 
 				onclick="help_dialog.style.display = 'none';"
+			>Close</button>
+		</div>
+		<!-- LOGGING -->
+		<div id="logging">
+			<div id="logging-container">
+				<div>---</div>
+			</div>
+			<button
+				onclick="document.getElementById('logging').style.display = 'none';"
 			>Close</button>
 		</div>
 	</body>
