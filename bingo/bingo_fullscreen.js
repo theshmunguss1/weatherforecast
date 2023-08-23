@@ -318,6 +318,7 @@ function toggle_logging() {
 	}
 	else {
 		logbtn.disabled = true;
+		log.innerHTML = '<div>---</div>';
 	}
 }
 
