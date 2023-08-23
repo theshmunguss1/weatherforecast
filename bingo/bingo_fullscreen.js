@@ -202,7 +202,7 @@ document.addEventListener("keyup", remote_presentation_press);
 function remote_presentation_press(event) {
 	appendLog(
 		new Date(),
-		`remote_presentation_press() called -> Key: '${event.key}'`
+		`<REMOTE> remote_presentation_press() called -> Key: '${event.key}'`
 	)
 	// console.log(event);
 	// console.log(event.key);
@@ -226,7 +226,7 @@ function remote_presentation_press(event) {
 			);
 			// Initiate a new game dialog
 			if (["b", "B"].includes(event.key) && new_game_dialog.style.display != "flex") {
-				appendLog("", "New Game Dialog Displayed");
+				appendLog("", "<REMOTE> New Game Dialog Displayed");
 				new_game_dialog.style.display = "flex";
 			}
 			// make new game or cancel
