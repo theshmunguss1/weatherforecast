@@ -204,7 +204,7 @@ function remote_presentation_press(event) {
 	appendLog(
 		new Date(),
 		`remote_presentation_press() called -> Key: '${event.key}'`
-	)
+	);
 	// console.log(event);
 	// console.log(event.key);
 	// console.log("pres_remote_toggle:", pres_remote_toggle.checked);
@@ -223,11 +223,11 @@ function remote_presentation_press(event) {
 		) {
 			appendLog(
 				"",
-				`The key ('${event.key}') that was pressed was a match and the board should respond`
+				`The board should respond to The key '${event.key}'`
 			);
 			// Initiate a new game dialog
 			if (["b", "B"].includes(event.key) && new_game_dialog.style.display != "flex") {
-				appendLog("", "<REMOTE> New Game Dialog Displayed");
+				appendLog("", "<REMOTE> New Game Dialog being ordered to display");
 				new_game_dialog.style.display = "flex";
 			}
 			// make new game or cancel
@@ -250,7 +250,7 @@ function remote_presentation_press(event) {
 		else {
 			appendLog(
 				"",
-				`The key ('${event.key}') was not recognized to produce a response`
+				`The key '${event.key}' is not assigned to do anything.`
 			);
 		}
 	}
@@ -299,13 +299,30 @@ function rebuild_bingo_possibilities() {
 }
 
 function try_fullScreen() {
-	// need to control the :fullscreen selector somehow
-	// element.attributeStyleMap.set() <- use to modify css?
-	document.body.requestFullscreen({"navigationUI": "hide"});
+	appendLog(
+		new Date(),
+		"* Requesting to go fullscreen"
+	);
+	document.body.requestFullscreen({"navigationUI": "hide"})
+		.then(blah => {
+			appendLog("", "     GRANTED");
+		}).catch(err => {
+			appendLog("", "     DENIED");
+		});
 }
 
 function exit_fullScreen() {
-	document.exitFullscreen();
+	appendLog(
+		new Date(),
+		"* Requesting to EXIT fullscreen"
+	);
+	document.exitFullscreen()
+		.then(blah => {
+			appendLog("", "     GRANTED");
+		}).catch(err => {
+			appendLog("", "     FAIL: " + err);
+			throw err;
+		});
 }
 
 function openLog() {
