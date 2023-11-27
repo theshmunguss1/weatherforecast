@@ -117,6 +117,13 @@ function load_defaults() {
 					localStorage.getItem(opt)
 				}) to newer setting`
 			);
+			appendLog(
+				new Date(),
+				`* converting saved-setting '${opt}' (${
+					localStorage.getItem(opt)
+				}) to newer setting`,
+				true
+			);
 			localStorage.setItem(
 				opt,
 				(localStorage.getItem(opt) == "true") ? 1 : 0
@@ -125,6 +132,11 @@ function load_defaults() {
 		// compare the valu in ls to the default; make change as necessary
 		if (localStorage.getItem(opt) != _defaults.placements[opt]) {
 			console.log(`loading option '${opt}': ` + localStorage.getItem(opt));
+			appendLog(
+				new Date(),
+				`loading option '${opt}': ` + localStorage.getItem(opt),
+				true
+			);
 			bingo[opt] = localStorage.getItem(opt);
 			let ele_id = `input-${opt.replaceAll("_", "-")}`;
 			// only add this suffix if it isn't a toggle switch
@@ -159,6 +171,11 @@ function load_defaults() {
 		}
 		if (localStorage.getItem(opt) != _defaults.colors[opt]) {
 			console.log(`loading color '${opt}': ` + localStorage.getItem(opt));
+			appendLog(
+				new Date(),
+				`loading color '${opt}': ` + localStorage.getItem(opt),
+				true
+			);
 			bingo[opt] = localStorage.getItem(opt);
 			document.getElementById(opt).value = bingo[opt];
 			document.getElementById(opt).oninput()
@@ -342,8 +359,8 @@ function toggle_logging() {
 	}
 }
 
-function appendLog(time, msg) {
-	if (logging_toggle.checked) {
+function appendLog(time, msg, init=false) {
+	if (logging_toggle.checked || init) {
 		let event_container = document.createElement("div");
 		event_container.setAttribute("class", "logging-event");
 
@@ -430,6 +447,7 @@ function restore_last_game() {
 	if (Boolean(localStorage.getItem("lastGame"))) {
 		// as previous game is likely being loaded, disable the button
 		newcall_btn.disabled = true;
+		appendLog(new Date(), "restore_last_game() called");
 		help_dialog.style.display = "none";
 		let last_game_calls = localStorage.getItem("lastGame").split(",").reverse();
 
@@ -487,7 +505,6 @@ function new_call(space=null) {
 		new Date(),
 		`New Call --> '${bingo.possibilities[r]}'`
 	);
-	
 
 	// Display the space just called
 	call_display.innerText = bingo.possibilities[r].toUpperCase();
