@@ -284,7 +284,7 @@ _today = new Date();
 if (_today.getMonth() == 11 ||
     _today.getMonth() == 6 && (_today.getDate() == 26 || _today.getDate() == 27)
 ) {
-	ChristmasTimeIsHere();
+	// ChristmasTimeIsHere();
 }
 
 // CHRISTMAS THEME
