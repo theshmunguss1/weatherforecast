@@ -4,7 +4,7 @@
 		<base href="../">
 		<title>Bingo Caller</title>
 		<link rel="stylesheet" type="text/css" href="pageheader.css"></link>
-		<link id="class_name" rel="stylesheet" href="bingo/bingo_fullscreen.css">
+		<link id="class_name" rel="stylesheet" href="bingo/bingo_fullscreen.v02.2.css">
 		<meta name="author" content="Kyle Gentry">
 		<meta name="keywords" content="bingo">
 		<meta name="description" content="Use this to call a game of bingo. It will show the players the most-recent calls and highlight the calls already made during the game.">
@@ -349,7 +349,7 @@
 		<!-- HELP -->
 		<div id="help">
 			<h1>Fullscreen Bingo Caller</h1>
-			<h3>Version 2.2</h3>
+			<h3>Version <span id="jsversion"></span></h3>
 			<p>
 				Fullscreen Bingo Caller assists users in playing Bingo. It enables players to see previously-called numbers and the most-recent calls. A call buffer feature prevents the host from accidentally or pre-maturely calling a new number. 
 			</p>
@@ -357,7 +357,7 @@
 				A large set of customizations are possible via the "options" button, including layout, call-buffer options, presentation-remote use, and colors. Browser <code>localStorage</code> enables these customizations to be saved and re-loaded upon subsequent visits.
 			</p>
 			<p>
-				This page is optimized for smartboards and other touch-screen devices (like tablets) but should work on any device. In general, the larger the screen, the better.
+				This page is optimized for smartboards and other touch-screen devices (like tablets) but should work on any device. In general, the larger the screen, the better. ...Or that is the hope.
 			</p>
 			<h4>Troubleshooting</h4>
 			<p class="help-action-container">
@@ -398,7 +398,8 @@
 				onclick="document.getElementById('logging').style.display = 'none';"
 			>Close</button>
 		</div>
-		<script src="bingo/bingo_fullscreen.js"></script>
+		<!-- <script src="bingo/bingo_fullscreen.js"></script> -->
+		<script src="bingo/bingo_fullscreen.v02.2.js"></script>
 	</body>
 </html>
 
