@@ -590,7 +590,7 @@ function draw() {
 	// CHRISTMAS
 	if (__today.getMonth() == 12-1) {
 	    ctx.drawImage(__snow_scape, 0, 0, canvas.width, canvas.height);
-		ctx.fillStyle = "rgba(255,255,255, 25%)";
+		ctx.fillStyle = "rgba(255,255,255, 35%)";
 		ctx.fillRect(
 			0, 0,
 			canvas.width,
@@ -613,6 +613,10 @@ function draw() {
 		);
 
     }
+
+	if (prop.drawHolidaySVG) {
+		prop.boardBackgroundColor = "#FFFFFF00";
+	}
 
 	// GAME BOARD itself
 	if (prop.backgroundColor != prop.boardBackgroundColor) {

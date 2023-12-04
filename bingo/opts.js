@@ -106,10 +106,9 @@ function chg_freesp_color(c) {
 }
 
 function chg_opts(e) {
-	//console.log(e.path[0]["id"]);
 
-	let newid = e.path[0]["id"].slice(4);
-	//console.log(newid);
+	let newid = e.srcElement.id.slice(4);
+
 	// If a different option is selected
 	if (newid.includes(prop.optsSelected) == false) {
 		// "de-highlight" the current option selection
