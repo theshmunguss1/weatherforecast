@@ -1,6 +1,6 @@
 const hd2 = {
 	basin: "atl",
-	year: 2023,
+	year: 2024,
 };
 const box_season_stats = document.getElementById("season-stats");
 
