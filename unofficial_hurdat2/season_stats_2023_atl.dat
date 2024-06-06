@@ -1,27 +1,26 @@
 ----------------------------------------------------------------------
-                   Tropical Cyclone Stats for 2023                    
-                         North Atlantic Basin                         
+                   Tropical Cyclone Stats for 2023
+                         North Atlantic Basin
 
-      Stats calculated for Seasons since 1967 (57 total seasons)      
-                   from January 1 thru December 30                    
+      Stats calculated for Seasons since 1967 (57 total seasons)
 
-    * TS-related Statistics include Hurricanes in their totals except 
-                            for landfall data                         
+    * TS-related Statistics include Hurricanes in their totals except
+                            for landfall data
 
-         * Hurdat2 Landfall data incomplete for seasons 1971-1990     
+         * Hurdat2 Landfall data incomplete for seasons 1971-1990
+* Reported ranks are Dense (value-based) and Competition (if different)
 ----------------------------------------------------------------------
-* Tropical Cyclones: 20            Rank 6/19 (tied w/5 other seasons)
-* TC Track Distance: 28830.0 nmi   Rank 17/57
-* TS Distance: 25156.9 nmi         Rank 8/57
-* HU Distance: 8297.8 nmi          Rank 18/57
-* MHU Distance: 1650.2 nmi         Rank 20/53
-* Tropical Storms: 19              Rank 4/18 (tied w/4 other seasons)
-* ACE: 145.2 * 10^4 kt^2           Rank 15/57
-* Hurricanes: 7                    Rank 8/13 (tied w/8 other seasons)
-* HDP: 91.9 * 10^4 kt^2            Rank 16/57
-* Major Hurricanes: 3              Rank 5/8 (tied w/10 other seasons)
-* MHDP: 37.8 * 10^4 kt^2           Rank 18/52
-* Total Landfalling TC's: 5        Rank 9/14 (tied w/5 other seasons)
-* TS Landfalls: 5                  Rank 7/12 (tied w/3 other seasons)
-* HU Landfalls: 1                  Rank 8/9 (tied w/11 other seasons)
-
+* Tropical Cyclones: 21            Ranks:  5/19 ::  8/57 (tied w/6 seasons)
+* TC Track Distance: 29189.8 nmi   Ranks: 17/57
+* TS Distance: 24988.4 nmi         Ranks: 10/57
+* HU Distance: 8309.8 nmi          Ranks: 18/57
+* MHU Distance: 1549.2 nmi         Ranks: 22/53
+* Tropical Storms: 20              Ranks:  4/19 ::  4/57 (tied w/1 season)
+* ACE: 148.2 * 10^4 kt^2           Ranks: 13/57
+* Hurricanes: 7                    Ranks:  8/13 :: 19/56 (tied w/23 seasons)
+* HDP: 93.1 * 10^4 kt^2            Ranks: 16/57
+* Major Hurricanes: 3              Ranks:   5/8 :: 14/53 (tied w/21 seasons)
+* MHDP: 35.8 * 10^4 kt^2           Ranks: 20/52 :: 20/53
+* Total Landfalling TC's: 9        Ranks:  5/14 :: 11/46 (tied w/5 seasons)
+* TS Landfalls: 6                  Ranks:   3/9 ::  8/42 (tied w/8 seasons)
+* HU Landfalls: 2                  Ranks:   7/9 :: 23/43 (tied w/48 seasons)
