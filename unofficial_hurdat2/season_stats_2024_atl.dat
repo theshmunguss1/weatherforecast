@@ -1,13 +1,27 @@
 ----------------------------------------------------------------------
-                   Tropical Cyclone Stats for 2024                  
+                   Tropical Cyclone Stats for 2024                    
                          North Atlantic Basin                         
 
-      Stats calculated for Seasons since 1967 (57 total seasons)      
-                   from January 1 thru December 30                    
+                Stats calculated for Seasons 1967-2024                
+                      from January 1 thru June 5                      
 
     * TS-related Statistics include Hurricanes in their totals except 
                             for landfall data                         
 
          * Hurdat2 Landfall data incomplete for seasons 1971-1990     
+* Reported ranks are Dense (value-based) and Competition (if different)
 ----------------------------------------------------------------------
-
+* Tropical Cyclones: 0             Ranks:   5/5 (tied w/24 seasons)
+* TC Track Distance: 0.0 nmi       Ranks: 34/34 (tied w/24 seasons)
+* TS Distance: 0.0 nmi             Ranks: 27/27 (tied w/31 seasons)
+* HU Distance: 0.0 nmi             Ranks:   6/6 (tied w/52 seasons)
+* MHU Distance: 0.0 nmi            Ranks:   1/1 (tied w/57 seasons)
+* Tropical Storms: 0               Ranks:   4/4 (tied w/31 seasons)
+* ACE: 0.0 * 10^4 kt^2             Ranks: 24/24 (tied w/31 seasons)
+* Hurricanes: 0                    Ranks:   2/2 (tied w/52 seasons)
+* HDP: 0.0 * 10^4 kt^2             Ranks:   5/5 (tied w/52 seasons)
+* Major Hurricanes: 0              Ranks:   1/1 (tied w/57 seasons)
+* MHDP: 0.0 * 10^4 kt^2            Ranks:   1/1 (tied w/57 seasons)
+* Total Landfalling TC's: 0        Ranks:   3/3 (tied w/46 seasons)
+* TS Landfalls: 0                  Ranks:   3/3 (tied w/47 seasons)
+* HU Landfalls: 0                  Ranks:   1/1 (tied w/57 seasons)
