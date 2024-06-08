@@ -423,20 +423,31 @@ function display_new_image() {
 }
 
 function kbshortcut(event) {
+	// Go back a day
+	if (event.key == "<") {
+		change_date(-1, "day");
+	}
 	// 1 hour back
-	if (["<", ","].includes(event.key)) {
+	else if (event.key == ",") {
 		change_date(-1, "hour");
 	}
-	else if ([">", "."].includes(event.key)) {
+	// 1 hour forward
+	else if (event.key == ".") {
 		change_date(1, "hour");
+	}
+	// Go forward 1 Day
+	else if (event.key == ">") {
+		change_date(1, "day");
 	}
 }
 
 function chg_hr_key(event) {
 	// Advances one hour by pressing the > key (period)
-	if (event.keyCode == 190) {chg_hr(1);}
+	if (event.key == "Period") {
+		chg_hr(1);
+    }
 	// Goes back one hour by pressing the < key (comma)
-	if (event.keyCode == 188) {chg_hr(-1);}
+	if (event.key == "Comma") {chg_hr(-1);}
 }
 
 // Define the products used herein
