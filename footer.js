@@ -5,8 +5,8 @@ let _vis = "hidden";
 let links = [
 	{"tag": "a", "label": "HOME",
 	 "attr": {"href": "index.html"}},
-	{"tag": "a", "label": "iR&#233;sume",
-	"attr": {"href": "iresume/iresume.html"}},
+	// {"tag": "a", "label": "iR&#233;sume",
+	// "attr": {"href": "iresume/iresume.html"}},
 	{"tag": "a", "label": "Digital Portfolio",
 	"attr": {"href": "iresume/digiport.html"}},
 	{"tag": "a", "label": "Contact (GitHub Login Required)",
