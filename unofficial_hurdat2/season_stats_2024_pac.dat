@@ -3,7 +3,7 @@
                 East Pacific / Central Pacific Basins                 
 
       Stats calculated for Seasons since 1967 (58 total seasons)      
-                    from January 1 thru August 20                     
+                    from January 1 thru August 21                     
 
     * TS-related Statistics include Hurricanes in their totals except 
                             for landfall data                         
@@ -11,16 +11,16 @@
          * Hurdat2 Landfall data incomplete for seasons 1971-1990     
 * Reported ranks are Dense (value-based) and Competition (if different)
 ----------------------------------------------------------------------
-* Tropical Cyclones: 7             Ranks:  9/12 :: 48/57 (tied w/5 seasons)
-* TC Track Distance: 5106.4 nmi    Ranks: 56/58
-* TS Distance: 4642.3 nmi          Ranks: 48/58
-* HU Distance: 514.8 nmi           Ranks: 56/58
+* Tropical Cyclones: 7             Ranks: 10/13 :: 50/57 (tied w/3 seasons)
+* TC Track Distance: 5253.5 nmi    Ranks: 56/58
+* TS Distance: 4789.3 nmi          Ranks: 48/58
+* HU Distance: 609.6 nmi           Ranks: 55/58
 * MHU Distance: 0.0 nmi            Ranks: 49/49 (tied w/9 seasons)
-* Tropical Storms: 7               Ranks:  8/11 :: 42/57 (tied w/4 seasons)
-* ACE: 17.5 * 10^4 kt^2            Ranks: 54/58
-* Hurricanes: 1                    Ranks:   8/9 :: 56/58 (tied w/1 season)
-* HDP: 4.4 * 10^4 kt^2             Ranks: 55/58
-* Major Hurricanes: 0              Ranks:   6/6 :: 49/49 (tied w/9 seasons)
+* Tropical Storms: 7               Ranks:  8/11 :: 43/57 (tied w/4 seasons)
+* ACE: 19.7 * 10^4 kt^2            Ranks: 54/58
+* Hurricanes: 2                    Ranks:   7/9 :: 49/58 (tied w/7 seasons)
+* HDP: 6.2 * 10^4 kt^2             Ranks: 54/58
+* Major Hurricanes: 0              Ranks:   7/7 :: 49/49 (tied w/9 seasons)
 * MHDP: 0.0 * 10^4 kt^2            Ranks: 48/48 :: 49/49 (tied w/9 seasons)
 * Total Landfalling TC's: 0        Ranks:   4/4 :: 21/21 (tied w/37 seasons)
 * TS Landfalls: 0                  Ranks:   3/3 :: 16/16 (tied w/42 seasons)
