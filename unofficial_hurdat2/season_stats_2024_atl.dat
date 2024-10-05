@@ -3,7 +3,7 @@
                          North Atlantic Basin                         
 
       Stats calculated for Seasons since 1967 (58 total seasons)      
-                    from January 1 thru October 3                     
+                    from January 1 thru October 4                     
 
     * TS-related Statistics include Hurricanes in their totals except 
                             for landfall data                         
@@ -11,17 +11,17 @@
          * Hurdat2 Landfall data incomplete for seasons 1971-1990     
 * Reported ranks are Dense (value-based) and Competition (if different)
 ----------------------------------------------------------------------
-* Tropical Cyclones: 12            Ranks: 11/17 :: 35/57 (tied w/4 seasons)
-* TC Track Distance: 14895.3 nmi   Ranks: 43/58
-* TS Distance: 12947.6 nmi         Ranks: 30/58
-* HU Distance: 6891.4 nmi          Ranks: 18/58
-* MHU Distance: 2378.7 nmi         Ranks: 12/54
-* Tropical Storms: 12              Ranks:  9/17 :: 13/57 (tied w/6 seasons)
-* ACE: 86.9 * 10^4 kt^2            Ranks: 27/58
-* Hurricanes: 7                    Ranks:  4/10 ::  7/58 (tied w/7 seasons)
-* HDP: 65.3 * 10^4 kt^2            Ranks: 20/58
-* Major Hurricanes: 3              Ranks:   4/7 ::  8/54 (tied w/11 seasons)
-* MHDP: 33.7 * 10^4 kt^2           Ranks: 17/52 :: 17/54
-* Total Landfalling TC's: 6        Ranks:  7/13 :: 15/47 (tied w/6 seasons)
-* TS Landfalls: 3                  Ranks:   5/8 :: 19/43 (tied w/10 seasons)
-* HU Landfalls: 5                  Ranks:   2/7 ::  2/41 (tied w/5 seasons)
+* Tropical Cyclones: 12            Ranks: 11/16 :: 35/57 (tied w/4 seasons)
+* TC Track Distance: 15278.1 nmi   Ranks: 42/58
+* TS Distance: 13330.4 nmi         Ranks: 26/58
+* HU Distance: 7134.5 nmi          Ranks: 17/58
+* MHU Distance: 2621.8 nmi         Ranks: 11/54
+* Tropical Storms: 12              Ranks:  8/16 :: 13/57 (tied w/6 seasons)
+* ACE: 93.9 * 10^4 kt^2            Ranks: 24/58
+* Hurricanes: 7                    Ranks:  4/10 ::  8/58 (tied w/6 seasons)
+* HDP: 71.2 * 10^4 kt^2            Ranks: 20/58
+* Major Hurricanes: 3              Ranks:   4/7 ::  9/54 (tied w/10 seasons)
+* MHDP: 39.6 * 10^4 kt^2           Ranks: 15/52 :: 15/54
+* Total Landfalling TC's: 6        Ranks:  6/12 :: 15/47 (tied w/6 seasons)
+* TS Landfalls: 3                  Ranks:   5/8 :: 20/43 (tied w/9 seasons)
+* HU Landfalls: 5                  Ranks:   3/8 ::  3/41 (tied w/4 seasons)
