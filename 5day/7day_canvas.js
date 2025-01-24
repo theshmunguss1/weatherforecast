@@ -1,3 +1,8 @@
+/* Ideas
+- allow change of aspect-ratio (you'll need to further edit code of on-canvas forecast changers to accommodate this
+
+*/
+
 var desc = ["5day/desc_blank.svg",
 			"5day/en/desc_windy.svg",
 			"5day/en/desc_hot.svg",
