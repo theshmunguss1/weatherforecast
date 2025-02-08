@@ -21,41 +21,65 @@
 		</div>
 		<div id="globaloptions">
 			<!-- LANGUAGE -->
-			<div id="languagebox">
-				<!-- <button onclick="screenreport()">Screen Report</button><br /> -->
-				<fieldset>
-					<legend>Language Select:</legend>
+			<div id="div-languagebox">
+				<h4>Language Select:</h4>
+				<div>
 					<button id="lang_left" onClick="chg_lang(-1)">&lt;</button>
 					<img id="lang_selection" src="5day/lang_en.svg" title="English" style="vertical-align:middle;">
 					<button id="lang_right" onClick="chg_lang(1)">&gt;</button>
-				</fieldset>
-
+				</div>
 			</div>
 			<!-- FORECAST LENGTH -->
-			<div>
-				<fieldset>
-					<legend>Forecast Length:</legend>
-					<input id="frcstQty5" type="radio" name="frcstlength" value=5 onChange="forecastDayQty(this.value);">
-					<label for="frcstQty5">5 Days</label>
-					<br />
-					<input id="frcstQty7" type="radio" name="frcstlength" value=7 onChange="forecastDayQty(this.value);" checked>
-					<label for="frcstQty7">7 Days</label>
-				</fieldset>
+			<div id="div-forecast-length">
+				<h4>Forecast<br />Length:</h4>
+				<label>
+					<input id="frcstQty3" type="radio" name="frcstlength" value="3" onChange="forecastDayQty(this.value);delta_save_placeholder();" />
+					3 Day<br />(exper.)
+				</label>
+				<label>
+					<input id="frcstQty5" type="radio" name="frcstlength" value="5" onChange="forecastDayQty(this.value);delta_save_placeholder();" />
+					5 Day
+				</label>
+				<label>
+					<input id="frcstQty7" type="radio" name="frcstlength" value="7" onChange="forecastDayQty(this.value);delta_save_placeholder();" checked />
+					7 Day
+				</label>
 			</div>
 			<!-- BACKGROUND COLOR -->
-			<div>
-				<fieldset>
-					<legend>Background Color:</legend>
+			<div id="div-bg-chooser">
+				<h4>Background Color:</h4>
+				<div>
 					<input id="mainbgcolor" type="color" value="#27688D" onInput="chg_bg(this.value);">
-					<label for="mainbgcolor" style="display:none;">Background Color</label>
-					<br />
 					<button onclick="random_bg_color();">Randomize</button>
-				</fieldset>
+				</div>
+				<div id="div-premade-bg">
+					<input id="checkbox-bg-type" type="checkbox" onchange="prop.usePreMadeBackground = this.checked; chg_bg();">
+					<label for="checkbox-bg-type">Use pre-made background?</label>
+				</div>
+				<select id="pre-made-bg-select" onchange="chg_bg()">
+					<option value="5day/bg_stars01_light.svg">Star Pattern 1 (light)</option>
+					<option value="5day/bg_stars01_dark.svg">Star Pattern 1 (dark)</option>
+					<option value="5day/bg_snowflakes_light.svg">Snowflakes (Light) (from Inkscape)</option>
+					<option value="5day/bg_snowflakes_dark.svg">Snowflakes (Dark) (from Inkscape)</option>
+					<option value="5day/bg_polkadot_light.svg">Polka Dot (Light) (from Inkscape)</option>
+					<option value="5day/bg_polkadot_dark.svg">Polka Dot (Dark) (from Inkscape)</option>
+					<option value="5day/bg_woven_light.svg">Woven (Light) (from Inkscape)</option>
+					<option value="5day/bg_woven_dark.svg">Woven (Dark) (from Inkscape)</option>
+					<option value="5day/bg_rainbow.svg">Rainbow</option>
+					<option value="5day/bg_clouds_sunset.jpg">Clouds 1</option>
+					<option value="5day/bg_clouds02.jpg">Clouds 2</option>
+					<option value="5day/bg_sunrise01.jpg">Sunrise 1</option>
+					<option value="5day/bg_sunrise02.jpg">Sunrise 2</option>
+					<option value="5day/bg_sunrise03.jpg">Sunrise 3</option>
+					<option value="5day/bg_pilotmtn.jpg">Mt. Pilot</option>
+					<option value="5day/bg_deer01.jpg">Fawns</option>
+					<option value="5day/bg_ace.jpg">Dog 1</option>
+				</select>
 			</div>
 			<!-- RANDOM FORECAST -->
-			<div>
+			<div id="div-random-forecast">
 				<fieldset>
-					<legend>Temperature Units:</legend>
+					<h4>Temperature<br />Units:</h4>
 					<input type="radio" name="tempunits" id="input-tempF" value="F" onChange="prop.tempUnits = 'F'; convert_temps();" checked>
 					<label for="tempF">&deg;F</label>
 					<input type="radio" name="tempunits" id="input-tempC" value="C" onChange="prop.tempUnits = 'C'; convert_temps();">
@@ -65,23 +89,26 @@
 				</fieldset>
 			</div>
 			<!-- HEMISPHERE / FIRST DAY OF WEEK -->
-			<div>
-				<label for="hemisphere">Hemisphere Select:</label><br />
-				<select id="hemisphere" onchange="prop.hemisphere = this.value; random_forecast();" title="Hemisphere-based generated temperatures">
-					<option value="N">Northern</option>
-					<option value="S">Southern</option>
-				</select>
-				<br />
-				<label for="firstday">First Day of Week:</label><br />
-				<select id="firstday" onChange="chg_day(this.value);">
-					<option value="0">SUN</option>
-					<option value="1">MON</option>
-					<option value="2">TUE</option>
-					<option value="3">WED</option>
-					<option value="4">THU</option>
-					<option value="5">FRI</option>
-					<option value="6">SAT</option>
-				</select>
+			<div id="div-hemisphere">
+				<fieldset>
+					<h4>Hemisphere<br/>Select:</h4>
+					<select id="hemisphere" onchange="prop.hemisphere = this.value; random_forecast();" title="Hemisphere-based generated temperatures">
+						<option value="N">Northern</option>
+						<option value="S">Southern</option>
+					</select>
+				</fieldset>
+				<fieldset>
+				<h4>First Day<br />of the Week:</h4>
+					<select id="firstday" onChange="chg_day(this.value);">
+						<option value="0">SUN</option>
+						<option value="1">MON</option>
+						<option value="2">TUE</option>
+						<option value="3">WED</option>
+						<option value="4">THU</option>
+						<option value="5">FRI</option>
+						<option value="6">SAT</option>
+					</select>
+				</fieldset>
 			</div>
 		</div>
 		<hr color="gray" />
@@ -100,17 +127,17 @@
 				<tr>
 					<td>
 						<input id="titleboth" type="radio" name="titleopt" checked onClick='chg_title_mode("both")'>
-						<label for="titlestandard">Standard</label>
+						<label for="titleboth">Standard</label>
 					</td>
 					<td>
 						<input id="titlename" type="radio" name="titleopt" onClick='chg_title_mode("name")'>
-						<label for="titlenameonly">No City</label>
+						<label for="titlename">No City</label>
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<input id="titlecity" type="radio" name="titleopt" onClick='chg_title_mode("city")'>
-						<label for="titlecityonly">No Name</label>
+						<label for="titlecity">No Name</label>
 					</td>
 					<td>
 						<input id="titlecustom" type="radio" name="titleopt" onClick='chg_title_mode("custom")'>
@@ -135,18 +162,13 @@
 			</div>
 			<div id="save-the-canvas">
 				<fieldset>
-					<legend class="titleopt">Save Forecast As Image</legend>
+					<h4 class="titleopt">Save Forecast As Image</h4>
 					<label for="savesize">Size:</label> 
-					<select id="savesize">
-						<option value="720x360">720 x 360</option>
-						<option value="960x480">960 x 480</option>
-						<option value="1008x504" selected>1008 x 504</option>
-						<option value="1600x800">1600 x 800</option>
-						<option value="1920x960">1920 x 960</option>
+					<select id="savesize" onChange="delta_save_placeholder();">
 					</select><br />
 					<label for="savename">Name:</label> 
 					<input id="savename"><br />
-					<a id="saveimg" href="" onClick="saveimg();">Save Image</a>
+					<a id="saveimg" href="" onClick="saveimg();">Save Image (.png)</a>
 				</fieldset>
 			</div>			
 		</div>
@@ -159,6 +181,14 @@
 				<label for="save-bg">
 					<input onclick="lschange()" type="checkbox" id="save-bg" />
 					Save BG color
+				</label>
+				<label for="save-use-bg-pattern">
+					<input onclick="lschange()" type="checkbox" id="save-use-bg-pattern" />
+					Save setting to Use BG pattern
+				</label>
+				<label for="save-bg-pattern">
+					<input onclick="lschange()" type="checkbox" id="save-bg-pattern" />
+					Save BG pattern
 				</label>
 				<label for="save-firstday">
 					<input onclick="lschange()" type="checkbox" id="save-firstday" />
@@ -184,7 +214,7 @@
 			<button id="param-save-button" onclick="save_urlparams()">
 				Click to reload page with current settings
 			</button>
-			<span>* This will reload the page with the current name, city, and selected temperature unit, day quantity (5 or 7), and hemisphere. Use the check buttons above to optionally save the items described. The new page can then be bookmarked to reference with those preferred settings in-tact.
+			<span>* This will reload the page with the current name, city, and selected temperature unit, day quantity (3, 5, or 7), and hemisphere. Use the check buttons above to optionally save the items described. The new page can then be bookmarked to reference with those preferred settings in-tact.</span>
 		</div>
 		<div id="forecast-modify">
 
@@ -193,9 +223,17 @@
 
 			<p><span>Brief update history:</span>
 				<ul>
+					<li>FEB 2025:<ul>
+						<li>Introduced a collection of optional background imagery. I plan on silently updating this every so-often.</li>
+						<li>Upon user request, I added an experimental 3-day forecast option. As of this update, I'm not happy with how the text flow is (nor enthused at the lack of versatility of HTML5 canvas handling of text). As such, I'll call it an experimental mode.</li>
+						<li>Further tweaks to dynamic canvas re-sizing. It was worse than I thought! It may still be. But I think I got it.</li>
+						<li>For saving images, the sizing option now accurately displays the file dimensions.</li>
+						</ul>
+					</li>
 					<li>JAN 2025:<ul>
-						<li>Included a higher resolution option for saved images (1920x960)</li>
+						<li>Included a higher resolution option for saved images</li>
 						<li>Added a "blank" logo to allow users to effectively disable it if they don't want one</li>
+						<li>Fixed canvas re-sizing (only visually effecting some devices) which was caused by a JS reference to a deprecated variable.</li>
 						</ul>
 					</li>
 					<li>JUN 2023:<ul>
@@ -254,9 +292,11 @@
 				</table>
 			</p>
 			<hr />
-			<p>Use this forecast generator to make/publish/share your own predictions. If you like forecasting, it's a nice simple way of making a graphical representation for your audience/peers. Parents and/or teachers can use it to assist their kids to make their own forecasts, and who knows, maybe spark an interest in science or meteorology.</p>
-			<p>Thank you for your feedback as well. In general, much of the functionality is influenced by user-feedback/requests which has allowed me an opportunity to expand my programming understanding. It is humbling to know that something I've made and worked at for a long time has benefited others.</p>
-			<p>Thanks to <a href="https://goalkicker.com">GoalKicker.com</a> for some very useful guides on programming (HTML5, Canvas, JS, CSS guides assisted here).
+			<p>Use this forecast generator to make/publish/share your own predictions. If you like forecasting, it's a nice simple way of making a graphical representation for your audience/peers. Parents and/or teachers can use it to to teach kids about weather, and who knows, maybe spark an interest in science or meteorology.</p>
+
+			<p>Thank you for your feedback as well. In general, much of the functionality you see has been influenced by user-feedback/requests which gives me an opportunity to expand my programming knowledge. I love knowing that something I've made and worked at for a long time has benefited others.</p>
+
+			<p>I owe a lot of credit to <a href="https://developer.mozilla.com">MDN WebDocs (Mozilla)</a> for their meticulously-comprehensive HTML, CSS, and JavaScript API's, and also to <a href="https://goalkicker.com">GoalKicker.com</a> for their useful guides about those programming languages.</p>
 			<p><span>* TERMS OF USE</span>:
 				<ul>
 					<li>The imagery you create with this generator can be used however you'd like. No attribution necessary/expected.</li>
@@ -268,7 +308,7 @@
 		<script src="header.js"></script>
 		<script src="footer.js"></script>
 		<script src="5day/7day_canvas_populate.js"></script>
-		<script src="5day/7day_canvas.js"></script>
+		<script src="5day/7day_canvas.js?v=2025.2.8"></script>
 	</body>
 </html>
 
