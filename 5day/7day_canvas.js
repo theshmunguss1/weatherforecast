@@ -1,8 +1,3 @@
-/* Ideas
-- allow change of aspect-ratio (you'll need to further edit code of on-canvas forecast changers to accommodate this
-
-*/
-
 var desc = [
 	"5day/desc_blank.svg",
 	"5day/en/desc_windy.svg",
@@ -76,19 +71,42 @@ var logo = [
 	"5day/logo_blank.svg",
 ];
 
-var canvas = document.getElementById("forecast");
-var canvas_portrait = document.getElementById("forecast-portrait");
-var ctx = canvas.getContext("2d");
+logo.currentIndex = function() {
+	return this.findIndex(
+		(logourl, indx, arr) => {
+			return prop.logo.src.includes(logourl);
+			// return (!URL.parse(logourl)) ? 
+				// prop.logo.src.includes(logourl) :
+				// prop.logo.src.includes(
+					// URL.parse(logourl).href
+				// );
+		}
+	)
+}
+
+screen.aspectRatio = function() {
+	return this.availWidth / this.availHeight;
+}
+screen.inverseAspectRatio = function() {
+	return 1 / this.aspectRatio();
+}
+// Dynamic Window Resize
+screen.orientation.onchange = change_orientation;
+
+let canvas = document.getElementById("forecast");
+canvas.aspectRatio = function() {
+	return this.width / this.height;
+}
+canvas.inverseAspectRatio = function() {
+	return 1 / this.aspectRatio();
+}
+let ctx = canvas.getContext("2d");
+let canvas_portrait = document.getElementById("forecast-portrait");
 
 function change_orientation() {
 	// this is needed as the document element won't reflect the proper changes in dimensions until after the resize function was complete
 	setTimeout(resize, 500);
 }
-
-function EventListeners() {}
-
-// Dynamic Window Resize
-screen.orientation.onchange = change_orientation;
 
 // Canvas Event Listener
 // canvas.addEventListener(
@@ -118,11 +136,16 @@ canvas.addEventListener(
 
 let savelang = document.getElementById("save-lang");
 let savebg = document.getElementById("save-bg");
+let savebgpatt = document.getElementById("save-bg-pattern");
+let saveusebgpatt = document.getElementById("save-use-bg-pattern");
 let savefdindex = document.getElementById("save-firstday");
 let saveprcp = document.getElementById("save-prcp");
 let saveuvi = document.getElementById("save-uvi");
 let savewind = document.getElementById("save-wind");
 let savetemps = document.getElementById("save-temps");
+
+// not saved in localStorage, but needed elsewhere in the script
+let savename = document.getElementById("savename");
 
 var prop = {
 	"dayQty": 7,
@@ -154,6 +177,8 @@ var prop = {
 		}
 	},
 	"backgroundColor": "#27688D",
+	"usePreMadeBackground" : false,
+	"backgroundImage": new Image(),
 	"dayImage": new Image(),
 	"hiColor": "#FFFFFF",
 	"loColor": "#000000",
@@ -170,6 +195,21 @@ prop.wind.src = "5day/windboxlogo.svg";
 
 // Create day objects; init image objects
 let word = "WEATHER";
+prop.backgroundImage.aspectRatio = function() {
+	return this.naturalWidth / this.naturalHeight;
+}
+prop.backgroundImage.isLandscape = function() {
+	return this.naturalWidth > this.naturalHeight;
+}
+prop.backgroundImage.toCanvasWidth = function() {
+	return this.aspectRatio() > canvas.aspectRatio() ?
+		this.toCanvasHeight() * this.aspectRatio() : canvas.width
+}
+prop.backgroundImage.toCanvasHeight = function() {
+	return this.aspectRatio() > canvas.aspectRatio() ? 
+		canvas.height : this.toCanvasWidth() / this.aspectRatio()
+}
+prop.backgroundImage.onload = draw;
 for (dy=1; dy <= 7; dy++) {
 	prop[`day${dy}`] = {
 		"sky": new Image(),
@@ -193,6 +233,7 @@ for (dy=1; dy <= 7; dy++) {
 load_day_select();
 
 // Set global image sources
+// the following listener is only needed to populate download sizes
 prop.dayImage.src = "5day/TEMPLATE_7day.svg";
 prop.logo.src = "5day/logo_echotops.svg";
 prop.uvi.src = "5day/uvi.svg";
@@ -203,17 +244,27 @@ prop.uvi.src = "5day/uvi.svg";
 // preload global imagery & other listeners
 prop.logo.onload = draw;
 prop.uvi.onload = draw;
-prop.dayImage.onload = resize;
+prop.dayImage.onload = function() {
+	resize();
+	recalculateDownloadSizes();
+}
+// add temporary event listener to generate the save name placeholder
+prop.dayImage.addEventListener("load", delta_save_placeholder)
+
+prop.dayImage.aspectRatio = function() {
+	return this.width / this.height;
+};
+prop.dayImage.inverseAspectRatio = function() {
+	return 1 / this.aspectRatio();
+};
 
 function lschange() {
-	// let saveprcp = document.getElementById("save-prcp");
-	// let saveuvi = document.getElementById("save-uvi");
-	// let savewind = document.getElementById("save-wind");
-	// let savetemps = document.getElementById("save-temps");
 	try {
 		// console.log(saveprcp.checked);
 		localStorage.setItem("forecast.save-lang", (savelang.checked) ? 1 : 0);
 		localStorage.setItem("forecast.save-bg", (savebg.checked) ? 1 : 0);
+		localStorage.setItem("forecast.save-bg-pattern", (savebgpatt.checked) ? 1 : 0);
+		localStorage.setItem("forecast.save-use-bg-pattern", (saveusebgpatt.checked) ? 1 : 0);
 		localStorage.setItem("forecast.save-firstday", (savefdindex.checked) ? 1 : 0);
 		localStorage.setItem("forecast.save-prcp", (saveprcp.checked) ? 1 : 0);
 		localStorage.setItem("forecast.save-uvi", (saveuvi.checked) ? 1 : 0);
@@ -231,6 +282,12 @@ function lsload() {
 		);
 		savebg.checked = Boolean(
 			parseInt(localStorage.getItem("forecast.save-bg"))
+		);
+		saveusebgpatt.checked = Boolean(
+			parseInt(localStorage.getItem("forecast.save-use-bg-pattern"))
+		);
+		savebgpatt.checked = Boolean(
+			parseInt(localStorage.getItem("forecast.save-bg-pattern"))
 		);
 		savefdindex.checked = Boolean(
 			parseInt(localStorage.getItem("forecast.save-firstday"))
@@ -263,6 +320,12 @@ function save_urlparams() {
 	if (savebg.checked) {
 		options.bg = prop.backgroundColor.slice(1);
 	}
+	if (savebgpatt.checked && saveusebgpatt.checked) {
+		options.bgpatt = document.getElementById("pre-made-bg-select").value;
+	}
+	if (saveusebgpatt.checked) {
+		options.usebgpatt = 1;
+	}
 	if (savefdindex.checked) {
 		options.fdindex = prop.lang_packs[prop.language].dayNames.indexOf(
 			prop.weekArray[0]
@@ -280,10 +343,9 @@ function save_urlparams() {
 	if (document.getElementById("customentry").value != "") {
 		options.custom = document.getElementById("customentry").value;
 	}
-	let SRC = prop.logo.src.match(/5day\/\w+\.svg/)[0];
-	if (!SRC.includes("echotops")) {
-		options.icon = logo.indexOf(SRC);
-	}
+	// Don't leave out options.icon. It will be for legacy purposes
+	options.icon = logo.currentIndex();
+	options.icon_url = logo.at(logo.currentIndex());
 	if (prop.tempUnits != "F") {
 		options.temp = prop.tempUnits;
 	}
@@ -345,10 +407,9 @@ function save_urlparams() {
 
 	// Put values in format to save
 	for (let key of Object.keys(options)) {
-		params.push(key + "=" + encodeURI(options[key]))
+		params.push(key + "=" + encodeURIComponent(options[key]))
 	}
 	let paramstr = "?" + params.join("&");
-	// console.log(document.location.pathname + paramstr);
 	document.location.assign(
 		document.location.origin + document.location.pathname + paramstr
 	);
@@ -359,10 +420,10 @@ function process_urlparams() {
 	let terms = document.location.search.slice(1).split(/\&/);
 	for (let term of terms) {
 		if (term.length > 0) {
-			options[term.split("=")[0]] = decodeURI(term.split("=")[1]);
+			options[term.split("=")[0]] = decodeURIComponent(term.split("=")[1]);
 		}
 	}
-	// console.log(options);
+	// Language
 	if (Object.keys(options).includes("lang")) {
 		document.getElementById(
 			"lang_" + (
@@ -370,10 +431,20 @@ function process_urlparams() {
 			)
 		).click();
 	}
+	// Background stuff
 	if (Object.keys(options).includes("bg")) {
 		document.getElementById("mainbgcolor").value = "#" + options["bg"];
 		document.getElementById("mainbgcolor").oninput();
 	}
+	if (Object.keys(options).includes("usebgpatt")) {
+		document.getElementById("checkbox-bg-type").click();
+	}
+	if (Object.keys(options).includes("bgpatt")) {
+		document.getElementById("pre-made-bg-select").value = options["bgpatt"];
+		document.getElementById("pre-made-bg-select").onchange();
+	}
+
+	// Forecast day
 	if (Object.keys(options).includes("fdindex")) {
 		document.getElementById("firstday").value = options["fdindex"];
 		document.getElementById("firstday").onchange();
@@ -390,8 +461,17 @@ function process_urlparams() {
 	if (Object.keys(options).includes("custom")) {
 		document.getElementById("customentry").value = options["custom"];
 	}
+	// For legacy purposes, leave the "icon" option alone
 	if (Object.keys(options).includes("icon")) {
 		prop.logo.src = logo[options["icon"]];
+	}
+	// New icon method; will overwrite above legacy version
+	if (Object.keys(options).includes("icon_url")) {
+		prop.logo.src = options["icon_url"];
+		// Add the saved URL logo to the list if not present
+		if (!logo.includes(options["icon_url"])) {
+			logo.push(options["icon_url"]);
+		}
 	}
 	if (Object.keys(options).includes("temp")) {
 		document.getElementById("input-temp" + options["temp"]).click();
@@ -404,7 +484,6 @@ function process_urlparams() {
 		document.getElementById("hemisphere").onchange();
 	}
 	if (Object.keys(options).includes("prcp")) {
-		// console.log(options["prcp"].split(/\|/));
 		let prcpli = options["prcp"].split(/\|/);
 		for (let dy=1; dy<=7; dy++) {
 			if (prcpli[dy-1] != "") {
@@ -424,10 +503,8 @@ function process_urlparams() {
 	}
 	if (Object.keys(options).includes("wind")) {
 		let windli = options["wind"].split(/\|/);
-		// console.log(windli);
 		for (let dy=1; dy<=7; dy++) {
 			let winddyli = windli[dy-1].split("_");
-			// console.log(winddyli);
 			if (winddyli[0] != "f") {
 				document.getElementById(`windtoggle${dy}`).click();
 				document.getElementById(`wind${dy}select`).value = winddyli[1];
@@ -439,7 +516,6 @@ function process_urlparams() {
 	}
 	if (Object.keys(options).includes("temps")) {
 		let tempsli = options["temps"].split(/\|/);
-		// console.log(tempsli);
 		for (let dy=1; dy<=7; dy++) {
 			let tempsdyli = tempsli[dy-1].split("_");
 			document.getElementById(`tmax${dy}`).value = tempsdyli[0];
@@ -453,62 +529,114 @@ function process_urlparams() {
 function forecastDayQty(n) {
 	prop.dayQty = parseInt(n);
 	// Because of onload (i think it acts as a listener), it runs resize autom.
+
 	prop.dayImage.src = `5day/TEMPLATE_${prop.dayQty}day.svg`;
 	// Show / Hide options for applicable days
 	if (prop.dayQty == 7) {
+		document.getElementById("day4").style.display = "flex";
+		document.getElementById("day5").style.display = "flex";
 		document.getElementById("day6").style.display = "flex";
 		document.getElementById("day7").style.display = "flex";
 	}
-	else {
+	else if (prop.dayQty == 5) {
+		document.getElementById("day4").style.display = "flex";
+		document.getElementById("day5").style.display = "flex";
+		document.getElementById("day6").style.display = "none";
+		document.getElementById("day7").style.display = "none";
+	}
+	else if (prop.dayQty == 3) {
+		document.getElementById("day4").style.display = "none";
+		document.getElementById("day5").style.display = "none";
 		document.getElementById("day6").style.display = "none";
 		document.getElementById("day7").style.display = "none";
 	}
 }
 
-function resize() {
-	let numdays = document.getElementById("numdays");
-	// console.log(innerWidth, innerHeight, document.documentElement.clientWidth, document.documentElement.clientHeight, document.documentElement.offsetWidth, document.documentElement.offsetHeight);
-	largest = Math.max(
-		document.documentElement.clientWidth,
-		document.documentElement.clientHeight
-	);
-	smallest = Math.min(
-		document.documentElement.clientWidth,
-		document.documentElement.clientHeight
-	);
-	// console.log(largest, smallest);
-	// 7 Days
-	if (prop.dayQty == 7) {
-		//LANDSCAPE
-		if ("orientation" in window == false || Math.abs(window.orientation) == 90) {
-			// console.log("landscape");
-			canvas.width = largest * 0.9;
-			canvas.height = canvas.width / 2;
+function recalculateDownloadSizes() {
+	// make note of selected option
+	let _sel = savesize.selectedIndex;
+
+	for (
+		let y of [
+			360,
+			480,
+			504,
+			800,
+			960,
+			1080,
+		]
+	) {
+		let height = y.toString();
+		let new_width = Math.round(y * prop.dayImage.aspectRatio());
+		let opt
+
+		if (Boolean(document.getElementById(`save${y}p`))) {
+			opt = document.getElementById(`save${y}p`);
 		}
-		// PORTRAIT
 		else {
-			// console.log("portrait");
-			canvas.width = smallest * 0.9;
-			canvas.height = canvas.width / 2;
+			opt = document.createElement("option");
+			opt.setAttribute("id", `save${y}p`);
 		}
+
+		opt.value = `${new_width}x${height}`;
+		opt.innerText = `${new_width} x ${height}`;
 		
-		prop.width7 = canvas.width;
-	}
-	// 5 Days
-	else {
-		//LANDSCAPE
-		if ("orientation" in window == false || Math.abs(window.orientation) == 90) {
-			canvas.width = (largest-20) * 0.715715;
-			canvas.height = canvas.width * 0.6986;
-			prop.width7 = (largest-20);
+		if (_sel == -1 && y == 504) {
+			opt.selected = true
 		}
-		// PORTRAIT
+		savesize.add(opt);
+	}
+
+	// re-select previous option for continuity
+	if (_sel != -1) {
+		savesize.options[_sel].selected = true;
+	}
+}
+
+function resize() {
+	// prop.width7 is the width the dayImage would have if it was the 7 day.
+	// found by proportion: 1000 / naturalWidth = x / canvas.width;
+	//                      x = canvas.width * 1000 / dayImage.naturalWidth
+
+
+	// if the screen AR > dayImage AR, resize needs to be based on height
+
+	let numdays = document.getElementById("numdays");
+	let vmax = Math.max(
+		document.documentElement.clientWidth,
+		document.documentElement.clientHeight
+	);
+	let vmin = Math.min(
+		document.documentElement.clientWidth,
+		document.documentElement.clientHeight
+	);
+	// Landscape
+	if (screen.orientation.type.includes("landscape")) {
+		// resize based on screen height
+		if (screen.aspectRatio() > prop.dayImage.aspectRatio()) {
+			canvas.height = vmin * 0.9;
+			canvas.width = canvas.height * prop.dayImage.aspectRatio();
+		}
+		// resize based on width
 		else {
-			canvas.width = (smallest-20) * 0.715715;
-			canvas.height = canvas.width * 0.6986;
-			prop.width7 = (smallest-20);
+			canvas.width = vmax * 0.9;
+			canvas.height = canvas.width / prop.dayImage.aspectRatio();
 		}
 	}
+	// Portrait
+	else {
+		// resize based on height
+		if (screen.aspectRatio() > prop.dayImage.aspectRatio()) {
+			canvas.height = vmax * 0.9;
+			canvas.width = canvas.height * prop.dayImage.aspectRatio();
+		}
+		// resize based on width
+		else {
+			canvas.width = vmin * 0.9;
+			canvas.height = canvas.width / prop.dayImage.aspectRatio();
+		}
+	}
+	prop.width7 = canvas.width * 1000 / prop.dayImage.naturalWidth;
 
 	reparameterize();
 }
@@ -517,7 +645,7 @@ function reparameterize() {
 	// px = (3/4)*pt
 	// pt = (4/3)*px
 	// the above conversions don't work for the canvas!
-	prop.dayHeaderFont = (prop.dayQty == 7) ? `bold ${canvas.width * 0.032}pt sans-serif` : `bold ${canvas.width * 0.04}pt sans-serif`;
+	prop.dayHeaderFont = (prop.dayQty == 7) ? `bold ${canvas.width * 0.032}pt sans-serif` : `bold ${canvas.height * 0.06}pt sans-serif`;
 	// 7 Day Title Font
 	prop.titleFont = `bold ${canvas.width * 0.028}pt sans-serif`;
 	prop.prcpFont = `bold ${prop.width7 * 0.018}pt sans-serif`;
@@ -536,12 +664,30 @@ function reparameterize() {
 }
 
 function draw() {
-	//console.log("draw() called");
-	//ctx.clearRect(0, 0, prop.width7, canvas.height); //clear
 
 	// BACKGROUND
+
+	// Solid fill
 	ctx.fillStyle = prop.backgroundColor;
 	ctx.fillRect(0, 0, prop.width7, canvas.height);
+
+	// pre-made
+	if (prop.usePreMadeBackground) {
+		ctx.drawImage(
+			prop.backgroundImage,
+			prop.backgroundImage.aspectRatio() > canvas.aspectRatio() ?
+				0 - Math.abs(prop.backgroundImage.toCanvasWidth() - canvas.width) / 2 :
+				0 + Math.abs(prop.backgroundImage.toCanvasWidth() - canvas.width) / 2
+			,
+			prop.backgroundImage.aspectRatio() > canvas.aspectRatio() ?
+				0 + Math.abs(prop.backgroundImage.toCanvasHeight() - canvas.height) / 2 :
+				0 - Math.abs(prop.backgroundImage.toCanvasHeight() - canvas.height) / 2
+			,
+			prop.backgroundImage.toCanvasWidth(),
+			prop.backgroundImage.toCanvasHeight(),
+		)
+	}
+
 	// TEMPLATE
 	ctx.drawImage(
 		prop.dayImage,
@@ -737,25 +883,26 @@ function chg_title_mode(newmode) {
 }
 
 function drawTitle() {
+	let title;
 	let name = document.getElementById("nameentry").value;
 	let city = document.getElementById("cityentry").value;
 	if (name.length == 0) {name = "<NAME>";}
 	if (city.length == 0) {city = "<CITY>";}
 	// Standard
 	if (prop.titleMode == "both") {
-		var title = prop.lang_packs[prop.language].title;
+		title = prop.lang_packs[prop.language].title;
 	}
 	// Exclude City
 	else if (prop.titleMode == "name") {
-		var title = prop.lang_packs[prop.language].title_exclude_city;
+		title = prop.lang_packs[prop.language].title_exclude_city;
 	}
 	// Exclude Name
 	else if (prop.titleMode == "city") {
-		var title = prop.lang_packs[prop.language].title_exclude_name;
+		title = prop.lang_packs[prop.language].title_exclude_name;
 	}
 	// CUSTOM
 	else if (prop.titleMode == "custom") {
-		var title = document.getElementById("customentry").value;
+		title = document.getElementById("customentry").value;
 		if (title.length == 0) {
 			title = "<CUSTOM TEXT>";
 		}
@@ -788,7 +935,6 @@ function drawTitle() {
 }
 
 function titleUnderline() {
-	//console.log(prop.backgroundColor);
 	let r = parseInt(prop.backgroundColor.slice(1,3), 16);
 	let g = parseInt(prop.backgroundColor.slice(3,5), 16);
 	let b = parseInt(prop.backgroundColor.slice(5), 16);
@@ -809,9 +955,10 @@ function titleUnderline() {
 	gr.addColorStop(1, titleUnderlineColor2);
 	ctx.fillStyle = gr;
 	ctx.fillRect(
-		prop.borderSpace,
+		prop.borderSpace - 1,
 		canvas.height * 0.97,
-		(prop.dayQty == 7) ? canvas.width * 0.99 : canvas.width * 0.987,
+		// (prop.dayQty == 7) ? canvas.width * 0.99 : canvas.width * 0.977,
+		canvas.width - 2 * prop.borderSpace + 1,
 		canvas.height * 0.015
 	);
 }
@@ -858,7 +1005,6 @@ function chg_lang(dir) {
 	for (i=1; i < desc.length; i++) {
 		desc[i] = desc[i].replace(/\/\w\w\//, `/${prop.language}/`);
 	}
-	//console.log(prop.language);
 	chg_day(curr_dow_i);
 	lang_selection.src = `5day/lang_${prop.language}.svg`;
 	lang_selection.title = prop.lang_packs[prop.language].name;
@@ -873,7 +1019,6 @@ function chg_lang(dir) {
 function chg_day(fdindex) {
 	prop.weekArray = prop.lang_packs[prop.language].dayNames.slice(fdindex).concat(prop.lang_packs[prop.language].dayNames.slice(0, fdindex));
 
-	//console.log(prop.weekArray);
 	for (dy=0; dy < 7; dy++) {
 		document.getElementById(`d${dy+1}name`).innerHTML = prop.weekArray[dy];
 	}
@@ -906,14 +1051,9 @@ function load_day_select() {
 		} catch(e) {console.log(`d${dy+1}name`)}
 
 	}
-
-	// Change the autosave name
-	document.getElementById("savename").placeholder = "fc_generated_" + `${z.getFullYear()}-${ZFILL(z.getMonth() + 1)}-${z.getDate()}`;
 }
 
 function canvas_click(e) {
-	//console.log(e);
-
 	// Canvas top-left coords
 	let canvasX0 = canvas.getBoundingClientRect().x;
 	let canvasY0 = canvas.getBoundingClientRect().y;
@@ -951,7 +1091,6 @@ function canvas_click(e) {
 					
 					ctx.fillStyle = prop.highlightActive;
 				}
-				//console.log((yclick < canvas.height * 0.89) ? "up":"down");
 				ctx.fillRect(
 					prop.borderSpace,
 					(yclick < canvas.height * 0.89) ? canvas.height * 0.808 : canvas.height * 0.89,
@@ -1102,7 +1241,6 @@ function chg_uvi(dy, xclick) {
 		)
 	}
 	for (segment=0; segment < xticks.length; segment++) {
-		//console.log(xticks[segment]);
 		if (xclick >= xticks[segment][0] && xclick < xticks[segment][1]) {
 			prop[`day${dy}`].uvi_level = segment+1;
 			
@@ -1130,7 +1268,6 @@ function chg_uvi_vis(dy) {
 	}
 	// Turning Off
 	else {
-		//console.log(`Day ${dy} UVI OFF`)
 		uvitoggle.className = uvitoggle.className.replace(" activated", "");
 		prop[`day${dy}`].uvi = false;
 		uvitoggle.innerText = "OFF";
@@ -1149,7 +1286,6 @@ function chg_wind_vis(dy) {
 	}
 	// Turning Off
 	else {
-		//console.log(`Day ${dy} wind OFF`)
 		windtoggle.className = windtoggle.className.replace(" activated", "");
 		windtoggle.innerText = "OFF";
 		prop[`day${dy}`].wind = false;
@@ -1351,7 +1487,6 @@ function skycast(_lo, _hi) {
 			prcp = (["cloudy", "cloudy_mostly", "partly"].includes(skycon)) ? (chance >= 50) ? RANDOM_ARG("rain", "tstorm", "tstorm_only") : "" : "";
 		}
 	}
-	// console.log(`5day/sky_${skycon}${(prcp != '') ? "_" : ""}${prcp}.svg`);
 	return `5day/sky_${skycon}${(prcp != '') ? "_" : ""}${prcp}.svg`;
 }
 
@@ -1437,24 +1572,18 @@ function supports_snow(temp) {
 }
 
 function support_thunderstorms() {
-	
+
 }
 
-function ZFILL(n, targetlength=2) {
-	let nstr = n.toString();
-	while (nstr.length < targetlength) {
-		nstr = "0" + nstr;
-		if (nstr.length >= targetlength) {break;}
+function chg_bg(c=null) {
+	prop.backgroundImage.src = document.getElementById("pre-made-bg-select").value;
+	if (c) {
+		prop.backgroundColor = c;
+		let r = parseInt(prop.backgroundColor.slice(1,3), 16);
+		let g = parseInt(prop.backgroundColor.slice(3,5), 16);
+		let b = parseInt(prop.backgroundColor.slice(5), 16);
+		prop.loColor = `rgb(${parseInt(r/4)}, ${parseInt(g/4)}, ${parseInt(b/4)})`;
 	}
-	return nstr
-}
-
-function chg_bg(c) {
-	prop.backgroundColor = c;
-	let r = parseInt(prop.backgroundColor.slice(1,3), 16);
-	let g = parseInt(prop.backgroundColor.slice(3,5), 16);
-	let b = parseInt(prop.backgroundColor.slice(5), 16);
-	prop.loColor = `rgb(${parseInt(r/4)}, ${parseInt(g/4)}, ${parseInt(b/4)})`;
 	draw();
 }
 
@@ -1528,50 +1657,24 @@ function random_bg_color() {
 	b = parseInt(b * l / 50);
 
 	// Hex
-	let hexr = ZFILL(r.toString(16));
-	let hexg = ZFILL(g.toString(16));
-	let hexb = ZFILL(b.toString(16));
+	let hexr = r.toString(16).padStart(2,"0");
+	let hexg = g.toString(16).padStart(2,"0");
+	let hexb = b.toString(16).padStart(2,"0");
 	document.getElementById("mainbgcolor").value = `#${hexr}${hexg}${hexb}`;
 	canvas_portrait.style.backgroundColor = document.getElementById("mainbgcolor").value;
 	chg_bg(`#${hexr}${hexg}${hexb}`);
-	// console.log(h, [r,g,b]);
-	// console.log(hexr, hexg, hexb);
-	// console.log(`hsl(${h}, ${s}%, ${l}%)`);
 }
 
-
 function chg_logo(dir) {
-	let SRC = prop.logo.src.match(/5day\/\w+\.svg/)[0];
-	// UP
-	if (dir < 0) {
-		if (logo.indexOf(SRC) == 0) {
-			prop.logo.src = logo[logo.length-1];
-		}
-		else {
-			prop.logo.src = logo[logo.indexOf(SRC) - 1];
-		}
-		// Disable EchoTops logo for custom mode
-		if (prop.logo.src.includes("echotops") && prop.titleMode == "custom") {
-			prop.logo.src = logo[logo.length - 1];
-		}
-	}
-	// DOWN
-	else {
-		if (logo.indexOf(SRC) == logo.length - 1) {
-			prop.logo.src = logo[0];
-		}
-		else {
-			prop.logo.src = logo[logo.indexOf(SRC) + 1];
-		}
-		// Disable EchoTops logo for custom mode
-		if (prop.logo.src.includes("echotops") && prop.titleMode == "custom") {
-			prop.logo.src = logo[1];
-		}
-	}
+	prop.logo.src = logo.at(
+		(logo.currentIndex() + dir >= logo.length) ?
+			0 :
+			logo.currentIndex() + dir
+	);
 }
 
 function chg_imagery(type, dy, dir) {
-	//console.log(type, dy, dir);
+
 	let SRC = prop[`day${dy}`][type].src.match(/5day\/.*\.svg/)[0];
 	// Up (or backwards)
 	if (dir < 0) {
@@ -1593,22 +1696,55 @@ function chg_imagery(type, dy, dir) {
 			prop[`day${dy}`][type].src = window[type][window[type].indexOf(SRC) + 1];
 		}
 	}
-	//console.log(prop[`day${dy}`][type].src);
+
 }
 
 function validate_filename(fn) {
 
-	fixedsave = fn.replace(/([^\w^\.])|^\./g,"").replace(/(\.\.)|(\.$)/g, "");
-	return (fixedsave.length > 0) ? fixedsave + ".png" : "";
+	fixedsave = fn.replace(
+		/([^A-Z0-9\.\- ])/gi, ""
+	);	
+	return (fixedsave.length > 0) ?
+		(fixedsave + ".png").replace(/\.{2,}/g, ".") : 
+		""
+	;
+}
+
+function delta_save_placeholder() {
+	prop.dayImage.removeEventListener("load", delta_save_placeholder);
+	clearTimeout(prop.dayImage.timeout);
+	prop.dayImage.timeout = setTimeout(delta_save_placeholder, 60 * 1000);
+
+	let z = new Date();
+	// Change the autosave name
+	savename.placeholder = "fc_generated_" + `${
+		prop.dayQty
+	}day_${
+		z.getFullYear()
+	}-${
+		(z.getMonth() + 1).toString().padStart(2, "0")
+	}-${
+		(z.getDate()).toString().padStart(2,"0")
+	}-${
+		(z.getHours()).toString().padStart(2,"0")
+	}${
+		(z.getMinutes()).toString().padStart(2,"0")
+	}_${
+		savesize.value.split("x").at(-1)
+	}p`;
 }
 
 function saveimg() {
-	var savename = document.getElementById("savename");
+	savename.fallbackPlaceholder = "fc_generated.png";
 
-	var save = validate_filename(savename.value);
-	var save = (save.length > 0) ? save : savename.placeholder;
+	let save = validate_filename(savename.value);
+	save = (save.length > 0) ?
+		save :
+		savename.placeholder
+	;
+	// fallback placeholder if save length is still 0
+	if (save.length == 0) {save = savename.fallbackPlaceholder}
 
-	var dims = document.getElementById("savesize").value;
 	let orig_w7 = prop.width7;
 
 	// Switch to image Canvas
@@ -1616,15 +1752,14 @@ function saveimg() {
 	ctx = canvas.getContext("2d");
 
 	// Change dimensions
-	canvas.height = parseInt(dims.split("x")[1]);
-	canvas.width = (prop.dayQty == 7) ? parseInt(dims.split("x")[0]) : canvas.height * 1.43143;
+	[canvas.width, canvas.height] = savesize.value.split("x");
 
-	prop.width7 = parseInt(dims.split("x")[0]);
-	//redefine();
+	prop.width7 = canvas.width * 1000 / prop.dayImage.naturalWidth;
+
 	reparameterize();
 
 	document.getElementById("saveimg").download = save;
-	//console.log(document.getElementById("saveimg"));
+
 	document.getElementById("saveimg").href = canvas.toDataURL("image/png");
 
 	// Switch back to original Canvas

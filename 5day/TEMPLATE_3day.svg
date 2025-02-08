@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg width="431.42899" height="500.00003" viewBox="0 0 114.14891 132.29168" version="1.1" id="svg8" inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)" sodipodi:docname="TEMPLATE_3day.svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <defs id="defs2">
+        <linearGradient id="linearGradient844" inkscape:collect="always">
+            <stop id="stop840" offset="0" style="stop-color:#ffffff;stop-opacity:0.90196079" />
+            <stop id="stop842" offset="1" style="stop-color:#ffffff;stop-opacity:0.30000001" />
+        </linearGradient>
+        <linearGradient inkscape:collect="always" id="linearGradient1189">
+            <stop style="stop-color:#ffffff;stop-opacity:0.09803922" offset="0" id="stop1185" />
+            <stop style="stop-color:#ffffff;stop-opacity:0.39607844" offset="1" id="stop1187" />
+        </linearGradient>
+        <linearGradient inkscape:collect="always" id="linearGradient1722">
+            <stop style="stop-color:#ffffff;stop-opacity:1;" offset="0" id="stop1718" />
+            <stop style="stop-color:#ffffff;stop-opacity:0.30000001" offset="1" id="stop1720" />
+        </linearGradient>
+        <linearGradient inkscape:collect="always" xlink:href="#linearGradient1722" id="linearGradient1878" gradientUnits="userSpaceOnUse" x1="5" y1="33.666668" x2="142.14258" y2="33.666668" />
+        <linearGradient inkscape:collect="always" xlink:href="#linearGradient844" id="linearGradient1895" x1="5" y1="447.00003" x2="995" y2="447.00003" gradientUnits="userSpaceOnUse" gradientTransform="scale(0.26458333)" />
+        <radialGradient inkscape:collect="always" xlink:href="#linearGradient1189" id="radialGradient1493" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.7218259,0.00652033,-0.01473139,3.8901229,-13.263568,-154.59195)" cx="19.465775" cy="53.445831" fx="19.465775" fy="53.445831" r="18.142859" />
+    </defs>
+    <sodipodi:namedview id="base" pagecolor="#27688d" bordercolor="#000000" borderopacity="1" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:zoom="0.9899495" inkscape:cx="107.07617" inkscape:cy="346.48232" inkscape:document-units="px" inkscape:current-layer="dayslots" showgrid="true" units="px" borderlayer="true" inkscape:snap-page="true" inkscape:window-width="1920" inkscape:window-height="1013" inkscape:window-x="-9" inkscape:window-y="-9" inkscape:window-maximized="1" inkscape:pagecheckerboard="false" inkscape:snap-bbox="false" inkscape:bbox-paths="true" inkscape:snap-bbox-edge-midpoints="true" inkscape:snap-global="true" inkscape:bbox-nodes="true" inkscape:object-paths="false" inkscape:snap-intersection-paths="true" inkscape:snap-smooth-nodes="true" inkscape:snap-midpoints="false" inkscape:snap-bbox-midpoints="true" inkscape:showpageshadow="0" inkscape:deskcolor="#d1d1d1" showguides="true" />
+    <metadata id="metadata5">
+        <rdf:RDF>
+            <cc:Work rdf:about="">
+                <dc:format>image/svg+xml</dc:format>
+                <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+            </cc:Work>
+        </rdf:RDF>
+    </metadata>
+    <g inkscape:groupmode="layer" id="dayslots" inkscape:label="slots" style="display:inline">
+        <path sodipodi:nodetypes="ssccccsss" inkscape:connector-curvature="0" id="rect1880" d="m 3.4395833,106.89167 c -1.1726334,0 -2.1166667,0.94403 -2.1166667,2.11666 v 6.15802 l 9e-7,14.47949 H 112.82597 v -14.47949 -6.15802 c 0,-1.17263 -0.94403,-2.11666 -2.11666,-2.11666 z" style="display:inline;opacity:1;fill:url(#linearGradient1895);fill-opacity:1;stroke:none;stroke-width:0.529167;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers" inkscape:label="titleBar" />
+        <g id="g1551" inkscape:label="day1">
+            <rect ry="2.1166668" rx="2.1166668" y="2.6458328" x="1.3229166" height="101.6" width="36.285717" id="day1" style="display:inline;opacity:1;fill:url(#radialGradient1493);fill-opacity:1;stroke:none;stroke-width:0.529167;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers" inkscape:label="main_day" />
+            <path style="opacity:1;vector-effect:none;fill:url(#linearGradient1878);fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers" d="M 13,10 C 8.5680003,10 5,13.568 5,18 V 54.099609 H 142.14258 V 18 c 0,-4.432 -3.568,-8 -8,-8 z" transform="scale(0.26458333)" id="rect1712" inkscape:connector-curvature="0" inkscape:label="dayHeader" />
+        </g>
+        <use x="0" y="0" xlink:href="#g1551" id="use1553" width="100%" height="100%" transform="translate(37.608665)" inkscape:label="day2" />
+        <use x="0" y="0" xlink:href="#g1551" id="use1659" width="100%" height="100%" transform="translate(75.217339)" inkscape:label="day3" />
+        <text xml:space="preserve" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.2889px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;text-anchor:middle;opacity:1;vector-effect:none;fill:#000000;fill-opacity:0.859296;stroke:none;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers" x="18.976137" y="9.0804138" id="text845" />
+    </g>
+</svg>

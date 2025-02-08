@@ -19,20 +19,53 @@ canvas {
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	margin:0 auto;
-	margin-bottom: 5px;
 }
-#globaloptions div {
+#globaloptions h4 {
+	text-decoration: underline;
+	margin: 0.4em;
+}
+#globaloptions > div:nth-child(1n) {
 	text-align: center;
 	flex-grow: 1;
 }
-/* everything border-right except last */
-#globaloptions div:nth-last-child(n+2) {
+#globaloptions > div:nth-child(1) {
+	flex-grow: 2;
+}
+#globaloptions > div:nth-child(3) {
+	flex-grow: 3;
+}
+
+#globaloptions > div:nth-last-child(n+2) {
 	border-right: 1px solid white;
+}
+#div-bg-chooser, #div-languagebox, #div-forecast-length {
+	flex-grow: 1;
+	display: flex;
+	gap: 0.1lh;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+#div-forecast-length {
+	align-items: start;
+	margin: 0 1em;
+}
+#div-languagebox {
+	gap: 0.5lh;
+}
+#div-premade-bg {
+	margin: 0.5lh;
+}
+#checkbox-bg-type {
+	transform: scale(200%);
+	margin: 0 1em;
 }
 
 fieldset {
 	border: none;
+}
+#pre-made-bg-select {
+	width: 80%;
 }
 
 #forecast-portrait {
