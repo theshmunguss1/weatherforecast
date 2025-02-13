@@ -9,7 +9,7 @@ function populate_options() {
 		let dname = document.createElement("span");
 		dname.id = `d${dy}name`;
 		dname.className = "optdaydisp";
-		dname.innerHTML = prop.lang_packs[prop.language].dayNames[dy-1];
+		dname.innerText = prop.lang_packs[prop.language].dayNames[dy-1];
 		newdiv.appendChild(dname);
 		// PRCP Chance Header
 		let prcpboxheader = document.createElement("label");
@@ -67,35 +67,39 @@ function populate_options() {
 		windselect = document.createElement("select");
 		windselect.title = "Wind Direction";
 		windselect.id = `wind${dy}select`;
-		windselect.innerHTML = `
-						<option value="">--</option>
-						<option value="VAR">Variable</option>
-						<option value="N">N</option>
-						<option value="NNE">NNE</option>
-						<option value="NE">NE</option>
-						<option value="ENE">ENE</option>
-						<option value="E">E</option>
-						<option value="ESE">ESE</option>
-						<option value="SE">SE</option>
-						<option value="SSE">SSE</option>
-						<option value="S">S</option>
-						<option value="SSW">SSW</option>
-						<option value="SW">SW</option>
-						<option value="WSW">WSW</option>
-						<option value="W">W</option>
-						<option value="WNW">WNW</option>
-						<option value="NW">NW</option>
-						<option value="NNW">NNW</option>
-		`;
+		for (
+			let [valu, desc] of [
+				["", "--"],
+				["VAR", "Variable"],
+				["N", null],
+				["NNE", null],
+				["NE", null],
+				["ENE", null],
+				["E", null],
+				["ESE", null],
+				["SE", null],
+				["SSE", null],
+				["SSW", null],
+				["SW", null],
+				["WSW", null],
+				["W", null],
+				["WNW", null],
+				["NW", null],
+				["NNW", null],
+			]
+		) {
+			let opt = document.createElement("option");
+			opt.setAttribute("value", valu);
+			opt.innerText = (desc == null) ? valu : desc;
+			windselect.add(opt);
+		}
 		windselect.setAttribute("onchange", `chg_wind(this)`);
 		winddesc.appendChild(windselect);
-		winddesc.innerHTML += "<br />";
 		// Wind Input Number
 		windnumlbl = document.createElement("label");
 		windnumlbl.htmlFor = `wind${dy}speed`;
 		windnumlbl.innerHTML = "Speed";
 		winddesc.appendChild(windnumlbl);
-		winddesc.innerHTML += "<br />";
 		let windnum = document.createElement("input");
 		windnum.type = "number";
 		//windnum.max = "100";

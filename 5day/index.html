@@ -118,6 +118,21 @@
 				Please use in landscape mode. Optimal use of this site occurs with a laptop, desktop, or tablet.
 			</div>
 			<canvas id="forecast_img" width="1008" height="504" style="display:none;"></canvas>
+			<!-- <svg id="container-title-svg" width="905" height="86" xmlns="http://www.w3.org/2000/svg"> -->
+				<!-- <foreignObject x="0" y="0" width="905" height="86"> -->
+					<!-- <style> -->
+						<!-- #title-svg { -->
+							<!-- font-size: 28pt; -->
+							<!-- font-weight: bold; -->
+							<!-- font-family: sans-serif; -->
+						<!-- } -->
+					<!-- </style> -->
+					<!-- <div id="title-svg" xmlns="http://www.w3.org/1999/xhtml"> -->
+						<!-- TESTING 123 -->
+					<!-- </div> -->
+				<!-- </foreignObject> -->
+			<!-- </svg> -->
+			<!-- <img id="title-svg-img" style="display:none;"/> -->
 		</div>
 		<div id="forecast-names">
 			<table id="title-modes">
@@ -149,15 +164,15 @@
 				<div><span class="titleopt">Title Display Options:</span></div>
 				<div id="nameentrydiv">
 					<label for="nameentry">Name:</label>
-					<input id="nameentry" maxlength="15" placeholder="Your Name (15 Chars)" onInput="draw();">
+					<input id="nameentry" placeholder="Your Name (15 Chars)" onInput="draw();">
 				</div>
 				<div id="cityentrydiv">
 					<label for="cityentry">City:</label>
-					<input id="cityentry" maxlength="15" placeholder="City (15 Chars)" onInput="draw();">
+					<input id="cityentry" placeholder="City (15 Chars)" onInput="draw();">
 				</div>
 				<div id="customtitlediv" style="display:none;">
 					<label for="customentry">Custom:</label>
-					<input id="customentry" placeholder="Custom Entry (max: 60 chars)" maxlength="60" onInput="draw();" style="width:60%;">
+					<input id="customentry" placeholder="Custom Entry (max: 60 chars)" onInput="draw();" style="width:60%;">
 				</div>
 			</div>
 			<div id="save-the-canvas">
@@ -228,6 +243,7 @@
 						<li>Upon user request, I added an experimental 3-day forecast option. As of this update, I'm not happy with how the text flow is (nor enthused at the lack of versatility of HTML5 canvas handling of text). As such, I'll call it an experimental mode.</li>
 						<li>Further tweaks to dynamic canvas re-sizing. It was worse than I thought! It may still be. But I think I got it.</li>
 						<li>For saving images, the sizing option now accurately displays the file dimensions.</li>
+						<li>Tweaked font settings for forecast title. Implemented better code for dynamic/responsive font sizes. Also, if no logo is chosen, the text will be centered.</li>
 						</ul>
 					</li>
 					<li>JAN 2025:<ul>
@@ -307,8 +323,8 @@
 		<div id="footer"></div>
 		<script src="header.js"></script>
 		<script src="footer.js"></script>
-		<script src="5day/7day_canvas_populate.js"></script>
-		<script src="5day/7day_canvas.js?v=2025.2.8"></script>
+		<script src="5day/7day_canvas_populate.js?v=2025.2.13"></script>
+		<script src="5day/7day_canvas.js?v=2025.2.13"></script>
 	</body>
 </html>
 

@@ -98,6 +98,15 @@ fieldset {
 	#forecast-portrait {display: block;}
 }
 
+#container-title-svg {
+	border: 1px solid white;
+	display: none;
+}
+#title-svg {
+	color: red;
+	text-align: left;
+}
+
 /* FORECAST MODIFICATION OPTIONS */
 #forecast-names {
 	display:flex;

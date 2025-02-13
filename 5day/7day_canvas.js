@@ -147,6 +147,14 @@ let savetemps = document.getElementById("save-temps");
 // not saved in localStorage, but needed elsewhere in the script
 let savename = document.getElementById("savename");
 
+// experimental alternative title load using
+//    drawTitle_underconstruction
+//    causes loop though because drawTitle() is called w/in draw().
+// let titlecont = document.getElementById("container-title-svg");
+// let titlesvg = document.getElementById("title-svg");
+// let imgtitle = document.getElementById("title-svg-img");
+// imgtitle.onload = draw;
+
 var prop = {
 	"dayQty": 7,
 	"weekArray": ["SUN","MON","TUE","WED","THU","FRI","SAT"],
@@ -645,8 +653,16 @@ function reparameterize() {
 	// px = (3/4)*pt
 	// pt = (4/3)*px
 	// the above conversions don't work for the canvas!
-	prop.dayHeaderFont = (prop.dayQty == 7) ? `bold ${canvas.width * 0.032}pt sans-serif` : `bold ${canvas.height * 0.06}pt sans-serif`;
-	// 7 Day Title Font
+	if (prop.dayQty == 7) {
+		prop.dayHeaderFont = `bold ${canvas.width * 0.032}pt sans-serif`;
+	}
+	else if (prop.dayQty == 5) {
+		prop.dayHeaderFont = `bold ${canvas.width * 0.045}pt sans-serif`;
+	}
+	else {
+		prop.dayHeaderFont = `bold ${canvas.width * 0.075}pt sans-serif`;
+	}
+	// 7 Day Title Font (as of feb 2025, this isn't used)
 	prop.titleFont = `bold ${canvas.width * 0.028}pt sans-serif`;
 	prop.prcpFont = `bold ${prop.width7 * 0.018}pt sans-serif`;
 	prop.uviFont = `italic normal ${prop.width7 * 0.012}pt sans-serif`;
@@ -695,7 +711,10 @@ function draw() {
 		canvas.width,
 		canvas.height
 	);
+
 	// DAY NAMES
+	let former_baseline = ctx.textBaseline;
+	ctx.textBaseline = "middle";
 	ctx.font = prop.dayHeaderFont;
 	ctx.fillStyle = prop.titleColor;
 	ctx.textAlign = "center";
@@ -703,9 +722,10 @@ function draw() {
 		ctx.fillText(
 			prop.weekArray[dy-1],
 			prop.borderSpace + (dy-1) * prop.dayOffset + prop.dayWidth / 2,
-			(prop.dayQty == 7) ? canvas.height * 0.0946 : canvas.height * 0.091
+			canvas.height * 35 / 500
 		);
 	}
+	ctx.textBaseline = former_baseline;
 	// TitleBox Underline
 	titleUnderline();
 	// LOGO
@@ -856,10 +876,6 @@ function chg_title_mode(newmode) {
 		namediv.style.display = "none";
 		citydiv.style.display = "none";
 		customdiv.style.display = "block";
-		// Disable EchoTops logo for custom mode
-		if (prop.logo.src.includes("echotops")) {
-			prop.logo.src = logo[1];
-		}
 	}
 	// STANDARD MODE
 	else if (prop.titleMode == "both") {
@@ -880,6 +896,55 @@ function chg_title_mode(newmode) {
 		customdiv.style.display = "none";
 	}
 	draw();
+}
+
+function drawTitle_FUTUREMETHOD() {
+	let title;
+	let name = document.getElementById("nameentry").value;
+	let city = document.getElementById("cityentry").value;
+	if (name.length == 0) {name = "<NAME>";}
+	if (city.length == 0) {city = "<CITY>";}
+	// Standard
+	if (prop.titleMode == "both") {
+		title = prop.lang_packs[prop.language].title;
+	}
+	// Exclude City
+	else if (prop.titleMode == "name") {
+		title = prop.lang_packs[prop.language].title_exclude_city;
+	}
+	// Exclude Name
+	else if (prop.titleMode == "city") {
+		title = prop.lang_packs[prop.language].title_exclude_name;
+	}
+	// CUSTOM
+	else if (prop.titleMode == "custom") {
+		title = document.getElementById("customentry").value;
+		if (title.length == 0) {
+			title = "<CUSTOM TEXT>";
+		}
+	}
+	// Replace Name
+	title = title.replace("#NAME", name);
+	// Replace City
+	title = title.replace("#CITY", city);
+	// Replace forecast day qty
+	title = title.replace("#QTY", prop.dayQty);
+	titlesvg.innerText = title;
+	
+
+	// source for idea: https://pqina.nl/blog/wrap-text-with-html-canvas/
+
+	imgtitle.src = "data:image/svg+xml," + encodeURIComponent(
+		titlecont.outerHTML
+			.replace(/[\t\n]/g, "")
+	);
+	// console.log(imgtitle.src);
+	ctx.drawImage(
+		imgtitle,
+		0, 0,
+		prop.width7 * 0.095,
+		(prop.dayQty == 7) ? canvas.height * 0.915 : canvas.height * 0.91
+	);
 }
 
 function drawTitle() {
@@ -917,21 +982,73 @@ function drawTitle() {
 
 	// Draw Title
 	ctx.fillStyle = "black";
-	if (title.length < 45) {
-		ctx.font = prop.titleFont;
+	ctx.textAlign = prop.logo.src.includes("logo_blank.svg") ?
+		"center" : "left"
+	;
+
+	// find available space available for the title
+	let title_available_area = canvas.width - prop.width7 * (
+		prop.logo.src.includes("logo_blank.svg") ?
+			0.015 :
+			0.095
+	) - prop.borderSpace;
+
+	// Initial font sizes
+	// prop.titleFont factor = canvas.width * 0.028
+	// `bold ${canvas.width * 0.028}pt sans-serif`;
+	let init_factor;
+	// 7 day font
+	if (prop.dayQty == 7) {
+		init_factor = 31;
 	}
-	else if (title.length < 55) {
-		ctx.font = (prop.dayQty == 7) ? `bold ${canvas.width * 0.025}pt sans-serif` : `bold ${canvas.width * 0.024}pt sans-serif`;
+	// 5 day font
+	else if (prop.dayQty == 5) {
+		init_factor = 38;
 	}
+	// 3 day font
 	else {
-		ctx.font = (prop.dayQty == 7) ? `bold ${canvas.width * 0.022}pt sans-serif` : `bold ${canvas.width * 0.021}pt sans-serif`;
+		init_factor = 55;
 	}
-	ctx.textAlign = "left";
+	// set initial font size
+	ctx.font = `bold ${
+		canvas.width * init_factor / 1000
+	}pt sans-serif`;
+
+	while (ctx.measureText(title).width > title_available_area) {
+		init_factor--;
+		ctx.font = `bold ${
+			canvas.width * init_factor / 1000
+		}pt sans-serif`;
+	}
+
+	// make note of the former baseline to move it back after
+	// writing title
+	let former_baseline = ctx.textBaseline;
+
+	ctx.textBaseline = "middle";
+	// mid section of the title part on a 500h canvas would be at 447
 	ctx.fillText(
 		title,
-		prop.width7 * 0.095,
-		(prop.dayQty == 7) ? canvas.height * 0.915 : canvas.height * 0.91
+		// x
+		prop.logo.src.includes("logo_blank.svg") ?
+			canvas.width / 2 :
+			prop.width7 * (
+				prop.dayQty != 3 ?
+				0.095 : 0.09
+			)
+		,
+		// y
+		canvas.height * 447 / 500,
+		// maxwidth
+		(prop.logo.src.includes("logo_blank.svg") ?
+			canvas.width :
+			canvas.width - prop.width7 * (
+				prop.dayQty != 3 ?
+				0.095 : 0.09
+			)) - prop.borderSpace
 	);
+	// reset textBaseline
+	ctx.textBaseline = former_baseline;
 }
 
 function titleUnderline() {
