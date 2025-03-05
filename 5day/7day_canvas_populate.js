@@ -79,6 +79,7 @@ function populate_options() {
 				["ESE", null],
 				["SE", null],
 				["SSE", null],
+				["S", null],
 				["SSW", null],
 				["SW", null],
 				["WSW", null],
